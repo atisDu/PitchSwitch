@@ -35,8 +35,8 @@ export function HomeForm() {
   }
 
   return (
-    <div className="mt-8 max-w-xl">
-      <div role="radiogroup" aria-label="Mode" className="inline-flex rounded-lg border border-line p-1">
+    <div className="mt-14 max-w-xl">
+      <div role="radiogroup" aria-label="Mode" className="flex gap-8 border-b border-line">
         {MODES.map((m) => (
           <button
             key={m.value}
@@ -44,17 +44,19 @@ export function HomeForm() {
             role="radio"
             aria-checked={mode === m.value}
             onClick={() => setMode(m.value)}
-            className={`rounded-md px-4 py-1.5 text-sm font-medium transition-colors ${
-              mode === m.value ? "bg-foreground text-background" : "text-muted hover:text-foreground"
+            className={`label -mb-px border-b-2 pb-3 transition-colors ${
+              mode === m.value
+                ? "border-accent text-foreground"
+                : "border-transparent text-muted hover:text-foreground"
             }`}
           >
             {m.label}
           </button>
         ))}
       </div>
-      <p className="mt-3 text-sm text-muted">{MODES.find((m) => m.value === mode)?.hint}</p>
+      <p className="mt-4 text-muted">{MODES.find((m) => m.value === mode)?.hint}</p>
 
-      <div className="mt-6 space-y-6">
+      <div className="mt-10 space-y-8">
         {mode === "founder" ? (
           <EntityPicker
             key="company"
@@ -93,7 +95,7 @@ export function HomeForm() {
         type="button"
         onClick={go}
         disabled={!ready}
-        className="mt-8 h-11 rounded-lg bg-foreground px-5 font-medium text-background disabled:opacity-30"
+        className="btn-primary mt-10"
       >
         {mode === "founder" ? "Find who to pitch" : "Check this startup"}
       </button>

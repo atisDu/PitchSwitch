@@ -57,13 +57,13 @@ export function EntityPicker({ kind, label, placeholder, value, onChange, exampl
   if (value) {
     return (
       <div>
-        <p className="text-sm font-medium">{label}</p>
-        <div className="mt-2 flex items-start justify-between gap-3 rounded-lg border border-foreground/20 bg-surface p-3">
+        <p className="label">{label}</p>
+        <div className="mt-3 flex items-start justify-between gap-3 border-l-2 border-accent bg-surface py-3 pr-3 pl-4">
           <EntityLine entity={value} />
           <button
             type="button"
             onClick={() => onChange(null)}
-            className="shrink-0 text-sm text-muted underline-offset-2 hover:text-foreground hover:underline"
+            className="shrink-0 text-sm underline underline-offset-4"
           >
             Change
           </button>
@@ -80,22 +80,22 @@ export function EntityPicker({ kind, label, placeholder, value, onChange, exampl
           void search(name);
         }}
       >
-        <label htmlFor={id} className="text-sm font-medium">
+        <label htmlFor={id} className="label">
           {label}
         </label>
-        <div className="mt-2 flex gap-2">
+        <div className="mt-3 flex gap-2">
           <input
             id={id}
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder={placeholder}
             autoComplete="off"
-            className="h-10 min-w-0 flex-1 rounded-lg border border-line bg-background px-3 outline-none placeholder:text-muted focus:border-foreground/40"
+            className="h-11 min-w-0 flex-1 rounded-[5px] border border-line bg-background px-3 text-base outline-none placeholder:text-muted focus:border-foreground"
           />
           <button
             type="submit"
             disabled={!name.trim() || state.status === "loading"}
-            className="h-10 shrink-0 rounded-lg bg-foreground px-4 text-sm font-medium text-background disabled:opacity-40"
+            className="btn-ghost h-11 shrink-0"
           >
             {state.status === "loading" ? "Searching…" : "Find"}
           </button>
@@ -110,7 +110,7 @@ export function EntityPicker({ kind, label, placeholder, value, onChange, exampl
               {i > 0 && ", "}
               <button
                 type="button"
-                className="underline underline-offset-2 hover:text-foreground"
+                className="text-foreground underline underline-offset-4"
                 onClick={() => {
                   setName(ex);
                   void search(ex);
@@ -126,7 +126,7 @@ export function EntityPicker({ kind, label, placeholder, value, onChange, exampl
       <div aria-live="polite">
         {state.status === "loading" && <p className="mt-3 text-sm text-muted">Searching Cala…</p>}
         {state.status === "error" && (
-          <p className="mt-3 text-sm text-red-700 dark:text-red-400">
+          <p className="mt-3 border-l-2 border-foreground pl-3 text-sm">
             {state.message}{" "}
             <button type="button" className="underline" onClick={() => void search(name)}>
               Try again
@@ -144,13 +144,13 @@ export function EntityPicker({ kind, label, placeholder, value, onChange, exampl
             <p className="text-sm text-muted">
               {state.items.length} matches for “{state.query}”. Which one do you mean?
             </p>
-            <ul className="mt-2 divide-y divide-line overflow-hidden rounded-lg border border-line">
+            <ul className="mt-3 divide-y divide-line border-y border-line">
               {state.items.map((e) => (
                 <li key={e.id}>
                   <button
                     type="button"
                     onClick={() => onChange(e)}
-                    className="w-full p-3 text-left hover:bg-surface focus-visible:bg-surface focus-visible:outline-none"
+                    className="w-full px-1 py-3 text-left hover:bg-surface focus-visible:bg-surface"
                   >
                     <EntityLine entity={e} />
                   </button>
@@ -169,7 +169,7 @@ function EntityLine({ entity }: { entity: EntityRef }) {
     <div className="min-w-0">
       <p className="flex flex-wrap items-center gap-2">
         <span className="font-medium">{entity.name}</span>
-        <span className="rounded border border-line px-1.5 text-xs text-muted">{entity.type}</span>
+        <span className="label text-muted">{entity.type}</span>
       </p>
       <p className="mt-0.5 line-clamp-2 text-sm text-muted">
         {entity.description ?? "No description in Cala."}

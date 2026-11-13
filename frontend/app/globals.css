@@ -1,35 +1,105 @@
 @import "tailwindcss";
 
+/* Design system: frontend/DESIGN.md ("editorial broadsheet in a green room").
+   Light only. Green is the single chromatic accent; everything else is ink on paper. */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --muted: #6b6b6b;
-  --line: #e7e7e7;
-  --surface: #f7f7f7;
+  --background: #fafffa; /* Bone White: paper canvas, never pure #fff */
+  --foreground: #000000; /* Typesetter Ink */
+  --press: #121613; /* Press Black: dark sections, footer */
+  --slate: #232924; /* Slate Verdant */
+  --muted: #516254; /* Newsprint Gray: captions, helper text */
+  --sage: #c8d2c8; /* Muted Sage: light text on dark; hairlines on light */
+  --line: #d6ded6; /* hairline structure */
+  --surface: #f0f6f0; /* quiet tint for hover / selected rows */
+  --accent: #2bee4b; /* Highlighter Green: primary action, active underline */
+  --moss: #93b799; /* Shadow Moss */
+  --echo: #c4e4c9; /* Echo Green */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-press: var(--press);
+  --color-slate: var(--slate);
   --color-muted: var(--muted);
+  --color-sage: var(--sage);
   --color-line: var(--line);
   --color-surface: var(--surface);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --muted: #9a9a9a;
-    --line: #262626;
-    --surface: #141414;
-  }
+  --color-accent: var(--accent);
+  --color-moss: var(--moss);
+  --color-echo: var(--echo);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-display);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Small-caps micro-label: nav, buttons, section labels. */
+@utility label {
+  font-size: 11px;
+  line-height: 1.1;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* Serif display headline: tight leading and tracking read as printed ink. */
+@utility display {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+/* The one filled, saturated button; its shadow is green, never gray. */
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background: var(--accent);
+  color: #000;
+  padding: 16px 28px;
+  font-size: 11px;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  box-shadow: rgba(16, 94, 29, 0.45) 1px 8px 20px 0;
+  &:disabled {
+    background: var(--echo);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
+
+/* Secondary action: ink outline, no fill, no shadow. */
+@utility btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px solid var(--foreground);
+  padding: 0 16px;
+  font-size: 11px;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  &:hover:not(:disabled) {
+    background: var(--foreground);
+    color: var(--background);
+  }
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
 }

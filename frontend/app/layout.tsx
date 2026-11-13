@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Instrument_Serif, Inter } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Stand-ins for DESIGN.md's commercial faces: Inter for TWK Lausanne,
+// Instrument Serif for the PP Mondwest display serif.
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
+const display = Instrument_Serif({
+  variable: "--font-display",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -20,17 +20,26 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} ${display.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <header className="border-b border-line">
-          <div className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4">
-            <Link href="/" className="text-base font-semibold tracking-tight">
-              Pitchlist
+          <div className="mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between px-5 md:px-10">
+            <Link href="/" className="text-lg font-semibold tracking-tight">
+              <span className="border-b-2 border-accent">Pitch</span>list
             </Link>
-            <span className="text-sm text-muted">Sourced from Cala</span>
+            <span className="label text-muted">Every claim sourced from Cala</span>
           </div>
         </header>
-        <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">{children}</main>
+        <main className="mx-auto w-full max-w-[1400px] flex-1 px-5 py-12 md:px-10 md:py-20">
+          {children}
+        </main>
+        <footer className="bg-press text-background">
+          <div className="mx-auto flex w-full max-w-[1400px] flex-wrap items-center justify-between gap-4 px-5 py-8 md:px-10">
+            <span className="label">Pitchlist</span>
+            <span className="label text-sage">Data: Cala · Junction 2026</span>
+          </div>
+          <div className="h-3 bg-accent" />
+        </footer>
       </body>
     </html>
   );
