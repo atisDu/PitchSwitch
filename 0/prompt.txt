@@ -1,0 +1,11 @@
+is it still running?
+
+---
+
+<task-notification>
+<task-id>bwaffu85j</task-id>
+<tool-use-id>toolu_01MqCZ2YPkCkWKZzTRzaJADq</tool-use-id>
+<output-file>/tmp/claude-1000/-home-atis-Projekti-Otium/aea3e465-1f6a-4e6b-91c5-7fed27b8370c/tasks/bwaffu85j.output</output-file>
+<status>completed</status>
+<summary>Background command "Run Stendr founder report on live Cala" completed (exit code 0)</summary>
+</task-notification>
