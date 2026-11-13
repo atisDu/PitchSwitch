@@ -1,0 +1,139 @@
+{
+ "companies": {
+  "kelluu": {
+   "name": "Kelluu",
+   "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+   "alt": [
+    "e4e92460-263b-4470-af82-a91cf153e453"
+   ]
+  },
+  "sensofusion": {
+   "name": "Sensofusion",
+   "id": "202e9283-6455-486f-8868-03c7e0d0cf29",
+   "alt": [
+    "5c699806-0fea-4e62-a594-717d4d85516c"
+   ]
+  },
+  "stendr": {
+   "name": "Stendr",
+   "id": "3afdc63c-b992-4b25-b69d-807ab346352d",
+   "alt": []
+  },
+  "nestai": {
+   "name": "NestAI",
+   "id": "14359613-a45f-4804-892d-3b9dd9e927a9",
+   "alt": []
+  },
+  "nordic-air-defence": {
+   "name": "Nordic Air Defence",
+   "id": null,
+   "alt": []
+  }
+ },
+ "investors": {
+  "tesi": {
+   "name": "Tesi",
+   "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+   "alt": []
+  },
+  "maki-vc": {
+   "name": "Maki.vc",
+   "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+   "alt": [
+    "8f0ff46d-d609-4ce0-b719-85f739b92ca3"
+   ]
+  },
+  "nato-innovation-fund": {
+   "name": "NATO Innovation Fund",
+   "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+   "alt": []
+  },
+  "keen-venture-partners": {
+   "name": "Keen Venture Partners",
+   "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+   "alt": []
+  },
+  "gungnir-capital": {
+   "name": "Gungnir Capital",
+   "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+   "alt": []
+  },
+  "inventure": {
+   "name": "Inventure",
+   "id": "fd3ba350-0e55-40b5-96e3-013994777fdc",
+   "alt": []
+  },
+  "sno-ventures": {
+   "name": "SNÖ Ventures",
+   "id": "4db7ebf9-b42b-42f9-a487-f63b1dcb9ce9",
+   "alt": []
+  }
+ },
+ "candidate_company_ids": [
+  "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+  "b7226c97-3a44-5176-8544-cb91246b2249",
+  "16fa515b-1434-58c9-be73-8754e77ade00",
+  "a1f7d57d-39a4-486f-bd9b-39b8b50ab1ff",
+  "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+  "13b90514-ba02-4974-9078-dfcea29ae8d0"
+ ],
+ "extra_investor_ids": [
+  "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "b8f34378-af55-4f7c-a6f3-045904b0bbe0",
+  "bc0ef23d-4a35-41ff-9e99-8acda48d86f6",
+  "dc80c8e9-c48a-448f-ac72-ced610b89633",
+  "0322aa66-c3c7-470c-a940-e6ec117d4051",
+  "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "69c43164-30cb-492f-aeb9-efa658ff5bef"
+ ],
+ "round_ids": [
+  "7cf7864b-8de0-5b39-99c3-3754e678454a",
+  "97d82be9-51db-59e4-bb04-f69213aff7e9",
+  "343975e5-1269-5839-8d7a-e2c3eb1c5fd8",
+  "a42c8b14-c1cd-5113-bd6d-3ec0bbcb1caa",
+  "a73d838b-7aeb-5be8-b6f1-37f3374cb3ec",
+  "835691d5-2ad0-5017-9642-0c6e4f6ab448",
+  "0ab3227a-34e5-53af-905c-01d08731f4fc",
+  "1b13ff93-4906-5716-ae5d-c7ba2d1c2e22",
+  "4d32bf08-9199-5ed4-8748-2ab81a772b60",
+  "9bd14930-eed1-57d5-920d-d5fdbb9d0c2c",
+  "a26c64e2-dc80-535a-9c90-38dbe7ad39cc",
+  "aa7e1cbd-42fd-5f9e-a2dd-8c5b905d41c6",
+  "c5aa247f-cf9d-577c-a15b-4f143543ef54",
+  "d0fb14e8-558d-5d80-94a1-9d49dab3e824",
+  "d47b8c20-a5c3-5c0d-8c14-b6acc3bc30f4",
+  "dd7748cc-6d81-5a54-9a97-8f40d144734b",
+  "e53b8892-9563-514d-ae81-aa2f8009e811",
+  "fa409e7d-7a00-534a-a211-cfe5369fb3e2",
+  "1e8f6e8e-6753-592f-b535-0f0a31a7a3ad",
+  "41afa582-ea81-51db-b270-8054e1bff83e",
+  "875cd38a-27ff-55d9-9a87-1f6220e9b38c",
+  "0f827900-df35-58a2-9e7c-b5c16782aefb",
+  "d461ec83-6682-5220-97ae-f48f7f97522d",
+  "0c0743d5-68a9-56ef-839f-915ae432de1b",
+  "3f11bdcf-b419-5ad3-90fb-a2bd38534592",
+  "5249b78c-fad1-5fbf-ab9c-ceee82852624",
+  "96da05ad-0d08-5633-ab6c-0ce5d93c8b27",
+  "f34c9f72-601b-5c11-b686-8e44c2ccc05a",
+  "8dc085fd-971a-569e-8a54-8d9e5f95f108",
+  "a54fc6de-5464-529b-8fe2-00212add1007",
+  "cfc011d4-6ec9-514c-9ed1-626be23bdf43",
+  "48e3ac91-c6f1-51a5-aa6e-88ff00935a6f"
+ ],
+ "queries": {
+  "candidates-finland": "companies.industry=AEROSPACE_AND_DEFENSE.country=Finland.funding_stage=Pre-Seed OR Seed OR Series A.return(name, description, funding_stage, total_funding).limit=15",
+  "candidates-sweden": "companies.industry=AEROSPACE_AND_DEFENSE.country=Sweden.funding_stage=Pre-Seed OR Seed OR Series A.return(name, description, funding_stage, total_funding).limit=15",
+  "candidates-norway": "companies.industry=AEROSPACE_AND_DEFENSE.country=Norway.funding_stage=Pre-Seed OR Seed OR Series A.return(name, description, funding_stage, total_funding).limit=15",
+  "candidates-counter-drone": "Counter-drone and drone defence startups in the Nordic and Baltic countries: name, description, country, funding stage, total funding, investors"
+ },
+ "questions": {
+  "rounds-kelluu": "Who invested in Kelluu and who led each of its funding rounds?",
+  "rounds-sensofusion": "Who invested in Sensofusion and who led each of its funding rounds?",
+  "rounds-stendr": "Who invested in Stendr and who led each of its funding rounds?",
+  "rounds-nestai": "Who invested in NestAI and who led each of its funding rounds?",
+  "rounds-nordic-air-defence": "Who invested in Nordic Air Defence (NAD) and who led each of its funding rounds?",
+  "investor-tesi-defence": "Which defence technology companies has Tesi invested in, and which rounds did it lead?",
+  "investor-maki-vc-defence": "Which defence technology companies has Maki.vc invested in, and which rounds did it lead?"
+ }
+}

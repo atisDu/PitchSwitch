@@ -1,0 +1,409 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:40:20+00:00",
+ "response": {
+  "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+  "name": "Heart Aerospace",
+  "entity_type": "Company",
+  "description": "Heart makes electric airplanes with an all-electric range of 250 miles",
+  "properties": {
+   "name": {
+    "value": "Heart Aerospace",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-05-15"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [
+     "Dragonship"
+    ],
+    "sources": []
+   },
+   "description": {
+    "value": "Heart makes electric airplanes with an all-electric range of 250 miles",
+    "sources": [
+     {
+      "name": "Y Combinator",
+      "document": "https://github.com/yc-oss/api",
+      "date": "2026-07-25"
+     }
+    ]
+   },
+   "website": {
+    "value": "heartaerospace.com",
+    "sources": [
+     {
+      "name": "Company",
+      "document": "https://heartaerospace.com/about/",
+      "date": "2026-01-01"
+     },
+     {
+      "name": "Media bank",
+      "document": "https://heartaerospace.com/media-bank/",
+      "date": "2026-01-01"
+     },
+     {
+      "name": "Our mission",
+      "document": "https://heartaerospace.com/our-mission/",
+      "date": "2026-01-01"
+     },
+     {
+      "name": "Newsroom",
+      "document": "https://heartaerospace.com/newsroom/",
+      "date": "2025-06-10"
+     },
+     {
+      "name": "Y Combinator",
+      "document": "https://github.com/yc-oss/api",
+      "date": "2026-07-25"
+     }
+    ]
+   },
+   "operational_status": {
+    "value": "ACTIVE",
+    "sources": [
+     {
+      "name": "Y Combinator",
+      "document": "https://github.com/yc-oss/api",
+      "date": "2026-07-25"
+     }
+    ]
+   },
+   "registered_address": {
+    "value": "Fredsflottiljens Väg 19, 417 46 Göteborg, Sweden",
+    "sources": [
+     {
+      "name": "Heart Aerospace AB 559150-5721 - Kreditupplysning,företagsupplysning",
+      "document": "https://tic.io/en/companies/heart-aerospace-ab-2807202",
+      "date": "2025-01-01"
+     },
+     {
+      "name": "Heart Aerospace AB ℗",
+      "document": "https://www.merit500.com/company/21244/detail",
+      "date": "2020-01-01"
+     },
+     {
+      "name": "contactout.com",
+      "document": "https://contactout.com/company/Heart-Aerospace-6703",
+      "date": "2026-05-18"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "OPERATES_IN_INDUSTRY": [
+     {
+      "id": "11ce48e0-a853-4085-8142-f674977b1a3a",
+      "name": "RENEWABLE_ENERGY",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "The latest startup news and analysis from Europe | Sifted",
+         "document": "https://sifted.eu/articles/europe-megaround-tech-startup",
+         "date": "2026-06-20"
+        }
+       ],
+       "id": "752d645d-93a4-54f0-b5b2-d71476288a36"
+      }
+     },
+     {
+      "id": "8f69b9ef-e35a-4e9d-b9d9-7ee062f16002",
+      "name": "MACHINERY",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "Y Combinator",
+         "document": "https://github.com/yc-oss/api",
+         "date": "2026-06-05"
+        }
+       ],
+       "id": "52fbfe0d-4529-51fc-88c1-d1a7fbc4b4b6",
+       "original_label": "Industrials"
+      }
+     },
+     {
+      "id": "bb7caa00-59c3-4587-9aaf-5d9195444829",
+      "name": "AEROSPACE_AND_DEFENSE",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "Y Combinator",
+         "document": "https://github.com/yc-oss/api",
+         "date": "2026-06-05"
+        }
+       ],
+       "id": "6d033979-b2e8-5f59-b104-b54742dca3e8",
+       "original_label": "Aviation and Space"
+      }
+     },
+     {
+      "id": "cffe9158-e2e5-4727-939a-a419eed30529",
+      "name": "MANUFACTURING_AUTOMOTIVE",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "Norrsken - Be part of the solution",
+         "document": "https://norrsken.org/investments",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "370c75a0-c6f5-4a6f-9d8f-1aee08b5aa9e"
+      }
+     }
+    ]
+   },
+   "incoming": {
+    "INVESTED_IN": [
+     {
+      "id": "06f2c1c2-a992-427e-a011-de55e94af981",
+      "name": "EQT VENTURES INVESTMENTS LIMITED PARTNERSHIP",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "EQT Ventures Portfolio — 119 Companies & Co-Investors (2026)",
+         "document": "https://www.vcbacked.co/directory/investors/eqt-ventures?page=2",
+         "date": "2026-06-16"
+        }
+       ],
+       "id": "0d16155a-6e62-5073-a6e0-bad6bdb1f92c",
+       "valid_since": "2024-01-01"
+      }
+     },
+     {
+      "id": "1e86655e-373d-4fe8-be13-af3713581f73",
+      "name": "Y Combinator",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Y Combinator",
+         "document": "https://github.com/yc-oss/api",
+         "date": "2026-06-09"
+        }
+       ],
+       "id": "1a31ca7a-4444-55af-9cc9-f45f40f52b94"
+      }
+     },
+     {
+      "id": "43b67397-2f00-4096-b571-19dab37d8c3d",
+      "name": "Stiftelsen Norrsken Foundation",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Norrsken - Be part of the solution",
+         "document": "https://norrsken.org/investments",
+         "date": "2026-07-14"
+        }
+       ],
+       "id": "e386d7cf-d885-46c4-bf53-1ce063662568"
+      }
+     },
+     {
+      "id": "7faf31b1-b7a2-4e93-b820-1fed0d86d2fa",
+      "name": "Candor",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Y Combinator",
+         "document": "https://github.com/yc-oss/api",
+         "date": "2026-06-05"
+        }
+       ],
+       "id": "10b79ed9-d71d-59c7-8910-c59e8c4699e6"
+      }
+     },
+     {
+      "id": "c0d5bf8c-3f43-4531-8ef6-8c8d1f0dcf5a",
+      "name": "Norrsken VC",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Norrsken - Be part of the solution",
+         "document": "https://norrsken.org/investments",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "2fa3737e-6eb9-4e36-b0da-ace2925347da"
+      }
+     }
+    ],
+    "FOUNDED": [
+     {
+      "id": "37e729cb-83be-4b9e-8c2b-e210da864975",
+      "name": "Anders Forslund",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "en.wikipedia.org",
+         "document": "https://en.wikipedia.org/wiki/Heart_Aerospace",
+         "date": "2026-07-29"
+        },
+        {
+         "name": "Company — Heart Aerospace",
+         "document": "https://www.heartaerospace.com/company",
+         "date": "2019-01-29"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/heart-aerospace",
+         "date": "2026-07-29"
+        },
+        {
+         "name": "Heart Aerospace: Heart makes electric airplanes with an all-electric range of 250 miles | Y Combinator",
+         "document": "https://www.ycombinator.com/companies/heart-aerospace",
+         "date": "2022-12-13"
+        },
+        {
+         "name": "Heart Aerospace raises $107 million in Series B funding",
+         "document": "https://www.heartaerospace.com/newsroom/heart-aerospace-raises-107-million-in-series-b-funding",
+         "date": "2024-02-01"
+        }
+       ],
+       "id": "661e454d-ab82-4273-99fb-84b7e3d56b4f"
+      }
+     },
+     {
+      "id": "bb56f5cd-3a9c-4e4c-8095-885ace717486",
+      "name": "Klara Forslund",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "en.wikipedia.org",
+         "document": "https://en.wikipedia.org/wiki/Heart_Aerospace",
+         "date": "2026-07-29"
+        },
+        {
+         "name": "Company — Heart Aerospace",
+         "document": "https://www.heartaerospace.com/company",
+         "date": "2019-01-29"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/heart-aerospace",
+         "date": "2026-07-29"
+        }
+       ],
+       "id": "31f015e2-81b8-42bf-8c05-6a243de738a0"
+      }
+     }
+    ],
+    "WORKS_AT": [
+     {
+      "id": "37e729cb-83be-4b9e-8c2b-e210da864975",
+      "name": "Anders Forslund",
+      "entity_type": "Person",
+      "properties": {
+       "role": "CEO",
+       "sources": [
+        {
+         "name": "en.wikipedia.org",
+         "document": "https://en.wikipedia.org/wiki/Heart_Aerospace",
+         "date": "2026-07-29"
+        },
+        {
+         "name": "Company — Heart Aerospace",
+         "document": "https://www.heartaerospace.com/company",
+         "date": "2019-01-29"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/heart-aerospace",
+         "date": "2026-07-29"
+        },
+        {
+         "name": "Heart Aerospace: Heart makes electric airplanes with an all-electric range of 250 miles | Y Combinator",
+         "document": "https://www.ycombinator.com/companies/heart-aerospace",
+         "date": "2022-12-13"
+        },
+        {
+         "name": "Heart Aerospace raises $107 million in Series B funding",
+         "document": "https://www.heartaerospace.com/newsroom/heart-aerospace-raises-107-million-in-series-b-funding",
+         "date": "2024-02-01"
+        }
+       ],
+       "id": "1138f617-49cf-428d-aabe-370e6110d5df"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

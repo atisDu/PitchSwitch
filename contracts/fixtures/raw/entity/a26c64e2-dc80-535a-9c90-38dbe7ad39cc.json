@@ -1,0 +1,289 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/a26c64e2-dc80-535a-9c90-38dbe7ad39cc",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:41:03+00:00",
+ "response": {
+  "id": "a26c64e2-dc80-535a-9c90-38dbe7ad39cc",
+  "name": "Seed",
+  "entity_type": "FundingRound",
+  "description": null,
+  "properties": {
+   "name": {
+    "value": "Seed",
+    "sources": [
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+      "date": "2021-04-06",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "round_label": {
+    "value": "SEED",
+    "sources": [
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+      "date": "2021-04-06",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "announcement_date": {
+    "value": "2021-04-06",
+    "sources": [
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+      "date": "2021-04-06",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "transaction_value": {
+    "value": 6000000.0,
+    "sources": [
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+      "date": "2021-04-06",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "transaction_value_units": {
+    "value": "EUR",
+    "sources": [
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+      "date": "2021-04-06",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "instrument": {
+    "value": "EQUITY",
+    "sources": [
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+      "date": "2021-04-06",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "annotations": {
+    "value": [
+     "tech.eu (2021-04-06): 'raises €10 million in seed funding'; the EUR 6M announced in 2021 is added to the EUR 4M of 2020.",
+     "round_label_stated:Seed"
+    ],
+    "sources": []
+   }
+  },
+  "relationships": {
+   "outgoing": {},
+   "incoming": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "266be895-86f1-5d37-8a6c-24625aa2df83",
+      "name": "Bob W",
+      "entity_type": "Company",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+         "date": "2021-04-06",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "700d62e7-4772-5a66-9b3e-549e8f46fc38"
+      }
+     },
+     {
+      "id": "55f38ddc-028e-413e-a793-042602a552d8",
+      "name": "Kaamos Trading OÜ",
+      "entity_type": "Company",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+         "date": "2021-04-06",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "10612cee-ee09-51e2-9b27-30d5dc909efd"
+      }
+     },
+     {
+      "id": "883349ee-e591-4b63-9588-c3424c22c44b",
+      "name": "Usaldusfond United Angels Fund I",
+      "entity_type": "Company",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+         "date": "2021-04-06",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "42db9078-edfa-5dba-b393-633a9b3fc719"
+      }
+     },
+     {
+      "id": "9dbdd7a8-9afa-4070-9b26-82f6629b9d10",
+      "name": "NREP AB",
+      "entity_type": "Company",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+         "date": "2021-04-06",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "600fb288-7964-5e40-a835-ca2d1edb4ce5"
+      }
+     },
+     {
+      "id": "a7ef453b-938f-43ee-9bb2-294921d7cc5c",
+      "name": "ByFounders",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+         "date": "2021-04-06",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "is_lead": true,
+       "id": "8162ffb9-c82b-59c8-b7fd-f59114e3d371"
+      }
+     },
+     {
+      "id": "c685cd30-57fd-477f-a253-1eee9afa0976",
+      "name": "Superangel OÜ",
+      "entity_type": "Company",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+         "date": "2021-04-06",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "fbf7a95b-5c48-5395-9091-05cad8462e84"
+      }
+     },
+     {
+      "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+      "name": "Tesi",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+         "date": "2021-04-06",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "is_lead": true,
+       "id": "0089f7e9-9f46-5128-824b-21f3fa3decb7"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/entities/014ab9e4-cec1-5704-9f27-0b60a9a20e1c/introspection",
+  "params": null,
+  "json": null
+ },
+ "recorded_at": "2026-11-13T20:32:06+00:00",
+ "response": {
+  "properties": [
+   "description",
+   "id",
+   "name"
+  ],
+  "relationships": {
+   "outgoing": [
+    "IS_BOARD_MEMBER_OF"
+   ],
+   "incoming": []
+  },
+  "numerical_observations": {}
+ }
+}

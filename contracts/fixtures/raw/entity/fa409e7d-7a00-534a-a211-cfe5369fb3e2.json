@@ -1,0 +1,390 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/fa409e7d-7a00-534a-a211-cfe5369fb3e2",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:41:44+00:00",
+ "response": {
+  "id": "fa409e7d-7a00-534a-a211-cfe5369fb3e2",
+  "name": "Seed",
+  "entity_type": "FundingRound",
+  "description": null,
+  "properties": {
+   "name": {
+    "value": "Seed",
+    "sources": [
+     {
+      "name": "newswire.ca",
+      "document": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+      "date": "2012-04-13",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "arcticstartup.com",
+      "document": "https://arcticstartup.com/?p=33925",
+      "date": "2026-11-13",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "round_label": {
+    "value": "SEED",
+    "sources": [
+     {
+      "name": "newswire.ca",
+      "document": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+      "date": "2012-04-13",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "arcticstartup.com",
+      "document": "https://arcticstartup.com/?p=33925",
+      "date": "2026-11-13",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "announcement_date": {
+    "value": "2012-04-13",
+    "sources": [
+     {
+      "name": "newswire.ca",
+      "document": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+      "date": "2012-04-13",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "transaction_value": {
+    "value": 800000.0,
+    "sources": [
+     {
+      "name": "newswire.ca",
+      "document": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+      "date": "2012-04-13",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "arcticstartup.com",
+      "document": "https://arcticstartup.com/?p=33925",
+      "date": "2026-11-13",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "transaction_value_units": {
+    "value": "USD",
+    "sources": [
+     {
+      "name": "newswire.ca",
+      "document": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+      "date": "2012-04-13",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "arcticstartup.com",
+      "document": "https://arcticstartup.com/?p=33925",
+      "date": "2026-11-13",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "instrument": {
+    "value": "EQUITY",
+    "sources": [
+     {
+      "name": "newswire.ca",
+      "document": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+      "date": "2012-04-13",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "arcticstartup.com",
+      "document": "https://arcticstartup.com/?p=33925",
+      "date": "2026-11-13",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "annotations": {
+    "value": [
+     "'seed funding round' in the release title.",
+     "round_label_stated:Seed"
+    ],
+    "sources": []
+   }
+  },
+  "relationships": {
+   "outgoing": {},
+   "incoming": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "131ae405-ee99-56fb-a9c5-973058c0ef70",
+      "name": "Olli-Pekka Kallasvuo",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "newswire.ca",
+         "document": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+         "date": "2012-04-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "arcticstartup.com",
+         "document": "https://arcticstartup.com/?p=33925",
+         "date": "2026-11-13",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "6fe356eb-f086-5503-9bc9-16fe0786d14a"
+      }
+     },
+     {
+      "id": "1967e328-1430-5c93-839e-e6acb6335d2a",
+      "name": "Jussi Heinilä",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "newswire.ca",
+         "document": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+         "date": "2012-04-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "arcticstartup.com",
+         "document": "https://arcticstartup.com/?p=33925",
+         "date": "2026-11-13",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "is_lead": true,
+       "id": "29cc1f66-b7c2-59f7-998e-9e098dbd7a1d"
+      }
+     },
+     {
+      "id": "3cbd981d-f00c-59d5-8df3-a48fa0b721c5",
+      "name": "NinaData.io",
+      "entity_type": "Company",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "newswire.ca",
+         "document": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+         "date": "2012-04-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "arcticstartup.com",
+         "document": "https://arcticstartup.com/?p=33925",
+         "date": "2026-11-13",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "03df6f75-59bf-57d9-b2fa-15cfaffb2755"
+      }
+     },
+     {
+      "id": "5eacd721-5000-5ee0-9f3e-7eb1e4b1844b",
+      "name": "Jussi Ilmarinen",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "newswire.ca",
+         "document": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+         "date": "2012-04-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "arcticstartup.com",
+         "document": "https://arcticstartup.com/?p=33925",
+         "date": "2026-11-13",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "e7d9899d-7d05-5f8a-8927-b27e7c5d4b2c"
+      }
+     },
+     {
+      "id": "d6c36f47-647d-5a0d-9e11-9f71b57708a8",
+      "name": "Riku Asikainen",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "newswire.ca",
+         "document": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+         "date": "2012-04-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "arcticstartup.com",
+         "document": "https://arcticstartup.com/?p=33925",
+         "date": "2026-11-13",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "cc04f14c-7bd1-5cce-9fff-885cf6a3d342"
+      }
+     },
+     {
+      "id": "dc70f649-8f97-5222-ad02-d9e0ccebcaba",
+      "name": "Ari Korhonen",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "newswire.ca",
+         "document": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+         "date": "2012-04-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "arcticstartup.com",
+         "document": "https://arcticstartup.com/?p=33925",
+         "date": "2026-11-13",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "5cb7ab2f-925e-5212-9fd6-8cc8011686a0"
+      }
+     },
+     {
+      "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+      "name": "Tesi",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "newswire.ca",
+         "document": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+         "date": "2012-04-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "745fc913-0591-577a-9e2b-bd02968831f3"
+      }
+     },
+     {
+      "id": "e1a70162-c11b-56f4-9e4a-733e05c00d8a",
+      "name": "Matti Suokko",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "newswire.ca",
+         "document": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+         "date": "2012-04-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "arcticstartup.com",
+         "document": "https://arcticstartup.com/?p=33925",
+         "date": "2026-11-13",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "aa3c54d7-038a-5df6-a5bb-53ce979f824c"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

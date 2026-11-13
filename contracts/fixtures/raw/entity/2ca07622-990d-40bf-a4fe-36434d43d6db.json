@@ -1,0 +1,596 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/2ca07622-990d-40bf-a4fe-36434d43d6db",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:28:50+00:00",
+ "response": {
+  "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+  "name": "NATO Innovation Fund",
+  "entity_type": "Organization",
+  "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO.",
+  "properties": {
+   "name": {
+    "value": "NATO Innovation Fund",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-06-01"
+     },
+     {
+      "name": "nif.fund",
+      "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [
+     "NATO's NIF fund"
+    ],
+    "sources": []
+   },
+   "description": {
+    "value": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO.",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-08-20"
+     }
+    ]
+   },
+   "website": {
+    "value": "nif.fund",
+    "sources": [
+     {
+      "name": "The Nato Innovation Fund | NIF",
+      "document": "https://www.nif.fund/",
+      "date": "2025-11-10"
+     },
+     {
+      "name": "About | Nato Innovation Fund",
+      "document": "https://www.nif.fund/about",
+      "date": "2025-07-25"
+     },
+     {
+      "name": "Contact Us | Nato Innovation Fund",
+      "document": "https://www.nif.fund/contact-us",
+      "date": "2026-04-02"
+     }
+    ]
+   },
+   "registered_address": {
+    "value": "2, rue d'Alsace L-1122 Luxembourg",
+    "sources": [
+     {
+      "name": "NATO Innovation Fund SCSp SICAV-SIF | Paperjam Bible",
+      "document": "https://en.paperjam.lu/guide/organisation/3772326743/nato-innovation-fund-scsp-sicav-sif",
+      "date": "2026-03-10"
+     }
+    ]
+   },
+   "founding_date": {
+    "value": "2022-06-01",
+    "sources": [
+     {
+      "name": "Börsen-Zeitung: Nachrichten für Finanzmärkte",
+      "document": "https://www.boersen-zeitung.de/english/nato-invests-in-isar-aerospace",
+      "date": "2026-06-20"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "97d82be9-51db-59e4-bb04-f69213aff7e9",
+      "name": "Series A",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "nif.fund",
+         "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "is_lead": true,
+       "id": "efadafef-46e8-543f-a299-f7cee2572d15"
+      }
+     }
+    ],
+    "INVESTED_IN": [
+     {
+      "id": "4857599f-75e3-4f60-a58a-36360d418332",
+      "name": "Fractile",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Fractile",
+         "document": "https://startupintros.com/orgs/fractile",
+         "date": "2026-04-16"
+        },
+        {
+         "name": "AI chip startup Fractile secures $22.5m from Nato Innovation Fund, Kindred, Oxford Science Enterprises",
+         "document": "https://sifted.eu/articles/fractile-22-5m-nif-kindred-ose",
+         "date": "2026-01-20"
+        }
+       ],
+       "id": "91d8c009-d0d3-5435-aac7-31b73ab1d0f8"
+      }
+     },
+     {
+      "id": "64354a3f-e8b6-4f63-b9a5-b21cc66ce1ce",
+      "name": "Baltic Sandbox Ventures",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Vilnius-based BSV Ventures closes €15M Fund to back early-stage startups across the Baltics",
+         "document": "https://vestbee.com/insights/articles/bsv-ventures-closes-15-m-fund",
+         "date": "2024-11-26"
+        },
+        {
+         "name": "BSV Ventures closes €15M Fund for Pre-Seed and Seed investments",
+         "document": "https://tech.eu/2024/11/22/bsv-ventures-closes-eur15m-fund-for-pre-seed-and-seed-stage-investments",
+         "date": "2024-11-22"
+        },
+        {
+         "name": "ilte.lt",
+         "document": "https://ilte.lt/en/news/108/bsv-ventures-closes-EUR15m-fund-backed-by-nato-innovation-fund-and-ilte:1846",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "NATO Innovation Fund backs BSV Ventures, marking first Baltic investment | Nato Innovation Fund",
+         "document": "https://www.nif.fund/news/nato-innovation-fund-backs-bsv-ventures-marking-first-baltic-investment",
+         "date": "2024-11-27"
+        },
+        {
+         "name": "arcticstartup.com",
+         "document": "https://arcticstartup.com/bsv-ventures-closes-e15m-fund",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "Lithuanian BSV Ventures (ex-Baltic Sandbox Ventures) raises $15M",
+         "document": "https://www.balticvc.com/2024/11/lithuanian-bsv-ventures-ex-baltic.html",
+         "date": "2024-11-20"
+        }
+       ],
+       "id": "e9f3cf33-7c71-48d0-967c-9a12bd72a60b"
+      }
+     },
+     {
+      "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+      "name": "Kelluu Oy",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "nif.fund",
+         "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "e1758e40-3da3-4cee-8003-50622dcfdb82"
+      }
+     },
+     {
+      "id": "8b707f37-2a6b-44b9-846b-94e4f524c685",
+      "name": "FABER VENTURES, S.A.",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "NATO Innovation Fund invests in Faber, marking first investment in a Southern European fund | Nato Innovation Fund",
+         "document": "https://www.nif.fund/news/nato-innovation-fund-invests-in-faber-marking-first-investment-in-a-southern-european-fund",
+         "date": "2024-11-04"
+        },
+        {
+         "name": "Inside NATO Innovation Fund: progress to date and a look ahead",
+         "document": "https://vestbee.com/insights/articles/nato-innovation-fund-interview",
+         "date": "2025-04-17"
+        }
+       ],
+       "id": "52f58ef6-0270-5daf-9f1a-8bdc796ff51f"
+      }
+     },
+     {
+      "id": "8e49b1bb-c386-4e2b-9a2f-1b502dc87761",
+      "name": "ARX Robotics GmbH",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Börsen-Zeitung: Nachrichten für Finanzmärkte",
+         "document": "https://www.boersen-zeitung.de/english/nato-invests-in-isar-aerospace",
+         "date": "2026-06-20"
+        }
+       ],
+       "id": "831b825a-59f9-51ff-9779-b4a77b9ffb49"
+      }
+     },
+     {
+      "id": "9a6a8a25-1c76-4fc5-be4e-d9cf36088b19",
+      "name": "Join Capital",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Inside NATO Innovation Fund: progress to date and a look ahead",
+         "document": "https://vestbee.com/insights/articles/nato-innovation-fund-interview",
+         "date": "2025-04-17"
+        }
+       ],
+       "id": "858f65e7-36ca-5c90-8813-2d0c2a3b1857"
+      }
+     },
+     {
+      "id": "b43f506f-1c49-42f6-9657-962f3cd5400b",
+      "name": "2D Photonics",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "CamGraPhIC Secures €25 Million to Improve Energy Efficiency and Bandwidth in Artificial Intelligence and Cellular Data Transfer - 2D Photonics",
+         "document": "https://www.2dphotonics.com/camgraphic-secures-e25-million-to-improve-energy-efficiency-and-bandwidth-in-artificial-intelligence-and-cellular-data-transfer",
+         "date": "2025-03-24"
+        },
+        {
+         "name": "www.photonics.com",
+         "document": "https://www.photonics.com/Articles/CamGraPhIC-Secures-27M-in-Series-A-Funding/a70869",
+         "date": "2026-07-29"
+        },
+        {
+         "name": "Silverpeak advises 2D Photonics on €25 million Series A funding round to scale revolutionary graphene photonics technology - Silverpeak",
+         "document": "https://www.silverpeakib.com/silverpeak-advises-2d-photonics-on-25-million-series-a-funding-round",
+         "date": "2025-03-24"
+        },
+        {
+         "name": "NATO Innovation Fund invests in CamGraPhIC to improve energy efficiency and bandwidth in AI and cellular data transfer | Nato Innovation Fund",
+         "document": "https://www.nif.fund/news/nato-innovation-fund-invests-in-camgraphic-to-improve-energy-efficiency-and-bandwidth-in-ai-and-cellular-data-transfer",
+         "date": "2025-03-24"
+        },
+        {
+         "name": "London Stock Exchange",
+         "document": "https://www.londonstockexchange.com/news-article/FIPP/camgraphic-secures-25-million-in-series-a-funding/16953517",
+         "date": "2022-01-01"
+        }
+       ],
+       "id": "87074b71-f691-488d-a12a-7be2963ba4e5"
+      }
+     },
+     {
+      "id": "b4d1d57d-85cb-4686-9360-04aba230af49",
+      "name": "Inbiome",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "NATO invests millions in Dutch infection detection startup",
+         "document": "https://ioplus.nl/en/posts/nato-invests-millions-in-dutch-infection-detection-startup",
+         "date": "2026-04-01"
+        },
+        {
+         "name": "The NATO Innovation Fund Co-Leads USD 16 Million Series A to Bring Same-Day Infection Diagnostics to Hospitals and Conflcit Zones | Nato Innovation Fund",
+         "document": "https://www.nif.fund/news/the-nato-innovation-fund-co-leads-usd-16-million-series-a-to-bring-same-day-infection-diagnostics-to-hospitals-and-conflcit-zones",
+         "date": "2026-04-01"
+        }
+       ],
+       "id": "4a76cdd6-1c33-5ef2-9b41-ccab8e96ffd1"
+      }
+     },
+     {
+      "id": "d26a193e-78e6-47ed-a265-877bc5a60b35",
+      "name": "OTB Ventures",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Inside NATO Innovation Fund: progress to date and a look ahead",
+         "document": "https://vestbee.com/insights/articles/nato-innovation-fund-interview",
+         "date": "2025-04-17"
+        },
+        {
+         "name": "Polish OTB Ventures closes $185M fund. NATO Innovation Fund is among the LPs",
+         "document": "https://vestbee.com/insights/articles/polish-otb-ventures-closes-185-m-fund",
+         "date": "2024-03-21"
+        }
+       ],
+       "id": "9e495695-321f-5779-9775-b3e8b13b79c4"
+      }
+     },
+     {
+      "id": "dffb6d0d-5fd9-437d-918b-a97e77086e05",
+      "name": "Isar Aerospace SE",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/isaraerospacetechnologies/__v_tiZOkYEzFLTZWvrtWAk9zqZqBt2AXoEPFbcY-8YBY/funding-and-investors",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "131ef03d-f3ec-4b84-99d9-b277186c46f1"
+      }
+     },
+     {
+      "id": "e4e92460-263b-4470-af82-a91cf153e453",
+      "name": "Kelluu",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/kelluu-oy",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/459217-27",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "8cd1279b-18b1-49e3-829e-efa72ff22cf6"
+      }
+     },
+     {
+      "id": "fc47b882-78ed-46a4-a330-81fb2abecbec",
+      "name": "BSV Ventures",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Vilnius-based BSV Ventures closes €15M Fund to back early-stage startups across the Baltics",
+         "document": "https://vestbee.com/insights/articles/bsv-ventures-closes-15-m-fund",
+         "date": "2024-11-26"
+        },
+        {
+         "name": "NATO Innovation Fund backs BSV Ventures, marking first Baltic investment | Nato Innovation Fund",
+         "document": "https://www.nif.fund/news/nato-innovation-fund-backs-bsv-ventures-marking-first-baltic-investment",
+         "date": "2024-11-27"
+        },
+        {
+         "name": "ilte.lt",
+         "document": "https://ilte.lt/en/news/108/bsv-ventures-closes-EUR15m-fund-backed-by-nato-innovation-fund-and-ilte:1846",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "BSV Ventures closes €15M Fund for Pre-Seed and Seed investments",
+         "document": "https://tech.eu/2024/11/22/bsv-ventures-closes-eur15m-fund-for-pre-seed-and-seed-stage-investments",
+         "date": "2024-11-22"
+        },
+        {
+         "name": "arcticstartup.com",
+         "document": "https://arcticstartup.com/bsv-ventures-closes-e15m-fund",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "Lithuanian BSV Ventures (ex-Baltic Sandbox Ventures) raises $15M",
+         "document": "https://www.balticvc.com/2024/11/lithuanian-bsv-ventures-ex-baltic.html",
+         "date": "2024-11-20"
+        }
+       ],
+       "id": "1071eda1-e1aa-43e4-ad3d-bdc310baaf93"
+      }
+     },
+     {
+      "id": "ff9778a3-ec0d-4793-bbc6-afb74c6ea383",
+      "name": "Isar Aerospace",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Börsen-Zeitung: Nachrichten für Finanzmärkte",
+         "document": "https://www.boersen-zeitung.de/english/nato-invests-in-isar-aerospace",
+         "date": "2026-06-20"
+        }
+       ],
+       "id": "0ab6dc56-4515-5f82-8f7c-a8a0ff26d4fe"
+      }
+     }
+    ],
+    "OPERATES_IN_INDUSTRY": [
+     {
+      "id": "21774ccd-d5c5-4fa2-8ed1-ac3d20b46339",
+      "name": "PRIVATE_EQUITY",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "NATO Innovation Fund (NIF) | LinkedIn",
+         "document": "https://nl.linkedin.com/company/nato-innovation-fund-nif",
+         "date": "2026-06-18"
+        }
+       ],
+       "id": "eff4cf14-3034-584d-b933-641dd0f5339a"
+      }
+     },
+     {
+      "id": "f48ebf95-99ea-4756-99cc-8a2a2d71f2e2",
+      "name": "VENTURE_CAPITAL",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "Börsen-Zeitung: Nachrichten für Finanzmärkte",
+         "document": "https://www.boersen-zeitung.de/english/nato-invests-in-isar-aerospace",
+         "date": "2026-06-20"
+        }
+       ],
+       "id": "a26fe65a-465a-51fb-89b2-2df177ddca03"
+      }
+     }
+    ]
+   },
+   "incoming": {
+    "INVESTED_IN": [
+     {
+      "id": "c37e699e-602d-427f-a72c-d27e17e1ad8c",
+      "name": "Ministerio de Defensa de la República Checa",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "The Czech Republic has joined the NATO Innovation Fund!",
+         "document": "https://www.mo.gov.cz/en/ministry-of-defence/newsroom/news/the-czech-republic-has-joined-the-nato-innovation-fund!-245798",
+         "date": "2023-08-21"
+        },
+        {
+         "name": "News",
+         "document": "https://www.mo.gov.cz/scripts/detail.php?pgid=193&conn=1218&pg=13",
+         "date": "2023-08-31"
+        }
+       ],
+       "id": "f32c1b4d-c681-5321-96aa-83d463a8754b",
+       "valid_since": "2023-08-21"
+      }
+     },
+     {
+      "id": "c9cc3658-eac0-4d61-9ed6-0b953cb9f3ee",
+      "name": "SatVu",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "CB Insights — Predictive Intelligence on Private Companies",
+         "document": "https://www.cbinsights.com/investor/ridgeline-ventures",
+         "date": "2026-06-01"
+        },
+        {
+         "name": "CB Insights — Predictive Intelligence on Private Companies",
+         "document": "https://www.cbinsights.com/investor/adara-venture-partners",
+         "date": "2026-06-01"
+        }
+       ],
+       "id": "4d385ae9-d4f4-59e2-a5d9-2a5830c8b96d"
+      }
+     },
+     {
+      "id": "e59e252c-276a-4dce-83ed-7ebb3981baa0",
+      "name": "Polish Development Fund (PFR)",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "News",
+         "document": "https://innovatepoland.pl/en/news?page=0%2C1",
+         "date": "2021-05-03"
+        },
+        {
+         "name": "Polish Development Fund invests in NATO Innovation Fund",
+         "document": "https://pfrventures.pl/en/artykul/polish-development-fund-invests-nato-innovation-fund",
+         "date": "2023-07-10"
+        }
+       ],
+       "id": "c13e5bdb-5ceb-595f-966a-6e98d076cdff",
+       "valid_since": "2023-07-10"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

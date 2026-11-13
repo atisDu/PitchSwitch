@@ -1,0 +1,340 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/knowledge/search",
+  "params": null,
+  "json": {
+   "input": "Who invested in NestAI and who led each of its funding rounds?"
+  }
+ },
+ "recorded_at": "2026-11-13T20:34:04+00:00",
+ "response": {
+  "content": "## NestAI — Investors and Funding Rounds\n\n**NestAI** is a Helsinki-based physical AI lab for defense, founded in 2024 by Peter Sarlin (also the founder of PostScriptum and formerly of Silo AI). The company builds NestOS, an open, modular operating system for unmanned and command-and-control systems.\n\n### Known Funding Round\n\n- **€100 million (~$115–116M) — November 20, 2025**\n  - **Co-led by:** **Tesi** (Finnish Industry Investment, Finland's sovereign fund) and **Nokia**\n  - **Other investor:** **PostScriptum** (PostScriptum Ventures, Peter Sarlin's founder's office)\n\nThis is the only publicly disclosed funding round for NestAI to date. The round was announced at the Slush 2025 technology conference in Helsinki. Alongside the investment, Nokia entered a strategic partnership with NestAI to jointly develop AI-powered defense solutions for unmanned systems, data-centric command and control, and secure communications infrastructure.\n",
+  "explainability": [
+   {
+    "content": "NestAI’s only disclosed funding round occurred on November 20, 2025 and raised €100 million (~$115‑116 M).",
+    "references": [
+     "649d1a6a-549b-4a7a-a034-361d1d3b61d7",
+     "1b0a1512-71b7-4faa-bdc5-d874be8279e5",
+     "c1eb7ddf-c083-4365-8dad-db7dbdc131ac",
+     "80e26f5f-0935-4c55-8835-49c3fb8442ca",
+     "29a034ef-9857-42fb-9d7e-e725a1137a5f"
+    ]
+   },
+   {
+    "content": "The round was co‑led by Finland’s sovereign fund Tesi and hardware giant Nokia.",
+    "references": [
+     "649d1a6a-549b-4a7a-a034-361d1d3b61d7",
+     "1b0a1512-71b7-4faa-bdc5-d874be8279e5",
+     "c1eb7ddf-c083-4365-8dad-db7dbdc131ac",
+     "80e26f5f-0935-4c55-8835-49c3fb8442ca",
+     "29a034ef-9857-42fb-9d7e-e725a1137a5f"
+    ]
+   },
+   {
+    "content": "PostScriptum (PostScriptum Ventures) also participated as an investor in the same round.",
+    "references": [
+     "254b7ed8-d843-46aa-8754-ebb8e13a80d5",
+     "1f66ce4b-b347-44db-b45c-d6e79efc823c",
+     "80e26f5f-0935-4c55-8835-49c3fb8442ca"
+    ]
+   }
+  ],
+  "context": [
+   {
+    "id": "254b7ed8-d843-46aa-8754-ebb8e13a80d5",
+    "content": "Entity: NestAI (type: Company, ID: 14359613-a45f-4804-892d-3b9dd9e927a9). Properties: name = NestAI; description = Finnish software and aerospace‑defense company founded in 2024.; founding_date = 2024-11-04. Outgoing relationship types PARTICIPATES_IN_CORPORATE_EVENT: FINANCING_RAISED_OR_FACILITY_ENTERED. Incoming relationship types INVESTED_IN: PostScriptum Ventures.",
+    "origins": [
+     {
+      "source": {
+       "name": "Proud to see PostScriptum-backed NestAI take another step today – a strategic partnership with Nokia and €100M in funding from Nokia and the Finnish sovereign fund Tesi for next-gen physical AI… | Peter Sarlin | 91 comments",
+       "url": "https://www.linkedin.com/"
+      },
+      "document": {
+       "name": "Proud to see PostScriptum-backed NestAI take another step today – a strategic partnership with Nokia and €100M in funding from Nokia and the Finnish sovereign fund Tesi for next-gen physical AI… | Peter Sarlin | 91 comments",
+       "url": "https://www.linkedin.com/posts/psarlin_proud-to-see-postscriptum-backed-nestai-take-activity-7397256801483763713-o00J"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Peter Sarlin – Founder of PostScriptum",
+       "url": "https://sarlin.ai/"
+      },
+      "document": {
+       "name": "Peter Sarlin – Founder of PostScriptum",
+       "url": "https://sarlin.ai/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/nestai/__9K7sEbPh2efmREPhZAmv6nkr1xsOsU9FrZjgZLOhkVM"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Finland's NestAI lands €100M, partners with Nokia to build AI for defense applications | TechCrunch",
+       "url": "https://techcrunch.com/"
+      },
+      "document": {
+       "name": "Finland's NestAI lands €100M, partners with Nokia to build AI for defense applications | TechCrunch",
+       "url": "https://techcrunch.com/2025/11/20/finlands-nestai-lands-e100m-partners-with-nokia-to-build-ai-for-defense-applications"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "GLEIF",
+       "url": "https://search.gleif.org/"
+      },
+      "document": {
+       "name": "GLEIF",
+       "url": "https://search.gleif.org/#/record/7437004FNG2T9TL5FP88"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/explore/generative-ai-startups-in-europe/__JYvohyOZikljlt5x5bz6FGlRw2xTAMr4RuVGA035AgI"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/1162811-89"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "649d1a6a-549b-4a7a-a034-361d1d3b61d7",
+    "content": "investment and strategic partnership to build physical AI for unmanned/defense systems. NestAI, emerging from stealth, raised €100M (~$115M) led jointly by Finland's sovereign fund Tesi and Nokia; co-founder Peter Sarlin (ex-Silo AI) chairs the board. Confirms €100M from Nokia and Tesi for the Finnish physical-AI defense startup. NestAI's rounds can't be priced closely enough to model who owns what — but its backers, and the funds closest to them in the co-investment graph, are on the investors [...] # NestAI. NestAI is a European AI lab for defence, founded in 2025 and headquartered in Helsinki, that builds NestOS, an open, modular operating system for unmanned and command-and-control systems designed to keep learning after it has been fielded. It positions itself around sovereign European control of defence AI rather than vendor lock-in, and works with partners including Patria, Nokia and the Finnish Defence Forces. What changed at NestAI recently — detected automatically from funding, [...] Finland's NestAI lands €100M, partners with Nokia to build AI for defense applications NestAI, emerging from stealth, raised €100M (~$115M) led jointly by Finland's sovereign fund Tesi and Nokia; co-founder Peter Sarlin (ex-Silo AI) chairs the board.  ArcticStartup· 20 Nov 2025 Finland's NestAI lands €100 million from Nokia and Tesi to power AI-native defense Confirms €100M from Nokia and Tesi for the Finnish physical-AI defense startup. Official Nokia release confirming €100M investment and",
+    "origins": [
+     {
+      "source": {
+       "name": "Seedtable: Connect with fast-growing startups at the perfect moment",
+       "url": "https://seedtable.com/companies/nestai"
+      },
+      "document": {
+       "name": "NestAI — Funding, Investors & Team | Seedtable",
+       "url": "https://seedtable.com/companies/nestai"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "1f66ce4b-b347-44db-b45c-d6e79efc823c",
+    "content": "When was NestAI's last funding round?\n\nNestAI's most recent funding round was VC Round on November 20, 2025.\n\nWho are the main investors in NestAI?\n\nKey investors in NestAI include Tesi.\n\nWill NestAI IPO soon?\n\nNo public IPO plans have been announced for NestAI.\n\nHow can I track NestAI secondary market activity?\n\nCaplight tracks bids, offers, and trades in NestAI's shares on secondary markets.\n\n## Firmographic Details\n\nHeadquartersHelsinki\n\nEmployee Range149\n\nYear Founded2024 [...] Caplight Logo\n\nLog inBook a demo\n\n  \n  \n  \n  \n  \n  \n  \n\nNestAI\n\n# NestAI\n\nPrivate\n\nHelsinkiAI, Data & Cloud Infrastructure\n\nLast Round\n\nVC Round\n\nNov 20, 2025\n\nTop 5%\n\nof companies Caplight tracks\n\n## Company Overview\n\nNestAI operates in AI, Data & Cloud Infrastructure and is based in Helsinki. Its latest recorded funding round was a VC Round in November 2025. [...] Data table\n\n| Round | Date | Amount Raised | Valuation | Investors | Sources |\n| VC Round | Nov 20, 2025 | Demo | Demo | Demo | Demo |\n\nBook a demo to see all funding rounds\n\nFor institutional investors. Book with your work email.\n\n## NestAI Investors\n\nNotable investors and investment history\n\nNestAI investors\n\n| Investor | Rounds |\n| Tesi | VC Round |\n| PostScriptum | VC Round |\n\n## Market signals\n\nStructured signals derived from secondary market and firmographic data.\n\n Sep 20, 2026",
+    "origins": [
+     {
+      "source": {
+       "name": "The Private Market at your Fingertips",
+       "url": "https://www.caplight.com/company/nestai"
+      },
+      "document": {
+       "name": "NestAI Valuation & Funding History | Caplight",
+       "url": "https://www.caplight.com/company/nestai"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "1b0a1512-71b7-4faa-bdc5-d874be8279e5",
+    "content": "lock-in, and works with partners including Patria, Nokia and the Finnish Defence Forces. ### About This Round. Finnish startup NestAI has raised €100 million (approximately $115 million) in a funding round led by Finland’s sovereign fund, Tesi, and hardware giant Nokia. This significant capital injection is intended to accelerate the development of AI products for unmanned vehicles, autonomous operations, and command and control (C2) platforms, specifically targeting defense applications. [...] future of AI-driven defense and national safety solutions.1. Although NestAI has not appointed a CEO yet, it is rapidly expanding its capabilities in physical AI development with this substantial funding and strategic support from Nokia and Tesi.1. In summary, NestAI’s €100 million funding round and partnership with Nokia are focused on propelling Europe’s leadership in physical AI innovation for defense applications, building robust AI platforms for unmanned and autonomous systems, and [...] # NestAI Raises 115.0M USD in Other Funding. Create a free account to follow this company and unlock estimated valuations and per-investor allocations. NestAI is a European AI lab for defence, founded in 2025 and headquartered in Helsinki, that builds NestOS, an open, modular operating system for unmanned and command-and-control systems designed to keep learning after it has been fielded. It positions itself around sovereign European control of defence AI rather than vendor lock-in, and works",
+    "origins": [
+     {
+      "source": {
+       "name": "Seedtable: Connect with fast-growing startups at the perfect moment",
+       "url": "https://www.seedtable.com/funding-round/NestAI_Venture_Round%2C_November_2025-64XNXRZ"
+      },
+      "document": {
+       "name": "NestAI Raises 115.0M USD in Other Funding | Seedtable",
+       "url": "https://www.seedtable.com/funding-round/NestAI_Venture_Round%2C_November_2025-64XNXRZ"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "c1eb7ddf-c083-4365-8dad-db7dbdc131ac",
+    "content": "Unlock Full Access   Sign In. AI software for autonomous vehicles and command systems in defense and security operations. NestAI raised €100M in a strategic funding round in November 2025 led by Nokia and Tesi (Finnish Industry Investment Ltd). The round represents the company's Series A, though specific valuation details were not disclosed. Nokia's participation as both investor and strategic partner reflects the integration of NestAI's AI systems with Nokia's secure 5G/6G communications [...] communications infrastructure. Tesi's involvement as Finland's sovereign investment fund underscores the strategic importance of NestAI's technology for European defense autonomy. The €100M funding round positions NestAI among the largest defense AI funding rounds in Europe. NestAI builds AI software that serves as both the brain and mission control center for military drone and robot fleets. When a camera or LiDAR feed comes in, the AI processes raw sensor data into obstacle maps, plans safe [...] NestAI funding, news & analysis | Sacra",
+    "origins": [
+     {
+      "source": {
+       "name": "Sacra - The private markets research you need to be a better investor",
+       "url": "https://sacra.com/c/nestai"
+      },
+      "document": {
+       "name": "NestAI funding, news & analysis | Sacra",
+       "url": "https://sacra.com/c/nestai"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "80e26f5f-0935-4c55-8835-49c3fb8442ca",
+    "content": "# NestAI. ## NestAI Overview. ##  Year Founded  2024. ##  Status  Private. ##  Employees  200. ##  Latest Deal Type  Early Stage VC. ##  Latest Deal Amount  $116M. ##  Investors  3. ### NestAI General Information. Developer of modular artificial intelligence platforms designed to advance unmanned vehicles, autonomous operations, and command and control systems. The company focuses on open, interoperable, and real-world-ready physical platforms integrating AI with unmanned and [...] | Deal Type | Date | Amount | Raised to Date | Post-Val | Status | Stage |. Early Stage VC | 20-Nov-2025 | $116M |  |  | Completed | Startup |. To view NestAI’s complete valuation and funding history, request access ». ## NestAI Signals. PitchBook’s non-financial metrics help you gauge a company’s traction and growth using web presence and social reach. ## NestAI Investors (3). | PostScriptum (Finland) | Venture Capital | Minority |  |  |. To view NestAI’s complete investors history, request [...] (Finland), and Tesi have invested in NestAI. ### Data Transparency. Meet our data hygiene team. Discover how our experts ensure you’re getting the most accurate financial data in the industry. Our data operations team has logged over 3.5 million hours researching, organizing, and integrating the information you need most.",
+    "origins": [
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/1162811-89"
+      },
+      "document": {
+       "name": "NestAI 2026 Company Profile: Valuation, Funding & Investors | PitchBook",
+       "url": "https://pitchbook.com/profiles/company/1162811-89"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "29a034ef-9857-42fb-9d7e-e725a1137a5f",
+    "content": "NestAI, backed by PostScriptum focuses on building next-generation AI for logistics, inspection, surveillance, security and defense applications. Its AI is designed for real-world readiness and long-term resilience, aiming to shape the trajectory of physical AI and strengthen Europe’s technological edge. [...] in a funding round led by Finland’s sovereign fund Tesi and hardware giant Nokia.\n\n## SUMMARY\n\n Helsinki-based NestAI, a physical AI lab, has raised €100 million ($115 million) in a funding round led by Finland’s sovereign fund Tesi and hardware giant Nokia.\n\nfollowFollow us followFollow us\n\nThe funding will support the development of AI products for unmanned vehicles, autonomous operations, and command and control (C2) platforms. [...] > The funding will help NestAI build “Europe’s leading physical AI lab,” co-founder Peter Sarlin said at the Slush 2025 technology conference in Helsinki.\n\nThe partnership will leverage forward-deployed engineering and R&D to accelerate AI capabilities for unmanned systems, data-centric C2, and modern information and knowledge management solutions.",
+    "origins": [
+     {
+      "source": {
+       "name": "Startup Rise EU - European Startup News | Funding | Startup Insights",
+       "url": "https://startuprise.co.uk/nestai-raises-e100m-in-funding-round"
+      },
+      "document": {
+       "name": "NestAI Raises €100M In Funding Round",
+       "url": "https://startuprise.co.uk/nestai-raises-e100m-in-funding-round"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   }
+  ],
+  "entities": [
+   {
+    "id": "14359613-a45f-4804-892d-3b9dd9e927a9",
+    "name": "NestAI",
+    "entity_type": "Company",
+    "mentions": [
+     "NestAI"
+    ]
+   },
+   {
+    "id": "0c5000b2-6948-52d5-a4f3-a9a5bf951af3",
+    "name": "Helsinki",
+    "entity_type": "Municipality",
+    "mentions": [
+     "Helsinki"
+    ]
+   },
+   {
+    "id": "b1e3b86c-d300-46e0-be41-cc860b4744bd",
+    "name": "Peter Sarlin",
+    "entity_type": "Person",
+    "mentions": [
+     "Peter Sarlin"
+    ]
+   },
+   {
+    "id": "354a37eb-6a4e-4e9d-a0a4-06536f86dc0e",
+    "name": "PostScriptum Oy",
+    "entity_type": "Company",
+    "mentions": [
+     "PostScriptum"
+    ]
+   },
+   {
+    "id": "5e8a37ff-e818-4f38-b4d0-5af844c9b918",
+    "name": "Silo AI",
+    "entity_type": "Organization",
+    "mentions": [
+     "Silo AI"
+    ]
+   },
+   {
+    "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+    "name": "Tesi",
+    "entity_type": "Organization",
+    "mentions": [
+     "Finnish Industry Investment",
+     "Tesi"
+    ]
+   },
+   {
+    "id": "680000b7-a490-418f-8098-9b1757db2e58",
+    "name": "Finland",
+    "entity_type": "Country",
+    "mentions": [
+     "Finland"
+    ]
+   },
+   {
+    "id": "8da76d02-4ef1-4e3e-bb0a-a98b2932ecff",
+    "name": "Nokia Oyj",
+    "entity_type": "Company",
+    "mentions": [
+     "Nokia"
+    ]
+   },
+   {
+    "id": "69c43164-30cb-492f-aeb9-efa658ff5bef",
+    "name": "PostScriptum Ventures",
+    "entity_type": "Company",
+    "mentions": [
+     "PostScriptum Ventures"
+    ]
+   },
+   {
+    "id": "0b5b355d-94a2-43f6-9bd2-b3b7f92c67e0",
+    "name": "Slush 2025",
+    "entity_type": "Event",
+    "mentions": [
+     "Slush 2025"
+    ]
+   }
+  ]
+ }
+}

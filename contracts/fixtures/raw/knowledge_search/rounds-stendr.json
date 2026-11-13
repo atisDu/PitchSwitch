@@ -1,0 +1,334 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/knowledge/search",
+  "params": null,
+  "json": {
+   "input": "Who invested in Stendr and who led each of its funding rounds?"
+  }
+ },
+ "recorded_at": "2026-11-13T20:33:37+00:00",
+ "response": {
+  "content": "## Stendr — Investors and Funding Rounds\n\nStendr is a Norwegian defence technology company developing an AI-native multi-sensor platform for drone defence. To date, the company has completed **one funding round**:\n\n### Pre-Seed Round (April 15, 2026) — $5.4 million (oversubscribed)\n\n**Co-led by:**\n- **RainFall** (Rainfall Ventures)\n- **ACME** (ACME Capital)\n- **SkyFall** (Skyfall Ventures)\n\n**Other participating investors:**\n- Sisyphus\n- Antler\n- StartupLab\n- Off Piste (Off Piste Capital)\n- Andøya Ventures\n\nA strong angel syndicate of global technology founders and investors also participated in the round. The company was founded by Aleksander Leonard Larsen, co-founder of Sky Mavis (Axie Infinity).",
+  "explainability": [
+   {
+    "content": "Stendr is a Norwegian defence technology company that completed a single pre‑seed funding round on 15 April 2026 for $5.4 million.",
+    "references": [
+     "c3c5ecd3-b4e1-45c2-a0be-7663344b5288",
+     "0e544578-91cd-4f3f-ae2d-bfeef7187b40",
+     "3bebba84-4b31-4638-ac29-866f677d7f60"
+    ]
+   },
+   {
+    "content": "The pre‑seed round was co‑led by RainFall (Rainfall Ventures), ACME (ACME Capital) and SkyFall (Skyfall Ventures).",
+    "references": [
+     "149eac7b-a69e-45d1-8acd-b107cd0f0df0",
+     "11928270-b985-40a1-9fef-18da000d46bc",
+     "8f037734-fd42-4c77-97f7-b105c7ddc2cb"
+    ]
+   },
+   {
+    "content": "Other participating investors in the round were Sisyphus, Antler, StartupLab, Off Piste (Off Piste Capital) and Andøya Ventures.",
+    "references": [
+     "149eac7b-a69e-45d1-8acd-b107cd0f0df0",
+     "0e544578-91cd-4f3f-ae2d-bfeef7187b40",
+     "11928270-b985-40a1-9fef-18da000d46bc"
+    ]
+   }
+  ],
+  "context": [
+   {
+    "id": "c3c5ecd3-b4e1-45c2-a0be-7663344b5288",
+    "content": "Entity: Stendr (type: Company, ID: 3afdc63c-b992-4b25-b69d-807ab346352d). Properties: name = Stendr; description = Norwegian defence technology company developing AI-native multi-sensor platform for drone defence.. Outgoing relationship types PARTICIPATES_IN_CORPORATE_EVENT: FINANCING_RAISED_OR_FACILITY_ENTERED, FINANCING_RAISED_OR_FACILITY_ENTERED. Incoming relationship types INVESTED_IN: Rainfall Ventures, STARTUPLAB FOUNDERS AS, Skyfall Ventures.",
+    "origins": [
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/and%C3%B8ya-ventures"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/rainfall-ventures/investor_summary/overview_timeline"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/investor/57005-74"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/stendr/__7VSvHoLx3hjMEv6yAnnHfm3bFhEeOWBkgqe3NhG5Jbc"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/stendr"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.finsmes.com",
+       "url": "https://www.finsmes.com/"
+      },
+      "document": {
+       "name": "www.finsmes.com",
+       "url": "https://www.finsmes.com/2026/04/stendr-raises-5-4m-in-pre-seed-funding.html"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Stendr raises $5.4M in oversubscribed pre-seed round to build the Nordics'next defence prime",
+       "url": "https://stendr.com/"
+      },
+      "document": {
+       "name": "Stendr raises $5.4M in oversubscribed pre-seed round to build the Nordics'next defence prime",
+       "url": "https://stendr.com/news/stendr-pre-seed-announcement"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/1376632-18"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/skyfall-ventures/signals_and_news/timeline"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "149eac7b-a69e-45d1-8acd-b107cd0f0df0",
+    "content": "# Stendr Raises 5.4M USD in Pre Seed Funding. Create a free account to follow this company and unlock estimated valuations and per-investor allocations. ### About Stendr. AI-driven hardware and software solutions provider for the modern battlefield. Stendr, a Norwegian defence technology company, has announced a $5.4 million pre-seed funding round, marking one of the largest raises in Nordic defence technology history. The oversubscribed round was co-led by Rainfall, ACME, and Skyfall, with [...] and Skyfall, with participation from Sisyphus, Antler, StartupLab, Off Piste, and Andöya Ventures, alongside a strong angel syndicate of global technology founders and investors.1. Stendr is building foundational technology for a Nordic defence prime, developing a full-stack hardware and software platform with AI at its core. The platform is designed to be vertically integrated and fully sovereign to Europe, addressing modern defence challenges where drones have become cheap, autonomous, and [...] autonomous, and ubiquitous.1. The company was founded by Aleksander Leonard Larsen, who serves as co-founder and CEO. Prior to Stendr, Larsen co-founded Sky Mavis, scaling the gaming platform Axie Infinity to a $3 billion valuation while building real-time infrastructure serving millions of users globally. Markus Leonhard Hansen serves as Head of Hardware, having previously co-founded and led Gungnir of Norway, where he directed a hardware product from concept to global customer recognition",
+    "origins": [
+     {
+      "source": {
+       "name": "Seedtable: Connect with fast-growing startups at the perfect moment",
+       "url": "https://seedtable.com/companies/stendr/funding-rounds/pre-seed-2026-04"
+      },
+      "document": {
+       "name": "Stendr Raises 5.4M USD in Pre Seed Funding | Seedtable",
+       "url": "https://seedtable.com/companies/stendr/funding-rounds/pre-seed-2026-04"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "0e544578-91cd-4f3f-ae2d-bfeef7187b40",
+    "content": "provider focused on operational drone threat mitigation rather than general commercial drone services. Stendr closed an undisclosed round reported at roughly $5.4M on 2026-04-15; public records list total funding at $5M across one round. The financing reflects seed/early-stage backing to scale product development and sales into defence and security procurement channels, differentiating on a singular focus on counter-drone applications and founder experience in high-growth startups. ## Funding [...] ## Funding History. Ex-unicorn founder raises $5.4M round for a defence startup to counter drones. RainFall (Lead)ACME (Lead)SkyFall (Lead)SisyphusAntlerStartupLabOff PisteAndøya Ventures. ## Frequently Asked Questions. How much funding does AI Funding track for Stendr? :   AI Funding tracks $5M for Stendr across 1 funding round in this database. Who are Stendr's investors? :   Stendr's investors include Antler, RainFall, ACME, SkyFall, Sisyphus, and 3 others. :   Stendr is headquartered in San [...] # Stendr. Builds counter-drone defense systems to detect and mitigate hostile unmanned aerial threats for military, government and critical-infrastructure operators. Unverified — no source on file. ## Overview. Stendr develops counter-drone defense solutions aimed at protecting military, government and critical-infrastructure customers from hostile unmanned aerial systems. The company is led by an ex‑unicorn founder and positions itself as an early-stage defence technology provider focused on",
+    "origins": [
+     {
+      "source": {
+       "name": "AI Funding - AI Venture Funding Tracker",
+       "url": "https://aifunding.me/companies/stendr"
+      },
+      "document": {
+       "name": "Stendr Funding: $5M | AI Funding",
+       "url": "https://aifunding.me/companies/stendr"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "11928270-b985-40a1-9fef-18da000d46bc",
+    "content": "# Stendr raises $5.4M Pre-Seed. Oslo-based Stendr raised $5.4M in a Pre-Seed co-led by RainFall, ACME, and SkyFall. ## Round at a Glance. | Total Disclosed Funding | $5.4M |. ## Company Snapshot. Stendr is a Norway-based defense technology company. According to the company's public materials, the product helps defense forces with AI-native drone detection, tracking, and situational awareness using vertically integrated multi-sensor hardware and software. The company was founded by Aleksander [...] by Aleksander Leonard Larsen, co-founder of blockchain gaming company Sky Mavis. ## Investors in This Round. | Investor | Investor HQ Country | Notes |. | RainFall | United States | Co-lead |. | ACME | United States | Co-lead |. | SkyFall | United States | Co-lead |. ## Known Cap Table. | Investor | Round(s) | Investor HQ Country |. | RainFall | Pre-Seed | United States |. | ACME | Pre-Seed | United States |. | SkyFall | Pre-Seed | United States |. Total disclosed funding: $5.4M across 1 round. [...] across 1 round. ## Sources.",
+    "origins": [
+     {
+      "source": {
+       "name": "React Technologies GmbH",
+       "url": "https://europealternatives.com/en/content/funding-stendr-2026-04"
+      },
+      "document": {
+       "name": "Stendr raises $5.4M Pre-Seed | Europe Alternatives | Europe Alternatives",
+       "url": "https://europealternatives.com/en/content/funding-stendr-2026-04"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "8f037734-fd42-4c77-97f7-b105c7ddc2cb",
+    "content": "Stendr, a defense technology company based in Oslo, Norway, has successfully raised $5.4 million in a pre-seed funding round. The company specializes in AI-powered air defense systems designed to consolidate sensors into a real-time operational view, addressing modern drone threats and aligning with NATO's European sovereignty initiatives.\n\n### Investors and Leadership [...] The funding round was led by RainFall, ACME, and SkyFall, with additional participation from Sisyphus, Antler, StartupLab, Off Piste, and Andøya Ventures. Aleksander Leonard Larsen, the founder and CEO of Stendr, is at the helm of this innovative company, driving its mission to enhance European defense capabilities using advanced AI technologies.\n\n### Strategic Use of Funds [...] This funding marks an important milestone for Stendr, enabling the company to expand its technological capabilities and further its mission to provide cutting-edge defense solutions across the continent.\n\n🚀 Startup Funding Intelligence\n\nDiscover startups raising capital and the investors backing them.\n\nExplore database",
+    "origins": [
+     {
+      "source": {
+       "name": "Startup Intelligence Platform – Funding, Companies & Investors | Raising.fi",
+       "url": "https://raising.fi/news/stendr-pre-seed-april-2026"
+      },
+      "document": {
+       "name": "Norwegian Startup Stendr Secures $5.4 Million in Pre-Seed Funding for AI-Powered Drone Defense | Raising.fi",
+       "url": "https://raising.fi/news/stendr-pre-seed-april-2026"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "3bebba84-4b31-4638-ac29-866f677d7f60",
+    "content": "the security needs of governmental agencies and private firms. Stendr is an innovative company founded in 2026 in Oslo, Norway, specializing in the development of drone technology for defense applications. The company has completed a total of 1 deal, with its most recent funding round occurring in April 2026. During this round, Stendr raised USD 5. 4 mn in pre-seed funding, co-led by Rainfall Ventures, ACME Capital, and Skyfall Ventures, along with participation from several other investors. [...] other investors. Stendr specializes in providing advanced drone technology and data fusion solutions aimed at enhancing defense capabilities in Europe. The company's core offerings include sophisticated drone systems that operate in swarms, equipped with multiple sensors that communicate through an integrated platform, allowing for streamlined decision-making in high-consequence situations. These products are designed to address the need for rapid and efficient responses to emerging threats in [...] efficiency, though specific pricing details are proprietary. In April 2026, Stendr raised USD 5. 4 mn in pre-seed funding, which will be utilized to support its expansion plans and further the development of AI-driven multi-sensor technology. The company is focusing on launching new drone products and aims to target additional markets in Europe by the end of 2026, enhancing its presence in regions with critical defense needs. ## Time to go Pro. Get Preqin Pro for unrestricted access to 600,000+",
+    "origins": [
+     {
+      "source": {
+       "name": "Preqin | Alternative Assets Data, Solutions and Insights",
+       "url": "https://www.preqin.com/data/profile/asset/stendr/797222"
+      },
+      "document": {
+       "name": "Stendr Asset Profile | Preqin",
+       "url": "https://www.preqin.com/data/profile/asset/stendr/797222"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   }
+  ],
+  "entities": [
+   {
+    "id": "3afdc63c-b992-4b25-b69d-807ab346352d",
+    "name": "Stendr",
+    "entity_type": "Company",
+    "mentions": [
+     "Stendr"
+    ]
+   },
+   {
+    "id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+    "name": "Rainfall Ventures",
+    "entity_type": "Organization",
+    "mentions": [
+     "RainFall"
+    ]
+   },
+   {
+    "id": "75781308-f0f4-41d8-ae80-143b94afb5c3",
+    "name": "Acme",
+    "entity_type": "Organization",
+    "mentions": [
+     "ACME"
+    ]
+   },
+   {
+    "id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+    "name": "Skyfall Ventures",
+    "entity_type": "Organization",
+    "mentions": [
+     "SkyFall"
+    ]
+   },
+   {
+    "id": "d3b95646-ae3b-40fc-af1c-b05c6516d131",
+    "name": "Antler",
+    "entity_type": "Company",
+    "mentions": [
+     "Antler"
+    ]
+   },
+   {
+    "id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+    "name": "STARTUPLAB FOUNDERS AS",
+    "entity_type": "Company",
+    "mentions": [
+     "StartupLab"
+    ]
+   },
+   {
+    "id": "745e4406-1b20-4d2b-8cee-cd629644678f",
+    "name": "OFF PISTE INVESTMENTS LTD",
+    "entity_type": "Company",
+    "mentions": [
+     "Off Piste"
+    ]
+   },
+   {
+    "id": "224d9961-c40a-4a73-a485-50c74b6b2f9b",
+    "name": "Sky Mavis",
+    "entity_type": "Company",
+    "mentions": [
+     "Sky Mavis"
+    ]
+   },
+   {
+    "id": "b90f9680-0720-47df-9813-3039d24d7f41",
+    "name": "Axie Infinity",
+    "entity_type": "WorkOfArt",
+    "mentions": [
+     "Axie Infinity"
+    ]
+   }
+  ]
+ }
+}

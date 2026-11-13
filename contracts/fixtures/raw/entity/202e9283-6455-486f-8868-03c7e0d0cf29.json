@@ -1,0 +1,158 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/202e9283-6455-486f-8868-03c7e0d0cf29",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:28:05+00:00",
+ "response": {
+  "id": "202e9283-6455-486f-8868-03c7e0d0cf29",
+  "name": "Sensofusion Oy",
+  "entity_type": "Organization",
+  "description": "Finnish defense technology company founded in 2014 and based in Vantaa.",
+  "properties": {
+   "name": {
+    "value": "Sensofusion Oy",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-05-26"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [],
+    "sources": []
+   },
+   "description": {
+    "value": "Finnish defense technology company founded in 2014 and based in Vantaa.",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-08-20"
+     }
+    ]
+   },
+   "website": {
+    "value": "sensofusion.com",
+    "sources": [
+     {
+      "name": "Sensofusion Company Overview, Contact Details & Competitors | LeadIQ",
+      "document": "https://leadiq.com/c/sensofusion/6010f67c881cc9057f505388",
+      "date": "2026-03-31"
+     },
+     {
+      "name": "Sensofusion Oy: Strategic Analysis of C-UAS and European Air Defense",
+      "document": "https://www.defencefinancemonitor.com/p/sensofusion-oy-strategic-analysis",
+      "date": "2025-12-30"
+     },
+     {
+      "name": "sensofusion.com",
+      "document": "https://sensofusion.com/company",
+      "date": "2026-05-27"
+     }
+    ]
+   },
+   "registered_address": {
+    "value": "Hakamäenkuja 1, FI-01510 Vantaa, Finland",
+    "sources": [
+     {
+      "name": "Sensofusion Oy: Strategic Analysis of C-UAS and European Air Defense",
+      "document": "https://www.defencefinancemonitor.com/p/sensofusion-oy-strategic-analysis",
+      "date": "2025-12-30"
+     },
+     {
+      "name": "sensofusion.com",
+      "document": "https://sensofusion.com/company",
+      "date": "2026-05-27"
+     },
+     {
+      "name": "Sensofusion Company Overview, Contact Details & Competitors | LeadIQ",
+      "document": "https://leadiq.com/c/sensofusion/6010f67c881cc9057f505388",
+      "date": "2026-03-31"
+     }
+    ]
+   },
+   "employee_count": {
+    "value": 27,
+    "sources": [
+     {
+      "name": "Sensofusion Company Overview, Contact Details & Competitors | LeadIQ",
+      "document": "https://leadiq.com/c/sensofusion/6010f67c881cc9057f505388",
+      "date": "2026-03-31"
+     },
+     {
+      "name": "Sensofusion Information",
+      "document": "https://rocketreach.co/sensofusion-profile_b4512a01fc7233d5",
+      "date": "2026-01-01"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {},
+   "incoming": {}
+  },
+  "numerical_observations": []
+ }
+}

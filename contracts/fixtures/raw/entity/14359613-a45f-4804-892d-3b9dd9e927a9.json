@@ -1,0 +1,254 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/14359613-a45f-4804-892d-3b9dd9e927a9",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:28:25+00:00",
+ "response": {
+  "id": "14359613-a45f-4804-892d-3b9dd9e927a9",
+  "name": "NestAI",
+  "entity_type": "Company",
+  "description": "Finnish software and aerospace‑defense company founded in 2024.",
+  "properties": {
+   "name": {
+    "value": "NestAI",
+    "sources": [
+     {
+      "name": "Finland's NestAI lands €100M, partners with Nokia to build AI for defense applications | TechCrunch",
+      "document": "https://techcrunch.com/2025/11/20/finlands-nestai-lands-e100m-partners-with-nokia-to-build-ai-for-defense-applications",
+      "date": "2025-11-20"
+     },
+     {
+      "name": "Peter Sarlin – Founder of PostScriptum",
+      "document": "https://sarlin.ai",
+      "date": "2026-04-08"
+     },
+     {
+      "name": "Proud to see PostScriptum-backed NestAI take another step today – a strategic partnership with Nokia and €100M in funding from Nokia and the Finnish sovereign fund Tesi for next-gen physical AI… | Peter Sarlin | 91 comments",
+      "document": "https://www.linkedin.com/posts/psarlin_proud-to-see-postscriptum-backed-nestai-take-activity-7397256801483763713-o00J",
+      "date": "2025-11-20"
+     }
+    ]
+   },
+   "legal_name": {
+    "value": "NestAI Oy",
+    "sources": [
+     {
+      "name": "GLEIF",
+      "document": "https://search.gleif.org/#/record/7437004FNG2T9TL5FP88",
+      "date": "2026-04-22"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [],
+    "sources": []
+   },
+   "description": {
+    "value": "Finnish software and aerospace‑defense company founded in 2024.",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-08-20"
+     }
+    ]
+   },
+   "website": {
+    "value": "nestai.com",
+    "sources": [
+     {
+      "name": "Finland's NestAI lands €100M, partners with Nokia to build AI for defense applications | TechCrunch",
+      "document": "https://techcrunch.com/2025/11/20/finlands-nestai-lands-e100m-partners-with-nokia-to-build-ai-for-defense-applications",
+      "date": "2025-11-20"
+     },
+     {
+      "name": "Peter Sarlin – Founder of PostScriptum",
+      "document": "https://sarlin.ai",
+      "date": "2026-04-08"
+     },
+     {
+      "name": "Proud to see PostScriptum-backed NestAI take another step today – a strategic partnership with Nokia and €100M in funding from Nokia and the Finnish sovereign fund Tesi for next-gen physical AI… | Peter Sarlin | 91 comments",
+      "document": "https://www.linkedin.com/posts/psarlin_proud-to-see-postscriptum-backed-nestai-take-activity-7397256801483763713-o00J",
+      "date": "2025-11-20"
+     }
+    ]
+   },
+   "headquarters_address": {
+    "value": "Lapinlahdenkatu 16, 00180 HELSINKI, HELSINKI, FI-00180, FI",
+    "sources": [
+     {
+      "name": "GLEIF",
+      "document": "https://search.gleif.org/#/record/7437004FNG2T9TL5FP88",
+      "date": "2026-04-22"
+     }
+    ]
+   },
+   "registered_address": {
+    "value": "Lapinlahdenkatu 16, 00180 HELSINKI, HELSINKI, FI-00180, FI",
+    "sources": [
+     {
+      "name": "GLEIF",
+      "document": "https://search.gleif.org/#/record/7437004FNG2T9TL5FP88",
+      "date": "2026-04-22"
+     }
+    ]
+   },
+   "founding_date": {
+    "value": "2024-11-04",
+    "sources": [
+     {
+      "name": "GLEIF",
+      "document": "https://search.gleif.org/#/record/7437004FNG2T9TL5FP88",
+      "date": "2026-04-22"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "OPERATES_IN_INDUSTRY": [
+     {
+      "id": "8ecf5e57-a149-438c-9eb4-089809bade56",
+      "name": "SOFTWARE_AND_SERVICES",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "Finland's NestAI lands €100M, partners with Nokia to build AI for defense applications | TechCrunch",
+         "document": "https://techcrunch.com/2025/11/20/finlands-nestai-lands-e100m-partners-with-nokia-to-build-ai-for-defense-applications",
+         "date": "2025-11-20"
+        },
+        {
+         "name": "Peter Sarlin – Founder of PostScriptum",
+         "document": "https://sarlin.ai",
+         "date": "2026-04-08"
+        },
+        {
+         "name": "Proud to see PostScriptum-backed NestAI take another step today – a strategic partnership with Nokia and €100M in funding from Nokia and the Finnish sovereign fund Tesi for next-gen physical AI… | Peter Sarlin | 91 comments",
+         "document": "https://www.linkedin.com/posts/psarlin_proud-to-see-postscriptum-backed-nestai-take-activity-7397256801483763713-o00J",
+         "date": "2025-11-20"
+        }
+       ],
+       "id": "bf31855d-e853-41f8-8a69-2cf7f2f3a7fb"
+      }
+     },
+     {
+      "id": "bb7caa00-59c3-4587-9aaf-5d9195444829",
+      "name": "AEROSPACE_AND_DEFENSE",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "Finland's NestAI lands €100M, partners with Nokia to build AI for defense applications | TechCrunch",
+         "document": "https://techcrunch.com/2025/11/20/finlands-nestai-lands-e100m-partners-with-nokia-to-build-ai-for-defense-applications",
+         "date": "2025-11-20"
+        },
+        {
+         "name": "Peter Sarlin – Founder of PostScriptum",
+         "document": "https://sarlin.ai",
+         "date": "2026-04-08"
+        },
+        {
+         "name": "Proud to see PostScriptum-backed NestAI take another step today – a strategic partnership with Nokia and €100M in funding from Nokia and the Finnish sovereign fund Tesi for next-gen physical AI… | Peter Sarlin | 91 comments",
+         "document": "https://www.linkedin.com/posts/psarlin_proud-to-see-postscriptum-backed-nestai-take-activity-7397256801483763713-o00J",
+         "date": "2025-11-20"
+        }
+       ],
+       "id": "81d543e9-deda-4c4f-afbd-f4dfa67ff750"
+      }
+     }
+    ]
+   },
+   "incoming": {
+    "INVESTED_IN": [
+     {
+      "id": "69c43164-30cb-492f-aeb9-efa658ff5bef",
+      "name": "PostScriptum Ventures",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Finland's NestAI lands €100M, partners with Nokia to build AI for defense applications | TechCrunch",
+         "document": "https://techcrunch.com/2025/11/20/finlands-nestai-lands-e100m-partners-with-nokia-to-build-ai-for-defense-applications",
+         "date": "2025-11-20"
+        },
+        {
+         "name": "Peter Sarlin – Founder of PostScriptum",
+         "document": "https://sarlin.ai",
+         "date": "2026-04-08"
+        },
+        {
+         "name": "Proud to see PostScriptum-backed NestAI take another step today – a strategic partnership with Nokia and €100M in funding from Nokia and the Finnish sovereign fund Tesi for next-gen physical AI… | Peter Sarlin | 91 comments",
+         "document": "https://www.linkedin.com/posts/psarlin_proud-to-see-postscriptum-backed-nestai-take-activity-7397256801483763713-o00J",
+         "date": "2025-11-20"
+        }
+       ],
+       "id": "b579aba7-a7f4-44c4-ab9b-ecb337761ddb"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

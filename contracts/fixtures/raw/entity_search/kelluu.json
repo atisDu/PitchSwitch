@@ -1,0 +1,76 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/entities",
+  "params": {
+   "name": "Kelluu",
+   "limit": 10
+  },
+  "json": null
+ },
+ "recorded_at": "2026-11-13T20:30:28+00:00",
+ "response": {
+  "entities": [
+   {
+    "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+    "name": "Kelluu Oy",
+    "entity_type": "Company",
+    "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and..."
+   },
+   {
+    "id": "e4e92460-263b-4470-af82-a91cf153e453",
+    "name": "Kelluu",
+    "entity_type": "Organization",
+    "description": "A Finnish company based in Reijola, founded in 2026 and publicly listed that year."
+   },
+   {
+    "id": "ecfd9186-8ff8-4f57-905a-f44e800e5698",
+    "name": "Christophe Belluau",
+    "entity_type": "Person",
+    "description": "Managing director of Carrosserie Barbéy."
+   },
+   {
+    "id": "b43bf288-f022-4d06-8187-5986ea18a0f4",
+    "name": "Hedi Hellou",
+    "entity_type": "Person",
+    "description": "A managing director of the firm LARA."
+   },
+   {
+    "id": "ffcf1c8d-36e7-4680-8c44-dedf4853c643",
+    "name": "Abderraouf Hellou",
+    "entity_type": "Person",
+    "description": "He is the managing director of HELLOU COIF."
+   },
+   {
+    "id": "a6b52221-d262-4014-8f7f-0e9280134532",
+    "name": "Kyle Hellou",
+    "entity_type": "Person",
+    "description": "Executive of ATOME SAFETY."
+   },
+   {
+    "id": "c2ca3ee3-4b49-42f0-a98d-6354a4083176",
+    "name": "Hellou OÜ",
+    "entity_type": "Company",
+    "description": "Estonian company headquartered in Tartu, founded in 2020."
+   },
+   {
+    "id": "121050fa-f855-480b-99ad-f24dfc00f293",
+    "name": "Ludovic Bellut",
+    "entity_type": "Person",
+    "description": "Person serving as managing director of SARL PEREZ MOUNIER."
+   },
+   {
+    "id": "eb25f332-0966-5af6-b00a-d83f6db60c6f",
+    "name": "Bellou-en-Houlme",
+    "entity_type": "Municipality",
+    "description": "commune in Orne, France"
+   },
+   {
+    "id": "d9d92998-5121-46ea-994e-a85e3ec69876",
+    "name": "Jelloul Zrara Kallou",
+    "entity_type": "Person",
+    "description": "A person serving as managing director of CHERRAK."
+   }
+  ]
+ }
+}

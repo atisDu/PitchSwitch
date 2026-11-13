@@ -1,0 +1,334 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/96da05ad-0d08-5633-ab6c-0ce5d93c8b27",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:42:43+00:00",
+ "response": {
+  "id": "96da05ad-0d08-5633-ab6c-0ce5d93c8b27",
+  "name": "Pre-Seed",
+  "entity_type": "FundingRound",
+  "description": null,
+  "properties": {
+   "name": {
+    "value": "Pre-Seed",
+    "sources": [
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+      "date": "2024-06-18",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "round_label": {
+    "value": "PRE_SEED",
+    "sources": [
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+      "date": "2024-06-18",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "announcement_date": {
+    "value": "2024-06-18",
+    "sources": [
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+      "date": "2024-06-18",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "transaction_value": {
+    "value": 800000.0,
+    "sources": [
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+      "date": "2024-06-18",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "nordic9.com",
+      "document": "https://nordic9.com/news/mika-raises-800k-in-pre-seed-funding-with-samen-slimmer-from-the-netherlands/",
+      "date": "2024-06-07",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "transaction_value_units": {
+    "value": "EUR",
+    "sources": [
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+      "date": "2024-06-18",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "nordic9.com",
+      "document": "https://nordic9.com/news/mika-raises-800k-in-pre-seed-funding-with-samen-slimmer-from-the-netherlands/",
+      "date": "2024-06-07",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "instrument": {
+    "value": "EQUITY",
+    "sources": [
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+      "date": "2024-06-18",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "annotations": {
+    "value": [
+     "Round name as stated in the article (pre-seed).",
+     "round_label_stated:Pre-Seed"
+    ],
+    "sources": []
+   }
+  },
+  "relationships": {
+   "outgoing": {},
+   "incoming": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+      "name": "Keen Venture Partners",
+      "entity_type": "Company",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "nordic9.com",
+         "document": "https://nordic9.com/news/mika-raises-800k-in-pre-seed-funding-with-samen-slimmer-from-the-netherlands/",
+         "date": "2024-06-07",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        },
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+         "date": "2024-06-18",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "12183c91-1de4-5649-abba-262327dce034"
+      }
+     },
+     {
+      "id": "3a5cd0df-5eb0-5ccc-a403-f42cf42ea72f",
+      "name": "Fabian Wittleben",
+      "entity_type": "Person",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+         "date": "2024-06-18",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "ada8b346-9636-52a4-b33b-909aa67b0e76"
+      }
+     },
+     {
+      "id": "597c5211-e388-5147-aeb5-d85a7c2abf2f",
+      "name": "Christian Gaiser",
+      "entity_type": "Person",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+         "date": "2024-06-18",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "d69f8522-4295-5f4d-af7a-646082bd9aab"
+      }
+     },
+     {
+      "id": "5a74ed80-3d41-42cf-81d7-83a2af15042e",
+      "name": "Get Mika GmbH",
+      "entity_type": "Company",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+         "date": "2024-06-18",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "8eb2a13c-60ad-520a-83d1-73d466c661b1"
+      }
+     },
+     {
+      "id": "64f78e9c-1db5-56a5-91a6-5fff2191c311",
+      "name": "Samen Slimmer",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+         "date": "2024-06-18",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "is_lead": true,
+       "id": "b5661e84-07b8-5df2-97ea-98deed1b6a84"
+      }
+     },
+     {
+      "id": "89c7f69d-c29e-5d78-9cec-d05185772ba2",
+      "name": "Slimmer Ai Labs B.V.",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+         "date": "2024-06-18",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "f6be411c-bfa4-50a8-9216-28652942d109"
+      }
+     },
+     {
+      "id": "a3bcc153-0a43-56ba-940e-5a885b9a2aae",
+      "name": "Alexander Lorenz",
+      "entity_type": "Person",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+         "date": "2024-06-18",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "1cca0179-f0ed-5e5a-9e9e-11bd2b879e44"
+      }
+     },
+     {
+      "id": "a5de4e4e-b8dc-4caa-b1fa-562de83b806f",
+      "name": "Dutch Founders Fund",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "nordic9.com",
+         "document": "https://nordic9.com/news/mika-raises-800k-in-pre-seed-funding-with-samen-slimmer-from-the-netherlands/",
+         "date": "2024-06-07",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        },
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+         "date": "2024-06-18",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "b2132c45-e729-52d4-97b9-4359ff956bfc"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

@@ -1,0 +1,1030 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:28:58+00:00",
+ "response": {
+  "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+  "name": "Keen Venture Partners",
+  "entity_type": "Company",
+  "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models.",
+  "properties": {
+   "name": {
+    "value": "Keen Venture Partners",
+    "sources": [
+     {
+      "name": "VC Scene in Europe: Top VC Funds In The Netherlands",
+      "document": "https://vestbee.com/insights/articles/top-vc-funds-in-the-netherlands-to-finance-your-startup",
+      "date": "2023-02-09"
+     },
+     {
+      "name": "Top Investors & VC Firms in Amsterdam 2026: 30+ Listed",
+      "document": "https://vc-mapping.gilion.com/venture-capital-firms/amsterdam",
+      "date": "2023-03-09"
+     },
+     {
+      "name": "eu-startups.com",
+      "document": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+      "date": "2026-09-07",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "osborneclarke.com",
+      "document": "https://www.osborneclarke.com/de/news/osborne-clarke-beraet-mika-bei-seed-finanzierungsrunde-ueber-eur-6-millionen-fuer-ki-native",
+      "date": "2026-10-05",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "getmika.de",
+      "document": "https://getmika.de/presse",
+      "date": "2026-09-23",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "siliconcanals.com",
+      "document": "https://siliconcanals.com/avalor-ai-secures-2m/",
+      "date": "2024-06-19",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "bebeez.eu",
+      "document": "https://bebeez.eu/2024/06/19/amsterdam-based-defense-tech-avalor-ai-raises-e2-million-to-enhance-military-unmanned-systems",
+      "date": "2024-06-19",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "keenventurepartners.com",
+      "document": "https://keenventurepartners.com/portfolio/empowering-defense-with-the-future-of-unmanned-systems",
+      "date": "2026-11-09",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "nif.fund",
+      "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "techcrunch.com",
+      "document": "https://techcrunch.com/2024/01/24/googles-gradient-backs-send-ai-to-help-enterprises-extract-data-from-complex-documents",
+      "date": "2024-01-24",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [],
+    "sources": []
+   },
+   "description": {
+    "value": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models.",
+    "sources": [
+     {
+      "name": "VC Scene in Europe: Top VC Funds In The Netherlands",
+      "document": "https://vestbee.com/insights/articles/top-vc-funds-in-the-netherlands-to-finance-your-startup",
+      "date": "2023-02-09"
+     },
+     {
+      "name": "Top Investors & VC Firms in Amsterdam 2026: 30+ Listed",
+      "document": "https://vc-mapping.gilion.com/venture-capital-firms/amsterdam",
+      "date": "2023-03-09"
+     }
+    ]
+   },
+   "website": {
+    "value": "keenventurepartners.com",
+    "sources": [
+     {
+      "name": "VC Scene in Europe: Top VC Funds In The Netherlands",
+      "document": "https://vestbee.com/insights/articles/top-vc-funds-in-the-netherlands-to-finance-your-startup",
+      "date": "2023-02-09"
+     },
+     {
+      "name": "Top Investors & VC Firms in Amsterdam 2026: 30+ Listed",
+      "document": "https://vc-mapping.gilion.com/venture-capital-firms/amsterdam",
+      "date": "2023-03-09"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "0c0743d5-68a9-56ef-839f-915ae432de1b",
+      "name": "Seed",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "siliconcanals.com",
+         "document": "https://siliconcanals.com/avalor-ai-secures-2m/",
+         "date": "2024-06-19",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "bebeez.eu",
+         "document": "https://bebeez.eu/2024/06/19/amsterdam-based-defense-tech-avalor-ai-raises-e2-million-to-enhance-military-unmanned-systems",
+         "date": "2024-06-19",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "keenventurepartners.com",
+         "document": "https://keenventurepartners.com/portfolio/empowering-defense-with-the-future-of-unmanned-systems",
+         "date": "2026-11-09",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "is_lead": true,
+       "id": "6c02a65b-b9bd-5dc3-abd1-381652e09298"
+      }
+     },
+     {
+      "id": "3f11bdcf-b419-5ad3-90fb-a2bd38534592",
+      "name": "Pre-Seed",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "techcrunch.com",
+         "document": "https://techcrunch.com/2024/01/24/googles-gradient-backs-send-ai-to-help-enterprises-extract-data-from-complex-documents",
+         "date": "2024-01-24",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "is_lead": true,
+       "id": "ba835759-1f2b-5241-bebf-e9751da6f6dc"
+      }
+     },
+     {
+      "id": "5249b78c-fad1-5fbf-ab9c-ceee82852624",
+      "name": "Seed",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "eu-startups.com",
+         "document": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+         "date": "2026-09-07",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "is_lead": true,
+       "id": "409b0b9b-3fc8-5ec9-95de-2d17b1a9b538"
+      }
+     },
+     {
+      "id": "96da05ad-0d08-5633-ab6c-0ce5d93c8b27",
+      "name": "Pre-Seed",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "nordic9.com",
+         "document": "https://nordic9.com/news/mika-raises-800k-in-pre-seed-funding-with-samen-slimmer-from-the-netherlands/",
+         "date": "2024-06-07",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        },
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+         "date": "2024-06-18",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "12183c91-1de4-5649-abba-262327dce034"
+      }
+     },
+     {
+      "id": "97d82be9-51db-59e4-bb04-f69213aff7e9",
+      "name": "Series A",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "nif.fund",
+         "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "4776af6a-d6d2-5de0-aee1-cd158d58eb76"
+      }
+     },
+     {
+      "id": "f34c9f72-601b-5c11-b686-8e44c2ccc05a",
+      "name": "Seed",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "osborneclarke.com",
+         "document": "https://www.osborneclarke.com/de/news/osborne-clarke-beraet-mika-bei-seed-finanzierungsrunde-ueber-eur-6-millionen-fuer-ki-native",
+         "date": "2026-10-05",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "getmika.de",
+         "document": "https://getmika.de/presse",
+         "date": "2026-09-23",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "2e161357-8ac7-5f72-9797-5ecd297dc43d"
+      }
+     }
+    ],
+    "INVESTED_IN": [
+     {
+      "id": "007512d5-a6f1-43ac-8909-464ef9faa698",
+      "name": "Klima",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "a9d6db55-3dbb-494b-a21d-5d1f8f141834"
+      }
+     },
+     {
+      "id": "029cb1f8-989d-4f4f-a083-585382bd00f1",
+      "name": "Bits of Stock",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "01916f04-b8e7-4d41-b3ae-98f419bc7067"
+      }
+     },
+     {
+      "id": "0baee91e-f0d6-4c8b-9b56-cea45274417d",
+      "name": "WithLocals",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "4b81844a-b254-4961-bc21-4f0567f34e06"
+      }
+     },
+     {
+      "id": "117e2dec-17b1-46d0-bc93-f2a34edf3201",
+      "name": "Gourmey",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "27da8349-4fea-4d0d-9f98-c071a21d6a50"
+      }
+     },
+     {
+      "id": "1283cecc-3492-4bdf-b32a-6276e52695d8",
+      "name": "SIBILL S.R.L.",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "165405c9-856f-4548-91e3-4c525a6ed162"
+      }
+     },
+     {
+      "id": "19a6a226-b3c1-4d6e-90eb-bcfa9a5f5943",
+      "name": "StudyPortals",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "09e515ef-47a5-4afc-b78a-9774476f6e06"
+      }
+     },
+     {
+      "id": "1b184fd7-0c35-4755-a297-0f0bef8a892e",
+      "name": "Lendis",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "073bda44-c2dd-47d6-a6ed-828b47f75b8c"
+      }
+     },
+     {
+      "id": "2208165e-2898-4a78-9260-36dfdfdca68b",
+      "name": "Bodyguard AI",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "5cc313f0-fa31-4486-80a5-c86056564e72"
+      }
+     },
+     {
+      "id": "26e51005-d47e-4092-9be2-61528dde90be",
+      "name": "VonWood",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "99f93c0c-8e44-4d96-b291-410bcbe640bd"
+      }
+     },
+     {
+      "id": "364b4a92-cd51-47d2-ba1c-95e09156c62d",
+      "name": "FISCOZEN S.P.A.",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "cb51e4b6-6c2c-4893-a5ef-b7981632d945"
+      }
+     },
+     {
+      "id": "39bc9603-f3b7-45a9-aa7c-c1fd37f905c1",
+      "name": "Beekeeper AG",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "ae5008d2-3b42-4c9d-9b79-a9116ff84a0f"
+      }
+     },
+     {
+      "id": "3b7097d4-abae-461f-8701-1e37e4a1a2e7",
+      "name": "Teamleader",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "18a49c24-ccf5-459d-ba48-d3813d9106b2"
+      }
+     },
+     {
+      "id": "3e14311b-5c07-4787-9a30-0753114d2e80",
+      "name": "Doctify",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "58cfcd5c-141a-46cf-bd9d-cf87839f5aa3"
+      }
+     },
+     {
+      "id": "4d227167-9e76-464a-8e6e-0a99722bfb8d",
+      "name": "Impraise",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "b2dd6096-922d-4e8c-ac18-116fc2b7ebe1"
+      }
+     },
+     {
+      "id": "4eb3ced2-4fcd-4580-b69d-06cc4043617d",
+      "name": "Intelic AI",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "9736c4fd-8d35-4b74-aa05-089cacaa94ed"
+      }
+     },
+     {
+      "id": "55ae3a77-d6f3-4794-8a49-e203dac283b0",
+      "name": "FINN",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "bd8c981e-e3bb-4282-bd5a-5f757f393cc3"
+      }
+     },
+     {
+      "id": "58ce760b-5590-4004-a49f-826ae30f6af5",
+      "name": "NEXTAIL LABS SL",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "59f146e7-3b28-41ae-8378-99437f947de6"
+      }
+     },
+     {
+      "id": "5a74ed80-3d41-42cf-81d7-83a2af15042e",
+      "name": "Get Mika GmbH",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "osborneclarke.com",
+         "document": "https://www.osborneclarke.com/de/news/osborne-clarke-beraet-mika-bei-seed-finanzierungsrunde-ueber-eur-6-millionen-fuer-ki-native",
+         "date": "2026-10-05",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "getmika.de",
+         "document": "https://getmika.de/presse",
+         "date": "2026-09-23",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "2f792163-f582-4fb6-9420-eb5840b46f9b"
+      }
+     },
+     {
+      "id": "5b19e2bc-d7cb-4d05-91dc-f486c2580162",
+      "name": "ATMOS Space Cargo",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "7609b753-c4ae-4181-b7dc-3c6ebfd201a9"
+      }
+     },
+     {
+      "id": "5bb8b0b6-73d6-48b5-9fba-23566f5fc9fd",
+      "name": "EvidenceHunt",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "f3e92776-6095-4266-86d5-d2da2b007cfd"
+      }
+     },
+     {
+      "id": "5d8e1df3-5bea-422f-a7aa-d45b65ccba74",
+      "name": "Lucinity",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "31872e76-5659-4e09-b438-874f50c25d63"
+      }
+     },
+     {
+      "id": "6531e82f-fdf4-4f3d-ab4b-1710061e43b6",
+      "name": "Azumuta",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "23af8c0e-6633-436c-a73a-9b7901e34e42"
+      }
+     },
+     {
+      "id": "65b21ddb-2336-4e16-8fda-8c28101027a0",
+      "name": "Plan A",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "a6e7a5da-c6cd-404f-823f-315edec1b080"
+      }
+     },
+     {
+      "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+      "name": "Kelluu Oy",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "nif.fund",
+         "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "6f6b7a36-1acd-437f-a2ac-b800ae4c61e5"
+      }
+     },
+     {
+      "id": "7bdde6cb-7383-493d-a958-7269e98ca38e",
+      "name": "Crisp",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "c888e09a-9c65-4ae0-9eed-5c467fc6b7bb"
+      }
+     },
+     {
+      "id": "7d550cc0-1c62-4e9e-bbe4-98cf1386a636",
+      "name": "Send AI",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        },
+        {
+         "name": "techcrunch.com",
+         "document": "https://techcrunch.com/2024/01/24/googles-gradient-backs-send-ai-to-help-enterprises-extract-data-from-complex-documents",
+         "date": "2024-01-24",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "ea9f2a9a-d675-4dcc-9819-4d0028e1e8e6"
+      }
+     },
+     {
+      "id": "898ca20a-249c-4997-9f4c-067acea99fc8",
+      "name": "Perciv AI",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "c16ffbfe-2660-4447-a399-3c4af874bf9f"
+      }
+     },
+     {
+      "id": "8b94028c-c144-488f-915b-1b881d828aa7",
+      "name": "Mika",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "6f05ac52-bb79-42dc-a503-40e3455c2608"
+      }
+     },
+     {
+      "id": "96dfd8e2-4d55-469e-8e10-6197b946c17a",
+      "name": "TULIP INTERFACES, INC.",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "5bc6a4d4-1b69-4c3d-99de-ecfe6dc53b09"
+      }
+     },
+     {
+      "id": "a8630f27-b7d0-4afe-a9a4-85d58b2afff0",
+      "name": "FAREWILL LTD.",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "0e169310-2cf6-4186-957b-7dcea8ba5c24"
+      }
+     },
+     {
+      "id": "b85cecb5-fcf0-4a53-aff9-6dd8f0bbc2d0",
+      "name": "EclecticIQ",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "0df4e6cb-f137-4ada-80d1-b2f3dc5b55b9"
+      }
+     },
+     {
+      "id": "c419488e-424c-4b09-98a3-d56a4c387ede",
+      "name": "AVALOR AI B.V.",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "siliconcanals.com",
+         "document": "https://siliconcanals.com/avalor-ai-secures-2m/",
+         "date": "2024-06-19",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "bebeez.eu",
+         "document": "https://bebeez.eu/2024/06/19/amsterdam-based-defense-tech-avalor-ai-raises-e2-million-to-enhance-military-unmanned-systems",
+         "date": "2024-06-19",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "keenventurepartners.com",
+         "document": "https://keenventurepartners.com/portfolio/empowering-defense-with-the-future-of-unmanned-systems",
+         "date": "2026-11-09",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "0bfefa35-1507-4def-bde9-7c61fb97cf5a"
+      }
+     },
+     {
+      "id": "ca6a8dda-f49a-43d0-87ad-06743aa72d42",
+      "name": "Feather",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "7b91183b-b35c-4302-b60e-fc2ff05d180e"
+      }
+     },
+     {
+      "id": "ce1e5a70-f67b-4e91-aaf3-d0b101aa3f55",
+      "name": "AirHub",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "bd2a37a4-cac1-4e76-affa-dd630e8de232"
+      }
+     },
+     {
+      "id": "d6e0e87a-7337-4276-9844-47cddb015583",
+      "name": "Cato",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "eu-startups.com",
+         "document": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+         "date": "2026-09-07",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "b85cd6f6-cdeb-4cf0-b966-02a8343d6163"
+      }
+     },
+     {
+      "id": "e4e92460-263b-4470-af82-a91cf153e453",
+      "name": "Kelluu",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "c53d1c36-6cf6-4249-8eeb-9571c7d55473"
+      }
+     },
+     {
+      "id": "e4e9e9af-cb3c-41bf-9f4d-de55f5327345",
+      "name": "DeltaQuad B.V.",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "bd93d960-ddb6-4c0a-b67c-d5bd01e607ec"
+      }
+     },
+     {
+      "id": "e6c7f797-2b7f-4b0c-aa41-e13e285537e2",
+      "name": "allO",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "673e987b-37f2-4e5a-81a5-800014a3be7d"
+      }
+     },
+     {
+      "id": "e8e9fab1-6777-40cd-b231-c122f2445d61",
+      "name": "DreamQuark",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "ff12049c-c5c3-4c9e-b84b-5dcd69c54f0c"
+      }
+     },
+     {
+      "id": "f4fb9b9f-2cfc-47fc-a6d1-a5dc37830ba1",
+      "name": "RESCALE, INC.",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "bed5b8d0-57be-436c-910e-234f4947fdba"
+      }
+     }
+    ],
+    "OPERATES_IN_INDUSTRY": [
+     {
+      "id": "f48ebf95-99ea-4756-99cc-8a2a2d71f2e2",
+      "name": "VENTURE_CAPITAL",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "VC Scene in Europe: Top VC Funds In The Netherlands",
+         "document": "https://vestbee.com/insights/articles/top-vc-funds-in-the-netherlands-to-finance-your-startup",
+         "date": "2023-02-09"
+        },
+        {
+         "name": "Top Investors & VC Firms in Amsterdam 2026: 30+ Listed",
+         "document": "https://vc-mapping.gilion.com/venture-capital-firms/amsterdam",
+         "date": "2023-03-09"
+        }
+       ],
+       "id": "bb819736-e3fa-415b-a27f-ab1e491aab5d"
+      }
+     }
+    ]
+   },
+   "incoming": {
+    "INVESTED_IN": [
+     {
+      "id": "d6e0e87a-7337-4276-9844-47cddb015583",
+      "name": "Cato",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Dealroom.co | Mapping the world's tech ecosystems",
+         "document": "https://dealroom.co/news/149165-cato-raises-7m-seed-to-automate-public-tender-bids",
+         "date": "2026-09-09"
+        },
+        {
+         "name": "Ground News",
+         "document": "https://ground.news/article/milan-based-cato-raises-6-million-to-help-companies-find-and-win-public-tenders-with-ai",
+         "date": "2026-09-09"
+        }
+       ],
+       "id": "0847e202-640e-53d8-946f-9f3cafb08079"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

@@ -1,0 +1,231 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/0f827900-df35-58a2-9e7c-b5c16782aefb",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:42:10+00:00",
+ "response": {
+  "id": "0f827900-df35-58a2-9e7c-b5c16782aefb",
+  "name": "Seed",
+  "entity_type": "FundingRound",
+  "description": null,
+  "properties": {
+   "name": {
+    "value": "Seed",
+    "sources": [
+     {
+      "name": "nordic9.com",
+      "document": "https://nordic9.com/news/upheat-in-a-seed-round-with-maki-vc-and-vsqua/",
+      "date": "2025-12-01",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "round_label": {
+    "value": "SEED",
+    "sources": [
+     {
+      "name": "nordic9.com",
+      "document": "https://nordic9.com/news/upheat-in-a-seed-round-with-maki-vc-and-vsqua/",
+      "date": "2025-12-01",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "announcement_date": {
+    "value": "2025-12-01",
+    "sources": [
+     {
+      "name": "nordic9.com",
+      "document": "https://nordic9.com/news/upheat-in-a-seed-round-with-maki-vc-and-vsqua/",
+      "date": "2025-12-01",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "transaction_value": {
+    "value": 8600000.0,
+    "sources": [
+     {
+      "name": "nordic9.com",
+      "document": "https://nordic9.com/news/upheat-in-a-seed-round-with-maki-vc-and-vsqua/",
+      "date": "2025-12-01",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     },
+     {
+      "name": "pitchbook.com",
+      "document": "https://pitchbook.com/profiles/company/762648-58",
+      "date": "2026-11-13",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "transaction_value_units": {
+    "value": "USD",
+    "sources": [
+     {
+      "name": "nordic9.com",
+      "document": "https://nordic9.com/news/upheat-in-a-seed-round-with-maki-vc-and-vsqua/",
+      "date": "2025-12-01",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     },
+     {
+      "name": "pitchbook.com",
+      "document": "https://pitchbook.com/profiles/company/762648-58",
+      "date": "2026-11-13",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "annotations": {
+    "value": [
+     "Nordic9 headline: 'Upheat in a seed round with Maki VC and VSquared Ventures'. The Maki.vc portfolio page gives the stage 'Pre-Seed' for its 2025 investment; PitchBook calls it 'Early Stage VC'.",
+     "round_label_stated:Seed"
+    ],
+    "sources": []
+   }
+  },
+  "relationships": {
+   "outgoing": {},
+   "incoming": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "2aaa36b4-4b6e-4247-9171-4d4f6665cca3",
+      "name": "Vsquared Ventures",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "nordic9.com",
+         "document": "https://nordic9.com/news/upheat-in-a-seed-round-with-maki-vc-and-vsqua/",
+         "date": "2025-12-01",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        },
+        {
+         "name": "maki.vc",
+         "document": "https://maki.vc/case/upheat/",
+         "date": "2026-11-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "9c793703-7465-563f-8fd5-6ba69b52aae2"
+      }
+     },
+     {
+      "id": "3f6d522f-985b-5035-a38b-4a2e616a3598",
+      "name": "Upheat",
+      "entity_type": "Company",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "nordic9.com",
+         "document": "https://nordic9.com/news/upheat-in-a-seed-round-with-maki-vc-and-vsqua/",
+         "date": "2025-12-01",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        }
+       ],
+       "id": "8dfe5764-2c5d-5d42-8518-377b249798dd"
+      }
+     },
+     {
+      "id": "8f0ff46d-d609-4ce0-b719-85f739b92ca3",
+      "name": "Maki.vc",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "nordic9.com",
+         "document": "https://nordic9.com/news/upheat-in-a-seed-round-with-maki-vc-and-vsqua/",
+         "date": "2025-12-01",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        },
+        {
+         "name": "maki.vc",
+         "document": "https://maki.vc/case/upheat/",
+         "date": "2026-11-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "8337610e-0459-5d7b-81f1-c25b54ff0194"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

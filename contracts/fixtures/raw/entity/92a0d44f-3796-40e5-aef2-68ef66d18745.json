@@ -1,0 +1,1736 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:29:37+00:00",
+ "response": {
+  "id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "name": "REDSTONE",
+  "entity_type": "Company",
+  "description": "French venture capital firm founded in 2022",
+  "properties": {
+   "name": {
+    "value": "REDSTONE",
+    "sources": [
+     {
+      "name": "GLEIF",
+      "document": "https://search.gleif.org/#/record/969500LIXGOTQTK87642",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   "legal_name": {
+    "value": "REDSTONE",
+    "sources": [
+     {
+      "name": "GLEIF",
+      "document": "https://search.gleif.org/#/record/969500LIXGOTQTK87642",
+      "date": "2026-10-14"
+     },
+     {
+      "name": "INPI",
+      "document": "https://data.inpi.fr/entreprises/914601356",
+      "date": "2024-05-19"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [],
+    "sources": []
+   },
+   "description": {
+    "value": "French venture capital firm founded in 2022",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-08-22"
+     }
+    ]
+   },
+   "website": {
+    "value": "redstone.vc",
+    "sources": []
+   },
+   "operational_status": {
+    "value": "ACTIVE",
+    "sources": [
+     {
+      "name": "INPI",
+      "document": "https://data.inpi.fr/entreprises/914601356",
+      "date": "2024-05-19"
+     }
+    ]
+   },
+   "headquarters_address": {
+    "value": "141 CHEMIN DES COLLINES, LE PUY-SAINTE-REPARADE, FR-13, 13610, FR",
+    "sources": [
+     {
+      "name": "GLEIF",
+      "document": "https://search.gleif.org/#/record/969500LIXGOTQTK87642",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   "registered_address": {
+    "value": "141 CHEMIN DES COLLINES, LE PUY-SAINTE-REPARADE, FR-13, 13610, FR",
+    "sources": [
+     {
+      "name": "GLEIF",
+      "document": "https://search.gleif.org/#/record/969500LIXGOTQTK87642",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   "founding_date": {
+    "value": "2022-06-15",
+    "sources": [
+     {
+      "name": "GLEIF",
+      "document": "https://search.gleif.org/#/record/969500LIXGOTQTK87642",
+      "date": "2026-10-14"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "4f281a20-6361-5169-ae5a-c0fe1312be8e",
+      "name": "Pre-Seed",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "commerceclarity.com",
+         "document": "https://commerceclarity.com/press/commerceclarity-raises-3m-ai-commerce",
+         "date": "2025-11-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "commerceclarity.com",
+         "document": "https://commerceclarity.com/press/commerceclarity-acquires-katalogo-ai",
+         "date": "2026-06-04",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "cbinsights.com",
+         "document": "https://www.cbinsights.com/company/commerceclarity/financials",
+         "date": "2026-11-13",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        }
+       ],
+       "id": "1265fc5f-445d-5880-8f6d-8e27821e1d24"
+      }
+     },
+     {
+      "id": "53e8213e-ebed-5592-b1a0-761340b479ea",
+      "name": "Pre-Seed",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "trendingtopics.eu",
+         "document": "https://www.trendingtopics.eu/25-millionen-fuer-batteriespeicher-bayern-kapital-steigt-bei-encosa-ein/",
+         "date": "2026-06-01",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "b15383be-435e-5493-ba96-b9d715553182"
+      }
+     },
+     {
+      "id": "6930db64-1885-5e18-8f19-aefa52a5df1e",
+      "name": "Seed",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "eu-startups.com",
+         "document": "https://www.eu-startups.com/2026/01/finlands-carbonaide-raises-e3-7-million-to-turn-building-materials-into-a-carbon-sink/",
+         "date": "2026-01-28",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "carbonaide.com",
+         "document": "https://carbonaide.com/?p=8006",
+         "date": "2026-01-28",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "is_lead": true,
+       "id": "617e67f8-cb00-5a97-885b-61bc3116ed4d"
+      }
+     }
+    ],
+    "INVESTED_IN": [
+     {
+      "id": "056ac8d0-aaa8-411f-b06e-3be38c1f35fd",
+      "name": "xAI",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "18ac652d-0e3f-4b5c-bd04-608decb363ea"
+      }
+     },
+     {
+      "id": "09b0e990-3ef0-4305-af87-cf3c7b1ea853",
+      "name": "Infras AI",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "c4d516de-7c87-4bb0-8897-ded71ca6263c"
+      }
+     },
+     {
+      "id": "0be838ed-cccb-46ff-bc58-801b441b4ebf",
+      "name": "Astro Art",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "007f8543-2696-4154-a795-4e6915fc4101"
+      }
+     },
+     {
+      "id": "0d58f2c6-09a4-4a87-ad56-690c99650c8e",
+      "name": "&Charge",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "5168ccf0-8907-426d-bbf1-e051debfd06d"
+      }
+     },
+     {
+      "id": "126cdb4a-60d4-480d-aad6-d8773b5c65e0",
+      "name": "Albio",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "a2ff8c87-6e95-4cc5-81f9-c27c39841835"
+      }
+     },
+     {
+      "id": "12a4ba95-ca63-4c14-a8a5-bc512d14df56",
+      "name": "Chip Metrics",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "a5387504-900c-48f5-867c-690b1c904ade"
+      }
+     },
+     {
+      "id": "12ffd0f2-c632-4b6d-81bb-1878c107492f",
+      "name": "LabForward",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "1c1f2d66-817c-4361-8f18-71b889ea01a8"
+      }
+     },
+     {
+      "id": "13b02344-039e-4623-ba4e-254c018892f2",
+      "name": "PlanRadar",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "79e73706-8a25-4b10-a51c-1685eb2f92e7"
+      }
+     },
+     {
+      "id": "16179fc9-f83b-4fe2-986d-803fe2b2ac22",
+      "name": "Klimate",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "d7f9c975-9d5d-466f-9157-ea4a9cdda1e8"
+      }
+     },
+     {
+      "id": "175430db-81cf-4189-b3e9-d709adad7cf3",
+      "name": "Kvantify",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "da9bb537-a867-4639-8f44-74871fd91356"
+      }
+     },
+     {
+      "id": "205dca65-6a87-4400-900f-e9be16edf850",
+      "name": "Fiuge",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "f18019fd-dec5-44fb-ba3f-acc851e9588d"
+      }
+     },
+     {
+      "id": "217cb01d-773c-4d06-a304-111b7feffebe",
+      "name": "EOLOGIX-PING",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "dd1b305e-0819-4d9d-b43b-f30dfd749904"
+      }
+     },
+     {
+      "id": "2311680e-93c1-49fa-8d2a-bab123f59a3e",
+      "name": "Energetic Insurance",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "cd3886fd-aa24-4fd7-b0bf-fb9e594f18e0"
+      }
+     },
+     {
+      "id": "23e33ec4-ae63-417d-9b0a-7cf2848ab04f",
+      "name": "CNC24",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "9744734c-227b-432a-8cb2-a62924e07d2c"
+      }
+     },
+     {
+      "id": "23ecb6bc-595a-4767-b8f5-6c841c16fe04",
+      "name": "Empion GmbH",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "ba0d3e63-e755-41f6-90cb-b3913bfc6d29"
+      }
+     },
+     {
+      "id": "25c4a7f0-4ead-4da5-a705-9f3d63757238",
+      "name": "Gradient AI",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "2a1c2cc4-3f33-4a7e-96f5-0dce10bcdb80"
+      }
+     },
+     {
+      "id": "25fdb5d1-8de7-42ff-9123-0682fc9e3b0a",
+      "name": "BTRY",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "67db42f9-d35b-410a-9c2a-0c6217dbafee"
+      }
+     },
+     {
+      "id": "2754fdbd-737d-4835-ae66-efb017cccaa8",
+      "name": "BIOZEROC LTD",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "397f7b98-4b05-4e37-96c6-a20f779da75c"
+      }
+     },
+     {
+      "id": "2aebd239-f1f2-4ef3-a126-a2f97303b287",
+      "name": "Flexperto",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "b5ce64a9-34f2-48b5-bc2b-d39d02f72814"
+      }
+     },
+     {
+      "id": "2f3fbf28-cdb2-4d2a-9f1f-d400331cd649",
+      "name": "Anymove",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "809061cd-c892-43cb-88ac-f74549eaeaf0"
+      }
+     },
+     {
+      "id": "2fa8d7a0-1f05-4b13-ba93-5c2a46e4b037",
+      "name": "Eaze",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "06062d23-1178-45ec-8fe7-4492bc523765"
+      }
+     },
+     {
+      "id": "336dbeb6-10b5-4ff8-8055-f1098503576e",
+      "name": "Emulate, Inc.",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "bd0297f6-ecae-4364-afc7-c34292e52677"
+      }
+     },
+     {
+      "id": "3512b2fb-95d0-41c0-8724-b67c945145dd",
+      "name": "CARELOOP HEALTH LTD",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "4cf9c0b9-5695-4862-8eb8-5641b5267c2d"
+      }
+     },
+     {
+      "id": "366bd826-6667-4333-9eaa-9f1e9878216f",
+      "name": "Freesi",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "781ed671-4642-400c-8feb-7af6f662de79"
+      }
+     },
+     {
+      "id": "399af3db-c008-4d3b-851d-260ecff6da32",
+      "name": "Libify",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "5500b986-b11b-4047-9705-83f411f92d73"
+      }
+     },
+     {
+      "id": "3a0cce4a-acbb-4db0-9c8d-b8c2a082fb05",
+      "name": "ClimeFi",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "f5ea8808-8ed3-4369-a281-9f02b7daf062"
+      }
+     },
+     {
+      "id": "3d0b67a4-54d8-40d8-a3e7-f7f7a1db9143",
+      "name": "Annette",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "549af563-3173-431a-866c-9ecb05c8b9c3"
+      }
+     },
+     {
+      "id": "45596f04-9e03-4442-a697-e1da92511210",
+      "name": "Multiverse Computing",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "c495196d-c100-4553-b16c-a85e0b9744e8"
+      }
+     },
+     {
+      "id": "4ba7cc64-39c0-4ccd-9320-7c619505fdf3",
+      "name": "Justos",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "ac43e0d0-c347-4b4b-8d48-708dc3d38077"
+      }
+     },
+     {
+      "id": "4bb9419d-8549-40cf-a3a5-a0153ce9d17f",
+      "name": "Lykon",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "b53620cb-d137-42e8-ae99-df7fb22350d4"
+      }
+     },
+     {
+      "id": "513c2b38-17a3-4a76-80f1-d3c8d51f4412",
+      "name": "Freeway Camper",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "317d01b2-c9f7-4132-a8d3-01c75d1a3393"
+      }
+     },
+     {
+      "id": "55b15f20-b8e2-4dad-a677-3afad143e0f0",
+      "name": "Betterfly",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "b9e58351-6862-4654-bb88-cd0297674132"
+      }
+     },
+     {
+      "id": "5774fc3f-c520-42f3-8595-94c58a7fbfe6",
+      "name": "Homaio",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "1b97f53d-b210-4dec-951e-068d402e2f9e"
+      }
+     },
+     {
+      "id": "5ca3d78b-3d4c-4fea-847d-eabd1eab4501",
+      "name": "encosa",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        },
+        {
+         "name": "trendingtopics.eu",
+         "document": "https://www.trendingtopics.eu/25-millionen-fuer-batteriespeicher-bayern-kapital-steigt-bei-encosa-ein/",
+         "date": "2026-06-01",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "6a538987-aef9-4571-befa-9b2c708c3778"
+      }
+     },
+     {
+      "id": "5de7fc3f-2296-4724-9ac3-324e9cc15b25",
+      "name": "Hiil",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "49cc6bdb-2e11-438c-969e-0ecd03b42999"
+      }
+     },
+     {
+      "id": "614cddfb-2a6c-48b8-8d78-0249bcb6f640",
+      "name": "HIBOO",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "2a4370f4-9a06-4375-a331-acc32319f972"
+      }
+     },
+     {
+      "id": "62433de5-8d9c-4a29-bbbb-3f78dc59f353",
+      "name": "CommerceClarity",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        },
+        {
+         "name": "commerceclarity.com",
+         "document": "https://commerceclarity.com/press/commerceclarity-raises-3m-ai-commerce",
+         "date": "2025-11-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "commerceclarity.com",
+         "document": "https://commerceclarity.com/press/commerceclarity-acquires-katalogo-ai",
+         "date": "2026-06-04",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "cbinsights.com",
+         "document": "https://www.cbinsights.com/company/commerceclarity/financials",
+         "date": "2026-11-13",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        }
+       ],
+       "id": "346e2ec9-18f1-45e7-b6bb-c621613b3018"
+      }
+     },
+     {
+      "id": "639bcb81-c9e3-46cb-82ed-3e2623cec186",
+      "name": "Comet",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "502d199c-a6dd-4289-8771-7782ddccb8d2"
+      }
+     },
+     {
+      "id": "65389d9f-4e44-4b2b-a61f-89db3c416b05",
+      "name": "Cambrium",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "c85a76b4-f5a2-4cf0-b7f9-7b24e9632f1f"
+      }
+     },
+     {
+      "id": "65ad092d-3b26-4e96-a6cc-46efc9884d08",
+      "name": "Coverflex",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "d39d2790-017e-4218-b4e1-c0c0e54a7ce0"
+      }
+     },
+     {
+      "id": "665bac53-eb5e-4f89-8979-272c339694c2",
+      "name": "Crafthunt",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "37917bc0-1e0e-44f9-88e2-c283eb0129a3"
+      }
+     },
+     {
+      "id": "667b1d3f-f793-4246-98cd-345224b6aee0",
+      "name": "i2x",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "278ced2d-8a05-4b23-940a-bafedebafd6a"
+      }
+     },
+     {
+      "id": "68b390fa-d17c-4de9-9f62-327d36964bc2",
+      "name": "YOTO LIMITED",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "4434ff1b-b1df-4994-b158-3725bd00ce9b"
+      }
+     },
+     {
+      "id": "7405ac00-e8c6-4e19-86a2-75bdb679d2f2",
+      "name": "INXM",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "ecfad195-ca8e-4b95-8a74-f354e82f60bf"
+      }
+     },
+     {
+      "id": "7566fd6b-7ce4-430f-a181-4103d2a2b6f8",
+      "name": "Logicc",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "7cec3791-7b91-4b2e-a1b3-659bf5b210e2"
+      }
+     },
+     {
+      "id": "7777d4cc-92d4-4ac9-9e7d-9cb576cc6c8c",
+      "name": "iFeel",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "246ffe9e-1800-4927-935b-458e5a8cb92a"
+      }
+     },
+     {
+      "id": "79145efd-3729-49a9-9d1c-ded5ae9413d0",
+      "name": "Flyability",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "dfdf17dc-7513-4025-8348-7f70c5f52744"
+      }
+     },
+     {
+      "id": "7a89ceea-bf04-49e4-b8cc-63d9a96e8e45",
+      "name": "AS GOOD AS NEW LTD",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "982cc9db-4494-4761-af9c-13953d20c05e"
+      }
+     },
+     {
+      "id": "7a99e109-44a6-4c9c-b258-b8b11260b8ea",
+      "name": "SpaceX",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "f5dd8002-0db9-486a-b126-d2211fb2f54b"
+      }
+     },
+     {
+      "id": "7ad2098b-b238-4b6f-b8b0-ccc0df92056b",
+      "name": "enspired",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "63a2b059-fc67-403f-9aef-7fe6477c6f76"
+      }
+     },
+     {
+      "id": "7b74cdc8-8e95-453f-889e-8a4ff414678d",
+      "name": "Edu Bites",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "22a984f7-e03f-4871-afab-2be90b21a4b7"
+      }
+     },
+     {
+      "id": "7c2b9a0b-4a73-4b04-a830-a6a421d12bd8",
+      "name": "Alloyed",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "32fe3940-b9a2-4e80-a091-e0395954ada7"
+      }
+     },
+     {
+      "id": "878a3a1b-404f-4f91-9b13-f08d4a4cb7f0",
+      "name": "Kertos GmbH",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "4215c78b-5f22-4c35-a9d8-f7958502695f"
+      }
+     },
+     {
+      "id": "89ba4af6-7938-4d7d-9208-7c491e872480",
+      "name": "Lyyli",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "ab838403-64ca-4e5a-8c30-2d5776f59f32"
+      }
+     },
+     {
+      "id": "8a208372-971e-42ee-93a7-867a6e15af23",
+      "name": "Contract Hero",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "a24ae6dd-024b-44c1-ba3f-6730158a6ddb"
+      }
+     },
+     {
+      "id": "8cc1b568-45da-4ecd-a425-189a5b49be09",
+      "name": "KOHORT SOFTWARE LIMITED",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "e92437af-4a3f-418c-a87d-05feb7a045cc"
+      }
+     },
+     {
+      "id": "8d762cdd-c725-4405-bf0b-6cf4913ea543",
+      "name": "Branch Financial",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "6b6e6909-e768-439a-83b4-706462d64001"
+      }
+     },
+     {
+      "id": "8eef5fc4-5c5f-4f42-89be-1e01d0d422f2",
+      "name": "German Autolabs",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "c5cbab7f-f7a4-4a2c-9e8b-5c121e855876"
+      }
+     },
+     {
+      "id": "92192d27-8b8e-45a8-b4b5-71098fd0a599",
+      "name": "Custodian Club",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "513f2172-e212-41c0-b79e-7ac65a0e1f74"
+      }
+     },
+     {
+      "id": "95421f0c-51fe-4acd-8e81-4d17644a0871",
+      "name": "Credibur GmbH",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "7ed5ca30-cda3-468b-a93e-1ace1d2d41a8"
+      }
+     },
+     {
+      "id": "955993d9-0319-4e0f-8ee7-1830fb9b23e0",
+      "name": "Marshmallow",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "067d128d-2960-4eb8-8ffe-0e241a5d6da6"
+      }
+     },
+     {
+      "id": "96511d77-d957-4d96-ba97-43bf4cf9418c",
+      "name": "Advanced Machine Intelligence (AMI)",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "07ee47a3-2e52-462b-b3c5-8d2adaeeb7d1"
+      }
+     },
+     {
+      "id": "98513992-f6bd-489b-a3ef-160ad890a609",
+      "name": "Finanzguru",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "9e9dee1b-e79f-4c26-af64-420f71cc7123"
+      }
+     },
+     {
+      "id": "9e14a209-bc70-43a5-9f75-9b50a3319163",
+      "name": "Fibionic",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "ecc85edc-cfeb-4102-9de6-93cce38b9b3f"
+      }
+     },
+     {
+      "id": "9f5da304-6f65-4036-a689-88e6050118d3",
+      "name": "Atheneum Partners GmbH",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "557eae17-5ab1-4451-8f7c-788731d52066"
+      }
+     },
+     {
+      "id": "a9c175fc-4548-46c7-93ec-069ef1a50648",
+      "name": "GARS",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "751c4d41-0ca0-4d7e-bb36-de1d954cfbe1"
+      }
+     },
+     {
+      "id": "ab14ae76-bf85-4c99-897f-afe921187748",
+      "name": "Aurora Powertrains",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "eba8ae10-fdc7-4112-a703-7bb0013cf68d"
+      }
+     },
+     {
+      "id": "aec6cfd9-4a00-4303-9f5b-ed11f6912988",
+      "name": "Elive",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "01bd5f46-aefe-4638-912f-007e6b10fbe4"
+      }
+     },
+     {
+      "id": "b3a623c0-9844-4eba-bb05-3848f8639341",
+      "name": "Gradyent",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "c5b06e04-51e5-497e-b0c2-5e282624501f"
+      }
+     },
+     {
+      "id": "b49da557-be86-40c7-b95c-e82aad26f182",
+      "name": "Kontempo LLC",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "82296c72-b24b-4d9e-8b24-c0f253c57293"
+      }
+     },
+     {
+      "id": "b4e6629f-438c-4a52-a1b4-1194e7729329",
+      "name": "Liqid Inc.",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "7138d911-c6b0-4c2b-a798-c864652f2d0a"
+      }
+     },
+     {
+      "id": "b6490d9f-dd00-43a0-ab0a-ad805391c031",
+      "name": "Kadmos",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "0f9d4a97-5af6-4882-b305-b72e3b8cbfae"
+      }
+     },
+     {
+      "id": "c1baaee9-6ec2-42cf-b29e-53a39bfb4f13",
+      "name": "Kuru Resort",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "bd48c58c-fdd7-4d4e-81d6-db9a9a7080b8"
+      }
+     },
+     {
+      "id": "c4ad2282-ca46-4d05-bb6e-bc184143388a",
+      "name": "Casey",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "9706cee8-b4df-4d6c-8044-45cc238215bd"
+      }
+     },
+     {
+      "id": "cf493386-7367-429c-a05d-5e613595bbd5",
+      "name": "CLT Life",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "76e69f6b-6fb1-4461-961b-64e9ff3ca0c2"
+      }
+     },
+     {
+      "id": "d1545ec2-5db4-4e06-b404-87f40032bba5",
+      "name": "Atlas Metrics GmbH",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "8a59f9b6-8359-46ee-ba8e-66f8ba315263"
+      }
+     },
+     {
+      "id": "d22f9d8f-282e-4c92-a650-9de116d2eb01",
+      "name": "Timeleft",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "73e16d1d-d3ed-49e5-a82e-cd9b8e379fde"
+      }
+     },
+     {
+      "id": "d2d6f392-4d94-4880-9ea2-4ccb66751fe7",
+      "name": "Finleap Connect",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "346d6e39-254b-4897-9c27-6dc07b5740bd"
+      }
+     },
+     {
+      "id": "d477dc25-2b81-41bb-a05c-9a7ef2f9d90d",
+      "name": "Banxware",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "a0098595-b6af-4ff3-bd01-bfadae27b8c4"
+      }
+     },
+     {
+      "id": "d4cf4a2b-f60e-490f-aa61-9700dff0b6a4",
+      "name": "Exein",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "c960a681-0ad8-4ff3-b430-0d3199cae0a6"
+      }
+     },
+     {
+      "id": "d8949377-b12a-4bd2-ad89-faa443c68e73",
+      "name": "Dribla",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "e7ee71cc-9585-4e7d-8fb7-f049f952a73d"
+      }
+     },
+     {
+      "id": "df4e07bb-a59a-4e7f-83f6-766bc427c084",
+      "name": "FICUS Health",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "0413eccf-f232-4f87-aa6a-54a0b09c24c9"
+      }
+     },
+     {
+      "id": "e4e92460-263b-4470-af82-a91cf153e453",
+      "name": "Kelluu",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "97acbebe-dc79-469d-aff3-2fad8d17ccbf"
+      }
+     },
+     {
+      "id": "e88701c0-59c2-44a1-acaf-ddcfa43b416b",
+      "name": "LiveEO GmbH",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "a44a6782-f352-4973-9b04-81bc815b1f42"
+      }
+     },
+     {
+      "id": "ea6dceda-7de3-42a0-b6e3-398c54ba5ed0",
+      "name": "CABO",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "e9bbca82-04d7-4555-b7e7-c48a3ca85512"
+      }
+     },
+     {
+      "id": "eaefd5b3-1c39-4183-ac23-6be26e4c62b1",
+      "name": "Aslan",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "13bfc559-9b3b-4c05-a326-9280943d1ba9"
+      }
+     },
+     {
+      "id": "eb290367-6204-4169-ba5a-bb1d1d296483",
+      "name": "ElvySense",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "c5cb5ba9-e836-44ed-a12d-ff1a89e55de8"
+      }
+     },
+     {
+      "id": "ec2692c1-9393-48f1-b112-16e1a9612ea6",
+      "name": "Kraftblock",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "faabb822-9dd1-41fc-92b4-f416ce525b6e"
+      }
+     },
+     {
+      "id": "ef5de469-c9ff-467e-83dd-14bc47d0bf9c",
+      "name": "Hypatos",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "7c95305f-fda0-4f12-96a5-2f4d710d1a9b"
+      }
+     },
+     {
+      "id": "f472d548-bf8e-4b47-8b63-03a31f89946d",
+      "name": "Allsides",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "ce35d86a-5736-4e47-bd1b-149d98dda9d2"
+      }
+     },
+     {
+      "id": "f4f6c0a6-37c6-44ee-85d7-631c66121b3d",
+      "name": "Carbonaide Oy",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        },
+        {
+         "name": "eu-startups.com",
+         "document": "https://www.eu-startups.com/2026/01/finlands-carbonaide-raises-e3-7-million-to-turn-building-materials-into-a-carbon-sink/",
+         "date": "2026-01-28",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "carbonaide.com",
+         "document": "https://carbonaide.com/?p=8006",
+         "date": "2026-01-28",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "dd0eb9f7-3af4-4738-a43f-98b187f8d969"
+      }
+     },
+     {
+      "id": "f526ad93-4e22-4b9b-80fb-5aaf996550bc",
+      "name": "Ecog",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "65fc58d9-3226-4ca9-a468-32b2d4b1567b"
+      }
+     },
+     {
+      "id": "f84d126e-d6b3-4dee-8d9f-9561a171e2e6",
+      "name": "Cure Finance",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "62fd18ee-db55-417d-9747-e65b2b3ea839"
+      }
+     }
+    ],
+    "OPERATES_IN_INDUSTRY": [
+     {
+      "id": "6bd9aa61-75fa-4175-87a7-0d896a0b2386",
+      "name": "REAL_ESTATE",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "INPI",
+         "document": "https://data.inpi.fr/entreprises/914601356",
+         "date": "2024-05-19"
+        }
+       ],
+       "id": "5fd8dfb3-2110-59bf-b754-27433480ed56",
+       "original_label": "6820B"
+      }
+     },
+     {
+      "id": "f48ebf95-99ea-4756-99cc-8a2a2d71f2e2",
+      "name": "VENTURE_CAPITAL",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone",
+         "document": "https://redstone.vc",
+         "date": "2020-01-01"
+        },
+        {
+         "name": "Redstone VC – Info, Investments & Portfolio",
+         "document": "https://vc-mapping.gilion.com/vc-firms/redstone-vc",
+         "date": "2026-04-08"
+        }
+       ],
+       "id": "cd451b9f-1b75-42a6-9bf7-a69c9a3459e7"
+      }
+     }
+    ]
+   },
+   "incoming": {
+    "IS_CEO_OF": [
+     {
+      "id": "52bdce3e-d3af-4c5e-bfdb-61d36f3622c6",
+      "name": "Camille Joseph Baptiste Fernandez",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "INPI",
+         "document": "https://data.inpi.fr/entreprises/914601356",
+         "date": "2024-05-19"
+        }
+       ],
+       "id": "909b360a-896b-5126-9cfe-b387578ba183"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

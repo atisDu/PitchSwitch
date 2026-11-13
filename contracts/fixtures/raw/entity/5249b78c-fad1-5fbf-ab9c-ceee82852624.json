@@ -1,0 +1,198 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/5249b78c-fad1-5fbf-ab9c-ceee82852624",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:42:36+00:00",
+ "response": {
+  "id": "5249b78c-fad1-5fbf-ab9c-ceee82852624",
+  "name": "Seed",
+  "entity_type": "FundingRound",
+  "description": null,
+  "properties": {
+   "name": {
+    "value": "Seed",
+    "sources": [
+     {
+      "name": "eu-startups.com",
+      "document": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+      "date": "2026-09-07",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "round_label": {
+    "value": "SEED",
+    "sources": [
+     {
+      "name": "eu-startups.com",
+      "document": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+      "date": "2026-09-07",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "announcement_date": {
+    "value": "2026-09-07",
+    "sources": [
+     {
+      "name": "eu-startups.com",
+      "document": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+      "date": "2026-09-07",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "transaction_value": {
+    "value": 6000000.0,
+    "sources": [
+     {
+      "name": "eu-startups.com",
+      "document": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+      "date": "2026-09-07",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "transaction_value_units": {
+    "value": "EUR",
+    "sources": [
+     {
+      "name": "eu-startups.com",
+      "document": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+      "date": "2026-09-07",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "instrument": {
+    "value": "EQUITY",
+    "sources": [
+     {
+      "name": "eu-startups.com",
+      "document": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+      "date": "2026-09-07",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "annotations": {
+    "value": [
+     "Round name as stated in the article.",
+     "round_label_stated:Seed"
+    ],
+    "sources": []
+   }
+  },
+  "relationships": {
+   "outgoing": {},
+   "incoming": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+      "name": "Keen Venture Partners",
+      "entity_type": "Company",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "eu-startups.com",
+         "document": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+         "date": "2026-09-07",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "is_lead": true,
+       "id": "409b0b9b-3fc8-5ec9-95de-2d17b1a9b538"
+      }
+     },
+     {
+      "id": "d6e0e87a-7337-4276-9844-47cddb015583",
+      "name": "Cato",
+      "entity_type": "Company",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "eu-startups.com",
+         "document": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+         "date": "2026-09-07",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "436ed690-f5ea-5c98-bca2-8e93c9493fd9"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

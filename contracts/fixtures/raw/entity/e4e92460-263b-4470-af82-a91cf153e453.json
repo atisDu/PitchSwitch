@@ -1,0 +1,335 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/e4e92460-263b-4470-af82-a91cf153e453",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:27:58+00:00",
+ "response": {
+  "id": "e4e92460-263b-4470-af82-a91cf153e453",
+  "name": "Kelluu",
+  "entity_type": "Organization",
+  "description": "A Finnish company based in Reijola, founded in 2026 and publicly listed that year.",
+  "properties": {
+   "name": {
+    "value": "Kelluu",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-05-14"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [],
+    "sources": []
+   },
+   "description": {
+    "value": "A Finnish company based in Reijola, founded in 2026 and publicly listed that year.",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-07-30"
+     }
+    ]
+   },
+   "registered_address": {
+    "value": "Metallimiehentie 4, 80330 Reijola, Finland",
+    "sources": [
+     {
+      "name": "Contact Kelluu | Aerial Monitoring & Digital Twin",
+      "document": "https://kelluu.com/contact",
+      "date": "2016-01-01"
+     },
+     {
+      "name": "www.zoominfo.com",
+      "document": "https://www.zoominfo.com/c/kelluu-oy/480413907",
+      "date": "2026-05-15"
+     }
+    ]
+   },
+   "founding_date": {
+    "value": "2026-04-14",
+    "sources": [
+     {
+      "name": "Technology & Data for Venture Capital, Corp Dev, Investment Banks",
+      "document": "https://tracxn.com/d/geographies/finland/__66GZDgE4c7mtFZeNfi38zIpRev21kTct9s73_4NXzmA",
+      "date": "2026-05-15"
+     }
+    ]
+   },
+   "employee_count": {
+    "value": 50,
+    "sources": [
+     {
+      "name": "pitchbook.com",
+      "document": "https://pitchbook.com/profiles/company/459217-27",
+      "date": "2026-05-15"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "OPERATES_IN_INDUSTRY": [
+     {
+      "id": "bb7caa00-59c3-4587-9aaf-5d9195444829",
+      "name": "AEROSPACE_AND_DEFENSE",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "e4cf5ce2-dc34-4126-b789-bd789c0aa0a3"
+      }
+     },
+     {
+      "id": "be9a1964-bfc6-4aad-bde1-1f94bf10cf4c",
+      "name": "HARDWARE_AND_EQUIPMENT",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "01144cfa-ba04-4895-acac-adc2c6719585"
+      }
+     }
+    ]
+   },
+   "incoming": {
+    "INVESTED_IN": [
+     {
+      "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+      "name": "Keen Venture Partners",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio | Keen",
+         "document": "https://keenventurepartners.com/portfolio",
+         "date": "2025-01-01"
+        }
+       ],
+       "id": "c53d1c36-6cf6-4249-8eeb-9571c7d55473"
+      }
+     },
+     {
+      "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+      "name": "NATO Innovation Fund",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/kelluu-oy",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/459217-27",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "8cd1279b-18b1-49e3-829e-efa72ff22cf6"
+      }
+     },
+     {
+      "id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+      "name": "REDSTONE",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Redstone | Portfolio",
+         "document": "https://redstone.vc/portfolio",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "97acbebe-dc79-469d-aff3-2fad8d17ccbf"
+      }
+     },
+     {
+      "id": "b8f34378-af55-4f7c-a6f3-045904b0bbe0",
+      "name": "DIANA UK ENTERPRISES LTD",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/kelluu-oy",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/459217-27",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "0b5dac77-7ad2-4945-8c39-b9a50fdced34"
+      }
+     },
+     {
+      "id": "bc0ef23d-4a35-41ff-9e99-8acda48d86f6",
+      "name": "Redstone",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "ac2f8113-1d9f-43d0-8dbf-5fbb0730f490"
+      }
+     },
+     {
+      "id": "dc80c8e9-c48a-448f-ac72-ced610b89633",
+      "name": "Gungnir Capital",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/venture-capital/gungnircapital/__v4OVqIO9pCiPKNKkgAudjLpWUjxOn2Ut28JooyEfIOY",
+         "date": "2026-07-02"
+        },
+        {
+         "name": "Kelluu We are proud to announce the first investment for our Defence Tech Fund Gungnir Capital together with NATO Innovation Fund (NIF) ,Keen Venture Partners and Tesi , the Finnish state… | Olof Faxander",
+         "document": "https://www.linkedin.com/posts/olof-faxander-36049b1_kelluu-we-are-proud-to-announce-the-first-activity-7449895122722263040-0I8n",
+         "date": "2026-04-14"
+        }
+       ],
+       "id": "4033e5ff-763f-5b2e-92a9-327c57cb904c",
+       "valid_since": "2026-04-14"
+      }
+     },
+     {
+      "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+      "name": "Tesi",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/kelluu-oy",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/459217-27",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "1c89bdd8-0f48-4ba3-ade0-85c0677a7e24"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

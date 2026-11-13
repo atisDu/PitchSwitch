@@ -1,0 +1,43 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/knowledge/query",
+  "params": null,
+  "json": {
+   "input": "companies.industry=AEROSPACE_AND_DEFENSE.country=Sweden.funding_stage=Pre-Seed OR Seed OR Series A.return(name, description, funding_stage, total_funding).limit=15"
+  }
+ },
+ "recorded_at": "2026-11-13T20:37:16+00:00",
+ "response": {
+  "results": [
+   {
+    "name": "Zparq",
+    "description": "Swedish aerospace/defense startup",
+    "funding_stage": "Series A (Oct 2025)",
+    "total_funding": "~$9.09M"
+   },
+   {
+    "name": "TERASi",
+    "description": "Stockholm-based developer of AirCore millimeter-wave communications and RU1 radio for European armed forces; products cover connectivity, spatial awareness, and electronic warfare for tactical-edge military operations",
+    "funding_stage": "Seed (government-backed)",
+    "total_funding": null
+   },
+   {
+    "name": "Heart Aerospace",
+    "description": "Gothenburg-based developer of electric regional aircraft (ES-30) for sustainable aviation",
+    "funding_stage": "Series A+ (multiple rounds)",
+    "total_funding": "~$107M+"
+   }
+  ],
+  "entities": [
+   {
+    "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+    "name": "Heart Aerospace",
+    "entity_type": "Company",
+    "mentions": [
+     "Heart Aerospace"
+    ]
+   }
+  ]
+ }
+}

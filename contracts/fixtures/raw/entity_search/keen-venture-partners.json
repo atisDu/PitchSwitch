@@ -1,0 +1,76 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/entities",
+  "params": {
+   "name": "Keen Venture Partners",
+   "limit": 10
+  },
+  "json": null
+ },
+ "recorded_at": "2026-11-13T20:31:20+00:00",
+ "response": {
+  "entities": [
+   {
+    "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+    "name": "Keen Venture Partners",
+    "entity_type": "Company",
+    "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models."
+   },
+   {
+    "id": "1f1c2ddd-e036-485c-b960-c4db78b95ef9",
+    "name": "Keen Venture Partners",
+    "entity_type": "Organization",
+    "description": "London‑based venture capital firm investing in technology and defence, founded by Ben Verwaayen."
+   },
+   {
+    "id": "bddf6aa3-d5fd-49e7-a75b-e099cc9f488e",
+    "name": "KEEN VENTURE PARTNERS LLP",
+    "entity_type": "Company",
+    "description": "A British limited liability partnership headquartered in London, founded in 2014."
+   },
+   {
+    "id": "52bdf81f-cd55-53b5-a586-9307602aca33",
+    "name": "Keen Venture Partners Fund Ii Coöperatief U.A.",
+    "entity_type": "Organization",
+    "description": "a Dutch venture capital firm based in Amsterdam that invests in software and fintech companies"
+   },
+   {
+    "id": "4c6cef7d-44bc-4145-ba4a-278f8c0c9f2c",
+    "name": "KEEN VENTURE PARTNERS ADVISER UK LIMITED",
+    "entity_type": "Company",
+    "description": "A UK asset management company headquartered in London, incorporated in 2014."
+   },
+   {
+    "id": "1ff6909a-c5e3-4696-b72d-b80d421f9fe2",
+    "name": "KEEN VENTURE PARTNERS FUND, LP",
+    "entity_type": "Company",
+    "description": "A London‑based company incorporated in 2016."
+   },
+   {
+    "id": "c177c3ae-1fd4-4eef-b2c8-2e3bfd12da59",
+    "name": "NextGen Venture Partners, LLC",
+    "entity_type": "Company",
+    "description": "A venture capital firm that controls several investment LLCs."
+   },
+   {
+    "id": "e593ca02-5e8c-4ff6-9e75-02f87ad1b6ff",
+    "name": "IVP (Institutional Venture Partners)",
+    "entity_type": "Organization",
+    "description": "A Menlo Park‑based venture capital and private equity firm founded in 1980."
+   },
+   {
+    "id": "9b5198b2-a545-4430-bc58-4cb49581ebb4",
+    "name": "NEXUS VENTURE PARTNERS",
+    "entity_type": "Company",
+    "description": "A venture capital firm headquartered in Mumbai, India, founded in 2017."
+   },
+   {
+    "id": "2528c86f-40d7-4b98-8da6-e274a417b238",
+    "name": "AVP (AXA Venture Partners)",
+    "entity_type": "Organization",
+    "description": "A venture capital firm operating as the corporate investment arm of AXA."
+   }
+  ]
+ }
+}

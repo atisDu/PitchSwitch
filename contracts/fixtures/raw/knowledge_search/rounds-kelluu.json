@@ -1,0 +1,402 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/knowledge/search",
+  "params": null,
+  "json": {
+   "input": "Who invested in Kelluu and who led each of its funding rounds?"
+  }
+ },
+ "recorded_at": "2026-11-13T20:32:47+00:00",
+ "response": {
+  "content": "## Kelluu — Investors and Funding Rounds\n\n**Kelluu** (Kelluu Oy) is a Finnish deeptech company based in Joensuu, Finland, operating autonomous hydrogen-powered airships for persistent aerial intelligence. It has raised approximately €15.3 million in total funding and is currently at the **Series A** stage.\n\n### Funding Round History\n\n| Round | Date | Amount | Lead Investor | Other Investors |\n|---|---|---|---|---|\n| **Angel** | Nov 2019 | ~€350k | — | Jouni Lintu, Kim Väisänen, StartUp Fund Joensuu, Jiri Jormakka |\n| **Angel** | May 2021 | ~€460k | — | Jouni Lintu, Kim Väisänen, North Karelia Growth Fund, StartUp Fund Joensuu, Jiri Jormakka |\n| **Seed** | Jun 2022 | ~€1.1M | — | Redstone, Jouni Lintu, Kim Väisänen, North Karelia Growth Fund |\n| **Seed** | Jun 2023 | — | — | Redstone, Kim Väisänen, North Karelia Growth Fund, Janne Hietala |\n| **DIANA Support Program** | Jan 2025 | ~€300k | — | Defence Innovation Accelerator for the North Atlantic (DIANA) |\n| **Series A** | Apr 2026 | €15M | **NATO Innovation Fund** | Keen Venture Partners, Gungnir Capital, Tesi |\n\n### Key Investors\n\n- **NATO Innovation Fund** — led the €15M Series A (April 2026), marking its first investment in a Finnish company\n- **Keen Venture Partners** — co-investor in the Series A\n- **Gungnir Capital** — co-investor in the Series A\n- **Tesi** (Finnish Industry Investment) — co-investor in the Series A\n- **Redstone** (via the North Karelia Fund) — participated in the Seed rounds (2022–2023)\n- **StartUp Fund Joensuu** — early angel-stage investor\n- **North Karelia Growth Fund** — participated from the angel stage onward\n- **Business Finland** — provided debt financing\n- **DIANA (NATO)** — support program funding\n- Founders **Jouni Lintu** and **Jiri Jormakka**, along with **Kim Väisänen** and CEO **Janne Hietala**, also invested personally in earlier rounds\n\nThe only round with a clearly identified lead investor is the **Series A (April 2026)**, which was led by the **NATO Innovation Fund**. The earlier angel and seed rounds were smaller and involved a mix of angel investors, regional funds, and Redstone's North Karelia Fund, without a publicly disclosed institutional lead.\n",
+  "explainability": [
+   {
+    "content": "The company Kelluu Oy is recorded as having total funding of €15.3 million and being at the Series A stage, confirming that its most recent round is a Series A.",
+    "references": [
+     "0f0b834f-d0dc-4ebf-bd2e-b8e2d3159716"
+    ]
+   },
+   {
+    "content": "The Series A round in April 2026 raised €15 million and was led by the NATO Innovation Fund, with co‑investors Keen Venture Partners, Gungnir Capital and Tesi.",
+    "references": [
+     "15b8c27d-3ef5-44e0-90db-7cfed5698685",
+     "acb039df-359e-4107-b0c3-15a1ef2d0734"
+    ]
+   },
+   {
+    "content": "Earlier funding rounds (angel and seed) list individual investors such as Jouni Lintu, Kim Väisänen, StartUp Fund Joensuu, Jiri Jormakka, North Karelia Growth Fund and Redstone, showing that these participants invested in the 2019, 2021, 2022 and 2023 rounds.",
+    "references": [
+     "c39be57c-bf51-4af5-9dae-0a7a5e43d329"
+    ]
+   },
+   {
+    "content": "No lead investor is identified for the angel and seed rounds, indicating that those rounds were composed of a mix of angel investors and regional funds without a single institutional lead.",
+    "references": [
+     "c39be57c-bf51-4af5-9dae-0a7a5e43d329"
+    ]
+   },
+   {
+    "content": "Additional sources confirm that the NATO Innovation Fund’s involvement in the Series A was its first investment in a Finnish company, reinforcing its role as the lead investor for that round.",
+    "references": [
+     "3ca1228e-0f0d-433b-b2df-a193969ae5c9"
+    ]
+   }
+  ],
+  "context": [
+   {
+    "id": "0f0b834f-d0dc-4ebf-bd2e-b8e2d3159716",
+    "content": "Entity: Kelluu Oy (type: Company, ID: 78d7490a-dd04-5119-a7f1-e940b861219b). Properties: name = Kelluu Oy; total_funding = 15301500.0; total_funding_units = EUR; funding_stage = SERIES_A. Outgoing relationship types PARTICIPATES_IN_FUNDING_ROUND: Grant, Series A. Incoming relationship types INVESTED_IN: Keen Venture Partners, NATO Innovation Fund, Gungnir Capital, Tesi.",
+    "origins": [
+     {
+      "source": {
+       "name": "cordis.europa.eu",
+       "url": "https://cordis.europa.eu/"
+      },
+      "document": {
+       "name": "cordis.europa.eu",
+       "url": "https://cordis.europa.eu/project/id/101157488"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "linkedin.com",
+       "url": "https://www.linkedin.com/"
+      },
+      "document": {
+       "name": "linkedin.com",
+       "url": "https://www.linkedin.com/company/kelluuairships/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "nif.fund",
+       "url": "https://www.nif.fund/"
+      },
+      "document": {
+       "name": "nif.fund",
+       "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "kelluu.com",
+       "url": "https://kelluu.com/"
+      },
+      "document": {
+       "name": "kelluu.com",
+       "url": "https://kelluu.com/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "kelluu.com",
+       "url": "https://kelluu.com/"
+      },
+      "document": {
+       "name": "kelluu.com",
+       "url": "https://kelluu.com/news"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/"
+      },
+      "document": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "15b8c27d-3ef5-44e0-90db-7cfed5698685",
+    "content": "Funding rounds\n\n## Kelluu Funding Rounds Timeline\n\n1 rounds · $16M raised · since 2018\n\n| Round | Date | Amount | Valuation | Lead investor | Co-investors |\n ---  ---  --- |\n| Series A | April 2026 | $16M | — | NATO Innovation Fund | Keen Venture Partners, Gungnir Capital, Tesi |\n\nInvestor network\n\n## Investors in Kelluu\n\n4 institutional investors across 1 rounds\n\n### Lead investors\n\nNATO Innovation Fund\n\nLead ·\n\n### Co-investors\n\nKeen Venture PartnersGungnir CapitalTesi\n\nNews & signals [...] News & signals\n\n## Recent news about Kelluu\n\n FundingKelluu Raises €15M for Autonomous Airship SurveillanceApril 2026\n\nFrequently asked\n\n## Questions about Kelluu\n\nHow much has Kelluu raised?\n\nKelluu has raised $16M across 1 funding round since 2018.\n\nWho are the investors of Kelluu?\n\nKelluu's investors includeNATO Innovation Fund, Keen Venture Partners, Gungnir Capital, Tesi.\n\nWhen was Kelluu's last funding round? [...] ## About Kelluu\n\nKelluu is a Aerospace startup based in Joensuu, Finland that has raised $16M in venture capital across 1 funding round since 2018. The company reached Series A stage in April 2026 with a $16M round led by NATO Innovation Fund. Kelluu's investor base includes 4 institutional funds, with NATO Innovation Fund leading the most recent equity round.",
+    "origins": [
+     {
+      "source": {
+       "name": "InforCapital: Market Intelligence for Private Equity & Venture Capital",
+       "url": "https://inforcapital.com/companies/kelluu"
+      },
+      "document": {
+       "name": "Kelluu - Aerospace Startup, $16M Raised | InforCapital",
+       "url": "https://inforcapital.com/companies/kelluu"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "c39be57c-bf51-4af5-9dae-0a7a5e43d329",
+    "content": "Hydrogen autonomous airships for persistent aerial intelligence. | Nov 2019 |  Jouni Lintu  Kim Väisänen  Fill good  StartUp Fund Joensuu  Jiri Jormakka | €350k | Angel |. | May 2021 |  Jouni Lintu  Kim Väisänen  North Karelia Growth Fund  Fill good  StartUp Fund Joensuu  Jiri Jormakka | €460k | Angel |. | Jun 2022 |  Redstone  Jouni Lintu  Kim Väisänen  North Karelia Growth Fund  Fill good | €1.1m | Seed |. | Jun 2023 |  Redstone  Kim Väisänen  North Karelia Growth Fund  Fill good  Janne [...] 0000 | 0000 | 0000 |. | Profit | 0000 | 0000 | 0000 | 0000 | 0000 | 0000 |. | EV | 0000 | 0000 | 0000 | 0000 | 0000 | 0000 |. Kelluu is a Finnish deeptech company that designs, manufactures and operates hydrogen-powered autonomous airships for persistent aerial intelligence, surveillance and reconnaissance (ISR). A dual-use company and NATO DIANA graduate, Kelluu is also developing Kelluu AI Labs geospatial foundation models. In April 2026 Kelluu raised a €15 million Series A led by the NATO [...] A led by the NATO Innovation Fund (first Finnish investment), with Keen Venture Partners, Gungnir and Tesi participating. This is a premium feature. Unlock Premium access to view key people. Unlock Premium access to view detailed headcount data, with breakdowns by department and location. Unlock Premium access to view detailed information about web visits and app downloads. Tech stack Learn more about the technologies and tools that this company uses.",
+    "origins": [
+     {
+      "source": {
+       "name": "app.dealroom.co",
+       "url": "https://app.dealroom.co/companies/kelluu"
+      },
+      "document": {
+       "name": "Kelluu company information, funding & investors",
+       "url": "https://app.dealroom.co/companies/kelluu"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "068644e6-5882-4374-b95d-80d9b38eac87",
+    "content": "0000 | 0000 | 0000 |. | Profit | 0000 | 0000 | 0000 | 0000 | 0000 | 0000 |. | EV | 0000 | 0000 | 0000 | 0000 | 0000 | 0000 |. Kelluu is a Finnish deeptech company that designs, manufactures and operates hydrogen-powered autonomous airships for persistent aerial intelligence, surveillance and reconnaissance (ISR). A dual-use company and NATO DIANA graduate, Kelluu is also developing Kelluu AI Labs geospatial foundation models. In April 2026 Kelluu raised a €15 million Series A led by the NATO [...] Fill good  Janne Hietala | €1.4m | Seed |. | Jan 2025 |  Defence Innovation Accelerator for the North Atlantic (DIANA) | $100k | Support Program |. | Sep 2025 |  Defence Innovation Accelerator for the North Atlantic (DIANA) | €300k | Support Program |. | Apr 2026 |  Keen Venture Partners  TeSi  NATO Innovation Fund - NIF  Gungnir VC | €15.0m | Series A |. Get premium to view all results. | Revenues | 0000 | 0000 | 0000 | 0000 | 0000 | 0000 |. | EBITDA | 0000 | 0000 | 0000 | 0000 | 0000 | 0000 [...] Kelluu company information, funding & investors",
+    "origins": [
+     {
+      "source": {
+       "name": "app.dealroom.co",
+       "url": "https://app.dealroom.co/companies/kelluu"
+      },
+      "document": {
+       "name": "Kelluu company information, funding & investors",
+       "url": "https://app.dealroom.co/companies/kelluu"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "acb039df-359e-4107-b0c3-15a1ef2d0734",
+    "content": "Kelluu has secured €15 million in a Series A funding round led by the NATO Innovation Fund, marking its first investment in Finland. The funding will be used for technology optimization and fleet expansion, with participation from Keen Venture Partners and Gungnir Capital.\n\n#### What it does [...] #### Trend impact\n\nKelluu is poised to disrupt the traditional surveillance market dominated by manned aircraft and satellite systems by offering a more flexible and cost-effective solution. The operational proof of its airships in hostile environments, combined with NATO's backing, positions Kelluu as a critical player in modern defense strategies, particularly in the face of hybrid warfare threats.\n\nInvestors NATO Innovation Fund Keen Venture Partners Gungnir Capital [...] Kelluu, a Finnish deeptech startup, has raised €15 million in a Series A funding round led by the NATO Innovation Fund, marking its first investment in Finland. The company operates autonomous hydrogen-powered airships for aerial…\n\nInvestors  ·  NATO Innovation Fund, Keen Venture Partners, Gungnir Capital\n\nRead more ↗NATO-backed Kelluu secures €15M to tackle hybrid warfare threatsTech Funding News\n\n$16M 14 Apr 2026\n\nMarket map\n\n## The Defense & Security landscape",
+    "origins": [
+     {
+      "source": {
+       "name": "MapCo AI Deal Intelligence",
+       "url": "https://www.mapco.ai/company/kelluu"
+      },
+      "document": {
+       "name": "Kelluu raised $16.2M — Defense & Security funding & jobs | MapCo",
+       "url": "https://www.mapco.ai/company/kelluu"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "3ca1228e-0f0d-433b-b2df-a193969ae5c9",
+    "content": "to expand its autonomous airship platform and scale international operations. The round was led by the NATO Innovation Fund, marking its first investment in a Finnish company. The post Bridging the Gap: Kelluu’s Airships Sit Between Drones and Satellites appeared first on DRONELIFE. ]]>  0 109470. [...] Kelluu funding Archives - DRONELIFE  Stay up to date on all the latest Drone News Tue, 14 Apr 2026 15:12:31 +0000 en-US  hourly   1   v=6.9.4   Kelluu funding Archives - DRONELIFE  32 32 66487181  Bridging the Gap: Kelluu’s Airships Sit Between Drones and Satellites   Tue, 14 Apr 2026 15:12:31 +0000  p=109470 Funding led by NATO Innovation Fund supports growth in defense, AI, and dual-use applications Kelluu, a Finnish deep tech company, has raised €15 million in Series A funding to expand its [...] Kelluu funding Archives - DRONELIFE",
+    "origins": [
+     {
+      "source": {
+       "name": "dronelife.com",
+       "url": "https://dronelife.com/tag/kelluu-funding/feed"
+      },
+      "document": {
+       "name": "Kelluu funding Archives - DRONELIFE",
+       "url": "https://dronelife.com/tag/kelluu-funding/feed"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "b44e1bb3-36fb-4b01-b75d-e376a1e9accf",
+    "content": "| Investor Name | Investor Type | Holding | Investor Since | Participating Rounds |\n ---  --- \n| Gungnir Capital | Venture Capital | Minority |  |  |\n| Keen Venture Partners | Venture Capital | Minority |  |  |\n| NATO Innovation Fund | Venture Capital | Minority |  |  |\n| Tesi | Limited Partner | Minority |  |  |\n| Diana (UK) | Accelerator/Incubator | Minority |  |  |\n\nYou’re viewing 5 of 13 investors. Get the full list »\n\nReady to get started?\n\nRequest a free trial\n\n## Kelluu FAQs [...] | 7. Later Stage VC (Series A) | 10-Oct-2023 |  |  |  | Cancelled | Generating Revenue |\n| 6. Seed Round | 12-Jun-2023 |  |  |  | Completed | Generating Revenue |\n| 5. Accelerator/Incubator |  |  |  |  | Completed | Generating Revenue |\n| 4. Seed Round | 17-Jun-2022 |  |  |  | Completed | Generating Revenue |\n| 3. Seed Round | 24-Jun-2021 | $491K | $1.86M |  | Completed | Generating Revenue |\n| 2. Seed Round | 27-Nov-2019 | $1.22M | $1.36M |  | Completed | Generating Revenue | [...] | Ordinary | 75,900 |  |  | $5.07 | $5.07 | 1x | $5.07 | 8.64% |",
+    "origins": [
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/459217-27"
+      },
+      "document": {
+       "name": "Kelluu 2026 Company Profile: Valuation, Funding & Investors | PitchBook",
+       "url": "https://pitchbook.com/profiles/company/459217-27"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "edd5a221-6e28-43c1-b845-ce36559fbc15",
+    "content": "When was Kelluu's last funding round?\n\nKelluu's most recent funding round was Series A on April 14, 2026.\n\nWho are the main investors in Kelluu?\n\nKey investors in Kelluu include NATO Innovation Fund, Start-up Fund Joensuu.\n\nWill Kelluu IPO soon?\n\nNo public IPO plans have been announced for Kelluu.\n\nHow can I track Kelluu secondary market activity?\n\nCaplight tracks bids, offers, and trades in Kelluu's shares on secondary markets.\n\n## Firmographic Details\n\nHeadquartersJoensuu\n\nEmployee Range58 [...] Caplight Logo\n\nLog inBook a demo\n\n  \n  \n  \n  \n  \n  \n  \n\nKelluu\n\n# Kelluu\n\nPrivate\n\nJoensuuFrontier & Industrial Tech\n\nLast Round\n\nSeries A\n\nApr 14, 2026\n\nTotal Funding Raised\n\n$18.9M\n\nMomentum\n\nTop 5%\n\nof companies Caplight tracks\n\n## Company Overview\n\nKelluu operates in Frontier & Industrial Tech and is based in Joensuu. Its latest recorded funding round was a Series A round in April 2026. [...] Kelluu investors\n\n| Investor | Rounds |\n| ELY Centres (Centres for Economic Development, Transport and the Environment) | Grant |\n| Tesi | Series A |\n| Business Finland | Debt, Seed |\n| European Regional Development Fund | Grant |\n| Joen Infra Oy | Pre Seed, Seed |\n| NATO Innovation Fund | Series A |\n| Start-up Fund Joensuu | Seed, Pre Seed |\n\nBook a demo to see all 10 investors\n\nFor institutional investors. Book with your work email.\n\n## Market signals",
+    "origins": [
+     {
+      "source": {
+       "name": "The Private Market at your Fingertips",
+       "url": "https://www.caplight.com/company/kelluu"
+      },
+      "document": {
+       "name": "Kelluu Valuation & Funding History | Caplight",
+       "url": "https://www.caplight.com/company/kelluu"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "8f35d247-7ab4-41f5-bb60-555d8b10bc75",
+    "content": "Kelluu is part of the North Karelia Fund managed by Redstone. blue economyEnergy & InfrastructureHealthINDUSTRIALFintechDEEP TECHSocial ImpactVenture Debt. This is some text inside of a div block. GARS (Global Ag Risk Solutions). CareersNEWSRESEARCHImprintSUSTAINABILITYSocial Impact Fund Mifid InformationPRIVACY. [...] # Strategies# Portfolio# Sofia# Our Way# Our People# Contact# Invest. # Energy & Infrastructure. # Blue Economy. Kelluu Airships, based in Joensuu, Finland, manufactures small, autopiloted airships that can remain airborne almost permanently. With these airships, Kelluu Airships provides a continuous data feed and photo service to monitor power lines and forests with a fraction of the carbon footprint compared to current monitoring methods such as helicopters and ground crews. Kelluu is part of [...] Redstone | Kelluu Airships",
+    "origins": [
+     {
+      "source": {
+       "name": "Redstone",
+       "url": "http://www.redstone.vc/portfolio/kelluu-airships"
+      },
+      "document": {
+       "name": "Redstone | Kelluu Airships",
+       "url": "http://www.redstone.vc/portfolio/kelluu-airships"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "bad475c4-a8d1-4a67-aec7-059923b1f29d",
+    "content": "# Kelluu. Kelluu develops autonomous aerial monitoring systems to collect and analyze high-resolution environmental and infrastructure data. Kelluu has raised $17.7M in total funding. The most recent round was Series A. The last funding was announced in April 2026. Kelluu's investors include Redstone.VC, Tesi, Keen Venture Partners, NATO Innovation Fund, NATO DIANA. Kelluu is headquartered in Joensuu, Finland. Kelluu is at the Series A stage. Free to use in articles, research, and reference [...] and reference works. Stable URL — will not change. Data on this page last updated April 14, 2026. Profile data sourced and verified per the VCbacked methodology · Last funding round dated April 14, 2026. ### VCbacked. #### Directory. #### Solutions. #### Research. #### Databases. [...] Title: Kelluu Funding: $17.7M Series A (Apr 2026) & Investors | VCBacked",
+    "origins": [
+     {
+      "source": {
+       "name": "VCBacked - Find venture funded startups for your business",
+       "url": "https://www.vcbacked.co/company/kelluu"
+      },
+      "document": {
+       "name": "Kelluu Funding: $17.7M Series A (Apr 2026) & Investors | VCBacked",
+       "url": "https://www.vcbacked.co/company/kelluu"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   }
+  ],
+  "entities": [
+   {
+    "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+    "name": "Kelluu Oy",
+    "entity_type": "Company",
+    "mentions": [
+     "Kelluu"
+    ]
+   },
+   {
+    "id": "60975e0d-98aa-5880-8ed5-222217b9e2c9",
+    "name": "Joensuu",
+    "entity_type": "Municipality",
+    "mentions": [
+     "Joensuu"
+    ]
+   },
+   {
+    "id": "680000b7-a490-418f-8098-9b1757db2e58",
+    "name": "Finland",
+    "entity_type": "Country",
+    "mentions": [
+     "Finland"
+    ]
+   },
+   {
+    "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+    "name": "NATO Innovation Fund",
+    "entity_type": "Organization",
+    "mentions": [
+     "NATO Innovation Fund"
+    ]
+   },
+   {
+    "id": "1f1c2ddd-e036-485c-b960-c4db78b95ef9",
+    "name": "Keen Venture Partners",
+    "entity_type": "Organization",
+    "mentions": [
+     "Keen Venture Partners"
+    ]
+   },
+   {
+    "id": "dc80c8e9-c48a-448f-ac72-ced610b89633",
+    "name": "Gungnir Capital",
+    "entity_type": "Organization",
+    "mentions": [
+     "Gungnir Capital"
+    ]
+   },
+   {
+    "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+    "name": "Tesi",
+    "entity_type": "Organization",
+    "mentions": [
+     "Tesi"
+    ]
+   },
+   {
+    "id": "bc0ef23d-4a35-41ff-9e99-8acda48d86f6",
+    "name": "Redstone",
+    "entity_type": "Organization",
+    "mentions": [
+     "Redstone"
+    ]
+   },
+   {
+    "id": "3b0499bc-3c7e-4d50-aee5-42de34a5f8d0",
+    "name": "Business Finland Oy",
+    "entity_type": "Company",
+    "mentions": [
+     "Business Finland"
+    ]
+   },
+   {
+    "id": "8d154155-4db4-4724-8896-c5623886836a",
+    "name": "NATO DIANA",
+    "entity_type": "Organization",
+    "mentions": [
+     "DIANA (NATO)"
+    ]
+   },
+   {
+    "id": "014ab9e4-cec1-5704-9f27-0b60a9a20e1c",
+    "name": "Jouni Lintu",
+    "entity_type": "Person",
+    "mentions": [
+     "Jouni Lintu"
+    ]
+   },
+   {
+    "id": "7993278e-4575-5987-be2e-c269dd2b9e2a",
+    "name": "Janne Hietala",
+    "entity_type": "Person",
+    "mentions": [
+     "Janne Hietala"
+    ]
+   }
+  ]
+ }
+}

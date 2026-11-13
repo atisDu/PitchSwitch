@@ -1,0 +1,319 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/3afdc63c-b992-4b25-b69d-807ab346352d",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:28:18+00:00",
+ "response": {
+  "id": "3afdc63c-b992-4b25-b69d-807ab346352d",
+  "name": "Stendr",
+  "entity_type": "Company",
+  "description": "Norwegian defence technology company developing AI-native multi-sensor platform for drone defence.",
+  "properties": {
+   "name": {
+    "value": "Stendr",
+    "sources": [
+     {
+      "name": "www.finsmes.com",
+      "document": "https://www.finsmes.com/2026/04/stendr-raises-5-4m-in-pre-seed-funding.html",
+      "date": "2026-08-24"
+     },
+     {
+      "name": "Stendr raises $5.4M in oversubscribed pre-seed round to build the Nordics'next defence prime",
+      "document": "https://stendr.com/news/stendr-pre-seed-announcement",
+      "date": "2026-04-15"
+     },
+     {
+      "name": "pitchbook.com",
+      "document": "https://pitchbook.com/profiles/investor/57005-74",
+      "date": "2026-08-24"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [],
+    "sources": []
+   },
+   "description": {
+    "value": "Norwegian defence technology company developing AI-native multi-sensor platform for drone defence.",
+    "sources": [
+     {
+      "name": "www.finsmes.com",
+      "document": "https://www.finsmes.com/2026/04/stendr-raises-5-4m-in-pre-seed-funding.html",
+      "date": "2026-08-24"
+     },
+     {
+      "name": "Stendr raises $5.4M in oversubscribed pre-seed round to build the Nordics'next defence prime",
+      "document": "https://stendr.com/news/stendr-pre-seed-announcement",
+      "date": "2026-04-15"
+     },
+     {
+      "name": "pitchbook.com",
+      "document": "https://pitchbook.com/profiles/investor/57005-74",
+      "date": "2026-08-24"
+     }
+    ]
+   },
+   "website": {
+    "value": "https://stendr.com",
+    "sources": [
+     {
+      "name": "www.finsmes.com",
+      "document": "https://www.finsmes.com/2026/04/stendr-raises-5-4m-in-pre-seed-funding.html",
+      "date": "2026-08-24"
+     },
+     {
+      "name": "Stendr raises $5.4M in oversubscribed pre-seed round to build the Nordics'next defence prime",
+      "document": "https://stendr.com/news/stendr-pre-seed-announcement",
+      "date": "2026-04-15"
+     },
+     {
+      "name": "pitchbook.com",
+      "document": "https://pitchbook.com/profiles/investor/57005-74",
+      "date": "2026-08-24"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "OPERATES_IN_INDUSTRY": [
+     {
+      "id": "8ecf5e57-a149-438c-9eb4-089809bade56",
+      "name": "SOFTWARE_AND_SERVICES",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "www.finsmes.com",
+         "document": "https://www.finsmes.com/2026/04/stendr-raises-5-4m-in-pre-seed-funding.html",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "Stendr raises $5.4M in oversubscribed pre-seed round to build the Nordics'next defence prime",
+         "document": "https://stendr.com/news/stendr-pre-seed-announcement",
+         "date": "2026-04-15"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/57005-74",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "e86059a7-b40a-4138-9681-c00a8729e4ae"
+      }
+     },
+     {
+      "id": "bb7caa00-59c3-4587-9aaf-5d9195444829",
+      "name": "AEROSPACE_AND_DEFENSE",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "www.finsmes.com",
+         "document": "https://www.finsmes.com/2026/04/stendr-raises-5-4m-in-pre-seed-funding.html",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "Stendr raises $5.4M in oversubscribed pre-seed round to build the Nordics'next defence prime",
+         "document": "https://stendr.com/news/stendr-pre-seed-announcement",
+         "date": "2026-04-15"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/57005-74",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "cdc276cc-5887-412a-9c31-b7059f39c055"
+      }
+     },
+     {
+      "id": "be9a1964-bfc6-4aad-bde1-1f94bf10cf4c",
+      "name": "HARDWARE_AND_EQUIPMENT",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "www.finsmes.com",
+         "document": "https://www.finsmes.com/2026/04/stendr-raises-5-4m-in-pre-seed-funding.html",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "Stendr raises $5.4M in oversubscribed pre-seed round to build the Nordics'next defence prime",
+         "document": "https://stendr.com/news/stendr-pre-seed-announcement",
+         "date": "2026-04-15"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/57005-74",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "e560d291-c1d5-4050-863c-f7cde076dfab"
+      }
+     }
+    ]
+   },
+   "incoming": {
+    "INVESTED_IN": [
+     {
+      "id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+      "name": "Rainfall Ventures",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/stendr/__7VSvHoLx3hjMEv6yAnnHfm3bFhEeOWBkgqe3NhG5Jbc",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/1376632-18",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/skyfall-ventures/signals_and_news/timeline",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/rainfall-ventures/investor_summary/overview_timeline",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/57005-74",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "e351b8cc-1868-4a8d-ac85-edd4e75b49ec"
+      }
+     },
+     {
+      "id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+      "name": "STARTUPLAB FOUNDERS AS",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "www.finsmes.com",
+         "document": "https://www.finsmes.com/2026/04/stendr-raises-5-4m-in-pre-seed-funding.html",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "Stendr raises $5.4M in oversubscribed pre-seed round to build the Nordics'next defence prime",
+         "document": "https://stendr.com/news/stendr-pre-seed-announcement",
+         "date": "2026-04-15"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/57005-74",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "2267efc4-3860-49ec-b329-78e169dd32ad"
+      }
+     },
+     {
+      "id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+      "name": "Skyfall Ventures",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/stendr/__7VSvHoLx3hjMEv6yAnnHfm3bFhEeOWBkgqe3NhG5Jbc",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/1376632-18",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/skyfall-ventures/signals_and_news/timeline",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/rainfall-ventures/investor_summary/overview_timeline",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/57005-74",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "6d280cab-6a16-4d15-b304-b5b846fc8ac7"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

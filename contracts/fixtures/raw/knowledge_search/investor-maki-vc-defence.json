@@ -1,0 +1,511 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/knowledge/search",
+  "params": null,
+  "json": {
+   "input": "Which defence technology companies has Maki.vc invested in, and which rounds did it lead?"
+  }
+ },
+ "recorded_at": "2026-11-13T20:35:45+00:00",
+ "response": {
+  "content": "## Maki.vc — Defence & Security Technology Investments\n\nMaki.vc, a Helsinki-based deep-tech venture capital firm, has invested in several companies with defence and security technology relevance:\n\n### 1. Metaktik\n- **What they do:** Finnish deep-tech spin-off from Aalto University's Space Technology Laboratory, developing ultra-lightweight, flexible metasurface antennas for drones, satellites, and ground vehicles. Applications include communications, radar, and stealth (reduced radar visibility) for defence, aerospace, maritime, and telecom sectors.\n- **Round:** €1 million **pre-seed** (March 2026)\n- **Maki.vc's role:** **Led** the round\n\n### 2. Aavuus\n- **What they do:** Finnish spin-out from the Finnish Geospatial Research Institute, building a global network of ground-based laser tracking stations for space debris detection and tracking. Serves satellite operators, space launch providers, and has growing relevance to defence and national security (the company appointed a former U.S. Army aerospace defence officer to its leadership team).\n- **Round:** Pre-seed (June 2026, undisclosed amount)\n- **Maki.vc's role:** **Led** the round\n\n### 3. Lightsonic\n- **What they do:** UK–Norwegian deep-tech company developing an AI-powered software platform for distributed fibre optic sensing. Its technology turns existing fibre optic networks into real-time sensor grids for monitoring critical infrastructure (water, gas, telecom, energy, subsea assets), with dual-use applications spanning both defence-aligned infrastructure programmes and civilian utilities.\n- **Round:** €3.3 million **seed** (May 2025)\n- **Maki.vc's role:** **Led** the round\n\n### Summary\n\nMaki.vc **led all three rounds** — the Metaktik pre-seed, the Aavuus pre-seed, and the Lightsonic seed. All three companies operate at the intersection of deep tech and defence/security, consistent with Maki.vc's focus on early-stage deep-tech ventures in the Nordics and Northern Europe.\n",
+  "explainability": [
+   {
+    "content": "Maki.vc is listed as having an INVESTED_IN relationship with Metaktik, Aavuus, and Lightsonic, confirming it has invested in these three defence‑technology companies.",
+    "references": [
+     "5c1f9fc8-6abe-40b4-bf1a-ae029d515544"
+    ]
+   },
+   {
+    "content": "Metaktik raised a €1 million pre‑seed round in March 2026, and the round was led by Maki.vc, establishing that Maki.vc led this investment.",
+    "references": [
+     "4b299991-25a5-4f1c-8a99-841c582dfc02",
+     "d86eeb73-1ed6-4657-9590-338887323414"
+    ]
+   },
+   {
+    "content": "Aavuus closed a pre‑seed funding round on 9 June 2026 with Maki.vc as the lead investor, showing Maki.vc led this defence‑related investment.",
+    "references": [
+     "d4f60b58-5072-4735-9d64-9b80fb1db1ee",
+     "553143cd-4b7a-4195-88e3-b7149f688dac"
+    ]
+   },
+   {
+    "content": "Lightsonic raised a €3.3 million seed round in May 2025, and the round was led by Maki.vc, confirming Maki.vc’s lead role in this defence‑technology investment.",
+    "references": [
+     "49e53029-d0d4-4406-8af2-1e131d211fc3",
+     "fef21398-0b29-4c67-9399-2e89a26044b7"
+    ]
+   }
+  ],
+  "context": [
+   {
+    "id": "5c1f9fc8-6abe-40b4-bf1a-ae029d515544",
+    "content": "Entity: Maki.vc (type: Company, ID: 415bc278-6ed1-4973-a684-07a8b8c5d855). Outgoing relationship types INVESTED_IN: IQM, Metaktik, Ethira, IQM Quantum Computers Oyj, AI Agents, Quantum Computing, Mixed Reality, Eyewear Company, Auto Retail AI, Sono, FinanceKey Oy, KYC Intelligence, Aavuus, Egg White Company.",
+    "origins": [
+     {
+      "source": {
+       "name": "aalto.fi",
+       "url": "https://www.aalto.fi/"
+      },
+      "document": {
+       "name": "aalto.fi",
+       "url": "https://www.aalto.fi/en/news/aalto-quantum-computing-spinout-secures-eu1145m-in-funding"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/"
+      },
+      "document": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Portfolio - Maki.vc",
+       "url": "https://maki.vc/"
+      },
+      "document": {
+       "name": "Portfolio - Maki.vc",
+       "url": "https://maki.vc/portfolio"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "callsono.com",
+       "url": "https://callsono.com/"
+      },
+      "document": {
+       "name": "callsono.com",
+       "url": "https://callsono.com/funding/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "siliconcanals.com",
+       "url": "https://siliconcanals.com/"
+      },
+      "document": {
+       "name": "siliconcanals.com",
+       "url": "https://siliconcanals.com/helsinkis-financekey-secures-e3m/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "aavuus.com",
+       "url": "https://www.aavuus.com/"
+      },
+      "document": {
+       "name": "aavuus.com",
+       "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "cbinsights.com",
+       "url": "https://www.cbinsights.com/"
+      },
+      "document": {
+       "name": "cbinsights.com",
+       "url": "https://www.cbinsights.com/company/aavuus/financials"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "ethira.dev",
+       "url": "https://www.ethira.dev/"
+      },
+      "document": {
+       "name": "ethira.dev",
+       "url": "https://www.ethira.dev/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "allabolag.se",
+       "url": "https://www.allabolag.se/"
+      },
+      "document": {
+       "name": "allabolag.se",
+       "url": "https://www.allabolag.se/befattningshavare/ethira-ab/stockholm/internet-konsulter-operatc3b6rer/2KJAXYWI5YFHL"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "metaktik.com",
+       "url": "https://metaktik.com/"
+      },
+      "document": {
+       "name": "metaktik.com",
+       "url": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/"
+      },
+      "document": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2019/07/09/finnish-hardware-startup-raises-e11-million-in-seed-funding-to-take-quantum-computing-to-the-next-level/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "sttinfo.fi",
+       "url": "https://www.sttinfo.fi/"
+      },
+      "document": {
+       "name": "sttinfo.fi",
+       "url": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "callsono.com",
+       "url": "https://callsono.com/"
+      },
+      "document": {
+       "name": "callsono.com",
+       "url": "https://callsono.com/about/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "4b299991-25a5-4f1c-8a99-841c582dfc02",
+    "content": "# Finland’s Metaktik raises €1 million pre-seed to bring metasurface antennas to market. Fresh out of Aalto University, Metaktik has secured €1 million in pre-seed funding, with backing from early-stage investor Maki.vc, to commercialize its metasurface antenna technology. The Espoo-based company is developing ultra-lightweight, flexible antennas that can be seamlessly integrated into drones, satellites, and ground systems—enhancing communication, radar capability, and stealth by conforming to [...] by conforming to the shape of the platform. Metaktik is targeting a fast-expanding multi-billion-euro market driven by the surge in UAVs and satellite deployments. The fresh capital will be used to transition from lab to market—scaling industrial production, accelerating product development, and securing strategic partnerships across defense and telecom as Europe looks to bolster its sovereign tech stack in increasingly contested environments.. Metaktik’s journey began at Aalto University’s [...] and capable antenna solutions. The company estimates the applicable market to be worth over six billion euros. Metaktik’s innovation is highly versatile as it can be used equally well as a communication or radar antenna in drones, ground vehicles, and satellites. Because the new metasurface material conforms to the shape of the platform, it is well-suited for objects whose radar visibility needs to be minimized. The metasurface technology, developed out of research at Aalto University, is",
+    "origins": [
+     {
+      "source": {
+       "name": "arcticstartup.com",
+       "url": "https://arcticstartup.com/metaktik-raises-e1-million?amp=1"
+      },
+      "document": {
+       "name": "Finland’s Metaktik raises €1 million pre-seed to bring metasurface antennas to market",
+       "url": "https://arcticstartup.com/metaktik-raises-e1-million?amp=1"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "d86eeb73-1ed6-4657-9590-338887323414",
+    "content": "#### Maki leads €1M pre-seed investment in Metaktik. Metaktik develops patented metasurface antennas for drones, satellites, and vehicles in aerospace, space, and defense. The investment supports scalable production of thin, flexible, multi-frequency antennas. ### Media coverage. #### Finnish Maki.vc leads a €3.3M seed investment in Norvegian Lightsonic. Finnish Maki.vc leads a €3.3M seed investment in Lightsonic, a Norwegian-founded startup · About Lightsonic · Investment details. #### [...] # Latest Maki.vc News & Updates. See the latest news and media coverage for Maki. We track all announcements, press releases, and industry mentions in real time, all in one place. Nordic early-stage technology venture capital firm. ## Latest news about Maki.vc (Maki). In short: Maki launched a €100 million third fund and saw portfolio company IQM prepare for a $1.9 billion listing on Nasdaq and Helsinki exchanges. ### Company announcements. #### Makin's portfolio company IQM lists on Nasdaq and [...] Latest Maki.vc (Maki) News & Announcements | Distill",
+    "origins": [
+     {
+      "source": {
+       "name": "Monitor Public & Private Company News | Distill",
+       "url": "https://www.distillintelligence.com/news/maki-vc"
+      },
+      "document": {
+       "name": "Latest Maki.vc (Maki) News & Announcements | Distill",
+       "url": "https://www.distillintelligence.com/news/maki-vc"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "36c06f80-289e-44fd-986f-f05c8e22121c",
+    "content": "“Metaktik is a rare case where a scientific breakthrough simultaneously unlocks better performance, new applications, and lower manufacturing costs than existing solutions. The metasurface technology, developed out of research at Aalto University, is already primed for industrial production and addresses the needs of rapidly growing defense and security market. This is exactly the combination an investor looks for,” states Paavo Räisänen, Partner at Maki.vc. [...] Recent crises and wars have shown that agile solutions are vital. With its expertise, Metaktik is entering the rapidly growing aerospace and defense markets with its versatile, industrially scalable invention.\n\n#### Large Markets [...] #### Aiming for New Partnerships\n\nMetaktik’s journey began at Aalto University’s Space Technology Laboratory in a Research to Business project funded by Business Finland. The invention was transferred to a spin-off company, where the one-million-euro investment will enable the start of business operations. The company is now seeking partners in the aerospace and defense industry to develop new, lightweight, and cost-effective communication and radar solutions.",
+    "origins": [
+     {
+      "source": {
+       "name": "Etusivu - Pääomasijoittajat",
+       "url": "https://paaomasijoittajat.fi/en/ajankohtaista/news/31617/metaktik-receives-one-million-euro-funding-finnish-antenna-innovation-convinces-investors"
+      },
+      "document": {
+       "name": "Metaktik receives one million euro funding - Finnish antenna innovation convinces investors - Pääomasijoittajat",
+       "url": "https://paaomasijoittajat.fi/en/ajankohtaista/news/31617/metaktik-receives-one-million-euro-funding-finnish-antenna-innovation-convinces-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "029fa23e-024f-41d4-9713-7473167791f3",
+    "content": "## Funding.  2026Pre-seed, €1M · Maki.vc. ## Leadership.  Tuukka Kuuramaa, Chief Executive Officer and Co-Founder.  Ville Lunden, Chief Technology Officer and Co-Founder. ## Offices. ## Roles. We're not yet tracking live roles at Metaktik. Check their careers site directly, or browse all defence jobs. Browse Metaktik roles Visit careers siteFind roles on LinkedIn Get new-role alerts. ## Metaktiksalaries. Metaktik doesn't advertise enough salary data yet for a reliable average. See pay by role, [...] Metaktik: Profile and What They Build | Defence Jobs EU [...] Defence Jobs EU LogoDefence Jobs EU. # Metaktik. Profile built from public postings ·Claim this profile →. Finnish deep-tech startup building ultralight metasurface antennas for defence, aerospace, maritime and telecom. Espoo, FinlandCommunications1-10 employeesFounded 2026. New roles like Metaktik's by email. Independently researched from8 public sources · last verified 2026-09-14. ## Technology domains. Metasurface antennasRF and communicationsRadarThin-film / metacell technologyElectronic",
+    "origins": [
+     {
+      "source": {
+       "name": "defencejobseu.com",
+       "url": "https://www.defencejobseu.com/companies/metaktik"
+      },
+      "document": {
+       "name": "Metaktik: Profile and What They Build | Defence Jobs EU",
+       "url": "https://www.defencejobseu.com/companies/metaktik"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "586e5ec1-48ce-4908-a245-e781955cac7e",
+    "content": "By delivering faster and more accurate tracking data, Aavuus aims to improve space situational awareness and collision avoidance capabilities, helping satellite operators navigate an increasingly crowded orbital environment.\n\n### Built On Deep Expertise In Space Tracking.\n\nAavuus is a spinout from the Finnish Geospatial Research Institute, bringing specialized expertise in satellite laser ranging and space geodesy to the challenge of tracking objects in orbit. [...] The company has also strengthened its leadership team with the appointment of Brian Dunne, a former U.S. Army aerospace defense officer. His experience in aerospace threat detection and defense operations is expected to help Aavuus expand its presence in the growing defense and national security market for space situational awareness technologies.\n\n### Moving From Development To Deployment. [...] Aavuus is building a global network of ground-based laser tracking stations designed to provide significantly more precise orbital data than today's commercial tracking systems.",
+    "origins": [
+     {
+      "source": {
+       "name": "Menlo Times - Technology, Startups, Innovation & News",
+       "url": "https://www.menlotimes.com/post/aavuus-secures-pre-seed-funding-from-maki-vc-to-bring-a-new-generation-of-space-debris-tracking-to-m"
+      },
+      "document": {
+       "name": "Aavuus Secures Pre-Seed Funding from Maki.vc to Bring a New Generation of Space Debris Tracking to Market",
+       "url": "https://www.menlotimes.com/post/aavuus-secures-pre-seed-funding-from-maki-vc-to-bring-a-new-generation-of-space-debris-tracking-to-m"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "d4f60b58-5072-4735-9d64-9b80fb1db1ee",
+    "content": "## Funding rounds\n\nFunding rounds raised by Aavuus\n\n| Date | Round | Amount | Lead investors |\n| 9 Jun 2026 | Pre-Seed | Undisclosed | Maki.vc |\n\n## Tech stack\n\nDetected on aavuus.com, last scanned 3 Nov 2026. Run your own scan\n\nCMS / Builders\n:   Squarespace\n\nEmail provider\n:   Google Workspace\n\nRun your own scan\n\n## Test your Agent Readiness\n\nHow well ChatGPT, Claude and the other agents can read and use a site. About a minute.\n\nWrite the first review\n\n## Frequently asked [...] YORK SPACE SYSTEMS\n\nDesigns and manufactures spacecraft solutions for government and commercial customers.\n\nShares Aerospace, DefenseOS\n\nObservable Space\n\nObservable Space\n\nEnabling scalable, low-cost space-to-Earth laser communications.\n\nShares Aerospace, SpaceTechR\n\nRedwire\n\nRedwire\n\nA global leader in space and defense technology solutions.\n\nShares Aerospace, DefenseOS\n\nORBION Space Technology\n\nORBION Space Technology\n\nSpecializes in plasma propulsion systems for spacecraft. [...] Aavuus provides space debris intelligence by detecting and tracking objects as small as 1 cm with high positional accuracy and analyzing their physical properties. Their ground-based laser system delivers precise, scalable insights to support safer satellite operations for space launch providers, satellite operators, and space infrastructure insurers. This technology enables smarter risk assessment, fewer unnecessary maneuvers, and better protection for space assets.",
+    "origins": [
+     {
+      "source": {
+       "name": "startuphub.ai",
+       "url": "https://www.startuphub.ai/startups/aavuus"
+      },
+      "document": {
+       "name": "Aavuus - Aerospace | StartupHub.ai",
+       "url": "https://www.startuphub.ai/startups/aavuus"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "553143cd-4b7a-4195-88e3-b7149f688dac",
+    "content": "## Aavuus cloased a pre-seed funding round with Maki.vc in Finland\n\nAirline Industry Hardware Manufacturing Software Services\n\nFinland Investments 01 June 2026 [...] Nordic 9Nordic 9\n\n Sign in\n Sign up\n\n##### Menu\n\n Intel\n\n  + People discovery\n  + Investor fit\n  + Dry powder tracker\n Signals\n  + Graded investment deals\n  + Startup radar\n  + Stealth founders\n  + New funds\n  + Network tracker\n  + Cheat sheets\n Data search\n  + Active VC investors\n  + Active angel investors\n  + Active family offices\n  + Active CVCs\n  + Active PE funds\n  + Active institutional investors\n  + All investment deals\n  + M&A and Secondary\n Get intel [...] Rationale\n\nPre-seed €1.1M led by regional early-stage fund (Maki VC) without tier-1 global positioning; no documented traction, customer signals, or founding team mega-exit pedigree evident; capital scale slightly above €750k threshold but insufficient to overcome absence of differentiation markers at pre-seed stage.\n\n### What does this grade mean?",
+    "origins": [
+     {
+      "source": {
+       "name": "Discover what happens on the European investment scene",
+       "url": "https://nordic9.com/news/metaktik-raises-1-million-in-pre-seed-funding-from-early-stage-investor-in-finland-makivc"
+      },
+      "document": {
+       "name": "Metaktik raises €1 million in pre-seed funding from early-stage investor in Finland Maki.vc - Nordic9.com",
+       "url": "https://nordic9.com/news/metaktik-raises-1-million-in-pre-seed-funding-from-early-stage-investor-in-finland-makivc"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "49e53029-d0d4-4406-8af2-1e131d211fc3",
+    "content": "# Lightsonic Raises €3.3M in Seed Funding. ### 1 Articles. ### 1 Articles. #### Lightsonic Raises €3.3M in Seed Funding. Lightsonic, a Kristiansund, Norway-based AI-powered software platform for distributed fiber optic sensing, raised €3.3M in Seed funding. The round was led by Maki.vc, with participation from RAISE Ventures and Sondo. The company intends to use the funds to accelerate product development, expand its team, and scale its technology for commercial deployment. Led by CEO Tommy […] [...] Title: Lightsonic Raises €3.3M in Seed Funding [...] Lightsonic Raises €3.3M in Seed Funding",
+    "origins": [
+     {
+      "source": {
+       "name": "Ground News",
+       "url": "https://ground.news/article/lightsonic-raises-33m-in-seed-funding"
+      },
+      "document": {
+       "name": "Lightsonic Raises €3.3M in Seed Funding",
+       "url": "https://ground.news/article/lightsonic-raises-33m-in-seed-funding"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "fef21398-0b29-4c67-9399-2e89a26044b7",
+    "content": "# Lightsonic raises €3.3M Seed to scale fiber optic sensing for infrastructure\n\nLightsonic, a UK–Norwegian deeptech, has secured €3.3 M in seed funding to scale its AI-powered software platform for distributed fiber optic sensing. The round was led by Maki.vc, with participation from RAISE Ventures and Sondo. [...] “Lightsonic's approach to fiber optic sensing is a game-changer for critical infrastructure monitoring,” said Paavo Räisänen, Partner at Maki.vc. “At Maki.vc, we back deep-tech companies that redefine industries, and we are excited to support their journey in bringing this technology to the global market.” [...] The company is already targeting high-impact use cases. Beyond physical security and threat detection, Lightsonic’s software is designed to detect pipeline leaks, improve network efficiency, and reduce maintenance costs across water and energy systems.\n\nThe dual-use nature of its solution aims to appeal to both defense-aligned infrastructure programs and sustainability-driven utilities.",
+    "origins": [
+     {
+      "source": {
+       "name": "Tech.eu - European Startup, Funding and Technology News",
+       "url": "https://tech.eu/2025/05/06/lightsonic-raises-3-3m-seed-to-scale-fiber-optic-sensing-for-infrastructure"
+      },
+      "document": {
+       "name": "Lightsonic raises €3.3M Seed to scale fiber optic sensing for infrastructure - Tech.eu",
+       "url": "https://tech.eu/2025/05/06/lightsonic-raises-3-3m-seed-to-scale-fiber-optic-sensing-for-infrastructure"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "510937ca-fcb6-4baa-84ad-6d878d5200ba",
+    "content": "Maki.vc has made numerous investments in companies like Volare (Agriculture), Sidos, and Aavuus within the Agriculture, Business/Productivity Software, and Aerospace and Defense industries.\n ### What has Maki.vc invested in recently?\n\n  Maki.vc's latest investment was on 26-Oct-2026 in Volare (Agriculture), a company within the Agriculture industry.\n\n### Data Transparency\n\n \n\n  Meet our data hygiene team [...] Founded in 2018, Maki.vc is a venture capital firm based in Helsinki, Finland. The firm prefers to invest in deep tech, commercial products & services, consumer food products, healthcare technology systems, and related sectors across Finland, Sweden, Norway, Germany, France, the United Kingdom, and the United States.\n\n#### Business Details\n\n##### Website\n\nwww.maki.vc\n\n##### Year Founded\n\n2018\n\n##### Investor Status\n\nActively Seeking New Investments\n\n##### Trade Association [...] | Sono (Business/Productivity Software) | 03-Jun-2026 |  |  | Business/Productivity Software | Generating Revenue |  |\n| Quanscient | 26-May-2026 |  |  | Business/Productivity Software | Generating Revenue |  |\n| Metaktik | 31-Mar-2026 |  |  | Aerospace and Defense | Startup |  |\n| Ever | 23-Dec-2025 |  |  | Information Services (B2C) | Generating Revenue |  |\n| Upheat | 15-Dec-2025 |  |  | Machinery (B2B) | Generating Revenue |  |",
+    "origins": [
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/investor/226708-93"
+      },
+      "document": {
+       "name": "Maki.vc investment portfolio | PitchBook",
+       "url": "https://pitchbook.com/profiles/investor/226708-93"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "9d1713ff-1a64-4bb7-80b3-36f18fcc2f74",
+    "content": "# Maki.vc. | Sono | Jun 2026Led | $1 MSeed |. | Quanscient | May 2026Participated | $12 MSeries A |. | Ever | Feb 2026Participated | $31 MSeries A |. | Riff | Oct 2025Participated | $16 MSeries A |. | Sera AI | Oct 2025Led | $2 MSeed |. | ONiO | Jun 2025Led | $6 MOther Equity |. | FinanceKey | Jun 2025Led | $4 MSeed |. | Magic Feedback | Jun 2025Participated | $6 MSeed |. | Volare | May 2025Participated | $31 MOther Equity |. | Lightsonic | May 2025Led | $4 MSeed |. | Pixieray | Apr [...] |. | Pixieray | Apr 2025Participated | $37 MSeries A |. Browse all public portfolio deals. Maki.vc: 71 funding rounds are recorded in the selected participation categories.All available history. Maki.vc: 71 funding rounds are recorded in the selected participation categories. Maki.vc: 71 deals are recorded across 101 months.All available history. Maki.vc: 71 deals are recorded across 101 months. Maki.vc: Enterprise Software is the largest displayed sector by deal count (22 deals).All available [...] participating for 52% of round participation.All available history. Maki.vc: Led accounts for 48% and participating for 52% of round participation. Maki.vc: Single-lead accounts for 62% and co-led for 38% of lead dynamics.All available history. Maki.vc: Single-lead accounts for 62% and co-led for 38% of lead dynamics.",
+    "origins": [
+     {
+      "source": {
+       "name": "The Venture Codex",
+       "url": "https://theventurecodex.com/funds/maki-vc"
+      },
+      "document": {
+       "name": "Maki.vc Investments & Fund Profile | The Venture Codex",
+       "url": "https://theventurecodex.com/funds/maki-vc"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   }
+  ],
+  "entities": [
+   {
+    "id": "8f0ff46d-d609-4ce0-b719-85f739b92ca3",
+    "name": "Maki.vc",
+    "entity_type": "Organization",
+    "mentions": [
+     "Maki.vc"
+    ]
+   },
+   {
+    "id": "0c5000b2-6948-52d5-a4f3-a9a5bf951af3",
+    "name": "Helsinki",
+    "entity_type": "Municipality",
+    "mentions": [
+     "Helsinki"
+    ]
+   },
+   {
+    "id": "16fa515b-1434-58c9-be73-8754e77ade00",
+    "name": "Metaktik",
+    "entity_type": "Company",
+    "mentions": [
+     "Metaktik"
+    ]
+   },
+   {
+    "id": "28cd7237-3524-4aa6-aa4d-481c93bd39fe",
+    "name": "Aalto University",
+    "entity_type": "EducationalInstitution",
+    "mentions": [
+     "Aalto University"
+    ]
+   },
+   {
+    "id": "680000b7-a490-418f-8098-9b1757db2e58",
+    "name": "Finland",
+    "entity_type": "Country",
+    "mentions": [
+     "Finland"
+    ]
+   },
+   {
+    "id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+    "name": "Aavuus",
+    "entity_type": "Company",
+    "mentions": [
+     "Aavuus"
+    ]
+   },
+   {
+    "id": "8c4572b2-3881-401b-9058-8cddfe90a342",
+    "name": "U.S. Army",
+    "entity_type": "Organization",
+    "mentions": [
+     "U.S. Army"
+    ]
+   },
+   {
+    "id": "c4f271e5-d5a4-42ea-9983-1d19115001e3",
+    "name": "LIGHTSONIC LTD",
+    "entity_type": "Company",
+    "mentions": [
+     "Lightsonic"
+    ]
+   },
+   {
+    "id": "3991d008-04da-40fd-83dc-b742d890a2b8",
+    "name": "UK",
+    "entity_type": "GPE",
+    "mentions": [
+     "UK"
+    ]
+   },
+   {
+    "id": "a634a2e2-ecd7-4253-bffb-8ece69e0191a",
+    "name": "Norway",
+    "entity_type": "Country",
+    "mentions": [
+     "Norway"
+    ]
+   }
+  ]
+ }
+}

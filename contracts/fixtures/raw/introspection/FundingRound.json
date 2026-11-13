@@ -1,0 +1,27 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/entities/7cf7864b-8de0-5b39-99c3-3754e678454a/introspection",
+  "params": null,
+  "json": null
+ },
+ "recorded_at": "2026-11-13T20:31:59+00:00",
+ "response": {
+  "properties": [
+   "round_label",
+   "name",
+   "instrument",
+   "annotations",
+   "transaction_value_units",
+   "transaction_value",
+   "id"
+  ],
+  "relationships": {
+   "outgoing": [],
+   "incoming": [
+    "PARTICIPATES_IN_FUNDING_ROUND"
+   ]
+  },
+  "numerical_observations": {}
+ }
+}

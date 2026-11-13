@@ -1,0 +1,343 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/0322aa66-c3c7-470c-a940-e6ec117d4051",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:30:02+00:00",
+ "response": {
+  "id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+  "name": "Rainfall Ventures",
+  "entity_type": "Organization",
+  "description": "A venture capital firm that has invested in companies such as Arist and Plane.",
+  "properties": {
+   "name": {
+    "value": "Rainfall Ventures",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-07-10"
+     },
+     {
+      "name": "startupi.com.br",
+      "document": "https://startupi.com.br/fintech-de-credito-instantaneo-para-microempreendedores-recebe-aporte-de-us-16-milhoes/",
+      "date": "2022-06-09",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [],
+    "sources": []
+   },
+   "description": {
+    "value": "A venture capital firm that has invested in companies such as Arist and Plane.",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-08-02"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "ccba4f7a-e2d4-5020-9a74-90cc3527cd61",
+      "name": "Series A",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "startupi.com.br",
+         "document": "https://startupi.com.br/fintech-de-credito-instantaneo-para-microempreendedores-recebe-aporte-de-us-16-milhoes/",
+         "date": "2022-06-09",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "5a92c585-d40c-5b65-945e-ba59c66d0615"
+      }
+     }
+    ],
+    "INVESTED_IN": [
+     {
+      "id": "0861cf20-d8c0-47fa-ae17-b9f3623585a0",
+      "name": "LITHIC, INC.",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Privacy.com rebrands to Lithic, raises $43M for virtual payment cards | TechCrunch",
+         "document": "https://techcrunch.com/2021/05/20/privacy-com-rebrands-to-lithic-raises-43m-for-virtual-payment-cards",
+         "date": "2021-05-20"
+        },
+        {
+         "name": "Privacy.com rebrands to Lithic, raises $43M for virtual payment cards | TechCrunch",
+         "document": "https://techcrunch.com/2021/05/20/privacy-com-rebrands-to-lithic-raises-43m-for-virtual-payment-cards#!",
+         "date": "2021-05-20"
+        }
+       ],
+       "id": "aa05cacd-658c-4bb2-9768-73379e3b9ac1"
+      }
+     },
+     {
+      "id": "136b7d7e-17e3-4342-ba74-9409e13e6118",
+      "name": "NOVO CONSEILS",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Novo, a neobank for SMBs, banks $41M | TechCrunch",
+         "document": "https://techcrunch.com/2021/06/16/novo-a-neobank-for-smbs-banks-41m",
+         "date": "2021-06-16"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/184747-15",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/novo/__HJRkIj_tnudg5LmeYuAxIfYaw8qzWQq4t7ieDYTFAq8/funding-and-investors",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "f4478d5c-9e48-4e65-b235-f6bcda3a8ef9"
+      }
+     },
+     {
+      "id": "2448c7b3-eda5-443f-a300-31fa51993515",
+      "name": "Zippi",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "startupi.com.br",
+         "document": "https://startupi.com.br/fintech-de-credito-instantaneo-para-microempreendedores-recebe-aporte-de-us-16-milhoes/",
+         "date": "2022-06-09",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "c23a7c5e-4ad9-43cf-b211-87e622109f97"
+      }
+     },
+     {
+      "id": "273de661-8eff-4ebc-a303-6f3e0dc3d2bf",
+      "name": "WEBFLOW LTD",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/webflow/__4ydLbavRvsWn4Llop1QC4CHeauSFwj7rhDh41SueLuE/funding-and-investors",
+         "date": "2026-08-05"
+        },
+        {
+         "name": "news.crunchbase.com",
+         "document": "https://news.crunchbase.com/venture/webflow-raises-72m-series-a-continuing-the-trend-of-outsized-early-stage-rounds",
+         "date": "2026-08-05"
+        }
+       ],
+       "id": "d66e33c9-7ed4-4e0b-a572-52237b007e2b"
+      }
+     },
+     {
+      "id": "3afdc63c-b992-4b25-b69d-807ab346352d",
+      "name": "Stendr",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/stendr/__7VSvHoLx3hjMEv6yAnnHfm3bFhEeOWBkgqe3NhG5Jbc",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/1376632-18",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/skyfall-ventures/signals_and_news/timeline",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/rainfall-ventures/investor_summary/overview_timeline",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/57005-74",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "e351b8cc-1868-4a8d-ac85-edd4e75b49ec"
+      }
+     },
+     {
+      "id": "6b10d0c7-6bfe-477a-a527-524600671878",
+      "name": "G.S InnPlay Labs Ltd",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/gs-innplay-labs-ltd",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/funding_round/gs-innplay-labs-ltd-series-unknown--a781ec19",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "8a1c4b15-bb9b-400b-828e-d16da08a51c6"
+      }
+     },
+     {
+      "id": "80faf6fa-fe4c-47ed-ab50-048f2c94b6bf",
+      "name": "Plane",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Plane: Funding, Team & Investors",
+         "document": "https://startupintros.com/orgs/plane",
+         "date": "2026-07-13"
+        },
+        {
+         "name": "Plane funding, news & analysis",
+         "document": "https://sacra.com/c/plane",
+         "date": "2024-12-26"
+        }
+       ],
+       "id": "792e0a0c-8988-4ee8-95e9-bebad2b5c292"
+      }
+     },
+     {
+      "id": "a8a0f5b0-6efe-4546-b8e5-25b0e4f17975",
+      "name": "UNSTOPPABLE DOMAINS INC.",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/unstoppable-domains/__5yK6TVAPTXnNb2zNMdcTpmVHN7NvV6ZGoWi9vQdwYz8",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/unstoppable-domains/__5yK6TVAPTXnNb2zNMdcTpmVHN7NvV6ZGoWi9vQdwYz8/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/newsletter/unstoppable-domains-picks-up-65m",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/267559-93",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "Web3 digital identity startup Unstoppable Domains raises funds at $1B valuation | TechCrunch",
+         "document": "https://techcrunch.com/2022/07/27/web3-digital-identity-startup-unstoppable-domains-raises-funds-at-1-billion-valuation",
+         "date": "2022-07-27"
+        }
+       ],
+       "id": "c2f56441-55a2-46e5-a7ca-a4d43a5b0847"
+      }
+     }
+    ]
+   },
+   "incoming": {
+    "INVESTED_IN": [
+     {
+      "id": "3bd4f40a-fba3-48f5-8af0-e14f57191518",
+      "name": "Arist",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Technology & Data for Venture Capital, Corp Dev, Investment Banks",
+         "document": "https://www.tracxn.com/d/companies/arist/__vT6Nla8BFQWMcfkNtlBcxUEnFXmtmv-GZvRD_hEgYfo",
+         "date": "2026-07-10"
+        }
+       ],
+       "id": "e75a65d8-dfe1-59ff-9abf-a4c05d3995fd"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

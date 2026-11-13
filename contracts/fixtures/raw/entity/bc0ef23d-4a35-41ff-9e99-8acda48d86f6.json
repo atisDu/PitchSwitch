@@ -1,0 +1,681 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/bc0ef23d-4a35-41ff-9e99-8acda48d86f6",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:29:50+00:00",
+ "response": {
+  "id": "bc0ef23d-4a35-41ff-9e99-8acda48d86f6",
+  "name": "Redstone",
+  "entity_type": "Organization",
+  "description": "London‑based venture capital firm founded in 2014.",
+  "properties": {
+   "name": {
+    "value": "Redstone",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-04-30"
+     },
+     {
+      "name": "swapbat.io",
+      "document": "https://swapbat.io/investors/",
+      "date": "2026-11-13",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [],
+    "sources": []
+   },
+   "description": {
+    "value": "London‑based venture capital firm founded in 2014.",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-08-23"
+     }
+    ]
+   },
+   "registered_address": {
+    "value": "Flat 229 Wellington Buildings, Ebury Bridge Road, London, SW1W",
+    "sources": [
+     {
+      "name": "tracxn.com",
+      "document": "https://tracxn.com/d/legal-entities/united-kingdom/redstone-capital-ltd/__XLqsq7Uo2zCMYgAZttcesS-4NbSdzycYM3Hfk6FHpnI",
+      "date": "2026-05-03"
+     }
+    ]
+   },
+   "founding_date": {
+    "value": "2014-03-01",
+    "sources": [
+     {
+      "name": "www.startupranking.com",
+      "document": "https://www.startupranking.com/startup/redstone",
+      "date": "2026-05-03"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "39034d7d-2d41-5881-9a49-e507dfcc833a",
+      "name": "Seed",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "swapbat.io",
+         "document": "https://swapbat.io/investors/",
+         "date": "2026-11-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "is_lead": true,
+       "id": "93681667-b691-53cd-8775-eaf84b48b78c"
+      }
+     }
+    ],
+    "INVESTED_IN": [
+     {
+      "id": "12ffd0f2-c632-4b6d-81bb-1878c107492f",
+      "name": "LabForward",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/labforward/__wrEPwUg_nTpz6FAqgZt_AUvkwVgFhSSnVlPJPY1Oxcw",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/labforward/__wrEPwUg_nTpz6FAqgZt_AUvkwVgFhSSnVlPJPY1Oxcw/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/legal-entities/germany/labforward-gmbh/__RgfGa4gGoS1OSF6Xq8PHYqgNUtRmRxbX8wAto58-4eo",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/legal-entities/germany/labforward-gmbh/__U_mHvQccubwZALowDLoZBo-N7SyOezHgvs0b6cFGdTU",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "35b0fe99-0002-4bc0-bd9f-f5228e9c44f0"
+      }
+     },
+     {
+      "id": "25fdb5d1-8de7-42ff-9123-0682fc9e3b0a",
+      "name": "BTRY",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/btry/__edjeuG_MZ2FXdMNX2iJbJNApF_TisOcd8Lkd1rGbliM",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/btry/__edjeuG_MZ2FXdMNX2iJbJNApF_TisOcd8Lkd1rGbliM/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/trending-business-models/startups-in-solid-state-lithium-ion-batteries/__AmmmPCrwdaKf1qLdtaJ4t3sY35dDdpnDlVYBYuAjQcY",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "f5f07b51-e4f3-45e4-b907-8441b567a0b4"
+      }
+     },
+     {
+      "id": "399af3db-c008-4d3b-851d-260ecff6da32",
+      "name": "Libify",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/libify/__p4ATPYJJwcWasuo0bO86nbqpO7U9ftLU32exCoVWCus",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/trending-business-models/startups-in-wearable-emergency-response-device/__MSZ73iBZ2bcYj9bGc58uOUFpdawx-lyjTD52zrG1Ryk/companies",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/libify/financial_details",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/162116-29",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "c04d9f3d-a9fe-421d-8410-578503d3433f"
+      }
+     },
+     {
+      "id": "3a0cce4a-acbb-4db0-9c8d-b8c2a082fb05",
+      "name": "ClimeFi",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/climefi/__OF2uiHmJoDB_8E_q4zJ1lxLoHPqWwALu2kz7XfGQ7y0/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/512239-69",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/carbonx-87df/financial_details",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "689f03df-7a5a-4145-88d1-55c9bf4558a9"
+      }
+     },
+     {
+      "id": "3d0b67a4-54d8-40d8-a3e7-f7f7a1db9143",
+      "name": "Annette",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/annette/__2xVlBGqfA4Vq9JMsiY-GV4-N6BZ_zzAfrLMxSX8uMMA/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/annette/__2xVlBGqfA4Vq9JMsiY-GV4-N6BZ_zzAfrLMxSX8uMMA",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/annette-3d2c",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/1153800-82",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "6897be65-c9c6-4f11-aad0-19a9132d0d91"
+      }
+     },
+     {
+      "id": "4bb9419d-8549-40cf-a3a5-a0153ce9d17f",
+      "name": "Lykon",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/lykon/__5i6b1YaVjkAv-7lkwbOjZ5ZyeS0JmUueLJDo8XqFEvA/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/lykon/__5i6b1YaVjkAv-7lkwbOjZ5ZyeS0JmUueLJDo8XqFEvA",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "3a94ae7e-89fc-4716-ac77-910b7e3c8173"
+      }
+     },
+     {
+      "id": "513c2b38-17a3-4a76-80f1-d3c8d51f4412",
+      "name": "Freeway Camper",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/freeway-camper/__WjccADQSzXdnWSq-vK-Hf7uMcubqBbndLm5N3f70SlM",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/freeway-camper/__WjccADQSzXdnWSq-vK-Hf7uMcubqBbndLm5N3f70SlM/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/trending-business-models/startups-in-rv-rental-software/__Ol5e2cqMdC-oxIt0bPfi_-JSIhjCDOY5M9fgK-kq1Eg/companies",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "38ff2e0b-0d92-4d89-9cf7-58478814d801"
+      }
+     },
+     {
+      "id": "8fdee488-d19a-43e8-bb84-c429215498b2",
+      "name": "Redkik",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/redkik/__ITKE4FpLT8dWBh1zNpbYVJkWmMYLZTU783Rb3hHCKZk",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/redkik/__ITKE4FpLT8dWBh1zNpbYVJkWmMYLZTU783Rb3hHCKZk/funding-and-investors",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "426a7494-7d29-4742-aafe-d867673d04ba"
+      }
+     },
+     {
+      "id": "95421f0c-51fe-4acd-8e81-4d17644a0871",
+      "name": "Credibur GmbH",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "FinTech Credibur Secures $2.2M in Pre-Seed Funding - Credibur",
+         "document": "https://credibur.com/content/pre-seed",
+         "date": "2026-01-01"
+        },
+        {
+         "name": "Credibur Raises $2.2M in Pre-Seed Round",
+         "document": "https://www.thesaasnews.com/news/credibur-raises-2-2m-in-pre-seed-round",
+         "date": "2025-07-28"
+        },
+        {
+         "name": "FinTech Credibur secures $2.2m to digitise private credit",
+         "document": "https://fintech.global/2025/07/24/fintech-credibur-secures-2-2m-to-digitise-private-credit",
+         "date": "2025-07-24"
+        },
+        {
+         "name": "coverager.com",
+         "document": "https://coverager.com/credibur-raises-2-2-million",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "Germany's Credibur Raises $2.2M to Build Credit Infrastructure Platform - Fintech Schweiz Digital Finance News - FintechNewsCH",
+         "document": "https://fintechnews.ch/fintechgermany/credibur-funding/77455",
+         "date": "2025-07-23"
+        },
+        {
+         "name": "German fintech firm Credibur raises $2.2M to revolutionize Non-Bank lending infrastructure",
+         "document": "https://vestbee.com/insights/articles/credibur-raises-2-2-m",
+         "date": "2025-07-25"
+        }
+       ],
+       "id": "393e8168-2330-4478-a677-930b60395b91"
+      }
+     },
+     {
+      "id": "955993d9-0319-4e0f-8ee7-1830fb9b23e0",
+      "name": "Marshmallow",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "UK's Marshmallow raises $30M on a $310M valuation for more 'inclusive' car insurance | TechCrunch",
+         "document": "https://techcrunch.com/2020/11/02/uks-marshmallow-raises-30m-on-a-310m-valuation-for-more-inclusive-car-insurance",
+         "date": "2020-11-02"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/marshmallow/__e9G6xiDh1gIMIWdr2hzTTvMhoZUlOOe4fk9YaTdv6sY/funding-and-investors",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "3d21bc3f-1ffd-4ad4-90c5-fc189b2ab3b0"
+      }
+     },
+     {
+      "id": "96511d77-d957-4d96-ba97-43bf4cf9418c",
+      "name": "Advanced Machine Intelligence (AMI)",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "news.crunchbase.com",
+         "document": "https://news.crunchbase.com/venture/world-model-ai-lab-ami-raises-europes-largest-seed-round",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "news.crunchbase.com",
+         "document": "https://news.crunchbase.com/venture/foundational-ai-startup-funding-doubled-openai-anthropic-xai-q1-2026",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/ami-labs/__MXQrpkXew5SGFKh2KHM-5P-M6RT7zaTuj_aLin0to7Q",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "Yann LeCun's AMI Labs raises $1.03B to build world models | TechCrunch",
+         "document": "https://techcrunch.com/2026/03/09/yann-lecuns-ami-labs-raises-1-03-billion-to-build-world-models",
+         "date": "2026-03-09"
+        },
+        {
+         "name": "Why AMI Labs’ Alexandre LeBrun won't call his AI 'AGI' or 'superintelligence' | TechCrunch",
+         "document": "https://techcrunch.com/2026/07/16/why-ami-labs-alexandre-lebrun-wont-call-his-ai-agi-or-superintelligence",
+         "date": "2026-07-16"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/1232257-78",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/277182-37",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "2df1e519-b1d4-4b94-ab5b-e6ee13792fe7"
+      }
+     },
+     {
+      "id": "98513992-f6bd-489b-a3ef-160ad890a609",
+      "name": "Finanzguru",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/funding_round/finanzguru-by-dwins-gmbh-series-a--e781b2e4",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/finanzguru/__LIeX0SrtBCFhImqIr9miOLnbiDfPslH5mSoeNrOrhhg",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "ac262668-9fe0-4cec-b30f-fae8611c1e8d"
+      }
+     },
+     {
+      "id": "9cf452fe-454b-4117-a1c0-bd4a4eaaa145",
+      "name": "Engie",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "ENGIE Research & Innovation press area",
+         "document": "https://innovation.engie.com/en/research-innovation-press-area",
+         "date": "2022-03-29"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/venture-capital/engie-new-ventures/__HbU-CLX9hHoP_Ltull7bK6W7Vt_ILRlK7D4NEq3CyOc",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "e6039948-fefb-4250-8036-4b69f8e6b254"
+      }
+     },
+     {
+      "id": "b3a623c0-9844-4eba-bb05-3848f8639341",
+      "name": "Gradyent",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/gradyent-technologies/__gB8X1PsooJHwJOwnLQ43L4ryX0dH90e3CQiYiJuCnJc/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/gradyent-technologies/__gB8X1PsooJHwJOwnLQ43L4ryX0dH90e3CQiYiJuCnJc",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "10654ea6-364c-4ddb-acb4-7ef7f24910b7"
+      }
+     },
+     {
+      "id": "cbe9080c-4bd0-4a0b-a0b9-f1bca9e52b14",
+      "name": "Wizbii",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/wizbii/__wByMDmL7kDZVAbFALyPbYIWpEOvRu39rno1ZBuASchk/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/wizbii/__wByMDmL7kDZVAbFALyPbYIWpEOvRu39rno1ZBuASchk",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "8ad38b6f-62d1-4cc5-9a1f-5439ba1ee310"
+      }
+     },
+     {
+      "id": "d1545ec2-5db4-4e06-b404-87f40032bba5",
+      "name": "Atlas Metrics GmbH",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/atlas-metrics/__OLc9IDsc35QxOtRFFQ7Fzg1ex_aNxdsoQRB_da5gFus",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/atlas-metrics/__OLc9IDsc35QxOtRFFQ7Fzg1ex_aNxdsoQRB_da5gFus/funding-and-investors",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "f5b54889-d0d6-4906-b6a2-d7d8cb588f75"
+      }
+     },
+     {
+      "id": "d2d6f392-4d94-4880-9ea2-4ccb66751fe7",
+      "name": "Finleap Connect",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/qwist/__a2Eb5Oweym-URxmCyerlAEGSOYD5QIifXH40L5TnpPU",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "7e0344f9-a54e-4536-a709-d19d5ee8b111"
+      }
+     },
+     {
+      "id": "e4e92460-263b-4470-af82-a91cf153e453",
+      "name": "Kelluu",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "ac2f8113-1d9f-43d0-8dbf-5fbb0730f490"
+      }
+     },
+     {
+      "id": "eeb21db3-5e11-55c8-8a58-a9480867664b",
+      "name": "Swapbat oy",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "swapbat.io",
+         "document": "https://swapbat.io/investors/",
+         "date": "2026-11-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "67dc4992-a3e1-4efd-b0db-44643b89d585"
+      }
+     },
+     {
+      "id": "f4f6c0a6-37c6-44ee-85d7-631c66121b3d",
+      "name": "Carbonaide Oy",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/vantaan-energia-oy/investor_summary/overview_timeline",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/carbonaide/__12qZ1arnIM7J8X3Dbk53qR5uxQnNSsqJyf_xJgViHxs",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/carbonaide/__12qZ1arnIM7J8X3Dbk53qR5uxQnNSsqJyf_xJgViHxs/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/508441-51",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "5a26d328-a7c3-48e6-a628-7f66688f5efe"
+      }
+     },
+     {
+      "id": "fe362c6e-8157-45f7-ba1b-ed5d2a5bc8c9",
+      "name": "Talentir GmbH",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/513041-77",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/talentir",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/blockchain-founders-group",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/blockchain-founders-capital",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/talentir/__o_kmC0j0X3JF4CJgXsDyTckApc9vHGFiTAd6WgroB_o",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "073bc67b-1a31-452a-8435-6b4b6deab4c1"
+      }
+     }
+    ]
+   },
+   "incoming": {}
+  },
+  "numerical_observations": []
+ }
+}

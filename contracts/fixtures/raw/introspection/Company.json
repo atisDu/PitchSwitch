@@ -1,0 +1,51 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/entities/78d7490a-dd04-5119-a7f1-e940b861219b/introspection",
+  "params": null,
+  "json": null
+ },
+ "recorded_at": "2026-11-13T20:31:47+00:00",
+ "response": {
+  "properties": [
+   "description",
+   "total_funding_excluding_debt",
+   "total_funding",
+   "funding_stage",
+   "total_funding_units",
+   "founding_date",
+   "headquarters_address",
+   "name",
+   "total_funding_excluding_debt_units",
+   "legal_name",
+   "operational_status",
+   "website",
+   "id",
+   "founding_date__precision",
+   "aliases"
+  ],
+  "relationships": {
+   "outgoing": [
+    "PARTICIPATES_IN_FUNDING_ROUND",
+    "OPERATES_IN_INDUSTRY",
+    "HAS_DOMAIN_NAME"
+   ],
+   "incoming": [
+    "IS_BOARD_MEMBER_OF",
+    "WORKS_AT",
+    "IS_CEO_OF",
+    "FOUNDED",
+    "INVESTED_IN"
+   ]
+  },
+  "numerical_observations": {
+   "ObservableProperty": [
+    {
+     "id": "64231bfc-8b8e-548e-a215-0dcee3ea6998",
+     "name": "Number of employees",
+     "code": "employee_count"
+    }
+   ]
+  }
+ }
+}

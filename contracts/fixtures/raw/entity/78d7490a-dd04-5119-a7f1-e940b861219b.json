@@ -1,0 +1,662 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/78d7490a-dd04-5119-a7f1-e940b861219b",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:27:52+00:00",
+ "response": {
+  "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+  "name": "Kelluu Oy",
+  "entity_type": "Company",
+  "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and...",
+  "properties": {
+   "name": {
+    "value": "Kelluu Oy",
+    "sources": [
+     {
+      "name": "kelluu.com",
+      "document": "https://kelluu.com/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "linkedin.com",
+      "document": "https://www.linkedin.com/company/kelluuairships/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "legal_name": {
+    "value": "Kelluu Oy",
+    "sources": [
+     {
+      "name": "avoindata.prh.fi",
+      "document": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=2902007-2",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "FILING"
+     },
+     {
+      "name": "cordis.europa.eu",
+      "document": "https://cordis.europa.eu/project/id/101157488",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "FILING"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [
+     "L-Airships Oy",
+     "Kelluu"
+    ],
+    "sources": []
+   },
+   "description": {
+    "value": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and...",
+    "sources": [
+     {
+      "name": "kelluu.com",
+      "document": "https://kelluu.com/",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "website": {
+    "value": "kelluu.com",
+    "sources": [
+     {
+      "name": "kelluu.com",
+      "document": "https://kelluu.com/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "dns.google",
+      "document": "https://dns.google/query?name=kelluu.com&type=A",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "operational_status": {
+    "value": "ACTIVE",
+    "sources": [
+     {
+      "name": "kelluu.com",
+      "document": "https://kelluu.com/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "headquarters_address": {
+    "value": "Joensuu, Finland",
+    "sources": [
+     {
+      "name": "linkedin.com",
+      "document": "https://www.linkedin.com/company/kelluuairships/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "founding_date": {
+    "value": "2018-01-01",
+    "sources": [
+     {
+      "name": "linkedin.com",
+      "document": "https://www.linkedin.com/company/kelluuairships/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "funding_stage": {
+    "value": "SERIES_A",
+    "sources": [
+     {
+      "name": "nif.fund",
+      "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "kelluu.com",
+      "document": "https://kelluu.com/news",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "total_funding": {
+    "value": 15301500.0,
+    "sources": [
+     {
+      "name": "nif.fund",
+      "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "kelluu.com",
+      "document": "https://kelluu.com/news",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "cordis.europa.eu",
+      "document": "https://cordis.europa.eu/project/id/101157488",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "FILING"
+     }
+    ]
+   },
+   "total_funding_units": {
+    "value": "EUR",
+    "sources": [
+     {
+      "name": "nif.fund",
+      "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "kelluu.com",
+      "document": "https://kelluu.com/news",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "cordis.europa.eu",
+      "document": "https://cordis.europa.eu/project/id/101157488",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "FILING"
+     }
+    ]
+   },
+   "total_funding_excluding_debt": {
+    "value": 15301500.0,
+    "sources": [
+     {
+      "name": "nif.fund",
+      "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "kelluu.com",
+      "document": "https://kelluu.com/news",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "cordis.europa.eu",
+      "document": "https://cordis.europa.eu/project/id/101157488",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "FILING"
+     }
+    ]
+   },
+   "total_funding_excluding_debt_units": {
+    "value": "EUR",
+    "sources": [
+     {
+      "name": "nif.fund",
+      "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "tech.eu",
+      "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "kelluu.com",
+      "document": "https://kelluu.com/news",
+      "date": "2026-04-14",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "cordis.europa.eu",
+      "document": "https://cordis.europa.eu/project/id/101157488",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "FILING"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "7cf7864b-8de0-5b39-99c3-3754e678454a",
+      "name": "Grant",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "cordis.europa.eu",
+         "document": "https://cordis.europa.eu/project/id/101157488",
+         "date": "2026-11-12",
+         "date_precision": "day",
+         "source_rank": "FILING"
+        }
+       ],
+       "id": "2b99b494-efcd-5e56-a760-420a1e21090b"
+      }
+     },
+     {
+      "id": "97d82be9-51db-59e4-bb04-f69213aff7e9",
+      "name": "Series A",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "nif.fund",
+         "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "kelluu.com",
+         "document": "https://kelluu.com/news",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "e12313b8-2526-5613-a0ee-c46f1ae1b74a"
+      }
+     }
+    ],
+    "OPERATES_IN_INDUSTRY": [
+     {
+      "id": "bb7caa00-59c3-4587-9aaf-5d9195444829",
+      "name": "AEROSPACE_AND_DEFENSE",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "linkedin.com",
+         "document": "https://www.linkedin.com/company/kelluuairships/",
+         "date": "2026-11-02",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        }
+       ],
+       "id": "a749e866-df98-5672-bfbf-eed2b311013d",
+       "original_label": "dualUseTech"
+      }
+     }
+    ]
+   },
+   "incoming": {
+    "INVESTED_IN": [
+     {
+      "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+      "name": "Keen Venture Partners",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "nif.fund",
+         "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "6f6b7a36-1acd-437f-a2ac-b800ae4c61e5"
+      }
+     },
+     {
+      "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+      "name": "NATO Innovation Fund",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "nif.fund",
+         "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "e1758e40-3da3-4cee-8003-50622dcfdb82"
+      }
+     },
+     {
+      "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+      "name": "Gungnir Capital",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "nif.fund",
+         "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "cb147c08-79a3-46d4-848a-19365d5a91c0"
+      }
+     },
+     {
+      "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+      "name": "Tesi",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "nif.fund",
+         "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "tech.eu",
+         "document": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "a02b93b2-5dbb-490d-9322-76ddceb55e10"
+      }
+     }
+    ],
+    "IS_BOARD_MEMBER_OF": [
+     {
+      "id": "014ab9e4-cec1-5704-9f27-0b60a9a20e1c",
+      "name": "Jouni Lintu",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "asiakastieto.fi",
+         "document": "https://www.asiakastieto.fi/yritykset/fi/kelluu-oy/29020072/paattajat",
+         "date": "2026-11-12",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        }
+       ],
+       "id": "9f33fa9f-ce1d-5ecb-b8a1-8db90a881448",
+       "valid_since": "2021-09-01"
+      }
+     },
+     {
+      "id": "6226707c-b582-52bd-af43-c5cfa13a321e",
+      "name": "Tero Vauraste",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "asiakastieto.fi",
+         "document": "https://www.asiakastieto.fi/yritykset/fi/kelluu-oy/29020072/paattajat",
+         "date": "2026-11-12",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        }
+       ],
+       "id": "5f8d1d54-d098-5ae9-bd53-2bf57494cb52",
+       "valid_since": "2026-02-01"
+      }
+     },
+     {
+      "id": "e71c9fd7-f08a-59c9-a756-b750824780b8",
+      "name": "Patrick Schneider-Sikorsky",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "asiakastieto.fi",
+         "document": "https://www.asiakastieto.fi/yritykset/fi/kelluu-oy/29020072/paattajat",
+         "date": "2026-11-12",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        }
+       ],
+       "id": "c063acc6-e7f7-52e3-b337-e99f7223bf24",
+       "valid_since": "2026-09-01"
+      }
+     },
+     {
+      "id": "eaf1f6cf-9528-51fe-ac3d-45a246c10f05",
+      "name": "Jari Peltoniemi",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "asiakastieto.fi",
+         "document": "https://www.asiakastieto.fi/yritykset/fi/kelluu-oy/29020072/paattajat",
+         "date": "2026-11-12",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        }
+       ],
+       "id": "3a7d1a23-9b94-5c5c-9b13-a7c08ac719a7",
+       "valid_since": "2026-02-01"
+      }
+     }
+    ],
+    "FOUNDED": [
+     {
+      "id": "7993278e-4575-5987-be2e-c269dd2b9e2a",
+      "name": "Janne Hietala",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "resiliencemedia.co",
+         "document": "https://resiliencemedia.co/airship-startup-kelluu-raises-e15m-from-nato-its-first-investment-in-finland/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "b497d2c6-3c2f-5ed2-ab1d-33b9536e2b8a"
+      }
+     }
+    ],
+    "IS_CEO_OF": [
+     {
+      "id": "7993278e-4575-5987-be2e-c269dd2b9e2a",
+      "name": "Janne Hietala",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "nif.fund",
+         "document": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "resiliencemedia.co",
+         "document": "https://resiliencemedia.co/airship-startup-kelluu-raises-e15m-from-nato-its-first-investment-in-finland/",
+         "date": "2026-04-14",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "asiakastieto.fi",
+         "document": "https://www.asiakastieto.fi/yritykset/fi/kelluu-oy/29020072/paattajat",
+         "date": "2026-11-12",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        }
+       ],
+       "id": "4f89470d-7f9e-5be9-8504-89c78f3e387b",
+       "valid_since": "2022-10-01"
+      }
+     }
+    ],
+    "WORKS_AT": [
+     {
+      "id": "83553f99-a0f3-5d83-9cd7-3bb94292c902",
+      "name": "Iida Mustonen",
+      "entity_type": "Person",
+      "properties": {
+       "role": "Head of People & Culture",
+       "sources": [
+        {
+         "name": "kelluu.com",
+         "document": "https://kelluu.com/news",
+         "date": "2026-03-05",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "efceddcc-dee0-517c-97c6-66ec3fa63b15",
+       "valid_since": "2026-03-01"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

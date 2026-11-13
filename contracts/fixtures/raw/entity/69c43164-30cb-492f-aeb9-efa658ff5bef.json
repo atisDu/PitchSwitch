@@ -1,0 +1,518 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/69c43164-30cb-492f-aeb9-efa658ff5bef",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:30:23+00:00",
+ "response": {
+  "id": "69c43164-30cb-492f-aeb9-efa658ff5bef",
+  "name": "PostScriptum Ventures",
+  "entity_type": "Company",
+  "description": "Venture capital investment group established in 2006, investing in sustainable energy, innovative technology, and disruptive business models including wind, solar, biomass, storage, and hydrogen.",
+  "properties": {
+   "name": {
+    "value": "PostScriptum Ventures",
+    "sources": [
+     {
+      "name": "PostScriptum Ventures",
+      "document": "https://www.postscriptum.com",
+      "date": "2022-01-01"
+     },
+     {
+      "name": "Invest | RE:TURN",
+      "document": "https://return.bg/invest",
+      "date": "2019-02-01"
+     },
+     {
+      "name": "Advisory board - BVCA",
+      "document": "https://bvca.bg/en/advisory-board",
+      "date": "2025-06-04"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [],
+    "sources": []
+   },
+   "description": {
+    "value": "Venture capital investment group established in 2006, investing in sustainable energy, innovative technology, and disruptive business models including wind, solar, biomass, storage, and hydrogen.",
+    "sources": [
+     {
+      "name": "PostScriptum Ventures",
+      "document": "https://www.postscriptum.com",
+      "date": "2022-01-01"
+     },
+     {
+      "name": "Invest | RE:TURN",
+      "document": "https://return.bg/invest",
+      "date": "2019-02-01"
+     },
+     {
+      "name": "Advisory board - BVCA",
+      "document": "https://bvca.bg/en/advisory-board",
+      "date": "2025-06-04"
+     }
+    ]
+   },
+   "website": {
+    "value": "postscriptum.com",
+    "sources": [
+     {
+      "name": "PostScriptum Ventures",
+      "document": "https://www.postscriptum.com",
+      "date": "2022-01-01"
+     },
+     {
+      "name": "Invest | RE:TURN",
+      "document": "https://return.bg/invest",
+      "date": "2019-02-01"
+     },
+     {
+      "name": "Advisory board - BVCA",
+      "document": "https://bvca.bg/en/advisory-board",
+      "date": "2025-06-04"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "INVESTED_IN": [
+     {
+      "id": "0296a764-1899-4000-8017-79758eb6d4d1",
+      "name": "IQM",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Before quantum computing arrives, this startup wants enterprises already running on it | TechCrunch",
+         "document": "https://techcrunch.com/2026/03/12/before-quantum-computing-arrives-this-startup-wants-enterprises-already-running-on-it",
+         "date": "2026-03-12"
+        },
+        {
+         "name": "www.mexc.com",
+         "document": "https://www.mexc.com/news/918231",
+         "date": "2026-06-09"
+        }
+       ],
+       "id": "08c8c070-299a-4c08-86e4-db9af2b618c1"
+      }
+     },
+     {
+      "id": "14359613-a45f-4804-892d-3b9dd9e927a9",
+      "name": "NestAI",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Finland's NestAI lands €100M, partners with Nokia to build AI for defense applications | TechCrunch",
+         "document": "https://techcrunch.com/2025/11/20/finlands-nestai-lands-e100m-partners-with-nokia-to-build-ai-for-defense-applications",
+         "date": "2025-11-20"
+        },
+        {
+         "name": "Peter Sarlin – Founder of PostScriptum",
+         "document": "https://sarlin.ai",
+         "date": "2026-04-08"
+        },
+        {
+         "name": "Proud to see PostScriptum-backed NestAI take another step today – a strategic partnership with Nokia and €100M in funding from Nokia and the Finnish sovereign fund Tesi for next-gen physical AI… | Peter Sarlin | 91 comments",
+         "document": "https://www.linkedin.com/posts/psarlin_proud-to-see-postscriptum-backed-nestai-take-activity-7397256801483763713-o00J",
+         "date": "2025-11-20"
+        }
+       ],
+       "id": "b579aba7-a7f4-44c4-ab9b-ecb337761ddb"
+      }
+     },
+     {
+      "id": "1e8f3e38-f4f9-468f-8e52-e368abf19d0d",
+      "name": "VolteraH2",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/158788-36",
+         "date": "2026-06-09"
+        },
+        {
+         "name": "www.f6s.com",
+         "document": "https://www.f6s.com/company/volterah2",
+         "date": "2026-06-09"
+        }
+       ],
+       "id": "c0e2c15f-3e8a-40d3-9e07-6ab1c20ba85e"
+      }
+     },
+     {
+      "id": "2170aecc-8a0b-4e93-bae4-7778b9c4f9e3",
+      "name": "D-Carbonize",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/158788-36",
+         "date": "2026-06-09"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/520562-71",
+         "date": "2026-06-09"
+        }
+       ],
+       "id": "016a5be6-1a3c-4f32-bbd3-05c92c1c183a"
+      }
+     },
+     {
+      "id": "22742939-69c0-4062-8468-46126c0ac255",
+      "name": "PHYSICSX LIMITED",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Having backed many European AI startups during the past years (Lovable, Legora, PhysicsX, CuspAI, Prior Labs,...), PostScriptum is eager to partner w/ Inception Fund on early-stage AI investment… | Peter Sarlin | 114 comments",
+         "document": "https://www.linkedin.com/posts/psarlin_having-backed-many-european-ai-startups-during-activity-7392133882944491521-6e3H",
+         "date": "2025-11-06"
+        },
+        {
+         "name": "PhysicsX - PhysicsX Raises $135M Series B to Usher in a New Era of AI-Native Engineering and Manufacturing",
+         "document": "https://www.physicsx.ai/newsroom/physicsx-raises-135m-series-b-to-usher-in-a-new-era-of-ai-native-engineering-and-manufacturing",
+         "date": "2025-06-22"
+        }
+       ],
+       "id": "6db99fe4-e1de-453b-abf2-1595be9aff82"
+      }
+     },
+     {
+      "id": "3d2f58cb-dd82-4c24-8d24-db93cbc6a882",
+      "name": "QualSights",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "PostScriptum Ventures - Portfolio, Partners, Reviews, News",
+         "document": "https://parsers.vc/fund/postscriptum.com",
+         "date": "2022-04-27"
+        }
+       ],
+       "id": "a0cc8641-69b4-4b30-8b95-1da88dc76524"
+      }
+     },
+     {
+      "id": "51254cba-65bf-4ad8-b967-ed1df61b3f18",
+      "name": "Prior Labs",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Having backed many European AI startups during the past years (Lovable, Legora, PhysicsX, CuspAI, Prior Labs,...), PostScriptum is eager to partner w/ Inception Fund on early-stage AI investment… | Peter Sarlin | 114 comments",
+         "document": "https://www.linkedin.com/posts/psarlin_having-backed-many-european-ai-startups-during-activity-7392133882944491521-6e3H",
+         "date": "2025-11-06"
+        },
+        {
+         "name": "About | Prior Labs",
+         "document": "https://priorlabs.ai/about",
+         "date": "2026-01-30"
+        }
+       ],
+       "id": "9746df63-3717-4612-a969-3e1cdc086cd4"
+      }
+     },
+     {
+      "id": "7a66781c-9321-400f-8177-15b14706835b",
+      "name": "CWP Global",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "We are a founding investor in two major clean energy companies.",
+         "document": "https://cwp.global",
+         "date": "2025-02-02"
+        },
+        {
+         "name": "Mercuria and CWP Join Forces to build 2GW of renewables in Southeast Europe",
+         "document": "https://www.postscriptum.com/news.php?id=Mercuria+and+CWP+Join+forces",
+         "date": "2022-01-01"
+        },
+        {
+         "name": "CWP Terra",
+         "document": "https://cwp.global/terra/about-us",
+         "date": "2026-01-01"
+        }
+       ],
+       "id": "8a4f9753-f29f-48f1-b5f9-c5e64305763a"
+      }
+     },
+     {
+      "id": "7f443e2a-56b4-4de0-af00-f17b9b6b62bb",
+      "name": "Qutwo",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/158788-36",
+         "date": "2026-06-09"
+        },
+        {
+         "name": "Peter Sarlin's QuTwo reaches $380M valuation in angel round | TechCrunch",
+         "document": "https://techcrunch.com/2026/05/05/peter-sarlins-qutwo-reaches-380m-valuation-in-angel-round",
+         "date": "2026-05-05"
+        },
+        {
+         "name": "Qutwo Raises €25M ($29.4M USD) Angel Round to Bridge Enterprise AI and Quantum Computing - Quantum Computing Report",
+         "document": "https://quantumcomputingreport.com/qutwo-raises-e25m-29-4m-usd-angel-round-to-bridge-enterprise-ai-and-quantum-computing",
+         "date": "2026-05-07"
+        }
+       ],
+       "id": "13f522dd-9264-4516-96ce-9473c5a9d30d"
+      }
+     },
+     {
+      "id": "7fcee627-51b4-4427-9e93-88a6f41ce435",
+      "name": "Software Group",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/158788-36",
+         "date": "2026-06-09"
+        },
+        {
+         "name": "INVENIO Partners and PostScriptum Ventures jointly invest in Software Group",
+         "document": "https://www.softwaregroup.com/about-us/news/details/2023/12/29/invenio-partners-and-postscriptum-ventures-jointly-invest-in-software-group",
+         "date": "2023-12-29"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/postscriptumventures/__jXSeasJqG8Gucz9cJ4gx3xG_AIypMuNODtAHE-cyNsQ",
+         "date": "2026-06-09"
+        }
+       ],
+       "id": "0eac7eff-b903-4b7e-8691-9cd9ce148930"
+      }
+     },
+     {
+      "id": "880aa25d-6095-4ea3-bab2-50ea9bd0ff21",
+      "name": "CuspAI",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Having backed many European AI startups during the past years (Lovable, Legora, PhysicsX, CuspAI, Prior Labs,...), PostScriptum is eager to partner w/ Inception Fund on early-stage AI investment… | Peter Sarlin | 114 comments",
+         "document": "https://www.linkedin.com/posts/psarlin_having-backed-many-european-ai-startups-during-activity-7392133882944491521-6e3H",
+         "date": "2025-11-06"
+        },
+        {
+         "name": "CuspAI, startup building AI models for chemistry, raises $100 million Series A | Fortune",
+         "document": "https://fortune.com/2025/09/10/cuspai-raises-100-million-in-new-venture-capital-funding-ai-for-chemistry",
+         "date": "2025-09-10"
+        }
+       ],
+       "id": "9dbe51ab-f9b9-4ad7-82e5-6e70df373f3a"
+      }
+     },
+     {
+      "id": "e8c0e417-c7d6-41c9-89c3-b4c75f5d4ece",
+      "name": "Reshape Energy",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/158788-36",
+         "date": "2026-06-09"
+        },
+        {
+         "name": "teaserclub.com",
+         "document": "https://teaserclub.com/investors/07f3a233-c302-4a89-bc01-c906418d6ec5",
+         "date": "2026-06-09"
+        },
+        {
+         "name": "German startup Reshape Energy snaps €5M to fix Europe’s energy crisis by electrifying buildings across the continent — TFN",
+         "document": "https://techfundingnews.com/german-startup-reshape-energy-snaps-e5m-to-fix-europes-energy-crisis-by-electrifying-buildings-across-the-continent",
+         "date": "2025-03-11"
+        }
+       ],
+       "id": "e472bf61-2a87-4862-b4a6-d5b1b27e4a2a"
+      }
+     },
+     {
+      "id": "ef043f20-e5cc-4d42-8930-42003ac086a1",
+      "name": "QMill",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "QMill’s quantum algorithms soon to outperform supercomputers, backed by new investment from Peter Sarlin",
+         "document": "https://tech.eu/2025/03/07/qmills-quantum-algorithms-soon-to-outperform-supercomputers-backed-by-new-investment-from-peter-sarlin",
+         "date": "2025-03-07"
+        },
+        {
+         "name": "Before quantum computing arrives, this startup wants enterprises already running on it | TechCrunch",
+         "document": "https://techcrunch.com/2026/03/12/before-quantum-computing-arrives-this-startup-wants-enterprises-already-running-on-it",
+         "date": "2026-03-12"
+        }
+       ],
+       "id": "f42eae22-cbad-4a77-950b-9914e0263a47"
+      }
+     },
+     {
+      "id": "fdaee821-478d-49f0-83f9-8f60eea6151a",
+      "name": "Legora",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Having backed many European AI startups during the past years (Lovable, Legora, PhysicsX, CuspAI, Prior Labs,...), PostScriptum is eager to partner w/ Inception Fund on early-stage AI investment… | Peter Sarlin | 114 comments",
+         "document": "https://www.linkedin.com/posts/psarlin_having-backed-many-european-ai-startups-during-activity-7392133882944491521-6e3H",
+         "date": "2025-11-06"
+        },
+        {
+         "name": "menlovc.com",
+         "document": "https://menlovc.com/perspective/the-legal-ai-inflection-point-our-investment-in-legora",
+         "date": "2026-06-09"
+        }
+       ],
+       "id": "54a1892c-98b8-4ebb-8bb6-1cc631a87df3"
+      }
+     },
+     {
+      "id": "ffc9399d-04d8-4e3e-afc1-dd64e3fb652b",
+      "name": "Redpine",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "We’re thrilled to welcome Peter Sarlin and his investment firm PostScriptum AI as investors in Redpine. Peter comes with a wealth of experience, most notably as the co-founder and CEO of AMD Silo… | Redpine",
+         "document": "https://www.linkedin.com/posts/redpineai_were-thrilled-to-welcome-peter-sarlin-and-activity-7394664866122313728-xykQ",
+         "date": "2025-11-13"
+        },
+        {
+         "name": "Redpine Raises $8M Seed To Give AI Agents Access To Premium, Non-Public Data",
+         "document": "https://www.redpine.ai/insights/redpine-raises-8m-seed",
+         "date": "2026-04-28"
+        }
+       ],
+       "id": "37970bdd-6762-43c3-a5d9-0b7e9807c931"
+      }
+     }
+    ],
+    "OPERATES_IN_INDUSTRY": [
+     {
+      "id": "21774ccd-d5c5-4fa2-8ed1-ac3d20b46339",
+      "name": "PRIVATE_EQUITY",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "PostScriptum Ventures",
+         "document": "https://www.postscriptum.com",
+         "date": "2022-01-01"
+        },
+        {
+         "name": "Invest | RE:TURN",
+         "document": "https://return.bg/invest",
+         "date": "2019-02-01"
+        },
+        {
+         "name": "Advisory board - BVCA",
+         "document": "https://bvca.bg/en/advisory-board",
+         "date": "2025-06-04"
+        }
+       ],
+       "id": "303baa06-82db-4241-a4d2-2ecd2e065517"
+      }
+     },
+     {
+      "id": "f48ebf95-99ea-4756-99cc-8a2a2d71f2e2",
+      "name": "VENTURE_CAPITAL",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "PostScriptum Ventures",
+         "document": "https://www.postscriptum.com",
+         "date": "2022-01-01"
+        },
+        {
+         "name": "Invest | RE:TURN",
+         "document": "https://return.bg/invest",
+         "date": "2019-02-01"
+        },
+        {
+         "name": "Advisory board - BVCA",
+         "document": "https://bvca.bg/en/advisory-board",
+         "date": "2025-06-04"
+        }
+       ],
+       "id": "b4a77fde-7fb6-4b55-a1a0-276cd569a678"
+      }
+     }
+    ]
+   },
+   "incoming": {}
+  },
+  "numerical_observations": []
+ }
+}

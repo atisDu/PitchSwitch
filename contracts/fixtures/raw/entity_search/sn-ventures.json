@@ -1,0 +1,70 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/entities",
+  "params": {
+   "name": "SNÖ Ventures",
+   "limit": 10
+  },
+  "json": null
+ },
+ "recorded_at": "2026-11-13T20:31:40+00:00",
+ "response": {
+  "entities": [
+   {
+    "id": "4db7ebf9-b42b-42f9-a487-f63b1dcb9ce9",
+    "name": "SNÖ Ventures",
+    "entity_type": "Company",
+    "description": "Oslo-based venture capital fund investing in early-stage tech companies."
+   },
+   {
+    "id": "8a5c6617-e65b-5689-86e7-d82a45fccaa1",
+    "name": "SNO",
+    "entity_type": "Company",
+    "description": "French retail and consulting company headquartered in Leers, founded in 2017."
+   },
+   {
+    "id": "e06f1437-7463-422b-8e32-5cf70eefe4e3",
+    "name": "SNO Beratungs-UG (haftungsbeschränkt)",
+    "entity_type": "Company",
+    "description": "German limited liability company founded in 2009 and headquartered in Königswinter."
+   },
+   {
+    "id": "2e0d1912-200f-4ae8-874f-b49a57d6e48d",
+    "name": "SNO LIMITED",
+    "entity_type": "Company",
+    "description": "A British hospitality and tourism company founded in 2006 and based in Hemel Hempstead, Hertfordshire."
+   },
+   {
+    "id": "e48a35ec-d7a5-4b9a-896a-84253f5f9346",
+    "name": "SNO' WHAT - SNO' PROBLEM LTD.",
+    "entity_type": "Company",
+    "description": "A Scottish consulting firm headquartered in Westhill, Aberdeenshire, founded in 2011."
+   },
+   {
+    "id": "20ca893f-667b-5fd7-a77a-1ad4e8a3e442",
+    "name": "SNO IMMOBILIER",
+    "entity_type": "Company",
+    "description": "French real estate company headquartered in Boulogne‑Billancourt, founded in 2021."
+   },
+   {
+    "id": "431b82de-6d88-55f8-ad98-74dfa95190bd",
+    "name": "SAS SNO",
+    "entity_type": "Company",
+    "description": "A French retail company headquartered in Charleville-Mézières, founded in 2015."
+   },
+   {
+    "id": "af64839f-bddf-4ef0-b445-40e574dd322c",
+    "name": "SNO S.R.L.",
+    "entity_type": "Company",
+    "description": "Italian company based in Rome, founded in 2000."
+   },
+   {
+    "id": "5a2b1a6e-7ac7-4e0e-ad38-8d6311eeca79",
+    "name": "UMLAUT SNO LTD",
+    "entity_type": "Company",
+    "description": "A Northern Irish retail company founded in 2020."
+   }
+  ]
+ }
+}

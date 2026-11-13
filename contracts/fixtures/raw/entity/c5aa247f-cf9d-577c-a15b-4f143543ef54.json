@@ -1,0 +1,318 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/c5aa247f-cf9d-577c-a15b-4f143543ef54",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:41:12+00:00",
+ "response": {
+  "id": "c5aa247f-cf9d-577c-a15b-4f143543ef54",
+  "name": "Seed",
+  "entity_type": "FundingRound",
+  "description": null,
+  "properties": {
+   "name": {
+    "value": "Seed",
+    "sources": [
+     {
+      "name": "aurorapt.fi",
+      "document": "https://aurorapt.fi/press-release/aurora-propulsion-technologies-closes-1-7-me-seed-funding-round/",
+      "date": "2021-09-20",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "techcrunch.com",
+      "document": "https://techcrunch.com/2021/09/17/aurora-propulsion-technologies-closes-e1-7m-seed-for-spacecraft-maneuvering-and-deorbiting-tech/amp/",
+      "date": "2021-09-17",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "practica.vc",
+      "document": "https://practica.vc/en/investments/aurora-propulsion",
+      "date": "2026-11-09",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "round_label": {
+    "value": "SEED",
+    "sources": [
+     {
+      "name": "aurorapt.fi",
+      "document": "https://aurorapt.fi/press-release/aurora-propulsion-technologies-closes-1-7-me-seed-funding-round/",
+      "date": "2021-09-20",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "techcrunch.com",
+      "document": "https://techcrunch.com/2021/09/17/aurora-propulsion-technologies-closes-e1-7m-seed-for-spacecraft-maneuvering-and-deorbiting-tech/amp/",
+      "date": "2021-09-17",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "practica.vc",
+      "document": "https://practica.vc/en/investments/aurora-propulsion",
+      "date": "2026-11-09",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "announcement_date": {
+    "value": "2021-09-17",
+    "sources": [
+     {
+      "name": "techcrunch.com",
+      "document": "https://techcrunch.com/2021/09/17/aurora-propulsion-technologies-closes-e1-7m-seed-for-spacecraft-maneuvering-and-deorbiting-tech/amp/",
+      "date": "2021-09-17",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "aurorapt.fi",
+      "document": "https://aurorapt.fi/press-release/aurora-propulsion-technologies-closes-1-7-me-seed-funding-round/",
+      "date": "2021-09-20",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "transaction_value": {
+    "value": 1700000.0,
+    "sources": [
+     {
+      "name": "aurorapt.fi",
+      "document": "https://aurorapt.fi/press-release/aurora-propulsion-technologies-closes-1-7-me-seed-funding-round/",
+      "date": "2021-09-20",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "techcrunch.com",
+      "document": "https://techcrunch.com/2021/09/17/aurora-propulsion-technologies-closes-e1-7m-seed-for-spacecraft-maneuvering-and-deorbiting-tech/amp/",
+      "date": "2021-09-17",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "transaction_value_units": {
+    "value": "EUR",
+    "sources": [
+     {
+      "name": "aurorapt.fi",
+      "document": "https://aurorapt.fi/press-release/aurora-propulsion-technologies-closes-1-7-me-seed-funding-round/",
+      "date": "2021-09-20",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "techcrunch.com",
+      "document": "https://techcrunch.com/2021/09/17/aurora-propulsion-technologies-closes-e1-7m-seed-for-spacecraft-maneuvering-and-deorbiting-tech/amp/",
+      "date": "2021-09-17",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "instrument": {
+    "value": "EQUITY",
+    "sources": [
+     {
+      "name": "aurorapt.fi",
+      "document": "https://aurorapt.fi/press-release/aurora-propulsion-technologies-closes-1-7-me-seed-funding-round/",
+      "date": "2021-09-20",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "annotations": {
+    "value": [
+     "The company release calls it a seed funding round.",
+     "round_label_stated:Seed"
+    ],
+    "sources": []
+   }
+  },
+  "relationships": {
+   "outgoing": {},
+   "incoming": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "1fcac234-8286-5138-bd5a-b5ac262bff66",
+      "name": "The Flying Object",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "aurorapt.fi",
+         "document": "https://aurorapt.fi/press-release/aurora-propulsion-technologies-closes-1-7-me-seed-funding-round/",
+         "date": "2021-09-20",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "aurorapt.fi",
+         "document": "https://aurorapt.fi/press-release/aurorasat-1-is-now-the-flying-object/",
+         "date": "2021-11-11",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "e292e925-c287-5d7e-b5f9-a79a44b2b1db"
+      }
+     },
+     {
+      "id": "6cc8d898-b80e-4e64-97a8-55f16a874f64",
+      "name": "Aurora Propulsion Technologies",
+      "entity_type": "Company",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "aurorapt.fi",
+         "document": "https://aurorapt.fi/press-release/aurora-propulsion-technologies-closes-1-7-me-seed-funding-round/",
+         "date": "2021-09-20",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "techcrunch.com",
+         "document": "https://techcrunch.com/2021/09/17/aurora-propulsion-technologies-closes-e1-7m-seed-for-spacecraft-maneuvering-and-deorbiting-tech/amp/",
+         "date": "2021-09-17",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "practica.vc",
+         "document": "https://practica.vc/en/investments/aurora-propulsion",
+         "date": "2026-11-09",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "65caa19d-3756-57e2-9f08-d29d1b228dad"
+      }
+     },
+     {
+      "id": "a40ce49c-cbf2-4170-b2ca-bfe93a0c6f27",
+      "name": "Practica Capital",
+      "entity_type": "Company",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "aurorapt.fi",
+         "document": "https://aurorapt.fi/press-release/aurora-propulsion-technologies-closes-1-7-me-seed-funding-round/",
+         "date": "2021-09-20",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "practica.vc",
+         "document": "https://practica.vc/en/investments/aurora-propulsion",
+         "date": "2026-11-09",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "is_lead": true,
+       "id": "234b0345-e5bc-5ead-b54f-0b0366b40a08"
+      }
+     },
+     {
+      "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+      "name": "Tesi",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "aurorapt.fi",
+         "document": "https://aurorapt.fi/press-release/aurora-propulsion-technologies-closes-1-7-me-seed-funding-round/",
+         "date": "2021-09-20",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "techcrunch.com",
+         "document": "https://techcrunch.com/2021/09/17/aurora-propulsion-technologies-closes-e1-7m-seed-for-spacecraft-maneuvering-and-deorbiting-tech/amp/",
+         "date": "2021-09-17",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "418b2545-0ff0-5dca-8b9f-e68a3e32bb91"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

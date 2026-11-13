@@ -1,0 +1,76 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/entities",
+  "params": {
+   "name": "NATO Innovation Fund",
+   "limit": 10
+  },
+  "json": null
+ },
+ "recorded_at": "2026-11-13T20:31:14+00:00",
+ "response": {
+  "entities": [
+   {
+    "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+    "name": "NATO Innovation Fund",
+    "entity_type": "Organization",
+    "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO."
+   },
+   {
+    "id": "5bb30991-e810-4679-a95b-e3f411a4d38d",
+    "name": "NATO Innovation Accelerator",
+    "entity_type": "Organization",
+    "description": "It is a NATO program that advances dual-use commercial and government technologies."
+   },
+   {
+    "id": "0d54406f-bd35-5258-9afd-a2a559b4c74b",
+    "name": "Nato",
+    "entity_type": "Municipality",
+    "description": "comuna rural del distrito de Vohipeno, región de Fitovinany, Madagascar"
+   },
+   {
+    "id": "ff623ab6-88ca-480a-a38d-a39df3298dff",
+    "name": "Pascal Nato",
+    "entity_type": "Person",
+    "description": "Managing director of GARAGE DES TROIS MOULINS."
+   },
+   {
+    "id": "cedc48f9-471f-43f9-b27b-53ffed37cd71",
+    "name": "INNOVATION FUND",
+    "entity_type": "Company",
+    "description": "British venture capital firm headquartered in Chichester, founded in 2001."
+   },
+   {
+    "id": "436ccee6-ad3c-49c4-98a0-bed9384e1d95",
+    "name": "Jean-Claude Nato",
+    "entity_type": "Person",
+    "description": "Business executive who is the managing director of Garage des Trois Moulins."
+   },
+   {
+    "id": "8a7d1ca0-1343-4d88-a2cc-329f043f2e92",
+    "name": "Achmea Innovation Fund B.V.",
+    "entity_type": "Company",
+    "description": "A Dutch investment fund incorporated in 2011 and headquartered in Zeist, Netherlands."
+   },
+   {
+    "id": "6bf73e84-a1a5-4ee8-a16b-aebfeb9bbd52",
+    "name": "Debiopharm Innovation Fund SA",
+    "entity_type": "Company",
+    "description": "a Swiss investment fund founded in 2004 and based in Lausanne"
+   },
+   {
+    "id": "1d08ec1d-4615-55dc-b637-d6ad8c073b78",
+    "name": "NATO",
+    "entity_type": "IntergovernmentalOrganization",
+    "description": "intergovernmental military alliance between 32 member states"
+   },
+   {
+    "id": "249dd7f8-9727-4927-8835-bcccf08e82ef",
+    "name": "Healthcare Innovation Fund, L.P.",
+    "entity_type": "Company",
+    "description": "A company that operates in the asset management industry."
+   }
+  ]
+ }
+}

@@ -1,0 +1,533 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/b7226c97-3a44-5176-8544-cb91246b2249",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:39:41+00:00",
+ "response": {
+  "id": "b7226c97-3a44-5176-8544-cb91246b2249",
+  "name": "Kova Labs",
+  "entity_type": "Company",
+  "description": "Kova Labs builds the foundational autonomy layer for unmanned systems in GPS-denied, contested, and complex environments. Based in Helsinki, Finland.",
+  "properties": {
+   "name": {
+    "value": "Kova Labs",
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "linkedin.com",
+      "document": "https://www.linkedin.com/company/kova-labs/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "legal_name": {
+    "value": "Kova Labs Oy",
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/legal",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "description": {
+    "value": "Kova Labs builds the foundational autonomy layer for unmanned systems in GPS-denied, contested, and complex environments. Based in Helsinki, Finland.",
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "website": {
+    "value": "kovahq.com",
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "dns.google",
+      "document": "https://dns.google/query?name=kovahq.com&type=A",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "operational_status": {
+    "value": "ACTIVE",
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "headquarters_address": {
+    "value": "Helsinki, Finland",
+    "sources": [
+     {
+      "name": "linkedin.com",
+      "document": "https://www.linkedin.com/company/kova-labs/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "founding_date": {
+    "value": "2025-01-01",
+    "sources": [
+     {
+      "name": "linkedin.com",
+      "document": "https://www.linkedin.com/company/kova-labs/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "funding_stage": {
+    "value": "PRE_SEED",
+    "sources": [
+     {
+      "name": "lifelineventures.com",
+      "document": "https://lifelineventures.com/",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "total_funding": {
+    "value": 420000.0,
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-bravetech",
+      "date": "2026-07-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+      "date": "2026-10-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "resiliencemedia.co",
+      "document": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "total_funding_units": {
+    "value": "EUR",
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-bravetech",
+      "date": "2026-07-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+      "date": "2026-10-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "resiliencemedia.co",
+      "document": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "total_funding_excluding_debt": {
+    "value": 420000.0,
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-bravetech",
+      "date": "2026-07-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+      "date": "2026-10-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "resiliencemedia.co",
+      "document": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "total_funding_excluding_debt_units": {
+    "value": "EUR",
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-bravetech",
+      "date": "2026-07-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+      "date": "2026-10-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "resiliencemedia.co",
+      "document": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "a42c8b14-c1cd-5113-bd6d-3ec0bbcb1caa",
+      "name": "Grant",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "kovahq.com",
+         "document": "https://kovahq.com/news/kova-bravetech",
+         "date": "2026-07-15",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "kovahq.com",
+         "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+         "date": "2026-10-15",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "1cc4aaef-4b01-5e9c-96f0-96499fea94ed"
+      }
+     },
+     {
+      "id": "a73d838b-7aeb-5be8-b6f1-37f3374cb3ec",
+      "name": "Pre-Seed",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "lifelineventures.com",
+         "document": "https://lifelineventures.com/",
+         "date": "2026-11-12",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "f4c7295d-34ab-5cac-8deb-9668a6b6ad0b"
+      }
+     }
+    ],
+    "OPERATES_IN_INDUSTRY": [
+     {
+      "id": "bb7caa00-59c3-4587-9aaf-5d9195444829",
+      "name": "AEROSPACE_AND_DEFENSE",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "linkedin.com",
+         "document": "https://www.linkedin.com/company/kova-labs/",
+         "date": "2026-11-02",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        }
+       ],
+       "id": "4eb60fd2-d01d-517f-914f-d67b623fbb8c",
+       "original_label": "dualUseTech"
+      }
+     }
+    ]
+   },
+   "incoming": {
+    "INVESTED_IN": [
+     {
+      "id": "4d668c75-c7a0-4f5b-baea-ce0fa6a34e31",
+      "name": "Lifeline Ventures AB",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "lifelineventures.com",
+         "document": "https://lifelineventures.com/",
+         "date": "2026-11-12",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "resiliencemedia.co",
+         "document": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+         "date": "2026-11-04",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "22a5229b-2d89-4b97-80b0-237dfacea739"
+      }
+     },
+     {
+      "id": "c75cbef9-0ab0-5552-84f8-fc59bc63ea93",
+      "name": "Tuomas Rasila",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "resiliencemedia.co",
+         "document": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+         "date": "2026-11-04",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "695e667f-3027-4ada-a4fe-19e3dd706cf3"
+      }
+     }
+    ],
+    "FOUNDED": [
+     {
+      "id": "3fbe7c60-cdeb-5554-ab16-1e21998d351e",
+      "name": "Luukas Lohilahti",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "kovahq.com",
+         "document": "https://kovahq.com/news/kova-bravetech",
+         "date": "2026-07-15",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "515ed283-4b18-56df-a475-22d1362169b9"
+      }
+     },
+     {
+      "id": "5f3ab8d9-bebe-556c-a8b9-1fc6f8032581",
+      "name": "Teemu Rautavalta",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "lifelineventures.com",
+         "document": "https://lifelineventures.com/",
+         "date": "2026-11-12",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "kovahq.com",
+         "document": "https://kovahq.com/news/chapter-ii",
+         "date": "2026-06-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "f0b35e16-685d-5f3a-9af7-14afd184baba"
+      }
+     },
+     {
+      "id": "6ad298fd-37ec-5798-98cd-43acf924441a",
+      "name": "Touko Rautiainen",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "kovahq.com",
+         "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+         "date": "2026-10-15",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "lifelineventures.com",
+         "document": "https://lifelineventures.com/",
+         "date": "2026-11-12",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "d0ecfcb2-563f-5e3c-8496-2ce31ad9baf4"
+      }
+     },
+     {
+      "id": "dda8ce73-962e-589f-9fca-c46f9142a41d",
+      "name": "Otso Lehtovuori",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "lifelineventures.com",
+         "document": "https://lifelineventures.com/",
+         "date": "2026-11-12",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "kovahq.com",
+         "document": "https://kovahq.com/news/chapter-ii",
+         "date": "2026-06-13",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "09c64c3d-8b07-5021-a655-0b15f334593f"
+      }
+     }
+    ],
+    "IS_CEO_OF": [
+     {
+      "id": "6ad298fd-37ec-5798-98cd-43acf924441a",
+      "name": "Touko Rautiainen",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "kovahq.com",
+         "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+         "date": "2026-10-15",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "07bdb22b-ccf5-5398-bbec-3e191ff5c4ea"
+      }
+     }
+    ],
+    "WORKS_AT": [
+     {
+      "id": "3fbe7c60-cdeb-5554-ab16-1e21998d351e",
+      "name": "Luukas Lohilahti",
+      "entity_type": "Person",
+      "properties": {
+       "role": "Chief Product Officer",
+       "sources": [
+        {
+         "name": "kovahq.com",
+         "document": "https://kovahq.com/news/kova-bravetech",
+         "date": "2026-07-15",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "521d12fd-9201-5244-ad6d-62629fab68fa"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

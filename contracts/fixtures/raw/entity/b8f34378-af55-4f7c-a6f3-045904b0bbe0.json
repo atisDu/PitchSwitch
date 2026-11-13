@@ -1,0 +1,201 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/b8f34378-af55-4f7c-a6f3-045904b0bbe0",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:29:45+00:00",
+ "response": {
+  "id": "b8f34378-af55-4f7c-a6f3-045904b0bbe0",
+  "name": "DIANA UK ENTERPRISES LTD",
+  "entity_type": "Company",
+  "description": "A London‑based British company incorporated in 2024.",
+  "properties": {
+   "name": {
+    "value": "DIANA UK ENTERPRISES LTD",
+    "sources": [
+     {
+      "name": "Companies House UK",
+      "document": "https://find-and-update.company-information.service.gov.uk/company/16134712",
+      "date": "2026-05-01"
+     }
+    ]
+   },
+   "legal_name": {
+    "value": "DIANA UK ENTERPRISES LTD",
+    "sources": [
+     {
+      "name": "Companies House UK",
+      "document": "https://find-and-update.company-information.service.gov.uk/company/16134712",
+      "date": "2026-06-01"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [],
+    "sources": []
+   },
+   "description": {
+    "value": "A London‑based British company incorporated in 2024.",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-08-23"
+     }
+    ]
+   },
+   "registered_address": {
+    "value": "88 WANDSWORTH HIGH STREET, LONDON, SW18 4LB, ENGLAND",
+    "sources": [
+     {
+      "name": "Companies House UK",
+      "document": "https://find-and-update.company-information.service.gov.uk/company/16134712",
+      "date": "2026-06-01"
+     }
+    ]
+   },
+   "founding_date": {
+    "value": "2024-12-13",
+    "sources": [
+     {
+      "name": "Companies House UK",
+      "document": "https://find-and-update.company-information.service.gov.uk/company/16134712",
+      "date": "2026-06-01"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "INVESTED_IN": [
+     {
+      "id": "851673ac-a5b0-47e4-97c6-4d77205e4f05",
+      "name": "C2GRID",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/c2grid/__6B-DKlPbxADO4GBifWdVHUUHt2qAurUxT3Ucyn-VGg4/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/1000814-23",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/902526-49",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/venture-capital/sunfish-partners/__IdbT6AgAnjvFYgufrXybt_4f0hBf_mATCoDP-4lUtOY",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/baltic-sandbox-ventures/investor_summary/overview_timeline",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "791643ea-85d2-43e9-be1e-05d8bfb24569"
+      }
+     },
+     {
+      "id": "e4e92460-263b-4470-af82-a91cf153e453",
+      "name": "Kelluu",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/kelluu-oy",
+         "date": "2026-08-25"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/459217-27",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "0b5dac77-7ad2-4945-8c39-b9a50fdced34"
+      }
+     }
+    ]
+   },
+   "incoming": {}
+  },
+  "numerical_observations": []
+ }
+}

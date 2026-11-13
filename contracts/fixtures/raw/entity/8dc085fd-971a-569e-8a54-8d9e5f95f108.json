@@ -1,0 +1,412 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/8dc085fd-971a-569e-8a54-8d9e5f95f108",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:42:56+00:00",
+ "response": {
+  "id": "8dc085fd-971a-569e-8a54-8d9e5f95f108",
+  "name": "Pre-Seed",
+  "entity_type": "FundingRound",
+  "description": null,
+  "properties": {
+   "name": {
+    "value": "Pre-Seed",
+    "sources": [
+     {
+      "name": "eu-startups.com",
+      "document": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "via.ritzau.dk",
+      "document": "https://via.ritzau.dk/pressemeddelelse/15004667/eifo-finansierer-dansk-fragtdrone-startup?lang=da",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "techfundingnews.com",
+      "document": "https://techfundingnews.com/acodyne-2-5m-pre-seed-jet-speed-cargo-drones/",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "round_label": {
+    "value": "PRE_SEED",
+    "sources": [
+     {
+      "name": "eu-startups.com",
+      "document": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "via.ritzau.dk",
+      "document": "https://via.ritzau.dk/pressemeddelelse/15004667/eifo-finansierer-dansk-fragtdrone-startup?lang=da",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "techfundingnews.com",
+      "document": "https://techfundingnews.com/acodyne-2-5m-pre-seed-jet-speed-cargo-drones/",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "announcement_date": {
+    "value": "2026-06-22",
+    "sources": [
+     {
+      "name": "eu-startups.com",
+      "document": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "via.ritzau.dk",
+      "document": "https://via.ritzau.dk/pressemeddelelse/15004667/eifo-finansierer-dansk-fragtdrone-startup?lang=da",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "transaction_value": {
+    "value": 2500000.0,
+    "sources": [
+     {
+      "name": "eu-startups.com",
+      "document": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "techfundingnews.com",
+      "document": "https://techfundingnews.com/acodyne-2-5m-pre-seed-jet-speed-cargo-drones/",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "arcticstartup.com",
+      "document": "https://arcticstartup.com/acodyne-raises-e2-5m-pre-seed/",
+      "date": "2026-06-29",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "via.ritzau.dk",
+      "document": "https://via.ritzau.dk/pressemeddelelse/15004667/eifo-finansierer-dansk-fragtdrone-startup?lang=da",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "transaction_value_units": {
+    "value": "EUR",
+    "sources": [
+     {
+      "name": "eu-startups.com",
+      "document": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "techfundingnews.com",
+      "document": "https://techfundingnews.com/acodyne-2-5m-pre-seed-jet-speed-cargo-drones/",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "arcticstartup.com",
+      "document": "https://arcticstartup.com/acodyne-raises-e2-5m-pre-seed/",
+      "date": "2026-06-29",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "via.ritzau.dk",
+      "document": "https://via.ritzau.dk/pressemeddelelse/15004667/eifo-finansierer-dansk-fragtdrone-startup?lang=da",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "instrument": {
+    "value": "EQUITY",
+    "sources": [
+     {
+      "name": "eu-startups.com",
+      "document": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+      "date": "2026-06-22",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "annotations": {
+    "value": [
+     "Round name as stated in the article.",
+     "EIFO release (2026-06-22): 'Pre-seed-investeringsrunde'; TFN: 'pre-seed funding'.",
+     "round_label_stated:Pre-Seed"
+    ],
+    "sources": []
+   }
+  },
+  "relationships": {
+   "outgoing": {},
+   "incoming": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "00567057-ff98-419f-a14d-163f41b18a7b",
+      "name": "PSV Hafnium",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "eu-startups.com",
+         "document": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "via.ritzau.dk",
+         "document": "https://via.ritzau.dk/pressemeddelelse/15004667/eifo-finansierer-dansk-fragtdrone-startup?lang=da",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "techfundingnews.com",
+         "document": "https://techfundingnews.com/acodyne-2-5m-pre-seed-jet-speed-cargo-drones/",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "is_lead": true,
+       "id": "07ab4c25-f4d3-5a03-86cf-28b9ec560711"
+      }
+     },
+     {
+      "id": "6bdf243a-2769-4ca3-9ecd-ad4bb6d440fc",
+      "name": "SAP9 GROUP A/S",
+      "entity_type": "Company",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "eu-startups.com",
+         "document": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "via.ritzau.dk",
+         "document": "https://via.ritzau.dk/pressemeddelelse/15004667/eifo-finansierer-dansk-fragtdrone-startup?lang=da",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "7fe74c13-d8dc-5ad8-86c7-ee3bc189152d"
+      }
+     },
+     {
+      "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+      "name": "Gungnir Capital",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "eu-startups.com",
+         "document": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "via.ritzau.dk",
+         "document": "https://via.ritzau.dk/pressemeddelelse/15004667/eifo-finansierer-dansk-fragtdrone-startup?lang=da",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "techfundingnews.com",
+         "document": "https://techfundingnews.com/acodyne-2-5m-pre-seed-jet-speed-cargo-drones/",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "is_lead": true,
+       "id": "6af927ca-4231-550c-bfba-22bf0a76b436"
+      }
+     },
+     {
+      "id": "7bc5536e-89ac-4bd8-b2d4-3634336e0835",
+      "name": "EIFO",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "eu-startups.com",
+         "document": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "via.ritzau.dk",
+         "document": "https://via.ritzau.dk/pressemeddelelse/15004667/eifo-finansierer-dansk-fragtdrone-startup?lang=da",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "bed67cef-48ca-58fa-8c78-e62ba3795c44"
+      }
+     },
+     {
+      "id": "de9b26f3-63f6-4421-ae18-78c2d532c4d1",
+      "name": "Acodyne",
+      "entity_type": "Company",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "eu-startups.com",
+         "document": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "via.ritzau.dk",
+         "document": "https://via.ritzau.dk/pressemeddelelse/15004667/eifo-finansierer-dansk-fragtdrone-startup?lang=da",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "techfundingnews.com",
+         "document": "https://techfundingnews.com/acodyne-2-5m-pre-seed-jet-speed-cargo-drones/",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "be30ddf7-deb1-53bd-8125-b89e3807395f"
+      }
+     },
+     {
+      "id": "e47def52-cbaf-4cb9-be8e-737f0418c007",
+      "name": "GreenUP IV Invest",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "eu-startups.com",
+         "document": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "via.ritzau.dk",
+         "document": "https://via.ritzau.dk/pressemeddelelse/15004667/eifo-finansierer-dansk-fragtdrone-startup?lang=da",
+         "date": "2026-06-22",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "fca3ab7b-f38a-5639-845e-029f7e04554c"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

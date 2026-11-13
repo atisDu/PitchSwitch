@@ -1,0 +1,482 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/16fa515b-1434-58c9-be73-8754e77ade00",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:40:00+00:00",
+ "response": {
+  "id": "16fa515b-1434-58c9-be73-8754e77ade00",
+  "name": "Metaktik",
+  "entity_type": "Company",
+  "description": "A Finnish aerospace and defense company founded in 2026 and headquartered in Espoo.",
+  "properties": {
+   "name": {
+    "value": "Metaktik",
+    "sources": [
+     {
+      "name": "metaktik.com",
+      "document": "https://metaktik.com/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "linkedin.com",
+      "document": "https://www.linkedin.com/company/metaktik",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "legal_name": {
+    "value": "Metaktik Oy",
+    "sources": [
+     {
+      "name": "metaktik.com",
+      "document": "https://metaktik.com/privacy-policy",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "avoindata.prh.fi",
+      "document": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3604810-2",
+      "date": "2026-03-01",
+      "date_precision": "day",
+      "source_rank": "FILING"
+     }
+    ]
+   },
+   "description": {
+    "value": "A Finnish aerospace and defense company founded in 2026 and headquartered in Espoo.",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-11-13",
+      "date_precision": null,
+      "source_rank": null
+     }
+    ]
+   },
+   "website": {
+    "value": "metaktik.com",
+    "sources": [
+     {
+      "name": "metaktik.com",
+      "document": "https://metaktik.com/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "dns.google",
+      "document": "https://dns.google/query?name=metaktik.com&type=A",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "avoindata.prh.fi",
+      "document": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3604810-2",
+      "date": "2026-11-13",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "operational_status": {
+    "value": "ACTIVE",
+    "sources": [
+     {
+      "name": "metaktik.com",
+      "document": "https://metaktik.com/",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "avoindata.prh.fi",
+      "document": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3604810-2",
+      "date": "2026-03-01",
+      "date_precision": "day",
+      "source_rank": "FILING"
+     },
+     {
+      "name": "metaktik.com",
+      "document": "https://metaktik.com/news/2026-03/metaktik-ltd-has-been-founded",
+      "date": "2026-03-01",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "headquarters_address": {
+    "value": "Espoo, Finland",
+    "sources": [
+     {
+      "name": "linkedin.com",
+      "document": "https://www.linkedin.com/company/metaktik",
+      "date": "2026-11-02",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "founding_date": {
+    "value": "2026-03-01",
+    "sources": [
+     {
+      "name": "avoindata.prh.fi",
+      "document": "https://avoindata.prh.fi/opendata-ytj-api/v3/companies?businessId=3604810-2",
+      "date": "2026-03-01",
+      "date_precision": "day",
+      "source_rank": "FILING"
+     },
+     {
+      "name": "metaktik.com",
+      "document": "https://metaktik.com/news/2026-03/metaktik-ltd-has-been-founded",
+      "date": "2026-03-01",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "funding_stage": {
+    "value": "PRE_SEED",
+    "sources": [
+     {
+      "name": "arcticstartup.com",
+      "document": "https://arcticstartup.com/metaktik-raises-e1-million/",
+      "date": "2026-03-31",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "total_funding": {
+    "value": 1000000.0,
+    "sources": [
+     {
+      "name": "arcticstartup.com",
+      "document": "https://arcticstartup.com/metaktik-raises-e1-million/",
+      "date": "2026-03-31",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "metaktik.com",
+      "document": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+      "date": "2026-03-30",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "sttinfo.fi",
+      "document": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+      "date": "2026-03-31",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "total_funding_units": {
+    "value": "EUR",
+    "sources": [
+     {
+      "name": "arcticstartup.com",
+      "document": "https://arcticstartup.com/metaktik-raises-e1-million/",
+      "date": "2026-03-31",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "metaktik.com",
+      "document": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+      "date": "2026-03-30",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "sttinfo.fi",
+      "document": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+      "date": "2026-03-31",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "total_funding_excluding_debt": {
+    "value": 1000000.0,
+    "sources": [
+     {
+      "name": "arcticstartup.com",
+      "document": "https://arcticstartup.com/metaktik-raises-e1-million/",
+      "date": "2026-03-31",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "metaktik.com",
+      "document": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+      "date": "2026-03-30",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "sttinfo.fi",
+      "document": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+      "date": "2026-03-31",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "total_funding_excluding_debt_units": {
+    "value": "EUR",
+    "sources": [
+     {
+      "name": "arcticstartup.com",
+      "document": "https://arcticstartup.com/metaktik-raises-e1-million/",
+      "date": "2026-03-31",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "metaktik.com",
+      "document": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+      "date": "2026-03-30",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "sttinfo.fi",
+      "document": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+      "date": "2026-03-31",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "835691d5-2ad0-5017-9642-0c6e4f6ab448",
+      "name": "Pre-Seed",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "arcticstartup.com",
+         "document": "https://arcticstartup.com/metaktik-raises-e1-million/",
+         "date": "2026-03-31",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "metaktik.com",
+         "document": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+         "date": "2026-03-30",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "sttinfo.fi",
+         "document": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+         "date": "2026-03-31",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "00b8ccdc-e26e-5991-9049-46aad05368a9"
+      }
+     }
+    ],
+    "OPERATES_IN_INDUSTRY": [
+     {
+      "id": "bb7caa00-59c3-4587-9aaf-5d9195444829",
+      "name": "AEROSPACE_AND_DEFENSE",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "linkedin.com",
+         "document": "https://www.linkedin.com/company/metaktik",
+         "date": "2026-11-02",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        }
+       ],
+       "id": "644b3763-2db6-52a3-8e82-c434c5fdd4f8",
+       "original_label": "dualUseTech"
+      }
+     }
+    ]
+   },
+   "incoming": {
+    "INVESTED_IN": [
+     {
+      "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+      "name": "Maki.vc",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "metaktik.com",
+         "document": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+         "date": "2026-03-30",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "sttinfo.fi",
+         "document": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+         "date": "2026-03-31",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "3609d697-d230-4a44-b6a3-e5617b81d574"
+      }
+     }
+    ],
+    "FOUNDED": [
+     {
+      "id": "2da6127c-e45a-555e-b6e9-37c6b88225ff",
+      "name": "Jaan Praks",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "metaktik.com",
+         "document": "https://metaktik.com/about-us",
+         "date": "2026-11-03",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "748f7383-bc0c-5da4-b66d-3c2c98a1f8d4"
+      }
+     },
+     {
+      "id": "7bde8bad-ee23-5337-8f7b-02edd4c7de1f",
+      "name": "Tuukka Kuuramaa",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "metaktik.com",
+         "document": "https://metaktik.com/about-us",
+         "date": "2026-11-03",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "05db528c-8b11-5826-b42a-9d8037c574f7"
+      }
+     },
+     {
+      "id": "c46e2ced-df6d-57e6-8e0a-01c14a9e2658",
+      "name": "Ville Lundén",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "metaktik.com",
+         "document": "https://metaktik.com/about-us",
+         "date": "2026-11-03",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "e69bb599-e47d-5554-9d19-3ac21fc62d79"
+      }
+     }
+    ],
+    "IS_CEO_OF": [
+     {
+      "id": "7bde8bad-ee23-5337-8f7b-02edd4c7de1f",
+      "name": "Tuukka Kuuramaa",
+      "entity_type": "Person",
+      "properties": {
+       "sources": [
+        {
+         "name": "metaktik.com",
+         "document": "https://metaktik.com/about-us",
+         "date": "2026-11-03",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "7c48b3f2-4b23-5a91-a0f3-57f37eae8fd3"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

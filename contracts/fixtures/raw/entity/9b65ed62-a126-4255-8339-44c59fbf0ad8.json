@@ -1,0 +1,528 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:30:15+00:00",
+ "response": {
+  "id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "name": "Skyfall Ventures",
+  "entity_type": "Organization",
+  "description": "A venture capital firm headquartered in Glasgow, Scotland.",
+  "properties": {
+   "name": {
+    "value": "Skyfall Ventures",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-03-18"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [],
+    "sources": []
+   },
+   "description": {
+    "value": "A venture capital firm headquartered in Glasgow, Scotland.",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-08-22"
+     }
+    ]
+   },
+   "website": {
+    "value": "skyfall.vc",
+    "sources": [
+     {
+      "name": "Skyfall Ventures | LinkedIn",
+      "document": "https://no.linkedin.com/company/skyfall-ventures",
+      "date": "2026-04-29"
+     },
+     {
+      "name": "app.dealroom.co",
+      "document": "https://app.dealroom.co/investors/skyfall_ventures",
+      "date": "2026-05-21"
+     }
+    ]
+   },
+   "registered_address": {
+    "value": "133 Finnieston Street, Glasgow, G3 8HB",
+    "sources": [
+     {
+      "name": "SKYFALL VENTURES LIMITED | JARS.LT",
+      "document": "https://jars.lt/en/company/uk/SC458269-skyfall-ventures-limited",
+      "date": "2013-09-03"
+     }
+    ]
+   },
+   "employee_count": {
+    "value": 133,
+    "sources": [
+     {
+      "name": "tracxn.com",
+      "document": "https://tracxn.com/d/venture-capital/skyfallventures/__l2F5ICDUIe_is5Ons4UO-dFZMxHt0uzRN5qBCSBMu4c",
+      "date": "2026-05-21"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "INVESTED_IN": [
+     {
+      "id": "00608ef4-af76-4b4b-9fe6-f1d538aa4810",
+      "name": "TakeTakeTake",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "afa3151f-bb24-4779-a6c6-b350db5728df"
+      }
+     },
+     {
+      "id": "07f45b85-fc12-4911-9c54-6d0f263242c8",
+      "name": "Enode",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "913b0902-f47d-4b2c-a688-ca144052658d"
+      }
+     },
+     {
+      "id": "0a5f5078-326a-4b0b-9914-c84f163bc65d",
+      "name": "Strise",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "0cb360eb-6bf8-4c35-8fe6-3d6075df8543"
+      }
+     },
+     {
+      "id": "0f8d0392-5086-497e-b4e4-ffc763b95c5d",
+      "name": "Riff",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "9b7b26bb-80c6-48ae-9028-962ed57474fd"
+      }
+     },
+     {
+      "id": "2e51ca47-8617-4143-908f-8fdaeb79bab3",
+      "name": "Oda",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "ff8e9191-c7e0-42ff-a3bf-23cf3a8595e5"
+      }
+     },
+     {
+      "id": "32dbad87-8e41-497b-9651-c12938669166",
+      "name": "Starflow",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "72a0306e-1f5e-4030-9b24-d030b69406b9"
+      }
+     },
+     {
+      "id": "3afdc63c-b992-4b25-b69d-807ab346352d",
+      "name": "Stendr",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/stendr/__7VSvHoLx3hjMEv6yAnnHfm3bFhEeOWBkgqe3NhG5Jbc",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/1376632-18",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/skyfall-ventures/signals_and_news/timeline",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/rainfall-ventures/investor_summary/overview_timeline",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/57005-74",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "6d280cab-6a16-4d15-b304-b5b846fc8ac7"
+      }
+     },
+     {
+      "id": "3b025657-d9f2-4df1-bdab-1d0b7ffb24e6",
+      "name": "FIRI AS",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "ea95d317-d03e-4f6e-b191-293cdd842764"
+      }
+     },
+     {
+      "id": "502f2d08-adc1-4184-980d-d56c98b3b598",
+      "name": "Physical Robotics",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "555b6521-5a0b-47fc-91c1-ce14559046b4"
+      }
+     },
+     {
+      "id": "75497408-2fbc-45f1-8fb3-bd11e858966a",
+      "name": "NANSEN PTE. LTD.",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "7d1f3cca-83d2-4cbd-b6bb-a5d33bc473f1"
+      }
+     },
+     {
+      "id": "7b0ab416-6576-47bf-b85e-221440af6de2",
+      "name": "Tise AS",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "abff419e-e56f-4548-92d4-ab39ce10289f"
+      }
+     },
+     {
+      "id": "856772e7-8342-4d6f-be45-9988e839a2fc",
+      "name": "Parahelp",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "ce2e18c7-5dfc-49a3-a52a-dc47a03e9c41"
+      }
+     },
+     {
+      "id": "a35dc951-4fd6-4f81-b105-66117f1e8e65",
+      "name": "Sportiv.ai",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "SportAI Raises $1.8M Seed Round Led by Skyfall Ventures",
+         "document": "https://sportai.com/news/norwegian-tech-leaders-unite-to-launch-ai-powered-sports-tech-company-1",
+         "date": "2024-08-19"
+        },
+        {
+         "name": "aibusiness.com",
+         "document": "https://aibusiness.com/nlp/sports-technology-startup-sportai-closes-1-8m-seed-funding-round",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "Oslo-based startup SportAI raises $1.8M to develop its solution for sports technique analysis",
+         "document": "https://vestbee.com/insights/articles/sport-ai-raises-1-8-m",
+         "date": "2024-08-20"
+        },
+        {
+         "name": "www.eu-startups.com",
+         "document": "https://www.eu-startups.com/2024/08/oslo-based-sportai-raises-e1-6-million-to-harness-computer-vision-for-sports-technique-coaching",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "99fea954-8313-4b86-a7c7-033d18754851"
+      }
+     },
+     {
+      "id": "be75b775-db43-444e-9f25-a742d1055b3a",
+      "name": "Visoid",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/visoid/__eB3Rwp7qEzG_Pu3IsrmnqLtW4l0jbL6tjPj7yVtX8MU",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/visoid/__eB3Rwp7qEzG_Pu3IsrmnqLtW4l0jbL6tjPj7yVtX8MU/funding-and-investors",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "4a075365-03d0-480a-b530-aa3daa0e7a2c"
+      }
+     },
+     {
+      "id": "c0be7fcf-f8aa-427b-8680-48d8c52d4347",
+      "name": "SportAI",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/sportai/__vJVxXpLhM-JMQzErkSMK3TUFUBoyO5ZIDMJMjyGQxN8/funding-and-investors",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/sportai/__vJVxXpLhM-JMQzErkSMK3TUFUBoyO5ZIDMJMjyGQxN8",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "66f68097-e260-4749-a66b-1453b266229e"
+      }
+     },
+     {
+      "id": "cdbbceb7-e667-4c33-ade6-a6507d80d05f",
+      "name": "Hive Autonomy",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/hive-autonomy/__HkBwSpN58J2XtfDx-FMgdeUxOHRBX-Z3R4JKyRR6vHE",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/753321-97",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "cedb6998-52bc-4d16-add3-44a40f56a1bc"
+      }
+     },
+     {
+      "id": "d065567c-e6fa-4c8f-937f-30ad78b57b9c",
+      "name": "Cybret",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "2ad842ee-a848-4a00-8860-ff536a51fed3"
+      }
+     },
+     {
+      "id": "dce253cc-31e0-4d29-830b-373f77686ff0",
+      "name": "WeWillWrite",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "4f14d2e7-e5a9-49b5-9c82-fc0e8150d601"
+      }
+     },
+     {
+      "id": "ee727928-eb7d-449a-b1d2-4dc76433935d",
+      "name": "Vev",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "d58bb00e-96b8-4579-8860-30e8894b48c8"
+      }
+     },
+     {
+      "id": "f4c95f38-c707-497a-b862-f443a91408a9",
+      "name": "Nyby",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "tracxn.com",
+         "document": "https://tracxn.com/d/companies/nyby/__ngEJUc0kZJwSqhvZjETL_5L1lY5lwl6aelJeulfE_Z8/funding-and-investors",
+         "date": "2026-08-25"
+        }
+       ],
+       "id": "4fb57010-d2fe-407b-8547-4431793f049f"
+      }
+     },
+     {
+      "id": "fb6199f1-3b95-43f2-b54b-ca5ae0fbc96e",
+      "name": "Spring",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Portfolio",
+         "document": "https://skyfall.vc/portfolio",
+         "date": "2019-07-25"
+        }
+       ],
+       "id": "264caa48-d373-4ea2-be81-9e1c163a351a"
+      }
+     }
+    ],
+    "OPERATES_IN_INDUSTRY": [
+     {
+      "id": "f48ebf95-99ea-4756-99cc-8a2a2d71f2e2",
+      "name": "VENTURE_CAPITAL",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "Top 10 Venture Capital Firms in Norway (2026)",
+         "document": "https://www.failory.com/blog/venture-capital-firms-norway",
+         "date": "2025-08-05"
+        },
+        {
+         "name": "VC Scene in Europe: Top VC Funds In Norway",
+         "document": "https://vestbee.com/insights/articles/top-vc-funds-in-norway-to-finance-your-startup",
+         "date": "2023-06-29"
+        }
+       ],
+       "id": "5844e3f8-1ea4-43b1-a334-78086ba83e1f"
+      }
+     }
+    ]
+   },
+   "incoming": {}
+  },
+  "numerical_observations": []
+ }
+}

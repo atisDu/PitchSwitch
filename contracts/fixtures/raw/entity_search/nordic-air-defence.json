@@ -1,0 +1,76 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/entities",
+  "params": {
+   "name": "Nordic Air Defence",
+   "limit": 10
+  },
+  "json": null
+ },
+ "recorded_at": "2026-11-13T20:30:54+00:00",
+ "response": {
+  "entities": [
+   {
+    "id": "294e5d6e-bb7f-46e9-89e9-25d62789ba22",
+    "name": "NORDIC AIR DEFENCE UK LTD",
+    "entity_type": "Company",
+    "description": "A London‑based British company operating in the government and public administration sector, founded in 2026."
+   },
+   {
+    "id": "7665ef8b-e067-4bbc-be68-9e0b32d1d7f1",
+    "name": "THALES AIR DEFENCE LIMITED",
+    "entity_type": "Company",
+    "description": "British aerospace and defence company headquartered in Addlestone, founded in 1993, that develops missile systems such as Starstreak and NLAW."
+   },
+   {
+    "id": "7a4ead34-c56f-4f32-ba0d-09a56460479d",
+    "name": "Nordic Air Ventilatsioon OÜ",
+    "entity_type": "Company",
+    "description": "Estonian company headquartered in Tartu, founded in 2020."
+   },
+   {
+    "id": "32e98c4c-ae70-4f9d-8cef-d741d2e0685b",
+    "name": "TRIDON Mk2 air-defence system",
+    "entity_type": "Product",
+    "description": "A 2024 air-defence system developed by BAE Systems Bofors AB and manufactured by BAE Systems plc."
+   },
+   {
+    "id": "cf6aee87-c59d-4b67-bba8-ac82bbe1c9a5",
+    "name": "NORDIC",
+    "entity_type": "Company",
+    "description": "A Luxembourg-based company founded in 1996 and headquartered in Luxembourg City."
+   },
+   {
+    "id": "d2eb219f-8d20-4257-81a3-0f6e3f839029",
+    "name": "Nordic countries",
+    "entity_type": "GPE",
+    "description": "A region in Northern Europe comprising Denmark, Finland, Iceland, Norway and Sweden."
+   },
+   {
+    "id": "8a887458-a75e-4ba8-bcba-374f195a9911",
+    "name": "MYRIAD DEFENCE LTD",
+    "entity_type": "Company",
+    "description": "British software and services company headquartered in Wellesley, Aldershot, England, founded in 2023."
+   },
+   {
+    "id": "e60eeb8f-b042-4178-9d6b-3157f2fc600c",
+    "name": "Nordic Defence Cooperation",
+    "entity_type": "Organization",
+    "description": "A regional defence cooperation framework among the Nordic countries Norway, Sweden, Finland and Denmark."
+   },
+   {
+    "id": "a32c3bce-7c28-4dbc-8e20-fcd7b1d55350",
+    "name": "Nordic Region",
+    "entity_type": "Group",
+    "description": "A geographic and cultural region in Northern Europe comprising the Nordic countries, including Finland and Sweden."
+   },
+   {
+    "id": "ee305b45-aa1d-40bc-9889-8f2b49634ea1",
+    "name": "Nordic countries",
+    "entity_type": "Location",
+    "description": "A geographical region in Northern Europe comprising Denmark, Finland, Iceland, Norway, and Sweden."
+   }
+  ]
+ }
+}

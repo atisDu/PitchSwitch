@@ -1,0 +1,73 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/knowledge/query",
+  "params": null,
+  "json": {
+   "input": "companies.industry=AEROSPACE_AND_DEFENSE.country=Norway.funding_stage=Pre-Seed OR Seed OR Series A.return(name, description, funding_stage, total_funding).limit=15"
+  }
+ },
+ "recorded_at": "2026-11-13T20:38:05+00:00",
+ "response": {
+  "results": [
+   {
+    "name": "Stendr",
+    "description": "AI-powered drone defense startup building counter-drone systems for European defense",
+    "funding_stage": "Pre-Seed",
+    "total_funding": "~$5.4M (Pre-Seed, April 2026)"
+   },
+   {
+    "name": "UBIQ Aerospace",
+    "description": "Developer of autonomous ice protection systems (D•ICE) for UAVs and crewed aircraft, based in Trondheim",
+    "funding_stage": "Seed",
+    "total_funding": "$2.4M grant (2022)"
+   },
+   {
+    "name": "Six Robotics",
+    "description": "Aerospace, maritime and defense tech company in Norway",
+    "funding_stage": "Seed",
+    "total_funding": null
+   },
+   {
+    "name": "Space Lab",
+    "description": "Norwegian space/defense tech startup",
+    "funding_stage": "Seed",
+    "total_funding": "~$2M (April 2026)"
+   }
+  ],
+  "entities": [
+   {
+    "id": "3afdc63c-b992-4b25-b69d-807ab346352d",
+    "name": "Stendr",
+    "entity_type": "Company",
+    "mentions": [
+     "Stendr"
+    ]
+   },
+   {
+    "id": "13b90514-ba02-4974-9078-dfcea29ae8d0",
+    "name": "UBIQ Aerospace",
+    "entity_type": "Company",
+    "mentions": [
+     "UBIQ Aerospace"
+    ]
+   },
+   {
+    "id": "7c305686-4212-5fb1-be3e-0202761345fa",
+    "name": "Trondheim municipality",
+    "entity_type": "Municipality",
+    "mentions": [
+     "Trondheim"
+    ]
+   },
+   {
+    "id": "a634a2e2-ecd7-4253-bffb-8ece69e0191a",
+    "name": "Norway",
+    "entity_type": "Country",
+    "mentions": [
+     "Norway"
+    ]
+   }
+  ]
+ }
+}

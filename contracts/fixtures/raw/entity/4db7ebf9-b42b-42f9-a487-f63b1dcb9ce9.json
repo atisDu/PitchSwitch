@@ -1,0 +1,285 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/4db7ebf9-b42b-42f9-a487-f63b1dcb9ce9",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:29:16+00:00",
+ "response": {
+  "id": "4db7ebf9-b42b-42f9-a487-f63b1dcb9ce9",
+  "name": "SNÖ Ventures",
+  "entity_type": "Company",
+  "description": "Oslo-based venture capital fund investing in early-stage tech companies.",
+  "properties": {
+   "name": {
+    "value": "SNÖ Ventures",
+    "sources": [
+     {
+      "name": "Top 10 Venture Capital Firms in Norway (2026)",
+      "document": "https://www.failory.com/blog/venture-capital-firms-norway",
+      "date": "2025-08-05"
+     },
+     {
+      "name": "www.seedtable.com",
+      "document": "https://www.seedtable.com/investors-norway",
+      "date": "2026-06-08"
+     },
+     {
+      "name": "nollahealth.com",
+      "document": "https://www.nollahealth.com/blog/debut-skin-platform",
+      "date": "2025-09-01",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "beautyindependent.com",
+      "document": "https://www.beautyindependent.com/4-5m-raise-nolla-health-ai-startup-offers-acne-care",
+      "date": "2025-09-18",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [
+     "SNO Ventures"
+    ],
+    "sources": []
+   },
+   "description": {
+    "value": "Oslo-based venture capital fund investing in early-stage tech companies.",
+    "sources": [
+     {
+      "name": "Top 10 Venture Capital Firms in Norway (2026)",
+      "document": "https://www.failory.com/blog/venture-capital-firms-norway",
+      "date": "2025-08-05"
+     },
+     {
+      "name": "www.seedtable.com",
+      "document": "https://www.seedtable.com/investors-norway",
+      "date": "2026-06-08"
+     }
+    ]
+   },
+   "website": {
+    "value": "sno.vc",
+    "sources": [
+     {
+      "name": "Top 10 Venture Capital Firms in Norway (2026)",
+      "document": "https://www.failory.com/blog/venture-capital-firms-norway",
+      "date": "2025-08-05"
+     },
+     {
+      "name": "www.seedtable.com",
+      "document": "https://www.seedtable.com/investors-norway",
+      "date": "2026-06-08"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "48e3ac91-c6f1-51a5-aa6e-88ff00935a6f",
+      "name": "Pre-Seed",
+      "entity_type": "FundingRound",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "nollahealth.com",
+         "document": "https://www.nollahealth.com/blog/debut-skin-platform",
+         "date": "2025-09-01",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "beautyindependent.com",
+         "document": "https://www.beautyindependent.com/4-5m-raise-nolla-health-ai-startup-offers-acne-care",
+         "date": "2025-09-18",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "1a820af1-ace2-51ab-8f6f-1d69b7acb4db"
+      }
+     }
+    ],
+    "INVESTED_IN": [
+     {
+      "id": "00608ef4-af76-4b4b-9fe6-f1d538aa4810",
+      "name": "TakeTakeTake",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/607119-04",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/person/riccardo-zacconi",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/person/fredrik-hjelm",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/thiel-capital/investor_summary/overview_timeline",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/105904-27",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/investor/159081-31",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "efd0b392-b15d-4001-ab98-f41808da7a6b"
+      }
+     },
+     {
+      "id": "491c73fa-1654-4f5b-8ecb-168671c27823",
+      "name": "Ignite Procurement",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/ignite-procurement/financial_details",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "www.crunchbase.com",
+         "document": "https://www.crunchbase.com/organization/ignite-procurement",
+         "date": "2026-08-24"
+        },
+        {
+         "name": "pitchbook.com",
+         "document": "https://pitchbook.com/profiles/company/224290-09",
+         "date": "2026-08-24"
+        }
+       ],
+       "id": "f7951a8f-4b2c-4656-8dd5-abf7a017dd51"
+      }
+     },
+     {
+      "id": "65f601c1-32e2-4a12-a0f8-d0f15ae90a1d",
+      "name": "Nolla Health",
+      "entity_type": "Company",
+      "properties": {
+       "sources": [
+        {
+         "name": "nollahealth.com",
+         "document": "https://www.nollahealth.com/blog/debut-skin-platform",
+         "date": "2025-09-01",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "beautyindependent.com",
+         "document": "https://www.beautyindependent.com/4-5m-raise-nolla-health-ai-startup-offers-acne-care",
+         "date": "2025-09-18",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "d7256072-70d0-4779-833a-e9895948a906"
+      }
+     }
+    ],
+    "OPERATES_IN_INDUSTRY": [
+     {
+      "id": "f48ebf95-99ea-4756-99cc-8a2a2d71f2e2",
+      "name": "VENTURE_CAPITAL",
+      "entity_type": "Industry",
+      "properties": {
+       "sources": [
+        {
+         "name": "Top 10 Venture Capital Firms in Norway (2026)",
+         "document": "https://www.failory.com/blog/venture-capital-firms-norway",
+         "date": "2025-08-05"
+        },
+        {
+         "name": "www.seedtable.com",
+         "document": "https://www.seedtable.com/investors-norway",
+         "date": "2026-06-08"
+        }
+       ],
+       "id": "9b43050a-59b3-4c4b-bc1a-ac530cb5d154"
+      }
+     }
+    ]
+   },
+   "incoming": {}
+  },
+  "numerical_observations": []
+ }
+}

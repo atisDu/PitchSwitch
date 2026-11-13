@@ -1,0 +1,255 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/a42c8b14-c1cd-5113-bd6d-3ec0bbcb1caa",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:39:48+00:00",
+ "response": {
+  "id": "a42c8b14-c1cd-5113-bd6d-3ec0bbcb1caa",
+  "name": "Grant",
+  "entity_type": "FundingRound",
+  "description": null,
+  "properties": {
+   "name": {
+    "value": "Grant",
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-bravetech",
+      "date": "2026-07-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+      "date": "2026-10-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "round_label": {
+    "value": "GRANT",
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-bravetech",
+      "date": "2026-07-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+      "date": "2026-10-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "announcement_date": {
+    "value": "2026-10-15",
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+      "date": "2026-10-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "transaction_value": {
+    "value": 300000.0,
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+      "date": "2026-10-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "resiliencemedia.co",
+      "document": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "transaction_value_units": {
+    "value": "EUR",
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-bravetech",
+      "date": "2026-07-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+      "date": "2026-10-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "resiliencemedia.co",
+      "document": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "instrument": {
+    "value": "GRANT",
+    "sources": [
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-bravetech",
+      "date": "2026-07-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     },
+     {
+      "name": "kovahq.com",
+      "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+      "date": "2026-10-15",
+      "date_precision": "day",
+      "source_rank": "PRIMARY"
+     }
+    ]
+   },
+   "annotations": {
+    "value": [
+     "BraveTech EU DefTech Forges award by the European Defence Agency (EU-funded programme run with Brave1).",
+     "round_label_stated:Grant",
+     "BraveTech EU Phase II award, organised by the European Defence Agency and Brave1; a separate award decision from the July 2026 Phase I award."
+    ],
+    "sources": []
+   }
+  },
+  "relationships": {
+   "outgoing": {},
+   "incoming": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "0c56c1b4-8b5c-450b-a89f-b12acaa33b27",
+      "name": "European Defence Agency",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "GRANTOR",
+       "sources": [
+        {
+         "name": "kovahq.com",
+         "document": "https://kovahq.com/news/kova-bravetech",
+         "date": "2026-07-15",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "kovahq.com",
+         "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+         "date": "2026-10-15",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "is_lead": true,
+       "id": "4ff82a7d-c628-5c93-83d5-a25272dec7f9"
+      }
+     },
+     {
+      "id": "b7226c97-3a44-5176-8544-cb91246b2249",
+      "name": "Kova Labs",
+      "entity_type": "Company",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "kovahq.com",
+         "document": "https://kovahq.com/news/kova-bravetech",
+         "date": "2026-07-15",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        },
+        {
+         "name": "kovahq.com",
+         "document": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+         "date": "2026-10-15",
+         "date_precision": "day",
+         "source_rank": "PRIMARY"
+        }
+       ],
+       "id": "1cc4aaef-4b01-5e9c-96f0-96499fea94ed"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

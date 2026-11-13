@@ -1,0 +1,185 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/7cf7864b-8de0-5b39-99c3-3754e678454a",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:29:23+00:00",
+ "response": {
+  "id": "7cf7864b-8de0-5b39-99c3-3754e678454a",
+  "name": "Grant",
+  "entity_type": "FundingRound",
+  "description": null,
+  "properties": {
+   "name": {
+    "value": "Grant",
+    "sources": [
+     {
+      "name": "cordis.europa.eu",
+      "document": "https://cordis.europa.eu/project/id/101157488",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "FILING"
+     }
+    ]
+   },
+   "round_label": {
+    "value": "GRANT",
+    "sources": [
+     {
+      "name": "cordis.europa.eu",
+      "document": "https://cordis.europa.eu/project/id/101157488",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "FILING"
+     }
+    ]
+   },
+   "transaction_value": {
+    "value": 301500.0,
+    "sources": [
+     {
+      "name": "cordis.europa.eu",
+      "document": "https://cordis.europa.eu/project/id/101157488",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "FILING"
+     }
+    ]
+   },
+   "transaction_value_units": {
+    "value": "EUR",
+    "sources": [
+     {
+      "name": "cordis.europa.eu",
+      "document": "https://cordis.europa.eu/project/id/101157488",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "FILING"
+     }
+    ]
+   },
+   "instrument": {
+    "value": "GRANT",
+    "sources": [
+     {
+      "name": "cordis.europa.eu",
+      "document": "https://cordis.europa.eu/project/id/101157488",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "FILING"
+     }
+    ]
+   },
+   "annotations": {
+    "value": [
+     "round_label_stated:Grant"
+    ],
+    "sources": []
+   }
+  },
+  "relationships": {
+   "outgoing": {},
+   "incoming": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+      "name": "Kelluu Oy",
+      "entity_type": "Company",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "cordis.europa.eu",
+         "document": "https://cordis.europa.eu/project/id/101157488",
+         "date": "2026-11-12",
+         "date_precision": "day",
+         "source_rank": "FILING"
+        }
+       ],
+       "id": "2b99b494-efcd-5e56-a760-420a1e21090b"
+      }
+     },
+     {
+      "id": "bb911b6c-571a-4127-a87a-87e86709de6f",
+      "name": "Circular Bio-based Europe Joint Undertaking",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "GRANTOR",
+       "sources": [
+        {
+         "name": "cordis.europa.eu",
+         "document": "https://cordis.europa.eu/project/id/101157488",
+         "date": "2026-11-12",
+         "date_precision": "day",
+         "source_rank": "FILING"
+        }
+       ],
+       "is_lead": true,
+       "id": "42d500c0-0825-527c-8baf-bd57b65f4273"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

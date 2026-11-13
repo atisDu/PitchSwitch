@@ -1,0 +1,165 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/knowledge/query",
+  "params": null,
+  "json": {
+   "input": "companies.industry=AEROSPACE_AND_DEFENSE.country=Finland.funding_stage=Pre-Seed OR Seed OR Series A.return(name, description, funding_stage, total_funding).limit=15"
+  }
+ },
+ "recorded_at": "2026-11-13T20:36:32+00:00",
+ "response": {
+  "results": [
+   {
+    "name": "Aavuus",
+    "description": "Finnish aerospace/defense tech company",
+    "funding_stage": "Seed",
+    "total_funding": "Raised Seed round (Jun 2026), investor: Maki.vc"
+   },
+   {
+    "name": "Kova Labs",
+    "description": "Vision-based autonomy for unmanned systems in GPS-denied terrain (forest, indoors, electronic-warfare environments). Programme with the Finnish Defence Forces; selected for EU BraveTech.",
+    "funding_stage": "Seed",
+    "total_funding": "Undisclosed (Lifeline Ventures + angels, 2025) + public R&D grants"
+   },
+   {
+    "name": "Metaktik",
+    "description": "Ultra-light, flexible metasurface antennas for drones, satellites and ground systems — comms, radar, stealth. Based in Espoo, founded 2026.",
+    "funding_stage": "Pre-Seed",
+    "total_funding": "€1M (pre-seed, 2026, Maki.vc)"
+   },
+   {
+    "name": "Kelluu",
+    "description": "Autonomous hydrogen-powered airships for ISR/surveillance. Based in Joensuu, founded 2018.",
+    "funding_stage": "Series A",
+    "total_funding": "~€15M (Series A, Apr 2026; NATO Innovation Fund's first Finnish investment)"
+   },
+   {
+    "name": "ReOrbit",
+    "description": "Secure space infrastructure for multi-domain operations and satellite solutions for civil and defense applications. Based in Helsinki.",
+    "funding_stage": "Series A",
+    "total_funding": "Series A raised Sep 2025 (investors include Inventure, Springvest and others)"
+   },
+   {
+    "name": "ReLoc",
+    "description": "Tactical navigation that keeps working under GNSS jamming and spoofing: fuses satellite positioning with inertial sensors and wheel odometry. Based in Espoo, founded 2024.",
+    "funding_stage": "Pre-Seed",
+    "total_funding": "Pre-seed from Innovestor (Nordic9, Apr 2025), amount undisclosed; earlier €920K round (Sep 2024, FiBAN angels, Innovestor Angel Co-Fund, Lifeline Ventures)"
+   }
+  ],
+  "entities": [
+   {
+    "id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+    "name": "Aavuus",
+    "entity_type": "Company",
+    "mentions": [
+     "Aavuus"
+    ]
+   },
+   {
+    "id": "b7226c97-3a44-5176-8544-cb91246b2249",
+    "name": "Kova Labs",
+    "entity_type": "Company",
+    "mentions": [
+     "Kova Labs"
+    ]
+   },
+   {
+    "id": "16fa515b-1434-58c9-be73-8754e77ade00",
+    "name": "Metaktik",
+    "entity_type": "Company",
+    "mentions": [
+     "Metaktik"
+    ]
+   },
+   {
+    "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+    "name": "Kelluu Oy",
+    "entity_type": "Company",
+    "mentions": [
+     "Kelluu"
+    ]
+   },
+   {
+    "id": "a1f7d57d-39a4-486f-bd9b-39b8b50ab1ff",
+    "name": "ReOrbit",
+    "entity_type": "Organization",
+    "mentions": [
+     "ReOrbit"
+    ]
+   },
+   {
+    "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+    "name": "NATO Innovation Fund",
+    "entity_type": "Organization",
+    "mentions": [
+     "NATO Innovation Fund"
+    ]
+   },
+   {
+    "id": "8f0ff46d-d609-4ce0-b719-85f739b92ca3",
+    "name": "Maki.vc",
+    "entity_type": "Organization",
+    "mentions": [
+     "Maki.vc"
+    ]
+   },
+   {
+    "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+    "name": "Lifeline Ventures",
+    "entity_type": "Organization",
+    "mentions": [
+     "Lifeline Ventures"
+    ]
+   },
+   {
+    "id": "6a966907-4006-4a4b-8d11-2330f76cb3cd",
+    "name": "Innovestor Oy",
+    "entity_type": "Company",
+    "mentions": [
+     "Innovestor"
+    ]
+   },
+   {
+    "id": "108d6f31-4fdc-4208-9271-5a79fad93daa",
+    "name": "Nordic9",
+    "entity_type": "Organization",
+    "mentions": [
+     "Nordic9"
+    ]
+   },
+   {
+    "id": "cdd4fc83-8fda-4922-ab3b-59aaf1a9063b",
+    "name": "FIBAN LTD",
+    "entity_type": "Company",
+    "mentions": [
+     "FiBAN"
+    ]
+   },
+   {
+    "id": "1ae80d12-c52b-5678-ba08-de88fccaff67",
+    "name": "Innovestor Angel CoFund",
+    "entity_type": "Organization",
+    "mentions": [
+     "Innovestor Angel Co-Fund"
+    ]
+   },
+   {
+    "id": "51e60550-ce67-4c03-a3a7-a4c87826a717",
+    "name": "Inventure Group",
+    "entity_type": "Company",
+    "mentions": [
+     "Inventure"
+    ]
+   },
+   {
+    "id": "931e00a6-ebb4-48c4-8fba-a5bbf0ecfa4e",
+    "name": "Springvest Holdings Limited",
+    "entity_type": "Company",
+    "mentions": [
+     "Springvest"
+    ]
+   }
+  ]
+ }
+}

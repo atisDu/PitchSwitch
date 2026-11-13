@@ -1,0 +1,146 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/5c699806-0fea-4e62-a594-717d4d85516c",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:28:11+00:00",
+ "response": {
+  "id": "5c699806-0fea-4e62-a594-717d4d85516c",
+  "name": "Sensofusion Oyj",
+  "entity_type": "Company",
+  "description": "Finnish company founded in 2016 and headquartered in Vantaa.",
+  "properties": {
+   "name": {
+    "value": "Sensofusion Oyj",
+    "sources": [
+     {
+      "name": "GLEIF",
+      "document": "https://search.gleif.org/#/record/7437000UYRI2YZJTC459",
+      "date": "2026-09-25"
+     }
+    ]
+   },
+   "legal_name": {
+    "value": "Sensofusion Oyj",
+    "sources": [
+     {
+      "name": "GLEIF",
+      "document": "https://search.gleif.org/#/record/7437000UYRI2YZJTC459",
+      "date": "2026-09-25"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [
+     "Sensofusion Oy",
+     "Sensofusion"
+    ],
+    "sources": []
+   },
+   "description": {
+    "value": "Finnish company founded in 2016 and headquartered in Vantaa.",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-07-30"
+     }
+    ]
+   },
+   "headquarters_address": {
+    "value": "Hakamäenkuja 1, 01510 VANTAA, VANTAA, FI-01510, FI",
+    "sources": [
+     {
+      "name": "GLEIF",
+      "document": "https://search.gleif.org/#/record/7437000UYRI2YZJTC459",
+      "date": "2026-09-25"
+     }
+    ]
+   },
+   "registered_address": {
+    "value": "Hakamäenkuja 1, 01510 VANTAA, VANTAA, FI-01510, FI",
+    "sources": [
+     {
+      "name": "GLEIF",
+      "document": "https://search.gleif.org/#/record/7437000UYRI2YZJTC459",
+      "date": "2026-09-25"
+     }
+    ]
+   },
+   "founding_date": {
+    "value": "2016-04-14",
+    "sources": [
+     {
+      "name": "GLEIF",
+      "document": "https://search.gleif.org/#/record/7437000UYRI2YZJTC459",
+      "date": "2026-09-25"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {},
+   "incoming": {}
+  },
+  "numerical_observations": []
+ }
+}

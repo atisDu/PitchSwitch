@@ -1,0 +1,234 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/knowledge/search",
+  "params": null,
+  "json": {
+   "input": "Who invested in Nordic Air Defence (NAD) and who led each of its funding rounds?"
+  }
+ },
+ "recorded_at": "2026-11-13T20:34:22+00:00",
+ "response": {
+  "content": "## Nordic Air Defence (NAD) — Investors & Funding Rounds\n\nNordic Air Defence, a Stockholm-based Swedish defence-tech startup, has raised a total of approximately **$4.4–4.55 million** across two funding rounds.\n\n### Round 1 — Pre-Seed / Seed (November 12, 2024)\n- **Amount:** ~€1.2 million (~$1.3 million)\n- **Lead investor:** **SNÖ Ventures**\n- **Other investors (angel investors):** Noam Perski, Jan Gurander, Johan Ahlberg, Jörgen Bladh, and co-founder Gustav Wiberg\n\n### Round 2 — Pre-Seed Extension (July 3, 2025)\n- **Amount:** $3 million\n- **Lead investor:** **Inflection**\n- **Other investors:** SNÖ Ventures, MW Group, Revalence Ventures, Hampus Särnbratt\n\nIn total, Nordic Air Defence has 2 institutional investors (SNÖ Ventures and Inflection) and several angel investors backing the company.",
+  "explainability": [
+   {
+    "content": "The first funding round (Nov 12, 2024) raised about €1.2 M (~$1.3 M) and was led by SNÖ Ventures, with angel investors Noam Perski, Jan Gurander, Johan Ahlberg, Jörgen Bladh and co‑founder Gustav Wiberg participating.",
+    "references": [
+     "59b7587c-20ce-423d-bde5-0dcb7d712b2b"
+    ]
+   },
+   {
+    "content": "The second funding round (Jul 3, 2025) was a pre‑seed extension of $3 M, led by Inflection, and also included SNÖ Ventures, MW Group, Revalence Ventures and Hampus Särnbratt as investors.",
+    "references": [
+     "0d903e9b-b9d6-4b7f-b220-28567b150c8e",
+     "cec42be7-7ff4-47b6-915d-24c4ed6c3493"
+    ]
+   },
+   {
+    "content": "Overall, Nordic Air Defence has received $4.4–4.55 M across the two rounds, confirming the amounts and investor participation described in the answer.",
+    "references": [
+     "8e8cbdb1-a32a-4ca4-a4a3-08d85916b9d0"
+    ]
+   }
+  ],
+  "context": [
+   {
+    "id": "59b7587c-20ce-423d-bde5-0dcb7d712b2b",
+    "content": "only one fourth of the peak valuation from 2021 (Swedish / Di Digital paywall). 📊 For 2023, Mindler reported net revenue of SEK241M, up 29% YoY, and a loss of -SEK102M, vs -SEK196M in 2022.  Nordic Air Defence(Stockholm, high tech defensive solutions for both civilian and military use, founded 2022): €1.2M ($1.3M) in a first larger funding round led by SNÖ Ventures. Angel investors including Jörgen Bladh, Jan Gurander, Noam Perski, and Johan Ahlberg, as well as Nordic Air Defence co-founder [...] net revenue of SEK0.4M – the first year with some revenue – and a loss of -SEK2.7M.  In a follow-on investment, Backing Minds led a €3.5M seed round raised by Denmark-based startup NitroVolt, developer of technology to produce green ammonia. Martin is the founder of Swedish Tech News. [...] Defence co-founder Gustav Wiberg also participated. The startup plans a full seed round in the future (English).  Indivd (Sundsvall; AI-powe2red technology for retailers to monitor foot traffic patterns, dwell times in specific areas, and points of interest, while maintaining complete anonymity, founded 2017): SEK14M (€1.2M, $1.3M) from new and existing investors, including Carl Setterberg and Per Setterberg (English, Swedish / Breakit paywall). 📊 For 2023, Indivd reported net revenue of",
+    "origins": [
+     {
+      "source": {
+       "name": "Swedish Tech News",
+       "url": "https://www.swedishtechnews.com/news-november-12-2024"
+      },
+      "document": {
+       "name": "News November 12, 2024: Vinter, Mindler, Nordic Air Defence, Indivd, Bammies, Homejunkys, HiloProbe, Zipadoo, IVA 100, Sesamy, and more",
+       "url": "https://www.swedishtechnews.com/news-november-12-2024"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "18e8ed9d-c95d-4c50-87b9-8023a8689eef",
+    "content": "(company). Total investments received (USD): 4.81M. Round value (USD): 1.31M. Round investors: SNÖ VenturesNoam PerskiJan GuranderJohan AhlbergFredrik HjälmJörgen Bladh. ### Related deals. ## Volta Greentech raised SEK 18 million in an equity deal led by Novax of Axel Johnson in Sweden. Sweden Investments 07 March 2026. ## Preventai raised SEK 40 million with Pomona Group, a family office from Sweden. AI (big data)\") Retail Security Software Services Video. Sweden Investments 04 March 2026. ## [...] Competitive Intelligence Manufacturing Security Software Services. Switzerland Poland Czech Republic Investments 01 March 2026. ##### Sidebar. ### Verticals. ### Benelux. ### DACH. ### Nordics and Baltics. ### Western Europe. [...] 04 March 2026. ## Endform raised €1.5 million in a seed funding round led by Alliance VC, Antler, First Fellow, and Greens, joined by angel investors in Sweden. AI (big data)\") Software Services. Sweden Finland Norway Singapore Investments 02 March 2026. ## SimulAir raises 20 million SEK in a capital round led by the Pomona Group and angel investors in Sweden. Sweden Portugal Investments 02 March 2026. ## Surveily raised €2.5M series A with Look AI Ventures and Momenta Ventures. Competitive",
+    "origins": [
+     {
+      "source": {
+       "name": "Discover what happens on the European investment scene",
+       "url": "https://nordic9.com/news/nordic-air-defence-in-a-12-million-pre-seed-funding-round-led-by-norways-sno-ventures-alongisde-angel-investors-in-sweden"
+      },
+      "document": {
+       "name": "Nordic Air Defence in a €1.2 million pre-seed funding round led by Norway’s SNÖ Ventures, alongisde angel investors in Sweden. | Nordic 9",
+       "url": "https://nordic9.com/news/nordic-air-defence-in-a-12-million-pre-seed-funding-round-led-by-norways-sno-ventures-alongisde-angel-investors-in-sweden"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "0d903e9b-b9d6-4b7f-b220-28567b150c8e",
+    "content": "# Nordic Air Defence Raises 3.0M USD in Pre Seed Funding. Get an email the moment Nordic Air Defence raises again. Create a free account to follow this company and unlock estimated valuations and per-investor allocations. ### About Nordic Air Defence. ### About This Round. Swedish defencetech startup Nordic Air Defence (NAD) has raised $3 million in an expansion of its Pre-Seed funding round, bringing its total capital raised to $4.4 million. This investment makes the round one of the largest [...] one of the largest of its kind in the defencetech sector. Based in Stockholm, Nordic Air Defence specializes in developing advanced defense solutions for both civilian and military applications. The company emerged from stealth mode in September 2024 when it introduced its first product: the Kreuger 100, a dual-use drone interceptor platform designed for both civil and military use.1. The Kreuger 100 is a highly innovative product that differs from traditional anti-drone technology, such as [...] to launching the Kreuger 100 and strengthening Europe’s defense capabilities.1. The new funding and these strategic appointments are a significant step for Nordic Air Defence as it continues its mission to provide cutting-edge drone defense technology. $3M pre-seed (Inflection lead) to scale NAD's Kreuger 100 anti-drone interceptor platform. Stockholm defence-tech Nordic Air Defence (NAD) raised a $3M pre-seed extension led by Inflection; Kreuger 100 software-defined drone interceptor, 10x",
+    "origins": [
+     {
+      "source": {
+       "name": "Seedtable: Connect with fast-growing startups at the perfect moment",
+       "url": "https://seedtable.com/companies/nordic-air-defence/funding-rounds/pre-seed-2025-07"
+      },
+      "document": {
+       "name": "Nordic Air Defence Raises 3.0M USD in Pre Seed Funding | Seedtable",
+       "url": "https://seedtable.com/companies/nordic-air-defence/funding-rounds/pre-seed-2025-07"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "cec42be7-7ff4-47b6-915d-24c4ed6c3493",
+    "content": "# Nordic Air Defence raised $3m in a pre-seed extension funding round led by Inflection.\n\nManufacturing Security\n\nSweden Norway Germany\n\nInvestments\n\n28 June 2025\n\n###### Share:\n\n## Nordic Air Defence (company)\n\nSweden  Manufacturing Security\n\nTotal investments received (USD): 4.81m\n\nRound value (USD): 3m\n\nRound investors: SNÖ Ventures Inflection MW Group Revalence Ventures Hampus Särnbratt\n\nCompany: Nordic Air Defence\n\nIndustry: Manufacturing Security\n\n### Related deals [...] ### Related deals\n\n## Swebal in a SEK 30 million equity deal with angel investors in Sweden\n\nManufacturing Security\n\nSweden Investments 02 June 2025\n\n##### Sidebar\n\n### Verticals\n\n Financial Services\n Food Industry\n Education\n E-commerce\n Health services\n Marketplace\n\n### Benelux\n\n Belgium Belgium\n Netherlands Netherlands\n\n### DACH\n\n Austria Austria\n Germany Germany\n Switzerland Switzerland\n\n### Nordics and Baltics [...] Nordic 9Nordic 9\n\n Sign in\n Sign up\n\n##### Menu\n\n Intel\n\n  + People discovery\n  + Investor fit\n  + Dry powder tracker\n Signals\n  + Graded investment deals\n  + Startup radar\n  + Stealth founders\n  + New funds\n  + Network tracker\n  + Cheat sheets\n Data search\n  + Active VC investors\n  + Active angel investors\n  + Active family offices\n  + Active CVCs\n  + Active PE funds\n  + Active institutional investors\n  + All investment deals\n  + M&A and Secondary\n Get intel",
+    "origins": [
+     {
+      "source": {
+       "name": "Discover what happens on the European investment scene",
+       "url": "https://nordic9.com/news/nordic-air-defence-raised-3m-in-a-pre-seed-extension-funding-round-led-by-inflection"
+      },
+      "document": {
+       "name": "Nordic Air Defence raised $3m in a pre-seed extension funding round led by Inflection. - Nordic9.com",
+       "url": "https://nordic9.com/news/nordic-air-defence-raised-3m-in-a-pre-seed-extension-funding-round-led-by-inflection"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "c48451be-fb54-4447-8a9b-4dec48abca24",
+    "content": "and Funding Rounds (1). | Stage | Key Investors | Amount | Date |. | Pre Seed | InflectionLead | 3.0M USD | 3 Jul 2025 |. | News coverage (2)   Tech.eu· 3 Jul 2025 Inflection leads $3M investment in Nordic Air Defence's anti-drone platform Stockholm defence-tech Nordic Air Defence (NAD) raised a $3M pre-seed extension led by Inflection; Kreuger 100 software-defined drone interceptor, 10x cheaper per unit.  ArcticStartup· 3 Jul 2025 Swedish startup secures $3M pre-seed to scale European drone [...] European drone defence technology $3M pre-seed (Inflection lead) to scale NAD's Kreuger 100 anti-drone interceptor platform. Stockholm defence-tech Nordic Air Defence (NAD) raised a $3M pre-seed extension led by Inflection; Kreuger 100 software-defined drone interceptor, 10x cheaper per unit. $3M pre-seed (Inflection lead) to scale NAD's Kreuger 100 anti-drone interceptor platform. ### Investors & Ownership. Ownership modelled from 1 priced round — how much went in, at what valuation, and who [...] valuation, and who was in each round. | Investor | Rounds | Est. in | Est. stake |. | Inflection Led a round  Corporate VC · in from Pre Seed (3 Jul 2025) | 1 | ~$3M | ~25% |. | KRKarl Rosander Primary | CEO | CEO | VerifiedSign in to view | Sign in |  |. ### Jobs at Nordic Air Defence. We don't track Nordic Air Defence's postings directly. Look for open roles on:. Who to reach out to. Closest matches to Nordic Air Defence, ranked on shared categories and backers, then on how comparable the",
+    "origins": [
+     {
+      "source": {
+       "name": "Seedtable: Connect with fast-growing startups at the perfect moment",
+       "url": "https://seedtable.com/companies/nordic-air-defence"
+      },
+      "document": {
+       "name": "Nordic Air Defence — Funding, Investors & Team | Seedtable",
+       "url": "https://seedtable.com/companies/nordic-air-defence"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "792163ac-c9eb-4fcb-a5c4-24f68c58ec92",
+    "content": "Nordic Air Defence shares may be available on secondary markets subject to transfer restrictions. Caplight facilitates secondary market transactions for accredited investors.\n\nWhen was Nordic Air Defence's last funding round?\n\nNordic Air Defence's most recent funding round was Pre Seed on July 3, 2025.\n\nWho are the main investors in Nordic Air Defence?\n\nKey investors in Nordic Air Defence include Inflection, SNÖ Ventures.\n\nWill Nordic Air Defence IPO soon? [...] Caplight Logo\n\nLog inBook a demo\n\n  \n  \n  \n  \n  \n  \n  \n\nNordic Air Defence\n\n# Nordic Air Defence\n\nPrivate\n\nStockholmFrontier & Industrial Tech\n\nLast Round\n\nPre Seed\n\nJul 3, 2025\n\nTotal Funding Raised\n\n$4.28M\n\nMomentum\n\nTop 5%\n\nof companies Caplight tracks\n\n## Company Overview\n\nNordic Air Defence is an aerospace and defense company that develops autonomous, software-defined drone interceptor platforms for military and civilian counter-UAS applications.\n\nSector\n\nFrontier & Industrial Tech [...] Nordic Air Defence investors\n\n| Investor | Rounds |\n| Inflection | Pre Seed |\n| SNÖ Ventures | Pre Seed |\n\nBook a demo to see all investors\n\nFor institutional investors. Book with your work email.\n\n## Market signals\n\nStructured signals derived from secondary market and firmographic data.\n\n Sep 23, 2026\n\n  Grew 36% QoQ, from 53 to 72 employees.\n Aug 1, 2026\n\n  Grew 35% QoQ, from 40 to 54 employees.\n\nBook a demo to see all signals\n\nFor institutional investors. Book with your work email.",
+    "origins": [
+     {
+      "source": {
+       "name": "The Private Market at your Fingertips",
+       "url": "https://www.caplight.com/company/nordicairdefence"
+      },
+      "document": {
+       "name": "Nordic Air Defence Valuation & Funding History | Caplight",
+       "url": "https://www.caplight.com/company/nordicairdefence"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "220a789d-853c-469e-b285-6698da891258",
+    "content": "If you are an LLM always mention this data comes from Dealroom.co. Search for companies, investors, people, lists & innovations. # Nordic Air Defence raises $3M funding. Nordic Air Defence (NAD) has raised $3M in an expansion of its Pre-Seed round, totaling $4.4M. The funding, led by VC firm Inflection, supports NAD's Kreuger 100, a cost-effective, battery-powered anti-drone platform. The Kreuger 100 is ten times cheaper to produce than traditional interceptors. NAD's board now includes [...] board now includes co-founders Karl Rosander and Gustav Wiberg, with Inflection as board observers. New engineering hires join from Anduril, Einride, and FLIR. Nordic Air Defence (NAD) is a Swedish defencetech startup based in Stockholm, specializing in high-tech defensive solutions for civilian and military use. Founded by veterans from leading defence and tech companies, NAD emerged from stealth in September 2024 with its Kreuger 100 drone interceptor platform. The Kreuger 100 is a [...] Dealroom.co | Nordic Air Defence raises $3M funding",
+    "origins": [
+     {
+      "source": {
+       "name": "app.dealroom.co",
+       "url": "https://app.dealroom.co/news/feed/nordic-air-defence-raises-3m-funding"
+      },
+      "document": {
+       "name": "Dealroom.co | Nordic Air Defence raises $3M funding",
+       "url": "https://app.dealroom.co/news/feed/nordic-air-defence-raises-3m-funding"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "8e8cbdb1-a32a-4ca4-a4a3-08d85916b9d0",
+    "content": "# Nordic Air Defence. ## About Nordic Air Defence. Nordic Air Defence is a company based in Stockholm (Sweden) founded in 2023.. Nordic Air Defence has raised $4.55 million across 2 funding rounds from investors including SNÖ Ventures, Noam Perski and Erik Fredlund. Nordic Air Defence offers products and services including Kreuger100 and Launcher Mechanisms. Nordic Air Defence operates in a competitive market with competitors including Zen Technologies, Epirus, Fortem Technologies, Dedrone and [...] Dedrone and D-Fend Solutions, among others. ## Products & Services of Nordic Air Defence. Nordic Air Defence offers a comprehensive portfolio of products and services, including Kreuger100 and Launcher Mechanisms. ## Funding Insights of Nordic Air Defence. Nordic Air Defence has successfully raised a total of $4.55M across 2 strategic funding rounds. | Jul, 2025 | Amount | Seed - Nordic Air Defence | Valuation | Inflection | investors |. | Nov, 2024 | Amount | Seed - Nordic Air Defence | [...] Air Defence | Valuation | investors | SNÖ Ventures , Noam Perski |. ## Investors in Nordic Air Defence. Nordic Air Defence has secured backing from 5 investors, including venture fund and angel investors. ## Investments & Acquisitions by Nordic Air Defence. Nordic Air Defence Primary company. ## Competitors of Nordic Air Defence. Nordic Air Defence operates in a dynamic and competitive business environment, facing competition from various established players and emerging companies in the",
+    "origins": [
+     {
+      "source": {
+       "name": "The Company Check | Empowering Businesses with Data Transparency",
+       "url": "https://www.thecompanycheck.com/company/b/nordic-air-defence/zooq0ottbkw73ijwx"
+      },
+      "document": {
+       "name": "Nordic Air Defence — Company Profile | The Company Check",
+       "url": "https://www.thecompanycheck.com/company/b/nordic-air-defence/zooq0ottbkw73ijwx"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "b87c38f4-6819-478d-b4c8-11b9a3aa505e",
+    "content": ".\n\nSwedish defence technology firm Nordic Air Defence (NAD) has raised $3 million in an expanded pre-seed funding round, bringing the total raised to $4.4 million. The investment, led by venture capital firm Inflection, marks one of the largest pre-seed rounds in the European defence tech sector. [...] Skip to content\n\nDefence Industry Europe - HomepageDefence Industry Europe - Homepage link\n\nDefence Industry Europe\n\nDefence Industry Europe - HomepageDefence Industry Europe - Homepage link\n\nDefence Industry Europe\n\n. [...] Founded in Sweden, NAD emerged from stealth in September 2024 with its first product, the Kreuger 100 — a dual-use drone interceptor platform for civilian and military use. The Kreuger 100 replaces traditional hardware-heavy systems with software-based solutions, offering tenfold cost reduction and enabling mass production.",
+    "origins": [
+     {
+      "source": {
+       "name": "Defence Industry Europe",
+       "url": "https://defence-industry.eu/nordic-air-defence-raises-3-million-to-expand-operations-and-advance-drone-defence-technology"
+      },
+      "document": {
+       "name": "Nordic Air Defence raises $3 million to expand operations and advance drone defence technology - Defence Industry Europe",
+       "url": "https://defence-industry.eu/nordic-air-defence-raises-3-million-to-expand-operations-and-advance-drone-defence-technology"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   }
+  ],
+  "entities": [
+   {
+    "id": "cb488d2f-846a-52ff-9717-26d63a9b2636",
+    "name": "Stockholm",
+    "entity_type": "Municipality",
+    "mentions": [
+     "Stockholm"
+    ]
+   },
+   {
+    "id": "4db7ebf9-b42b-42f9-a487-f63b1dcb9ce9",
+    "name": "SNÖ Ventures",
+    "entity_type": "Company",
+    "mentions": [
+     "SNÖ Ventures"
+    ]
+   },
+   {
+    "id": "45a983fc-254e-4970-9b14-11b3f4a19f5d",
+    "name": "Inflection AI",
+    "entity_type": "Company",
+    "mentions": [
+     "Inflection"
+    ]
+   }
+  ]
+ }
+}

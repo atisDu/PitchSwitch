@@ -1,0 +1,330 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/knowledge/search",
+  "params": null,
+  "json": {
+   "input": "Who invested in Sensofusion and who led each of its funding rounds?"
+  }
+ },
+ "recorded_at": "2026-11-13T20:33:20+00:00",
+ "response": {
+  "content": "## Sensofusion — Investors and Funding Rounds\n\n**Sensofusion** is a Finnish counter-drone (C-UAS) technology company founded in 2016 and headquartered in Vantaa, Finland.\n\n### Known Funding Round\n\n**Series B — January 8, 2026 (€45 million)**\n\n- **Investors:** **Lifeline Ventures** and **Varma Mutual Pension Insurance Company** (among others)\n- Tracxn records two institutional investors in this round. Roschier acted as legal advisor to Lifeline Ventures, and Avance acted as legal advisor to Varma.\n- No publicly identified lead investor has been explicitly named for this round; both Lifeline Ventures and Varma are described as participants/backers.\n\n### IPO Cornerstone Investors (October 2026, Nasdaq Helsinki)\n\nAs part of its IPO, Sensofusion attracted cornerstone commitments totalling approximately €170 million from:\n\n- **Elo Mutual Pension Insurance Company**\n- **Ilmarinen Mutual Pension Insurance Company**\n- **Funds managed by OP Fund Management Company Ltd**\n- **Varma Mutual Pension Insurance Company** (follow-on investment of ~€68 million)\n\nThe IPO was conducted at a pre-money equity value of up to €1.3 billion.\n\n### Earlier Rounds\n\nPublicly available sources (Tracxn, Caplight, Dealroom) record only one disclosed private funding round (the Series B). No earlier seed or Series A rounds with named investors have been publicly disclosed for Sensofusion.\n",
+  "explainability": [
+   {
+    "content": "Sensofusion Oyj is a Finnish company founded in 2016 and headquartered in Vantaa, establishing its identity and location.",
+    "references": [
+     "28b690f1-0e49-429a-ad8a-e80a1a8db7ea"
+    ]
+   },
+   {
+    "content": "The most recent funding round for Sensofusion was a Series B on 8 January 2026, raising €45 million.",
+    "references": [
+     "c6105148-3eec-4bde-adbc-1bbdba6d63d6",
+     "93cdf29a-dd98-4f45-af9e-e424f69dc132"
+    ]
+   },
+   {
+    "content": "Key investors in the Series B round are Lifeline Ventures and Varma Mutual Pension Insurance Company, as listed in multiple sources.",
+    "references": [
+     "c6105148-3eec-4bde-adbc-1bbdba6d63d6",
+     "886b4590-df11-489b-a9f2-4826fab121c7",
+     "46fd7f89-ea32-4f13-aaa9-59a08eaf98b4",
+     "e276876f-cff9-48b4-af58-875b0d9d95bb"
+    ]
+   },
+   {
+    "content": "Both Lifeline Ventures and Varma are described as participants/backers in the Series B; no source explicitly names a single lead investor for this round.",
+    "references": [
+     "c6105148-3eec-4bde-adbc-1bbdba6d63d6"
+    ]
+   },
+   {
+    "content": "Varma later made a follow‑on investment of about €68 million as a cornerstone investor in the October 2026 IPO, confirming its continued involvement.",
+    "references": [
+     "d9d7c06f-d4a8-409a-8a00-3fce7791fff2"
+    ]
+   },
+   {
+    "content": "Other cornerstone investors in the IPO are Elo Mutual Pension Insurance Company, Ilmarinen Mutual Pension Insurance Company, and funds managed by OP Fund Management Company Ltd, each committing to the €170 million total.",
+    "references": [
+     "3b480991-94a5-465a-8157-7d5eaea96fdf"
+    ]
+   }
+  ],
+  "context": [
+   {
+    "id": "28b690f1-0e49-429a-ad8a-e80a1a8db7ea",
+    "content": "Entity: Sensofusion Oyj (type: Company, ID: 5c699806-0fea-4e62-a594-717d4d85516c). Properties: name = Sensofusion Oyj; description = Finnish company founded in 2016 and headquartered in Vantaa.; founding_date = 2016-04-14. Outgoing relationship types HAS_HEADQUARTERS_IN: Finland.",
+    "origins": [
+     {
+      "source": {
+       "name": "GLEIF",
+       "url": "https://search.gleif.org/"
+      },
+      "document": {
+       "name": "GLEIF",
+       "url": "https://search.gleif.org/#/record/7437000UYRI2YZJTC459"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "c6105148-3eec-4bde-adbc-1bbdba6d63d6",
+    "content": "Sensofusion shares may be available on secondary markets subject to transfer restrictions. Caplight facilitates secondary market transactions for accredited investors.\n\nWhen was Sensofusion's last funding round?\n\nSensofusion's most recent funding round was Series B on January 8, 2026.\n\nWho are the main investors in Sensofusion?\n\nKey investors in Sensofusion include Lifeline Ventures, Varma Mutual Pension Insurance Company.\n\nWill Sensofusion IPO soon? [...] Caplight Logo\n\nLog inBook a demo\n\n  \n  \n  \n  \n  \n  \n  \n\nSensofusion\n\n# Sensofusion\n\nPrivate\n\nVantaaFrontier & Industrial Tech\n\nLast Round\n\nSeries B\n\nJan 8, 2026\n\nEst. Valuation\n\nTotal Funding Raised\n\n$55.14M\n\nMomentum\n\nTop 25%\n\nof companies Caplight tracks\n\n## Company Overview\n\nSensofusion operates in Frontier & Industrial Tech and is based in Vantaa. Its latest recorded funding round was a Series B round in January 2026. [...] Notable investors and investment history\n\nSensofusion investors\n\n| Investor | Rounds |\n| Lifeline Ventures | Series B |\n| Varma Mutual Pension Insurance Company | Series B |\n\n## Market signals\n\nStructured signals derived from secondary market and firmographic data.\n\n Sep 17, 2026\n\n  Grew 17% QoQ, from 36 to 42 employees.\n Jul 27, 2026\n\n  Grew 23% QoQ, from 31 to 38 employees.\n\nBook a demo to see all signals\n\nFor institutional investors. Book with your work email.\n\n## Sensofusion Filings",
+    "origins": [
+     {
+      "source": {
+       "name": "The Private Market at your Fingertips",
+       "url": "https://www.caplight.com/company/sensofusion"
+      },
+      "document": {
+       "name": "Sensofusion Valuation & Funding History | Caplight",
+       "url": "https://www.caplight.com/company/sensofusion"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "93cdf29a-dd98-4f45-af9e-e424f69dc132",
+    "content": "model reflects a B2B focus, emphasizing robust, secure solutions for clients that require advanced drone detection and countermeasure technologies. In January 2026, Sensofusion Oy raised EUR 45 million in SERIES B funding from Varma Mutual Pension Insurance Company and unspecified investors. [...] model reflects a B2B focus, emphasizing robust, secure solutions for clients that require advanced drone detection and countermeasure technologies. In January 2026, Sensofusion Oy raised EUR 45 million in SERIES B funding from Varma Mutual Pension Insurance Company and unspecified investors. [...] 00 mn in SERIES B funding on January 8, 2026 from Varma Mutual Pension Insurance Company. Sensofusion specializes in advanced anti-drone systems, primarily through its flagship product, Airfence. This passive drone detection system allows military and law enforcement agencies to identify real-time locations of drones and their operators, thereby enhancing security for personnel and infrastructure. Since its introduction in 2014, Airfence has been adopted by governmental clients across Europe,",
+    "origins": [
+     {
+      "source": {
+       "name": "Preqin | Alternative Assets Data, Solutions and Insights",
+       "url": "http://www.preqin.com/data/profile/asset/sensofusion-oy/785803"
+      },
+      "document": {
+       "name": "Sensofusion Oy Asset Profile | Preqin | BlackRock",
+       "url": "http://www.preqin.com/data/profile/asset/sensofusion-oy/785803"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "886b4590-df11-489b-a9f2-4826fab121c7",
+    "content": "# Lifeline Ventures backs Sensofusion in a EUR 45 million Series B financing round. Recent work|March 16, 2026. Sensofusion, a Finnish anti-drone technology company, has raised EUR 45 million in a Series B financing round. Roschier acted as legal advisor to Lifeline Ventures, one of the investors in the financing round. Sensofusion is one of the world’s leading anti-drone solution providers, delivering advanced counter‑drone systems to customers globally. Roschier’s advisory team included Tero [...] team included Tero Jormanainen, Timo Rautiainen, Assi Pöyry, Arto Linnervuo, Pauliina Vilponen and Julia Jauhiainen. [...] Lifeline Ventures backs Sensofusion in a EUR 45 million Series B financing round - Roschier",
+    "origins": [
+     {
+      "source": {
+       "name": "Roschier - Leading law firm in the Nordic region",
+       "url": "https://www.roschier.com/newsroom/lifeline-ventures-backs-sensofusion-in-a-eur-45-million-series-b-financing-round"
+      },
+      "document": {
+       "name": "Lifeline Ventures backs Sensofusion in a EUR 45 million Series B financing round - Roschier",
+       "url": "https://www.roschier.com/newsroom/lifeline-ventures-backs-sensofusion-in-a-eur-45-million-series-b-financing-round"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "46fd7f89-ea32-4f13-aaa9-59a08eaf98b4",
+    "content": "develops advanced anti-drone systems used by military and law enforcement worldwide, setting the gold standard in drone detection and defence. ### HitecVision invests in Fintoil Hamina Oy. ### ICEYE raises at a valuation exceeding EUR 10 billion. ### CRACI launches and announces funding round led by Lifeline Ventures. [...] ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ## Cases. ### Verda becomes a unicorn. Mannerheimintie 20 A, 6th floor. # Varma joins the EUR 45 million series B financing round of Sensofusion. ## Practices. ## Industries. Avance advises Varma, one of the investors in the EUR 45 million series B financing round of Sensofusion, a Finnish anti-drone technology company. Sensofusion develops advanced",
+    "origins": [
+     {
+      "source": {
+       "name": "Avance Attorneys – Uncompromised attention",
+       "url": "https://www.avance.com/cases/varma-joins-the-eur-45-million-series-b-financing-round-of-sensofusion"
+      },
+      "document": {
+       "name": "Varma joins the EUR 45 million series B financing round of Sensofusion – Avance Attorneys",
+       "url": "https://www.avance.com/cases/varma-joins-the-eur-45-million-series-b-financing-round-of-sensofusion"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "d9d7c06f-d4a8-409a-8a00-3fce7791fff2",
+    "content": "Varma, a Finnish pension insurer, announced on 9 October 2026 a follow-on investment of about €68 million in Sensofusion, a drone detection and anti-drone company, as part of its initial public offering on Nasdaq Helsinki. Varma was already a cornerstone investor and had joined an earlier funding round of about €45 million in late 2025. Its stake after the offering was not disclosed. The same cornerstone group included the pension insurers Elo and Ilmarinen and funds managed by OP Fund [...] managed by OP Fund Management, and together the four committed about €170 million before the offering opened. [...] Varma is a Finnish pension fund and one of the European institutions with investments of €71.4 billion at 30 June 2026, up from €68.3 billion on 1 January. It says it has provided more than €1 billion of financing to Finnish growth companies over the past five years, so the €68 million is no more than about 7% of that five-year total. Timo Sallinen, Director and Head of Listed Securities at Varma, said strong growth and an already profitable business make Sensofusion an exceptional company in",
+    "origins": [
+     {
+      "source": {
+       "name": "fundlinx.ai",
+       "url": "https://fundlinx.ai/resources/varma-adds-about-68-million-to-sensofusion-as-one-of-four-finnish-cornerstone-investors-in-its-helsi"
+      },
+      "document": {
+       "name": "Varma Adds €68M as a Cornerstone Investor in Sensofusion IPO",
+       "url": "https://fundlinx.ai/resources/varma-adds-about-68-million-to-sensofusion-as-one-of-four-finnish-cornerstone-investors-in-its-helsi"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "3b480991-94a5-465a-8157-7d5eaea96fdf",
+    "content": "Sensofusion is an internationally operating Finnish defense equipment manufacturer specialized in C-UAS technology. The company researches all relevant drone technologies comprehensively, including radio frequency (“RF”) and radar technology and jamming systems, and leverages its extensive detection library in the development of its products. Drone detection refers to detecting, tracking, and identifying a drone in a manner that enables protection and the necessary warning actions. Countering [...] Sensofusion intends to use the proceeds from the share issue to finance its growth strategy, including:\n\n accelerated R&D investments in the development of proprietary software, detection technologies, countermeasure technologies, AI capabilities and satellite capabilities;\n expansion of production and testing capacity in relevant market areas; and\n further strengthening of the company’s balance sheet and financial flexibility.\n\n### Cornerstone investors [...] Elo Mutual Pension Insurance Company, Ilmarinen Mutual Pension Insurance Company, certain funds managed by OP Fund Management Company Ltd, and Varma Mutual Pension Insurance Company have, subject to certain customary conditions being fulfilled, committed to subscribe for shares in the company amounting to approximately EUR 170 million in total in the contemplated offering at a pre-money equity value of up to EUR 1,300 million.\n\n## Objective of the offering\n\nThe objective of the offering is to:",
+    "origins": [
+     {
+      "source": {
+       "name": "Sensofusion",
+       "url": "https://investors.sensofusion.com/en/ipo"
+      },
+      "document": {
+       "name": "IPO | Sensofusion",
+       "url": "https://investors.sensofusion.com/en/ipo"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "a207078a-eb29-4b4f-aedb-4110eef53865",
+    "content": "SensoFusion has raised a total funding of $52.6M over 1 round. Its latest funding round was a Series B round on Jan 08, 2026 for  $\\\\\\\\\\. 2 investors participated in its latest round.  SensoFusion has 2 institutional investors.\n\n| Date of Funding | Funding Amount | Round Name | Post-Money Valuation | Revenue Multiple | Lead Investors | Other Investors |\n ---  ---  --- \n| Jan 08, 2026 | 5138032 | Series B | 1349040 | 3768523 | 4080561 | 4817768 |\n\nlock [...] | Rank | Company Details | Short Description | Total Funding | Investors | Tracxn Score |\n ---  ---  --- |\n| 1st | Logo for Epirus  Epirus 2017, Los Angeles  (United States), Series D | Developer of high-power microwave systems for electronic warfare and air defense | $595M | 8VC, T. Rowe Price  & 33 others | 67/100 | [...] JavaScript is disabled in your browser. enable it to enjoy the full features of Tracxn.\n\nTracxn.com\nAndroid\nApple\nChrome Web Store\nFirefox Extension\nTracxn AI Suite\n\nAI-powered market intelligence across companies, investors, and sectors.\n\nLogo for SensoFusion\n\n# SensoFusion - Company Profile\n\nlock\nlock\nlock\nlock\nlock\n\n## SensoFusion - About the company\n\n### Company Details\n\nPDF Illustration Image\n\n## SensoFusion's funding and investors",
+    "origins": [
+     {
+      "source": {
+       "name": "Technology & Data for Venture Capital, Corp Dev, Investment Banks",
+       "url": "https://tracxn.com/d/companies/sensofusion/__3B1RIqkvjj_jdDdp_HZG0ijDgtyV4Mn6oIMj5CXN5Q4"
+      },
+      "document": {
+       "name": "SensoFusion - 2026 Company Profile, Team, Funding & Competitors - Tracxn",
+       "url": "https://tracxn.com/d/companies/sensofusion/__3B1RIqkvjj_jdDdp_HZG0ijDgtyV4Mn6oIMj5CXN5Q4"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "64ba9866-8be0-4f2e-8a39-039f54ca81b6",
+    "content": "## IPOs and Publicly Listed companies in Lifeline Ventures' Portfolio\n\nlock\n\n| Company | IPO Date | First Invested on | First Round of Investment | Round Size |\n ---  --- \n| Logo for SensoFusion SensoFusion | Oct 13, 2026 | Jan 08, 2026 | Series B | 7001 |\n| Logo for Steady Energy Steady Energy | Oct 02, 2026 | Jun 27, 2023 | Seed | 9073 |\n| Logo for Digital Workforce Digital Workforce | Dec 03, 2021 | 2021 | Post IPO | 3153 |\n| Logo for Unity Unity | Sep 18, 2020  - | 5327 | [...] lock\n\n| Date | Company | Location | Round Details | Round Amount | Co-Investors |\n ---  ---  --- |\n| Oct 14, 2026 | Ambio | Finland | Seed | 5844 | b2venture   [+1] |\n| Sep 22, 2026 | Verda | Finland | Series B | 9938 | Emergence Capital   [+8] |\n| Aug 31, 2026 | S-Transistors | Finland | Seed | 8938 \n| Jul 16, 2026 | Hyperion Robotics | Finland | Series A | 2368 | Course Corrected   [+4] |\n| Jul 06, 2026 | CurifyLabs | Finland | Series A | 5730 | Sandwater   [+2] | [...] Logo for SensoFusion\nLogo for Steady Energy\nLogo for Digital Workforce\nLogo for Unity\n\n## Acquired companies in Lifeline Ventures' Portfolio\n\nlock",
+    "origins": [
+     {
+      "source": {
+       "name": "Technology & Data for Venture Capital, Corp Dev, Investment Banks",
+       "url": "https://tracxn.com/d/venture-capital/lifeline-ventures/__s94fwSIz8Y74EYxm0-TyGfkNkFWN9ZHbMyHFX_0r-Js"
+      },
+      "document": {
+       "name": "Lifeline Ventures - 2026 Investor Profile, Portfolio, Team & Investment Trends - Tracxn",
+       "url": "https://tracxn.com/d/venture-capital/lifeline-ventures/__s94fwSIz8Y74EYxm0-TyGfkNkFWN9ZHbMyHFX_0r-Js"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "e276876f-cff9-48b4-af58-875b0d9d95bb",
+    "content": "Sensofusion, a Finnish technology firm specialising in drone defense solutions, has raised EUR 45m in a Series B funding round. The round saw participation from Varma, a Finnish private equity investor, among others. Sensofusion's technology, which combines proprietary software and sensor technologies, is used for the detection, identification, and mitigation of unmanned aerial systems. The company's solutions are utilised across defense, security, and commercial sectors globally. In FY25, the [...] In FY25, the firm reported revenues of USD 13.9m (EUR 20.8m). Avance acted as the legal advisor to Varma in connection with the investment. [...] For private equity funds, M&A advisors and lenders seeking early, primary M&A intelligence across Northern Europe.\n\nExplore a subscription\n\nHomeLog inFor ClientsFor Company OwnersM&A NewsResearch & Analysis\n\nAboutCoverage ApproachContact\n\nLinkedIn\n\n%20(6).png)\n\n© Nordic Knowledge Partners (\"NKP\") 2026",
+    "origins": [
+     {
+      "source": {
+       "name": "Early, deep visibility into Northern Europe M&A",
+       "url": "https://www.mainsights.io/ma-news/finnish-drone-defense-technology-firm-sensofusion-raises-eur-45m-in-series-b-round-with-pe-firm-varma-among-backers"
+      },
+      "document": {
+       "name": "Finnish drone defense technology firm Sensofusion raises EUR 45m in Series B round, with PE firm Varma among backers",
+       "url": "https://www.mainsights.io/ma-news/finnish-drone-defense-technology-firm-sensofusion-raises-eur-45m-in-series-b-round-with-pe-firm-varma-among-backers"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   }
+  ],
+  "entities": [
+   {
+    "id": "5c699806-0fea-4e62-a594-717d4d85516c",
+    "name": "Sensofusion Oyj",
+    "entity_type": "Company",
+    "mentions": [
+     "Sensofusion"
+    ]
+   },
+   {
+    "id": "f69a02ed-f3e9-5be9-87a1-757eec28387b",
+    "name": "Vantaa",
+    "entity_type": "Municipality",
+    "mentions": [
+     "Vantaa"
+    ]
+   },
+   {
+    "id": "680000b7-a490-418f-8098-9b1757db2e58",
+    "name": "Finland",
+    "entity_type": "Country",
+    "mentions": [
+     "Finland"
+    ]
+   },
+   {
+    "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+    "name": "Lifeline Ventures",
+    "entity_type": "Organization",
+    "mentions": [
+     "Lifeline Ventures"
+    ]
+   },
+   {
+    "id": "519b4993-6256-48de-a01f-c4e9102aa7cf",
+    "name": "Varma Mutual Pension Insurance Company",
+    "entity_type": "Organization",
+    "mentions": [
+     "Varma Mutual Pension Insurance Company"
+    ]
+   },
+   {
+    "id": "73629ff1-3d48-5a47-8cbe-7c578653dd74",
+    "name": "AVANCE EXPERTISE",
+    "entity_type": "Company",
+    "mentions": [
+     "Avance"
+    ]
+   },
+   {
+    "id": "cf5ae4e9-7a41-4c8d-b0ae-51113523793f",
+    "name": "Elo Mutual Pension Insurance",
+    "entity_type": "Organization",
+    "mentions": [
+     "Elo Mutual Pension Insurance Company"
+    ]
+   },
+   {
+    "id": "a5767b65-14b6-497f-ad69-25e41811eaf1",
+    "name": "Keskinäinen Eläkevakuutusyhtiö Ilmarinen",
+    "entity_type": "Company",
+    "mentions": [
+     "Ilmarinen Mutual Pension Insurance Company"
+    ]
+   },
+   {
+    "id": "4a1c98f1-3920-4bab-ad01-5ee2816ae4a5",
+    "name": "OP Varainhoito Oy",
+    "entity_type": "Company",
+    "mentions": [
+     "OP Fund Management Company Ltd"
+    ]
+   },
+   {
+    "id": "ff5c5324-86ee-4bf0-9cd5-e13007aebddf",
+    "name": "Nasdaq Helsinki",
+    "entity_type": "Facility",
+    "mentions": [
+     "Nasdaq Helsinki"
+    ]
+   }
+  ]
+ }
+}

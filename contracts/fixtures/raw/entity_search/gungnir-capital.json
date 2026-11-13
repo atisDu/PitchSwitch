@@ -1,0 +1,70 @@
+{
+ "request": {
+  "method": "GET",
+  "path": "/entities",
+  "params": {
+   "name": "Gungnir Capital",
+   "limit": 10
+  },
+  "json": null
+ },
+ "recorded_at": "2026-11-13T20:31:28+00:00",
+ "response": {
+  "entities": [
+   {
+    "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+    "name": "Gungnir Capital",
+    "entity_type": "Organization",
+    "description": "A venture capital firm that led the pre‑seed round for Acodyne."
+   },
+   {
+    "id": "71906e6d-a82c-4736-a53a-63fa00c68e56",
+    "name": "GUNGNIR LTD",
+    "entity_type": "Company",
+    "description": "British company incorporated in 2016 and headquartered in Chatham, England."
+   },
+   {
+    "id": "1f935e3f-b338-4814-8d36-e946408a27c1",
+    "name": "GUNGNIR LP",
+    "entity_type": "Company",
+    "description": "A Scottish limited partnership based in Edinburgh, incorporated in 2020."
+   },
+   {
+    "id": "c537c3f5-3686-4625-b65f-017228806c6f",
+    "name": "Gungnir AB",
+    "entity_type": "Company",
+    "description": "Swedish company founded in 2018 and headquartered in Stockholm."
+   },
+   {
+    "id": "584257e3-6ddd-42fd-901a-4226793ab90e",
+    "name": "Gungnir ehf.",
+    "entity_type": "Company",
+    "description": "Icelandic company founded in 2014 and based in Reykjavík."
+   },
+   {
+    "id": "1bb9020a-e4ed-4640-a39f-979e92b2fd11",
+    "name": "GUNGNIR CONSULTANCY LIMITED",
+    "entity_type": "Company",
+    "description": "A British construction and engineering consultancy founded in 2016 and headquartered in Coventry, England."
+   },
+   {
+    "id": "204518c8-6513-438e-bc5f-90bb6b66ea7c",
+    "name": "Gungnir kasakii",
+    "entity_type": "Plant",
+    "description": "A plant species in the genus Gungnir, identified by NCBI taxonomy ID 71746."
+   },
+   {
+    "id": "9115b708-a46b-4144-9280-340e570c065c",
+    "name": "Gungnir neglectum",
+    "entity_type": "Plant",
+    "description": "A plant species in the genus Gungnir."
+   },
+   {
+    "id": "552cd719-a66c-4752-9ce4-91ccaae0134d",
+    "name": "uncultured Gungnir",
+    "entity_type": "Plant",
+    "description": "an uncultured plant species listed under NCBI taxonomy ID 1294392"
+   }
+  ]
+ }
+}

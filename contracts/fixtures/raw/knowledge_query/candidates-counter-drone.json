@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/knowledge/query",
+  "params": null,
+  "json": {
+   "input": "Counter-drone and drone defence startups in the Nordic and Baltic countries: name, description, country, funding stage, total funding, investors"
+  }
+ },
+ "recorded_at": "2026-11-13T20:39:27+00:00",
+ "response": {
+  "results": [
+   {
+    "error": "This question is too complex to answer fully. Please try breaking it into smaller, more specific questions."
+   }
+  ],
+  "entities": []
+ }
+}

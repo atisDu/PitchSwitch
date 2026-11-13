@@ -1,0 +1,353 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/3f11bdcf-b419-5ad3-90fb-a2bd38534592",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:42:30+00:00",
+ "response": {
+  "id": "3f11bdcf-b419-5ad3-90fb-a2bd38534592",
+  "name": "Pre-Seed",
+  "entity_type": "FundingRound",
+  "description": null,
+  "properties": {
+   "name": {
+    "value": "Pre-Seed",
+    "sources": [
+     {
+      "name": "vcbacked.co",
+      "document": "https://www.vcbacked.co/company/send-ai",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     },
+     {
+      "name": "startupintros.com",
+      "document": "https://startupintros.com/orgs/send-ai",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "fundediq.co",
+      "document": "https://fundediq.co/send-ai-send-ai-funding/",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     },
+     {
+      "name": "techcrunch.com",
+      "document": "https://techcrunch.com/2024/01/24/googles-gradient-backs-send-ai-to-help-enterprises-extract-data-from-complex-documents",
+      "date": "2024-01-24",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "siliconcanals.com",
+      "document": "https://siliconcanals.com/send-ai-raises-2-2m/",
+      "date": "2024-01-24",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "round_label": {
+    "value": "PRE_SEED",
+    "sources": [
+     {
+      "name": "vcbacked.co",
+      "document": "https://www.vcbacked.co/company/send-ai",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     },
+     {
+      "name": "startupintros.com",
+      "document": "https://startupintros.com/orgs/send-ai",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "fundediq.co",
+      "document": "https://fundediq.co/send-ai-send-ai-funding/",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     },
+     {
+      "name": "techcrunch.com",
+      "document": "https://techcrunch.com/2024/01/24/googles-gradient-backs-send-ai-to-help-enterprises-extract-data-from-complex-documents",
+      "date": "2024-01-24",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "siliconcanals.com",
+      "document": "https://siliconcanals.com/send-ai-raises-2-2m/",
+      "date": "2024-01-24",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "announcement_date": {
+    "value": "2024-01-24",
+    "sources": [
+     {
+      "name": "techcrunch.com",
+      "document": "https://techcrunch.com/2024/01/24/googles-gradient-backs-send-ai-to-help-enterprises-extract-data-from-complex-documents",
+      "date": "2024-01-24",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "transaction_value": {
+    "value": 2200000.0,
+    "sources": [
+     {
+      "name": "techcrunch.com",
+      "document": "https://techcrunch.com/2024/01/24/googles-gradient-backs-send-ai-to-help-enterprises-extract-data-from-complex-documents",
+      "date": "2024-01-24",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "siliconcanals.com",
+      "document": "https://siliconcanals.com/send-ai-raises-2-2m/",
+      "date": "2024-01-24",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "funding.tech.eu",
+      "document": "https://funding.tech.eu/companies/93C3CD9F-DB83-45BF-BED4-44061338DB9B",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "transaction_value_units": {
+    "value": "EUR",
+    "sources": [
+     {
+      "name": "techcrunch.com",
+      "document": "https://techcrunch.com/2024/01/24/googles-gradient-backs-send-ai-to-help-enterprises-extract-data-from-complex-documents",
+      "date": "2024-01-24",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "siliconcanals.com",
+      "document": "https://siliconcanals.com/send-ai-raises-2-2m/",
+      "date": "2024-01-24",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "funding.tech.eu",
+      "document": "https://funding.tech.eu/companies/93C3CD9F-DB83-45BF-BED4-44061338DB9B",
+      "date": "2026-11-12",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     }
+    ]
+   },
+   "instrument": {
+    "value": "EQUITY",
+    "sources": [
+     {
+      "name": "vcbacked.co",
+      "document": "https://www.vcbacked.co/company/send-ai",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     },
+     {
+      "name": "startupintros.com",
+      "document": "https://startupintros.com/orgs/send-ai",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     },
+     {
+      "name": "fundediq.co",
+      "document": "https://fundediq.co/send-ai-send-ai-funding/",
+      "date": "2026-11-04",
+      "date_precision": "day",
+      "source_rank": "AGGREGATOR"
+     },
+     {
+      "name": "techcrunch.com",
+      "document": "https://techcrunch.com/2024/01/24/googles-gradient-backs-send-ai-to-help-enterprises-extract-data-from-complex-documents",
+      "date": "2024-01-24",
+      "date_precision": "day",
+      "source_rank": "PRESS"
+     }
+    ]
+   },
+   "annotations": {
+    "value": [
+     "As stated in the source.",
+     "round_label_stated:Pre-Seed",
+     "No source names this round.",
+     "round_label_basis:INFERRED",
+     "round_label_explanation:Company's first equity round, unnamed; dated before the source-named Pre-Seed of January 2024, so it takes Pre-Seed rather than a label above the later named round (instructions 3.5)."
+    ],
+    "sources": []
+   }
+  },
+  "relationships": {
+   "outgoing": {},
+   "incoming": {
+    "PARTICIPATES_IN_FUNDING_ROUND": [
+     {
+      "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+      "name": "Keen Venture Partners",
+      "entity_type": "Company",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "techcrunch.com",
+         "document": "https://techcrunch.com/2024/01/24/googles-gradient-backs-send-ai-to-help-enterprises-extract-data-from-complex-documents",
+         "date": "2024-01-24",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "is_lead": true,
+       "id": "ba835759-1f2b-5241-bebf-e9751da6f6dc"
+      }
+     },
+     {
+      "id": "7d550cc0-1c62-4e9e-bbe4-98cf1386a636",
+      "name": "Send AI",
+      "entity_type": "Company",
+      "properties": {
+       "role": "ISSUER",
+       "sources": [
+        {
+         "name": "vcbacked.co",
+         "document": "https://www.vcbacked.co/company/send-ai",
+         "date": "2026-11-04",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        },
+        {
+         "name": "startupintros.com",
+         "document": "https://startupintros.com/orgs/send-ai",
+         "date": "2026-11-04",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "fundediq.co",
+         "document": "https://fundediq.co/send-ai-send-ai-funding/",
+         "date": "2026-11-04",
+         "date_precision": "day",
+         "source_rank": "AGGREGATOR"
+        },
+        {
+         "name": "techcrunch.com",
+         "document": "https://techcrunch.com/2024/01/24/googles-gradient-backs-send-ai-to-help-enterprises-extract-data-from-complex-documents",
+         "date": "2024-01-24",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        },
+        {
+         "name": "siliconcanals.com",
+         "document": "https://siliconcanals.com/send-ai-raises-2-2m/",
+         "date": "2024-01-24",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "id": "87391573-ddba-534b-82b9-a58c08bf269b"
+      }
+     },
+     {
+      "id": "e930d430-0367-49e1-99e3-6d7a9115023f",
+      "name": "Gradient Ventures",
+      "entity_type": "Organization",
+      "properties": {
+       "role": "INVESTOR",
+       "sources": [
+        {
+         "name": "techcrunch.com",
+         "document": "https://techcrunch.com/2024/01/24/googles-gradient-backs-send-ai-to-help-enterprises-extract-data-from-complex-documents",
+         "date": "2024-01-24",
+         "date_precision": "day",
+         "source_rank": "PRESS"
+        }
+       ],
+       "is_lead": true,
+       "id": "0118e0ac-ae6d-50c8-b219-683b293fc127"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}

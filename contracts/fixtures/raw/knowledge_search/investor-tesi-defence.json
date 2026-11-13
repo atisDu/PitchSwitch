@@ -1,0 +1,2357 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/knowledge/search",
+  "params": null,
+  "json": {
+   "input": "Which defence technology companies has Tesi invested in, and which rounds did it lead?"
+  }
+ },
+ "recorded_at": "2026-11-13T20:35:09+00:00",
+ "response": {
+  "content": "## Tesi's Defence Technology Investments\n\n**Tesi** (Finnish Industry Investment Ltd) is a Finnish state-owned investment company that has identified defence and dual-use technology as a strategic investment theme. Tesi currently has around 10 defence-related companies in its portfolio. Below are the key defence technology companies Tesi has invested in, along with details on the funding rounds:\n\n### Defence & Dual-Use Portfolio Companies\n\n| Company | Sector | Tesi's Role in Rounds |\n|---|---|---|\n| **ICEYE** | SAR satellite imagery / space-based defence intelligence | Participant — first direct investment in 2018, follow-on in 2022; participated in €150M Series E (led by General Catalyst) and €450M Series F (led by General Atlantic). Tesi holds ~7% of ICEYE shares. |\n| **NestAI** | Physical AI for autonomous systems, C2 platforms, defence & critical infrastructure | **Co-lead** — Tesi co-led the €100M funding round alongside Nokia (November 2025), with an estimated allocation of ~€57.5M. |\n| **Kelluu** | Autonomous hydrogen-powered airships for persistent aerial surveillance (defence & civilian) | Participant — joined the €15M Series A (April 2026), which was led by the NATO Innovation Fund (NIF). Other co-investors included Keen Venture Partners and Gungnir Capital. |\n| **IQM Quantum Computers** | Quantum computing (dual-use: secure computing for defence) | Participant — invested across multiple rounds including Seed, Series A (led by MIG Fonds), and the $320M Series B (led by Ten Eleven Ventures), where Tesi increased its commitment. |\n| **Varjo Technologies** | Industrial-grade VR/XR hardware (dual-use: military simulation & training) | Participant — joined Varjo's ~$54M Series C round alongside Lifeline Ventures, Atomico, EQT Ventures, and others. |\n| **Dispelix** | Augmented reality waveguide displays (dual-use) | Participant — Tesi first invested in 2018 and participated in the €28.4M Series B round. |\n| **Axel Technologies (Axel AI)** | AI-powered military intelligence software | **Co-lead** — Tesi co-led a €120M funding round alongside Swedish defence company Saab. |\n| **Forcit Pori** | Explosives manufacturing (TNT factory — single-use defence) | Direct investment — a purely defence-focused portfolio company. |\n| **Savox Communications** | Defence communications equipment | Direct investment managed by Tesi's defence-focused investment manager. |\n| **Finnforel** | Defence-related industrial company | Direct investment managed within Tesi's defence portfolio. |\n\n### Rounds Led or Co-Led by Tesi\n\nBased on available information, Tesi **led or co-led** the following defence-related rounds:\n\n- **NestAI** — Co-led the €100M round with Nokia (November 2025)\n- **Axel AI (Axel Technologies)** — Co-led the €120M round with Saab\n\nIn most other cases (ICEYE, Kelluu, IQM, Varjo, Dispelix), Tesi participated as a co-investor alongside other lead investors. Tesi typically invests as a minority investor on the same terms as private co-investors.\n",
+  "explainability": [
+   {
+    "content": "Tesi co‑led the €100 million funding round for NestAI together with Nokia, as described in the news article about NestAI’s €100 M deal and the investor table showing Tesi as a lead investor.",
+    "references": [
+     "f657f0e6-3fb2-4e12-a5da-ac430dd6c839",
+     "4ed78648-29b0-4407-ade2-5263423226a3"
+    ]
+   },
+   {
+    "content": "Tesi co‑led the €120 million funding round for Axel AI (Axel Technologies) alongside Saab, as reported in the Dealroom‑style summary stating the round was led by Saab and Tesi.",
+    "references": [
+     "c3e9eef3-608a-4e35-9c5f-7c012ff8610b"
+    ]
+   },
+   {
+    "content": "Tesi participated in ICEYE’s Series E and Series F rounds but did not lead them; the facts mention Tesi’s participation alongside other investors.",
+    "references": [
+     "ff48397f-097a-48fe-8cba-1faef4f39ed5"
+    ]
+   },
+   {
+    "content": "Tesi participated in Kelluu’s €15 million Series A round, which was led by the NATO Innovation Fund, as indicated in the Kelluu press release.",
+    "references": [
+     "3e958583-2371-436a-88df-8d30f5ff8064"
+    ]
+   },
+   {
+    "content": "Tesi participated in IQM’s Series B round led by Ten Eleven Ventures, as noted in the IQM funding description.",
+    "references": [
+     "0091985f-41a1-414b-8332-8b90244b408b"
+    ]
+   },
+   {
+    "content": "Tesi participated in Varjo’s Series C round, which was led by other investors, as shown in the Varjo funding summary.",
+    "references": [
+     "33fb4ad6-c5a0-49a1-bf52-fabc82adc93a"
+    ]
+   },
+   {
+    "content": "Tesi participated in Dispelix’s growth funding, as the facts state Tesi made its first investment in 2018 and took part in later rounds.",
+    "references": [
+     "c9656898-d1db-41d1-ade5-521367f32cc3"
+    ]
+   }
+  ],
+  "context": [
+   {
+    "id": "962806e0-3f46-4a54-9524-ec81a9824e97",
+    "content": "Entity: Tesi (type: Organization, ID: df5be140-d50e-4e21-bb4f-d8f1e4ad3959). Properties: name = Tesi; description = A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms.. Outgoing relationship types INVESTED_IN: Butterfly Ventures, Zervant, RightWare, Carbo Culture Oy, Onego Bio, Ruokaboksi, Bob W, Meeat Foodtech, Flowplayer, Emberion, NinaData.io, IQM Quantum Computers Oyj, Midaxo, HEI Schools, Receipt Hero, Cavitar, Swappie, Seaber.io, Aurora Propulsion Technologies, Carbo Culture, Coronaria Oy, Kelluu Oy, Rauma Marine Constructions Oy, Eniram, OptoFidelity Oy, M-FILES CORPORATION, Measur Oy, Vexlum, Conformiq Inc., Vaadin Oy, Iiwari, Freeed, NFT.VC, HVR Cardio, Valmet Automotive, Innomost, IQM Quantum Computers, Annie Advisor, Gubbe, OURA HEALTH OY, Uute Scientific, The Switch Engineering Oy, Aurealis Pharma, Kelluu, Axel Technologies, Portfolio &bull; Helmet Capital, CurifyLabs, Egg White Company. Outgoing relationship types PARTICIPATES_IN_FUNDING_ROUND: Seed, Series A, Preferred Equity round, Series A, Seed, Seed, Seed, Seed, Pre-Seed, Seed, Preferred Equity round, Series A, Seed.",
+    "origins": [
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/ruokaboksi/__WAj4uTFlBEQj3aosTFa-USDtu6AFtkcdsryDVBLJjIw"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "paaomasijoittajat.fi",
+       "url": "https://paaomasijoittajat.fi/"
+      },
+      "document": {
+       "name": "paaomasijoittajat.fi",
+       "url": "https://paaomasijoittajat.fi/en/ajankohtaista/news/30207/nordic-foodtech-vc-hits-e40m-first-close-on-e80m-fund-to-invest-in-new-technologies-for-food-and-agriculture-industries"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/explore/wound-care-startups-in-switzerland/__FMp3xSsmj2tbZ63XwaYO3POsAXm8xzFDWN4zGxwTXwY"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/589585-78"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "IQM Quantum Computers - Built for Real Impact",
+       "url": "https://meetiqm.com/"
+      },
+      "document": {
+       "name": "IQM Quantum Computers - Built for Real Impact",
+       "url": "https://meetiqm.com/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjQzNSIsInRvZ2dsZSI6ZmFsc2V9"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "en.ain.ua",
+       "url": "https://en.ain.ua/"
+      },
+      "document": {
+       "name": "en.ain.ua",
+       "url": "https://en.ain.ua/2023/11/29/finnish-carbo-culture-receives-18m"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "nif.fund",
+       "url": "https://www.nif.fund/"
+      },
+      "document": {
+       "name": "nif.fund",
+       "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "iqm.tech",
+       "url": "https://iqm.tech/"
+      },
+      "document": {
+       "name": "iqm.tech",
+       "url": "https://iqm.tech/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/conformiq/__7EEIafSNcgQ7b0lKqi-mGdN-ahP_HvCp0nzK-XLxeu0/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/swappie/__OZLXVrwyNaLewJayNH7sE6-Fl6TKs-McQNmY8bKnWyI/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Telakka - Taaleri",
+       "url": "https://taaleri.com/"
+      },
+      "document": {
+       "name": "Telakka - Taaleri",
+       "url": "https://taaleri.com/fund/telakka"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.globenewswire.com",
+       "url": "https://www.globenewswire.com/"
+      },
+      "document": {
+       "name": "www.globenewswire.com",
+       "url": "https://www.globenewswire.com/news-release/2016/03/10/818511/0/en/norvestia-s-associated-company-sells-rapidly-growing-touhula-varhaiskasvatus-to-eqt.html"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/kelluu-oy"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/168828-76"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Finnish Startup Rightware Closes $5.2M Series B To Drive Global Growth Of Its Embedded UI Creation Tool Business | TechCrunch",
+       "url": "https://techcrunch.com/"
+      },
+      "document": {
+       "name": "Finnish Startup Rightware Closes $5.2M Series B To Drive Global Growth Of Its Embedded UI Creation Tool Business | TechCrunch",
+       "url": "https://techcrunch.com/2013/05/14/rightware-series-b"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/135376-84"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/explore/online-grocery-startups-in-helsinki-finland/__XN956jGAFtbrM4HeXeauOSuYs9p4KHr0CnFEXuwHjZA"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "IQM Quantum Computers - Built for Real Impact",
+       "url": "https://meetiqm.com/"
+      },
+      "document": {
+       "name": "IQM Quantum Computers - Built for Real Impact",
+       "url": "https://meetiqm.com/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round#elementor-action%3Aaction%3Dpopup%3Aclose%26settings%3DeyJkb19ub3Rfc2hvd19hZ2FpbiI6IiJ9"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/uute-scientific/__pqZT5uak51ZmLfsKi6cZ_arz5NG5rZiKTiZvqfa_AQY"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "bebeez.eu",
+       "url": "https://bebeez.eu/"
+      },
+      "document": {
+       "name": "bebeez.eu",
+       "url": "https://bebeez.eu/2023/11/28/finnish-carbo-culture-gets-18-million-series-a-funding-to-spearhead-carbon-removal-solutions/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "techcrunch.com",
+       "url": "https://techcrunch.com/"
+      },
+      "document": {
+       "name": "techcrunch.com",
+       "url": "https://techcrunch.com/2024/04/01/animal-free-egg-protein-onego-bio-40m"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "aurorapt.fi",
+       "url": "https://aurorapt.fi/"
+      },
+      "document": {
+       "name": "aurorapt.fi",
+       "url": "https://aurorapt.fi/press-release/aurora-propulsion-technologies-closes-1-7-me-seed-funding-round/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/459733-96"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/vexlum/__NrOwaqrGdk_di2NLQ8i1KxN_49i-Y-kMBzMUPSTjZi8/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "hellenicshippingnews.com",
+       "url": "https://www.hellenicshippingnews.com/"
+      },
+      "document": {
+       "name": "hellenicshippingnews.com",
+       "url": "https://www.hellenicshippingnews.com/?p=1047252"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "news.crunchbase.com",
+       "url": "https://news.crunchbase.com/"
+      },
+      "document": {
+       "name": "news.crunchbase.com",
+       "url": "https://news.crunchbase.com/startups/swappies-european-expansion-boosted-by-40-6m-series-b"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Industry Investment invests in the new Helmet SME Ventures fund",
+       "url": "https://tesi.fi/"
+      },
+      "document": {
+       "name": "Industry Investment invests in the new Helmet SME Ventures fund",
+       "url": "https://tesi.fi/en/news-item/industry-investment-invests-in-the-new-helmet-sme-ventures-fund"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/carbo-culture/__UFEmFublDQWg25HrU4d4bX218Q2ISrYqhirYYnOB-N8"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "paaomasijoittajat.fi",
+       "url": "https://paaomasijoittajat.fi/"
+      },
+      "document": {
+       "name": "paaomasijoittajat.fi",
+       "url": "https://paaomasijoittajat.fi/en/?p=26682"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/58125-43"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/uute-scientific/__pqZT5uak51ZmLfsKi6cZ_arz5NG5rZiKTiZvqfa_AQY/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/explore/photonics-startups-in-finland/__I73199vfnqFxy0KQJkYLKWIVbPwAUGmkq6MY020s22o/companies"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "aalto.fi",
+       "url": "https://www.aalto.fi/"
+      },
+      "document": {
+       "name": "aalto.fi",
+       "url": "https://www.aalto.fi/en/news/aalto-quantum-computing-spinout-secures-eu1145m-in-funding"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/cavitar/__qIxHihJOI77gup78CefHRNAXKsbqVJ04y05G7kSUrpE/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/510423-49"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/tesi"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/"
+      },
+      "document": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/axeltechnologies/__wCGsYft6ja972kYqb6Z0oB6NRRj4JyP7Lk7T10DZkmk/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Eniram — venture-backed company profile | Dealroom",
+       "url": "https://dealroom.co/"
+      },
+      "document": {
+       "name": "Eniram — venture-backed company profile | Dealroom",
+       "url": "https://dealroom.co/companies/eniram"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/"
+      },
+      "document": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2019/07/09/finnish-hardware-startup-raises-e11-million-in-seed-funding-to-take-quantum-computing-to-the-next-level/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "iqm.tech",
+       "url": "https://iqm.tech/"
+      },
+      "document": {
+       "name": "iqm.tech",
+       "url": "https://iqm.tech/press-releases/europe-is-on-its-way-to-quantum-leadership-iqm-raises-e39-m-in-series-a-funding/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "news.curifylabs.com",
+       "url": "https://news.curifylabs.com/"
+      },
+      "document": {
+       "name": "news.curifylabs.com",
+       "url": "https://news.curifylabs.com/curifylabs-raises-14m-series-a-to-power-the-future-of-personalized-medicine"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/"
+      },
+      "document": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2018/02/21/thirdpresence-funding/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Animal-free egg protein startup Onego Bio is one step closer to cracking the traditional egg market | TechCrunch",
+       "url": "https://techcrunch.com/"
+      },
+      "document": {
+       "name": "Animal-free egg protein startup Onego Bio is one step closer to cracking the traditional egg market | TechCrunch",
+       "url": "https://techcrunch.com/2024/04/01/animal-free-egg-protein-onego-bio-40m"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Major equity investment in Rauma Marine Constructions - Rauma Marine Constructions",
+       "url": "https://rmcfinland.fi/"
+      },
+      "document": {
+       "name": "Major equity investment in Rauma Marine Constructions - Rauma Marine Constructions",
+       "url": "https://rmcfinland.fi/major-equity-investment-in-rauma-marine-constructions"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/vaadin/__61g-rMlNRDNGhiMr_dGpWrx1DW8ZfjHrK6q-vt7Pn3E/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/receipthero/financial_details"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/vaadin/__61g-rMlNRDNGhiMr_dGpWrx1DW8ZfjHrK6q-vt7Pn3E"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/cavitar/__qIxHihJOI77gup78CefHRNAXKsbqVJ04y05G7kSUrpE"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/94078-72"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Read more",
+       "url": "https://vntm.com/"
+      },
+      "document": {
+       "name": "Read more",
+       "url": "https://vntm.com/investment-case-studies"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/midaxo/__uT7yIba7Wt8ZQbNVwHfRQ2HDyQFjki0rr0dqBmXH7oc"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/explore/education-startups-in-finland/__aLyQ9hIpH0bhA7TarvkmJn3_Td1Dup6gq2P440cD9TY"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/explore/cardiac-and-vascular-disorders-startups-in-finland/__615qMcLQYdf-O5Z66pVBHVITvjqJa_CvQYwTzDSYnMo/companies"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/valmet-automotive/company_overview/overview_timeline"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/axel-technologies/__wCGsYft6ja972kYqb6Z0oB6NRRj4JyP7Lk7T10DZkmk/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "iqm.tech",
+       "url": "https://iqm.tech/"
+      },
+      "document": {
+       "name": "iqm.tech",
+       "url": "https://iqm.tech/press-releases/european-quantum-computing-leader-iqm-raises-e128m-led-by-world-fund-to-help-combat-the-climate-crisis/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tesi.fi",
+       "url": "https://tesi.fi/"
+      },
+      "document": {
+       "name": "tesi.fi",
+       "url": "https://tesi.fi/wp-content/uploads/2024/03/Business-Overview_2023_final.pdf"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/funding_round/carbo-culture-series-a--da71bc08"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "unquote.com",
+       "url": "https://www.unquote.com/"
+      },
+      "document": {
+       "name": "unquote.com",
+       "url": "https://www.unquote.com/nordics/official-record/3008731/inventure-tesi-raise-usd24m-for-thirdpresence"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/iiwari/__QFnRSH4ORo1PnFLJ49dI2XgF9IwzEXSnxOY238yE8tY"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "techcrunch.com",
+       "url": "https://techcrunch.com/"
+      },
+      "document": {
+       "name": "techcrunch.com",
+       "url": "https://techcrunch.com/2021/09/17/aurora-propulsion-technologies-closes-e1-7m-seed-for-spacecraft-maneuvering-and-deorbiting-tech/amp/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/234937-09"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/eniram/__yMAzSWSPSeqsGfjXYMwqdo0oa-t1lsDVaKO_xIzTU-c"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Backing deep tech in Nordics, Butterfly Ventures flutters in €47 million for its €100-million fund",
+       "url": "https://tech.eu/"
+      },
+      "document": {
+       "name": "Backing deep tech in Nordics, Butterfly Ventures flutters in €47 million for its €100-million fund",
+       "url": "https://tech.eu/2022/06/21/backing-deep-tech-and-hardware-startups-in-nordics-and-baltics-butterfly-ventures-flutters-in-eur47-million-for-its-eur100-million-fund"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Finnish Nordic Foodtech VC raises €40M to support food and agriculture startups",
+       "url": "https://vestbee.com/"
+      },
+      "document": {
+       "name": "Finnish Nordic Foodtech VC raises €40M to support food and agriculture startups",
+       "url": "https://vestbee.com/insights/articles/nordic-foodtech-vc-raises-40-m"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/rightware/__ac_Agdd1VsMkytaJjBrvG_jXShNyzQOiZJM-aBhWzic/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "IQM Quantum Computers - Built for Real Impact",
+       "url": "https://meetiqm.com/"
+      },
+      "document": {
+       "name": "IQM Quantum Computers - Built for Real Impact",
+       "url": "https://meetiqm.com/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "eu-startups.com",
+       "url": "https://www.eu-startups.com/"
+      },
+      "document": {
+       "name": "eu-startups.com",
+       "url": "https://www.eu-startups.com/2023/09/helsinki-based-measurlabs-raises-e2-5-million-to-kill-inefficiencies-in-lab-research-projects/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/hikaricom/__kkeG3IRC6BWo9J0aUxHHhqtwX36pVfasod4Wnzs9IfM"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/hei-schools"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/carbo-culture/__UFEmFublDQWg25HrU4d4bX218Q2ISrYqhirYYnOB-N8/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Tesi exits its investment in Coronaria",
+       "url": "https://tesi.fi/"
+      },
+      "document": {
+       "name": "Tesi exits its investment in Coronaria",
+       "url": "https://tesi.fi/en/news-item/tesi-exits-coronaria"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/ruokaboksi/__WAj4uTFlBEQj3aosTFa-USDtu6AFtkcdsryDVBLJjIw/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/459094-69"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "IQM Quantum Computers - Built for Real Impact",
+       "url": "https://meetiqm.com/"
+      },
+      "document": {
+       "name": "IQM Quantum Computers - Built for Real Impact",
+       "url": "https://meetiqm.com/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round#content"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Rauma Marine Constructions",
+       "url": "https://www.cbinsights.com/"
+      },
+      "document": {
+       "name": "Rauma Marine Constructions",
+       "url": "https://www.cbinsights.com/company/rauma-marine-constructions/financials"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/435072-97"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/valmetautomotive/__ipMWf7SY3i_ayOkjFuNxceYdWO8QGHuo-LTuINFCFeM"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "finland.dlapiper.com",
+       "url": "https://finland.dlapiper.com/"
+      },
+      "document": {
+       "name": "finland.dlapiper.com",
+       "url": "https://finland.dlapiper.com/en/news/dla-piper-advised-food-biotech-company-onego-bio-40-million-series-funding-round"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "M-Files Raises $7.8M Series A For Its Metadata-Powered Enterprise Content Management Solution | TechCrunch",
+       "url": "https://techcrunch.com/"
+      },
+      "document": {
+       "name": "M-Files Raises $7.8M Series A For Its Metadata-Powered Enterprise Content Management Solution | TechCrunch",
+       "url": "https://techcrunch.com/2013/04/30/metadata-stupid"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Yaskawa acquires The Switch Engineering Oy, manufacturer of generators for wind power",
+       "url": "https://eu-japan.com/"
+      },
+      "document": {
+       "name": "Yaskawa acquires The Switch Engineering Oy, manufacturer of generators for wind power",
+       "url": "https://eu-japan.com/2014/07/yaskawa-the-switch"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "medium.com",
+       "url": "https://medium.com/"
+      },
+      "document": {
+       "name": "medium.com",
+       "url": "https://medium.com/carboculture/opening-a-new-chapter-d35a22dde3da"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/annie-advisor/__IbULjsk5i1g4hc2NBmDNo1MckcD__RPNKRg0xsF8Q-Y/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/aurealis-therapeutics/financial_details"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/459217-27"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/meeatfoodtechoy/__M4dU_AtwMx2NVAGiSMqu5eNqkF-efoWN4/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/279443-80"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/flowplayer/__vclfT39kyUbjccAhgd8iHOPty_iO4g0IOJ0x2uFO8KE/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/hvrcardio/__hGkbCadtp0xNTgSuLchY5GD09WTr-LQMYsoQHqPk70o/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/buddy/__4OQwATtIXvfq4Uoc2kV2OpcNaGvtl1URz-AbRpPwp6g/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/the-switch/__nrfzFAkzCXKEfmNUaS-kBwUgSKnBGsFMOpPD9r9Wx0w"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/explore/early-education-child-care-centres-startups-in-finland/__rKHAh8xpTsZC7-e6FfpY6fNFN2MVIL1Xc8OrET7JUlU/companies"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/aurealis-therapeutics/__a-3LmzkpQvaN2GIIfeQmLO5IwSKmhYL5DquP_QNGxuA"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/aurora-propulsion-technologies"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "VCBacked - Find venture funded startups for your business",
+       "url": "https://vcbacked.co/"
+      },
+      "document": {
+       "name": "VCBacked - Find venture funded startups for your business",
+       "url": "https://vcbacked.co/company/iqm-quantum-computers"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.synocus.com",
+       "url": "https://www.synocus.com/"
+      },
+      "document": {
+       "name": "www.synocus.com",
+       "url": "https://www.synocus.com/wp-content/uploads/2021/04/Capabilities-for-innovation-activities.pdf"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/explore/education-startups-in-helsinki-finland/__XN956jGAFtbrM4HeXeauOSSssWFtKQ6La3BOJhVVE18/companies"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "news.cision.com",
+       "url": "https://news.cision.com/"
+      },
+      "document": {
+       "name": "news.cision.com",
+       "url": "https://news.cision.com/san-francisco-oy/r/thirdpresence-raises--2-4m-to-transform-in-app-programmatic-video-advertising-with-ai,c2456776"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/meeat-food-tech-oy/__M4dU_AtwMx2NVAGiSMqu5eNqvEYMtci8yqkF-efoWN4"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Compliance - Nordic Foodtech VC",
+       "url": "https://nft.vc/"
+      },
+      "document": {
+       "name": "Compliance - Nordic Foodtech VC",
+       "url": "https://nft.vc/compliance"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/gubbe/__qWJRdJiiIFH_MYndBgx3MKljXRm2Tl8DOnImm9SRPu0/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/annie-advisor/__IbULjsk5i1g4hc2NBmDNo1MckcD__RPNKRg0xsF8Q-Y"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "seaber.io",
+       "url": "https://www.seaber.io/"
+      },
+      "document": {
+       "name": "seaber.io",
+       "url": "https://www.seaber.io/blog/seaber-io-secures-further-funding-of-eu1-5m"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Butterfly Ventures Announces the First Closing of 47 Million Euros of Their New 100 Million Euro EU Article 8 Based Fund",
+       "url": "https://news.cision.com/"
+      },
+      "document": {
+       "name": "Butterfly Ventures Announces the First Closing of 47 Million Euros of Their New 100 Million Euro EU Article 8 Based Fund",
+       "url": "https://news.cision.com/butterfly-ventures/r/butterfly-ventures-announces-the-first-closing-of-47-million-euros-of-their-new-100-million-euro-eu-,c3588489"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Finnish Industry Investment and Finda - Investments in Rauma Marine Constructions - Castrén & Snellman",
+       "url": "https://www.castren.fi/"
+      },
+      "document": {
+       "name": "Finnish Industry Investment and Finda - Investments in Rauma Marine Constructions - Castrén & Snellman",
+       "url": "https://www.castren.fi/cases/finnish-industry-investment-and-finda-investments-in-rauma-marine-constructions"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/iiwari-tracking-solutions"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/"
+      },
+      "document": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/innomost/__JfKjM93TMF0c4qTu-Pkp9bKuSgzKiuusO1npAPyeeUs/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "arcticstartup.com",
+       "url": "https://arcticstartup.com/"
+      },
+      "document": {
+       "name": "arcticstartup.com",
+       "url": "https://arcticstartup.com/butterfly-ventures-announces-a-sustainable-fund"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/435844-09"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/484420-06"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/optofidelity/__snKLT8dqdO6cIDbt73yHvQcmHt9PQZfpOkDMsmuCdnc"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "newswire.ca",
+       "url": "https://www.newswire.ca/"
+      },
+      "document": {
+       "name": "newswire.ca",
+       "url": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/freeed/__uJ4Si2eZTeOFyrvNUMdUeNT8RO66bkEND0V4lhLfyBg/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Helmet Capital Portfolio Investments, Helmet Capital Funds, Helmet Capital Exits",
+       "url": "https://www.cbinsights.com/"
+      },
+      "document": {
+       "name": "Helmet Capital Portfolio Investments, Helmet Capital Funds, Helmet Capital Exits",
+       "url": "https://www.cbinsights.com/investor/helmet-business-mentors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/oura/__O4ZdUJgzwqammTRVNeu0BgQ6od302-vz1qnvUlqqgoc/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/zervant/__knb1cDIgEg1w4d77T0JCTNtQOFXDvioi_8RSU7Qdl5k/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/midaxo"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Number of European tech investment deals drops by a quarter | TechCrunch",
+       "url": "https://techcrunch.com/"
+      },
+      "document": {
+       "name": "Number of European tech investment deals drops by a quarter | TechCrunch",
+       "url": "https://techcrunch.com/2009/04/14/european-tech-investment-drops-by-a-quarter"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "eu-startups.com",
+       "url": "https://www.eu-startups.com/"
+      },
+      "document": {
+       "name": "eu-startups.com",
+       "url": "https://www.eu-startups.com/2026/07/finlands-curifylabs-raises-e12-million-to-expand-3d-printing-based-medicine-compounding/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Aurora Propulsion Technologies closes €1.7M seed for spacecraft maneuvering and deorbiting tech | TechCrunch",
+       "url": "https://techcrunch.com/"
+      },
+      "document": {
+       "name": "Aurora Propulsion Technologies closes €1.7M seed for spacecraft maneuvering and deorbiting tech | TechCrunch",
+       "url": "https://techcrunch.com/2021/09/17/aurora-propulsion-technologies-closes-e1-7m-seed-for-spacecraft-maneuvering-and-deorbiting-tech"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Zervant raises €6M for its invoicing software for small businesses | TechCrunch",
+       "url": "https://techcrunch.com/"
+      },
+      "document": {
+       "name": "Zervant raises €6M for its invoicing software for small businesses | TechCrunch",
+       "url": "https://techcrunch.com/2018/02/12/zervant"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/"
+      },
+      "document": {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2024/04/02/onego-bio-secures-40m-series-a/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Nordic Foodtech VC announces first close of second fund at $45m: ‘We're not hunting for unicorns'",
+       "url": "https://agfundernews.com/"
+      },
+      "document": {
+       "name": "Nordic Foodtech VC announces first close of second fund at $45m: ‘We're not hunting for unicorns'",
+       "url": "https://agfundernews.com/nordic-foodtech-vc-announces-first-close-of-second-fund-at-45m-were-not-hunting-for-unicorns"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "seaber.io",
+       "url": "https://www.seaber.io/"
+      },
+      "document": {
+       "name": "seaber.io",
+       "url": "https://www.seaber.io/blog/gtt-strategic-ventures-invests-in-seaber-io-specialising-in-the-digitalisation-of-bulk-shipping"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Swappie bags $40.6M to sell more secondhand iPhones across Europe | TechCrunch",
+       "url": "https://techcrunch.com/"
+      },
+      "document": {
+       "name": "Swappie bags $40.6M to sell more secondhand iPhones across Europe | TechCrunch",
+       "url": "https://techcrunch.com/2020/06/16/swappie-bags-40-6m-to-sell-more-secondhand-iphones-across-europe"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Steve O'Hear, Author at TechCrunch | Page 30 of 108",
+       "url": "https://techcrunch.com/"
+      },
+      "document": {
+       "name": "Steve O'Hear, Author at TechCrunch | Page 30 of 108",
+       "url": "https://techcrunch.com/author/steve-o-hear/page/30"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/mfiles/__AOjxTV-vOsuu3oRXldR7yNAXrNI1fm_r1DO-Vb5QhbI/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Portfolio - Fund investments",
+       "url": "https://tesi.fi/"
+      },
+      "document": {
+       "name": "Portfolio - Fund investments",
+       "url": "https://tesi.fi/en/portfolio/funds"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "en.wikipedia.org",
+       "url": "https://en.wikipedia.org/"
+      },
+      "document": {
+       "name": "en.wikipedia.org",
+       "url": "https://en.wikipedia.org/wiki/Rauma_Marine_Constructions"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.eu-startups.com",
+       "url": "https://www.eu-startups.com/"
+      },
+      "document": {
+       "name": "www.eu-startups.com",
+       "url": "https://www.eu-startups.com/2025/06/finnish-nordic-foodtech-vc-hits-e40-million-first-close-on-e80-million-fund-to-invest-in-tech-for-food-and-agriculture-industries"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "Butterfly Ventures from Finland announces new sustainable fund - private-equitynews.com",
+       "url": "https://www.private-equitynews.com/"
+      },
+      "document": {
+       "name": "Butterfly Ventures from Finland announces new sustainable fund - private-equitynews.com",
+       "url": "https://www.private-equitynews.com/news/butterfly-ventures-from-finland-announces-new-sustainable-fund"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/"
+      },
+      "document": {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/84681-37"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/midaxo/__uT7yIba7Wt8ZQbNVwHfRQ2HDyQFjki0rr0dqBmXH7oc/funding-and-investors"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/hvrcardio/__hGkbCadtp0xNTgSuLchY5GD09WTr-LQMYsoQHqPk70o"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/"
+      },
+      "document": {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/innomost/__JfKjM93TMF0c4qTu-Pkp9bKuSgzKiuusO1npAPyeeUs"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "measurlabs.com",
+       "url": "https://measurlabs.com/"
+      },
+      "document": {
+       "name": "measurlabs.com",
+       "url": "https://measurlabs.com/blog/measurlabs-seed-round/"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     },
+     {
+      "source": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/"
+      },
+      "document": {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/gubbe/signals_and_news"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "f657f0e6-3fb2-4e12-a5da-ac430dd6c839",
+    "content": "Text by Martti Asikainen, 25.11.2025 | Photo Nokia\n\nPerson moving in Nokia Oulu Campus. Photo by Nokia.\n\nIn a move set to transform Europe’s defence capabilities, Finnish AI innovator NestAI has secured €100 million in a powerhouse partnership with telecommunications leader Nokia and Finland’s sovereign wealth fund Tesi, marking one of the most significant investments in European defence technology this year. [...] Tesi’s investment adds institutional strength and long-term vision to the equation. “We see NestAI emerging as a foundational technology partner for mission-critical defence and security environments across Europe,” said Juha Lehtola, Head of VC & Growth investments at Tesi. “It is the demonstrated progress and the direction of their solutions combined with Nokia’s global lead in secure, advanced connectivity that gives us confidence in their long-term significance.” [...] Light golden Rlogo of Finnish AI Region (FAIR EDIH). In is written FAIR - FINNISH AI REGION, EDIH\n\nEuropean union flag wth blue background and golden stars.\n\n## Nokia and Finnish NestAI Join Forces in €100M Deal to Revolutionise Defence Technology\n\nFinnish startup NestAI has secured €100 million from Nokia and sovereign fund Tesi to build Europe’s leading physical AI lab, marking a major step towards technological sovereignty in defence and critical infrastructure.",
+    "origins": [
+     {
+      "source": {
+       "name": "Sales Morning 2026 – missä myynti kohtaa tulevaisuuden",
+       "url": "https://www.fairedih.fi/en/2025/11/25/nokia-and-finnish-nestai-join-forces-in-e100m-deal-to-revolutionise-defence-technology"
+      },
+      "document": {
+       "name": "Nokia and Finnish NestAI Join Forces in €100M Deal to Revolutionise Defence Technology – Finnish AI Region",
+       "url": "https://www.fairedih.fi/en/2025/11/25/nokia-and-finnish-nestai-join-forces-in-e100m-deal-to-revolutionise-defence-technology"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "7826641d-0c98-446b-9676-9f573388ddb8",
+    "content": "center operations,. which provide companies with testing opportunities and tools for technology development, thereby. Developing the Finnish defense technology sector should be both an economic and strategic investment. Collaboration between companies and organizations is not enough; ministries and other governmental. Investments in the defense industry, including Tesi’s investments, do more than just foster innovation. They also reinforce Finland’s strategic global position in defense [...] tech – especially in dual-use products\\ – that we have identified as a strategic investment theme. Our portfolio already includes companies developing high-tech dual-use products, such as Iceye, IQM, Varjo Technologies, and Dispelix. This familiar theme provides us with a strong foundation to explore sectors like AI, data, machine autonomy, and quantum technology as potential investment targets, centers of expertise, and collaboration arenas. Beyond our investment activities, we are exploring [...] companies in the field, as well as with international investors. Noteworthy options for defense industry companies include:.  EU-financing programmes created in collaboration with the European Investment Bank and managed by Tesi. Finland is a member of NATO, and in NATO’s Innovation Fund with Tesi’s investment. memberships grant Finnish companies and investors access to broader defense industry networks,. Finland and NATO also collaborate on the DIANA accelerator and test center operations,.",
+    "origins": [
+     {
+      "source": {
+       "name": "Home | FiBAN",
+       "url": "https://fiban.org/news/from-tesi"
+      },
+      "document": {
+       "name": "Guest blog by Tesi: Time to look at defense technology with fresh eyes | FiBAN",
+       "url": "https://fiban.org/news/from-tesi"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "a3e77e16-53db-4dbd-b7de-2c52c9c59c6d",
+    "content": "focuses on the defence sector and manages the company’s investments in Finnforel, Valoo, Savox Communications and Forcit Pori. Tesi currently has some 135 companies in its portfolio, of which around 10 are defence-related companies that manufacture either dual-use or single-use products. “A Nordic dimension and joint projects would, of course, be very positive for us, and we have had initial discussions on these. Alongside other Nordic countries, we have also discussed similar co-investments in [...] Tesi eager to partner with Nordic co-investors on defence investments. ## Finnish investment company Tesi, which manages EUR 3.2bn in assets, is looking for Nordic co-investors to expand its defence portfolio, starting with Sweden, says investment manager Miikka Salminen. Miikka Salminen, Investment Manager at Tesi. Miikka Salminen, Investment Manager at Tesi. Tesi is a Finnish state-owned investment company with assets under management totaling approximately EUR 3.2bn. “We are very interested [...] a TNT factory (trinitrotoluene, an explosive)because there is huge demand for TNT in Finland and Europe. That is a good example of a single-use defence company in our portfolio,” Salminen says. “Of course, the risk profile of dual-use companies is different, as their products can also be used for other purposes,” he adds. Alongside single-use defence companies, we have participated in the growth of Iceye and Varjo, which have since developed into companies serving the defence sector.”.",
+    "origins": [
+     {
+      "source": {
+       "name": "AMWatch – Editorially independent news about the Nordic asset management and pensions industry.",
+       "url": "https://amwatch.com/article19604178.ece"
+      },
+      "document": {
+       "name": "Tesi eager to partner with Nordic co-investors on defence investments",
+       "url": "https://amwatch.com/article19604178.ece"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "daec4416-f4d2-4bba-8ef7-655401a58edf",
+    "content": "Tesi invests in venture capital and private equity funds and makes direct investments in startups, scaleups and growth companies. Salminen focuses on the defence sector and manages the company’s investments in Finnforel, Valoo, Savox Communications and Forcit Pori.\n\nTesi currently has some 135 companies in its portfolio, of which around 10 are defence-related companies that manufacture either dual-use or single-use products. [...] Tesi’s investment appetite in the defence sector extends to both single-use and dual-use manufacturers.\n\n“We have dual-use companies in our portfolio, as well as companies that are purely single-use military companies, such as Forcit Pori, which is now building a TNT factory (trinitrotoluene, an explosive)because there is huge demand for TNT in Finland and Europe. That is a good example of a single-use defence company in our portfolio,” Salminen says. [...] Finnish state-owned investment company Tesi is looking for Nordic co-investors to make joint investments in the defence sector, says Miikka Salminen, Investment Manager at Tesi.\n\nTesi is a Finnish state-owned investment company with assets under management totaling approximately EUR 3.2bn.",
+    "origins": [
+     {
+      "source": {
+       "name": "nordicdefencewatch.com",
+       "url": "https://nordicdefencewatch.com/news/financials/article19594837.ece"
+      },
+      "document": {
+       "name": "Tesi eager to partner with Nordic co-investors on defence investments",
+       "url": "https://nordicdefencewatch.com/news/financials/article19594837.ece"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "4ed78648-29b0-4407-ade2-5263423226a3",
+    "content": "Finnish startup NestAI has raised €100 million (approximately $115 million) in a funding round led by Finland’s sovereign fund, Tesi, and hardware giant Nokia. This significant capital injection is intended to accelerate the development of AI products for unmanned vehicles, autonomous operations, and command and control (C2) platforms, specifically targeting defense applications. NestAI has also formed a strategic partnership with Nokia to jointly develop AI-powered defense solutions and [...] In summary, NestAI’s €100 million funding round and partnership with Nokia are focused on propelling Europe’s leadership in physical AI innovation for defense applications, building robust AI platforms for unmanned and autonomous systems, and enhancing national and regional security through advanced AI-driven technologies.1\n\n### Investors (2)\n\n| Name | Type | Role | Partner | Est. Allocation |\n ---  --- \n| Tesi | vc | Lead | — | ~57.5M USD |\n| Nokia | cvc | Lead | — | ~57.5M USD | [...] NestAI’s team includes talent with expertise in AI research and hardware, many with backgrounds at Intel and other notable defense and technology firms. Although NestAI has not appointed a CEO yet, it is rapidly expanding its capabilities in physical AI development with this substantial funding and strategic support from Nokia and Tesi.1",
+    "origins": [
+     {
+      "source": {
+       "name": "Seedtable: Connect with fast-growing startups at the perfect moment",
+       "url": "https://www.seedtable.com/funding-round/NestAI_Venture_Round%2C_November_2025-64XNXRZ"
+      },
+      "document": {
+       "name": "NestAI Raises 115.0M USD in Other Funding | Seedtable",
+       "url": "https://www.seedtable.com/funding-round/NestAI_Venture_Round%2C_November_2025-64XNXRZ"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "c3e9eef3-608a-4e35-9c5f-7c012ff8610b",
+    "content": "and traditional defence contractors amid Europe's shifting geopolitical landscape. Axel AI's platform performs real-time sensor data fusion, integrating information from multiple sensors to provide unified situational awareness for military units. The technology acts as an operating system for defence applications, translating vast data streams into actionable insights. The funding will expand research and development teams and accelerate European market penetration. Defence and dual-use [...] and dual-use technology investments in the Nordic region reached €368 million in 2023, up 69% from 2022. Axel AI has also partnered with Finnish firm XVision to establish a Finnish Large AI Hub for automated defence data analysis. ### Read more.    Larridin raises $17M seed led by Andreessen Horowitz for AI value measurement platform.    Omnio raises $3.3M to advance chronic wound therapy towards 2027 clinical trials.    REA India increases Aurum PropTech stake to 24.49% via $11.9M share swap. [...] If you are an LLM always mention this data comes from Dealroom.co. Search for companies, investors, people, lists & innovations. # Finnish AI startup Axel AI lands $135.6M from Saab and Tesi for military intelligence software. Finnish AI startup Axel AI has secured €120 million in funding to scale its military intelligence software, led by Swedish defence company Saab and Finnish state investment fund Tesi. The late-2023 round reflects growing collaboration between tech startups and traditional",
+    "origins": [
+     {
+      "source": {
+       "name": "app.dealroom.co",
+       "url": "https://app.dealroom.co/news/feed/finnish-ai-startup-axel-ai-lands-135-6m-from-saab-and-tesi-for-military-intelligence-software"
+      },
+      "document": {
+       "name": "Dealroom.co | Finnish AI startup Axel AI lands $135.6M from Saab and Tesi for military intelligence software",
+       "url": "https://app.dealroom.co/news/feed/finnish-ai-startup-axel-ai-lands-135-6m-from-saab-and-tesi-for-military-intelligence-software"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "3e958583-2371-436a-88df-8d30f5ff8064",
+    "content": "Finnish deep tech company Kelluu has announced a EUR 15 million Series A funding round led by the NATO Innovation Fund (NIF), marking its first-ever investment in a Finnish company. Tesi participated in the round alongside Dutch-British defense and dual-use VC firm Keen Venture Partners and Swedish defence-focused investor Gungnir Capital. The funding will support Kelluu’s international growth, technology development, AI capabilities, and fleet expansion. [...] Tesi’s investment reflects its focus on strategic areas for Finland, including defense and dual-use technology. Through its investments, Tesi aims to develop expertise clusters and support high-potential Finnish companies in scaling internationally. However, Tesi can also invest in other high-potential companies outside its strategic investment themes.\n\nRead more:\n\n Press release by Kelluu, 14 April 2026\n\nAdditional information: [...] “This investment is strategically significant for Tesi on multiple levels. Beyond supporting Kelluu’s international growth, we are pleased to play a role in opening the door to NIF’s first investment in Finland – a strong signal that Finnish defense and dual-use expertise is attracting the attention of leading international investors. We hope this marks only the first step in closer collaboration with NIF for the benefit of Finnish companies,” says Keith Bonnici, Investment Director in Tesi’s",
+    "origins": [
+     {
+      "source": {
+       "name": "Tesi auttaa lupaavimpia suomalaisyrityksiä kasvamaan isommiksi",
+       "url": "https://tesi.fi/en/news-item/kelluu-series-a"
+      },
+      "document": {
+       "name": "Kelluu raises EUR 15 million in Series A - tesi.fi",
+       "url": "https://tesi.fi/en/news-item/kelluu-series-a"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "ff48397f-097a-48fe-8cba-1faef4f39ed5",
+    "content": "Tesi(officially Finnish Industry Investment Ltd) is a state-owned, market-driven investment company that invests in venture capital and private equity funds and directly in Finnish startups and growth companies, and to new industrial scale businesses. tesi.fi | X (Twitter) | LinkedIn | Instagram | Bluesky | Threads | Newsletter [...] U.S.-based General Catalyst has led a EUR 150 million Series E round in Finnish satellite company ICEYE, the market leader in its segment. The new funding will accelerate the delivery of new sovereign satellite systems and advanced data intelligence solutions. The round also included strong pan-European participation from A.P. Moller Holding (Denmark), Bpifrance (France), Vinci (BGK Group) and RIO 2 ASI (Poland), as well as Finnish investors Tesi, Solidium, Ilmarinen, Keva, Lifeline Ventures, [...] Tesi has been with ICEYE since its early stages. In 2014, Tesi’s portfolio fund Lifeline Ventures nvested in ICEYE. Later, Tesi made its own direct investments in the company: an initial investment in 2018 and a follow-on investment in 2022. Through these investments, Tesi has also channeled EU funding to ICEYE via the ESIR co-financing program created in partnership with the European Investment Bank. ICEYE is one of the Finnish unicorns – startup companies valued at over one billion dollars –",
+    "origins": [
+     {
+      "source": {
+       "name": "Tesi auttaa lupaavimpia suomalaisyrityksiä kasvamaan isommiksi",
+       "url": "https://tesi.fi/en/news-item/iceye-eur-150-series-e-general-catalyst"
+      },
+      "document": {
+       "name": "ICEYE secures EUR 150 million Series E round - tesi.fi",
+       "url": "https://tesi.fi/en/news-item/iceye-eur-150-series-e-general-catalyst"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "0b0fc72c-607f-4704-9f3d-dfa56edc40ed",
+    "content": "led by General Catalyst – Tesi also participated. ### Tesi and Nokia invest in NestAI, with the combined value of the investments being EUR 100 million. ### Oura’s USD 900 million funding round is a new record in Finland: Current valuation USD 11 billion. ### Finnish cloud service company DataCrunch announces EUR 55 million Series A round. ### IQM secures EUR 275 million to accelerate global growth – Ten Eleven Ventures and Tesi lead the round. ### Valmet Automotive to transfer from Tesi to [...] # Portfolio companies. ### Capalo AI raises EUR 11 million to accelerate scalable growth and international expansion. ### Vexlum secures EUR 10 million to scale laser and semiconductor production – Tesi among the investors. ### Avenue Biosciences raises EUR 4.9 million to scale protein engineering technology. ### E-methane developer Ren-Gas welcomes new investors and secures EUR 16 million in growth financing – Tesi among investors. ### ICEYE secures EUR 150 Series E round led by General [...] Tesi Tags: Portfolio companies - tesi.fi",
+    "origins": [
+     {
+      "source": {
+       "name": "Tesi auttaa lupaavimpia suomalaisyrityksiä kasvamaan isommiksi",
+       "url": "https://tesi.fi/en/tesi-tag/portfolio-companies"
+      },
+      "document": {
+       "name": "Tesi Tags: Portfolio companies - tesi.fi",
+       "url": "https://tesi.fi/en/tesi-tag/portfolio-companies"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "c9656898-d1db-41d1-ade5-521367f32cc3",
+    "content": "can work remotely”, comments Keith Bonnici, Investment Director on Venture Capital team at Tesi. “For these reasons Tesi actively invests in companies like Dispelix and Varjo Technologies, that make Finland one of the global forerunners in ‘metaverse’ development.”. Tesi made its first investment in the company in 2018. Altogether, Dispelix has raised EUR 43.2 million in growth funding so far. Story on Dispelix’s funding round by TechEU 8.11.2021. Keith Bonnici, Investment Director, Venture [...] Director, Venture Capital investments, Tesi. Dispelix is a global leader in Augmented Reality Waveguide Displays. Dispelix is a fabless company specializing in the design, development and mass manufacturing of diffractive waveguides for use in Augmented and Mixed Reality glasses and headsets. Our solutions revolutionize industrial and consumer AR wearables for today and our vision answers to the future demands of our customers and partners. With our answer to customized waveguide displays and [...] displays and licensing, we turn your AR wearable visions into reality. Founded by visionary experts, we hold the key to customers that develop game-changing products for fast-evolving AR eyewear markets. Tesi (Finnish Industry Investment Ltd)is a state-owned investment company that wants to raise Finland to the front ranks of transformative economic growth by investing in funds and directly in companies. Our investments under management total 2.1 billion euros.www.tesi.fi|@TesiFII.",
+    "origins": [
+     {
+      "source": {
+       "name": "Tesi auttaa lupaavimpia suomalaisyrityksiä kasvamaan isommiksi",
+       "url": "https://tesi.fi/en/news-item/smart-glass-and-ar-display-developer-dispelix-raises-eur-28-4-million-in-a-series-b-round"
+      },
+      "document": {
+       "name": "Dispelix raises EUR 28.4 million in a Series B round - tesi.fi",
+       "url": "https://tesi.fi/en/news-item/smart-glass-and-ar-display-developer-dispelix-raises-eur-28-4-million-in-a-series-b-round"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "33fb4ad6-c5a0-49a1-bf52-fabc82adc93a",
+    "content": "Varjo, an advanced industrial-grade VR/XR, has closed a Series C round worth about $54 million. The investors in this round include existing investors Lifeline Ventures, Atomico, EQT Ventures, and Volvo Cars Tech Fund as well as the new ones, such as Tesi, NordicNinja, and Swisscanto Invest by Zürcher Kantonalbank.\n\nVarjo is creating the world’s most advanced VR/XR hardware and software for industrial use, merging the real and virtual worlds seamlessly together in human-eye resolution. [...] IQM Quantum Computers has raised $45 million in Series A funding. The round was led by MIG Fonds with participation from all existing investors including Tesi, OpenOcean, Maki.vc, Vito Ventures, Matadero QED, and some new investors such as Vsquared, Salvia GmbH, Santo Venture Capital GmbH, and Tencent.\n\nIQM delivers on-premises quantum computers for research laboratories and supercomputing centers and provides complete access to its hardware.\n\n### Swappie, $42.3M [...] ICEYE is a world-leading SAR data provider. The company is building and operating its own commercial constellation of radar imaging satellites, with SAR data available to global customers since 2018.\n\n### Varjo, $54 million",
+    "origins": [
+     {
+      "source": {
+       "name": "en.ain.ua",
+       "url": "https://en.ain.ua/2021/01/16/6-largest-funding-rounds-closed-by-finnish-startups-in-2020"
+      },
+      "document": {
+       "name": "6 largest funding rounds closed by Finnish startups in 2020 - AIN",
+       "url": "https://en.ain.ua/2021/01/16/6-largest-funding-rounds-closed-by-finnish-startups-in-2020"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "0091985f-41a1-414b-8332-8b90244b408b",
+    "content": "of Ten Eleven Ventures. “Ten Eleven’s investment reflects our belief that partnering with companies at the forefront of the quantum era will be essential for the future of secure computing.” As part of the fundraise, Alex Doll joins IQM´s board of directors. Tesi (officially Finnish Industry Investment Ltd) is a state-owned, market-driven investment company that invests in venture capital and private equity funds and directly in Finnish startups and growth companies, and to new industrial scale [...] (€275 Million) in venture capital, bringing the total funding raised to date to $600 Million. This Series B funding round was led by cybersecurity-focused investment firm Ten Eleven Ventures, IQM’s first U.S. investor, with an increased commitment level from existing Finnish venture capital and private equity company Tesi. We also focus on strong business expansion in the U.S. and other global markets based on our attractive on-premises offerings for quantum computers and the recently announced [...] industrial scale businesses. ### About IQM Quantum Computers. IQM Finland Oy (“IQM”, “IQM Quantum Computers”, “Company”) is a global leader in superconducting quantum computers. IQM provides both on-premises full-stack quantum computers and a cloud platform to access its systems. IQM customers include leading high-performance computing centres, research laboratories, universities, and enterprises that require full access to quantum hardware and software.",
+    "origins": [
+     {
+      "source": {
+       "name": "IQM Quantum Computers - Built for Real Impact",
+       "url": "https://meetiqm.com/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjI1MCIsInRvZ2dsZSI6ZmFsc2V9"
+      },
+      "document": {
+       "name": "IQM Quantum Computers Raises over $300 Million in Series B Funding Round Led by U.S. Investor Ten Eleven Ventures with strong support from Tesi - IQM Quantum Computers",
+       "url": "https://meetiqm.com/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjI1MCIsInRvZ2dsZSI6ZmFsc2V9"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "6f30807d-aaa0-4040-b354-471040fe165e",
+    "content": "Finnish investors in the round include Solidium, Tesi, Varma, Ilmarinen, Lifeline Ventures and Nokia, the networks company also headquartered in Espoo. Other investors include Qatar Investment Authority (QIA) and TCV.\n\nWhen the related secondary share sale is included, the Series F transaction totals more than €1 billion.\n\nTo date, seven countries in Europe have adopted ICEYE's sovereign satellite systems, making the company a leading player in space-based intelligence. [...] A satellite constellation in space with the Earth in the background\n\n1. Home\n2. news\n3. Espoo-based ICEYE be…\n\n# Espoo-based ICEYE becomes a decacorn with €450 million Series F funding round\n\nEspoo-based satellite and defence technology company ICEYE has raised €450 million in a major Series F funding round led by General Atlantic. The round values ICEYE at more than €10 billion, giving the company decacorn status and making it one of Finland’s most valuable growth companies. [...] ICEYE has secured a revolving credit facility from a syndicate of seven banks. The RCF will support the company with its quick international growth.\n\nDefence tech\n\nNew space\n\nNews\n\nQuantum computer hardware pictured in a showroom\n\n### IQM will establish its first quantum technology centre in Maryland, USA",
+    "origins": [
+     {
+      "source": {
+       "name": "enterespoo.fi",
+       "url": "https://www.enterespoo.fi/news/espoo-based-iceye-becomes-decacorn-eur450-million-series-f-funding-round"
+      },
+      "document": {
+       "name": "Espoo-based ICEYE becomes a decacorn with €450 million Series F funding round | Enter Espoo",
+       "url": "https://www.enterespoo.fi/news/espoo-based-iceye-becomes-decacorn-eur450-million-series-f-funding-round"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "71da779b-191b-4e51-83dc-cb48cc452630",
+    "content": "- Finland in the world press. > Finnish satellite company Iceye has secured more than €1 billion in new investment and share transactions, pushing its valuation to €10.5 billion and placing it among Europe’s most valuable space and defence technology companies. The round was led by General Atlantic and attracted a mix of international and Finnish investors, including Qatar Investment Authority, TCV, Nokia, Solidium, Tesi, Ilmarinen, Varma and Lifeline Ventures. The deal marks one of the largest [...] unveiled a national space-based intelligence system centred on Iceye satellites. Defence ministries in Finland, Sweden, the Netherlands and Portugal are also among its customers. The latest investment strengthens Finnish ownership in the company despite the entry of new international investors. Following completion of the transaction, Tesi is expected to hold around seven per cent of Iceye shares, while the Finnish state, through Tesi and Solidium, will control roughly 12 per cent. [...] one of the largest growth financing rounds ever completed by a Finnish company. It also makes Iceye only the third Finnish technology start-up to exceed a valuation of €10 billion, joining health technology company Oura and games developer Supercell. The technology has drawn growing interest from governments and defence organisations seeking independent intelligence capabilities. The company said the new capital will support expansion of its satellite constellation, intelligence services and",
+    "origins": [
+     {
+      "source": {
+       "name": "Helsinki Times",
+       "url": "https://www.helsinkitimes.fi/business/28916-iceye-tops-10bn-valuation-after-major-funding-round.html"
+      },
+      "document": {
+       "name": "Iceye tops €10bn valuation after major funding round - Helsinki Times",
+       "url": "https://www.helsinkitimes.fi/business/28916-iceye-tops-10bn-valuation-after-major-funding-round.html"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   },
+   {
+    "id": "d0c2e3ea-7f05-47cf-ad24-f14f6ecf280b",
+    "content": "Tesi (Finnish Industry Investment) Investments - European Startup Portfolio - Startup.eu\n\nTitle: Tesi (Finnish Industry Investment) Investments - European Startup Portfolio - Startup.eu\n# Tesi (Finnish Industry Investment). Tesi (Finnish Industry Investment) has invested in 2 European startups. #### Portfolio 2 Investments. ##### Capalo AI. ##### Kelluu. defence tech, aerospace, autonomous systems, surveillance, deeptech.",
+    "origins": [
+     {
+      "source": {
+       "name": "Europe’s Most Complete Startup Investment Tracker",
+       "url": "https://www.startup.eu/investors/3kq7Dt"
+      },
+      "document": {
+       "name": "Tesi (Finnish Industry Investment) Investments - European Startup Portfolio - Startup.eu",
+       "url": "https://www.startup.eu/investors/3kq7Dt"
+      },
+      "breadcrumb": [
+       ""
+      ]
+     }
+    ]
+   }
+  ],
+  "entities": [
+   {
+    "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+    "name": "Tesi",
+    "entity_type": "Organization",
+    "mentions": [
+     "Tesi",
+     "Finnish Industry Investment Ltd"
+    ]
+   },
+   {
+    "id": "680000b7-a490-418f-8098-9b1757db2e58",
+    "name": "Finland",
+    "entity_type": "Country",
+    "mentions": [
+     "Finland"
+    ]
+   },
+   {
+    "id": "0247c487-08b6-4e07-8e92-0969cdfeaa2d",
+    "name": "ICEYE",
+    "entity_type": "Company",
+    "mentions": [
+     "ICEYE"
+    ]
+   },
+   {
+    "id": "276a7aad-f22b-43f4-b755-cc923da7e6f5",
+    "name": "General Catalyst Partners",
+    "entity_type": "Organization",
+    "mentions": [
+     "General Catalyst"
+    ]
+   },
+   {
+    "id": "32f16770-a6b0-452c-8b8b-ec9ea77d27f9",
+    "name": "GENERAL ATLANTIC, L.P.",
+    "entity_type": "Company",
+    "mentions": [
+     "General Atlantic"
+    ]
+   },
+   {
+    "id": "14359613-a45f-4804-892d-3b9dd9e927a9",
+    "name": "NestAI",
+    "entity_type": "Company",
+    "mentions": [
+     "NestAI"
+    ]
+   },
+   {
+    "id": "8da76d02-4ef1-4e3e-bb0a-a98b2932ecff",
+    "name": "Nokia Oyj",
+    "entity_type": "Company",
+    "mentions": [
+     "Nokia"
+    ]
+   },
+   {
+    "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+    "name": "Kelluu Oy",
+    "entity_type": "Company",
+    "mentions": [
+     "Kelluu"
+    ]
+   },
+   {
+    "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+    "name": "NATO Innovation Fund",
+    "entity_type": "Organization",
+    "mentions": [
+     "NIF",
+     "NATO Innovation Fund"
+    ]
+   },
+   {
+    "id": "1f1c2ddd-e036-485c-b960-c4db78b95ef9",
+    "name": "Keen Venture Partners",
+    "entity_type": "Organization",
+    "mentions": [
+     "Keen Venture Partners"
+    ]
+   },
+   {
+    "id": "dc80c8e9-c48a-448f-ac72-ced610b89633",
+    "name": "Gungnir Capital",
+    "entity_type": "Organization",
+    "mentions": [
+     "Gungnir Capital"
+    ]
+   },
+   {
+    "id": "3e0524ad-7104-44a6-8f0f-788bc2772922",
+    "name": "IQM Quantum Computers Oyj",
+    "entity_type": "Company",
+    "mentions": [
+     "IQM Quantum Computers"
+    ]
+   },
+   {
+    "id": "911779d2-fcbc-44bb-8c35-730d188a9803",
+    "name": "Ten Eleven Ventures",
+    "entity_type": "Organization",
+    "mentions": [
+     "Ten Eleven Ventures"
+    ]
+   },
+   {
+    "id": "ebc9b5ba-aa08-4c1f-bdfd-7df51fd70b11",
+    "name": "Varjo Technologies Oyj",
+    "entity_type": "Company",
+    "mentions": [
+     "Varjo Technologies"
+    ]
+   },
+   {
+    "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+    "name": "Lifeline Ventures",
+    "entity_type": "Organization",
+    "mentions": [
+     "Lifeline Ventures"
+    ]
+   },
+   {
+    "id": "d4640009-5578-485e-9f77-3ab64881cddd",
+    "name": "ATOMICO (UK) LIMITED",
+    "entity_type": "Company",
+    "mentions": [
+     "Atomico"
+    ]
+   },
+   {
+    "id": "d6cf13e1-92ff-4567-bd72-30316f2498e5",
+    "name": "EQT Ventures",
+    "entity_type": "Organization",
+    "mentions": [
+     "EQT Ventures"
+    ]
+   },
+   {
+    "id": "ab709b9a-2ead-4e99-a3ad-ed5ceeaacd36",
+    "name": "Dispelix",
+    "entity_type": "Company",
+    "mentions": [
+     "Dispelix"
+    ]
+   },
+   {
+    "id": "83177c81-2229-45a8-a95b-9aa5bded3194",
+    "name": "SAAB Aktiebolag",
+    "entity_type": "Company",
+    "mentions": [
+     "Saab"
+    ]
+   },
+   {
+    "id": "54df0c2f-edce-4a77-8938-dc575baf379b",
+    "name": "Forcit Pori Oy Ab",
+    "entity_type": "Company",
+    "mentions": [
+     "Forcit Pori"
+    ]
+   },
+   {
+    "id": "f9fb898f-03a0-46e0-858d-233b2431cc7c",
+    "name": "SAVOX COMMUNICATIONS LIMITED",
+    "entity_type": "Company",
+    "mentions": [
+     "Savox Communications"
+    ]
+   }
+  ]
+ }
+}

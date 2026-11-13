@@ -1,0 +1,121 @@
+{
+ "request": {
+  "method": "POST",
+  "path": "/entities/a1f7d57d-39a4-486f-bd9b-39b8b50ab1ff",
+  "params": null,
+  "json": {
+   "properties": [
+    "name",
+    "legal_name",
+    "aliases",
+    "description",
+    "website",
+    "operational_status",
+    "headquarters_address",
+    "registered_address",
+    "founding_date",
+    "funding_stage",
+    "total_funding",
+    "total_funding_units",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "employee_count",
+    "round_label",
+    "announcement_date",
+    "transaction_value",
+    "transaction_value_units",
+    "instrument",
+    "annotations"
+   ],
+   "relationships": {
+    "outgoing": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "OPERATES_IN_INDUSTRY": {
+      "limit": 100
+     }
+    },
+    "incoming": {
+     "PARTICIPATES_IN_FUNDING_ROUND": {
+      "limit": 100
+     },
+     "INVESTED_IN": {
+      "limit": 100
+     },
+     "IS_BOARD_MEMBER_OF": {
+      "limit": 100
+     },
+     "FOUNDED": {
+      "limit": 100
+     },
+     "IS_CEO_OF": {
+      "limit": 100
+     },
+     "WORKS_AT": {
+      "limit": 100
+     }
+    }
+   }
+  }
+ },
+ "recorded_at": "2026-11-13T20:40:13+00:00",
+ "response": {
+  "id": "a1f7d57d-39a4-486f-bd9b-39b8b50ab1ff",
+  "name": "ReOrbit",
+  "entity_type": "Organization",
+  "description": "A Finnish growth technology company.",
+  "properties": {
+   "name": {
+    "value": "ReOrbit",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-06-29"
+     }
+    ]
+   },
+   "aliases": {
+    "value": [],
+    "sources": []
+   },
+   "description": {
+    "value": "A Finnish growth technology company.",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "document": "",
+      "date": "2026-08-03"
+     }
+    ]
+   }
+  },
+  "relationships": {
+   "outgoing": {},
+   "incoming": {
+    "INVESTED_IN": [
+     {
+      "id": "f8d6c852-c3c0-4914-b835-800f4096a834",
+      "name": "ELO",
+      "entity_type": "Organization",
+      "properties": {
+       "sources": [
+        {
+         "name": "Elo doubles pace of Finnish unlisted growth bets with €100m push in H1",
+         "document": "https://www.ipe.com/news/elo-doubles-pace-of-finnish-unlisted-growth-bets-with-100m-push-in-h1/10136315.article",
+         "date": "2026-04-22"
+        }
+       ],
+       "id": "ccb18462-db3d-5f15-83a0-be64b550f41a"
+      }
+     }
+    ]
+   }
+  },
+  "numerical_observations": []
+ }
+}
