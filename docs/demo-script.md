@@ -1,24 +1,29 @@
 # Demo script (task C16)
 
-Draft, 14 Nov. **About 3 minutes.** One presenter talks, one drives the laptop.
-Story: *the best-fit fund in your space is the one you must not pitch*, found from both sides of
-the table, with a source one click away.
+Draft, 14 Nov; **path checked on live data during C8** (B's API, `USE_FAKE_STORE=false`, Atlas
+cache). **About 3 minutes.** One presenter talks, one drives the laptop.
+Story: *three funds you'd naturally pitch already backed your direct rival*, found from both sides
+of the table, with a source one click away.
 
 ## The path
 
 | Step | Screen | Click / type |
 | --- | --- | --- |
-| 1 | Home | "I'm raising" → type **Stendr** → Find → (confirm Stendr, Norway, counter-drone) → **Find who to pitch** |
-| 2 | Founder report | Point at the competitor chips; hover **Aavuus** to show the reason |
-| 3 | Skip list | Top card: **Maki.vc**, "Backed your competitor Aavuus"; click the **Primary** source badge |
-| 4 | Flip | On the Maki.vc card: **Flip: see this from Maki.vc's side** |
-| 5 | Investor check | Verdict **Conflict.**: "Aavuus is in your portfolio and competes with Stendr"; scroll to the market map |
-| 6 | Claude Desktop | Ask: *"Should Stendr pitch Maki.vc?"* (needs B15 + C13) |
+| 1 | Home | "I'm raising" → type **Sensofusion** → Find → pick **Sensofusion Oy** → **Find who to pitch** |
+| 2 | Founder report | Competitor chips **MyDefence** and **Stendr**; hover **Stendr** to show the reason |
+| 3 | Pitch list | Top card **Maki.vc** (fit 73): led defence pre-seeds this year; show one source badge |
+| 4 | Skip list | **Startuplab, Rainfall Ventures, Skyfall Ventures**: "Backed your competitor Stendr"; click a source badge |
+| 5 | Flip | On the **Rainfall Ventures** card: **Flip: see this from Rainfall Ventures's side** |
+| 6 | Investor check | Verdict **Conflict.**: "Stendr is in your portfolio and competes with Sensofusion Oy" |
+| 7 | Claude Desktop | Ask: *"Should Sensofusion pitch Rainfall Ventures?"* (needs B15 + C13) |
 
-Direct URLs, if typing fails (IDs from `contracts/fixtures/models/index.json`):
+Live on 14 Nov: founder report 3 s, flip 0.1 s (both cached). Direct URLs, if typing fails:
 
-- Founder report: `/founder/3afdc63c-b992-4b25-b69d-807ab346352d`
-- Investor check: `/check/415bc278-6ed1-4973-a684-07a8b8c5d855/3afdc63c-b992-4b25-b69d-807ab346352d`
+- Founder report: `/founder/202e9283-6455-486f-8868-03c7e0d0cf29`
+- Investor check: `/check/0322aa66-c3c7-470c-a940-e6ec117d4051/202e9283-6455-486f-8868-03c7e0d0cf29`
+
+The recorded sample data tells a different story (Stendr, Maki.vc backing Aavuus); it does **not**
+hold live (`notes/B.md`, B9), so don't demo from the mock unless everything else fails.
 
 ## What to say
 
@@ -27,23 +32,23 @@ Direct URLs, if typing fails (IDs from `contracts/fixtures/models/index.json`):
 worst ones already backed a competitor: you're handing your deck to a rival's board. Pitchlist tells
 you who to pitch, and who to skip."
 
-**0:20 · Founder mode (60 s).** *Steps 1–3.*
-"I'm Stendr, a Norwegian counter-drone startup raising its next round. Pitchlist finds my competitors in
-Cala's graph (here's why Aavuus counts), then every round they raised and every investor behind
-them."
-"Here's the twist. The fund that fits my space best is Maki.vc: it led two defence pre-seeds this
-year. And it's at the top of my **Skip** list, because it backed my competitor Aavuus. That's not a
-guess: here's the source." *(Click the badge.)*
+**0:20 · Founder mode (60 s).** *Steps 1–4.*
+"I'm Sensofusion, a Finnish counter-drone company. Pitchlist finds my direct competitors in Cala's
+graph (here's why Stendr counts), then every round they raised and every investor behind them."
+"Who should I pitch? Maki.vc fits best: it led defence pre-seeds this year, and here's the source."
+"And who should I skip? These three funds, Startuplab, Rainfall and Skyfall, all backed Stendr, my
+direct rival. Pitch them and your deck lands with a competitor's investors. That's not a guess:
+here's the source." *(Click the badge.)*
 
-**1:20 · The flip (45 s).** *Steps 4–5.*
-"Now flip the table. I'm the partner at Maki.vc, and Stendr just pitched me between meetings. Same
-startup, same graph, other direction: **Conflict**. Aavuus is in my portfolio and competes with
-Stendr. Below: every rival, who backed it, and their rounds. That's a 60-second check an associate
-would otherwise spend an afternoon on."
+**1:20 · The flip (45 s).** *Steps 5–6.*
+"Now flip the table. I'm the partner at Rainfall Ventures, and Sensofusion just pitched me between
+meetings. Same graph, other direction: **Conflict**. Stendr is in my portfolio and competes with
+Sensofusion. Below: every rival, who backed it, and their rounds. That's a 60-second check an
+associate would otherwise spend an afternoon on."
 
-**2:05 · The agent (35 s).** *Step 6.*
-"Pitchlist is also an MCP server. Any agent can ask it: 'Should Stendr pitch Maki.vc?'" *(Read the
-answer and its sources.)* "Same functions, same sources, through Claude."
+**2:05 · The agent (35 s).** *Step 7.*
+"Pitchlist is also an MCP server. Any agent can ask it: 'Should Sensofusion pitch Rainfall
+Ventures?'" *(Read the answer and its sources.)* "Same functions, same sources, through Claude."
 
 **2:40 · The close (20 s).**
 "Cala is the data layer for agents. Pitchlist is the fundraising layer on top. Every claim you saw
@@ -61,11 +66,9 @@ links to its source, and founders can use it at Slush tomorrow."
 
 ## Pre-flight (Sunday morning)
 
-- [ ] **Data is real and matches this script.** Run the path on B's API (C8). The recorded samples
-      say Maki.vc backed Aavuus and tops Stendr's Skip list; check that live data says the same. If
-      not, pick the strongest live conflict and rewrite steps 2–5 and the lines above.
-      Known risk (`notes/B.md`, B9): Stendr's live competitor candidates came back as generic SaaS;
-      A is fixing candidate search.
+- [ ] **Data still matches this script.** Run the path on the deployed API. Competitor judgements
+      are stored in Atlas (B10), so they should not change; if Sensofusion's competitors or Skip list
+      differ, update steps 2–6 and the lines above.
 - [ ] **Cache warm.** Run the whole path once on the demo machine (A18), then set `CACHE_ONLY=true`
       so nothing waits on Cala during the demo.
 - [ ] **Deployed URL works** (A17) and the laptop also runs it locally as a fallback.
