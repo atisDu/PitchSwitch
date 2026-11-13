@@ -1,6 +1,6 @@
 "use client";
 
-// Founder report (C5 → C6): company header, competitor chips, then the Pitch and
+// Founder report (C5, C6): company header, competitor chips, then the Pitch and
 // Skip lists. Removing competitors and pressing "Re-rank" calls
 // /api/founder/analyze again with the remaining `competitor_ids`.
 
@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { CompetitorChips } from "@/components/CompetitorChips";
+import { PitchCard, SkipCard } from "@/components/InvestorCard";
 import { SourceBadges } from "@/components/SourceBadge";
 import { analyzeFounder, ApiError } from "@/lib/api";
 import { keptCompetitorIds, prettyEnum } from "@/lib/format";
@@ -152,16 +153,79 @@ export function FounderReportView({ companyId }: { companyId: string }) {
         </div>
       </section>
 
-      <section
-        className={`mt-16 border-t border-line pt-8 transition-opacity ${reranking ? "opacity-40" : ""}`}
-        aria-busy={reranking}
-      >
-        {/* C6 replaces this summary with the Pitch and Skip lists. */}
-        <p className="label">Investors</p>
-        <p className="display mt-4 text-5xl">
-          {report.pitch.length} to pitch, {report.skip.length} to skip.
-        </p>
-      </section>
+      <div className={`transition-opacity ${reranking ? "opacity-40" : ""}`} aria-busy={reranking}>
+        <section className="mt-20" aria-labelledby="pitch-heading">
+          <ListHeading
+            id="pitch-heading"
+            label="Pitch"
+            count={report.pitch.length}
+            title="Who to pitch"
+            hint="Ranked by fit: how often they lead in your space, how recently, and warm paths to them. None of them backed your competitors."
+          />
+          {report.pitch.length === 0 ? (
+            <p className="mt-6 border-t border-line pt-6 text-muted">
+              No investors without a conflict found in your space yet.
+            </p>
+          ) : (
+            <ol className="mt-6">
+              {report.pitch.map((s, i) => (
+                <li key={s.investor.id}>
+                  <PitchCard item={s} rank={i + 1} />
+                </li>
+              ))}
+            </ol>
+          )}
+        </section>
+
+        <section className="mt-20" aria-labelledby="skip-heading">
+          <ListHeading
+            id="skip-heading"
+            label="Skip"
+            count={report.skip.length}
+            title="Who to skip"
+            hint="They backed a direct competitor, or one of their people sits on its board. Pitching them means handing your deck to a rival's backer."
+          />
+          {report.skip.length === 0 ? (
+            <p className="mt-6 border-t border-line pt-6 text-muted">
+              No conflicts: none of these investors backed your competitors.
+            </p>
+          ) : (
+            <ul className="mt-6">
+              {report.skip.map((s) => (
+                <li key={s.investor.id}>
+                  <SkipCard item={s} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      </div>
+    </div>
+  );
+}
+
+function ListHeading({
+  id,
+  label,
+  count,
+  title,
+  hint,
+}: {
+  id: string;
+  label: string;
+  count: number;
+  title: string;
+  hint: string;
+}) {
+  return (
+    <div>
+      <p className="label text-muted">
+        {label} · {count}
+      </p>
+      <h2 id={id} className="display mt-3 text-5xl md:text-6xl">
+        {title}
+      </h2>
+      <p className="mt-4 max-w-2xl text-muted">{hint}</p>
     </div>
   );
 }
