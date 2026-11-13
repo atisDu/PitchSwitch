@@ -255,16 +255,45 @@ async def test_sourced_answer_for_nothing(store, cala):
 
 # --- candidate_competitors ---------------------------------------------------------------------
 
+PEERS = "List companies that develop products similar to those of"
 
-async def test_candidates_come_from_one_query_per_country_own_country_first(store, cala, cases):
+
+def peers_answer(*rows_and_entities):
+    """A canned answer to the peers query: (name, country, entity or None) per row."""
+    return {
+        "results": [
+            {"name": name, "country": country, "description": f"{name} builds counter-drone kit"}
+            for name, country, _ in rows_and_entities
+        ],
+        "entities": [entity for _, _, entity in rows_and_entities if entity],
+    }
+
+
+def with_peers(cala, answer):
+    """Make the recorded Cala answer the peers query with `answer`."""
+    recorded = cala.query
+
+    async def query(text):
+        if text.startswith(PEERS):
+            cala.calls.append(("query", text))
+            return answer
+        return await recorded(text)
+
+    cala.query = query
+
+
+async def test_candidates_ask_for_peers_and_for_the_industry_in_each_country(store, cala, cases):
     kelluu = await store.company(cases["companies"]["kelluu"]["id"])
     cala.calls.clear()
     candidates = await store.candidate_competitors(kelluu)
 
     queries = [text for kind, text in cala.calls if kind == "query"]
-    assert len(queries) == 7 and ".country=Finland." in queries[0]
-    assert all(q.startswith("companies.industry=AEROSPACE_AND_DEFENSE.country=") for q in queries)
-    assert queries[0] == cases["queries"]["candidates-finland"]  # the recorded query, word for word
+    assert len(queries) == 8 and queries[0].startswith(f"{PEERS} Kelluu (")
+    by_country = queries[1:]
+    assert all(
+        q.startswith("companies.industry=AEROSPACE_AND_DEFENSE.country=") for q in by_country
+    )
+    assert by_country[0] == cases["queries"]["candidates-finland"]  # the recorded query, verbatim
 
     names = [c.name for c in candidates]
     assert {"Aavuus", "Kova Labs", "Metaktik", "ReOrbit", "Heart Aerospace"} <= set(names)
@@ -277,6 +306,63 @@ async def test_candidates_come_from_one_query_per_country_own_country_first(stor
     assert names.index("ReOrbit") < names.index("Metaktik")
 
 
+async def test_stendr_is_searched_as_defence_not_as_software(store, cala, cases):
+    stendr = await store.company(cases["companies"]["stendr"]["id"])
+    assert stendr.industries[0] == "SOFTWARE_AND_SERVICES"  # Cala lists the broad tag first
+    cala.calls.clear()
+    candidates = await store.candidate_competitors(stendr)
+    queries = [text for kind, text in cala.calls if kind == "query"]
+    assert not any("SOFTWARE_AND_SERVICES" in q for q in queries)
+    assert sum("industry=AEROSPACE_AND_DEFENSE" in q for q in queries) == 7
+    assert ".country=Norway." in queries[1]  # Stendr's own country first
+    assert "drone defence" in queries[0]  # its description says what it does: used as a hint
+    assert candidates and "Stendr" not in [c.name for c in candidates]
+
+
+async def test_sensofusion_without_any_tag_still_finds_stendr(store, cala, cases):
+    refs = await store.resolve("Sensofusion", "company")
+    sensofusion = await store.company(refs[0].id)
+    assert sensofusion.industries == []
+    assert "defense technology" in sensofusion.description  # not the registry boilerplate
+    cala.calls.clear()
+    candidates = await store.candidate_competitors(sensofusion)
+    queries = [text for kind, text in cala.calls if kind == "query"]
+    # no description hint (it is thin), and the industry is read from the description
+    assert queries[0].startswith(f"{PEERS} Sensofusion and compete with it")
+    assert sum("industry=AEROSPACE_AND_DEFENSE" in q for q in queries) == 7
+    assert "Stendr" in [c.name for c in candidates]
+    assert not any("sensofusion" in c.name.lower() for c in candidates)
+
+
+async def test_peers_come_first_and_unlinked_rows_are_looked_up_by_name(store, cala, cases):
+    stendr_id = cases["companies"]["stendr"]["id"]
+    sensofusion = await store.company(cases["companies"]["sensofusion"]["id"])
+    with_peers(
+        cala,
+        peers_answer(
+            ("Sensofusion", "Finland", None),  # the company itself
+            ("MyDefence", "Denmark", {"id": "my-1", "name": "MYDEFENCE GROUP APS",
+                                      "entity_type": "Company", "mentions": ["MyDefence"]}),
+            ("Nordic Air Defence (NAD)", "Sweden", None),  # Cala only has a UK shell by that name
+            ("Kelluu", "Finland", None),  # no entity here, but the Finland list has one
+            ("NestAI", "Finland", None),  # in no other answer: found by name search
+            ("Stendr", "Norway", {"id": stendr_id, "name": "Stendr", "entity_type": "Company"}),
+        ),
+    )  # fmt: skip
+    cala.calls.clear()
+    candidates = await store.candidate_competitors(sensofusion)
+
+    names = [c.name for c in candidates]
+    # peers first, in Cala's order
+    assert names[:4] == ["MYDEFENCE GROUP APS", "Kelluu Oy", "NestAI", "Stendr"]
+    assert names.count("Stendr") == 1  # also in the Norway list: not repeated
+    assert not any("NORDIC AIR DEFENCE" in name.upper() for name in names)
+    assert candidates[0].country == "Denmark" and "counter-drone" in candidates[0].description
+    searched = [name for kind, name in cala.calls if kind == "search_entities"]
+    assert searched == ["Nordic Air Defence", "NestAI"]
+    assert "Aavuus" in names[4:]  # the industry lists follow
+
+
 async def test_candidates_respect_k_and_survive_a_failing_country(store, cala, cases):
     kelluu = await store.company(cases["companies"]["kelluu"]["id"])
     assert len(await store.candidate_competitors(kelluu, k=2)) == 2
@@ -285,7 +371,7 @@ async def test_candidates_respect_k_and_survive_a_failing_country(store, cala, c
     real_query = cala.query
 
     async def flaky(text):
-        if ".country=Sweden." in text:
+        if ".country=Sweden." in text or text.startswith(PEERS):
             raise RuntimeError("Cala timed out")
         return await real_query(text)
 
@@ -305,10 +391,37 @@ async def test_candidates_fail_loudly_when_every_query_fails(store, cala, cases)
         await store.candidate_competitors(kelluu)
 
 
-async def test_a_company_without_an_industry_gets_a_described_query(store, cala, cases):
-    sensofusion = await store.company(cases["companies"]["sensofusion"]["id"])
-    assert sensofusion.industries == []
-    cala.calls.clear()
-    assert await store.candidate_competitors(sensofusion) == []  # nothing recorded for it
-    ((kind, text),) = cala.calls
-    assert kind == "query" and "compete with this company" in text and "Finland" in text
+def test_primary_industry_and_peers_query_text():
+    from contracts.schemas import Company
+    from data.store import industry_queries, peers_query, primary_industry
+
+    def company(name, description=None, industries=()):
+        return Company(
+            id="x", name=name, type="Company", description=description, industries=list(industries)
+        )
+
+    broad_first = ["SOFTWARE_AND_SERVICES", "AEROSPACE_AND_DEFENSE", "HARDWARE_AND_EQUIPMENT"]
+    assert primary_industry(company("Stendr", "Drone defence platform", broad_first)) == (
+        "AEROSPACE_AND_DEFENSE"
+    )
+    assert primary_industry(company("Acme", "Dental booking app", broad_first)) == (
+        "AEROSPACE_AND_DEFENSE"  # the only narrow tag
+    )
+    assert primary_industry(company("Acme", "CRM", ["SOFTWARE_AND_SERVICES"])) == (
+        "SOFTWARE_AND_SERVICES"
+    )
+    assert primary_industry(company("Sensofusion Oy", "Finnish defense technology company")) == (
+        "AEROSPACE_AND_DEFENSE"
+    )
+    assert primary_industry(company("Mystery Oy", "Finnish company founded in 2016")) is None
+    assert industry_queries(company("Mystery Oy")) == []
+
+    thin = company(
+        "Sensofusion Oyj", "Finnish company founded in 2016 and headquartered in Vantaa."
+    )
+    assert peers_query(thin).startswith(f"{PEERS} Sensofusion and compete with it, in Finland,")
+    rich = company("Stendr", "Norwegian defence technology company developing AI-native sensors.")
+    assert f"{PEERS} Stendr (Norwegian defence technology company developing" in peers_query(rich)
+    assert peers_query(rich).endswith(
+        "Return name, description, country, funding_stage, total_funding."
+    )

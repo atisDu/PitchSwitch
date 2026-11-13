@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import re
 from typing import Literal
 
 from contracts.schemas import (
@@ -31,10 +32,11 @@ from data.errors import NotFound
 from data.introspection import fields_for
 from data.mappers import (
     ORG_TYPES,
+    candidate_rows,
+    company_from_row,
     country_of,
     edge_sources,
     fill_gaps,
-    map_candidate_rows,
     map_company,
     map_entity_ref,
     map_people,
@@ -45,6 +47,7 @@ from data.mappers import (
     merge_sources,
     name_key,
     related,
+    row_key,
     stage_index,
     undated_round,
 )
@@ -83,7 +86,10 @@ _ROUND_FIELDS = fields_for("FundingRound").only(
 )
 _EDGE_LIMIT = 100
 _REGION = ["Finland", "Sweden", "Norway", "Denmark", "Estonia", "Latvia", "Lithuania"]
+_PLACE_WORDS = {"finnish", "swedish", "norwegian", "danish", "estonian", "vantaa", "helsinki"}
+_REGION_TEXT = "Finland, Sweden, Norway, Denmark, Estonia, Latvia and Lithuania"
 _EARLY_STAGES = "Pre-Seed OR Seed OR Series A"
+_MAX_NAME_LOOKUPS = 6  # peer rows without an entity that we try to find by name
 _LATER_STAGES = "Series A OR Series B OR Series C"
 _MAX_INVESTOR_ROUNDS = 40
 _MAX_SIBLINGS = 3  # entries of one firm we are willing to fetch and compare
@@ -106,39 +112,89 @@ def _round_ids(entity: dict, role: str) -> list[str]:
     ]
 
 
-def candidate_queries(company: Company) -> list[tuple[str | None, str]]:
-    """(country, knowledge_query text) pairs to find competitor candidates.
+_INDUSTRY_WORDS = {
+    "AEROSPACE_AND_DEFENSE": re.compile(
+        r"\b(defen[cs]e|military|drones?|uavs?|uas|aerospace|satellites?|spacecraft|airships?"
+        r"|radars?|missiles?)\b"
+    ),
+}
+# Tags too broad to find competitors with ("software" matches every SaaS company).
+_BROAD_INDUSTRIES = {"SOFTWARE_AND_SERVICES", "HARDWARE_AND_EQUIPMENT", "CONSULTING", "RETAIL"}
+_BOILERPLATE = re.compile(r"\b(founded|headquartered|based|incorporated|registered) (in|at)\b")
+
+
+def primary_industry(company: Company) -> str | None:
+    """The industry tag to look for competitors in.
+
+    A tag the company's own description confirms wins (Stendr: AEROSPACE_AND_DEFENSE, not its
+    first tag SOFTWARE_AND_SERVICES). Without tags, the description alone can name it
+    (Sensofusion: "defense technology company"). None when nothing points anywhere.
+    """
+    text = f"{company.name} {company.description or ''}".lower()
+    said = [tag for tag, words in _INDUSTRY_WORDS.items() if words.search(text)]
+    for tag in said:
+        if tag in company.industries:
+            return tag
+    narrow = [tag for tag in company.industries if tag not in _BROAD_INDUSTRIES]
+    if narrow:
+        return narrow[0]
+    if said:
+        return said[0]
+    return company.industries[0] if company.industries else None
+
+
+def industry_queries(company: Company) -> list[tuple[str, str]]:
+    """(country, knowledge_query text) pairs: companies of the same industry, per country.
 
     One query per country: a single query across countries is "too complex" for Cala. The text
     depends only on industry, country and stage group, so companies in the same space share
-    cached answers.
+    cached answers. [] when no industry can be told.
     """
+    industry = primary_industry(company)
+    if not industry:
+        return []
     index = stage_index(company.stage)
     stages = _LATER_STAGES if index is not None and index > 2 else _EARLY_STAGES
     countries = list(_REGION)
     if company.country in countries:  # the company's own country first
         countries.remove(company.country)
         countries.insert(0, company.country)
-    if company.industries:
-        return [
-            (
-                country,
-                f"companies.industry={company.industries[0]}.country={country}"
-                f".funding_stage={stages}"
-                ".return(name, description, funding_stage, total_funding).limit=15",
-            )
-            for country in countries
-        ]
-    # No industry tag (thin entry): describe the company and let Cala find lookalikes.
-    about = (company.description or company.name).strip().rstrip(".")
-    where = company.country or "the Nordic and Baltic countries"
     return [
         (
-            company.country,
-            f"Startups in {where} that compete with this company: {about}. "
-            "Return name, description, country, funding stage, total funding",
+            country,
+            f"companies.industry={industry}.country={country}.funding_stage={stages}"
+            ".return(name, description, funding_stage, total_funding).limit=15",
         )
+        for country in countries
     ]
+
+
+def peers_query(company: Company) -> str:
+    """One knowledge_query asking Cala for companies with similar products.
+
+    This finds rivals the industry tags miss (Sensofusion has no tag at all). A description
+    is added only when it says what the company does: registry boilerplate ("Finnish company
+    founded in 2016 and headquartered in Vantaa") makes Cala's answer worse than the name alone.
+    """
+    name = re.sub(r"\s+(Oyj?|AB|AS|ASA|ApS|Ltd|GmbH|Inc)\.?$", "", company.name).strip()
+    about = (company.description or "").strip().rstrip(".")
+    informative = len(about) >= 60 and not _BOILERPLATE.search(about)
+    hint = f" ({about})" if informative else ""
+    return (
+        f"List companies that develop products similar to those of {name}{hint} and compete "
+        f"with it, in {_REGION_TEXT}. "
+        "Return name, description, country, funding_stage, total_funding."
+    )
+
+
+def _informative(description: str | None) -> int:
+    """How much a description says about what a firm does: its length, once registry
+    boilerplate (where and when it was founded) is set aside."""
+    if not description:
+        return 0
+    words = re.findall(r"[a-z]+", description.lower())
+    filler = {"company", "firm", "founded", "headquartered", "based", "in", "and", "a", "an", "the"}
+    return sum(len(word) for word in words if word not in filler and word not in _PLACE_WORDS)
 
 
 def _same_firm(a: EntityRef, b: EntityRef) -> bool:
@@ -228,7 +284,12 @@ class CalaDataStore:
         if len(family) > 1:
             order = sorted(
                 range(len(family)),
-                key=lambda i: (-_edge_count(entities[i]), family[i].type != "Company", i),
+                key=lambda i: (
+                    -_edge_count(entities[i]),
+                    -_informative(family[i].description),
+                    family[i].type != "Company",
+                    i,
+                ),
             )
             main = family[order[0]]
             others = [family[i] for i in order[1:]]
@@ -250,9 +311,15 @@ class CalaDataStore:
     async def company(self, id: str) -> Company:
         """A company or an investor. Raises NotFound for an unknown ID."""
         main_id, entities = await self._org_family(id)
-        company = map_company(entities[0])
-        for other in entities[1:]:
-            company = fill_gaps(company, map_company(other))
+        mapped = [map_company(entity) for entity in entities]
+        company = mapped[0]
+        for other in mapped[1:]:
+            company = fill_gaps(company, other)
+        # Registry entries describe a firm as "Finnish company founded in 2016..."; if another
+        # entry of the same firm says what it does, that description is the useful one.
+        described = max(mapped, key=lambda c: _informative(c.description))
+        if _informative(described.description) > _informative(company.description):
+            company = company.model_copy(update={"description": described.description})
         return company.model_copy(update={"id": main_id})
 
     async def rounds(self, company_id: str) -> list[Round]:
@@ -408,42 +475,97 @@ class CalaDataStore:
         return list(people.values())
 
     async def candidate_competitors(self, company: Company, k: int = 30) -> list[Company]:
-        """Companies that may compete with this one: same industry, in the Nordic and Baltic
-        countries, at early (or later) stages. The company itself is left out.
+        """Companies that may compete with this one, most likely rivals first. Never the
+        company itself.
 
-        Ordered by: the company's own country first, then stages next to its own, then Cala's
-        order. This is a wide net on purpose; judging who is a direct competitor is B's step.
-        Candidates come from query rows, so they carry no sources; `company(id)` has them.
+        Two sources, asked in parallel:
+        1. Peers: Cala's own list of companies with similar products (one query).
+        2. Industry: companies with the same industry tag in each Nordic and Baltic country,
+           at early (or later) stages. The tag is the one the description confirms, not just
+           the first; own country and nearby stages come first.
+        Peers come first. This is a wide net on purpose: judging who is a direct competitor
+        is B's step. Candidates come from query rows, so they carry no sources; `company(id)`
+        has them.
         """
-        queries = candidate_queries(company)
+        by_country = industry_queries(company)
+        texts = [peers_query(company), *[text for _, text in by_country]]
         answers = await asyncio.gather(
-            *[self.cala.query(text) for _, text in queries], return_exceptions=True
+            *[self.cala.query(text) for text in texts], return_exceptions=True
         )
-        if answers and all(isinstance(answer, BaseException) for answer in answers):
+        if all(isinstance(answer, BaseException) for answer in answers):
             raise answers[0]  # Cala is down, not "no competitors"
+        answers = [None if isinstance(answer, BaseException) else answer for answer in answers]
+        peers, industry = answers[0], answers[1:]
+
+        # Any answer may name an entity that another answer's row lacks.
+        known: dict[str, dict] = {}
+        for answer in answers:
+            for row, entity in candidate_rows(answer):
+                if entity:
+                    known.setdefault(row_key(str(row["name"])), entity)
 
         own_ids = {self.canonical(company.id), company.id, *self._siblings.get(company.id, [])}
+        own_name = row_key(company.name)
         own_stage = stage_index(company.stage)
         found: dict[str, tuple[tuple, Company]] = {}
-        for position, ((country, _), answer) in enumerate(zip(queries, answers, strict=True)):
-            if isinstance(answer, BaseException):
-                continue  # one country failing should not lose the others
-            for row_number, candidate in enumerate(map_candidate_rows(answer)):
-                main_id = self.canonical(candidate.id)
-                if main_id in own_ids or name_key(candidate.name) == name_key(company.name):
+
+        def add(row: dict, entity: dict, rank: tuple, country: str | None = None) -> None:
+            candidate = company_from_row(row, entity)
+            main_id = self.canonical(candidate.id)
+            if main_id in own_ids or main_id in found or row_key(candidate.name) == own_name:
+                return
+            if not candidate.country and country:
+                candidate = candidate.model_copy(update={"country": country})
+            found[main_id] = (rank, candidate.model_copy(update={"id": main_id}))
+
+        lookups = 0
+        for row_number, (row, entity) in enumerate(candidate_rows(peers)):
+            key = row_key(str(row["name"]))
+            if key == own_name:
+                continue
+            entity = entity or known.get(key)
+            if entity is None and lookups < _MAX_NAME_LOOKUPS:
+                lookups += 1
+                entity = await self._find_by_name(str(row["name"]), row.get("country"))
+            if entity:
+                add(row, entity, (0, row_number))
+
+        for position, ((country, _), answer) in enumerate(zip(by_country, industry, strict=True)):
+            for row_number, (row, entity) in enumerate(candidate_rows(answer)):
+                if not entity:
                     continue
-                if main_id in found:
-                    continue
-                if not candidate.country and country:
-                    candidate = candidate.model_copy(update={"country": country})
-                stage = stage_index(candidate.stage)
+                stage = stage_index(str(row.get("funding_stage") or ""))
                 far_stage = (
                     own_stage is not None and stage is not None and abs(stage - own_stage) > 1
                 )
-                rank = (candidate.country != company.country, far_stage, position, row_number)
-                found[main_id] = (rank, candidate.model_copy(update={"id": main_id}))
+                rank = (1, country != company.country, far_stage, position, row_number)
+                add(row, entity, rank, country)
+
         ranked = sorted(found.values(), key=lambda pair: pair[0])
         return [candidate for _, candidate in ranked[: max(k, 0)]]
+
+    async def _find_by_name(self, name: str, country: object = None) -> dict | None:
+        """The Cala entity for a company an answer names without an ID, or None.
+
+        Only an entry with the same name (legal form aside) counts, and not one from another
+        country: "Nordic Air Defence" must not become "NORDIC AIR DEFENCE UK LTD".
+        """
+        wanted = row_key(name)
+        try:
+            found = await self.cala.search_entities(
+                re.sub(r"\([^)]*\)", " ", name).strip(), entity_types=sorted(ORG_TYPES), limit=5
+            )
+        except Exception as exc:  # a failed lookup just means one candidate fewer
+            log.warning("name lookup for %r failed: %r", name, exc)
+            return None
+        for hit in found.get("entities") or []:
+            if hit.get("entity_type") not in ORG_TYPES or row_key(hit.get("name") or "") != wanted:
+                continue
+            there = country_of(None, hit.get("description"))
+            if country and there and str(country) != there:
+                continue
+            return hit
+        return None
 
     async def co_investors(self, investor_id: str) -> list[tuple[EntityRef, int]]:
         """Investors that share companies with this one, with how many, most first.

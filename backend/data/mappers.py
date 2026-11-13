@@ -422,34 +422,47 @@ def clean_stage(text: str | None) -> str | None:
     return STAGES[index] if index is not None else (text or None)
 
 
-def map_candidate_rows(query_response: dict | None) -> list[Company]:
-    """A knowledge_query for companies -> Company per row that Cala tied to an entity."""
+def row_key(name: str) -> str:
+    """A row's company name as a key: 'Nordic Air Defence (NAD)' -> 'nordic-air-defence'."""
+    return name_key(re.sub(r"\([^)]*\)", " ", name))
+
+
+def candidate_rows(query_response: dict | None) -> list[tuple[dict, dict | None]]:
+    """The company rows of a knowledge_query, each with the entity Cala tied to it (or None).
+
+    Cala lists the entities an answer mentions separately from the rows; a row is tied to the
+    Company/Organization whose name or mention equals the row's name (legal form aside).
+    """
     response = query_response or {}
     by_label: dict[str, dict] = {}
     for entity in response.get("entities") or []:
         if entity.get("entity_type") in ORG_TYPES:
             for text in [entity.get("name") or "", *(entity.get("mentions") or [])]:
-                by_label.setdefault(slug(text), entity)
-    companies = []
+                by_label.setdefault(row_key(text), entity)
+    rows = []
     for row in response.get("results") or []:
-        if not isinstance(row, dict) or not row.get("name"):
-            continue
-        entity = by_label.get(slug(str(row["name"])))
-        if not entity:
-            continue
-        description = row.get("description")
-        country = row.get("country")
-        companies.append(
-            Company(
-                id=entity["id"],
-                name=entity.get("name") or str(row["name"]),
-                type=entity.get("entity_type") or "Company",
-                description=str(description) if description else None,
-                stage=clean_stage(label(str(row["funding_stage"])))
-                if row.get("funding_stage")
-                else None,
-                country=str(country) if country else country_of(None, description),
-                total_funding_text=str(row["total_funding"]) if row.get("total_funding") else None,
-            )
-        )
-    return companies
+        if isinstance(row, dict) and row.get("name"):
+            rows.append((row, by_label.get(row_key(str(row["name"])))))
+    return rows
+
+
+def company_from_row(row: dict, entity: dict) -> Company:
+    """A knowledge_query row plus its entity -> Company (no sources: rows don't carry any)."""
+    description = row.get("description")
+    country = row.get("country")
+    return Company(
+        id=entity["id"],
+        name=entity.get("name") or str(row["name"]),
+        type=entity.get("entity_type") or "Company",
+        description=str(description) if description else (entity.get("description") or None),
+        stage=clean_stage(label(str(row["funding_stage"]))) if row.get("funding_stage") else None,
+        country=str(country) if country else country_of(None, description),
+        total_funding_text=str(row["total_funding"]) if row.get("total_funding") else None,
+    )
+
+
+def map_candidate_rows(query_response: dict | None) -> list[Company]:
+    """A knowledge_query for companies -> Company per row that Cala tied to an entity."""
+    return [
+        company_from_row(row, entity) for row, entity in candidate_rows(query_response) if entity
+    ]
