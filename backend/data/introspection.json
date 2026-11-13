@@ -1,0 +1,106 @@
+{
+ "note": "Written by `python -m data.introspection`. Do not edit by hand.",
+ "fetched_on": "2026-11-13",
+ "types": {
+  "Company": {
+   "properties": [
+    "aliases",
+    "description",
+    "founding_date",
+    "funding_stage",
+    "headquarters_address",
+    "legal_name",
+    "name",
+    "operational_status",
+    "total_funding",
+    "total_funding_excluding_debt",
+    "total_funding_excluding_debt_units",
+    "total_funding_units",
+    "website"
+   ],
+   "outgoing": [
+    "HAS_DOMAIN_NAME",
+    "HAS_PRESENCE_IN",
+    "INVESTED_IN",
+    "OPERATES_IN_INDUSTRY",
+    "PARTICIPATES_IN_CORPORATE_EVENT",
+    "PARTICIPATES_IN_FUNDING_ROUND"
+   ],
+   "incoming": [
+    "FOUNDED",
+    "INVESTED_IN",
+    "IS_BOARD_MEMBER_OF",
+    "IS_CEO_OF",
+    "WORKS_AT"
+   ],
+   "samples": [
+    "78d7490a-dd04-5119-a7f1-e940b861219b",
+    "415bc278-6ed1-4973-a684-07a8b8c5d855",
+    "26cc4923-734a-4185-9ad2-4bdaa0efa20b"
+   ]
+  },
+  "Organization": {
+   "properties": [
+    "aliases",
+    "description",
+    "employee_count",
+    "founding_date",
+    "name",
+    "registered_address",
+    "website"
+   ],
+   "outgoing": [
+    "HAS_HEADQUARTERS_IN",
+    "HAS_PRESENCE_IN",
+    "INVESTED_IN",
+    "OPERATES_IN_INDUSTRY",
+    "PARTICIPATES_IN_CORPORATE_EVENT",
+    "PARTICIPATES_IN_FUNDING_ROUND"
+   ],
+   "incoming": [
+    "INVESTED_IN",
+    "IS_MEMBER_OF"
+   ],
+   "samples": [
+    "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+    "2ca07622-990d-40bf-a4fe-36434d43d6db",
+    "fd3ba350-0e55-40b5-96e3-013994777fdc"
+   ]
+  },
+  "FundingRound": {
+   "properties": [
+    "annotations",
+    "announcement_date",
+    "instrument",
+    "name",
+    "round_label",
+    "transaction_value",
+    "transaction_value_units"
+   ],
+   "outgoing": [],
+   "incoming": [
+    "PARTICIPATES_IN_FUNDING_ROUND"
+   ],
+   "samples": [
+    "97d82be9-51db-59e4-bb04-f69213aff7e9",
+    "7cf7864b-8de0-5b39-99c3-3754e678454a"
+   ]
+  },
+  "Person": {
+   "properties": [
+    "description",
+    "name"
+   ],
+   "outgoing": [
+    "FOUNDED",
+    "IS_BOARD_MEMBER_OF",
+    "IS_CEO_OF"
+   ],
+   "incoming": [],
+   "samples": [
+    "7993278e-4575-5987-be2e-c269dd2b9e2a",
+    "014ab9e4-cec1-5704-9f27-0b60a9a20e1c"
+   ]
+  }
+ }
+}
