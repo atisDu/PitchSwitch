@@ -83,7 +83,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [x] **C3 Home + resolve** — mode toggle, input, `/api/resolve`, entity confirm list (name, type, description). Needs: C2.
 - [x] **C4 Source badge component** — rank label + date + link; used everywhere. Needs: C1.
 - [x] **C5 Founder report: competitors** — removable competitor chips with reason tooltips. Needs: C3.
-- [ ] **C6 Founder report: Pitch + Skip lists** — investor cards (score, leads in space, last lead, warm paths, reasons with badges); Skip list shows the conflict first. Needs: C5, C4.
+- [x] **C6 Founder report: Pitch + Skip lists** — investor cards (score, leads in space, last lead, warm paths, reasons with badges); Skip list shows the conflict first. Needs: C5, C4.
 - [ ] **C7 Investor check screen** — conflicts, competitors + their backers, round history. Needs: C4.
 - [ ] **C8 Switch to real API** — point `API_URL` at B's server, fix integration issues (via notes to B). **= CP3 with B.** Needs: B10, C6.
 - [ ] **C9 Founder testing** — show C6 to 3–5 founders at Junction; record feedback + one quote in `docs/user-testing.md`.
