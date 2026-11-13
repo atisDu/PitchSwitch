@@ -1,0 +1,311 @@
+"""Async client for the Cala REST API (task A3). The only code that talks to Cala.
+
+    async with CalaClient.from_env() as cala:
+        hits = await cala.search_entities("Kelluu")
+        entity = await cala.entity(hits["entities"][0]["id"], properties=["name"])
+
+What it takes care of:
+- `X-API-KEY` auth, timeouts, and retries with backoff on 429, 5xx and network errors;
+- Cala's rate limit (about 10 calls a minute on our key): calls wait their turn instead of failing;
+- a concurrency cap, and sharing one request between callers that ask for the same thing at once;
+- an optional response cache (task A10 plugs MongoDB Atlas in here);
+- a log line and a `CallRecord` per call (endpoint, ms, cache hit) to track credit use.
+
+Every method returns Cala's JSON unchanged; `data.mappers` turns it into contract models.
+"""
+
+from __future__ import annotations
+
+import asyncio
+import hashlib
+import json
+import logging
+import re
+import time
+from collections import Counter, deque
+from collections.abc import Awaitable, Callable
+from dataclasses import dataclass
+from typing import Any, Protocol
+
+import httpx
+
+from data.config import env, load_env
+from data.errors import NotFound, Upstream
+
+log = logging.getLogger("data.cala")
+
+DEFAULT_BASE_URL = "https://api.cala.ai/v1"
+_UUID = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
+
+
+class CalaError(Upstream):
+    """Cala answered with an error we can't recover from, or kept failing after retries."""
+
+    def __init__(self, message: str, status: int | None = None) -> None:
+        super().__init__(message)
+        self.status = status
+
+
+class CacheOnlyMiss(Upstream):
+    """CACHE_ONLY is on and this request is not in the cache."""
+
+
+class ResponseCache(Protocol):
+    """Where responses are kept between calls. `key` is stable for a given request."""
+
+    async def get(self, key: str) -> dict | None: ...
+    async def set(self, key: str, value: dict) -> None: ...
+
+
+class MemoryCache:
+    """A cache for one process: tests, scripts, and local runs without MongoDB."""
+
+    def __init__(self) -> None:
+        self._data: dict[str, dict] = {}
+
+    async def get(self, key: str) -> dict | None:
+        return self._data.get(key)
+
+    async def set(self, key: str, value: dict) -> None:
+        self._data[key] = value
+
+    def __len__(self) -> int:
+        return len(self._data)
+
+
+@dataclass(frozen=True)
+class CallRecord:
+    """One request as the caller saw it."""
+
+    endpoint: str  # e.g. "POST /entities/{id}"
+    status: int  # 200, or the last status seen; 0 = network error
+    ms: int
+    cache_hit: bool
+    attempts: int  # HTTP requests made (0 for a cache hit)
+
+
+def cache_key(method: str, path: str, params: dict | None, body: dict | None) -> str:
+    """`<METHOD> <path>` for a plain entity call, plus a hash of the input when there is one."""
+    key = f"{method} {path}"
+    if params or body:
+        payload = json.dumps({"params": params, "json": body}, sort_keys=True, ensure_ascii=False)
+        key += "#" + hashlib.sha256(payload.encode()).hexdigest()[:16]
+    return key
+
+
+class CalaClient:
+    def __init__(
+        self,
+        api_key: str,
+        base_url: str = DEFAULT_BASE_URL,
+        *,
+        cache: ResponseCache | None = None,
+        cache_only: bool = False,
+        concurrency: int = 8,
+        per_minute: int = 10,
+        timeout: float = 180.0,
+        max_retries: int = 4,
+        backoff: float = 2.0,
+        transport: httpx.AsyncBaseTransport | None = None,
+        sleep: Callable[[float], Awaitable[None]] = asyncio.sleep,
+        clock: Callable[[], float] = time.monotonic,
+    ) -> None:
+        self._http = httpx.AsyncClient(
+            base_url=base_url.rstrip("/"),
+            headers={"X-API-KEY": api_key, "Content-Type": "application/json"},
+            timeout=timeout,
+            transport=transport,
+        )
+        self.cache = cache
+        self.cache_only = cache_only
+        self.per_minute = per_minute
+        self.max_retries = max_retries
+        self.backoff = backoff
+        self._sleep = sleep
+        self._clock = clock
+        self._slots = asyncio.Semaphore(concurrency)
+        self._rate_lock = asyncio.Lock()
+        self._recent: deque[float] = deque()  # start times of calls in the last minute
+        self._in_flight: dict[str, asyncio.Future] = {}
+        self.calls: list[CallRecord] = []
+
+    @classmethod
+    def from_env(cls, **kwargs: Any) -> CalaClient:
+        """A client from CALA_API_KEY / CALA_BASE_URL in the environment or .env."""
+        load_env()
+        key = env("CALA_API_KEY")
+        if not key and not kwargs.get("cache_only"):
+            raise CalaError("CALA_API_KEY is empty: put it in .env (see .env.example).")
+        return cls(key, env("CALA_BASE_URL", DEFAULT_BASE_URL) or DEFAULT_BASE_URL, **kwargs)
+
+    async def __aenter__(self) -> CalaClient:
+        return self
+
+    async def __aexit__(self, *exc: object) -> None:
+        await self.aclose()
+
+    async def aclose(self) -> None:
+        await self._http.aclose()
+
+    # --- Endpoints -----------------------------------------------------------------------------
+
+    async def search_entities(
+        self, name: str, entity_types: list[str] | None = None, limit: int = 10
+    ) -> dict:
+        """Fuzzy search by name. Returns {"entities": [{id, name, entity_type, description}]}."""
+        params: dict[str, Any] = {"name": name, "limit": limit}
+        if entity_types:
+            params["entity_types"] = entity_types
+        return await self.request("GET", "/entities", params=params)
+
+    async def introspect(self, entity_id: str) -> dict:
+        """Which properties and relationships this entity has."""
+        return await self.request("GET", f"/entities/{entity_id}/introspection")
+
+    async def entity(
+        self,
+        entity_id: str,
+        *,
+        properties: list[str] | None = None,
+        outgoing: list[str] | None = None,
+        incoming: list[str] | None = None,
+        limit: int = 100,
+    ) -> dict:
+        """One entity with the requested properties and relationship edges.
+
+        Unknown property names are ignored by Cala. Raises `NotFound` for an unknown ID.
+        """
+        body: dict[str, Any] = {}
+        if properties:
+            body["properties"] = properties
+        relationships = {
+            direction: {rel: {"limit": limit} for rel in rels}
+            for direction, rels in (("outgoing", outgoing), ("incoming", incoming))
+            if rels
+        }
+        if relationships:
+            body["relationships"] = relationships
+        return await self.request("POST", f"/entities/{entity_id}", body=body or None)
+
+    async def query(self, text: str) -> dict:
+        """knowledge_query: structured rows plus the entities they mention. Slow (20-80 s)."""
+        return await self.request("POST", "/knowledge/query", body={"input": text})
+
+    async def search(self, text: str) -> dict:
+        """knowledge_search: a sourced markdown answer with explainability. Slow (20-80 s)."""
+        return await self.request("POST", "/knowledge/search", body={"input": text})
+
+    # --- Request pipeline --------------------------------------------------------------------
+
+    async def request(
+        self, method: str, path: str, *, params: dict | None = None, body: dict | None = None
+    ) -> dict:
+        """Cache, then one shared HTTP request per distinct input."""
+        key = cache_key(method, path, params, body)
+        endpoint = f"{method} {_UUID.sub('{id}', path)}"
+        started = self._clock()
+
+        if self.cache is not None:
+            cached = await self.cache.get(key)
+            if cached is not None:
+                self._record(endpoint, 200, started, cache_hit=True, attempts=0)
+                return cached
+        if self.cache_only:
+            raise CacheOnlyMiss(f"CACHE_ONLY is on and {endpoint} is not cached")
+
+        waiting = self._in_flight.get(key)
+        if waiting is not None:  # someone is already fetching exactly this
+            return await asyncio.shield(waiting)
+
+        future: asyncio.Future = asyncio.get_running_loop().create_future()
+        self._in_flight[key] = future
+        try:
+            response = await self._fetch(method, path, params, body, endpoint, started)
+            if self.cache is not None:
+                await self.cache.set(key, response)
+            future.set_result(response)
+            return response
+        except BaseException as exc:
+            future.set_exception(exc)
+            future.exception()  # mark as retrieved when nobody else is waiting
+            raise
+        finally:
+            del self._in_flight[key]
+
+    async def _fetch(
+        self,
+        method: str,
+        path: str,
+        params: dict | None,
+        body: dict | None,
+        endpoint: str,
+        started: float,
+    ) -> dict:
+        status, detail, attempts = 0, "no response", 0
+        async with self._slots:
+            for attempt in range(self.max_retries + 1):
+                await self._wait_for_rate_limit()
+                attempts += 1
+                try:
+                    reply = await self._http.request(method, path, params=params, json=body)
+                    status, detail = reply.status_code, reply.text[:200]
+                except httpx.HTTPError as exc:
+                    status, detail = 0, repr(exc)
+                else:
+                    if status == 200:
+                        self._record(endpoint, 200, started, cache_hit=False, attempts=attempts)
+                        return reply.json()
+                    if status == 404:
+                        self._record(endpoint, 404, started, cache_hit=False, attempts=attempts)
+                        raise NotFound(f"Cala has no entity at {path}")
+                    if status != 429 and status < 500:
+                        break  # our mistake (400, 401, 403, 422): retrying won't help
+                if attempt < self.max_retries:
+                    delay = min(self.backoff * 2**attempt, 60.0)
+                    if status == 429:  # the limit resets by the minute: short waits are wasted
+                        delay = min(max(delay, 15.0 * (attempt + 1)), 60.0)
+                    log.warning(
+                        "cala %s -> %s, retry in %.0f s", endpoint, status or "error", delay
+                    )
+                    await self._sleep(delay)
+        self._record(endpoint, status, started, cache_hit=False, attempts=attempts)
+        raise CalaError(f"Cala {endpoint} failed ({status or 'network error'}): {detail}", status)
+
+    async def _wait_for_rate_limit(self) -> None:
+        """Let at most `per_minute` requests start in any 60 seconds."""
+        if self.per_minute <= 0:
+            return
+        async with self._rate_lock:
+            while True:
+                now = self._clock()
+                while self._recent and now - self._recent[0] >= 60.0:
+                    self._recent.popleft()
+                if len(self._recent) < self.per_minute:
+                    self._recent.append(now)
+                    return
+                await self._sleep(60.0 - (now - self._recent[0]))
+
+    def _record(
+        self, endpoint: str, status: int, started: float, *, cache_hit: bool, attempts: int
+    ) -> None:
+        ms = int((self._clock() - started) * 1000)
+        self.calls.append(CallRecord(endpoint, status, ms, cache_hit, attempts))
+        log.info(
+            "cala %s -> %s in %d ms (%s, %d request%s)",
+            endpoint,
+            status,
+            ms,
+            "cache hit" if cache_hit else "cache miss",
+            attempts,
+            "" if attempts == 1 else "s",
+        )
+
+    def stats(self) -> dict:
+        """Totals for credit tracking: requests sent to Cala, cache hits, calls per endpoint."""
+        return {
+            "calls": len(self.calls),
+            "cache_hits": sum(c.cache_hit for c in self.calls),
+            "http_requests": sum(c.attempts for c in self.calls),
+            "failed": sum(c.status != 200 for c in self.calls),
+            "by_endpoint": dict(Counter(c.endpoint for c in self.calls if not c.cache_hit)),
+        }
