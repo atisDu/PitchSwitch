@@ -24,7 +24,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [x] **A3 Cala client** — `cala_client.py`: async httpx, `X-API-KEY`, retries/backoff, semaphore, timeouts, call log. Tests with mocked HTTP. Needs: T1.
 - [x] **A4 Introspection map** — fetch introspection once per entity type (Company, Organization, FundingRound, Person), cache to `backend/data/introspection.json`; helper `fields_for(type)`. Needs: A3.
 - [x] **A5 Parsers** — `parsers.py`: amount text → EUR, partial dates → ISO. Table-driven tests ("~€15M", "over $100M", "$12M", "Oct 2025", "2026"). Needs: T1.
-- [ ] **A6 Store: resolve + company** — `CalaDataStore.resolve()` (with investor type/description guard) and `.company()`. Tests on raw fixtures. Needs: A3, A4.
+- [x] **A6 Store: resolve + company** — `CalaDataStore.resolve()` (with investor type/description guard) and `.company()`. Tests on raw fixtures. Needs: A3, A4.
 - [ ] **A7 Store: rounds + investor_rounds** — via `PARTICIPATES_IN_FUNDING_ROUND` + round properties; `is_lead` from the investor edge; amount via A5. Needs: A6, A5.
 - [ ] **A8 Store: portfolio + people** — `INVESTED_IN` outgoing for investors; `IS_BOARD_MEMBER_OF` / `FOUNDED` / `IS_CEO_OF` / `WORKS_AT` incoming for companies. Needs: A6.
 - [ ] **A9 Store: sourced_answer** — `knowledge_search` → markdown + `Reason[]` built from `explainability` claims and `context` source URLs. Needs: A3.
