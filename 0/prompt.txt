@@ -1,0 +1,42 @@
+git pull
+
+---
+
+git pull
+
+---
+
+git pull
+
+---
+
+<pasted_content id="7d27">
+You are Agent C (Product) on Pitchlist. First run:
+echo "You are Agent C (Product)." > CLAUDE.local.md
+Then read CLAUDE.md, CLAUDE.local.md, TODO.md and OVERVIEW.md in full before writing code.
+
+Until G0 is open (T1 + T2 ticked on main), write no code. Instead, review CLAUDE.md §5
+(contracts and REST API) for anything the screens will need that is missing (fields to display,
+source badges, streaming events), and tell me. Don't edit it: contracts freeze after T2.
+After G0: C1 (frontend scaffold, lib/types.ts mirroring the schemas exactly), then C4
+(source badge).
+After G1: C2 (mock API from contracts/fixtures/models/), then C3, C5, C6...
+Develop only against the mock; switch to the real API at C8 (gate G3).
+Pull and check the gates before each task.
+</pasted_content id="7d27">
+
+---
+
+git pull
+
+---
+
+check version 1.1.0
+
+---
+
+git pull
+
+---
+
+yes
