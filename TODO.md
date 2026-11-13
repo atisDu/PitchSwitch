@@ -29,7 +29,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [x] **A8 Store: portfolio + people** — `INVESTED_IN` outgoing for investors; `IS_BOARD_MEMBER_OF` / `FOUNDED` / `IS_CEO_OF` / `WORKS_AT` incoming for companies. Needs: A6.
 - [x] **A9 Store: sourced_answer** — `knowledge_search` → markdown + `Reason[]` built from `explainability` claims and `context` source URLs. Needs: A3.
 - [ ] **A10 Atlas cache** — `cache/atlas.py` wraps client calls (key, 24 h TTL, `CACHE_ONLY` mode); hit/miss in the call log. Needs: A3.
-- [ ] **A11 candidate_competitors v1** — `knowledge_query` on industry + Nordic/Baltic countries + adjacent stages, dedupe, exclude self. (Vector search comes in A13.) Needs: A6.
+- [x] **A11 candidate_competitors v1** — `knowledge_query` on industry + Nordic/Baltic countries + adjacent stages, dedupe, exclude self. (Vector search comes in A13.) Needs: A6.
 - [ ] **A12 Switch-over** — `USE_FAKE_STORE=false` works end to end for one demo company; tell B. **= CP2.** Needs: A6–A11.
 
 ### CP3/CP4 — Saturday evening & night
