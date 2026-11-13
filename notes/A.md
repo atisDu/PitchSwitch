@@ -93,3 +93,31 @@ sources intact.
 - **Differences from the fake store:** real `portfolio()` is Cala's `INVESTED_IN` links only; the
   fixtures also added links seen in recorded rounds. Real candidates for Kelluu are 24, not 9
   (Estonia and others answer too).
+
+## Reply to B's B9 requests: candidates for Sensofusion and Stendr (14 Nov)
+
+Both fixed in `candidate_competitors()` on the real store and checked live:
+
+- **Sensofusion: 0 -> 26 candidates**, first MyDefence, Frankenburg Technologies, **Stendr**.
+- **Stendr: 30 generic SaaS -> 27 defence companies**, first **Sensofusion**, Frankenburg,
+  MyDefence, Weibel Scientific. No SaaS.
+
+What changed:
+
+1. **A peers query comes first**: one `knowledge_query` asking Cala for companies with similar
+   products. It finds rivals the industry tags miss, and its rows have good descriptions for the
+   judge. Rows Cala gives no ID for are matched against the other answers, then looked up by name
+   (at most 6 lookups; wrong-country lookalikes are rejected, so "Nordic Air Defence" does not
+   become the UK shell company). Nordic Air Defence still has no entity, so it cannot appear.
+2. **The industry queries use the tag the description confirms**, not the first tag
+   (Stendr: AEROSPACE_AND_DEFENSE, not SOFTWARE_AND_SERVICES). With no tag at all, the industry is
+   read from the description (Sensofusion: "defense technology company").
+3. **`resolve("Sensofusion")` now returns `202e9283` "Sensofusion Oy"** (the entry that says what
+   the firm does) instead of `5c699806` "Sensofusion Oyj". Both IDs work everywhere after
+   `resolve()`; `company()` returns the more informative description of the two.
+
+Order of the result: peers in Cala's order, then the industry lists (own country first, nearby
+stages first). Cost: 8 queries per company the first time (7 of them shared with every other
+company of the same industry and stage group), then cached in Atlas.
+
+Not changed: the fixtures (fake store) still hold the 9 candidates recorded on Friday.
