@@ -13,6 +13,7 @@ alias; the other methods then read both and return everything under the main ID.
 from __future__ import annotations
 
 import asyncio
+import logging
 from typing import Literal
 
 from contracts.schemas import (
@@ -47,6 +48,8 @@ from data.mappers import (
     stage_index,
     undated_round,
 )
+
+log = logging.getLogger("data.store")
 
 # What we read about a company or an investor, cut down to what Cala has (introspection map).
 _ORG_FIELDS = fields_for("Company", "Organization").only(
@@ -163,8 +166,9 @@ def default_client() -> CalaClient:
 
 
 class CalaDataStore:
-    def __init__(self, client: CalaClient | None = None) -> None:
+    def __init__(self, client: CalaClient | None = None, graph=None) -> None:
         self.cala = client or default_client()
+        self._graph = graph  # precomputed investor graph (cache.graph); opened on first use
         self._aliases: dict[str, str] = {}  # other entry of a firm -> its main entry
         self._siblings: dict[str, list[str]] = {}  # main entry -> its other entries
 
@@ -442,7 +446,24 @@ class CalaDataStore:
         return [candidate for _, candidate in ranked[: max(k, 0)]]
 
     async def co_investors(self, investor_id: str) -> list[tuple[EntityRef, int]]:
-        return []  # filled by the batch job (A15); until then nothing is known
+        """Investors that share companies with this one, with how many, most first.
+
+        Read from the graph the batch job precomputes (`python -m batch.precompute_graph all`).
+        [] when the investor has not been crawled yet, or the graph can't be read.
+        """
+        try:
+            if self._graph is None:
+                from cache.graph import default_graph
+
+                self._graph = default_graph()
+            document = await self._graph.get("investor_graph", self.canonical(investor_id))
+        except Exception as exc:  # warm paths are a bonus: never fail a report over them
+            log.warning("co_investors(%s): graph not readable: %r", investor_id, exc)
+            return []
+        return [
+            (EntityRef.model_validate(row["investor"]), int(row["count"]))
+            for row in (document or {}).get("co_investors") or []
+        ]
 
     async def sourced_answer(self, question: str) -> tuple[str, list[Reason]]:
         """Cala's own answer to a question (knowledge_search): markdown, plus each claim behind
