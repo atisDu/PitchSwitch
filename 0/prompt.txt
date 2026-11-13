@@ -1,0 +1,1 @@
+This is our hackathon repo, we dont know the theme yet, we are using Entire for it so make it so other people's agents know what to do and create the first checkpoint with a CLAUDE.MD with basic coordination info for agents.
