@@ -63,12 +63,15 @@ use `sourced_answer()`.
 `portfolio()` on the real store is Cala's `INVESTED_IN` links only (one call). Deals that exist
 only as rounds are in `investor_rounds()`.
 
-## Not yet checked against live services
+## Atlas cache: checked live (A10, 14 Nov)
 
-- **A10: not yet checked against live MongoDB Atlas** (`MONGODB_URI` is empty). The cache passes
-  its tests on a fake collection and on a local MongoDB 127.0.0.1 instance
-  (`MONGODB_TEST_URI=mongodb://... pytest backend/tests/cache`). To do when the URI arrives:
-  run that test with the Atlas URI, then one real `get_store()` call with `USE_FAKE_STORE=false`.
+- `MONGODB_URI` is set and the cache works on the real Atlas cluster: the cache tests pass
+  against it, and `python -m data.smoke Kelluu --real` ran in 2 s with 0 Cala calls.
+- **Everyone with `MONGODB_URI` in `.env` now shares one cache** (collection `cala_cache`, database
+  `pitchlist`) and one precomputed investor graph. A company one person warmed is fast for all.
+- **Upload what you cached locally before the URI arrived:** `python -m cache.sync` copies
+  `.cache/cala/` and `.cache/graph/` into Atlas (never overwrites a newer copy, calls no Cala).
+  B: your 213 Stendr calls are probably in your `.cache/cala/`; one `cache.sync` shares them.
 
 ## G2: the real store works (A12, 13 Nov)
 
