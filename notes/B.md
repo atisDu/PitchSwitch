@@ -47,3 +47,8 @@ Requests for other areas and "not yet checked against live <service>" lines go h
 - Cost seen: Stendr cold = 213 live Cala calls, 21 min (rounds of all 30 candidates + every
   investor's `investor_rounds`). B now feeds only judge-approved "same space" candidates into
   scoring (fewer calls), but the cache must be warm before the demo either way.
+- **Shared Atlas cache, now (human agrees).** `MONGODB_URI` is empty everywhere, so every clone
+  pays the cold cost again (Stendr: 213 calls, 21 min). Ask: create the Atlas cluster, give all
+  three clones the same `MONGODB_URI`, do the pending A10 live check, and add a one-off import of
+  local `.cache/cala/` files into Atlas (B's clone has 295 responses: Kelluu, Stendr, Sensofusion
+  and their candidates' rounds) so the work already paid for isn't lost.
