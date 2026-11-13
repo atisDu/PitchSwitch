@@ -9,7 +9,7 @@ from typing import Literal, Protocol
 
 from pydantic import BaseModel
 
-CONTRACT_VERSION = "1.0.0"
+CONTRACT_VERSION = "1.1.0"
 
 SourceRank = Literal["PRIMARY", "FILING", "PRESS", "AGGREGATOR", "UNKNOWN"]
 
@@ -88,11 +88,15 @@ class Reason(BaseModel):
 
 class InvestorScore(BaseModel):
     investor: EntityRef
-    score: float
-    conflict: Conflict | None = None
+    score: float  # 0-100, higher = better fit
+    conflicts: list[Conflict] = []  # non-empty = this investor belongs in `skip`
     leads_in_space: int = 0
     rounds_in_space: int = 0
+    # How far leads_in_space rests on Cala's is_lead flag: "known" = every round in space
+    # says who led, "partial" = some do, "unknown" = none do (show rounds_in_space, say so).
+    lead_data: Literal["known", "partial", "unknown"] = "unknown"
     last_lead_date: str | None = None
+    deals_last_12m: int | None = None  # None = unknown
     warm_paths: list[Reason] = []
     reasons: list[Reason] = []
 
@@ -100,8 +104,8 @@ class InvestorScore(BaseModel):
 class FounderReport(BaseModel):
     company: Company
     competitors: list[Competitor]
-    pitch: list[InvestorScore]
-    skip: list[InvestorScore]
+    pitch: list[InvestorScore]  # no conflicts; sorted by score, highest first
+    skip: list[InvestorScore]  # one or more conflicts; sorted by score, highest first
 
 
 class InvestorCheck(BaseModel):
@@ -109,20 +113,26 @@ class InvestorCheck(BaseModel):
     company: Company
     conflicts: list[Conflict]
     competitors: list[Competitor]
-    rounds: list[Round]
+    rounds: list[Round]  # rounds of `company` AND of every competitor; group by Round.company_id
 
 
 class Brief(BaseModel):
     investor_id: str
     company_id: str
-    markdown: str
+    markdown: str  # cites with [n] markers: n is a 1-based index into `citations`
     citations: list[Source]
 
 
 class AgentEvent(BaseModel):  # streamed by /api/jobs/{id}/stream and /api/chat
-    type: Literal["step", "brief", "error", "done"]
-    message: str | None = None
+    # step = progress line, text = answer chunk (append to the previous ones),
+    # brief = one finished brief, error = something failed, done = end of stream
+    type: Literal["step", "text", "brief", "error", "done"]
+    message: str | None = None  # step: what is happening; text: the chunk; error: what failed
     brief: Brief | None = None
+    investor_name: str | None = None  # slush-prep: the pasted name this event belongs to
+    investor: EntityRef | None = None  # slush-prep: the resolved investor, once known
+    # chat: sent on the `done` event; [n] in the streamed text is a 1-based index into it
+    citations: list[Source] = []
 
 
 # --- 5.2 Data layer interface — A implements, B consumes ----------------------
@@ -132,11 +142,15 @@ class AgentEvent(BaseModel):  # streamed by /api/jobs/{id}/stream and /api/chat
 
 class DataStore(Protocol):
     async def resolve(self, name: str, kind: Literal["company", "investor"]) -> list[EntityRef]: ...
+    # company(): `id` may be any organisation, including an investor
     async def company(self, id: str) -> Company: ...
     async def rounds(self, company_id: str) -> list[Round]: ...
     async def investor_rounds(self, investor_id: str) -> list[Round]: ...
     async def portfolio(self, investor_id: str) -> list[PortfolioLink]: ...
+    # people(): also accepts an investor ID and returns that investor's own people
+    # (PersonLink.company_id is then the investor ID); needed for BOARD conflicts
     async def people(self, company_id: str) -> list[PersonLink]: ...
     async def candidate_competitors(self, company: Company, k: int = 30) -> list[Company]: ...
+    # co_investors(): [] when nothing is known yet (before the batch job); never raises for that
     async def co_investors(self, investor_id: str) -> list[tuple[EntityRef, int]]: ...
     async def sourced_answer(self, question: str) -> tuple[str, list[Reason]]: ...  # knowledge_search

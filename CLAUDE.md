@@ -220,7 +220,7 @@ Demo data: Kelluu (Series A, led by NATO Innovation Fund; also Keen Venture Part
 from typing import Literal, Protocol
 from pydantic import BaseModel
 
-CONTRACT_VERSION = "1.0.0"
+CONTRACT_VERSION = "1.1.0"
 
 SourceRank = Literal["PRIMARY", "FILING", "PRESS", "AGGREGATOR", "UNKNOWN"]
 
@@ -285,37 +285,42 @@ class Reason(BaseModel):
 
 class InvestorScore(BaseModel):
     investor: EntityRef
-    score: float
-    conflict: Conflict | None = None
+    score: float                     # 0-100, higher = better fit
+    conflicts: list[Conflict] = []   # non-empty = this investor belongs in `skip`
     leads_in_space: int = 0
     rounds_in_space: int = 0
+    lead_data: Literal["known", "partial", "unknown"] = "unknown"   # how far leads_in_space rests on is_lead
     last_lead_date: str | None = None
+    deals_last_12m: int | None = None    # None = unknown
     warm_paths: list[Reason] = []
     reasons: list[Reason] = []
 
 class FounderReport(BaseModel):
     company: Company
     competitors: list[Competitor]
-    pitch: list[InvestorScore]
-    skip: list[InvestorScore]
+    pitch: list[InvestorScore]       # no conflicts; sorted by score, highest first
+    skip: list[InvestorScore]        # one or more conflicts; sorted by score, highest first
 
 class InvestorCheck(BaseModel):
     investor: EntityRef
     company: Company
     conflicts: list[Conflict]
     competitors: list[Competitor]
-    rounds: list[Round]
+    rounds: list[Round]              # rounds of `company` AND of every competitor; group by Round.company_id
 
 class Brief(BaseModel):
     investor_id: str
     company_id: str
-    markdown: str
+    markdown: str                    # cites with [n] markers: n is a 1-based index into `citations`
     citations: list[Source]
 
 class AgentEvent(BaseModel):          # streamed by /api/jobs/{id}/stream and /api/chat
-    type: Literal["step", "brief", "error", "done"]
+    type: Literal["step", "text", "brief", "error", "done"]   # step = progress, text = answer chunk
     message: str | None = None
     brief: Brief | None = None
+    investor_name: str | None = None     # slush-prep: the pasted name this event belongs to
+    investor: EntityRef | None = None    # slush-prep: the resolved investor, once known
+    citations: list[Source] = []         # chat: sent on `done`; [n] in the text is a 1-based index into it
 ```
 
 ### 5.2 Data layer interface — A implements, B consumes
@@ -335,20 +340,30 @@ class DataStore(Protocol):
 
 `backend/data/__init__.py` exposes `get_store() -> DataStore`, returning `FakeDataStore` when `USE_FAKE_STORE=true`, else the real store. B only ever calls `get_store()`.
 
+- `company(id)` works for any organisation ID, including an investor.
+- `people(id)` also accepts an investor ID and returns that investor's own people (BOARD conflicts need this).
+- `co_investors(id)` returns `[]` when nothing is known yet (the precomputed graph arrives after the real store); it never raises for that.
+
 ### 5.3 REST API — B implements, C consumes
 
 | Method | Path | Body | Returns |
 | --- | --- | --- | --- |
 | POST | `/api/resolve` | `{name, kind}` | `EntityRef[]` |
-| POST | `/api/founder/analyze` | `{company_id}` | `FounderReport` |
+| POST | `/api/founder/analyze` | `{company_id, competitor_ids?: string[]}` | `FounderReport` |
 | POST | `/api/investor/check` | `{investor_id, company_id}` | `InvestorCheck` |
 | POST | `/api/brief` | `{investor_id, company_id}` | `Brief` |
 | POST | `/api/slush-prep` | `{company_id, investor_names: string[]}` | `{job_id}` |
 | GET | `/api/jobs/{id}/stream` | — | SSE stream of `AgentEvent` |
-| POST | `/api/chat` | `{company_id?, investor_id?, message}` | SSE stream of `AgentEvent` (type `step` = text chunks) |
+| POST | `/api/chat` | `{company_id?, investor_id?, message}` | SSE stream of `AgentEvent` (type `text` = answer chunks) |
 | GET | `/api/health` | — | `{ok: true, contract_version}` |
 
 Errors: HTTP 4xx/5xx with `{error: string}`. CORS open for the frontend origin.
+
+- `competitor_ids` (optional): if given, B skips competitor discovery and ranks against exactly those company IDs. The frontend sends the IDs still shown after the user removed some.
+- Streams: one `data: <AgentEvent JSON>\n\n` per event, no named events; the stream closes after `done`. `/api/chat` is read with a streaming `fetch`.
+- Slush prep: events about one pasted investor carry `investor_name` (as pasted) and, once resolved, `investor`. An unresolved or ambiguous name gets an `error` event with that `investor_name`.
+- Chat: the answer arrives as `text` events; its sources arrive in `citations` on the `done` event.
+- Full rules: `contracts/api.md`.
 
 ### 5.4 MCP tools — B implements (thin wrappers over core)
 
@@ -357,8 +372,8 @@ Errors: HTTP 4xx/5xx with `{error: string}`. CORS open for the frontend origin.
 ### 5.5 Fixtures — `contracts/fixtures/`
 
 - `raw/` — raw Cala responses (A records them; never hand-edited).
-- `models/` — contract-model JSON built from raw (`company_<id>.json`, `rounds_<company_id>.json`, `portfolio_<investor_id>.json`, `founder_report_<company_id>.json`, ...).
-- `FakeDataStore` reads `models/`. C's mock API serves `models/founder_report_*.json` etc.
+- `models/` — contract-model JSON built from raw (`company_<id>.json`, `rounds_<company_id>.json`, `portfolio_<investor_id>.json`, ...). The full file list is in `contracts/api.md`; `models/index.json` lists the demo cases and their IDs.
+- `FakeDataStore` reads `models/`. C's mock API serves the sample responses A also produces in A2: `resolve_<kind>_<slug>.json`, `founder_report_<company_id>.json`, `investor_check_<investor_id>_<company_id>.json`, `brief_<investor_id>_<company_id>.json`, `agent_events_slush_prep.json`, `agent_events_chat.json`. They are real Cala facts in the right shape, but ranked by a placeholder until B's API replaces them at CP3.
 
 ---
 

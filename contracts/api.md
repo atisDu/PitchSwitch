@@ -1,6 +1,6 @@
 # Pitchlist contracts — API, MCP tools, fixtures
 
-Contract version: **1.0.0** (`CONTRACT_VERSION` in `contracts/schemas.py`).
+Contract version: **1.1.0** (`CONTRACT_VERSION` in `contracts/schemas.py`).
 **Frozen after task T2.** Changes need all three humans to agree; then bump `CONTRACT_VERSION`,
 note it in `contracts/CHANGELOG.md` and update `CLAUDE.md` §5 in the same commit.
 
@@ -12,17 +12,49 @@ All model names below (`EntityRef`, `FounderReport`, ...) are the Pydantic model
 | Method | Path | Body | Returns |
 | --- | --- | --- | --- |
 | POST | `/api/resolve` | `{name, kind}` | `EntityRef[]` |
-| POST | `/api/founder/analyze` | `{company_id}` | `FounderReport` |
+| POST | `/api/founder/analyze` | `{company_id, competitor_ids?: string[]}` | `FounderReport` |
 | POST | `/api/investor/check` | `{investor_id, company_id}` | `InvestorCheck` |
 | POST | `/api/brief` | `{investor_id, company_id}` | `Brief` |
 | POST | `/api/slush-prep` | `{company_id, investor_names: string[]}` | `{job_id}` |
 | GET | `/api/jobs/{id}/stream` | — | SSE stream of `AgentEvent` |
-| POST | `/api/chat` | `{company_id?, investor_id?, message}` | SSE stream of `AgentEvent` (type `step` = text chunks) |
+| POST | `/api/chat` | `{company_id?, investor_id?, message}` | SSE stream of `AgentEvent` |
 | GET | `/api/health` | — | `{ok: true, contract_version}` |
 
 - `kind` is `"company"` or `"investor"`.
 - Errors: HTTP 4xx/5xx with `{error: string}`.
 - CORS open for the frontend origin.
+
+### Rules the models can't express
+
+- **Removing competitors (`competitor_ids`).** Without it, B finds the competitors itself. With it,
+  B skips that step and ranks against exactly those company IDs. The frontend sends the IDs still
+  shown after the user removed some (taken from the previous `FounderReport.competitors`).
+- **Score.** `InvestorScore.score` is 0–100, higher = better fit. `pitch` and `skip` are each sorted
+  by score, highest first. An investor with one or more `conflicts` is in `skip`, never in `pitch`.
+- **Lead data.** `InvestorScore.lead_data` says how far `leads_in_space` can be trusted: `known`
+  (every round in the space says who led), `partial` (some do), `unknown` (none do — show
+  `rounds_in_space` instead and say so in the UI).
+- **`InvestorCheck.rounds`** holds the rounds of `company` and of every competitor. Group them by
+  `Round.company_id` to show who backed each rival.
+- **Citations in briefs.** `Brief.markdown` cites with `[n]` markers; `n` is a 1-based index into
+  `Brief.citations`.
+
+### Streams (`/api/jobs/{id}/stream`, `/api/chat`)
+
+- Wire format: one `data: <AgentEvent JSON>\n\n` per event. No named events (`event:` lines), no
+  ids. The stream closes after the `done` event. `/api/chat` is a POST, so the frontend reads it
+  with a streaming `fetch`, not `EventSource`.
+- Event types:
+  - `step` — a progress line in `message` (e.g. a tool call).
+  - `text` — a chunk of the answer in `message`; append chunks in order.
+  - `brief` — one finished brief in `brief`.
+  - `error` — what failed, in `message`. The stream continues unless `done` follows.
+  - `done` — end of the stream.
+- **Slush prep:** every event about one pasted investor carries `investor_name` (the name exactly
+  as pasted) and, once resolved, `investor`. A name that doesn't resolve, or matches several
+  entities that can't be told apart, gets an `error` event with that `investor_name`.
+- **Chat:** the answer arrives as `text` events. Its sources arrive in `citations` on the `done`
+  event; `[n]` in the text is a 1-based index into that list.
 
 ## Data layer interface — A implements, B consumes
 
@@ -44,6 +76,13 @@ class DataStore(Protocol):
 `backend/data/__init__.py` exposes `get_store() -> DataStore`, returning `FakeDataStore` when
 `USE_FAKE_STORE=true`, else the real store. B only ever calls `get_store()`.
 
+- `company(id)` works for any organisation ID, including an investor.
+- `people(id)` also accepts an investor ID and returns that investor's own people (then
+  `PersonLink.company_id` is the investor ID). BOARD conflicts need this: a competitor's `BOARD`
+  person who is also one of the investor's people.
+- `co_investors(id)` returns `[]` when nothing is known yet (the precomputed graph arrives with the
+  batch job, after the real store). It never raises for that.
+
 ## MCP tools — B implements (thin wrappers over core)
 
 `resolve_company`, `find_competitors`, `get_rounds`, `investor_profile`, `check_conflict`,
@@ -53,7 +92,29 @@ Inputs are entity IDs (plus `name` for `resolve_company`); outputs are the contr
 
 ## Fixtures — `contracts/fixtures/`
 
+- `README.md` — the demo cases (task T3).
 - `raw/` — raw Cala responses (A records them; never hand-edited).
-- `models/` — contract-model JSON built from raw (`company_<id>.json`, `rounds_<company_id>.json`,
-  `portfolio_<investor_id>.json`, `founder_report_<company_id>.json`, ...).
-- `FakeDataStore` reads `models/`. C's mock API serves `models/founder_report_*.json` etc.
+- `models/` — contract-model JSON built from raw. `FakeDataStore` reads it; C's mock API serves it.
+  A produces all of these in task A2:
+
+| File | Content | Used by |
+| --- | --- | --- |
+| `index.json` | The demo cases: names, IDs and which files exist | everyone |
+| `resolve_<kind>_<slug>.json` | `EntityRef[]` (`slug` = name lowercased, non-alphanumerics → `-`) | fake store, mock `/api/resolve` |
+| `company_<id>.json` | `Company` | fake store |
+| `rounds_<company_id>.json` | `Round[]` | fake store |
+| `investor_rounds_<investor_id>.json` | `Round[]` | fake store |
+| `portfolio_<investor_id>.json` | `PortfolioLink[]` | fake store |
+| `people_<id>.json` | `PersonLink[]` | fake store |
+| `candidates_<company_id>.json` | `Company[]` | fake store |
+| `co_investors_<investor_id>.json` | `[EntityRef, count][]` | fake store |
+| `sourced_answer_<slug>.json` | `{markdown, reasons: Reason[]}` | fake store |
+| `founder_report_<company_id>.json` | `FounderReport` | mock `/api/founder/analyze` |
+| `investor_check_<investor_id>_<company_id>.json` | `InvestorCheck` | mock `/api/investor/check` |
+| `brief_<investor_id>_<company_id>.json` | `Brief` | mock `/api/brief` |
+| `agent_events_slush_prep.json` | `AgentEvent[]` in stream order | mock `/api/jobs/{id}/stream` |
+| `agent_events_chat.json` | `AgentEvent[]` in stream order | mock `/api/chat` |
+
+  The last five are **samples**: real Cala facts in the right shape, but ranked and worded by a
+  simple placeholder, not by B's scoring. They exist so the frontend can be built; B's API replaces
+  them at CP3.

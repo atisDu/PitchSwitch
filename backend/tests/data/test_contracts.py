@@ -51,7 +51,7 @@ STORE_METHODS = [
 
 
 def test_version():
-    assert CONTRACT_VERSION == "1.0.0"
+    assert CONTRACT_VERSION == "1.1.0"
 
 
 def test_all_models_exist():
@@ -72,7 +72,10 @@ def test_defaults():
     company = Company(id="1", name="Acme", type="Company")
     assert company.industries == [] and company.sources == []
     score = InvestorScore(investor=ref, score=1.0)
-    assert score.conflict is None and score.leads_in_space == 0 and score.reasons == []
+    assert score.conflicts == [] and score.leads_in_space == 0 and score.reasons == []
+    assert score.lead_data == "unknown" and score.deals_last_12m is None
+    event = AgentEvent(type="text", message="chunk")
+    assert event.citations == [] and event.investor is None and event.investor_name is None
 
 
 def test_mutable_defaults_are_not_shared():
@@ -89,6 +92,7 @@ def test_literals_are_enforced():
         lambda: PersonLink(person=ref, company_id="1", role="ADVISOR"),
         lambda: Conflict(kind="OTHER", competitor=ref),
         lambda: AgentEvent(type="progress"),
+        lambda: InvestorScore(investor=ref, score=1.0, lead_data="guess"),
     ):
         try:
             bad()
@@ -109,11 +113,13 @@ def test_json_round_trip():
             InvestorScore(
                 investor=ref,
                 score=0.0,
-                conflict=Conflict(kind="PORTFOLIO", competitor=rival),
+                conflicts=[Conflict(kind="PORTFOLIO", competitor=rival)],
+                lead_data="partial",
+                deals_last_12m=3,
             )
         ],
     )
     assert FounderReport.model_validate_json(report.model_dump_json()) == report
     brief = Brief(investor_id="inv", company_id="c", markdown="# x", citations=[])
-    event = AgentEvent(type="brief", brief=brief)
+    event = AgentEvent(type="brief", brief=brief, investor_name="Fund", investor=ref)
     assert AgentEvent.model_validate_json(event.model_dump_json()) == event
