@@ -106,3 +106,65 @@ async def test_company_rejects_unknown_ids_and_other_entity_types(store, cases):
         await store.company("00000000-0000-0000-0000-000000000000")
     with pytest.raises(NotFound):
         await store.company(cases["round_ids"][0])  # a funding round is not a company
+
+
+# --- rounds ------------------------------------------------------------------------------------
+
+
+async def test_rounds_of_kelluu_show_the_lead_and_the_sources(store, cases):
+    kelluu = cases["companies"]["kelluu"]["id"]
+    rounds = await store.rounds(kelluu)
+    assert rounds[0].label == "Series A" and "Grant" in [r.label for r in rounds]
+    series_a = rounds[0]
+    assert series_a.date == "2026-04-14" and series_a.amount_eur == 15_000_000
+    assert series_a.amount_text == "€15M" and series_a.sources
+    leads = [i.investor.name for i in series_a.investors if i.is_lead]
+    assert leads == ["NATO Innovation Fund"]
+    assert [i.is_lead for i in series_a.investors].count(False) == 3
+    assert all(r.company_id == kelluu for r in rounds)
+    dated = [r.date for r in rounds if r.date]
+    assert dated == sorted(dated, reverse=True)
+
+
+async def test_backers_without_round_details_come_as_one_undated_round(store, cases):
+    stendr = cases["companies"]["stendr"]["id"]
+    (only,) = await store.rounds(stendr)
+    assert only.id == f"{stendr}:backers" and only.company_id == stendr
+    assert only.label is None and only.date is None and only.amount_eur is None
+    assert len(only.investors) == 3 and all(i.is_lead is None for i in only.investors)
+    assert only.sources
+
+
+async def test_rounds_do_not_repeat_round_investors_as_backers(store, cases):
+    kelluu = cases["companies"]["kelluu"]["id"]
+    rounds = await store.rounds(kelluu)
+    in_real_rounds = {
+        i.investor.id for r in rounds if not r.id.endswith(":backers") for i in r.investors
+    }
+    for extra in (r for r in rounds if r.id.endswith(":backers")):
+        assert not in_real_rounds & {i.investor.id for i in extra.investors}
+
+
+async def test_rounds_are_empty_when_cala_has_none_or_the_id_is_unknown(store, cases):
+    assert await store.rounds(cases["companies"]["sensofusion"]["id"]) == []
+    assert await store.rounds("00000000-0000-0000-0000-000000000000") == []
+    assert await store.investor_rounds("00000000-0000-0000-0000-000000000000") == []
+
+
+async def test_investor_rounds_contain_the_investor_and_its_lead_flag(store, cases):
+    maki = cases["investors"]["maki-vc"]["id"]
+    rounds = await store.investor_rounds(maki)
+    assert len(rounds) >= 5
+    assert all(any(i.investor.id == maki for i in r.investors) for r in rounds)
+    led = [r for r in rounds if any(i.investor.id == maki and i.is_lead for i in r.investors)]
+    assert len(led) >= 2  # Aavuus and Metaktik pre-seeds
+    dated = [r.date for r in rounds if r.date]
+    assert dated == sorted(dated, reverse=True)
+
+
+async def test_investor_rounds_use_the_main_id_after_resolve(store, cases):
+    maki = cases["investors"]["maki-vc"]
+    await store.resolve("Maki.vc", "investor")
+    rounds = await store.investor_rounds(maki["alt"][0])  # asked by the other entry's ID
+    assert rounds and all(any(i.investor.id == maki["id"] for i in r.investors) for r in rounds)
+    assert not any(i.investor.id == maki["alt"][0] for r in rounds for i in r.investors)

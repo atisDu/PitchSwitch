@@ -15,17 +15,31 @@ from __future__ import annotations
 import asyncio
 from typing import Literal
 
-from contracts.schemas import Company, EntityRef, PersonLink, PortfolioLink, Reason, Round
+from contracts.schemas import (
+    Company,
+    EntityRef,
+    PersonLink,
+    PortfolioLink,
+    Reason,
+    Round,
+    RoundInvestor,
+)
 from data.cala_client import CalaClient, MemoryCache
 from data.errors import NotFound
 from data.introspection import fields_for
 from data.mappers import (
     ORG_TYPES,
     country_of,
+    edge_sources,
     fill_gaps,
     map_company,
+    map_entity_ref,
     map_resolve,
+    map_round,
+    merge_sources,
     name_key,
+    related,
+    undated_round,
 )
 
 # What we read about a company or an investor, cut down to what Cala has (introspection map).
@@ -47,7 +61,19 @@ _ORG_FIELDS = fields_for("Company", "Organization").only(
     outgoing=["PARTICIPATES_IN_FUNDING_ROUND", "INVESTED_IN", "OPERATES_IN_INDUSTRY"],
     incoming=["INVESTED_IN", "IS_BOARD_MEMBER_OF", "FOUNDED", "IS_CEO_OF", "WORKS_AT"],
 )
+_ROUND_FIELDS = fields_for("FundingRound").only(
+    properties=[
+        "name",
+        "round_label",
+        "announcement_date",
+        "transaction_value",
+        "transaction_value_units",
+        "instrument",
+    ],
+    incoming=["PARTICIPATES_IN_FUNDING_ROUND"],
+)
 _EDGE_LIMIT = 100
+_MAX_INVESTOR_ROUNDS = 40
 _MAX_SIBLINGS = 3  # entries of one firm we are willing to fetch and compare
 
 
@@ -57,6 +83,15 @@ def _edge_count(entity: dict) -> int:
         for direction in (entity.get("relationships") or {}).values()
         for items in direction.values()
     )
+
+
+def _round_ids(entity: dict, role: str) -> list[str]:
+    """IDs of the funding rounds this entity takes part in with the given role."""
+    return [
+        edge["id"]
+        for edge in related(entity, "outgoing", "PARTICIPATES_IN_FUNDING_ROUND")
+        if (edge.get("properties") or {}).get("role", role) == role
+    ]
 
 
 def _same_firm(a: EntityRef, b: EntityRef) -> bool:
@@ -157,10 +192,104 @@ class CalaDataStore:
         return company.model_copy(update={"id": main_id})
 
     async def rounds(self, company_id: str) -> list[Round]:
-        raise NotImplementedError("rounds() arrives with task A7")
+        """The company's funding rounds, newest first. [] for an unknown ID.
+
+        Investors Cala links to the company without round details come last, as one Round
+        with no label, date or amount (id "<company_id>:backers").
+        """
+        try:
+            main_id, entities = await self._org_family(company_id)
+        except NotFound:
+            return []
+        rounds = await self._rounds([rid for e in entities for rid in _round_ids(e, "ISSUER")])
+        rounds = [r.model_copy(update={"company_id": main_id}) for r in rounds]
+        in_rounds = {i.investor.id for r in rounds for i in r.investors}
+        loose: dict[str, EntityRef] = {}
+        sources: list[list] = []
+        for entity in entities:
+            for edge in related(entity, "incoming", "INVESTED_IN"):
+                ref = self._ref(edge)
+                if ref.id not in in_rounds and ref.id not in loose:
+                    loose[ref.id] = ref
+                    sources.append(edge_sources(edge))
+        extra = undated_round(main_id, list(loose.values()), merge_sources(*sources))
+        return [*rounds, extra] if extra else rounds
 
     async def investor_rounds(self, investor_id: str) -> list[Round]:
-        raise NotImplementedError("investor_rounds() arrives with task A7")
+        """Rounds the investor took part in (up to 40), newest first. [] for an unknown ID."""
+        try:
+            main_id, entities = await self._org_family(investor_id)
+        except NotFound:
+            return []
+        led: set[str] = set()
+        ids: list[str] = []
+        for entity in entities:
+            for edge in related(entity, "outgoing", "PARTICIPATES_IN_FUNDING_ROUND"):
+                properties = edge.get("properties") or {}
+                if properties.get("role", "INVESTOR") != "INVESTOR":
+                    continue
+                ids.append(edge["id"])
+                if properties.get("is_lead") is True:
+                    led.add(edge["id"])
+        rounds = await self._rounds(ids[:_MAX_INVESTOR_ROUNDS])
+        result = []
+        for item in rounds:
+            if item.id in led:  # the investor's own edge says it led this round
+                investors = [
+                    i.model_copy(update={"is_lead": i.investor.id == main_id})
+                    for i in item.investors
+                ]
+                item = item.model_copy(update={"investors": investors})
+            if any(i.investor.id == main_id for i in item.investors):
+                result.append(item)
+        return result
+
+    def _ref(self, raw: dict) -> EntityRef:
+        """An EntityRef for an edge or a search hit, under the firm's main ID."""
+        ref = map_entity_ref(raw)
+        main_id = self.canonical(ref.id)
+        return ref if main_id == ref.id else ref.model_copy(update={"id": main_id})
+
+    async def _rounds(self, round_ids: list[str]) -> list[Round]:
+        """Fetch and map funding rounds, newest first. Rounds Cala can't find are skipped."""
+        unique = list(dict.fromkeys(round_ids))
+        fetched = await asyncio.gather(
+            *[
+                self.cala.entity(
+                    rid,
+                    properties=list(_ROUND_FIELDS.properties),
+                    incoming=list(_ROUND_FIELDS.incoming),
+                    limit=_EDGE_LIMIT,
+                )
+                for rid in unique
+            ],
+            return_exceptions=True,
+        )
+        rounds = []
+        for entity in fetched:
+            if isinstance(entity, NotFound):
+                continue
+            if isinstance(entity, BaseException):
+                raise entity
+            mapped = map_round(entity)
+            if mapped is None:
+                continue
+            investors: dict[str, RoundInvestor] = {}
+            for item in mapped.investors:  # one entry per firm, under its main ID
+                main_id = self.canonical(item.investor.id)
+                ref = item.investor.model_copy(update={"id": main_id})
+                previous = investors.get(main_id)
+                lead = item.is_lead if previous is None else (previous.is_lead or item.is_lead)
+                investors[main_id] = RoundInvestor(investor=ref, is_lead=lead)
+            rounds.append(
+                mapped.model_copy(
+                    update={
+                        "company_id": self.canonical(mapped.company_id),
+                        "investors": list(investors.values()),
+                    }
+                )
+            )
+        return sorted(rounds, key=lambda r: (r.date or "", r.id), reverse=True)
 
     async def portfolio(self, investor_id: str) -> list[PortfolioLink]:
         raise NotImplementedError("portfolio() arrives with task A8")
