@@ -221,3 +221,22 @@ async def test_portfolio_and_people_are_empty_for_unknown_ids(store):
     nobody = "00000000-0000-0000-0000-000000000000"
     assert await store.portfolio(nobody) == []
     assert await store.people(nobody) == []
+
+
+# --- sourced_answer ----------------------------------------------------------------------------
+
+
+async def test_sourced_answer_returns_markdown_and_claims_with_documents(store, cases):
+    question = cases["questions"]["rounds-kelluu"]
+    markdown, reasons = await store.sourced_answer(f"  {question} ")
+    assert "NATO Innovation Fund" in markdown
+    assert len(reasons) >= 3 and all(reason.text for reason in reasons)
+    cited = [source for reason in reasons for source in reason.sources]
+    assert cited and all(source.name for source in cited)
+    assert any((source.url or "").startswith("http") for source in cited)
+
+
+async def test_sourced_answer_for_nothing(store, cala):
+    assert await store.sourced_answer("   ") == ("", [])
+    assert cala.calls == []
+    assert await store.sourced_answer("A question Cala has no answer for") == ("", [])

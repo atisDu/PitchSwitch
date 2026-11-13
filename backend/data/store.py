@@ -38,6 +38,7 @@ from data.mappers import (
     map_portfolio,
     map_resolve,
     map_round,
+    map_sourced_answer,
     merge_sources,
     name_key,
     related,
@@ -345,4 +346,11 @@ class CalaDataStore:
         return []  # filled by the batch job (A15); until then nothing is known
 
     async def sourced_answer(self, question: str) -> tuple[str, list[Reason]]:
-        raise NotImplementedError("sourced_answer() arrives with task A9")
+        """Cala's own answer to a question (knowledge_search): markdown, plus each claim behind
+        it with the documents it rests on. ("", []) for an empty question. Slow: 20-80 s uncached.
+
+        The claims are Cala's wording. Show them as citations as they are; don't rewrite them.
+        """
+        if not question.strip():
+            return "", []
+        return map_sourced_answer(await self.cala.search(question.strip()))
