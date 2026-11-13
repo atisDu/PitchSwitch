@@ -77,7 +77,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 
 ### CP1 — Friday night
 - [x] **C1 Frontend scaffold** — Next.js + TS + Tailwind, layout, `lib/types.ts` mirroring schemas, `lib/api.ts` client with `API_URL`. Needs: T1, T2.
-- [ ] **C2 Mock API** — `frontend/mock/` serving the §5.3 routes from `contracts/fixtures/models/` (incl. a fake SSE stream). Needs: A2, C1.
+- [x] **C2 Mock API** — `frontend/mock/` serving the §5.3 routes from `contracts/fixtures/models/` (incl. a fake SSE stream). Needs: A2, C1.
 
 ### CP2–CP3 — Saturday
 - [ ] **C3 Home + resolve** — mode toggle, input, `/api/resolve`, entity confirm list (name, type, description). Needs: C2.
