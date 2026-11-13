@@ -6,12 +6,6 @@
   "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
  },
  {
-  "id": "cd63d5a6-ff71-4c0f-a149-f6bae0487b36",
-  "name": "TESI S.P.A.",
-  "type": "Company",
-  "description": "Italian company headquartered in Treviso, founded in 2002."
- },
- {
   "id": "6e31798d-d33b-55ab-a01b-8139bd471fea",
   "name": "TESI",
   "type": "Company",
@@ -22,6 +16,12 @@
   "name": "TESI LTD",
   "type": "Company",
   "description": "a London-based entertainment company founded in 2022"
+ },
+ {
+  "id": "cd63d5a6-ff71-4c0f-a149-f6bae0487b36",
+  "name": "TESI S.P.A.",
+  "type": "Company",
+  "description": "Italian company headquartered in Treviso, founded in 2002."
  },
  {
   "id": "de0fbfc0-13ab-5a76-9b5b-f5037d50a59b",

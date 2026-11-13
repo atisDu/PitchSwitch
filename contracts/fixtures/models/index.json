@@ -468,7 +468,7 @@
    "name": "Atheneum Partners GmbH",
    "type": "Company",
    "description": null,
-   "kind": "company"
+   "kind": "investor"
   },
   {
    "id": "d1545ec2-5db4-4e06-b404-87f40032bba5",
@@ -1399,7 +1399,7 @@
    "name": "FUNDINGPARTNER AS",
    "type": "Company",
    "description": null,
-   "kind": "investor"
+   "kind": "company"
   },
   {
    "id": "6b10d0c7-6bfe-477a-a527-524600671878",
@@ -2197,7 +2197,7 @@
    "name": "NFT.VC",
    "type": "Company",
    "description": null,
-   "kind": "company"
+   "kind": "investor"
   },
   {
    "id": "3cbd981d-f00c-59d5-8df3-a48fa0b721c5",

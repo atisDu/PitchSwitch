@@ -6,12 +6,6 @@
   "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO."
  },
  {
-  "id": "5bb30991-e810-4679-a95b-e3f411a4d38d",
-  "name": "NATO Innovation Accelerator",
-  "type": "Organization",
-  "description": "It is a NATO program that advances dual-use commercial and government technologies."
- },
- {
   "id": "cedc48f9-471f-43f9-b27b-53ffed37cd71",
   "name": "INNOVATION FUND",
   "type": "Company",
@@ -34,5 +28,11 @@
   "name": "Healthcare Innovation Fund, L.P.",
   "type": "Company",
   "description": "A company that operates in the asset management industry."
+ },
+ {
+  "id": "5bb30991-e810-4679-a95b-e3f411a4d38d",
+  "name": "NATO Innovation Accelerator",
+  "type": "Organization",
+  "description": "It is a NATO program that advances dual-use commercial and government technologies."
  }
 ]

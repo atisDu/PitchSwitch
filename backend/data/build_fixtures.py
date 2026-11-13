@@ -27,6 +27,7 @@ from contracts.schemas import (
 from data.config import MODELS_DIR, RAW_DIR
 from data.mappers import (
     ORG_TYPES,
+    fill_gaps,
     looks_like_investor,
     map_backers,
     map_candidate_rows,
@@ -148,7 +149,7 @@ class Graph:
             company = map_company(orgs[entity_id])
             main_id = self.canon(entity_id)
             if main_id in self.companies:
-                company = _fill_gaps(self.companies[main_id], company)
+                company = fill_gaps(self.companies[main_id], company)
             self.companies[main_id] = company.model_copy(update={"id": main_id})
         for entity_id, company in self.companies.items():
             self.refs[entity_id] = EntityRef(
@@ -273,22 +274,11 @@ class Graph:
             for row in map_candidate_rows(json.loads(file.read_text())["response"]):
                 main_id = self.canon(row.id)
                 if main_id in pool:
-                    pool[main_id] = _fill_gaps(pool[main_id], row)
+                    pool[main_id] = fill_gaps(pool[main_id], row)
                     self.companies[main_id] = pool[main_id]  # company() agrees with candidates
                 else:
                     pool[main_id] = row.model_copy(update={"id": main_id})
         return list(pool.values())
-
-
-def _fill_gaps(main: Company, other: Company) -> Company:
-    """`main`, with empty fields taken from `other` and the sources of both."""
-    update = {
-        field: getattr(other, field)
-        for field in ("description", "stage", "country", "total_funding_text", "industries")
-        if not getattr(main, field) and getattr(other, field)
-    }
-    update["sources"] = merge_sources(main.sources, other.sources)
-    return main.model_copy(update=update)
 
 
 def _newest_first(rounds) -> list[Round]:
@@ -362,7 +352,7 @@ def build(raw_dir: Path = RAW_DIR, models_dir: Path = MODELS_DIR) -> dict:
             path = raw_dir / "entity_search" / f"{slug(case['name'])}.json"
             if not path.exists():
                 continue
-            hits = map_resolve(json.loads(path.read_text())["response"], kind)
+            hits = map_resolve(json.loads(path.read_text())["response"], kind, query=case["name"])
             refs: dict[str, EntityRef] = {}
             if case.get("id") and case["id"] in graph.refs:  # the pinned entry comes first
                 refs[case["id"]] = graph.refs[case["id"]]

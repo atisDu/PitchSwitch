@@ -62,6 +62,16 @@ COUNTRY_ADJECTIVES = {
     "luxembourg": "Luxembourg",
     "swiss": "Switzerland",
     "polish": "Poland",
+    "italian": "Italy",
+    "spanish": "Spain",
+    "belgian": "Belgium",
+    "austrian": "Austria",
+    "irish": "Ireland",
+    "czech": "Czechia",
+    "portuguese": "Portugal",
+    "canadian": "Canada",
+    "israeli": "Israel",
+    "ukrainian": "Ukraine",
 }
 
 PERSON_ROLES = {
@@ -78,6 +88,21 @@ PERSON_ROLES = {
 def slug(text: str) -> str:
     """Lowercase, non-alphanumerics to '-': the `slug` used in fixture file names."""
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+LEGAL_SUFFIXES = {
+    "oy", "oyj", "ab", "as", "asa", "aps", "ky", "ou", "ltd", "limited", "inc", "llc", "gmbh",
+    "plc", "sa", "bv", "nv", "spa", "srl", "corp", "co", "ag", "se",
+}  # fmt: skip
+
+
+def name_key(name: str) -> str:
+    """A name without its legal form, for spotting two entries of one firm:
+    'Kelluu Oy' and 'Kelluu' -> 'kelluu'; 'MAKI.VC FUND I Ky' -> 'maki-vc-fund-i'."""
+    words = slug(name.replace("ü", "u").replace("Ü", "U")).split("-")
+    while len(words) > 1 and words[-1] in LEGAL_SUFFIXES:
+        words.pop()
+    return "-".join(words)
 
 
 def prop(entity: dict | None, name: str):
@@ -221,6 +246,17 @@ def map_company(entity: dict) -> Company:
     )
 
 
+def fill_gaps(main: Company, other: Company) -> Company:
+    """`main`, with empty fields taken from `other` and the sources of both."""
+    update = {
+        field: getattr(other, field)
+        for field in ("description", "stage", "country", "total_funding_text", "industries")
+        if not getattr(main, field) and getattr(other, field)
+    }
+    update["sources"] = merge_sources(main.sources, other.sources)
+    return main.model_copy(update=update)
+
+
 def map_round(entity: dict) -> Round | None:
     """A FundingRound retrieval -> Round. None if the round has no issuing company."""
     edges = related(entity, "incoming", "PARTICIPATES_IN_FUNDING_ROUND")
@@ -287,25 +323,41 @@ def map_people(entity: dict) -> list[PersonLink]:
     return people
 
 
+_INVESTOR_IN_TEXT = re.compile(r"\b(venture|capital|fund|invest|private equity|angel|accelerator)")
+_INVESTOR_NAME_WORDS = {"ventures", "venture", "capital", "fund", "vc", "partners", "invest"}
+
+
 def looks_like_investor(ref: EntityRef) -> bool:
-    text = f"{ref.name} {ref.description or ''}".lower()
-    return any(word in text for word in INVESTOR_WORDS)
+    """Reads like an investor: by its description, or by a whole word of its name.
+    ("Inventure Foods" does not count just because "venture" hides in the name.)"""
+    if _INVESTOR_IN_TEXT.search((ref.description or "").lower()):
+        return True
+    return bool(set(slug(ref.name).split("-")) & _INVESTOR_NAME_WORDS)
 
 
-def map_resolve(search_response: dict | None, kind: str) -> list[EntityRef]:
-    """A name search -> companies/organisations only; for investors, likely funds first.
+def map_resolve(
+    search_response: dict | None, kind: str, query: str | None = None
+) -> list[EntityRef]:
+    """A name search -> companies/organisations only, best match first.
 
     Guards against matches like "Inflection" (the VC) -> Inflection AI: people, products and
-    places are dropped, and for kind="investor" entries that read like an investor come first.
+    places are dropped; for kind="investor" entries that read like an investor come first;
+    then entries whose name is exactly the query (legal form aside) beat longer names.
     """
     refs = [
         map_entity_ref(hit)
         for hit in (search_response or {}).get("entities") or []
         if hit.get("entity_type") in ORG_TYPES and hit.get("id")
     ]
-    if kind == "investor":
-        refs.sort(key=lambda ref: not looks_like_investor(ref))
-    return refs
+    wanted = name_key(query) if query else None
+
+    def rank(ref: EntityRef) -> tuple:
+        return (
+            kind == "investor" and not looks_like_investor(ref),
+            wanted is not None and name_key(ref.name) != wanted,
+        )
+
+    return sorted(refs, key=rank)
 
 
 def map_sourced_answer(search_response: dict | None) -> tuple[str, list[Reason]]:

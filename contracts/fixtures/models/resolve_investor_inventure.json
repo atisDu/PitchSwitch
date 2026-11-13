@@ -6,6 +6,18 @@
   "description": "a Finnish investment firm headquartered in Helsinki"
  },
  {
+  "id": "a8cc5663-ece3-56e3-b332-9e4275260dc0",
+  "name": "INVENTURE",
+  "type": "Company",
+  "description": "A French banking company founded in 2021 and headquartered in Chamonix-Mont-Blanc."
+ },
+ {
+  "id": "742512f9-7387-4b5f-9660-14c160757040",
+  "name": "Inventure, LLC",
+  "type": "Company",
+  "description": "A United States limited liability company (LLC) registered with the SEC (CIK 0001706556)."
+ },
+ {
   "id": "f5b15ae0-7851-45d0-89ee-97a85ef9a6cf",
   "name": "Inventure Aktiebolag",
   "type": "Company",
@@ -24,12 +36,6 @@
   "description": "A consulting firm based at 150a Christchurch Avenue, Harrow since 2015."
  },
  {
-  "id": "a8cc5663-ece3-56e3-b332-9e4275260dc0",
-  "name": "INVENTURE",
-  "type": "Company",
-  "description": "A French banking company founded in 2021 and headquartered in Chamonix-Mont-Blanc."
- },
- {
   "id": "9a497f9a-b8d0-4d62-86fe-12aae3e663e3",
   "name": "INVENTURE ECR LTD",
   "type": "Company",
@@ -46,11 +52,5 @@
   "name": "INVENTURE WARWICK ROAD LTD",
   "type": "Company",
   "description": "British retail company founded in 2024 and headquartered in Coventry, England."
- },
- {
-  "id": "742512f9-7387-4b5f-9660-14c160757040",
-  "name": "Inventure, LLC",
-  "type": "Company",
-  "description": "A United States limited liability company (LLC) registered with the SEC (CIK 0001706556)."
  }
 ]
