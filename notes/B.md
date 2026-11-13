@@ -9,6 +9,7 @@ Requests for other areas and "not yet checked against live <service>" lines go h
 ## Pending live checks (rule 12)
 
 - B2: `agent/llm.structured()` not yet checked against live Gemini (no GEMINI_API_KEY yet). Check: one call with a nested contract model as schema.
+- B3: `core/competitors.find_competitors()` not yet checked against live Gemini. Check: Kelluu, Sensofusion, Stendr candidates → sensible picks + reasons, no invented IDs.
 
 ## B6 scoring decision (13 Nov, agreed with human)
 
