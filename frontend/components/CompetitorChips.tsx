@@ -26,7 +26,7 @@ export function CompetitorChips({
 
   return (
     <div>
-      <ul className="flex flex-wrap gap-2">
+      <ul className="relative flex flex-wrap gap-2">
         {kept.map((c) => (
           <Chip key={c.company.id} competitor={c} onRemove={onRemove} disabled={disabled} />
         ))}
@@ -70,7 +70,7 @@ function Chip({
 
   return (
     <li
-      className="group relative"
+      className="group md:relative"
       onMouseLeave={() => setOpen(false)}
       onKeyDown={(e) => e.key === "Escape" && setOpen(false)}
     >
@@ -98,7 +98,7 @@ function Chip({
       <div
         id={tipId}
         role="tooltip"
-        className={`absolute top-full left-0 z-20 mt-2 w-72 border border-foreground bg-background p-4 text-left ${
+        className={`absolute top-full right-0 left-0 z-20 mt-2 border md:right-auto md:w-72 border-foreground bg-background p-4 text-left ${
           open ? "block" : "hidden group-focus-within:block group-hover:block"
         }`}
       >

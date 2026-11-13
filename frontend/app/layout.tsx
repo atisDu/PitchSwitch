@@ -27,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Link href="/" className="text-lg font-semibold tracking-tight">
               <span className="border-b-2 border-accent">Pitch</span>list
             </Link>
-            <span className="label text-muted">Every claim sourced from Cala</span>
+            <span className="label hidden text-muted sm:inline">Every claim sourced from Cala</span>
           </div>
         </header>
         <main className="mx-auto w-full max-w-[1400px] flex-1 px-5 py-12 md:px-10 md:py-20">

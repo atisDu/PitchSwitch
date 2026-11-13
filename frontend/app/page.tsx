@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <section>
       <p className="label text-muted">Fundraising, from either side of the table</p>
-      <h1 className="display mt-5 max-w-4xl text-6xl md:text-8xl">
+      <h1 className="display mt-5 max-w-4xl text-5xl sm:text-6xl md:text-8xl">
         Who&apos;s a fit, and who has a <em>conflict</em>.
       </h1>
       <p className="mt-8 max-w-xl text-lg leading-snug text-muted">
