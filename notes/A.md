@@ -50,3 +50,15 @@ investors exist: id `"<company_id>:backers"`, no `label`, `date` or amount, `is_
 the sources of those links. Both the fake and the real store do this (Stendr has only this one).
 B: count it as "backs the company", not as a dated deal. C: show it as "Investors (round details
 not known)" rather than an empty round row.
+
+## Demo risk: Tesi -> NestAI is not in the graph (A8, 13 Nov)
+
+The planned investor-mode demo ("Tesi backs both Kelluu and NestAI") only half exists in Cala's
+graph: Tesi -> Kelluu is an `INVESTED_IN` link, but Tesi -> NestAI is not (NestAI's only graph
+investor is PostScriptum Ventures). Cala's text answer does say Tesi and Nokia co-led NestAI's
+EUR 100M round. So `portfolio(Tesi)` will not contain NestAI. The Tesi x NestAI check still shows
+a conflict, through Kelluu as NestAI's competitor. To show "Tesi holds NestAI" itself, B has to
+use `sourced_answer()`.
+
+`portfolio()` on the real store is Cala's `INVESTED_IN` links only (one call). Deals that exist
+only as rounds are in `investor_rounds()`.
