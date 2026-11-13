@@ -9,6 +9,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { CompetitorChips } from "@/components/CompetitorChips";
 import { PitchCard, SkipCard } from "@/components/InvestorCard";
+import { SlowNotice } from "@/components/SlowNotice";
 import { SourceBadges } from "@/components/SourceBadge";
 import { analyzeFounder, ApiError } from "@/lib/api";
 import { keptCompetitorIds, prettyEnum } from "@/lib/format";
@@ -91,6 +92,7 @@ export function FounderReportView({ companyId }: { companyId: string }) {
 
   return (
     <div>
+      <title>{`${report.company.name} · Founder report · Pitchlist`}</title>
       <CompanyHeader company={report.company} />
 
       <section className="mt-16 border-t border-line pt-8">
@@ -125,6 +127,7 @@ export function FounderReportView({ companyId }: { companyId: string }) {
             )}
           </div>
         </div>
+        {reranking && <SlowNotice />}
         {rerankError && (
           <p className="mt-4 border-l-2 border-foreground pl-3 text-sm">
             Re-ranking failed: {rerankError}
@@ -240,7 +243,7 @@ function CompanyHeader({ company }: { company: Company }) {
   return (
     <header>
       <p className="label text-muted">Founder report</p>
-      <h1 className="display mt-4 text-6xl md:text-8xl">{company.name}</h1>
+      <h1 className="display mt-4 text-5xl break-words sm:text-6xl md:text-8xl">{company.name}</h1>
       {facts.length > 0 && (
         <p className="label mt-6 flex flex-wrap gap-x-4 gap-y-1 text-muted">
           {facts.map((f) => (
@@ -265,8 +268,9 @@ function LoadingReport() {
       <div className="mt-4 h-20 w-2/3 max-w-xl animate-pulse bg-surface" />
       <p className="mt-8 max-w-xl text-muted">
         Finding your competitors in Cala, then the rounds they raised and the investors behind
-        them. This can take a few seconds.
+        them.
       </p>
+      <SlowNotice />
       <div className="mt-12 flex gap-2">
         {[0, 1, 2, 3].map((i) => (
           <div key={i} className="h-9 w-28 animate-pulse rounded-[5px] bg-surface" />

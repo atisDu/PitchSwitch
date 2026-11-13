@@ -5,6 +5,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 
+import { SlowNotice } from "@/components/SlowNotice";
 import { ApiError, resolve } from "@/lib/api";
 import type { EntityKind, EntityRef } from "@/lib/types";
 
@@ -124,7 +125,12 @@ export function EntityPicker({ kind, label, placeholder, value, onChange, exampl
       )}
 
       <div aria-live="polite">
-        {state.status === "loading" && <p className="mt-3 text-sm text-muted">Searching Cala…</p>}
+        {state.status === "loading" && (
+          <>
+            <p className="mt-3 text-sm text-muted">Searching Cala…</p>
+            <SlowNotice />
+          </>
+        )}
         {state.status === "error" && (
           <p className="mt-3 border-l-2 border-foreground pl-3 text-sm">
             {state.message}{" "}

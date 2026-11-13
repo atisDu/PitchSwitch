@@ -6,6 +6,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { SlowNotice } from "@/components/SlowNotice";
 import { SourceBadges } from "@/components/SourceBadge";
 import { ApiError, checkInvestor } from "@/lib/api";
 import { investorConflictText, marketMap, roundTitle, type MarketEntry } from "@/lib/check";
@@ -50,6 +51,7 @@ export function InvestorCheckView({ investorId, companyId }: { investorId: strin
           Comparing your portfolio with this startup&apos;s competitors in Cala, and pulling who
           backed each of them.
         </p>
+        <SlowNotice />
       </div>
     );
   }
@@ -94,9 +96,10 @@ export function InvestorCheckView({ investorId, companyId }: { investorId: strin
 
   return (
     <div>
+      <title>{`${company.name} × ${investor.name} · Investor check · Pitchlist`}</title>
       <header>
         <p className="label text-muted">Investor check · as {investor.name}</p>
-        <h1 className="display mt-4 text-6xl md:text-8xl">{company.name}</h1>
+        <h1 className="display mt-4 text-5xl break-words sm:text-6xl md:text-8xl">{company.name}</h1>
         {facts.length > 0 && (
           <p className="label mt-6 flex flex-wrap gap-x-4 gap-y-1 text-muted">
             {facts.map((f) => (
