@@ -84,8 +84,9 @@ class AtlasCache:
         document = await self.collection.find_one({"_id": key})
         return json.loads(document["response_json"]) if document else None
 
-    async def set(self, key: str, value: dict) -> None:
-        now = self._clock()
+    async def set(self, key: str, value: dict, *, stored_at: float | None = None) -> None:
+        """Store a response. `stored_at` (default: now) lets a copy keep its original age."""
+        now = self._clock() if stored_at is None else stored_at
         await self.collection.replace_one(
             {"_id": key},
             {
@@ -97,6 +98,11 @@ class AtlasCache:
             },
             upsert=True,
         )
+
+    async def stored_at(self, key: str) -> float | None:
+        """When this request's response was stored, or None if it isn't cached."""
+        document = await self.collection.find_one({"_id": key})
+        return document.get("stored_at") if document else None
 
     # --- Housekeeping --------------------------------------------------------------------------
 
