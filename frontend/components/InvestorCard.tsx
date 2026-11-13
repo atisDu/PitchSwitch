@@ -1,8 +1,11 @@
 // Investor cards for the founder report (C6). Pitch cards lead with fit; Skip
 // cards lead with the conflict, because that is the reason they are there.
 
+import Link from "next/link";
+
 import { SourceBadges } from "@/components/SourceBadge";
 import { activitySummary, conflictText, leadSummary } from "@/lib/investor";
+import { checkPath } from "@/lib/routes";
 import type { InvestorScore, Reason } from "@/lib/types";
 
 const VISIBLE_REASONS = 3;
@@ -24,7 +27,7 @@ export function PitchCard({ item, rank }: { item: InvestorScore; rank: number })
   );
 }
 
-export function SkipCard({ item }: { item: InvestorScore }) {
+export function SkipCard({ item, companyId }: { item: InvestorScore; companyId: string }) {
   return (
     <article className="border-t border-line py-6">
       <div className="border-l-4 border-press pl-4 md:pl-6">
@@ -44,6 +47,12 @@ export function SkipCard({ item }: { item: InvestorScore }) {
             </li>
           ))}
         </ul>
+        <Link
+          href={checkPath(item.investor.id, companyId)}
+          className="mt-3 inline-block text-sm underline underline-offset-4"
+        >
+          Flip: see this from {item.investor.name}&apos;s side
+        </Link>
         <details className="group mt-4">
           <summary className="label cursor-pointer list-none text-muted hover:text-foreground [&::-webkit-details-marker]:hidden">
             <span className="group-open:hidden">+ Other signals · fit {Math.round(item.score)}/100</span>

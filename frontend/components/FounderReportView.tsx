@@ -193,7 +193,7 @@ export function FounderReportView({ companyId }: { companyId: string }) {
             <ul className="mt-6">
               {report.skip.map((s) => (
                 <li key={s.investor.id}>
-                  <SkipCard item={s} />
+                  <SkipCard item={s} companyId={report.company.id} />
                 </li>
               ))}
             </ul>
