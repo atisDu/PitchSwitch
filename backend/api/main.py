@@ -29,7 +29,7 @@ from contracts.schemas import (
     FounderReport,
     InvestorCheck,
 )
-from core.competitors import find_competitors
+from core.competitors import Judgement, judge
 from core.conflict import check_conflict
 from core.scoring import rank_investors
 from data import NotFound, Upstream, get_store
@@ -141,38 +141,41 @@ async def resolve(body: ResolveBody) -> list[EntityRef]:
     return await get_store().resolve(body.name, body.kind)
 
 
-# ponytail: per-process memo of judged competitors (saves a Gemini call per repeat and keeps the
-# reasons when the frontend sends competitor_ids). Unbounded; fine for a demo-sized set.
-_competitors: dict[str, list[Competitor]] = {}
+# ponytail: per-process memo of judgements (saves a Gemini call per repeat and keeps the reasons
+# when the frontend sends competitor_ids). Unbounded; fine for a demo-sized set.
+_judgements: dict[str, Judgement] = {}
 
 
-async def _judged(company: Company) -> list[Competitor]:
-    if company.id not in _competitors:
-        _competitors[company.id] = await find_competitors(company)
-    return _competitors[company.id]
+async def _judged(company: Company) -> Judgement:
+    if company.id not in _judgements:
+        _judgements[company.id] = await judge(company)
+    return _judgements[company.id]
 
 
-async def _chosen(company: Company, ids: list[str]) -> list[Competitor]:
-    """Exactly the competitors the user kept, with the earlier reason when we judged them."""
-    known = {c.company.id: c for c in _competitors.get(company.id, [])}
-    store = get_store()
+async def _chosen(company: Company, ids: list[str], judged: Judgement) -> list[Competitor]:
+    """Exactly the competitors the user kept, with the judge's reason where it gave one."""
+    known = {c.company.id: c for c in judged.direct}
+    space = {c.id: c for c in judged.space}
     out = []
     for i in dict.fromkeys(ids):
         if i in known:
             out.append(known[i])
         elif i != company.id:
-            out.append(Competitor(company=await store.company(i), reason="Chosen by you"))
+            other = space.get(i) or await get_store().company(i)
+            out.append(Competitor(company=other, reason="Chosen by you"))
     return out
 
 
 @app.post("/api/founder/analyze")
 async def founder_analyze(body: FounderBody) -> FounderReport:
     company = await get_store().company(body.company_id)
+    judged = await _judged(company)
     if body.competitor_ids is None:
-        competitors = await _judged(company)
+        competitors = judged.direct
     else:
-        competitors = await _chosen(company, body.competitor_ids)
-    return await rank_investors(company, competitors)
+        competitors = await _chosen(company, body.competitor_ids, judged)
+    space = [*(c.company for c in judged.direct), *judged.space]  # a removed rival stays in space
+    return await rank_investors(company, competitors, space)
 
 
 @app.post("/api/investor/check")
@@ -181,7 +184,7 @@ async def investor_check(body: PairBody) -> InvestorCheck:
     investor, company = await asyncio.gather(
         store.company(body.investor_id), store.company(body.company_id)
     )
-    competitors = await _judged(company)
+    competitors = (await _judged(company)).direct
     conflicts, *round_lists = await asyncio.gather(
         check_conflict(investor.id, competitors),
         *(store.rounds(i) for i in [company.id, *(c.company.id for c in competitors)]),

@@ -14,6 +14,7 @@ from contracts.schemas import (
     FounderReport,
     InvestorCheck,
 )
+from core.competitors import Judgement
 from data import get_store
 
 KELLUU = "78d7490a-dd04-5119-a7f1-e940b861219b"
@@ -21,6 +22,7 @@ SENSOFUSION_ALIAS = "5c699806-0fea-4e62-a594-717d4d85516c"
 MAKI = "415bc278-6ed1-4973-a684-07a8b8c5d855"
 STENDR = "3afdc63c-b992-4b25-b69d-807ab346352d"
 SENSOFUSION = "202e9283-6455-486f-8868-03c7e0d0cf29"
+NESTAI = "14359613-a45f-4804-892d-3b9dd9e927a9"
 NIF = "2ca07622-990d-40bf-a4fe-36434d43d6db"
 RIVALS = {STENDR: [KELLUU, SENSOFUSION], SENSOFUSION: [STENDR, KELLUU]}
 
@@ -30,14 +32,16 @@ def judged(monkeypatch):
     """Fake Gemini judge: fixed rivals per company; records which companies it was asked about."""
     calls = []
 
-    async def fake_find(company):
+    async def fake_judge(company):
         calls.append(company.id)
         store = get_store()
         ids = RIVALS.get(company.id, [])
-        return [Competitor(company=await store.company(i), reason=f"judged {i}") for i in ids]
+        direct = [Competitor(company=await store.company(i), reason=f"judged {i}") for i in ids]
+        space = [c for c in await store.candidate_competitors(company) if c.id not in ids]
+        return Judgement(direct=direct, space=space)
 
-    monkeypatch.setattr(api, "find_competitors", fake_find)
-    monkeypatch.setattr(api, "_competitors", {})
+    monkeypatch.setattr(api, "judge", fake_judge)
+    monkeypatch.setattr(api, "_judgements", {})
     return calls
 
 
@@ -93,9 +97,10 @@ def test_founder_report_with_competitor_ids(client, judged):
     assert NIF not in {s.investor.id for s in report.skip}  # Kelluu removed -> no NIF conflict
     assert judged == [STENDR]
 
-    fresh = {"company_id": SENSOFUSION, "competitor_ids": [KELLUU]}
+    fresh = {"company_id": SENSOFUSION, "competitor_ids": [KELLUU, NESTAI]}
     report = FounderReport.model_validate(client.post("/api/founder/analyze", json=fresh).json())
-    assert report.competitors[0].reason == "Chosen by you" and judged == [STENDR]
+    assert [c.reason for c in report.competitors] == [f"judged {KELLUU}", "Chosen by you"]
+    assert judged == [STENDR, SENSOFUSION]  # not judged yet -> judged once, for the reasons
 
 
 def test_investor_check(client):
@@ -116,7 +121,7 @@ def test_gemini_unavailable_is_503(client, monkeypatch):
     async def down(company):
         raise LLMError("GEMINI_API_KEY is not set in .env")
 
-    monkeypatch.setattr(api, "find_competitors", down)
+    monkeypatch.setattr(api, "judge", down)
     r = client.post("/api/founder/analyze", json={"company_id": STENDR})
     assert r.status_code == 503 and "GEMINI_API_KEY" in r.json()["error"]
 

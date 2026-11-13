@@ -6,6 +6,7 @@ import pytest
 
 import core.scoring as scoring
 from contracts.schemas import Competitor
+from core.competitors import Judgement
 from core.scoring import CAPS, WEIGHTS, parse_date, rank_investors
 from data import get_store
 
@@ -27,8 +28,11 @@ def store(monkeypatch):
 
 
 async def report(store, company_id, *rival_ids):
+    """Rivals as given; the whole fixture candidate list as the market space."""
+    company = await store.company(company_id)
     rivals = [Competitor(company=await store.company(i), reason="test") for i in rival_ids]
-    return await rank_investors(await store.company(company_id), rivals, today=TODAY)
+    space = await store.candidate_competitors(company)
+    return await rank_investors(company, rivals, space, today=TODAY)
 
 
 def test_weights_add_up_to_100():
@@ -102,13 +106,24 @@ async def test_round_without_portfolio_edge_still_conflicts(store, monkeypatch):
     assert nif.conflicts[0].sources == kelluu_round.sources
 
 
-async def test_finds_competitors_when_not_given(store, monkeypatch):
+async def test_asks_the_judge_when_not_given(store, monkeypatch):
     called = {}
 
-    async def fake_find(company):
+    async def fake_judge(company):
         called["id"] = company.id
-        return []
+        return Judgement(direct=[], space=[])
 
-    monkeypatch.setattr(scoring, "find_competitors", fake_find)
+    monkeypatch.setattr(scoring, "judge", fake_judge)
     r = await rank_investors(await store.company(STENDR), today=TODAY)
     assert called["id"] == STENDR and r.competitors == [] and r.skip == []
+
+
+async def test_unrelated_candidates_do_not_feed_pitch(store):
+    """Only the judged market space counts: without Aavuus/Metaktik in it, Maki.vc's pre-seed
+    leads there are not counted (it may still show up as a co-investor of Stendr's backers)."""
+    company = await store.company(STENDR)
+    rivals = [Competitor(company=await store.company(KELLUU), reason="test")]
+    narrow = await rank_investors(company, rivals, [], today=TODAY)
+    maki = [s for s in narrow.pitch if s.investor.id == MAKI]
+    assert all(s.rounds_in_space == 0 and s.leads_in_space == 0 for s in maki)
+    assert NIF in {s.investor.id for s in narrow.skip}

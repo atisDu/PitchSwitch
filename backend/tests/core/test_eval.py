@@ -42,8 +42,11 @@ def store():
 
 
 async def founder(store, company_id: str, *rivals: str) -> FounderReport:
+    """Rivals fixed per case; the market space = the store's candidates (judge not involved)."""
+    company = await store.company(company_id)
     competitors = [Competitor(company=await store.company(i), reason="eval") for i in rivals]
-    return await rank_investors(await store.company(company_id), competitors, today=TODAY)
+    space = await store.candidate_competitors(company)
+    return await rank_investors(company, competitors, space, today=TODAY)
 
 
 def by_id(report: FounderReport):

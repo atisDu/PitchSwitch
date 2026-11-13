@@ -1,4 +1,4 @@
-"""find_competitors on the fake store with a scripted Gemini judge."""
+"""judge / find_competitors on the fake store with a scripted Gemini judge."""
 
 import pytest
 
@@ -16,15 +16,16 @@ def store(monkeypatch):
     get_store.cache_clear()
 
 
-def judge(picks):
-    """Fake `structured`: records the prompt, answers with `picks(candidate_ids)`."""
+def judge(picks, space=lambda ids: []):
+    """Fake `structured`: records the prompt, answers picks(ids) / space(ids) of candidates."""
     seen = {}
 
     async def fake(prompt, schema, **kw):
         seen["prompt"] = prompt
         ids = [line.split("id=")[1].split(" |")[0] for line in prompt.splitlines() if "id=" in line]
         seen["ids"] = ids
-        return schema.model_validate({"competitors": picks(ids[1:])})  # ids[0] = the startup
+        cands = ids[1:]  # ids[0] = the startup
+        return schema.model_validate({"competitors": picks(cands), "same_space": space(cands)})
 
     return fake, seen
 
@@ -72,3 +73,18 @@ async def test_no_candidates_skips_gemini(store, monkeypatch):
 
     monkeypatch.setattr(competitors, "structured", boom)
     assert await competitors.find_competitors(company) == []
+
+
+async def test_same_space_excludes_direct_unknown_and_repeats(store, monkeypatch):
+    company = await store.company(KELLUU)
+    fake, seen = judge(
+        lambda ids: [{"id": ids[0], "reason": "direct"}],
+        lambda ids: [ids[0], ids[1], "made-up-id", ids[1], ids[2]],
+    )
+    monkeypatch.setattr(competitors, "structured", fake)
+
+    out = await competitors.judge(company)
+
+    cands = seen["ids"][1:]
+    assert [c.company.id for c in out.direct] == [cands[0]]
+    assert [c.id for c in out.space] == [cands[1], cands[2]]

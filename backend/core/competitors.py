@@ -1,4 +1,5 @@
-"""find_competitors (B3): the store's candidates, judged by Gemini down to the direct competitors.
+"""judge / find_competitors (B3): the store's candidates, sorted by Gemini into direct competitors
+(Skip side) and same-space companies (their investors are the Pitch pool); the rest is unrelated.
 
 Gemini only picks among candidate IDs and writes a one-line reason; any ID it invents is dropped.
 """
@@ -23,7 +24,11 @@ The descriptions come from a database and are often thin: combine them with what
 know about these named companies. Do not guess about companies you do not know.
 Return the direct competitors, most direct first, at most 15; return none if none qualify. Use \
 only IDs from the candidate list, copied exactly. Each reason is one short sentence naming the \
-overlap; no numbers, dates, funding or investor names."""
+overlap; no numbers, dates, funding or investor names.
+Separately, list in same_space the IDs of the other candidates that work in the same market \
+space without being direct competitors (adjacent products for the same customers, e.g. other \
+drone or defence hardware for a counter-drone startup): investors who back them are likely to \
+back the startup. Leave unrelated companies out of both lists."""
 
 
 class _Pick(BaseModel):
@@ -33,6 +38,12 @@ class _Pick(BaseModel):
 
 class _Judgement(BaseModel):
     competitors: list[_Pick]
+    same_space: list[str]
+
+
+class Judgement(BaseModel):
+    direct: list[Competitor]  # Skip side: backing one of these is a conflict
+    space: list[Company]  # same market, not direct: their backers form the Pitch pool
 
 
 def _line(c: Company) -> str:
@@ -47,12 +58,12 @@ def _line(c: Company) -> str:
     )
 
 
-async def find_competitors(company: Company, k: int = 30) -> list[Competitor]:
+async def judge(company: Company, k: int = 30) -> Judgement:
     candidates = [
         c for c in await get_store().candidate_competitors(company, k) if c.id != company.id
     ]
     if not candidates:
-        return []
+        return Judgement(direct=[], space=[])
     by_id = {c.id: c for c in candidates}
     prompt = (
         f"Startup:\n{_line(company)}\n\n"
@@ -60,9 +71,14 @@ async def find_competitors(company: Company, k: int = 30) -> list[Competitor]:
     )
     judged = await structured(prompt, _Judgement, system=SYSTEM, tier="smart")
 
-    out: list[Competitor] = []
+    direct: list[Competitor] = []
     for pick in judged.competitors:
         c = by_id.pop(pick.id.strip(), None)  # pop: unknown and repeated IDs are both dropped
         if c is not None:
-            out.append(Competitor(company=c, reason=pick.reason.strip()))
-    return out[:MAX_COMPETITORS]
+            direct.append(Competitor(company=c, reason=pick.reason.strip()))
+    space = [c for i in judged.same_space if (c := by_id.pop(i.strip(), None))]
+    return Judgement(direct=direct[:MAX_COMPETITORS], space=space)
+
+
+async def find_competitors(company: Company, k: int = 30) -> list[Competitor]:
+    return (await judge(company, k)).direct

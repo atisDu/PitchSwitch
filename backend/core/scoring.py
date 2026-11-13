@@ -2,8 +2,9 @@
 
 Split (notes/B.md, agreed 13 Nov):
 - Skip  = investors with a PORTFOLIO or BOARD conflict with a *direct* competitor.
-- Pitch = investors in rounds of the space (direct competitors + the other, merely similar,
-  candidates) ∪ co-investors of the company's current investors, minus Skip.
+- Pitch = investors in rounds of the space (direct competitors + the candidates the judge put in
+  the same market space) ∪ co-investors of the company's current investors, minus Skip.
+  Unrelated candidates are ignored (they made Stendr's live Pitch list 49 SaaS funds).
 - The company's current investors are left out of both lists.
 """
 
@@ -23,7 +24,7 @@ from contracts.schemas import (
     Reason,
     Round,
 )
-from core.competitors import find_competitors
+from core.competitors import judge
 from core.conflict import check_conflict, merge_sources, ref_of
 from data import get_store
 
@@ -31,6 +32,8 @@ from data import get_store
 WEIGHTS = {"leads_in_space": 35, "rounds_in_space": 20, "recency": 25, "warm_paths": 20}
 CAPS = {"leads_in_space": 2, "rounds_in_space": 3, "warm_paths": 2}
 RECENT_MONTHS, STALE_MONTHS = 12, 36  # last lead within 12 mo = full recency, 36+ = none
+# Recency only counts with >= 1 round in the space, else a busy unrelated co-investor (live:
+# a Czech real-estate fund for Kelluu) outranks funds that actually invested in the space.
 NO_LEAD_RECENCY = 0.5  # no known lead: last round of any kind counts half
 # ponytail: caps the pool so the real store stays within Cala's rate limit; raise with the cache.
 MAX_CO_INVESTORS = 20
@@ -68,19 +71,22 @@ def _plural(n: int, word: str) -> str:
 
 
 async def rank_investors(
-    company: Company, competitors: list[Competitor] | None = None, *, today: date | None = None
+    company: Company,
+    competitors: list[Competitor] | None = None,
+    space: list[Company] | None = None,
+    *,
+    today: date | None = None,
 ) -> FounderReport:
-    """Rank investors for `company`. `competitors` given = skip discovery (API competitor_ids)."""
+    """Rank investors for `company` against direct `competitors` within the market `space`.
+    Either one missing = ask the judge (the API passes both, from its memo / competitor_ids)."""
     store = get_store()
     today = today or date.today()
-    if competitors is None:
-        competitors = await find_competitors(company)
+    if competitors is None or space is None:
+        judged = await judge(company)
+        competitors = judged.direct if competitors is None else competitors
+        space = [*(c.company for c in judged.direct), *judged.space] if space is None else space
     direct = {c.company.id for c in competitors}
-    others = [
-        c
-        for c in await store.candidate_competitors(company)
-        if c.id not in direct and c.id != company.id
-    ]
+    others = list({c.id: c for c in space if c.id not in direct and c.id != company.id}.values())
     names = {c.company.id: c.company.name for c in competitors} | {c.id: c.name for c in others}
 
     space_rounds, own_rounds = await asyncio.gather(
@@ -189,7 +195,9 @@ def _score(
     deals_12m = len(recent) if history else None
 
     recency = (
-        _recency(last_lead[0], today)
+        0.0  # recency means "active in your space": a co-investor-only fund gets no points for it
+        if not rounds
+        else _recency(last_lead[0], today)
         if last_lead
         else NO_LEAD_RECENCY * _recency(dated[0][0] if dated else None, today)
     )
