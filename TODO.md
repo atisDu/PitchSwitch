@@ -48,7 +48,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 ## B — Intelligence
 
 ### CP1–CP2 — Friday night & Saturday (on FakeDataStore)
-- [ ] **B1 API skeleton** — `api/main.py`: FastAPI app, CORS, `/api/health`, all routes from §5.3 returning fixture-based stub responses validated by the models. Needs: T2, A2.
+- [x] **B1 API skeleton** — `api/main.py`: FastAPI app, CORS, `/api/health`, all routes from §5.3 returning fixture-based stub responses validated by the models. Needs: T2, A2.
 - [x] **B2 Gemini wrapper** — `agent/llm.py`: one function for structured (JSON-schema) calls with retries + temperature 0; model names from env. Tests with a mocked client. Needs: T1.
 - [ ] **B3 find_competitors** — `core/competitors.py`: candidates → Gemini judge → 10–15 `Competitor`s; reject IDs not in the candidate list. Needs: A2, B2.
 - [ ] **B4 Conflict: portfolio** — `core/conflict.py` PORTFOLIO kind + tests on fixtures. Needs: A2.
