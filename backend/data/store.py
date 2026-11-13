@@ -25,6 +25,7 @@ from contracts.schemas import (
     RoundInvestor,
 )
 from data.cala_client import CalaClient, MemoryCache
+from data.config import env, env_flag, load_env
 from data.errors import NotFound
 from data.introspection import fields_for
 from data.mappers import (
@@ -145,9 +146,22 @@ def _same_firm(a: EntityRef, b: EntityRef) -> bool:
     return here is None or there is None or here == there
 
 
+def default_client() -> CalaClient:
+    """The Cala client for this environment: cached in MongoDB Atlas when MONGODB_URI is set,
+    else in memory; with CACHE_ONLY=true it answers from the cache and never calls Cala."""
+    load_env()
+    if env("MONGODB_URI"):
+        from cache.atlas import AtlasCache
+
+        cache = AtlasCache.from_env()
+    else:
+        cache = MemoryCache()
+    return CalaClient.from_env(cache=cache, cache_only=env_flag("CACHE_ONLY"))
+
+
 class CalaDataStore:
     def __init__(self, client: CalaClient | None = None) -> None:
-        self.cala = client or CalaClient.from_env(cache=MemoryCache())
+        self.cala = client or default_client()
         self._aliases: dict[str, str] = {}  # other entry of a firm -> its main entry
         self._siblings: dict[str, list[str]] = {}  # main entry -> its other entries
 

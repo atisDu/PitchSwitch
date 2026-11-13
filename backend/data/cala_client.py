@@ -205,11 +205,10 @@ class CalaClient:
         endpoint = f"{method} {_UUID.sub('{id}', path)}"
         started = self._clock()
 
-        if self.cache is not None:
-            cached = await self.cache.get(key)
-            if cached is not None:
-                self._record(endpoint, 200, started, cache_hit=True, attempts=0)
-                return cached
+        cached = await self._cache_get(key, allow_stale=self.cache_only)
+        if cached is not None:
+            self._record(endpoint, 200, started, cache_hit=True, attempts=0)
+            return cached
         if self.cache_only:
             raise CacheOnlyMiss(f"CACHE_ONLY is on and {endpoint} is not cached")
 
@@ -220,9 +219,17 @@ class CalaClient:
         future: asyncio.Future = asyncio.get_running_loop().create_future()
         self._in_flight[key] = future
         try:
-            response = await self._fetch(method, path, params, body, endpoint, started)
-            if self.cache is not None:
-                await self.cache.set(key, response)
+            try:
+                response = await self._fetch(method, path, params, body, endpoint, started)
+            except CalaError:
+                # Cala is down or rate-limiting us: an old answer beats no answer.
+                response = await self._cache_get(key, allow_stale=True)
+                if response is None:
+                    raise
+                log.warning("cala %s failed; serving the expired cached answer", endpoint)
+                self._record(endpoint, 200, started, cache_hit=True, attempts=0)
+            else:
+                await self._cache_set(key, response)
             future.set_result(response)
             return response
         except BaseException as exc:
@@ -231,6 +238,30 @@ class CalaClient:
             raise
         finally:
             del self._in_flight[key]
+
+    async def _cache_get(self, key: str, *, allow_stale: bool) -> dict | None:
+        """Read the cache. A broken cache is logged and treated as a miss (unless CACHE_ONLY)."""
+        if self.cache is None:
+            return None
+        try:
+            found = await self.cache.get(key)
+            stale = getattr(self.cache, "get_stale", None)
+            if found is None and allow_stale and stale is not None:
+                found = await stale(key)
+            return found
+        except Exception as exc:
+            if self.cache_only:
+                raise
+            log.warning("cache read failed, calling Cala instead: %r", exc)
+            return None
+
+    async def _cache_set(self, key: str, value: dict) -> None:
+        if self.cache is None:
+            return
+        try:
+            await self.cache.set(key, value)
+        except Exception as exc:
+            log.warning("cache write failed, continuing without it: %r", exc)
 
     async def _fetch(
         self,
