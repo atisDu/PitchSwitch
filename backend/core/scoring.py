@@ -90,6 +90,8 @@ async def rank_investors(
 
     def label(rd: Round) -> str:
         what = f"{names.get(rd.company_id, 'a company')} {rd.label or 'round'}"
+        if not rd.label and not rd.date:  # A7: backers with no round details
+            return f"{names.get(rd.company_id, 'a company')} (round unknown)"
         return f"{what} ({rd.date})" if rd.date else what
 
     # The pool: everyone in a space round, plus the top co-investors of current investors.
