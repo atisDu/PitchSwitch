@@ -13,7 +13,7 @@ Several people, each with their own coding agent, work in this repo at once. **T
 
 This repo uses [Entire](https://docs.entire.io). Git hooks attach each agent session to a commit as a **checkpoint** (stored in git refs, synced to `origin` on push). That lets everyone see why code exists and what other agents already tried.
 
-- Install the CLI and run `entire agent add <your-agent>` once per clone. `entire status` should show your agent as enabled. Without this, your sessions won't be recorded.
+- **Set this up once per clone:** `entire enable --agent <claude-code|codex|cursor|...>`. Git hooks are not cloned, so `entire status` shows "Enabled" even when nothing is being recorded. Check that `.git/hooks/post-commit` exists. If it doesn't, commits won't create checkpoints.
 - For exact commands and flags, run `entire agent-help`; don't guess.
 - **Before starting work**, see what others did: `entire checkpoint list`, `entire recap`, and `entire search "<topic>"`.
 - **Before changing code you didn't write**, run `entire why <file>:<line>` or `entire checkpoint explain <sha>`.
