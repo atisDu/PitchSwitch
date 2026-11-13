@@ -1,14 +1,15 @@
 "use client";
 
 // Shown under a loading state once it has taken a while. Uncached Cala queries
-// take 20–80 s (notes/A.md), so a silent spinner would look broken.
+// take 20–80 s each (notes/A.md) and a cold founder report can need hundreds of
+// them (notes/B.md), so a silent spinner would look broken.
 
 import { useEffect, useState } from "react";
 
 const STAGES: { after: number; text: string }[] = [
-  { after: 8, text: "Still working. Fresh Cala lookups can take up to a minute; cached ones are instant." },
-  { after: 45, text: "Almost there. This company isn't cached yet, so every lookup goes to Cala." },
-  { after: 90, text: "This is taking unusually long. You can wait, or go back and try again." },
+  { after: 8, text: "Still working. Cached companies load in seconds; a company we haven't seen before needs fresh Cala lookups." },
+  { after: 45, text: "This company isn't cached yet, so every lookup goes to Cala. The first run can take several minutes; after that it's instant." },
+  { after: 300, text: "Still going: this is a big one. Keep this tab open and it will appear when ready." },
 ];
 
 export function SlowNotice() {
