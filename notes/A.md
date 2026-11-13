@@ -69,3 +69,24 @@ only as rounds are in `investor_rounds()`.
   its tests on a fake collection and on a local MongoDB 127.0.0.1 instance
   (`MONGODB_TEST_URI=mongodb://... pytest backend/tests/cache`). To do when the URI arrives:
   run that test with the Atlas URI, then one real `get_store()` call with `USE_FAKE_STORE=false`.
+
+## G2: the real store works (A12, 13 Nov)
+
+`USE_FAKE_STORE=false` makes `get_store()` return `CalaDataStore` (live Cala). Checked end to end
+on Kelluu: resolve, company, 24 candidates, rounds of Kelluu and four candidates, an investor's
+portfolio / rounds / people, and a sourced answer. All valid contract models, lead flags and
+sources intact.
+
+- **Try it:** `python -m data.smoke Kelluu --real` (add `--verbose` to see every Cala call).
+- **Speed:** the first run for a company took 135 s for 22 Cala calls (the limit is about 10 a
+  minute). The same run again took 0 s and made no calls: every response is cached for 24 h, in
+  MongoDB Atlas when `MONGODB_URI` is set, else in `.cache/cala/` on your machine.
+  So **warm a company once before you need it fast** (`python -m data.smoke <name> --real`).
+- **When Cala fails or rate-limits**, an expired cached answer is served instead of an error.
+  With `CACHE_ONLY=true` nothing calls Cala at all; an uncached request raises `data.Upstream`.
+- **Still empty on the real store:** `co_investors()` returns `[]` until the batch job (A15).
+- **IDs:** the real store folds a firm's two Cala entries together only after `resolve()` saw
+  them in this process. Use the ID that `resolve()` returns first.
+- **Differences from the fake store:** real `portfolio()` is Cala's `INVESTED_IN` links only; the
+  fixtures also added links seen in recorded rounds. Real candidates for Kelluu are 24, not 9
+  (Estonia and others answer too).
