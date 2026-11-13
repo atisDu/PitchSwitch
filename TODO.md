@@ -80,7 +80,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [x] **C2 Mock API** — `frontend/mock/` serving the §5.3 routes from `contracts/fixtures/models/` (incl. a fake SSE stream). Needs: A2, C1.
 
 ### CP2–CP3 — Saturday
-- [ ] **C3 Home + resolve** — mode toggle, input, `/api/resolve`, entity confirm list (name, type, description). Needs: C2.
+- [x] **C3 Home + resolve** — mode toggle, input, `/api/resolve`, entity confirm list (name, type, description). Needs: C2.
 - [x] **C4 Source badge component** — rank label + date + link; used everywhere. Needs: C1.
 - [ ] **C5 Founder report: competitors** — removable competitor chips with reason tooltips. Needs: C3.
 - [ ] **C6 Founder report: Pitch + Skip lists** — investor cards (score, leads in space, last lead, warm paths, reasons with badges); Skip list shows the conflict first. Needs: C5, C4.
