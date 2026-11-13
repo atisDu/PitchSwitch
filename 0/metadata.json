@@ -1,0 +1,50 @@
+{
+  "cli_version": "0.13.3",
+  "checkpoint_id": "01M7BB8J7G6PW6M1Y4ZGJYZN4H",
+  "session_id": "aea3e465-1f6a-4e6b-91c5-7fed27b8370c",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-13T20:58:24.170964844Z",
+  "branch": "b/B4-conflict-portfolio",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "backend/core/conflict.py",
+    "backend/tests/core/test_conflict.py"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-5-5",
+  "turn_id": "81b12e57368e",
+  "checkpoint_transcript_start": 247,
+  "transcript_lines_at_start": 247,
+  "compact_transcript_start": 21,
+  "token_usage": {
+    "input_tokens": 14,
+    "cache_creation_tokens": 6507,
+    "cache_read_tokens": 560375,
+    "output_tokens": 4052,
+    "api_call_count": 6
+  },
+  "session_token_usage": {
+    "input_tokens": 50,
+    "cache_creation_tokens": 77767,
+    "cache_read_tokens": 1790871,
+    "output_tokens": 17079,
+    "api_call_count": 23
+  },
+  "redaction": {
+    "replacements": 3,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 2,
+      "credentialed_uri": 0,
+      "entropy": 1,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 2
+  }
+}
