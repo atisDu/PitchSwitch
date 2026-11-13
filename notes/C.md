@@ -4,6 +4,10 @@ Requests for other areas and "not yet checked against live <service>" lines go h
 
 ## Contract 1.2.0 proposal (`DataStore.backers`, from B) — C's review, 13 Nov
 
+> **Superseded:** the proposal was dropped. Since A7, `rounds()` returns one undated `Round` holding a
+> company's backers when Cala has no round details, so no contract change is needed (see `notes/B.md`).
+> Contract stays 1.1.0. Kept below for the record.
+
 **C approves.** REST routes and response models don't change, so the frontend and mock need no
 code changes; once A rebuilds the `founder_report_*` samples, Sensofusion's Skip list should show
 Stendr's backers (Rainfall, Skyfall, Startuplab).
