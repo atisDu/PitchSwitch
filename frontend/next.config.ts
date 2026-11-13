@@ -15,6 +15,11 @@ process.env.API_URL = API_URL;
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
+  experimental: {
+    // The /api/* rewrite gives up after 30 s by default. A cold founder report can take
+    // many minutes (notes/B.md: Stendr cold = 213 Cala calls, 21 min), so allow 30 min.
+    proxyTimeout: 30 * 60 * 1000,
+  },
   partialPrefetching: true,
   turbopack: {
     rules: {
