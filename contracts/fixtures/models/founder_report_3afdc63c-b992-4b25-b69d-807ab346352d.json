@@ -1,0 +1,1410 @@
+{
+ "company": {
+  "id": "3afdc63c-b992-4b25-b69d-807ab346352d",
+  "name": "Stendr",
+  "type": "Company",
+  "description": "Norwegian defence technology company developing AI-native multi-sensor platform for drone defence.",
+  "industries": [
+   "SOFTWARE_AND_SERVICES",
+   "AEROSPACE_AND_DEFENSE",
+   "HARDWARE_AND_EQUIPMENT"
+  ],
+  "stage": "Pre-Seed",
+  "country": "Norway",
+  "total_funding_text": "~$5.4M (Pre-Seed, April 2026)",
+  "sources": [
+   {
+    "name": "www.finsmes.com",
+    "url": "https://www.finsmes.com/2026/04/stendr-raises-5-4m-in-pre-seed-funding.html",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Stendr raises $5.4M in oversubscribed pre-seed round to build the Nordics'next defence prime",
+    "url": "https://stendr.com/news/stendr-pre-seed-announcement",
+    "date": "2026-04-15",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/investor/57005-74",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ "competitors": [
+  {
+   "company": {
+    "id": "202e9283-6455-486f-8868-03c7e0d0cf29",
+    "name": "Sensofusion Oy",
+    "type": "Organization",
+    "description": "Finnish defense technology company founded in 2014 and based in Vantaa.",
+    "industries": [],
+    "stage": null,
+    "country": "Finland",
+    "total_funding_text": null,
+    "sources": [
+     {
+      "name": "Cala AI",
+      "url": null,
+      "date": "2026-08-20",
+      "rank": "UNKNOWN"
+     },
+     {
+      "name": "GLEIF",
+      "url": "https://search.gleif.org/#/record/7437000UYRI2YZJTC459",
+      "date": "2026-09-25",
+      "rank": "UNKNOWN"
+     }
+    ]
+   },
+   "reason": "Same segment: counter-drone.",
+   "similarity": 0.0
+  },
+  {
+   "company": {
+    "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+    "name": "Kelluu Oy",
+    "type": "Company",
+    "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and...",
+    "industries": [
+     "AEROSPACE_AND_DEFENSE"
+    ],
+    "stage": "Series A",
+    "country": "Finland",
+    "total_funding_text": "€15.3M",
+    "sources": [
+     {
+      "name": "kelluu.com",
+      "url": "https://kelluu.com/",
+      "date": "2026-11-12",
+      "rank": "PRIMARY"
+     },
+     {
+      "name": "nif.fund",
+      "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+      "date": "2026-04-14",
+      "rank": "PRIMARY"
+     },
+     {
+      "name": "kelluu.com",
+      "url": "https://kelluu.com/news",
+      "date": "2026-04-14",
+      "rank": "PRIMARY"
+     },
+     {
+      "name": "tech.eu",
+      "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+      "date": "2026-04-14",
+      "rank": "PRESS"
+     },
+     {
+      "name": "cordis.europa.eu",
+      "url": "https://cordis.europa.eu/project/id/101157488",
+      "date": "2026-11-12",
+      "rank": "FILING"
+     },
+     {
+      "name": "linkedin.com",
+      "url": "https://www.linkedin.com/company/kelluuairships/",
+      "date": "2026-11-02",
+      "rank": "AGGREGATOR"
+     },
+     {
+      "name": "Cala AI",
+      "url": null,
+      "date": "2026-07-30",
+      "rank": "UNKNOWN"
+     }
+    ]
+   },
+   "reason": "Defence technology company in Finland at a similar stage.",
+   "similarity": 0.04
+  },
+  {
+   "company": {
+    "id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+    "name": "Aavuus",
+    "type": "Company",
+    "description": "A Finnish aerospace and defense company headquartered in Espoo, founded in 2024.",
+    "industries": [
+     "AEROSPACE_AND_DEFENSE"
+    ],
+    "stage": "Pre-Seed",
+    "country": "Finland",
+    "total_funding_text": "Raised Seed round (Jun 2026), investor: Maki.vc",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "url": null,
+      "date": "2026-11-13",
+      "rank": "UNKNOWN"
+     },
+     {
+      "name": "aavuus.com",
+      "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+      "date": "2026-06-09",
+      "rank": "PRIMARY"
+     },
+     {
+      "name": "tech.eu",
+      "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+      "date": "2026-06-09",
+      "rank": "PRESS"
+     },
+     {
+      "name": "linkedin.com",
+      "url": "https://www.linkedin.com/company/aavuus",
+      "date": "2026-11-02",
+      "rank": "AGGREGATOR"
+     },
+     {
+      "name": "aavuus.com",
+      "url": "https://aavuus.com/",
+      "date": "2026-11-02",
+      "rank": "PRIMARY"
+     }
+    ]
+   },
+   "reason": "Defence technology company in Finland at a similar stage.",
+   "similarity": 0.0
+  },
+  {
+   "company": {
+    "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+    "name": "Heart Aerospace",
+    "type": "Company",
+    "description": "Heart makes electric airplanes with an all-electric range of 250 miles",
+    "industries": [
+     "RENEWABLE_ENERGY",
+     "MACHINERY",
+     "AEROSPACE_AND_DEFENSE",
+     "MANUFACTURING_AUTOMOTIVE"
+    ],
+    "stage": "Series A+ (multiple rounds)",
+    "country": "Sweden",
+    "total_funding_text": "~$107M+",
+    "sources": [
+     {
+      "name": "Y Combinator",
+      "url": "https://github.com/yc-oss/api",
+      "date": "2026-07-25",
+      "rank": "UNKNOWN"
+     },
+     {
+      "name": "Cala AI",
+      "url": null,
+      "date": "2026-05-15",
+      "rank": "UNKNOWN"
+     }
+    ]
+   },
+   "reason": "Defence technology company in Sweden at a similar stage.",
+   "similarity": 0.0
+  }
+ ],
+ "pitch": [
+  {
+   "investor": {
+    "id": "4d668c75-c7a0-4f5b-baea-ce0fa6a34e31",
+    "name": "Lifeline Ventures AB",
+    "type": "Company",
+    "description": null
+   },
+   "score": 40.0,
+   "conflicts": [],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "unknown",
+   "last_lead_date": null,
+   "deals_last_12m": 1,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Joined Kova Labs's Pre-Seed round (2026-11-04)",
+     "sources": [
+      {
+       "name": "resiliencemedia.co",
+       "url": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+       "date": "2026-11-04",
+       "rank": "PRESS"
+      },
+      {
+       "name": "lifelineventures.com",
+       "url": "https://lifelineventures.com/",
+       "date": "2026-11-12",
+       "rank": "PRIMARY"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "c75cbef9-0ab0-5552-84f8-fc59bc63ea93",
+    "name": "Tuomas Rasila",
+    "type": "Person",
+    "description": null
+   },
+   "score": 40.0,
+   "conflicts": [],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "unknown",
+   "last_lead_date": null,
+   "deals_last_12m": 1,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Joined Kova Labs's Pre-Seed round (2026-11-04)",
+     "sources": [
+      {
+       "name": "resiliencemedia.co",
+       "url": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+       "date": "2026-11-04",
+       "rank": "PRESS"
+      },
+      {
+       "name": "lifelineventures.com",
+       "url": "https://lifelineventures.com/",
+       "date": "2026-11-12",
+       "rank": "PRIMARY"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "f8d6c852-c3c0-4914-b835-800f4096a834",
+    "name": "ELO",
+    "type": "Organization",
+    "description": null
+   },
+   "score": 10.0,
+   "conflicts": [],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "unknown",
+   "last_lead_date": null,
+   "deals_last_12m": null,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Backs ReOrbit",
+     "sources": [
+      {
+       "name": "Elo doubles pace of Finnish unlisted growth bets with €100m push in H1",
+       "url": "https://www.ipe.com/news/elo-doubles-pace-of-finnish-unlisted-growth-bets-with-100m-push-in-h1/10136315.article",
+       "date": "2026-04-22",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "fd3ba350-0e55-40b5-96e3-013994777fdc",
+    "name": "Inventure",
+    "type": "Organization",
+    "description": "a Finnish investment firm headquartered in Helsinki"
+   },
+   "score": 10.0,
+   "conflicts": [],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "unknown",
+   "last_lead_date": "2022-03-29",
+   "deals_last_12m": 0,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Backs ReOrbit",
+     "sources": [
+      {
+       "name": "ReOrbit lands record funding to take on Musk's Starlink from Europe | TechCrunch",
+       "url": "https://techcrunch.com/2025/09/08/reorbit-lands-record-funding-to-take-on-musks-starlink-from-europe",
+       "date": "2025-09-08",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/reorbit/__jHH-J3eAQMBCCadIhwtvwYXFm3lkmdlH_FvBx81hPew/funding-and-investors",
+       "date": "2026-08-24",
+       "rank": "UNKNOWN"
+      }
+     ]
+    },
+    {
+     "text": "Last lead: Anyday, 2022-03-29",
+     "sources": [
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2022/03/29/anyday-raises-4-million-in-seed-round-offering-an-active-stance-on-ethical-payments",
+       "date": "2022-03-29",
+       "rank": "PRESS"
+      },
+      {
+       "name": "arcticstartup.com",
+       "url": "https://arcticstartup.com/?p=95750",
+       "date": "2026-11-10",
+       "rank": "PRESS"
+      },
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2022/03/29/anyday-raises-4-million-in-seed-round-offering-an-active-stance-on-ethical-payments/",
+       "date": "2022-03-29",
+       "rank": "PRESS"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "69c43164-30cb-492f-aeb9-efa658ff5bef",
+    "name": "PostScriptum Ventures",
+    "type": "Company",
+    "description": "Venture capital investment group established in 2006, investing in sustainable energy, innovative technology, and disruptive business models including wind, solar, biomass, storage, and hydrogen."
+   },
+   "score": 10.0,
+   "conflicts": [],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "unknown",
+   "last_lead_date": null,
+   "deals_last_12m": null,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Backs NestAI",
+     "sources": [
+      {
+       "name": "Finland's NestAI lands €100M, partners with Nokia to build AI for defense applications | TechCrunch",
+       "url": "https://techcrunch.com/2025/11/20/finlands-nestai-lands-e100m-partners-with-nokia-to-build-ai-for-defense-applications",
+       "date": "2025-11-20",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "Peter Sarlin – Founder of PostScriptum",
+       "url": "https://sarlin.ai",
+       "date": "2026-04-08",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "Proud to see PostScriptum-backed NestAI take another step today – a strategic partnership with Nokia and €100M in funding from Nokia and the Finnish sovereign fund Tesi for next-gen physical AI… | Peter Sarlin | 91 comments",
+       "url": "https://www.linkedin.com/posts/psarlin_proud-to-see-postscriptum-backed-nestai-take-activity-7397256801483763713-o00J",
+       "date": "2025-11-20",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "7fec93a7-6518-45fb-a276-70eec4eeda4c",
+    "name": "Statkraft Ventures GmbH",
+    "type": "Company",
+    "description": null
+   },
+   "score": 10.0,
+   "conflicts": [],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "unknown",
+   "last_lead_date": null,
+   "deals_last_12m": null,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Backs UBIQ Aerospace",
+     "sources": [
+      {
+       "name": "Norway funds",
+       "url": "https://www.statkraftventures.com/norway-fund",
+       "date": "2023-02-03",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "Ubiq Aerospace and Statkraft Ventures to Propel Sustainable Autonomous Aviation",
+       "url": "https://www.ubiqaerospace.com/news/ubiq-aerospace-and-statkraft-ventures-to-propel-sustainable-autonomous-aviation",
+       "date": "2025-05-06",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "skip": [
+  {
+   "investor": {
+    "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+    "name": "Maki.vc",
+    "type": "Company",
+    "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+   },
+   "score": 100.0,
+   "conflicts": [
+    {
+     "kind": "PORTFOLIO",
+     "competitor": {
+      "id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+      "name": "Aavuus",
+      "type": "Company",
+      "description": "A Finnish aerospace and defense company headquartered in Espoo, founded in 2024."
+     },
+     "via_person": null,
+     "sources": [
+      {
+       "name": "aavuus.com",
+       "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+       "date": "2026-06-09",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+       "date": "2026-06-09",
+       "rank": "PRESS"
+      },
+      {
+       "name": "cbinsights.com",
+       "url": "https://www.cbinsights.com/company/aavuus/financials",
+       "date": "2026-11-13",
+       "rank": "AGGREGATOR"
+      }
+     ]
+    }
+   ],
+   "leads_in_space": 2,
+   "rounds_in_space": 2,
+   "lead_data": "known",
+   "last_lead_date": "2026-06-09",
+   "deals_last_12m": 5,
+   "warm_paths": [
+    {
+     "text": "Co-invested with Skyfall Ventures in 1 company",
+     "sources": [
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/strise-tech/__-QF3gbZmi_xBMbmhEUlqhXRCmq85Quaxbn01bNtTIX0",
+       "date": "2026-08-24",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/funding_round/strise-seed--12068d7b",
+       "date": "2026-08-24",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/strise/company_financials",
+       "date": "2026-08-24",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ],
+   "reasons": [
+    {
+     "text": "Led Aavuus's Pre-Seed round (2026-06-09)",
+     "sources": [
+      {
+       "name": "aavuus.com",
+       "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+       "date": "2026-06-09",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+       "date": "2026-06-09",
+       "rank": "PRESS"
+      },
+      {
+       "name": "cbinsights.com",
+       "url": "https://www.cbinsights.com/company/aavuus/financials",
+       "date": "2026-11-13",
+       "rank": "AGGREGATOR"
+      }
+     ]
+    },
+    {
+     "text": "Led Metaktik's Pre-Seed round (2026-03-30, €1M)",
+     "sources": [
+      {
+       "name": "arcticstartup.com",
+       "url": "https://arcticstartup.com/metaktik-raises-e1-million/",
+       "date": "2026-03-31",
+       "rank": "PRESS"
+      },
+      {
+       "name": "metaktik.com",
+       "url": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+       "date": "2026-03-30",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "sttinfo.fi",
+       "url": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+       "date": "2026-03-31",
+       "rank": "PRIMARY"
+      }
+     ]
+    },
+    {
+     "text": "Last lead: Aavuus, 2026-06-09",
+     "sources": [
+      {
+       "name": "aavuus.com",
+       "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+       "date": "2026-06-09",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+       "date": "2026-06-09",
+       "rank": "PRESS"
+      },
+      {
+       "name": "cbinsights.com",
+       "url": "https://www.cbinsights.com/company/aavuus/financials",
+       "date": "2026-11-13",
+       "rank": "AGGREGATOR"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+    "name": "NATO Innovation Fund",
+    "type": "Organization",
+    "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO."
+   },
+   "score": 65.0,
+   "conflicts": [
+    {
+     "kind": "PORTFOLIO",
+     "competitor": {
+      "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+      "name": "Kelluu Oy",
+      "type": "Company",
+      "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and..."
+     },
+     "via_person": null,
+     "sources": [
+      {
+       "name": "nif.fund",
+       "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+       "date": "2026-04-14",
+       "rank": "PRESS"
+      },
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/kelluu-oy",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/459217-27",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "kelluu.com",
+       "url": "https://kelluu.com/news",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      }
+     ]
+    }
+   ],
+   "leads_in_space": 1,
+   "rounds_in_space": 1,
+   "lead_data": "known",
+   "last_lead_date": "2026-04-14",
+   "deals_last_12m": 1,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Led Kelluu Oy's Series A round (2026-04-14, €15M)",
+     "sources": [
+      {
+       "name": "nif.fund",
+       "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "kelluu.com",
+       "url": "https://kelluu.com/news",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+       "date": "2026-04-14",
+       "rank": "PRESS"
+      }
+     ]
+    },
+    {
+     "text": "Last lead: Kelluu Oy, 2026-04-14",
+     "sources": [
+      {
+       "name": "nif.fund",
+       "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "kelluu.com",
+       "url": "https://kelluu.com/news",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+       "date": "2026-04-14",
+       "rank": "PRESS"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+    "name": "Gungnir Capital",
+    "type": "Organization",
+    "description": "A venture capital firm that led the pre‑seed round for Acodyne."
+   },
+   "score": 40.0,
+   "conflicts": [
+    {
+     "kind": "PORTFOLIO",
+     "competitor": {
+      "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+      "name": "Kelluu Oy",
+      "type": "Company",
+      "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and..."
+     },
+     "via_person": null,
+     "sources": [
+      {
+       "name": "nif.fund",
+       "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+       "date": "2026-04-14",
+       "rank": "PRESS"
+      },
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/venture-capital/gungnircapital/__v4OVqIO9pCiPKNKkgAudjLpWUjxOn2Ut28JooyEfIOY",
+       "date": "2026-07-02",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "Kelluu We are proud to announce the first investment for our Defence Tech Fund Gungnir Capital together with NATO Innovation Fund (NIF) ,Keen Venture Partners and Tesi , the Finnish state… | Olof Faxander",
+       "url": "https://www.linkedin.com/posts/olof-faxander-36049b1_kelluu-we-are-proud-to-announce-the-first-activity-7449895122722263040-0I8n",
+       "date": "2026-04-14",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "kelluu.com",
+       "url": "https://kelluu.com/news",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      }
+     ]
+    }
+   ],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "known",
+   "last_lead_date": "2026-09-03",
+   "deals_last_12m": 3,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Joined Kelluu Oy's Series A round (2026-04-14, €15M)",
+     "sources": [
+      {
+       "name": "nif.fund",
+       "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "kelluu.com",
+       "url": "https://kelluu.com/news",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+       "date": "2026-04-14",
+       "rank": "PRESS"
+      }
+     ]
+    },
+    {
+     "text": "Last lead: Creoir, 2026-09-03",
+     "sources": [
+      {
+       "name": "creoir.com",
+       "url": "https://creoir.com/creoir-raises-investment-from-gungnir-capital/",
+       "date": "2026-09-03",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "resiliencemedia.co",
+       "url": "https://resiliencemedia.co/finlands-creoir-gets-backing-from-gungnir-capital-for-its-on-device-speech-tech/",
+       "date": "2026-09-14",
+       "rank": "PRESS"
+      },
+      {
+       "name": "dealroom.co",
+       "url": "https://dealroom.co/news/148845-ex-nokia-engineers-defence-startup-creoir-raises-seed-round-from-swedens/",
+       "date": "2026-09-04",
+       "rank": "PRESS"
+      },
+      {
+       "name": "funding.tech.eu",
+       "url": "https://funding.tech.eu/companies/FD62526B-B3B5-4E9F-B0BF-3EFB0E6D9B96",
+       "date": "2026-11-13",
+       "rank": "AGGREGATOR"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+    "name": "Keen Venture Partners",
+    "type": "Company",
+    "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models."
+   },
+   "score": 40.0,
+   "conflicts": [
+    {
+     "kind": "PORTFOLIO",
+     "competitor": {
+      "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+      "name": "Kelluu Oy",
+      "type": "Company",
+      "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and..."
+     },
+     "via_person": null,
+     "sources": [
+      {
+       "name": "nif.fund",
+       "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+       "date": "2026-04-14",
+       "rank": "PRESS"
+      },
+      {
+       "name": "Portfolio | Keen",
+       "url": "https://keenventurepartners.com/portfolio",
+       "date": "2025-01-01",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "kelluu.com",
+       "url": "https://kelluu.com/news",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      }
+     ]
+    }
+   ],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "known",
+   "last_lead_date": "2026-09-07",
+   "deals_last_12m": 3,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Joined Kelluu Oy's Series A round (2026-04-14, €15M)",
+     "sources": [
+      {
+       "name": "nif.fund",
+       "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "kelluu.com",
+       "url": "https://kelluu.com/news",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+       "date": "2026-04-14",
+       "rank": "PRESS"
+      }
+     ]
+    },
+    {
+     "text": "Last lead: Cato, 2026-09-07",
+     "sources": [
+      {
+       "name": "eu-startups.com",
+       "url": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+       "date": "2026-09-07",
+       "rank": "PRESS"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+    "name": "Tesi",
+    "type": "Organization",
+    "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+   },
+   "score": 40.0,
+   "conflicts": [
+    {
+     "kind": "PORTFOLIO",
+     "competitor": {
+      "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+      "name": "Kelluu Oy",
+      "type": "Company",
+      "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and..."
+     },
+     "via_person": null,
+     "sources": [
+      {
+       "name": "nif.fund",
+       "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+       "date": "2026-04-14",
+       "rank": "PRESS"
+      },
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/kelluu-oy",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/459217-27",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "kelluu.com",
+       "url": "https://kelluu.com/news",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      }
+     ]
+    }
+   ],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "known",
+   "last_lead_date": "2021-04-06",
+   "deals_last_12m": 3,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Joined Kelluu Oy's Series A round (2026-04-14, €15M)",
+     "sources": [
+      {
+       "name": "nif.fund",
+       "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "kelluu.com",
+       "url": "https://kelluu.com/news",
+       "date": "2026-04-14",
+       "rank": "PRIMARY"
+      },
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+       "date": "2026-04-14",
+       "rank": "PRESS"
+      }
+     ]
+    },
+    {
+     "text": "Last lead: Bob W, 2021-04-06",
+     "sources": [
+      {
+       "name": "tech.eu",
+       "url": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+       "date": "2021-04-06",
+       "rank": "PRESS"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "7faf31b1-b7a2-4e93-b820-1fed0d86d2fa",
+    "name": "Candor",
+    "type": "Company",
+    "description": null
+   },
+   "score": 10.0,
+   "conflicts": [
+    {
+     "kind": "PORTFOLIO",
+     "competitor": {
+      "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+      "name": "Heart Aerospace",
+      "type": "Company",
+      "description": "Heart makes electric airplanes with an all-electric range of 250 miles"
+     },
+     "via_person": null,
+     "sources": [
+      {
+       "name": "Y Combinator",
+       "url": "https://github.com/yc-oss/api",
+       "date": "2026-06-05",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "unknown",
+   "last_lead_date": null,
+   "deals_last_12m": null,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Backs Heart Aerospace",
+     "sources": [
+      {
+       "name": "Y Combinator",
+       "url": "https://github.com/yc-oss/api",
+       "date": "2026-06-05",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "b8f34378-af55-4f7c-a6f3-045904b0bbe0",
+    "name": "DIANA UK ENTERPRISES LTD",
+    "type": "Company",
+    "description": "A London‑based British company incorporated in 2024."
+   },
+   "score": 10.0,
+   "conflicts": [
+    {
+     "kind": "PORTFOLIO",
+     "competitor": {
+      "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+      "name": "Kelluu Oy",
+      "type": "Company",
+      "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and..."
+     },
+     "via_person": null,
+     "sources": [
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/kelluu-oy",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/459217-27",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "unknown",
+   "last_lead_date": null,
+   "deals_last_12m": null,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Backs Kelluu Oy",
+     "sources": [
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "www.crunchbase.com",
+       "url": "https://www.crunchbase.com/organization/kelluu-oy",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "pitchbook.com",
+       "url": "https://pitchbook.com/profiles/company/459217-27",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "06f2c1c2-a992-427e-a011-de55e94af981",
+    "name": "EQT VENTURES INVESTMENTS LIMITED PARTNERSHIP",
+    "type": "Company",
+    "description": null
+   },
+   "score": 10.0,
+   "conflicts": [
+    {
+     "kind": "PORTFOLIO",
+     "competitor": {
+      "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+      "name": "Heart Aerospace",
+      "type": "Company",
+      "description": "Heart makes electric airplanes with an all-electric range of 250 miles"
+     },
+     "via_person": null,
+     "sources": [
+      {
+       "name": "EQT Ventures Portfolio — 119 Companies & Co-Investors (2026)",
+       "url": "https://www.vcbacked.co/directory/investors/eqt-ventures?page=2",
+       "date": "2026-06-16",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "unknown",
+   "last_lead_date": null,
+   "deals_last_12m": null,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Backs Heart Aerospace",
+     "sources": [
+      {
+       "name": "EQT Ventures Portfolio — 119 Companies & Co-Investors (2026)",
+       "url": "https://www.vcbacked.co/directory/investors/eqt-ventures?page=2",
+       "date": "2026-06-16",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "c0d5bf8c-3f43-4531-8ef6-8c8d1f0dcf5a",
+    "name": "Norrsken VC",
+    "type": "Organization",
+    "description": null
+   },
+   "score": 10.0,
+   "conflicts": [
+    {
+     "kind": "PORTFOLIO",
+     "competitor": {
+      "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+      "name": "Heart Aerospace",
+      "type": "Company",
+      "description": "Heart makes electric airplanes with an all-electric range of 250 miles"
+     },
+     "via_person": null,
+     "sources": [
+      {
+       "name": "Norrsken - Be part of the solution",
+       "url": "https://norrsken.org/investments",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "unknown",
+   "last_lead_date": null,
+   "deals_last_12m": null,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Backs Heart Aerospace",
+     "sources": [
+      {
+       "name": "Norrsken - Be part of the solution",
+       "url": "https://norrsken.org/investments",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+    "name": "REDSTONE",
+    "type": "Company",
+    "description": "French venture capital firm founded in 2022"
+   },
+   "score": 10.0,
+   "conflicts": [
+    {
+     "kind": "PORTFOLIO",
+     "competitor": {
+      "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+      "name": "Kelluu Oy",
+      "type": "Company",
+      "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and..."
+     },
+     "via_person": null,
+     "sources": [
+      {
+       "name": "Redstone | Portfolio",
+       "url": "https://redstone.vc/portfolio",
+       "date": "2026-01-01",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "unknown",
+   "last_lead_date": null,
+   "deals_last_12m": null,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Backs Kelluu Oy",
+     "sources": [
+      {
+       "name": "Redstone | Portfolio",
+       "url": "https://redstone.vc/portfolio",
+       "date": "2026-01-01",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      },
+      {
+       "name": "tracxn.com",
+       "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+       "date": "2026-08-25",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "43b67397-2f00-4096-b571-19dab37d8c3d",
+    "name": "Stiftelsen Norrsken Foundation",
+    "type": "Company",
+    "description": null
+   },
+   "score": 10.0,
+   "conflicts": [
+    {
+     "kind": "PORTFOLIO",
+     "competitor": {
+      "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+      "name": "Heart Aerospace",
+      "type": "Company",
+      "description": "Heart makes electric airplanes with an all-electric range of 250 miles"
+     },
+     "via_person": null,
+     "sources": [
+      {
+       "name": "Norrsken - Be part of the solution",
+       "url": "https://norrsken.org/investments",
+       "date": "2026-07-14",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "unknown",
+   "last_lead_date": null,
+   "deals_last_12m": null,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Backs Heart Aerospace",
+     "sources": [
+      {
+       "name": "Norrsken - Be part of the solution",
+       "url": "https://norrsken.org/investments",
+       "date": "2026-07-14",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "investor": {
+    "id": "1e86655e-373d-4fe8-be13-af3713581f73",
+    "name": "Y Combinator",
+    "type": "Company",
+    "description": null
+   },
+   "score": 10.0,
+   "conflicts": [
+    {
+     "kind": "PORTFOLIO",
+     "competitor": {
+      "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+      "name": "Heart Aerospace",
+      "type": "Company",
+      "description": "Heart makes electric airplanes with an all-electric range of 250 miles"
+     },
+     "via_person": null,
+     "sources": [
+      {
+       "name": "Y Combinator",
+       "url": "https://github.com/yc-oss/api",
+       "date": "2026-06-09",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ],
+   "leads_in_space": 0,
+   "rounds_in_space": 1,
+   "lead_data": "unknown",
+   "last_lead_date": null,
+   "deals_last_12m": null,
+   "warm_paths": [],
+   "reasons": [
+    {
+     "text": "Backs Heart Aerospace",
+     "sources": [
+      {
+       "name": "Y Combinator",
+       "url": "https://github.com/yc-oss/api",
+       "date": "2026-06-09",
+       "rank": "UNKNOWN"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

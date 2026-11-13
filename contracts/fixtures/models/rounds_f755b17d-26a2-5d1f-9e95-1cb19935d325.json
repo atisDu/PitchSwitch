@@ -1,0 +1,41 @@
+[
+ {
+  "id": "343975e5-1269-5839-8d7a-e2c3eb1c5fd8",
+  "company_id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+  "label": "Pre-Seed",
+  "date": "2026-06-09",
+  "amount_text": null,
+  "amount_eur": null,
+  "investors": [
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": true
+   }
+  ],
+  "sources": [
+   {
+    "name": "aavuus.com",
+    "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+    "date": "2026-06-09",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+    "date": "2026-06-09",
+    "rank": "PRESS"
+   },
+   {
+    "name": "cbinsights.com",
+    "url": "https://www.cbinsights.com/company/aavuus/financials",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ }
+]

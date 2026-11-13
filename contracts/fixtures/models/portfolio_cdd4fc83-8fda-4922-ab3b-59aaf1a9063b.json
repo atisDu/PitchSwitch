@@ -1,0 +1,19 @@
+[
+ {
+  "investor_id": "cdd4fc83-8fda-4922-ab3b-59aaf1a9063b",
+  "company": {
+   "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+   "name": "Tesi",
+   "type": "Organization",
+   "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+  },
+  "sources": [
+   {
+    "name": "Partners | FiBAN",
+    "url": "https://fiban.org/portfolio",
+    "date": "2025-08-26",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

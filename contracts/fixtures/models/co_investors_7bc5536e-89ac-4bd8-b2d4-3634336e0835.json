@@ -1,0 +1,38 @@
+[
+ [
+  {
+   "id": "e47def52-cbaf-4cb9-be8e-737f0418c007",
+   "name": "GreenUP IV Invest",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+   "name": "Gungnir Capital",
+   "type": "Organization",
+   "description": "A venture capital firm that led the pre‑seed round for Acodyne."
+  },
+  1
+ ],
+ [
+  {
+   "id": "00567057-ff98-419f-a14d-163f41b18a7b",
+   "name": "PSV Hafnium",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "6bdf243a-2769-4ca3-9ecd-ad4bb6d440fc",
+   "name": "SAP9 GROUP A/S",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ]
+]

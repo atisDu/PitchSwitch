@@ -1,0 +1,74 @@
+[
+ {
+  "person": {
+   "id": "2da6127c-e45a-555e-b6e9-37c6b88225ff",
+   "name": "Jaan Praks",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "16fa515b-1434-58c9-be73-8754e77ade00",
+  "role": "FOUNDER",
+  "sources": [
+   {
+    "name": "metaktik.com",
+    "url": "https://metaktik.com/about-us",
+    "date": "2026-11-03",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "7bde8bad-ee23-5337-8f7b-02edd4c7de1f",
+   "name": "Tuukka Kuuramaa",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "16fa515b-1434-58c9-be73-8754e77ade00",
+  "role": "FOUNDER",
+  "sources": [
+   {
+    "name": "metaktik.com",
+    "url": "https://metaktik.com/about-us",
+    "date": "2026-11-03",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "c46e2ced-df6d-57e6-8e0a-01c14a9e2658",
+   "name": "Ville Lundén",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "16fa515b-1434-58c9-be73-8754e77ade00",
+  "role": "FOUNDER",
+  "sources": [
+   {
+    "name": "metaktik.com",
+    "url": "https://metaktik.com/about-us",
+    "date": "2026-11-03",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "7bde8bad-ee23-5337-8f7b-02edd4c7de1f",
+   "name": "Tuukka Kuuramaa",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "16fa515b-1434-58c9-be73-8754e77ade00",
+  "role": "CEO",
+  "sources": [
+   {
+    "name": "metaktik.com",
+    "url": "https://metaktik.com/about-us",
+    "date": "2026-11-03",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

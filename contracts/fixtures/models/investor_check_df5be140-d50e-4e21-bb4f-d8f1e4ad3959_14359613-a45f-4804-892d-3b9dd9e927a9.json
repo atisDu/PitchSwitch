@@ -1,0 +1,464 @@
+{
+ "investor": {
+  "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+  "name": "Tesi",
+  "type": "Organization",
+  "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+ },
+ "company": {
+  "id": "14359613-a45f-4804-892d-3b9dd9e927a9",
+  "name": "NestAI",
+  "type": "Company",
+  "description": "Finnish software and aerospace‑defense company founded in 2024.",
+  "industries": [
+   "SOFTWARE_AND_SERVICES",
+   "AEROSPACE_AND_DEFENSE"
+  ],
+  "stage": null,
+  "country": "Finland",
+  "total_funding_text": null,
+  "sources": [
+   {
+    "name": "Cala AI",
+    "url": null,
+    "date": "2026-08-20",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "GLEIF",
+    "url": "https://search.gleif.org/#/record/7437004FNG2T9TL5FP88",
+    "date": "2026-04-22",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Finland's NestAI lands €100M, partners with Nokia to build AI for defense applications | TechCrunch",
+    "url": "https://techcrunch.com/2025/11/20/finlands-nestai-lands-e100m-partners-with-nokia-to-build-ai-for-defense-applications",
+    "date": "2025-11-20",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Peter Sarlin – Founder of PostScriptum",
+    "url": "https://sarlin.ai",
+    "date": "2026-04-08",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Proud to see PostScriptum-backed NestAI take another step today – a strategic partnership with Nokia and €100M in funding from Nokia and the Finnish sovereign fund Tesi for next-gen physical AI… | Peter Sarlin | 91 comments",
+    "url": "https://www.linkedin.com/posts/psarlin_proud-to-see-postscriptum-backed-nestai-take-activity-7397256801483763713-o00J",
+    "date": "2025-11-20",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ "conflicts": [
+  {
+   "kind": "PORTFOLIO",
+   "competitor": {
+    "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+    "name": "Kelluu Oy",
+    "type": "Company",
+    "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and..."
+   },
+   "via_person": null,
+   "sources": [
+    {
+     "name": "nif.fund",
+     "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+     "date": "2026-04-14",
+     "rank": "PRIMARY"
+    },
+    {
+     "name": "tech.eu",
+     "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+     "date": "2026-04-14",
+     "rank": "PRESS"
+    },
+    {
+     "name": "tracxn.com",
+     "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+     "date": "2026-08-25",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "tracxn.com",
+     "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+     "date": "2026-08-25",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "www.crunchbase.com",
+     "url": "https://www.crunchbase.com/organization/kelluu-oy",
+     "date": "2026-08-25",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "pitchbook.com",
+     "url": "https://pitchbook.com/profiles/company/459217-27",
+     "date": "2026-08-25",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "kelluu.com",
+     "url": "https://kelluu.com/news",
+     "date": "2026-04-14",
+     "rank": "PRIMARY"
+    }
+   ]
+  }
+ ],
+ "competitors": [
+  {
+   "company": {
+    "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+    "name": "Kelluu Oy",
+    "type": "Company",
+    "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and...",
+    "industries": [
+     "AEROSPACE_AND_DEFENSE"
+    ],
+    "stage": "Series A",
+    "country": "Finland",
+    "total_funding_text": "€15.3M",
+    "sources": [
+     {
+      "name": "kelluu.com",
+      "url": "https://kelluu.com/",
+      "date": "2026-11-12",
+      "rank": "PRIMARY"
+     },
+     {
+      "name": "nif.fund",
+      "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+      "date": "2026-04-14",
+      "rank": "PRIMARY"
+     },
+     {
+      "name": "kelluu.com",
+      "url": "https://kelluu.com/news",
+      "date": "2026-04-14",
+      "rank": "PRIMARY"
+     },
+     {
+      "name": "tech.eu",
+      "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+      "date": "2026-04-14",
+      "rank": "PRESS"
+     },
+     {
+      "name": "cordis.europa.eu",
+      "url": "https://cordis.europa.eu/project/id/101157488",
+      "date": "2026-11-12",
+      "rank": "FILING"
+     },
+     {
+      "name": "linkedin.com",
+      "url": "https://www.linkedin.com/company/kelluuairships/",
+      "date": "2026-11-02",
+      "rank": "AGGREGATOR"
+     },
+     {
+      "name": "Cala AI",
+      "url": null,
+      "date": "2026-07-30",
+      "rank": "UNKNOWN"
+     }
+    ]
+   },
+   "reason": "Same segment: defence intelligence and autonomy.",
+   "similarity": 0.0
+  },
+  {
+   "company": {
+    "id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+    "name": "Aavuus",
+    "type": "Company",
+    "description": "A Finnish aerospace and defense company headquartered in Espoo, founded in 2024.",
+    "industries": [
+     "AEROSPACE_AND_DEFENSE"
+    ],
+    "stage": "Pre-Seed",
+    "country": "Finland",
+    "total_funding_text": "Raised Seed round (Jun 2026), investor: Maki.vc",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "url": null,
+      "date": "2026-11-13",
+      "rank": "UNKNOWN"
+     },
+     {
+      "name": "aavuus.com",
+      "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+      "date": "2026-06-09",
+      "rank": "PRIMARY"
+     },
+     {
+      "name": "tech.eu",
+      "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+      "date": "2026-06-09",
+      "rank": "PRESS"
+     },
+     {
+      "name": "linkedin.com",
+      "url": "https://www.linkedin.com/company/aavuus",
+      "date": "2026-11-02",
+      "rank": "AGGREGATOR"
+     },
+     {
+      "name": "aavuus.com",
+      "url": "https://aavuus.com/",
+      "date": "2026-11-02",
+      "rank": "PRIMARY"
+     }
+    ]
+   },
+   "reason": "Defence technology company in Finland at a similar stage.",
+   "similarity": 0.6
+  },
+  {
+   "company": {
+    "id": "16fa515b-1434-58c9-be73-8754e77ade00",
+    "name": "Metaktik",
+    "type": "Company",
+    "description": "A Finnish aerospace and defense company founded in 2026 and headquartered in Espoo.",
+    "industries": [
+     "AEROSPACE_AND_DEFENSE"
+    ],
+    "stage": "Pre-Seed",
+    "country": "Finland",
+    "total_funding_text": "€1M",
+    "sources": [
+     {
+      "name": "Cala AI",
+      "url": null,
+      "date": "2026-11-13",
+      "rank": "UNKNOWN"
+     },
+     {
+      "name": "arcticstartup.com",
+      "url": "https://arcticstartup.com/metaktik-raises-e1-million/",
+      "date": "2026-03-31",
+      "rank": "PRESS"
+     },
+     {
+      "name": "metaktik.com",
+      "url": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+      "date": "2026-03-30",
+      "rank": "PRIMARY"
+     },
+     {
+      "name": "sttinfo.fi",
+      "url": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+      "date": "2026-03-31",
+      "rank": "PRIMARY"
+     },
+     {
+      "name": "linkedin.com",
+      "url": "https://www.linkedin.com/company/metaktik",
+      "date": "2026-11-02",
+      "rank": "AGGREGATOR"
+     },
+     {
+      "name": "metaktik.com",
+      "url": "https://metaktik.com/",
+      "date": "2026-11-02",
+      "rank": "PRIMARY"
+     }
+    ]
+   },
+   "reason": "Defence technology company in Finland at a similar stage.",
+   "similarity": 0.6
+  },
+  {
+   "company": {
+    "id": "202e9283-6455-486f-8868-03c7e0d0cf29",
+    "name": "Sensofusion Oy",
+    "type": "Organization",
+    "description": "Finnish defense technology company founded in 2014 and based in Vantaa.",
+    "industries": [],
+    "stage": null,
+    "country": "Finland",
+    "total_funding_text": null,
+    "sources": [
+     {
+      "name": "Cala AI",
+      "url": null,
+      "date": "2026-08-20",
+      "rank": "UNKNOWN"
+     },
+     {
+      "name": "GLEIF",
+      "url": "https://search.gleif.org/#/record/7437000UYRI2YZJTC459",
+      "date": "2026-09-25",
+      "rank": "UNKNOWN"
+     }
+    ]
+   },
+   "reason": "Defence technology company in Finland at a similar stage.",
+   "similarity": 0.4
+  }
+ ],
+ "rounds": [
+  {
+   "id": "97d82be9-51db-59e4-bb04-f69213aff7e9",
+   "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+   "label": "Series A",
+   "date": "2026-04-14",
+   "amount_text": "€15M",
+   "amount_eur": 15000000.0,
+   "investors": [
+    {
+     "investor": {
+      "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+      "name": "Keen Venture Partners",
+      "type": "Company",
+      "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models."
+     },
+     "is_lead": false
+    },
+    {
+     "investor": {
+      "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+      "name": "NATO Innovation Fund",
+      "type": "Organization",
+      "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO."
+     },
+     "is_lead": true
+    },
+    {
+     "investor": {
+      "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+      "name": "Gungnir Capital",
+      "type": "Organization",
+      "description": "A venture capital firm that led the pre‑seed round for Acodyne."
+     },
+     "is_lead": false
+    },
+    {
+     "investor": {
+      "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+      "name": "Tesi",
+      "type": "Organization",
+      "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+     },
+     "is_lead": false
+    }
+   ],
+   "sources": [
+    {
+     "name": "nif.fund",
+     "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+     "date": "2026-04-14",
+     "rank": "PRIMARY"
+    },
+    {
+     "name": "kelluu.com",
+     "url": "https://kelluu.com/news",
+     "date": "2026-04-14",
+     "rank": "PRIMARY"
+    },
+    {
+     "name": "tech.eu",
+     "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+     "date": "2026-04-14",
+     "rank": "PRESS"
+    }
+   ]
+  },
+  {
+   "id": "7cf7864b-8de0-5b39-99c3-3754e678454a",
+   "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+   "label": "Grant",
+   "date": null,
+   "amount_text": "€301.5K",
+   "amount_eur": 301500.0,
+   "investors": [],
+   "sources": [
+    {
+     "name": "cordis.europa.eu",
+     "url": "https://cordis.europa.eu/project/id/101157488",
+     "date": "2026-11-12",
+     "rank": "FILING"
+    }
+   ]
+  },
+  {
+   "id": "343975e5-1269-5839-8d7a-e2c3eb1c5fd8",
+   "company_id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+   "label": "Pre-Seed",
+   "date": "2026-06-09",
+   "amount_text": null,
+   "amount_eur": null,
+   "investors": [
+    {
+     "investor": {
+      "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+      "name": "Maki.vc",
+      "type": "Company",
+      "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+     },
+     "is_lead": true
+    }
+   ],
+   "sources": [
+    {
+     "name": "aavuus.com",
+     "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+     "date": "2026-06-09",
+     "rank": "PRIMARY"
+    },
+    {
+     "name": "tech.eu",
+     "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+     "date": "2026-06-09",
+     "rank": "PRESS"
+    },
+    {
+     "name": "cbinsights.com",
+     "url": "https://www.cbinsights.com/company/aavuus/financials",
+     "date": "2026-11-13",
+     "rank": "AGGREGATOR"
+    }
+   ]
+  },
+  {
+   "id": "835691d5-2ad0-5017-9642-0c6e4f6ab448",
+   "company_id": "16fa515b-1434-58c9-be73-8754e77ade00",
+   "label": "Pre-Seed",
+   "date": "2026-03-30",
+   "amount_text": "€1M",
+   "amount_eur": 1000000.0,
+   "investors": [
+    {
+     "investor": {
+      "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+      "name": "Maki.vc",
+      "type": "Company",
+      "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+     },
+     "is_lead": true
+    }
+   ],
+   "sources": [
+    {
+     "name": "arcticstartup.com",
+     "url": "https://arcticstartup.com/metaktik-raises-e1-million/",
+     "date": "2026-03-31",
+     "rank": "PRESS"
+    },
+    {
+     "name": "metaktik.com",
+     "url": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+     "date": "2026-03-30",
+     "rank": "PRIMARY"
+    },
+    {
+     "name": "sttinfo.fi",
+     "url": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+     "date": "2026-03-31",
+     "rank": "PRIMARY"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+[
+ {
+  "investor_id": "a3bcc153-0a43-56ba-940e-5a885b9a2aae",
+  "company": {
+   "id": "5a74ed80-3d41-42cf-81d7-83a2af15042e",
+   "name": "Get Mika GmbH",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+    "date": "2024-06-18",
+    "rank": "PRESS"
+   },
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/mika-raises-800k-in-pre-seed-funding-with-samen-slimmer-from-the-netherlands/",
+    "date": "2024-06-07",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ }
+]

@@ -1,0 +1,19 @@
+[
+ {
+  "investor_id": "7faf31b1-b7a2-4e93-b820-1fed0d86d2fa",
+  "company": {
+   "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+   "name": "Heart Aerospace",
+   "type": "Company",
+   "description": "Heart makes electric airplanes with an all-electric range of 250 miles"
+  },
+  "sources": [
+   {
+    "name": "Y Combinator",
+    "url": "https://github.com/yc-oss/api",
+    "date": "2026-06-05",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

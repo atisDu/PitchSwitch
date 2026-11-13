@@ -1,0 +1,25 @@
+[
+ {
+  "investor_id": "d155d2e9-236a-4d31-8256-e11222b407ba",
+  "company": {
+   "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+   "name": "Tesi",
+   "type": "Organization",
+   "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+  },
+  "sources": [
+   {
+    "name": "IQM Quantum Computers - Built for Real Impact",
+    "url": "https://meetiqm.com/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round",
+    "date": "2026-06-20",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "IQM Quantum Computers - Built for Real Impact",
+    "url": "https://meetiqm.com/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round#elementor-action%3Aaction%3Dpopup%3Aclose%26settings%3DeyJkb19ub3Rfc2hvd19hZ2FpbiI6IiJ9",
+    "date": "2026-06-20",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

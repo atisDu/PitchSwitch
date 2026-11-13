@@ -1,0 +1,83 @@
+[
+ [
+  {
+   "id": "b8f34378-af55-4f7c-a6f3-045904b0bbe0",
+   "name": "DIANA UK ENTERPRISES LTD",
+   "type": "Company",
+   "description": "A London‑based British company incorporated in 2024."
+  },
+  1
+ ],
+ [
+  {
+   "id": "7bc5536e-89ac-4bd8-b2d4-3634336e0835",
+   "name": "EIFO",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "e47def52-cbaf-4cb9-be8e-737f0418c007",
+   "name": "GreenUP IV Invest",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+   "name": "Keen Venture Partners",
+   "type": "Company",
+   "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models."
+  },
+  1
+ ],
+ [
+  {
+   "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+   "name": "NATO Innovation Fund",
+   "type": "Organization",
+   "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO."
+  },
+  1
+ ],
+ [
+  {
+   "id": "00567057-ff98-419f-a14d-163f41b18a7b",
+   "name": "PSV Hafnium",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+   "name": "REDSTONE",
+   "type": "Company",
+   "description": "French venture capital firm founded in 2022"
+  },
+  1
+ ],
+ [
+  {
+   "id": "6bdf243a-2769-4ca3-9ecd-ad4bb6d440fc",
+   "name": "SAP9 GROUP A/S",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+   "name": "Tesi",
+   "type": "Organization",
+   "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+  },
+  1
+ ]
+]

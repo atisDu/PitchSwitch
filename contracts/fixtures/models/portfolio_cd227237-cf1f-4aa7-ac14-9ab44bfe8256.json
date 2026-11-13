@@ -1,0 +1,25 @@
+[
+ {
+  "investor_id": "cd227237-cf1f-4aa7-ac14-9ab44bfe8256",
+  "company": {
+   "id": "f9bf65a6-a85e-46ad-b086-d2c0cfd3a7b7",
+   "name": "CurifyLabs",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "eu-startups.com",
+    "url": "https://www.eu-startups.com/2026/07/finlands-curifylabs-raises-e12-million-to-expand-3d-printing-based-medicine-compounding/",
+    "date": "2026-07-06",
+    "rank": "PRESS"
+   },
+   {
+    "name": "news.curifylabs.com",
+    "url": "https://news.curifylabs.com/curifylabs-raises-14m-series-a-to-power-the-future-of-personalized-medicine",
+    "date": "2026-07-06",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

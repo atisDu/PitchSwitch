@@ -1,0 +1,61 @@
+[
+ {
+  "investor_id": "a5de4e4e-b8dc-4caa-b1fa-562de83b806f",
+  "company": {
+   "id": "5a74ed80-3d41-42cf-81d7-83a2af15042e",
+   "name": "Get Mika GmbH",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+    "date": "2024-06-18",
+    "rank": "PRESS"
+   },
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/mika-raises-800k-in-pre-seed-funding-with-samen-slimmer-from-the-netherlands/",
+    "date": "2024-06-07",
+    "rank": "AGGREGATOR"
+   },
+   {
+    "name": "eu-startups.com",
+    "url": "https://www.eu-startups.com/2026/09/berlin-based-mika-raises-e6-million-to-scale-its-ai-native-alternative-to-traditional-tax-firms/",
+    "date": "2026-09-23",
+    "rank": "PRESS"
+   },
+   {
+    "name": "getmika.de",
+    "url": "https://getmika.de/presse",
+    "date": "2026-09-23",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2026/09/23/german-ai-startup-mika-raises-eur6m-to-simplify-accounting-and-tax-for-smes/",
+    "date": "2026-09-23",
+    "rank": "PRESS"
+   },
+   {
+    "name": "therecursive.com",
+    "url": "https://www.therecursive.com/mika-raises-eur6m-to-automate-accounting-and-tax-for-german-smbs/",
+    "date": "2026-09-23",
+    "rank": "PRESS"
+   },
+   {
+    "name": "trendingtopics.eu",
+    "url": "https://www.trendingtopics.eu/berliner-fintech-mika-holt-sich-6-mio-euro-und-will-steuerberater-fuer-kmu-ersetzen/",
+    "date": "2026-09-23",
+    "rank": "PRESS"
+   },
+   {
+    "name": "osborneclarke.com",
+    "url": "https://www.osborneclarke.com/de/news/osborne-clarke-beraet-mika-bei-seed-finanzierungsrunde-ueber-eur-6-millionen-fuer-ki-native",
+    "date": "2026-10-05",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

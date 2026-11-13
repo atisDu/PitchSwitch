@@ -1,0 +1,49 @@
+{
+ "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+ "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+ "markdown": "# Maki.vc × Kelluu Oy\n\n**Verdict: worth a pitch.** No tie to your direct competitors in Cala's data.\n\n## Activity in your space\n- Led Aavuus's Pre-Seed round (2026-06-09) [1][2].\n- Led Metaktik's Pre-Seed round (2026-03-30, €1M) [3][4].\n- Last lead: Aavuus, 2026-06-09 [1][2].\n\n## Portfolio\n- 23 companies in Cala, including Aavuus, AI Agents, Auto Retail AI, Baseimmune, Distance Technologies Oy [1][2][5].\n\n## Warm paths\n- Co-invested with Tesi in 3 companies [6][7].\n",
+ "citations": [
+  {
+   "name": "aavuus.com",
+   "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+   "date": "2026-06-09",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "tech.eu",
+   "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+   "date": "2026-06-09",
+   "rank": "PRESS"
+  },
+  {
+   "name": "arcticstartup.com",
+   "url": "https://arcticstartup.com/metaktik-raises-e1-million/",
+   "date": "2026-03-31",
+   "rank": "PRESS"
+  },
+  {
+   "name": "metaktik.com",
+   "url": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+   "date": "2026-03-30",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "cbinsights.com",
+   "url": "https://www.cbinsights.com/company/aavuus/financials",
+   "date": "2026-11-13",
+   "rank": "AGGREGATOR"
+  },
+  {
+   "name": "tech.eu",
+   "url": "https://tech.eu/2024/04/02/onego-bio-secures-40m-series-a/",
+   "date": "2024-04-02",
+   "rank": "PRESS"
+  },
+  {
+   "name": "paaomasijoittajat.fi",
+   "url": "https://paaomasijoittajat.fi/en/?p=26682",
+   "date": "2024-04-02",
+   "rank": "PRESS"
+  }
+ ]
+}

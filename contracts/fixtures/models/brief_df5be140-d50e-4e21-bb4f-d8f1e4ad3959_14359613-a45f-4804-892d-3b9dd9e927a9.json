@@ -1,0 +1,49 @@
+{
+ "investor_id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+ "company_id": "14359613-a45f-4804-892d-3b9dd9e927a9",
+ "markdown": "# Tesi × NestAI\n\n**Verdict: skip.** Tesi backs Kelluu Oy, a direct competitor [1][2].\n\n## Activity in your space\n- Joined Kelluu Oy's Series A round (2026-04-14, €15M) [1][3].\n- Last lead: Bob W, 2021-04-06 [4].\n\n## Portfolio\n- 47 companies in Cala, including Annie Advisor, Aurealis Pharma, Aurora Propulsion Technologies, Axel Technologies, Bob W [5][6][7].\n",
+ "citations": [
+  {
+   "name": "nif.fund",
+   "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+   "date": "2026-04-14",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "tech.eu",
+   "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+   "date": "2026-04-14",
+   "rank": "PRESS"
+  },
+  {
+   "name": "kelluu.com",
+   "url": "https://kelluu.com/news",
+   "date": "2026-04-14",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "tech.eu",
+   "url": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+   "date": "2021-04-06",
+   "rank": "PRESS"
+  },
+  {
+   "name": "tracxn.com",
+   "url": "https://tracxn.com/d/companies/annie-advisor/__IbULjsk5i1g4hc2NBmDNo1MckcD__RPNKRg0xsF8Q-Y",
+   "date": "2026-08-25",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "tracxn.com",
+   "url": "https://tracxn.com/d/companies/annie-advisor/__IbULjsk5i1g4hc2NBmDNo1MckcD__RPNKRg0xsF8Q-Y/funding-and-investors",
+   "date": "2026-08-25",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "pitchbook.com",
+   "url": "https://pitchbook.com/profiles/company/510423-49",
+   "date": "2026-08-25",
+   "rank": "UNKNOWN"
+  }
+ ]
+}

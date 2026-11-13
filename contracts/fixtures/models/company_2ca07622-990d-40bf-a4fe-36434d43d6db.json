@@ -1,0 +1,33 @@
+{
+ "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+ "name": "NATO Innovation Fund",
+ "type": "Organization",
+ "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO.",
+ "industries": [
+  "PRIVATE_EQUITY",
+  "VENTURE_CAPITAL"
+ ],
+ "stage": null,
+ "country": "Luxembourg",
+ "total_funding_text": null,
+ "sources": [
+  {
+   "name": "Cala AI",
+   "url": null,
+   "date": "2026-08-20",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "nif.fund",
+   "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+   "date": "2026-04-14",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "tech.eu",
+   "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+   "date": "2026-04-14",
+   "rank": "PRESS"
+  }
+ ]
+}

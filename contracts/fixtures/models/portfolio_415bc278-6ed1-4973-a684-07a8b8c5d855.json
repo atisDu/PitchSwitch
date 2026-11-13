@@ -1,0 +1,669 @@
+[
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+   "name": "Aavuus",
+   "type": "Company",
+   "description": "A Finnish aerospace and defense company headquartered in Espoo, founded in 2024."
+  },
+  "sources": [
+   {
+    "name": "aavuus.com",
+    "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+    "date": "2026-06-09",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+    "date": "2026-06-09",
+    "rank": "PRESS"
+   },
+   {
+    "name": "cbinsights.com",
+    "url": "https://www.cbinsights.com/company/aavuus/financials",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "41c34f5a-2dab-49b3-9ca4-51d70b1bf54f",
+   "name": "AI Agents",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio - Maki.vc",
+    "url": "https://maki.vc/portfolio",
+    "date": "2026-03-11",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "8a521560-6420-4acc-ae64-084c0b2b1d53",
+   "name": "Auto Retail AI",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio - Maki.vc",
+    "url": "https://maki.vc/portfolio",
+    "date": "2026-03-11",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "489f4eb7-22e6-459a-aff3-40cb4a8d2218",
+   "name": "Baseimmune",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/base-immune/__cv3M9SdJ5SZka6m6f_OYs5UVYXck6aVW3LckDNorV50",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/base-immune/__cv3M9SdJ5SZka6m6f_OYs5UVYXck6aVW3LckDNorV50/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/venture-capital/beastventures/__5f3CoHeKd0Na8yfocWWEpelnXrWZ8ZEkTGlchHBGFtI",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "88917971-7acd-5977-b108-0ef6fa5ce36e",
+   "name": "Distance Technologies Oy",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "distance.tech",
+    "url": "https://distance.tech/news/launch_release",
+    "date": "2024-06-13",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "en.ain.ua",
+    "url": "https://en.ain.ua/2024/06/14/distance-technologies-pre-seed-investment",
+    "date": "2024-06-14",
+    "rank": "PRESS"
+   },
+   {
+    "name": "distance.tech",
+    "url": "https://distance.tech/news/distance-technologies-closes-oversubscribed-eur10m-seed-round-led-by-gv-google-ventures",
+    "date": "2024-09-24",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "siliconcanals.com",
+    "url": "https://siliconcanals.com/distance-technologies-secures-e10m/",
+    "date": "2024-09-24",
+    "rank": "PRESS"
+   },
+   {
+    "name": "yle.fi",
+    "url": "https://yle.fi/a/74-20114608",
+    "date": "2024-09-28",
+    "rank": "PRESS"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "fa92035a-411b-40a4-a2b0-a90afbdeccdb",
+   "name": "Egg White Company",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio - Maki.vc",
+    "url": "https://maki.vc/portfolio",
+    "date": "2026-03-11",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Animal-free egg protein startup Onego Bio is one step closer to cracking the traditional egg market | TechCrunch",
+    "url": "https://techcrunch.com/2024/04/01/animal-free-egg-protein-onego-bio-40m",
+    "date": "2024-04-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "e9edb9ed-f109-4434-84ca-c8078a31f74a",
+   "name": "Enfuce Financial Services Oy",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/enfuce/__2fJ_FOmYjpGhiJpMAoSJj87P8tKUQMXTqWkpSWIm-W0",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "31ab6e8a-3dd2-5da1-a76e-f8538a809347",
+   "name": "Ethira",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "ethira.dev",
+    "url": "https://www.ethira.dev/",
+    "date": "2026-11-13",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "allabolag.se",
+    "url": "https://www.allabolag.se/befattningshavare/ethira-ab/stockholm/internet-konsulter-operatc3b6rer/2KJAXYWI5YFHL",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "82c65c94-8e28-47fe-90eb-53daf0a1a025",
+   "name": "Eyewear Company",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio - Maki.vc",
+    "url": "https://maki.vc/portfolio",
+    "date": "2026-03-11",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "b2501123-e040-4c42-8599-41630a549c90",
+   "name": "FinanceKey Oy",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "siliconcanals.com",
+    "url": "https://siliconcanals.com/helsinkis-financekey-secures-e3m/",
+    "date": "2025-06-10",
+    "rank": "PRESS"
+   },
+   {
+    "name": "financekey.com",
+    "url": "https://financekey.com/press/",
+    "date": "2026-11-04",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "0296a764-1899-4000-8017-79758eb6d4d1",
+   "name": "IQM",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio - Maki.vc",
+    "url": "https://maki.vc/portfolio",
+    "date": "2026-03-11",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "3e0524ad-7104-44a6-8f0f-788bc2772922",
+   "name": "IQM Quantum Computers Oyj",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "aalto.fi",
+    "url": "https://www.aalto.fi/en/news/aalto-quantum-computing-spinout-secures-eu1145m-in-funding",
+    "date": "2019-07-10",
+    "rank": "PRESS"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2019/07/09/finnish-hardware-startup-raises-e11-million-in-seed-funding-to-take-quantum-computing-to-the-next-level/",
+    "date": "2019-07-09",
+    "rank": "PRESS"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/european-quantum-computing-leader-iqm-raises-e128m-led-by-world-fund-to-help-combat-the-climate-crisis/",
+    "date": "2022-07-22",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "sec.gov",
+    "url": "https://www.sec.gov/Archives/edgar/data/2113060/000119312526259957/d900375d424b3.htm",
+    "date": "2026-06-05",
+    "rank": "FILING"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/iqm-a-global-leader-for-quantum-computing-to-become-the-first-listed-european-quantum-company-through-merger-with-real-asset-acquisition-corp/",
+    "date": "2026-02-23",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/iqm-quantum-computers-and-real-asset-acquisition-corp-complete-the-combination-trading-in-iqms-adss-and-iqm-warrants-on-nasdaq-stock-market-llc-commences-on-july-2-2026/",
+    "date": "2026-07-01",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round/",
+    "date": "2025-09-03",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "eu-startups.com",
+    "url": "https://www.eu-startups.com/2025/09/finnish-startup-iqm-quantum-computers-secures-e275-million-in-largest-series-b-raise-ever-in-the-quantum-space/",
+    "date": "2025-09-03",
+    "rank": "PRESS"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/iqm-a-global-leader-in-quantum-computing-and-real-asset-acquisition-corp-announce-upsized-usd-146-million-pipe-with-new-commitment-from-ilmarinen/",
+    "date": "2026-06-02",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/europe-is-on-its-way-to-quantum-leadership-iqm-raises-e39-m-in-series-a-funding/",
+    "date": "2020-11-10",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "e408efba-d8d3-43df-ac47-7b9603e847bb",
+   "name": "KYC Intelligence",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio - Maki.vc",
+    "url": "https://maki.vc/portfolio",
+    "date": "2026-03-11",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Strise: Funding, Team & Investors",
+    "url": "https://startupintros.com/orgs/strise",
+    "date": "2026-07-13",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/strise-tech/__-QF3gbZmi_xBMbmhEUlqhXRCmq85Quaxbn01bNtTIX0",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Strise - Maki.vc",
+    "url": "https://maki.vc/case/strise",
+    "date": "2026-03-10",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "16fa515b-1434-58c9-be73-8754e77ade00",
+   "name": "Metaktik",
+   "type": "Company",
+   "description": "A Finnish aerospace and defense company founded in 2026 and headquartered in Espoo."
+  },
+  "sources": [
+   {
+    "name": "metaktik.com",
+    "url": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+    "date": "2026-03-30",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "sttinfo.fi",
+    "url": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+    "date": "2026-03-31",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "arcticstartup.com",
+    "url": "https://arcticstartup.com/metaktik-raises-e1-million/",
+    "date": "2026-03-31",
+    "rank": "PRESS"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "636e313d-2933-451f-90f8-bc77db6f0329",
+   "name": "Mixed Reality",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio - Maki.vc",
+    "url": "https://maki.vc/portfolio",
+    "date": "2026-03-11",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "DISTANCE LAUNCH RELEASE",
+    "url": "https://distance.tech/news/launch_release",
+    "date": "2024-06-13",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "en.ain.ua",
+    "url": "https://en.ain.ua/2024/06/14/distance-technologies-pre-seed-investment",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Distance emerges from stealth with $2.7M in funding",
+    "url": "https://www.auganix.org/xr-news-distance-emerges-from-stealth-with-2-7m-in-funding-to-announce-its-glasses-free-xr-technology",
+    "date": "2024-06-13",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "659b284c-2599-4be8-b2c0-ce927021dee1",
+   "name": "OGOship",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/ogoship-nettivarasto-koivua-ltd/company_financials",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/ogoship-nettivarasto-koivua-ltd/financial_details",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/ogoship/__S7rrhEfVyhyBCn6a_HeJ1uNGp6VwgRj6NDbmIO6Rrzc",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/434342-89",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "16223230-e787-4182-bae2-f7c5e03c3acf",
+   "name": "Onego Bio",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2024/04/02/onego-bio-secures-40m-series-a/",
+    "date": "2024-04-02",
+    "rank": "PRESS"
+   },
+   {
+    "name": "paaomasijoittajat.fi",
+    "url": "https://paaomasijoittajat.fi/en/?p=26682",
+    "date": "2024-04-02",
+    "rank": "PRESS"
+   },
+   {
+    "name": "finland.dlapiper.com",
+    "url": "https://finland.dlapiper.com/en/news/dla-piper-advised-food-biotech-company-onego-bio-40-million-series-funding-round",
+    "date": "2024-04-03",
+    "rank": "PRESS"
+   },
+   {
+    "name": "techcrunch.com",
+    "url": "https://techcrunch.com/2024/04/01/animal-free-egg-protein-onego-bio-40m",
+    "date": "2024-04-01",
+    "rank": "PRESS"
+   },
+   {
+    "name": "onego.bio",
+    "url": "https://www.onego.bio/about",
+    "date": "2026-11-07",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "4bb38245-af8b-4a3c-ae22-de40aa1be500",
+   "name": "Quantum Computing",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio - Maki.vc",
+    "url": "https://maki.vc/portfolio",
+    "date": "2026-03-11",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "a4500dc8-fe7b-4116-8e01-4a9b636d6adb",
+   "name": "Solid Clouds",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/mainframe-industries-announced-2-million-funding-from-maki-vc-play-ventures-crowberry-capital-and-si-news4755455181",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "New pan-Nordic venture Mainframe Industries joins the game with €2 million seed",
+    "url": "https://tech.eu/2019/10/01/new-pan-nordic-venture-mainframe-industries-joins-the-game-with-e2-million-seed",
+    "date": "2019-10-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Mainframe Industries company information, funding & investors",
+    "url": "https://app.dealroom.co/companies/mainframe_industries",
+    "date": "2019-04-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "afba0cba-5006-5d2f-b50a-9dca60fa309a",
+   "name": "Sono",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "callsono.com",
+    "url": "https://callsono.com/funding/",
+    "date": "2026-06-03",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "callsono.com",
+    "url": "https://callsono.com/about/",
+    "date": "2026-11-10",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "kauppalehti.fi",
+    "url": "https://www.kauppalehti.fi/uutiset/a/3809562d-3fb1-4e6e-933b-740d28c45578",
+    "date": "2026-06-03",
+    "rank": "PRESS"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "0a5f5078-326a-4b0b-9914-c84f163bc65d",
+   "name": "Strise",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/strise-tech/__-QF3gbZmi_xBMbmhEUlqhXRCmq85Quaxbn01bNtTIX0",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/funding_round/strise-seed--12068d7b",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/strise/company_financials",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "3f6d522f-985b-5035-a38b-4a2e616a3598",
+   "name": "Upheat",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/upheat-in-a-seed-round-with-maki-vc-and-vsqua/",
+    "date": "2025-12-01",
+    "rank": "AGGREGATOR"
+   },
+   {
+    "name": "maki.vc",
+    "url": "https://maki.vc/case/upheat/",
+    "date": "2026-11-13",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/762648-58",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+  "company": {
+   "id": "d2839ceb-9750-4945-925f-e6c602c304c4",
+   "name": "Zevoy Aktiebolag",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/zevoy/__ZOZwg2CmgFIEdEOJYZ0PI2fBPp6x1tXLCaIgs9uXdwc",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/zevoy/__ZOZwg2CmgFIEdEOJYZ0PI2fBPp6x1tXLCaIgs9uXdwc/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/newsletter/fintech-startup-zevoy-secures-15m",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/zevoy/financial_details",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

@@ -1,0 +1,44 @@
+{
+ "id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+ "name": "Aavuus",
+ "type": "Company",
+ "description": "A Finnish aerospace and defense company headquartered in Espoo, founded in 2024.",
+ "industries": [
+  "AEROSPACE_AND_DEFENSE"
+ ],
+ "stage": "Pre-Seed",
+ "country": "Finland",
+ "total_funding_text": "Raised Seed round (Jun 2026), investor: Maki.vc",
+ "sources": [
+  {
+   "name": "Cala AI",
+   "url": null,
+   "date": "2026-11-13",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "aavuus.com",
+   "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+   "date": "2026-06-09",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "tech.eu",
+   "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+   "date": "2026-06-09",
+   "rank": "PRESS"
+  },
+  {
+   "name": "linkedin.com",
+   "url": "https://www.linkedin.com/company/aavuus",
+   "date": "2026-11-02",
+   "rank": "AGGREGATOR"
+  },
+  {
+   "name": "aavuus.com",
+   "url": "https://aavuus.com/",
+   "date": "2026-11-02",
+   "rank": "PRIMARY"
+  }
+ ]
+}

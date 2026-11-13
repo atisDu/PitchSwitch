@@ -1,0 +1,89 @@
+[
+ {
+  "id": "cfc011d4-6ec9-514c-9ed1-626be23bdf43",
+  "company_id": "7ff2ec4f-159b-4a6c-8f7f-be6070abf5b6",
+  "label": "Seed",
+  "date": "2022-03-29",
+  "amount_text": "€4M",
+  "amount_eur": 4000000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "fd3ba350-0e55-40b5-96e3-013994777fdc",
+     "name": "Inventure",
+     "type": "Organization",
+     "description": "a Finnish investment firm headquartered in Helsinki"
+    },
+    "is_lead": true
+   }
+  ],
+  "sources": [
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2022/03/29/anyday-raises-4-million-in-seed-round-offering-an-active-stance-on-ethical-payments",
+    "date": "2022-03-29",
+    "rank": "PRESS"
+   },
+   {
+    "name": "arcticstartup.com",
+    "url": "https://arcticstartup.com/?p=95750",
+    "date": "2026-11-10",
+    "rank": "PRESS"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2022/03/29/anyday-raises-4-million-in-seed-round-offering-an-active-stance-on-ethical-payments/",
+    "date": "2022-03-29",
+    "rank": "PRESS"
+   }
+  ]
+ },
+ {
+  "id": "9bd14930-eed1-57d5-920d-d5fdbb9d0c2c",
+  "company_id": "3cbd981d-f00c-59d5-8df3-a48fa0b721c5",
+  "label": "Seed",
+  "date": "2018-02-21",
+  "amount_text": "$2.4M",
+  "amount_eur": 2208000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "fd3ba350-0e55-40b5-96e3-013994777fdc",
+     "name": "Inventure",
+     "type": "Organization",
+     "description": "a Finnish investment firm headquartered in Helsinki"
+    },
+    "is_lead": null
+   }
+  ],
+  "sources": [
+   {
+    "name": "news.cision.com",
+    "url": "https://news.cision.com/san-francisco-oy/r/thirdpresence-raises--2-4m-to-transform-in-app-programmatic-video-advertising-with-ai,c2456776",
+    "date": "2018-02-21",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2018/02/21/thirdpresence-funding/",
+    "date": "2018-02-21",
+    "rank": "PRESS"
+   },
+   {
+    "name": "unquote.com",
+    "url": "https://www.unquote.com/nordics/official-record/3008731/inventure-tesi-raise-usd24m-for-thirdpresence",
+    "date": "2018-02-21",
+    "rank": "PRESS"
+   }
+  ]
+ }
+]

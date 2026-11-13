@@ -1,0 +1,32 @@
+[
+ {
+  "id": "202e9283-6455-486f-8868-03c7e0d0cf29",
+  "name": "Sensofusion Oy",
+  "type": "Organization",
+  "description": "Finnish defense technology company founded in 2014 and based in Vantaa."
+ },
+ {
+  "id": "4ba97c23-31dd-43c1-a26f-9d61f4048959",
+  "name": "Sensofusion Aviation",
+  "type": "Organization",
+  "description": "A division that develops air‑to‑ground surveillance systems."
+ },
+ {
+  "id": "3d5ed247-1938-46ec-b799-5b584fd921c2",
+  "name": "SENSOFUSION UK LTD",
+  "type": "Company",
+  "description": "A British retail company founded in 2025 and headquartered in London."
+ },
+ {
+  "id": "d5f710c3-ea81-4308-8f07-d0766c4a25f7",
+  "name": "Sensolution AB",
+  "type": "Company",
+  "description": "Swedish private limited company founded in 2010 and headquartered in Västerås."
+ },
+ {
+  "id": "f4bf075a-5640-4847-9a30-94dbf2fdb28b",
+  "name": "ISOSC LTD",
+  "type": "Company",
+  "description": "A London‑based retail company founded in 2024."
+ }
+]

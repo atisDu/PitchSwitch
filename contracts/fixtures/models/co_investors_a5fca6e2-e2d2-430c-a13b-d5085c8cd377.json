@@ -1,0 +1,110 @@
+[
+ [
+  {
+   "id": "a3bcc153-0a43-56ba-940e-5a885b9a2aae",
+   "name": "Alexander Lorenz",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "597c5211-e388-5147-aeb5-d85a7c2abf2f",
+   "name": "Christian Gaiser",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "a5de4e4e-b8dc-4caa-b1fa-562de83b806f",
+   "name": "Dutch Founders Fund",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "3a5cd0df-5eb0-5ccc-a403-f42cf42ea72f",
+   "name": "Fabian Wittleben",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "60db5571-aa94-4954-b6b6-8d86d07be831",
+   "name": "Johannes Ditterich",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+   "name": "Keen Venture Partners",
+   "type": "Company",
+   "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models."
+  },
+  1
+ ],
+ [
+  {
+   "id": "56d3ebe6-8f54-4465-8455-faa4f77e073b",
+   "name": "Martina Pfeifer",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "15ade737-6d25-5d83-944a-7bbd9096cb62",
+   "name": "Michael Brehm",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "64f78e9c-1db5-56a5-91a6-5fff2191c311",
+   "name": "Samen Slimmer",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "89c7f69d-c29e-5d78-9cec-d05185772ba2",
+   "name": "Slimmer Ai Labs B.V.",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "bd7b090a-81a6-410e-9d42-d491ec77f0fb",
+   "name": "Smedvig",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "090e6f9a-02b1-4845-a2b1-aee1c4aad957",
+   "name": "Wecken & Cie.",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ]
+]

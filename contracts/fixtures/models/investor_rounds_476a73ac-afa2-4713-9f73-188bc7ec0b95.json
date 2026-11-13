@@ -1,0 +1,467 @@
+[
+ {
+  "id": "1b13ff93-4906-5716-ae5d-c7ba2d1c2e22",
+  "company_id": "f9bf65a6-a85e-46ad-b086-d2c0cfd3a7b7",
+  "label": "Series A",
+  "date": "2026-07-06",
+  "amount_text": "$14M",
+  "amount_eur": 12880000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+     "name": "Lifeline Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "a8dbd4e3-8004-4f64-a385-03e2ba9a0296",
+     "name": "HealthCap",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "cd227237-cf1f-4aa7-ac14-9ab44bfe8256",
+     "name": "SANDWATER AS",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "eu-startups.com",
+    "url": "https://www.eu-startups.com/2026/07/finlands-curifylabs-raises-e12-million-to-expand-3d-printing-based-medicine-compounding/",
+    "date": "2026-07-06",
+    "rank": "PRESS"
+   },
+   {
+    "name": "news.curifylabs.com",
+    "url": "https://news.curifylabs.com/curifylabs-raises-14m-series-a-to-power-the-future-of-personalized-medicine",
+    "date": "2026-07-06",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "id": "0ab3227a-34e5-53af-905c-01d08731f4fc",
+  "company_id": "68a4b365-baa0-5625-9d6c-c61ab1e99d48",
+  "label": "Seed",
+  "date": "2024-07-08",
+  "amount_text": "€1.5M",
+  "amount_eur": 1500000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "3c34f50c-cd21-406e-b4dd-8105d574d1bf",
+     "name": "GTT Strategic Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+     "name": "Lifeline Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "e8bd020d-4348-491d-86a6-91567d716f52",
+     "name": "Counterview Capital",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "seaber.io",
+    "url": "https://www.seaber.io/blog/gtt-strategic-ventures-invests-in-seaber-io-specialising-in-the-digitalisation-of-bulk-shipping",
+    "date": "2024-07-08",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "bebeez.eu",
+    "url": "https://bebeez.eu/2024/08/02/finnish-maritime-tech-startup-raises-capital-to-enhance-ai-driven-shipping-solutions",
+    "date": "2024-08-02",
+    "rank": "PRESS"
+   },
+   {
+    "name": "seaber.io",
+    "url": "https://www.seaber.io/blog/seaber-io-secures-further-funding-of-eu1-5m",
+    "date": "2021-12-21",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "oceans-and-fisheries.ec.europa.eu",
+    "url": "https://oceans-and-fisheries.ec.europa.eu/news/ai-boosts-maritime-commerce-thanks-seaber-software-blueinvest-2023-11-06_en",
+    "date": "2023-11-06",
+    "rank": "PRESS"
+   },
+   {
+    "name": "cbinsights.com",
+    "url": "https://www.cbinsights.com/company/seaberio/financials",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   },
+   {
+    "name": "seaber.io",
+    "url": "https://www.seaber.io/blog/seaber-io-raises-eu500-000-in-funding-from-lifeline-ventures",
+    "date": "2020-06-10",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "hellenicshippingnews.com",
+    "url": "https://www.hellenicshippingnews.com/?p=1047252",
+    "date": "2026-11-13",
+    "rank": "PRESS"
+   }
+  ]
+ },
+ {
+  "id": "d0fb14e8-558d-5d80-94a1-9d49dab3e824",
+  "company_id": "a2617168-a113-4849-8fdd-ca88fd98cb5e",
+  "label": "Pre-Seed",
+  "date": "2023-09-01",
+  "amount_text": "€2.5M",
+  "amount_eur": 2500000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+     "name": "Lifeline Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "5bcdc544-7120-4b04-8951-18201e578a65",
+     "name": "Curus AB",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "b0b82629-c0f0-448a-aa92-5bf202e102f0",
+     "name": "VentureFriends",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "eu-startups.com",
+    "url": "https://www.eu-startups.com/2023/09/helsinki-based-measurlabs-raises-e2-5-million-to-kill-inefficiencies-in-lab-research-projects/",
+    "date": "2023-09-01",
+    "rank": "PRESS"
+   },
+   {
+    "name": "measurlabs.com",
+    "url": "https://measurlabs.com/blog/measurlabs-seed-round/",
+    "date": "2023-09-01",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "avoindata.prh.fi",
+    "url": "https://avoindata.prh.fi/opendata-registerednotices-api/v3/2820461-1",
+    "date": "2021-02-10",
+    "rank": "FILING"
+   },
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/measur-announced-raising-500k-funding-from-the-finland-based-vc-company-lifeline-ventures",
+    "date": "2021-03-23",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "id": "d47b8c20-a5c3-5c0d-8c14-b6acc3bc30f4",
+  "company_id": "1584c18c-1878-56a6-b873-e1f80789a40f",
+  "label": "Seed",
+  "date": "2021-04-14",
+  "amount_text": "$6.2M",
+  "amount_eur": 5704000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "0abdbafe-e628-5733-ae94-97e6d912152c",
+     "name": "Axel Sjöblom",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "1d1bfed9-d198-446d-b368-5a35dff40782",
+     "name": "Albert Wenger",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "30054269-e591-5569-bf3c-cb7633db9e53",
+     "name": "Maija Itkonen",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "3328757b-6011-4295-b645-7f0c0b6edd71",
+     "name": "GenZero",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "40ac95ab-763e-43f0-aea2-cfda0a506d50",
+     "name": "Wave Ventures",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "4276c81c-f80f-529d-89f0-dc8d0375e5cf",
+     "name": "David Helgason",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "46cea8c2-0e63-41c2-8b9f-77c0d0c2fc18",
+     "name": "Übermorgen Ventures AG",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+     "name": "Lifeline Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "79b3fda2-d08d-457f-8260-fed75b447319",
+     "name": "Starlight Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "85f67a08-17ec-56b0-bb34-0309ffa5076b",
+     "name": "Moaffak Ahmed",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "a8aef419-39d8-5287-b5c8-eddb9b25ad79",
+     "name": "Alex Patist",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "bed047f4-4f1b-49a1-9c34-d58c157a3152",
+     "name": "TRUE VENTURES",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "c06adc97-e2d8-4590-a329-4462750ee4e6",
+     "name": "Cherry Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "c2789093-8132-5e95-b7d3-03acd7e78aca",
+     "name": "Atte Palomäki",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "da07fad7-db5e-57c9-8861-44d806f2864d",
+     "name": "Mika Ihamuotila",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "e09816af-3f88-43de-baf3-0cfbf276ad6b",
+     "name": "Paul Bragiel",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "e55cc561-138d-5f1b-b686-843c2e7bf135",
+     "name": "Tina Aspiala",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "ec992709-456f-547c-a079-3467e3f25fce",
+     "name": "Dan Bragiel",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "carboculture.com",
+    "url": "https://carboculture.com/resources/",
+    "date": "2026-11-13",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "techcrunch.com",
+    "url": "https://techcrunch.com/2021/04/14/large-scale-co2-removal-startup-carbo-culture-raises-6-2m-seed-led-by-true-ventures/",
+    "date": "2021-04-14",
+    "rank": "PRESS"
+   },
+   {
+    "name": "impactalpha.com",
+    "url": "https://impactalpha.com/carbo-culture-raised-6-2-million-to-lock-up-carbon-in-biochar/",
+    "date": "2021-04-19",
+    "rank": "PRESS"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/brief/carbo-culture-funding/",
+    "date": "2018-02-09",
+    "rank": "PRESS"
+   },
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/carbo-culture-raises-eur-550k-for-biochar-development-news7087704038",
+    "date": "2018-02-07",
+    "rank": "AGGREGATOR"
+   },
+   {
+    "name": "cbinsights.com",
+    "url": "https://www.cbinsights.com/company/carbo-culture/financials",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   },
+   {
+    "name": "medium.com",
+    "url": "https://medium.com/carboculture/opening-a-new-chapter-d35a22dde3da",
+    "date": "2023-11-28",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "bebeez.eu",
+    "url": "https://bebeez.eu/2023/11/28/finnish-carbo-culture-gets-18-million-series-a-funding-to-spearhead-carbon-removal-solutions/",
+    "date": "2023-11-28",
+    "rank": "PRESS"
+   },
+   {
+    "name": "en.ain.ua",
+    "url": "https://en.ain.ua/2023/11/29/finnish-carbo-culture-receives-18m",
+    "date": "2023-11-29",
+    "rank": "PRESS"
+   },
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/carbo-culture-gets-funded-by-wave-ventures-news3447712868",
+    "date": "2017-04-04",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ }
+]

@@ -1,0 +1,164 @@
+[
+ [
+  {
+   "id": "1d1bfed9-d198-446d-b368-5a35dff40782",
+   "name": "Albert Wenger",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "a8aef419-39d8-5287-b5c8-eddb9b25ad79",
+   "name": "Alex Patist",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "c2789093-8132-5e95-b7d3-03acd7e78aca",
+   "name": "Atte Palomäki",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "0abdbafe-e628-5733-ae94-97e6d912152c",
+   "name": "Axel Sjöblom",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "c06adc97-e2d8-4590-a329-4462750ee4e6",
+   "name": "Cherry Ventures",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "ec992709-456f-547c-a079-3467e3f25fce",
+   "name": "Dan Bragiel",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "4276c81c-f80f-529d-89f0-dc8d0375e5cf",
+   "name": "David Helgason",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "3328757b-6011-4295-b645-7f0c0b6edd71",
+   "name": "GenZero",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+   "name": "Lifeline Ventures",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "30054269-e591-5569-bf3c-cb7633db9e53",
+   "name": "Maija Itkonen",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "da07fad7-db5e-57c9-8861-44d806f2864d",
+   "name": "Mika Ihamuotila",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "85f67a08-17ec-56b0-bb34-0309ffa5076b",
+   "name": "Moaffak Ahmed",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "e09816af-3f88-43de-baf3-0cfbf276ad6b",
+   "name": "Paul Bragiel",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "79b3fda2-d08d-457f-8260-fed75b447319",
+   "name": "Starlight Ventures",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+   "name": "Tesi",
+   "type": "Organization",
+   "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+  },
+  1
+ ],
+ [
+  {
+   "id": "e55cc561-138d-5f1b-b686-843c2e7bf135",
+   "name": "Tina Aspiala",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "bed047f4-4f1b-49a1-9c34-d58c157a3152",
+   "name": "TRUE VENTURES",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "40ac95ab-763e-43f0-aea2-cfda0a506d50",
+   "name": "Wave Ventures",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ]
+]

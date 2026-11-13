@@ -1,0 +1,2052 @@
+[
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "0d58f2c6-09a4-4a87-ad56-690c99650c8e",
+   "name": "&Charge",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "96511d77-d957-4d96-ba97-43bf4cf9418c",
+   "name": "Advanced Machine Intelligence (AMI)",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "news.crunchbase.com",
+    "url": "https://news.crunchbase.com/venture/world-model-ai-lab-ami-raises-europes-largest-seed-round",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "news.crunchbase.com",
+    "url": "https://news.crunchbase.com/venture/foundational-ai-startup-funding-doubled-openai-anthropic-xai-q1-2026",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/ami-labs/__MXQrpkXew5SGFKh2KHM-5P-M6RT7zaTuj_aLin0to7Q",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Yann LeCun's AMI Labs raises $1.03B to build world models | TechCrunch",
+    "url": "https://techcrunch.com/2026/03/09/yann-lecuns-ami-labs-raises-1-03-billion-to-build-world-models",
+    "date": "2026-03-09",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Why AMI Labs’ Alexandre LeBrun won't call his AI 'AGI' or 'superintelligence' | TechCrunch",
+    "url": "https://techcrunch.com/2026/07/16/why-ami-labs-alexandre-lebrun-wont-call-his-ai-agi-or-superintelligence",
+    "date": "2026-07-16",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/1232257-78",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/investor/277182-37",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "126cdb4a-60d4-480d-aad6-d8773b5c65e0",
+   "name": "Albio",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "7c2b9a0b-4a73-4b04-a830-a6a421d12bd8",
+   "name": "Alloyed",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "f472d548-bf8e-4b47-8b63-03a31f89946d",
+   "name": "Allsides",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "3d0b67a4-54d8-40d8-a3e7-f7f7a1db9143",
+   "name": "Annette",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/annette/__2xVlBGqfA4Vq9JMsiY-GV4-N6BZ_zzAfrLMxSX8uMMA/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/annette/__2xVlBGqfA4Vq9JMsiY-GV4-N6BZ_zzAfrLMxSX8uMMA",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/annette-3d2c",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/1153800-82",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "2f3fbf28-cdb2-4d2a-9f1f-d400331cd649",
+   "name": "Anymove",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "7a89ceea-bf04-49e4-b8cc-63d9a96e8e45",
+   "name": "AS GOOD AS NEW LTD",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "eaefd5b3-1c39-4183-ac23-6be26e4c62b1",
+   "name": "Aslan",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "0be838ed-cccb-46ff-bc58-801b441b4ebf",
+   "name": "Astro Art",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "9f5da304-6f65-4036-a689-88e6050118d3",
+   "name": "Atheneum Partners GmbH",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "d1545ec2-5db4-4e06-b404-87f40032bba5",
+   "name": "Atlas Metrics GmbH",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/atlas-metrics/__OLc9IDsc35QxOtRFFQ7Fzg1ex_aNxdsoQRB_da5gFus",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/atlas-metrics/__OLc9IDsc35QxOtRFFQ7Fzg1ex_aNxdsoQRB_da5gFus/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "ab14ae76-bf85-4c99-897f-afe921187748",
+   "name": "Aurora Powertrains",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "d477dc25-2b81-41bb-a05c-9a7ef2f9d90d",
+   "name": "Banxware",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "55b15f20-b8e2-4dad-a677-3afad143e0f0",
+   "name": "Betterfly",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "2754fdbd-737d-4835-ae66-efb017cccaa8",
+   "name": "BIOZEROC LTD",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "8d762cdd-c725-4405-bf0b-6cf4913ea543",
+   "name": "Branch Financial",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "25fdb5d1-8de7-42ff-9123-0682fc9e3b0a",
+   "name": "BTRY",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/btry/__edjeuG_MZ2FXdMNX2iJbJNApF_TisOcd8Lkd1rGbliM",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/btry/__edjeuG_MZ2FXdMNX2iJbJNApF_TisOcd8Lkd1rGbliM/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/trending-business-models/startups-in-solid-state-lithium-ion-batteries/__AmmmPCrwdaKf1qLdtaJ4t3sY35dDdpnDlVYBYuAjQcY",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "ea6dceda-7de3-42a0-b6e3-398c54ba5ed0",
+   "name": "CABO",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "65389d9f-4e44-4b2b-a61f-89db3c416b05",
+   "name": "Cambrium",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "f4f6c0a6-37c6-44ee-85d7-631c66121b3d",
+   "name": "Carbonaide Oy",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "eu-startups.com",
+    "url": "https://www.eu-startups.com/2026/01/finlands-carbonaide-raises-e3-7-million-to-turn-building-materials-into-a-carbon-sink/",
+    "date": "2026-01-28",
+    "rank": "PRESS"
+   },
+   {
+    "name": "carbonaide.com",
+    "url": "https://carbonaide.com/?p=8006",
+    "date": "2026-01-28",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/vantaan-energia-oy/investor_summary/overview_timeline",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/carbonaide/__12qZ1arnIM7J8X3Dbk53qR5uxQnNSsqJyf_xJgViHxs",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/carbonaide/__12qZ1arnIM7J8X3Dbk53qR5uxQnNSsqJyf_xJgViHxs/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/investor/508441-51",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "3512b2fb-95d0-41c0-8724-b67c945145dd",
+   "name": "CARELOOP HEALTH LTD",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "c4ad2282-ca46-4d05-bb6e-bc184143388a",
+   "name": "Casey",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "12a4ba95-ca63-4c14-a8a5-bc512d14df56",
+   "name": "Chip Metrics",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "3a0cce4a-acbb-4db0-9c8d-b8c2a082fb05",
+   "name": "ClimeFi",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/climefi/__OF2uiHmJoDB_8E_q4zJ1lxLoHPqWwALu2kz7XfGQ7y0/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/512239-69",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/carbonx-87df/financial_details",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "cf493386-7367-429c-a05d-5e613595bbd5",
+   "name": "CLT Life",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "23e33ec4-ae63-417d-9b0a-7cf2848ab04f",
+   "name": "CNC24",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "639bcb81-c9e3-46cb-82ed-3e2623cec186",
+   "name": "Comet",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "62433de5-8d9c-4a29-bbbb-3f78dc59f353",
+   "name": "CommerceClarity",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "commerceclarity.com",
+    "url": "https://commerceclarity.com/press/commerceclarity-raises-3m-ai-commerce",
+    "date": "2025-11-13",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "commerceclarity.com",
+    "url": "https://commerceclarity.com/press/commerceclarity-acquires-katalogo-ai",
+    "date": "2026-06-04",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "cbinsights.com",
+    "url": "https://www.cbinsights.com/company/commerceclarity/financials",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "8a208372-971e-42ee-93a7-867a6e15af23",
+   "name": "Contract Hero",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "65ad092d-3b26-4e96-a6cc-46efc9884d08",
+   "name": "Coverflex",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "665bac53-eb5e-4f89-8979-272c339694c2",
+   "name": "Crafthunt",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "95421f0c-51fe-4acd-8e81-4d17644a0871",
+   "name": "Credibur GmbH",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "FinTech Credibur Secures $2.2M in Pre-Seed Funding - Credibur",
+    "url": "https://credibur.com/content/pre-seed",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Credibur Raises $2.2M in Pre-Seed Round",
+    "url": "https://www.thesaasnews.com/news/credibur-raises-2-2m-in-pre-seed-round",
+    "date": "2025-07-28",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "FinTech Credibur secures $2.2m to digitise private credit",
+    "url": "https://fintech.global/2025/07/24/fintech-credibur-secures-2-2m-to-digitise-private-credit",
+    "date": "2025-07-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "coverager.com",
+    "url": "https://coverager.com/credibur-raises-2-2-million",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Germany's Credibur Raises $2.2M to Build Credit Infrastructure Platform - Fintech Schweiz Digital Finance News - FintechNewsCH",
+    "url": "https://fintechnews.ch/fintechgermany/credibur-funding/77455",
+    "date": "2025-07-23",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "German fintech firm Credibur raises $2.2M to revolutionize Non-Bank lending infrastructure",
+    "url": "https://vestbee.com/insights/articles/credibur-raises-2-2-m",
+    "date": "2025-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "f84d126e-d6b3-4dee-8d9f-9561a171e2e6",
+   "name": "Cure Finance",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "92192d27-8b8e-45a8-b4b5-71098fd0a599",
+   "name": "Custodian Club",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "d8949377-b12a-4bd2-ad89-faa443c68e73",
+   "name": "Dribla",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "2fa8d7a0-1f05-4b13-ba93-5c2a46e4b037",
+   "name": "Eaze",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "f526ad93-4e22-4b9b-80fb-5aaf996550bc",
+   "name": "Ecog",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "7b74cdc8-8e95-453f-889e-8a4ff414678d",
+   "name": "Edu Bites",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "aec6cfd9-4a00-4303-9f5b-ed11f6912988",
+   "name": "Elive",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "eb290367-6204-4169-ba5a-bb1d1d296483",
+   "name": "ElvySense",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "23ecb6bc-595a-4767-b8f5-6c841c16fe04",
+   "name": "Empion GmbH",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "336dbeb6-10b5-4ff8-8055-f1098503576e",
+   "name": "Emulate, Inc.",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "5ca3d78b-3d4c-4fea-847d-eabd1eab4501",
+   "name": "encosa",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "trendingtopics.eu",
+    "url": "https://www.trendingtopics.eu/25-millionen-fuer-batteriespeicher-bayern-kapital-steigt-bei-encosa-ein/",
+    "date": "2026-06-01",
+    "rank": "PRESS"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "2311680e-93c1-49fa-8d2a-bab123f59a3e",
+   "name": "Energetic Insurance",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "9cf452fe-454b-4117-a1c0-bd4a4eaaa145",
+   "name": "Engie",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "ENGIE Research & Innovation press area",
+    "url": "https://innovation.engie.com/en/research-innovation-press-area",
+    "date": "2022-03-29",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/venture-capital/engie-new-ventures/__HbU-CLX9hHoP_Ltull7bK6W7Vt_ILRlK7D4NEq3CyOc",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "7ad2098b-b238-4b6f-b8b0-ccc0df92056b",
+   "name": "enspired",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "217cb01d-773c-4d06-a304-111b7feffebe",
+   "name": "EOLOGIX-PING",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "d4cf4a2b-f60e-490f-aa61-9700dff0b6a4",
+   "name": "Exein",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "9e14a209-bc70-43a5-9f75-9b50a3319163",
+   "name": "Fibionic",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "df4e07bb-a59a-4e7f-83f6-766bc427c084",
+   "name": "FICUS Health",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "98513992-f6bd-489b-a3ef-160ad890a609",
+   "name": "Finanzguru",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/funding_round/finanzguru-by-dwins-gmbh-series-a--e781b2e4",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/finanzguru/__LIeX0SrtBCFhImqIr9miOLnbiDfPslH5mSoeNrOrhhg",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "d2d6f392-4d94-4880-9ea2-4ccb66751fe7",
+   "name": "Finleap Connect",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/qwist/__a2Eb5Oweym-URxmCyerlAEGSOYD5QIifXH40L5TnpPU",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "205dca65-6a87-4400-900f-e9be16edf850",
+   "name": "Fiuge",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "2aebd239-f1f2-4ef3-a126-a2f97303b287",
+   "name": "Flexperto",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "79145efd-3729-49a9-9d1c-ded5ae9413d0",
+   "name": "Flyability",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "366bd826-6667-4333-9eaa-9f1e9878216f",
+   "name": "Freesi",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "513c2b38-17a3-4a76-80f1-d3c8d51f4412",
+   "name": "Freeway Camper",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/freeway-camper/__WjccADQSzXdnWSq-vK-Hf7uMcubqBbndLm5N3f70SlM",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/freeway-camper/__WjccADQSzXdnWSq-vK-Hf7uMcubqBbndLm5N3f70SlM/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/trending-business-models/startups-in-rv-rental-software/__Ol5e2cqMdC-oxIt0bPfi_-JSIhjCDOY5M9fgK-kq1Eg/companies",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "a9c175fc-4548-46c7-93ec-069ef1a50648",
+   "name": "GARS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "8eef5fc4-5c5f-4f42-89be-1e01d0d422f2",
+   "name": "German Autolabs",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "25c4a7f0-4ead-4da5-a705-9f3d63757238",
+   "name": "Gradient AI",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "b3a623c0-9844-4eba-bb05-3848f8639341",
+   "name": "Gradyent",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/gradyent-technologies/__gB8X1PsooJHwJOwnLQ43L4ryX0dH90e3CQiYiJuCnJc/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/gradyent-technologies/__gB8X1PsooJHwJOwnLQ43L4ryX0dH90e3CQiYiJuCnJc",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "614cddfb-2a6c-48b8-8d78-0249bcb6f640",
+   "name": "HIBOO",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "5de7fc3f-2296-4724-9ac3-324e9cc15b25",
+   "name": "Hiil",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "5774fc3f-c520-42f3-8595-94c58a7fbfe6",
+   "name": "Homaio",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "ef5de469-c9ff-467e-83dd-14bc47d0bf9c",
+   "name": "Hypatos",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "667b1d3f-f793-4246-98cd-345224b6aee0",
+   "name": "i2x",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "7777d4cc-92d4-4ac9-9e7d-9cb576cc6c8c",
+   "name": "iFeel",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "09b0e990-3ef0-4305-af87-cf3c7b1ea853",
+   "name": "Infras AI",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "7405ac00-e8c6-4e19-86a2-75bdb679d2f2",
+   "name": "INXM",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "4ba7cc64-39c0-4ccd-9320-7c619505fdf3",
+   "name": "Justos",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "b6490d9f-dd00-43a0-ab0a-ad805391c031",
+   "name": "Kadmos",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+   "name": "Kelluu Oy",
+   "type": "Company",
+   "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and..."
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "878a3a1b-404f-4f91-9b13-f08d4a4cb7f0",
+   "name": "Kertos GmbH",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "16179fc9-f83b-4fe2-986d-803fe2b2ac22",
+   "name": "Klimate",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "8cc1b568-45da-4ecd-a425-189a5b49be09",
+   "name": "KOHORT SOFTWARE LIMITED",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "b49da557-be86-40c7-b95c-e82aad26f182",
+   "name": "Kontempo LLC",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "ec2692c1-9393-48f1-b112-16e1a9612ea6",
+   "name": "Kraftblock",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "c1baaee9-6ec2-42cf-b29e-53a39bfb4f13",
+   "name": "Kuru Resort",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "175430db-81cf-4189-b3e9-d709adad7cf3",
+   "name": "Kvantify",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "12ffd0f2-c632-4b6d-81bb-1878c107492f",
+   "name": "LabForward",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/labforward/__wrEPwUg_nTpz6FAqgZt_AUvkwVgFhSSnVlPJPY1Oxcw",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/labforward/__wrEPwUg_nTpz6FAqgZt_AUvkwVgFhSSnVlPJPY1Oxcw/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/legal-entities/germany/labforward-gmbh/__RgfGa4gGoS1OSF6Xq8PHYqgNUtRmRxbX8wAto58-4eo",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/legal-entities/germany/labforward-gmbh/__U_mHvQccubwZALowDLoZBo-N7SyOezHgvs0b6cFGdTU",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "399af3db-c008-4d3b-851d-260ecff6da32",
+   "name": "Libify",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/libify/__p4ATPYJJwcWasuo0bO86nbqpO7U9ftLU32exCoVWCus",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/trending-business-models/startups-in-wearable-emergency-response-device/__MSZ73iBZ2bcYj9bGc58uOUFpdawx-lyjTD52zrG1Ryk/companies",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/libify/financial_details",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/162116-29",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "b4e6629f-438c-4a52-a1b4-1194e7729329",
+   "name": "Liqid Inc.",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "e88701c0-59c2-44a1-acaf-ddcfa43b416b",
+   "name": "LiveEO GmbH",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "7566fd6b-7ce4-430f-a181-4103d2a2b6f8",
+   "name": "Logicc",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "4bb9419d-8549-40cf-a3a5-a0153ce9d17f",
+   "name": "Lykon",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/lykon/__5i6b1YaVjkAv-7lkwbOjZ5ZyeS0JmUueLJDo8XqFEvA/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/lykon/__5i6b1YaVjkAv-7lkwbOjZ5ZyeS0JmUueLJDo8XqFEvA",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "89ba4af6-7938-4d7d-9208-7c491e872480",
+   "name": "Lyyli",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "955993d9-0319-4e0f-8ee7-1830fb9b23e0",
+   "name": "Marshmallow",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "UK's Marshmallow raises $30M on a $310M valuation for more 'inclusive' car insurance | TechCrunch",
+    "url": "https://techcrunch.com/2020/11/02/uks-marshmallow-raises-30m-on-a-310m-valuation-for-more-inclusive-car-insurance",
+    "date": "2020-11-02",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/marshmallow/__e9G6xiDh1gIMIWdr2hzTTvMhoZUlOOe4fk9YaTdv6sY/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "45596f04-9e03-4442-a697-e1da92511210",
+   "name": "Multiverse Computing",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "13b02344-039e-4623-ba4e-254c018892f2",
+   "name": "PlanRadar",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "8fdee488-d19a-43e8-bb84-c429215498b2",
+   "name": "Redkik",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/redkik/__ITKE4FpLT8dWBh1zNpbYVJkWmMYLZTU783Rb3hHCKZk",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/redkik/__ITKE4FpLT8dWBh1zNpbYVJkWmMYLZTU783Rb3hHCKZk/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "7a99e109-44a6-4c9c-b258-b8b11260b8ea",
+   "name": "SpaceX",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "eeb21db3-5e11-55c8-8a58-a9480867664b",
+   "name": "Swapbat oy",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "swapbat.io",
+    "url": "https://swapbat.io/investors/",
+    "date": "2026-11-13",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "fe362c6e-8157-45f7-ba1b-ed5d2a5bc8c9",
+   "name": "Talentir GmbH",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/513041-77",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/talentir",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/blockchain-founders-group",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/blockchain-founders-capital",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/talentir/__o_kmC0j0X3JF4CJgXsDyTckApc9vHGFiTAd6WgroB_o",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "d22f9d8f-282e-4c92-a650-9de116d2eb01",
+   "name": "Timeleft",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "cbe9080c-4bd0-4a0b-a0b9-f1bca9e52b14",
+   "name": "Wizbii",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/wizbii/__wByMDmL7kDZVAbFALyPbYIWpEOvRu39rno1ZBuASchk/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/wizbii/__wByMDmL7kDZVAbFALyPbYIWpEOvRu39rno1ZBuASchk",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "056ac8d0-aaa8-411f-b06e-3be38c1f35fd",
+   "name": "xAI",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+  "company": {
+   "id": "68b390fa-d17c-4de9-9f62-327d36964bc2",
+   "name": "YOTO LIMITED",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

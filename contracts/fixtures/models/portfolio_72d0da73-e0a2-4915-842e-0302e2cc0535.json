@@ -1,0 +1,119 @@
+[
+ {
+  "investor_id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+  "company": {
+   "id": "de9b26f3-63f6-4421-ae18-78c2d532c4d1",
+   "name": "Acodyne",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "eu-startups.com",
+    "url": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+    "date": "2026-06-22",
+    "rank": "PRESS"
+   },
+   {
+    "name": "via.ritzau.dk",
+    "url": "https://via.ritzau.dk/pressemeddelelse/15004667/eifo-finansierer-dansk-fragtdrone-startup?lang=da",
+    "date": "2026-06-22",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "axios.com",
+    "url": "https://www.axios.com/pro/climate-deals/2026/06/27/energy-climate-deals-vc-pe-ipos",
+    "date": "2026-07-02",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "techfundingnews.com",
+    "url": "https://techfundingnews.com/acodyne-2-5m-pre-seed-jet-speed-cargo-drones/",
+    "date": "2026-06-22",
+    "rank": "PRESS"
+   },
+   {
+    "name": "arcticstartup.com",
+    "url": "https://arcticstartup.com/acodyne-raises-e2-5m-pre-seed/",
+    "date": "2026-06-29",
+    "rank": "PRESS"
+   }
+  ]
+ },
+ {
+  "investor_id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+  "company": {
+   "id": "54bb8ae5-76bd-412d-adef-92812879b3f3",
+   "name": "Creoir",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "creoir.com",
+    "url": "https://creoir.com/creoir-raises-investment-from-gungnir-capital/",
+    "date": "2026-09-03",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "resiliencemedia.co",
+    "url": "https://resiliencemedia.co/finlands-creoir-gets-backing-from-gungnir-capital-for-its-on-device-speech-tech/",
+    "date": "2026-09-14",
+    "rank": "PRESS"
+   },
+   {
+    "name": "dealroom.co",
+    "url": "https://dealroom.co/news/148845-ex-nokia-engineers-defence-startup-creoir-raises-seed-round-from-swedens/",
+    "date": "2026-09-04",
+    "rank": "PRESS"
+   },
+   {
+    "name": "funding.tech.eu",
+    "url": "https://funding.tech.eu/companies/FD62526B-B3B5-4E9F-B0BF-3EFB0E6D9B96",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "investor_id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+  "company": {
+   "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+   "name": "Kelluu Oy",
+   "type": "Company",
+   "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and..."
+  },
+  "sources": [
+   {
+    "name": "nif.fund",
+    "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+    "date": "2026-04-14",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+    "date": "2026-04-14",
+    "rank": "PRESS"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/venture-capital/gungnircapital/__v4OVqIO9pCiPKNKkgAudjLpWUjxOn2Ut28JooyEfIOY",
+    "date": "2026-07-02",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Kelluu We are proud to announce the first investment for our Defence Tech Fund Gungnir Capital together with NATO Innovation Fund (NIF) ,Keen Venture Partners and Tesi , the Finnish state… | Olof Faxander",
+    "url": "https://www.linkedin.com/posts/olof-faxander-36049b1_kelluu-we-are-proud-to-announce-the-first-activity-7449895122722263040-0I8n",
+    "date": "2026-04-14",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "kelluu.com",
+    "url": "https://kelluu.com/news",
+    "date": "2026-04-14",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

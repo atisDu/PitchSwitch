@@ -1,0 +1,20 @@
+[
+ [
+  {
+   "id": "a40ce49c-cbf2-4170-b2ca-bfe93a0c6f27",
+   "name": "Practica Capital",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+   "name": "Tesi",
+   "type": "Organization",
+   "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+  },
+  1
+ ]
+]

@@ -1,0 +1,19 @@
+[
+ {
+  "investor_id": "06f2c1c2-a992-427e-a011-de55e94af981",
+  "company": {
+   "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+   "name": "Heart Aerospace",
+   "type": "Company",
+   "description": "Heart makes electric airplanes with an all-electric range of 250 miles"
+  },
+  "sources": [
+   {
+    "name": "EQT Ventures Portfolio — 119 Companies & Co-Investors (2026)",
+    "url": "https://www.vcbacked.co/directory/investors/eqt-ventures?page=2",
+    "date": "2026-06-16",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

@@ -1,0 +1,344 @@
+[
+ [
+  {
+   "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+   "name": "Tesi",
+   "type": "Organization",
+   "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+  },
+  3
+ ],
+ [
+  {
+   "id": "2aaa36b4-4b6e-4247-9171-4d4f6665cca3",
+   "name": "Vsquared Ventures",
+   "type": "Organization",
+   "description": null
+  },
+  2
+ ],
+ [
+  {
+   "id": "4b459339-7df6-4137-ab16-76c60b5c67d6",
+   "name": "Agronomics Limited",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "963ecd95-fb22-5acd-9140-52fc452b5004",
+   "name": "Bayern Kapit",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "d5b41639-eb27-43df-a6ee-a4f03807fbca",
+   "name": "Business Finland",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "e76e2c31-924c-4fa5-8763-5b74af6fdf8e",
+   "name": "EIT Food",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "cf5ae4e9-7a41-4c8d-b0ae-51113523793f",
+   "name": "Elo Mutual Pension Insurance",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "8b48d1a5-8b64-43a6-a1ee-aac5022bb54d",
+   "name": "European Innovation Council Fund",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "cba1a68e-3e88-4bd9-8aa8-89b710bcf50a",
+   "name": "Failup Ventures",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "8a7be56b-e583-5f57-b080-ce4d8bddb34d",
+   "name": "First Fellow Partners",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "44c222cf-67be-560e-90c6-139b54b1677d",
+   "name": "Foobar.vc",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "4e9350ec-f5cf-46f3-8fb9-4e1ed2eb15f6",
+   "name": "FOV Ventures",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "7727e24d-70f4-4240-8b84-1680b8552be1",
+   "name": "GV",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "dfb76b6a-0833-45e4-a5f5-81352c35b7b7",
+   "name": "Holdix Oy Ab",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "491eb014-f386-4f7d-85e5-e408611df1a5",
+   "name": "Ilmarinen",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "fd3ba350-0e55-40b5-96e3-013994777fdc",
+   "name": "Inventure",
+   "type": "Organization",
+   "description": "a Finnish investment firm headquartered in Helsinki"
+  },
+  1
+ ],
+ [
+  {
+   "id": "52deb9d2-b265-4f68-bf2f-be0f503812aa",
+   "name": "Keskinäinen työeläkevakuutusyhtiö Varma",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "b6d6e5d9-6b8a-54f4-9ccc-f23e5a661008",
+   "name": "Matadero QED",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "27f9a0df-ee93-447e-8b6a-48c122957935",
+   "name": "MIG Nemovitostní otevřený podílový fond",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "a46a1058-93a7-4b0f-bc1f-bc31238fb006",
+   "name": "NORDICNINJA VC LIMITED",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "6d47a7a0-e42e-525b-aa34-e825ded354a1",
+   "name": "Openocean Oy",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "0fb520bb-741e-4a68-9f39-bd5396da268d",
+   "name": "OurCrowd",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "3f96f5e0-ecce-56c7-a1f1-08f8d4242685",
+   "name": "Peter Ort",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "69c43164-30cb-492f-aeb9-efa658ff5bef",
+   "name": "PostScriptum Ventures",
+   "type": "Company",
+   "description": "Venture capital investment group established in 2006, investing in sustainable energy, innovative technology, and disruptive business models including wind, solar, biomass, storage, and hydrogen."
+  },
+  1
+ ],
+ [
+  {
+   "id": "f9501f4d-cb04-478e-a0de-512731beadaf",
+   "name": "QUA SERIES QCI A SERIES LLC OF QUA LLC",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "868f0805-c66e-420b-a6c5-d718a1992128",
+   "name": "Salvia GmbH",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "08ee5e5e-8079-491b-af45-1a6cf3e51f96",
+   "name": "Santo Venture Capital GmbH",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "5b652b78-83d8-400a-a27b-eefe78df20bb",
+   "name": "Schwarz Gruppe",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+   "name": "Skyfall Ventures",
+   "type": "Organization",
+   "description": "A venture capital firm headquartered in Glasgow, Scotland."
+  },
+  1
+ ],
+ [
+  {
+   "id": "911779d2-fcbc-44bb-8c35-730d188a9803",
+   "name": "Ten Eleven Ventures",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "d7232725-3524-473e-bd38-679d3f1365b4",
+   "name": "Tencent",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "4bbc0c69-a656-4309-9482-480a718a9f00",
+   "name": "Tofino B.V.",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "8030d7c4-1e41-4b0e-8ebc-9fb362e84398",
+   "name": "Turret Holding Corp",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "1574f93a-60fa-44de-8c90-2e9edd1ecc51",
+   "name": "Varma Mutual Pension Insurance Co",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "717c77a9-68b0-4e3a-a48a-06908af7e30b",
+   "name": "VITO Ventures Fonds I GmbH & Co KG",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "40ac95ab-763e-43f0-aea2-cfda0a506d50",
+   "name": "Wave Ventures",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "d354e95e-3fbc-4316-8ed9-e406e0da6cb1",
+   "name": "Winbond Electronics",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "28e91db3-9426-4238-9a5e-18a25cc09068",
+   "name": "World Fund",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ]
+]

@@ -1,0 +1,29 @@
+[
+ [
+  {
+   "id": "8c53f708-b8c2-4624-b590-7445af4eb736",
+   "name": "Diede van Lamoen",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "b191306c-aa8a-447a-b468-df2a95de8f36",
+   "name": "General Catalyst",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+   "name": "Skyfall Ventures",
+   "type": "Organization",
+   "description": "A venture capital firm headquartered in Glasgow, Scotland."
+  },
+  1
+ ]
+]

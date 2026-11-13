@@ -1,0 +1,31 @@
+[
+ {
+  "investor_id": "b191306c-aa8a-447a-b468-df2a95de8f36",
+  "company": {
+   "id": "65f601c1-32e2-4a12-a0f8-d0f15ae90a1d",
+   "name": "Nolla Health",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "nollahealth.com",
+    "url": "https://www.nollahealth.com/blog/debut-skin-platform",
+    "date": "2025-09-01",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "generalcatalyst.com",
+    "url": "https://www.generalcatalyst.com/stories/our-investment-in-nolla-health",
+    "date": "2025-09-18",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "beautyindependent.com",
+    "url": "https://www.beautyindependent.com/4-5m-raise-nolla-health-ai-startup-offers-acne-care",
+    "date": "2025-09-18",
+    "rank": "PRESS"
+   }
+  ]
+ }
+]

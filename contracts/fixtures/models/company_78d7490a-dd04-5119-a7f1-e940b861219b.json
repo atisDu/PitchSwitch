@@ -1,0 +1,56 @@
+{
+ "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+ "name": "Kelluu Oy",
+ "type": "Company",
+ "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and...",
+ "industries": [
+  "AEROSPACE_AND_DEFENSE"
+ ],
+ "stage": "Series A",
+ "country": "Finland",
+ "total_funding_text": "€15.3M",
+ "sources": [
+  {
+   "name": "kelluu.com",
+   "url": "https://kelluu.com/",
+   "date": "2026-11-12",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "nif.fund",
+   "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+   "date": "2026-04-14",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "kelluu.com",
+   "url": "https://kelluu.com/news",
+   "date": "2026-04-14",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "tech.eu",
+   "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+   "date": "2026-04-14",
+   "rank": "PRESS"
+  },
+  {
+   "name": "cordis.europa.eu",
+   "url": "https://cordis.europa.eu/project/id/101157488",
+   "date": "2026-11-12",
+   "rank": "FILING"
+  },
+  {
+   "name": "linkedin.com",
+   "url": "https://www.linkedin.com/company/kelluuairships/",
+   "date": "2026-11-02",
+   "rank": "AGGREGATOR"
+  },
+  {
+   "name": "Cala AI",
+   "url": null,
+   "date": "2026-07-30",
+   "rank": "UNKNOWN"
+  }
+ ]
+}

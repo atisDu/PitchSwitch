@@ -1,0 +1,27 @@
+{
+ "id": "13b90514-ba02-4974-9078-dfcea29ae8d0",
+ "name": "UBIQ Aerospace",
+ "type": "Company",
+ "description": "Developer of ice detection and protection systems for aircraft, particularly unmanned aerial systems and air taxis.",
+ "industries": [
+  "AEROSPACE_AND_DEFENSE",
+  "HARDWARE_AND_EQUIPMENT"
+ ],
+ "stage": "Seed",
+ "country": null,
+ "total_funding_text": "$2.4M grant (2022)",
+ "sources": [
+  {
+   "name": "Norway funds",
+   "url": "https://www.statkraftventures.com/norway-fund",
+   "date": "2023-02-03",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "Ubiq Aerospace and Statkraft Ventures to Propel Sustainable Autonomous Aviation",
+   "url": "https://www.ubiqaerospace.com/news/ubiq-aerospace-and-statkraft-ventures-to-propel-sustainable-autonomous-aviation",
+   "date": "2025-05-06",
+   "rank": "UNKNOWN"
+  }
+ ]
+}

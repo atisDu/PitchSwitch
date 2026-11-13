@@ -1,0 +1,74 @@
+[
+ {
+  "id": "d0fb14e8-558d-5d80-94a1-9d49dab3e824",
+  "company_id": "a2617168-a113-4849-8fdd-ca88fd98cb5e",
+  "label": "Pre-Seed",
+  "date": "2023-09-01",
+  "amount_text": "€2.5M",
+  "amount_eur": 2500000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+     "name": "Lifeline Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "5bcdc544-7120-4b04-8951-18201e578a65",
+     "name": "Curus AB",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "b0b82629-c0f0-448a-aa92-5bf202e102f0",
+     "name": "VentureFriends",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "eu-startups.com",
+    "url": "https://www.eu-startups.com/2023/09/helsinki-based-measurlabs-raises-e2-5-million-to-kill-inefficiencies-in-lab-research-projects/",
+    "date": "2023-09-01",
+    "rank": "PRESS"
+   },
+   {
+    "name": "measurlabs.com",
+    "url": "https://measurlabs.com/blog/measurlabs-seed-round/",
+    "date": "2023-09-01",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "avoindata.prh.fi",
+    "url": "https://avoindata.prh.fi/opendata-registerednotices-api/v3/2820461-1",
+    "date": "2021-02-10",
+    "rank": "FILING"
+   },
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/measur-announced-raising-500k-funding-from-the-finland-based-vc-company-lifeline-ventures",
+    "date": "2021-03-23",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ }
+]

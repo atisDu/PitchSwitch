@@ -1,0 +1,140 @@
+[
+ {
+  "person": {
+   "id": "014ab9e4-cec1-5704-9f27-0b60a9a20e1c",
+   "name": "Jouni Lintu",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+  "role": "BOARD",
+  "sources": [
+   {
+    "name": "asiakastieto.fi",
+    "url": "https://www.asiakastieto.fi/yritykset/fi/kelluu-oy/29020072/paattajat",
+    "date": "2026-11-12",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "6226707c-b582-52bd-af43-c5cfa13a321e",
+   "name": "Tero Vauraste",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+  "role": "BOARD",
+  "sources": [
+   {
+    "name": "asiakastieto.fi",
+    "url": "https://www.asiakastieto.fi/yritykset/fi/kelluu-oy/29020072/paattajat",
+    "date": "2026-11-12",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "e71c9fd7-f08a-59c9-a756-b750824780b8",
+   "name": "Patrick Schneider-Sikorsky",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+  "role": "BOARD",
+  "sources": [
+   {
+    "name": "asiakastieto.fi",
+    "url": "https://www.asiakastieto.fi/yritykset/fi/kelluu-oy/29020072/paattajat",
+    "date": "2026-11-12",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "eaf1f6cf-9528-51fe-ac3d-45a246c10f05",
+   "name": "Jari Peltoniemi",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+  "role": "BOARD",
+  "sources": [
+   {
+    "name": "asiakastieto.fi",
+    "url": "https://www.asiakastieto.fi/yritykset/fi/kelluu-oy/29020072/paattajat",
+    "date": "2026-11-12",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "7993278e-4575-5987-be2e-c269dd2b9e2a",
+   "name": "Janne Hietala",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+  "role": "FOUNDER",
+  "sources": [
+   {
+    "name": "resiliencemedia.co",
+    "url": "https://resiliencemedia.co/airship-startup-kelluu-raises-e15m-from-nato-its-first-investment-in-finland/",
+    "date": "2026-04-14",
+    "rank": "PRESS"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "7993278e-4575-5987-be2e-c269dd2b9e2a",
+   "name": "Janne Hietala",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+  "role": "CEO",
+  "sources": [
+   {
+    "name": "nif.fund",
+    "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+    "date": "2026-04-14",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "resiliencemedia.co",
+    "url": "https://resiliencemedia.co/airship-startup-kelluu-raises-e15m-from-nato-its-first-investment-in-finland/",
+    "date": "2026-04-14",
+    "rank": "PRESS"
+   },
+   {
+    "name": "asiakastieto.fi",
+    "url": "https://www.asiakastieto.fi/yritykset/fi/kelluu-oy/29020072/paattajat",
+    "date": "2026-11-12",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "83553f99-a0f3-5d83-9cd7-3bb94292c902",
+   "name": "Iida Mustonen",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+  "role": "EMPLOYEE",
+  "sources": [
+   {
+    "name": "kelluu.com",
+    "url": "https://kelluu.com/news",
+    "date": "2026-03-05",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

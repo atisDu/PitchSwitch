@@ -1,0 +1,26 @@
+{
+ "id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+ "name": "STARTUPLAB FOUNDERS AS",
+ "type": "Company",
+ "description": "Norwegian venture capital firm founded in 2018 and headquartered in Oslo.",
+ "industries": [
+  "VENTURE_CAPITAL"
+ ],
+ "stage": null,
+ "country": "Norway",
+ "total_funding_text": null,
+ "sources": [
+  {
+   "name": "Cala AI",
+   "url": null,
+   "date": "2026-08-21",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "GLEIF",
+   "url": "https://search.gleif.org/#/record/549300YDGIMSS6I9OL58",
+   "date": "2026-04-08",
+   "rank": "UNKNOWN"
+  }
+ ]
+}

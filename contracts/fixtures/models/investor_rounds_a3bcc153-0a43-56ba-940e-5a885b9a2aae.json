@@ -1,0 +1,89 @@
+[
+ {
+  "id": "96da05ad-0d08-5633-ab6c-0ce5d93c8b27",
+  "company_id": "5a74ed80-3d41-42cf-81d7-83a2af15042e",
+  "label": "Pre-Seed",
+  "date": "2024-06-18",
+  "amount_text": "€800K",
+  "amount_eur": 800000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+     "name": "Keen Venture Partners",
+     "type": "Company",
+     "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "3a5cd0df-5eb0-5ccc-a403-f42cf42ea72f",
+     "name": "Fabian Wittleben",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "597c5211-e388-5147-aeb5-d85a7c2abf2f",
+     "name": "Christian Gaiser",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "64f78e9c-1db5-56a5-91a6-5fff2191c311",
+     "name": "Samen Slimmer",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "89c7f69d-c29e-5d78-9cec-d05185772ba2",
+     "name": "Slimmer Ai Labs B.V.",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "a3bcc153-0a43-56ba-940e-5a885b9a2aae",
+     "name": "Alexander Lorenz",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "a5de4e4e-b8dc-4caa-b1fa-562de83b806f",
+     "name": "Dutch Founders Fund",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2024/06/18/genai-startup-mika-lands-eur800k-for-automated-accounting/",
+    "date": "2024-06-18",
+    "rank": "PRESS"
+   },
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/mika-raises-800k-in-pre-seed-funding-with-samen-slimmer-from-the-netherlands/",
+    "date": "2024-06-07",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ }
+]

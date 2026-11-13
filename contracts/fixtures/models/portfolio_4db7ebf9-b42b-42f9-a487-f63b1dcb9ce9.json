@@ -1,0 +1,107 @@
+[
+ {
+  "investor_id": "4db7ebf9-b42b-42f9-a487-f63b1dcb9ce9",
+  "company": {
+   "id": "491c73fa-1654-4f5b-8ecb-168671c27823",
+   "name": "Ignite Procurement",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/ignite-procurement/financial_details",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/ignite-procurement",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/224290-09",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "4db7ebf9-b42b-42f9-a487-f63b1dcb9ce9",
+  "company": {
+   "id": "65f601c1-32e2-4a12-a0f8-d0f15ae90a1d",
+   "name": "Nolla Health",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "nollahealth.com",
+    "url": "https://www.nollahealth.com/blog/debut-skin-platform",
+    "date": "2025-09-01",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "beautyindependent.com",
+    "url": "https://www.beautyindependent.com/4-5m-raise-nolla-health-ai-startup-offers-acne-care",
+    "date": "2025-09-18",
+    "rank": "PRESS"
+   },
+   {
+    "name": "generalcatalyst.com",
+    "url": "https://www.generalcatalyst.com/stories/our-investment-in-nolla-health",
+    "date": "2025-09-18",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "investor_id": "4db7ebf9-b42b-42f9-a487-f63b1dcb9ce9",
+  "company": {
+   "id": "00608ef4-af76-4b4b-9fe6-f1d538aa4810",
+   "name": "TakeTakeTake",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/607119-04",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/person/riccardo-zacconi",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/person/fredrik-hjelm",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/thiel-capital/investor_summary/overview_timeline",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/investor/105904-27",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/investor/159081-31",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

@@ -1,0 +1,24 @@
+{
+ "id": "202e9283-6455-486f-8868-03c7e0d0cf29",
+ "name": "Sensofusion Oy",
+ "type": "Organization",
+ "description": "Finnish defense technology company founded in 2014 and based in Vantaa.",
+ "industries": [],
+ "stage": null,
+ "country": "Finland",
+ "total_funding_text": null,
+ "sources": [
+  {
+   "name": "Cala AI",
+   "url": null,
+   "date": "2026-08-20",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "GLEIF",
+   "url": "https://search.gleif.org/#/record/7437000UYRI2YZJTC459",
+   "date": "2026-09-25",
+   "rank": "UNKNOWN"
+  }
+ ]
+}

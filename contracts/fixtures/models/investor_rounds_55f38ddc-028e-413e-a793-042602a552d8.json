@@ -1,0 +1,74 @@
+[
+ {
+  "id": "a26c64e2-dc80-535a-9c90-38dbe7ad39cc",
+  "company_id": "266be895-86f1-5d37-8a6c-24625aa2df83",
+  "label": "Seed",
+  "date": "2021-04-06",
+  "amount_text": "€6M",
+  "amount_eur": 6000000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "55f38ddc-028e-413e-a793-042602a552d8",
+     "name": "Kaamos Trading OÜ",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "883349ee-e591-4b63-9588-c3424c22c44b",
+     "name": "Usaldusfond United Angels Fund I",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "9dbdd7a8-9afa-4070-9b26-82f6629b9d10",
+     "name": "NREP AB",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "a7ef453b-938f-43ee-9bb2-294921d7cc5c",
+     "name": "ByFounders",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "c685cd30-57fd-477f-a253-1eee9afa0976",
+     "name": "Superangel OÜ",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": true
+   }
+  ],
+  "sources": [
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+    "date": "2021-04-06",
+    "rank": "PRESS"
+   }
+  ]
+ }
+]

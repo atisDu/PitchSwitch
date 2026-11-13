@@ -1,0 +1,29 @@
+[
+ [
+  {
+   "id": "cdd4fc83-8fda-4922-ab3b-59aaf1a9063b",
+   "name": "FIBAN LTD",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "fd3ba350-0e55-40b5-96e3-013994777fdc",
+   "name": "Inventure",
+   "type": "Organization",
+   "description": "a Finnish investment firm headquartered in Helsinki"
+  },
+  1
+ ],
+ [
+  {
+   "id": "d155d2e9-236a-4d31-8256-e11222b407ba",
+   "name": "IQM Quantum Computers",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ]
+]

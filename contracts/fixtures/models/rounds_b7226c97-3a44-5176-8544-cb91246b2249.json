@@ -1,0 +1,73 @@
+[
+ {
+  "id": "a73d838b-7aeb-5be8-b6f1-37f3374cb3ec",
+  "company_id": "b7226c97-3a44-5176-8544-cb91246b2249",
+  "label": "Pre-Seed",
+  "date": "2026-11-04",
+  "amount_text": null,
+  "amount_eur": null,
+  "investors": [
+   {
+    "investor": {
+     "id": "4d668c75-c7a0-4f5b-baea-ce0fa6a34e31",
+     "name": "Lifeline Ventures AB",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "c75cbef9-0ab0-5552-84f8-fc59bc63ea93",
+     "name": "Tuomas Rasila",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": null
+   }
+  ],
+  "sources": [
+   {
+    "name": "resiliencemedia.co",
+    "url": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+    "date": "2026-11-04",
+    "rank": "PRESS"
+   },
+   {
+    "name": "lifelineventures.com",
+    "url": "https://lifelineventures.com/",
+    "date": "2026-11-12",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "id": "a42c8b14-c1cd-5113-bd6d-3ec0bbcb1caa",
+  "company_id": "b7226c97-3a44-5176-8544-cb91246b2249",
+  "label": "Grant",
+  "date": "2026-10-15",
+  "amount_text": "€300K",
+  "amount_eur": 300000.0,
+  "investors": [],
+  "sources": [
+   {
+    "name": "kovahq.com",
+    "url": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+    "date": "2026-10-15",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "resiliencemedia.co",
+    "url": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+    "date": "2026-11-04",
+    "rank": "PRESS"
+   },
+   {
+    "name": "kovahq.com",
+    "url": "https://kovahq.com/news/kova-bravetech",
+    "date": "2026-07-15",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

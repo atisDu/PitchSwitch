@@ -36,5 +36,21 @@ investors that appear in the rounds of the five companies above.
 - Name search is fuzzy: "Nordic Air Defence" also returns a UK shell company and Thales Air Defence.
 - There are several unrelated "Inventure"s and "Tesi"s; the investors are the Finnish ones.
 
-Status: names agreed; coverage in Cala is checked during A1 and any thin case is flagged in
-`notes/A.md` so the team can swap it.
+## Coverage found while recording (A1, 13 Nov)
+
+- **Nordic Air Defence has no company entity in Cala** (only text answers). It cannot be a
+  founder-mode company, so **Stendr is the third founder-mode sample** (agreed with the team).
+- **Sensofusion** has an entity but no rounds or investors attached. It works as the company a
+  founder enters; it adds no backers to anyone's Skip list.
+- **NestAI** has one investor edge and no rounds in the graph; `sourced_answer()` knows its round.
+- Details and the other findings: `notes/A.md`.
+
+## Rebuilding
+
+```sh
+python -m data.record_fixtures   # raw/: calls Cala (about 10 calls a minute), skips what exists
+python -m data.build_fixtures    # models/: rebuilt from raw/, no network
+```
+
+Never edit `raw/` or `models/` by hand. A test fails if `models/` is not what
+`build_fixtures` produces from `raw/`.

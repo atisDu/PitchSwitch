@@ -1,0 +1,36 @@
+[
+ {
+  "investor_id": "f8d6c852-c3c0-4914-b835-800f4096a834",
+  "company": {
+   "id": "a1f7d57d-39a4-486f-bd9b-39b8b50ab1ff",
+   "name": "ReOrbit",
+   "type": "Organization",
+   "description": "A Finnish growth technology company."
+  },
+  "sources": [
+   {
+    "name": "Elo doubles pace of Finnish unlisted growth bets with €100m push in H1",
+    "url": "https://www.ipe.com/news/elo-doubles-pace-of-finnish-unlisted-growth-bets-with-100m-push-in-h1/10136315.article",
+    "date": "2026-04-22",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "f8d6c852-c3c0-4914-b835-800f4096a834",
+  "company": {
+   "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+   "name": "Tesi",
+   "type": "Organization",
+   "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+  },
+  "sources": [
+   {
+    "name": "Elo pushes back on claims pension funds are failing to support Finnish growth",
+    "url": "https://www.europeanpensions.net/ep/Elo-pushes-back-on-claims-pension-funds-are-failing-to-support-Finnish-growth.php",
+    "date": "2026-04-08",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

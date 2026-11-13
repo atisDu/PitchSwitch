@@ -1,0 +1,345 @@
+[
+ {
+  "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+  "name": "Kelluu Oy",
+  "type": "Company",
+  "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and...",
+  "industries": [
+   "AEROSPACE_AND_DEFENSE"
+  ],
+  "stage": "Series A",
+  "country": "Finland",
+  "total_funding_text": "€15.3M",
+  "sources": [
+   {
+    "name": "kelluu.com",
+    "url": "https://kelluu.com/",
+    "date": "2026-11-12",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "nif.fund",
+    "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+    "date": "2026-04-14",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "kelluu.com",
+    "url": "https://kelluu.com/news",
+    "date": "2026-04-14",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+    "date": "2026-04-14",
+    "rank": "PRESS"
+   },
+   {
+    "name": "cordis.europa.eu",
+    "url": "https://cordis.europa.eu/project/id/101157488",
+    "date": "2026-11-12",
+    "rank": "FILING"
+   },
+   {
+    "name": "linkedin.com",
+    "url": "https://www.linkedin.com/company/kelluuairships/",
+    "date": "2026-11-02",
+    "rank": "AGGREGATOR"
+   },
+   {
+    "name": "Cala AI",
+    "url": null,
+    "date": "2026-07-30",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "id": "202e9283-6455-486f-8868-03c7e0d0cf29",
+  "name": "Sensofusion Oy",
+  "type": "Organization",
+  "description": "Finnish defense technology company founded in 2014 and based in Vantaa.",
+  "industries": [],
+  "stage": null,
+  "country": "Finland",
+  "total_funding_text": null,
+  "sources": [
+   {
+    "name": "Cala AI",
+    "url": null,
+    "date": "2026-08-20",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "GLEIF",
+    "url": "https://search.gleif.org/#/record/7437000UYRI2YZJTC459",
+    "date": "2026-09-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "id": "14359613-a45f-4804-892d-3b9dd9e927a9",
+  "name": "NestAI",
+  "type": "Company",
+  "description": "Finnish software and aerospace‑defense company founded in 2024.",
+  "industries": [
+   "SOFTWARE_AND_SERVICES",
+   "AEROSPACE_AND_DEFENSE"
+  ],
+  "stage": null,
+  "country": "Finland",
+  "total_funding_text": null,
+  "sources": [
+   {
+    "name": "Cala AI",
+    "url": null,
+    "date": "2026-08-20",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "GLEIF",
+    "url": "https://search.gleif.org/#/record/7437004FNG2T9TL5FP88",
+    "date": "2026-04-22",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Finland's NestAI lands €100M, partners with Nokia to build AI for defense applications | TechCrunch",
+    "url": "https://techcrunch.com/2025/11/20/finlands-nestai-lands-e100m-partners-with-nokia-to-build-ai-for-defense-applications",
+    "date": "2025-11-20",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Peter Sarlin – Founder of PostScriptum",
+    "url": "https://sarlin.ai",
+    "date": "2026-04-08",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Proud to see PostScriptum-backed NestAI take another step today – a strategic partnership with Nokia and €100M in funding from Nokia and the Finnish sovereign fund Tesi for next-gen physical AI… | Peter Sarlin | 91 comments",
+    "url": "https://www.linkedin.com/posts/psarlin_proud-to-see-postscriptum-backed-nestai-take-activity-7397256801483763713-o00J",
+    "date": "2025-11-20",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+  "name": "Aavuus",
+  "type": "Company",
+  "description": "A Finnish aerospace and defense company headquartered in Espoo, founded in 2024.",
+  "industries": [
+   "AEROSPACE_AND_DEFENSE"
+  ],
+  "stage": "Pre-Seed",
+  "country": "Finland",
+  "total_funding_text": "Raised Seed round (Jun 2026), investor: Maki.vc",
+  "sources": [
+   {
+    "name": "Cala AI",
+    "url": null,
+    "date": "2026-11-13",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "aavuus.com",
+    "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+    "date": "2026-06-09",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+    "date": "2026-06-09",
+    "rank": "PRESS"
+   },
+   {
+    "name": "linkedin.com",
+    "url": "https://www.linkedin.com/company/aavuus",
+    "date": "2026-11-02",
+    "rank": "AGGREGATOR"
+   },
+   {
+    "name": "aavuus.com",
+    "url": "https://aavuus.com/",
+    "date": "2026-11-02",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "id": "b7226c97-3a44-5176-8544-cb91246b2249",
+  "name": "Kova Labs",
+  "type": "Company",
+  "description": "Kova Labs builds the foundational autonomy layer for unmanned systems in GPS-denied, contested, and complex environments. Based in Helsinki, Finland.",
+  "industries": [
+   "AEROSPACE_AND_DEFENSE"
+  ],
+  "stage": "Pre-Seed",
+  "country": "Finland",
+  "total_funding_text": "€420K",
+  "sources": [
+   {
+    "name": "kovahq.com",
+    "url": "https://kovahq.com/",
+    "date": "2026-11-02",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "lifelineventures.com",
+    "url": "https://lifelineventures.com/",
+    "date": "2026-11-12",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "kovahq.com",
+    "url": "https://kovahq.com/news/kova-bravetech",
+    "date": "2026-07-15",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "kovahq.com",
+    "url": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+    "date": "2026-10-15",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "resiliencemedia.co",
+    "url": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+    "date": "2026-11-04",
+    "rank": "PRESS"
+   },
+   {
+    "name": "linkedin.com",
+    "url": "https://www.linkedin.com/company/kova-labs/",
+    "date": "2026-11-02",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "id": "16fa515b-1434-58c9-be73-8754e77ade00",
+  "name": "Metaktik",
+  "type": "Company",
+  "description": "A Finnish aerospace and defense company founded in 2026 and headquartered in Espoo.",
+  "industries": [
+   "AEROSPACE_AND_DEFENSE"
+  ],
+  "stage": "Pre-Seed",
+  "country": "Finland",
+  "total_funding_text": "€1M",
+  "sources": [
+   {
+    "name": "Cala AI",
+    "url": null,
+    "date": "2026-11-13",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "arcticstartup.com",
+    "url": "https://arcticstartup.com/metaktik-raises-e1-million/",
+    "date": "2026-03-31",
+    "rank": "PRESS"
+   },
+   {
+    "name": "metaktik.com",
+    "url": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+    "date": "2026-03-30",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "sttinfo.fi",
+    "url": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+    "date": "2026-03-31",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "linkedin.com",
+    "url": "https://www.linkedin.com/company/metaktik",
+    "date": "2026-11-02",
+    "rank": "AGGREGATOR"
+   },
+   {
+    "name": "metaktik.com",
+    "url": "https://metaktik.com/",
+    "date": "2026-11-02",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "id": "a1f7d57d-39a4-486f-bd9b-39b8b50ab1ff",
+  "name": "ReOrbit",
+  "type": "Organization",
+  "description": "A Finnish growth technology company.",
+  "industries": [],
+  "stage": "Series A",
+  "country": "Finland",
+  "total_funding_text": "Series A raised Sep 2025 (investors include Inventure, Springvest and others)",
+  "sources": [
+   {
+    "name": "Cala AI",
+    "url": null,
+    "date": "2026-08-03",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+  "name": "Heart Aerospace",
+  "type": "Company",
+  "description": "Heart makes electric airplanes with an all-electric range of 250 miles",
+  "industries": [
+   "RENEWABLE_ENERGY",
+   "MACHINERY",
+   "AEROSPACE_AND_DEFENSE",
+   "MANUFACTURING_AUTOMOTIVE"
+  ],
+  "stage": "Series A+ (multiple rounds)",
+  "country": "Sweden",
+  "total_funding_text": "~$107M+",
+  "sources": [
+   {
+    "name": "Y Combinator",
+    "url": "https://github.com/yc-oss/api",
+    "date": "2026-07-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Cala AI",
+    "url": null,
+    "date": "2026-05-15",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "id": "13b90514-ba02-4974-9078-dfcea29ae8d0",
+  "name": "UBIQ Aerospace",
+  "type": "Company",
+  "description": "Developer of ice detection and protection systems for aircraft, particularly unmanned aerial systems and air taxis.",
+  "industries": [
+   "AEROSPACE_AND_DEFENSE",
+   "HARDWARE_AND_EQUIPMENT"
+  ],
+  "stage": "Seed",
+  "country": null,
+  "total_funding_text": "$2.4M grant (2022)",
+  "sources": [
+   {
+    "name": "Norway funds",
+    "url": "https://www.statkraftventures.com/norway-fund",
+    "date": "2023-02-03",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Ubiq Aerospace and Statkraft Ventures to Propel Sustainable Autonomous Aviation",
+    "url": "https://www.ubiqaerospace.com/news/ubiq-aerospace-and-statkraft-ventures-to-propel-sustainable-autonomous-aviation",
+    "date": "2025-05-06",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

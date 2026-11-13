@@ -1,0 +1,25 @@
+[
+ {
+  "investor_id": "131ae405-ee99-56fb-a9c5-973058c0ef70",
+  "company": {
+   "id": "3cbd981d-f00c-59d5-8df3-a48fa0b721c5",
+   "name": "NinaData.io",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "newswire.ca",
+    "url": "https://www.newswire.ca/news-releases/thirdpresence-announces-seed-funding-round-510016541.html",
+    "date": "2012-04-13",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "arcticstartup.com",
+    "url": "https://arcticstartup.com/?p=33925",
+    "date": "2026-11-13",
+    "rank": "PRESS"
+   }
+  ]
+ }
+]

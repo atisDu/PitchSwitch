@@ -1,0 +1,116 @@
+[
+ {
+  "person": {
+   "id": "37e729cb-83be-4b9e-8c2b-e210da864975",
+   "name": "Anders Forslund",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+  "role": "FOUNDER",
+  "sources": [
+   {
+    "name": "en.wikipedia.org",
+    "url": "https://en.wikipedia.org/wiki/Heart_Aerospace",
+    "date": "2026-07-29",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Company — Heart Aerospace",
+    "url": "https://www.heartaerospace.com/company",
+    "date": "2019-01-29",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/heart-aerospace",
+    "date": "2026-07-29",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Heart Aerospace: Heart makes electric airplanes with an all-electric range of 250 miles | Y Combinator",
+    "url": "https://www.ycombinator.com/companies/heart-aerospace",
+    "date": "2022-12-13",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Heart Aerospace raises $107 million in Series B funding",
+    "url": "https://www.heartaerospace.com/newsroom/heart-aerospace-raises-107-million-in-series-b-funding",
+    "date": "2024-02-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "bb56f5cd-3a9c-4e4c-8095-885ace717486",
+   "name": "Klara Forslund",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+  "role": "FOUNDER",
+  "sources": [
+   {
+    "name": "en.wikipedia.org",
+    "url": "https://en.wikipedia.org/wiki/Heart_Aerospace",
+    "date": "2026-07-29",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Company — Heart Aerospace",
+    "url": "https://www.heartaerospace.com/company",
+    "date": "2019-01-29",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/heart-aerospace",
+    "date": "2026-07-29",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "37e729cb-83be-4b9e-8c2b-e210da864975",
+   "name": "Anders Forslund",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+  "role": "EMPLOYEE",
+  "sources": [
+   {
+    "name": "en.wikipedia.org",
+    "url": "https://en.wikipedia.org/wiki/Heart_Aerospace",
+    "date": "2026-07-29",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Company — Heart Aerospace",
+    "url": "https://www.heartaerospace.com/company",
+    "date": "2019-01-29",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/heart-aerospace",
+    "date": "2026-07-29",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Heart Aerospace: Heart makes electric airplanes with an all-electric range of 250 miles | Y Combinator",
+    "url": "https://www.ycombinator.com/companies/heart-aerospace",
+    "date": "2022-12-13",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Heart Aerospace raises $107 million in Series B funding",
+    "url": "https://www.heartaerospace.com/newsroom/heart-aerospace-raises-107-million-in-series-b-funding",
+    "date": "2024-02-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

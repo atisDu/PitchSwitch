@@ -1,0 +1,43 @@
+[
+ {
+  "investor_id": "4e9350ec-f5cf-46f3-8fb9-4e1ed2eb15f6",
+  "company": {
+   "id": "88917971-7acd-5977-b108-0ef6fa5ce36e",
+   "name": "Distance Technologies Oy",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "distance.tech",
+    "url": "https://distance.tech/news/distance-technologies-closes-oversubscribed-eur10m-seed-round-led-by-gv-google-ventures",
+    "date": "2024-09-24",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "siliconcanals.com",
+    "url": "https://siliconcanals.com/distance-technologies-secures-e10m/",
+    "date": "2024-09-24",
+    "rank": "PRESS"
+   },
+   {
+    "name": "yle.fi",
+    "url": "https://yle.fi/a/74-20114608",
+    "date": "2024-09-28",
+    "rank": "PRESS"
+   },
+   {
+    "name": "distance.tech",
+    "url": "https://distance.tech/news/launch_release",
+    "date": "2024-06-13",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "en.ain.ua",
+    "url": "https://en.ain.ua/2024/06/14/distance-technologies-pre-seed-investment",
+    "date": "2024-06-14",
+    "rank": "PRESS"
+   }
+  ]
+ }
+]

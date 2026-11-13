@@ -1,0 +1,419 @@
+[
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "d065567c-e6fa-4c8f-937f-30ad78b57b9c",
+   "name": "Cybret",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "07f45b85-fc12-4911-9c54-6d0f263242c8",
+   "name": "Enode",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "3b025657-d9f2-4df1-bdab-1d0b7ffb24e6",
+   "name": "FIRI AS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "cdbbceb7-e667-4c33-ade6-a6507d80d05f",
+   "name": "Hive Autonomy",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/hive-autonomy/__HkBwSpN58J2XtfDx-FMgdeUxOHRBX-Z3R4JKyRR6vHE",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/753321-97",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "75497408-2fbc-45f1-8fb3-bd11e858966a",
+   "name": "NANSEN PTE. LTD.",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "f4c95f38-c707-497a-b862-f443a91408a9",
+   "name": "Nyby",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/nyby/__ngEJUc0kZJwSqhvZjETL_5L1lY5lwl6aelJeulfE_Z8/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "2e51ca47-8617-4143-908f-8fdaeb79bab3",
+   "name": "Oda",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "856772e7-8342-4d6f-be45-9988e839a2fc",
+   "name": "Parahelp",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "502f2d08-adc1-4184-980d-d56c98b3b598",
+   "name": "Physical Robotics",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "0f8d0392-5086-497e-b4e4-ffc763b95c5d",
+   "name": "Riff",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "c0be7fcf-f8aa-427b-8680-48d8c52d4347",
+   "name": "SportAI",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/sportai/__vJVxXpLhM-JMQzErkSMK3TUFUBoyO5ZIDMJMjyGQxN8/funding-and-investors",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/sportai/__vJVxXpLhM-JMQzErkSMK3TUFUBoyO5ZIDMJMjyGQxN8",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "a35dc951-4fd6-4f81-b105-66117f1e8e65",
+   "name": "Sportiv.ai",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "SportAI Raises $1.8M Seed Round Led by Skyfall Ventures",
+    "url": "https://sportai.com/news/norwegian-tech-leaders-unite-to-launch-ai-powered-sports-tech-company-1",
+    "date": "2024-08-19",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "aibusiness.com",
+    "url": "https://aibusiness.com/nlp/sports-technology-startup-sportai-closes-1-8m-seed-funding-round",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Oslo-based startup SportAI raises $1.8M to develop its solution for sports technique analysis",
+    "url": "https://vestbee.com/insights/articles/sport-ai-raises-1-8-m",
+    "date": "2024-08-20",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.eu-startups.com",
+    "url": "https://www.eu-startups.com/2024/08/oslo-based-sportai-raises-e1-6-million-to-harness-computer-vision-for-sports-technique-coaching",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "fb6199f1-3b95-43f2-b54b-ca5ae0fbc96e",
+   "name": "Spring",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "32dbad87-8e41-497b-9651-c12938669166",
+   "name": "Starflow",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "3afdc63c-b992-4b25-b69d-807ab346352d",
+   "name": "Stendr",
+   "type": "Company",
+   "description": "Norwegian defence technology company developing AI-native multi-sensor platform for drone defence."
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/stendr/__7VSvHoLx3hjMEv6yAnnHfm3bFhEeOWBkgqe3NhG5Jbc",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/1376632-18",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/skyfall-ventures/signals_and_news/timeline",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/rainfall-ventures/investor_summary/overview_timeline",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/investor/57005-74",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "0a5f5078-326a-4b0b-9914-c84f163bc65d",
+   "name": "Strise",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "00608ef4-af76-4b4b-9fe6-f1d538aa4810",
+   "name": "TakeTakeTake",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "7b0ab416-6576-47bf-b85e-221440af6de2",
+   "name": "Tise AS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "ee727928-eb7d-449a-b1d2-4dc76433935d",
+   "name": "Vev",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "be75b775-db43-444e-9f25-a742d1055b3a",
+   "name": "Visoid",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/visoid/__eB3Rwp7qEzG_Pu3IsrmnqLtW4l0jbL6tjPj7yVtX8MU",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/visoid/__eB3Rwp7qEzG_Pu3IsrmnqLtW4l0jbL6tjPj7yVtX8MU/funding-and-investors",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+  "company": {
+   "id": "dce253cc-31e0-4d29-830b-373f77686ff0",
+   "name": "WeWillWrite",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Portfolio",
+    "url": "https://skyfall.vc/portfolio",
+    "date": "2019-07-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

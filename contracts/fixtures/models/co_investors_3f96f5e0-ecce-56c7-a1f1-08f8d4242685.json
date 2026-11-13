@@ -1,0 +1,209 @@
+[
+ [
+  {
+   "id": "963ecd95-fb22-5acd-9140-52fc452b5004",
+   "name": "Bayern Kapit",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "cf5ae4e9-7a41-4c8d-b0ae-51113523793f",
+   "name": "Elo Mutual Pension Insurance",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "8b48d1a5-8b64-43a6-a1ee-aac5022bb54d",
+   "name": "European Innovation Council Fund",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "491eb014-f386-4f7d-85e5-e408611df1a5",
+   "name": "Ilmarinen",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "52deb9d2-b265-4f68-bf2f-be0f503812aa",
+   "name": "Keskinäinen työeläkevakuutusyhtiö Varma",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+   "name": "Maki.vc",
+   "type": "Company",
+   "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+  },
+  1
+ ],
+ [
+  {
+   "id": "b6d6e5d9-6b8a-54f4-9ccc-f23e5a661008",
+   "name": "Matadero QED",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "27f9a0df-ee93-447e-8b6a-48c122957935",
+   "name": "MIG Nemovitostní otevřený podílový fond",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "6d47a7a0-e42e-525b-aa34-e825ded354a1",
+   "name": "Openocean Oy",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "0fb520bb-741e-4a68-9f39-bd5396da268d",
+   "name": "OurCrowd",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "f9501f4d-cb04-478e-a0de-512731beadaf",
+   "name": "QUA SERIES QCI A SERIES LLC OF QUA LLC",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "868f0805-c66e-420b-a6c5-d718a1992128",
+   "name": "Salvia GmbH",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "08ee5e5e-8079-491b-af45-1a6cf3e51f96",
+   "name": "Santo Venture Capital GmbH",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "5b652b78-83d8-400a-a27b-eefe78df20bb",
+   "name": "Schwarz Gruppe",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "911779d2-fcbc-44bb-8c35-730d188a9803",
+   "name": "Ten Eleven Ventures",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "d7232725-3524-473e-bd38-679d3f1365b4",
+   "name": "Tencent",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+   "name": "Tesi",
+   "type": "Organization",
+   "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+  },
+  1
+ ],
+ [
+  {
+   "id": "4bbc0c69-a656-4309-9482-480a718a9f00",
+   "name": "Tofino B.V.",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "1574f93a-60fa-44de-8c90-2e9edd1ecc51",
+   "name": "Varma Mutual Pension Insurance Co",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "717c77a9-68b0-4e3a-a48a-06908af7e30b",
+   "name": "VITO Ventures Fonds I GmbH & Co KG",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "2aaa36b4-4b6e-4247-9171-4d4f6665cca3",
+   "name": "Vsquared Ventures",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "d354e95e-3fbc-4316-8ed9-e406e0da6cb1",
+   "name": "Winbond Electronics",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "28e91db3-9426-4238-9a5e-18a25cc09068",
+   "name": "World Fund",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ]
+]

@@ -1,0 +1,38 @@
+[
+ {
+  "id": "294e5d6e-bb7f-46e9-89e9-25d62789ba22",
+  "name": "NORDIC AIR DEFENCE UK LTD",
+  "type": "Company",
+  "description": "A London‑based British company operating in the government and public administration sector, founded in 2026."
+ },
+ {
+  "id": "7665ef8b-e067-4bbc-be68-9e0b32d1d7f1",
+  "name": "THALES AIR DEFENCE LIMITED",
+  "type": "Company",
+  "description": "British aerospace and defence company headquartered in Addlestone, founded in 1993, that develops missile systems such as Starstreak and NLAW."
+ },
+ {
+  "id": "7a4ead34-c56f-4f32-ba0d-09a56460479d",
+  "name": "Nordic Air Ventilatsioon OÜ",
+  "type": "Company",
+  "description": "Estonian company headquartered in Tartu, founded in 2020."
+ },
+ {
+  "id": "cf6aee87-c59d-4b67-bba8-ac82bbe1c9a5",
+  "name": "NORDIC",
+  "type": "Company",
+  "description": "A Luxembourg-based company founded in 1996 and headquartered in Luxembourg City."
+ },
+ {
+  "id": "8a887458-a75e-4ba8-bcba-374f195a9911",
+  "name": "MYRIAD DEFENCE LTD",
+  "type": "Company",
+  "description": "British software and services company headquartered in Wellesley, Aldershot, England, founded in 2023."
+ },
+ {
+  "id": "e60eeb8f-b042-4178-9d6b-3157f2fc600c",
+  "name": "Nordic Defence Cooperation",
+  "type": "Organization",
+  "description": "A regional defence cooperation framework among the Nordic countries Norway, Sweden, Finland and Denmark."
+ }
+]

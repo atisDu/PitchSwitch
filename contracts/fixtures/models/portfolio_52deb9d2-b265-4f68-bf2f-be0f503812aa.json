@@ -1,0 +1,25 @@
+[
+ {
+  "investor_id": "52deb9d2-b265-4f68-bf2f-be0f503812aa",
+  "company": {
+   "id": "3e0524ad-7104-44a6-8f0f-788bc2772922",
+   "name": "IQM Quantum Computers Oyj",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/european-quantum-computing-leader-iqm-raises-e128m-led-by-world-fund-to-help-combat-the-climate-crisis/",
+    "date": "2022-07-22",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "sec.gov",
+    "url": "https://www.sec.gov/Archives/edgar/data/2113060/000119312526259957/d900375d424b3.htm",
+    "date": "2026-06-05",
+    "rank": "FILING"
+   }
+  ]
+ }
+]

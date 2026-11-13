@@ -1,0 +1,37 @@
+[
+ {
+  "investor_id": "5bcdc544-7120-4b04-8951-18201e578a65",
+  "company": {
+   "id": "a2617168-a113-4849-8fdd-ca88fd98cb5e",
+   "name": "Measur Oy",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "eu-startups.com",
+    "url": "https://www.eu-startups.com/2023/09/helsinki-based-measurlabs-raises-e2-5-million-to-kill-inefficiencies-in-lab-research-projects/",
+    "date": "2023-09-01",
+    "rank": "PRESS"
+   },
+   {
+    "name": "measurlabs.com",
+    "url": "https://measurlabs.com/blog/measurlabs-seed-round/",
+    "date": "2023-09-01",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "avoindata.prh.fi",
+    "url": "https://avoindata.prh.fi/opendata-registerednotices-api/v3/2820461-1",
+    "date": "2021-02-10",
+    "rank": "FILING"
+   },
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/measur-announced-raising-500k-funding-from-the-finland-based-vc-company-lifeline-ventures",
+    "date": "2021-03-23",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ }
+]

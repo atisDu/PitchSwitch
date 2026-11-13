@@ -1,0 +1,38 @@
+[
+ {
+  "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+  "name": "NATO Innovation Fund",
+  "type": "Organization",
+  "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO."
+ },
+ {
+  "id": "5bb30991-e810-4679-a95b-e3f411a4d38d",
+  "name": "NATO Innovation Accelerator",
+  "type": "Organization",
+  "description": "It is a NATO program that advances dual-use commercial and government technologies."
+ },
+ {
+  "id": "cedc48f9-471f-43f9-b27b-53ffed37cd71",
+  "name": "INNOVATION FUND",
+  "type": "Company",
+  "description": "British venture capital firm headquartered in Chichester, founded in 2001."
+ },
+ {
+  "id": "8a7d1ca0-1343-4d88-a2cc-329f043f2e92",
+  "name": "Achmea Innovation Fund B.V.",
+  "type": "Company",
+  "description": "A Dutch investment fund incorporated in 2011 and headquartered in Zeist, Netherlands."
+ },
+ {
+  "id": "6bf73e84-a1a5-4ee8-a16b-aebfeb9bbd52",
+  "name": "Debiopharm Innovation Fund SA",
+  "type": "Company",
+  "description": "a Swiss investment fund founded in 2004 and based in Lausanne"
+ },
+ {
+  "id": "249dd7f8-9727-4927-8835-bcccf08e82ef",
+  "name": "Healthcare Innovation Fund, L.P.",
+  "type": "Company",
+  "description": "A company that operates in the asset management industry."
+ }
+]

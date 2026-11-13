@@ -1,0 +1,37 @@
+{
+ "investor_id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+ "company_id": "202e9283-6455-486f-8868-03c7e0d0cf29",
+ "markdown": "# NATO Innovation Fund × Sensofusion Oy\n\n**Verdict: worth a pitch.** No tie to your direct competitors in Cala's data.\n\n## Activity in your space\n- Led Kelluu Oy's Series A round (2026-04-14, €15M) [1][2].\n- Last lead: Kelluu Oy, 2026-04-14 [1][2].\n\n## Portfolio\n- 12 companies in Cala, including 2D Photonics, ARX Robotics GmbH, Baltic Sandbox Ventures, BSV Ventures, FABER VENTURES, S.A. [3][4][5].\n",
+ "citations": [
+  {
+   "name": "nif.fund",
+   "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+   "date": "2026-04-14",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "kelluu.com",
+   "url": "https://kelluu.com/news",
+   "date": "2026-04-14",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "CamGraPhIC Secures €25 Million to Improve Energy Efficiency and Bandwidth in Artificial Intelligence and Cellular Data Transfer - 2D Photonics",
+   "url": "https://www.2dphotonics.com/camgraphic-secures-e25-million-to-improve-energy-efficiency-and-bandwidth-in-artificial-intelligence-and-cellular-data-transfer",
+   "date": "2025-03-24",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "www.photonics.com",
+   "url": "https://www.photonics.com/Articles/CamGraPhIC-Secures-27M-in-Series-A-Funding/a70869",
+   "date": "2026-07-29",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "Silverpeak advises 2D Photonics on €25 million Series A funding round to scale revolutionary graphene photonics technology - Silverpeak",
+   "url": "https://www.silverpeakib.com/silverpeak-advises-2d-photonics-on-25-million-series-a-funding-round",
+   "date": "2025-03-24",
+   "rank": "UNKNOWN"
+  }
+ ]
+}

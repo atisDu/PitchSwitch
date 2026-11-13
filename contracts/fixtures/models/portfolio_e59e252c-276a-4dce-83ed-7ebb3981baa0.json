@@ -1,0 +1,25 @@
+[
+ {
+  "investor_id": "e59e252c-276a-4dce-83ed-7ebb3981baa0",
+  "company": {
+   "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+   "name": "NATO Innovation Fund",
+   "type": "Organization",
+   "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO."
+  },
+  "sources": [
+   {
+    "name": "News",
+    "url": "https://innovatepoland.pl/en/news?page=0%2C1",
+    "date": "2021-05-03",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Polish Development Fund invests in NATO Innovation Fund",
+    "url": "https://pfrventures.pl/en/artykul/polish-development-fund-invests-nato-innovation-fund",
+    "date": "2023-07-10",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

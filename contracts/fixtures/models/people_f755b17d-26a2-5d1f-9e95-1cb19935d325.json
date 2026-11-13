@@ -1,0 +1,116 @@
+[
+ {
+  "person": {
+   "id": "249c9fde-3f45-5adf-b330-c393c2e5399a",
+   "name": "Zacharias Tukiainen",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+  "role": "BOARD",
+  "sources": [
+   {
+    "name": "search.vainu.com",
+    "url": "https://search.vainu.com/company/aavuus-oy-taloustiedot-ja-liikevaihto/FI34603125/yritystiedot",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "f42f2e4b-5bd0-52d2-a47c-312f173edc9f",
+   "name": "Jouni Peltoniemi",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+  "role": "BOARD",
+  "sources": [
+   {
+    "name": "search.vainu.com",
+    "url": "https://search.vainu.com/company/aavuus-oy-taloustiedot-ja-liikevaihto/FI34603125/yritystiedot",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "3d2d67c3-5f98-5547-97c9-60fe6776d437",
+   "name": "Joonas Jokela",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+  "role": "FOUNDER",
+  "sources": [
+   {
+    "name": "thehub.io",
+    "url": "https://thehub.io/startups/aavuus",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   },
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/companies/aavuus",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "3d2d67c3-5f98-5547-97c9-60fe6776d437",
+   "name": "Joonas Jokela",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+  "role": "CEO",
+  "sources": [
+   {
+    "name": "aavuus.com",
+    "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+    "date": "2026-06-09",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+    "date": "2026-06-09",
+    "rank": "PRESS"
+   },
+   {
+    "name": "search.vainu.com",
+    "url": "https://search.vainu.com/company/aavuus-oy-taloustiedot-ja-liikevaihto/FI34603125/yritystiedot",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "8e3bb53d-1575-53fc-8a28-8a55ace23fc1",
+   "name": "Brian Dunne",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+  "role": "EMPLOYEE",
+  "sources": [
+   {
+    "name": "aavuus.com",
+    "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+    "date": "2026-06-09",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+    "date": "2026-06-09",
+    "rank": "PRESS"
+   }
+  ]
+ }
+]

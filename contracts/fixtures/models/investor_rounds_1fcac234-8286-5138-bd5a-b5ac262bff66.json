@@ -1,0 +1,65 @@
+[
+ {
+  "id": "c5aa247f-cf9d-577c-a15b-4f143543ef54",
+  "company_id": "6cc8d898-b80e-4e64-97a8-55f16a874f64",
+  "label": "Seed",
+  "date": "2021-09-17",
+  "amount_text": "€1.7M",
+  "amount_eur": 1700000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "1fcac234-8286-5138-bd5a-b5ac262bff66",
+     "name": "The Flying Object",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "a40ce49c-cbf2-4170-b2ca-bfe93a0c6f27",
+     "name": "Practica Capital",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "techcrunch.com",
+    "url": "https://techcrunch.com/2021/09/17/aurora-propulsion-technologies-closes-e1-7m-seed-for-spacecraft-maneuvering-and-deorbiting-tech/amp/",
+    "date": "2021-09-17",
+    "rank": "PRESS"
+   },
+   {
+    "name": "aurorapt.fi",
+    "url": "https://aurorapt.fi/press-release/aurora-propulsion-technologies-closes-1-7-me-seed-funding-round/",
+    "date": "2021-09-20",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "practica.vc",
+    "url": "https://practica.vc/en/investments/aurora-propulsion",
+    "date": "2026-11-09",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "aurorapt.fi",
+    "url": "https://aurorapt.fi/press-release/aurorasat-1-is-now-the-flying-object/",
+    "date": "2021-11-11",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

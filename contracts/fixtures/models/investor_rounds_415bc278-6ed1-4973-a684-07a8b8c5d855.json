@@ -1,0 +1,935 @@
+[
+ {
+  "id": "343975e5-1269-5839-8d7a-e2c3eb1c5fd8",
+  "company_id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
+  "label": "Pre-Seed",
+  "date": "2026-06-09",
+  "amount_text": null,
+  "amount_eur": null,
+  "investors": [
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": true
+   }
+  ],
+  "sources": [
+   {
+    "name": "aavuus.com",
+    "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+    "date": "2026-06-09",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+    "date": "2026-06-09",
+    "rank": "PRESS"
+   },
+   {
+    "name": "cbinsights.com",
+    "url": "https://www.cbinsights.com/company/aavuus/financials",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "id": "875cd38a-27ff-55d9-9a87-1f6220e9b38c",
+  "company_id": "afba0cba-5006-5d2f-b50a-9dca60fa309a",
+  "label": "Pre-Seed",
+  "date": "2026-06-03",
+  "amount_text": "$1.5M",
+  "amount_eur": 1380000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "40ac95ab-763e-43f0-aea2-cfda0a506d50",
+     "name": "Wave Ventures",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "cba1a68e-3e88-4bd9-8aa8-89b710bcf50a",
+     "name": "Failup Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "callsono.com",
+    "url": "https://callsono.com/funding/",
+    "date": "2026-06-03",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "kauppalehti.fi",
+    "url": "https://www.kauppalehti.fi/uutiset/a/3809562d-3fb1-4e6e-933b-740d28c45578",
+    "date": "2026-06-03",
+    "rank": "PRESS"
+   },
+   {
+    "name": "callsono.com",
+    "url": "https://callsono.com/about/",
+    "date": "2026-11-10",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "id": "835691d5-2ad0-5017-9642-0c6e4f6ab448",
+  "company_id": "16fa515b-1434-58c9-be73-8754e77ade00",
+  "label": "Pre-Seed",
+  "date": "2026-03-30",
+  "amount_text": "€1M",
+  "amount_eur": 1000000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": true
+   }
+  ],
+  "sources": [
+   {
+    "name": "arcticstartup.com",
+    "url": "https://arcticstartup.com/metaktik-raises-e1-million/",
+    "date": "2026-03-31",
+    "rank": "PRESS"
+   },
+   {
+    "name": "metaktik.com",
+    "url": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+    "date": "2026-03-30",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "sttinfo.fi",
+    "url": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+    "date": "2026-03-31",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "id": "aa7e1cbd-42fd-5f9e-a2dd-8c5b905d41c6",
+  "company_id": "3e0524ad-7104-44a6-8f0f-788bc2772922",
+  "label": "Seed",
+  "date": "2026-02-23",
+  "amount_text": "€127.7M",
+  "amount_eur": 127700000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "1574f93a-60fa-44de-8c90-2e9edd1ecc51",
+     "name": "Varma Mutual Pension Insurance Co",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "27f9a0df-ee93-447e-8b6a-48c122957935",
+     "name": "MIG Nemovitostní otevřený podílový fond",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "3f96f5e0-ecce-56c7-a1f1-08f8d4242685",
+     "name": "Peter Ort",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "491eb014-f386-4f7d-85e5-e408611df1a5",
+     "name": "Ilmarinen",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "5b652b78-83d8-400a-a27b-eefe78df20bb",
+     "name": "Schwarz Gruppe",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "6d47a7a0-e42e-525b-aa34-e825ded354a1",
+     "name": "Openocean Oy",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "717c77a9-68b0-4e3a-a48a-06908af7e30b",
+     "name": "VITO Ventures Fonds I GmbH & Co KG",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "8b48d1a5-8b64-43a6-a1ee-aac5022bb54d",
+     "name": "European Innovation Council Fund",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "911779d2-fcbc-44bb-8c35-730d188a9803",
+     "name": "Ten Eleven Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "963ecd95-fb22-5acd-9140-52fc452b5004",
+     "name": "Bayern Kapit",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "b6d6e5d9-6b8a-54f4-9ccc-f23e5a661008",
+     "name": "Matadero QED",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "cf5ae4e9-7a41-4c8d-b0ae-51113523793f",
+     "name": "Elo Mutual Pension Insurance",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "d354e95e-3fbc-4316-8ed9-e406e0da6cb1",
+     "name": "Winbond Electronics",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/iqm-a-global-leader-for-quantum-computing-to-become-the-first-listed-european-quantum-company-through-merger-with-real-asset-acquisition-corp/",
+    "date": "2026-02-23",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/iqm-quantum-computers-and-real-asset-acquisition-corp-complete-the-combination-trading-in-iqms-adss-and-iqm-warrants-on-nasdaq-stock-market-llc-commences-on-july-2-2026/",
+    "date": "2026-07-01",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2019/07/09/finnish-hardware-startup-raises-e11-million-in-seed-funding-to-take-quantum-computing-to-the-next-level/",
+    "date": "2019-07-09",
+    "rank": "PRESS"
+   },
+   {
+    "name": "aalto.fi",
+    "url": "https://www.aalto.fi/en/news/aalto-quantum-computing-spinout-secures-eu1145m-in-funding",
+    "date": "2019-07-10",
+    "rank": "PRESS"
+   },
+   {
+    "name": "sec.gov",
+    "url": "https://www.sec.gov/Archives/edgar/data/2113060/000119312526259957/d900375d424b3.htm",
+    "date": "2026-06-05",
+    "rank": "FILING"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round/",
+    "date": "2025-09-03",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "eu-startups.com",
+    "url": "https://www.eu-startups.com/2025/09/finnish-startup-iqm-quantum-computers-secures-e275-million-in-largest-series-b-raise-ever-in-the-quantum-space/",
+    "date": "2025-09-03",
+    "rank": "PRESS"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/iqm-a-global-leader-in-quantum-computing-and-real-asset-acquisition-corp-announce-upsized-usd-146-million-pipe-with-new-commitment-from-ilmarinen/",
+    "date": "2026-06-02",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "id": "0f827900-df35-58a2-9e7c-b5c16782aefb",
+  "company_id": "3f6d522f-985b-5035-a38b-4a2e616a3598",
+  "label": "Seed",
+  "date": "2025-12-01",
+  "amount_text": "$8.6M",
+  "amount_eur": 7912000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "2aaa36b4-4b6e-4247-9171-4d4f6665cca3",
+     "name": "Vsquared Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": null
+   }
+  ],
+  "sources": [
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/upheat-in-a-seed-round-with-maki-vc-and-vsqua/",
+    "date": "2025-12-01",
+    "rank": "AGGREGATOR"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/762648-58",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   },
+   {
+    "name": "maki.vc",
+    "url": "https://maki.vc/case/upheat/",
+    "date": "2026-11-13",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "id": "41afa582-ea81-51db-b270-8054e1bff83e",
+  "company_id": "b2501123-e040-4c42-8599-41630a549c90",
+  "label": "Seed",
+  "date": "2025-06-10",
+  "amount_text": "€3M",
+  "amount_eur": 3000000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "8a7be56b-e583-5f57-b080-ce4d8bddb34d",
+     "name": "First Fellow Partners",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "siliconcanals.com",
+    "url": "https://siliconcanals.com/helsinkis-financekey-secures-e3m/",
+    "date": "2025-06-10",
+    "rank": "PRESS"
+   },
+   {
+    "name": "financekey.com",
+    "url": "https://financekey.com/press/",
+    "date": "2026-11-04",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "id": "d461ec83-6682-5220-97ae-f48f7f97522d",
+  "company_id": "88917971-7acd-5977-b108-0ef6fa5ce36e",
+  "label": "Seed",
+  "date": "2024-09-24",
+  "amount_text": "€10M",
+  "amount_eur": 10000000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "44c222cf-67be-560e-90c6-139b54b1677d",
+     "name": "Foobar.vc",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "4e9350ec-f5cf-46f3-8fb9-4e1ed2eb15f6",
+     "name": "FOV Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "7727e24d-70f4-4240-8b84-1680b8552be1",
+     "name": "GV",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "d5b41639-eb27-43df-a6ee-a4f03807fbca",
+     "name": "Business Finland",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "distance.tech",
+    "url": "https://distance.tech/news/distance-technologies-closes-oversubscribed-eur10m-seed-round-led-by-gv-google-ventures",
+    "date": "2024-09-24",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "siliconcanals.com",
+    "url": "https://siliconcanals.com/distance-technologies-secures-e10m/",
+    "date": "2024-09-24",
+    "rank": "PRESS"
+   },
+   {
+    "name": "yle.fi",
+    "url": "https://yle.fi/a/74-20114608",
+    "date": "2024-09-28",
+    "rank": "PRESS"
+   },
+   {
+    "name": "distance.tech",
+    "url": "https://distance.tech/news/launch_release",
+    "date": "2024-06-13",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "en.ain.ua",
+    "url": "https://en.ain.ua/2024/06/14/distance-technologies-pre-seed-investment",
+    "date": "2024-06-14",
+    "rank": "PRESS"
+   }
+  ]
+ },
+ {
+  "id": "e53b8892-9563-514d-ae81-aa2f8009e811",
+  "company_id": "16223230-e787-4182-bae2-f7c5e03c3acf",
+  "label": "Series A",
+  "date": "2024-04-02",
+  "amount_text": "$40M",
+  "amount_eur": 36800000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "4b459339-7df6-4137-ab16-76c60b5c67d6",
+     "name": "Agronomics Limited",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "8030d7c4-1e41-4b0e-8ebc-9fb362e84398",
+     "name": "Turret Holding Corp",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "a46a1058-93a7-4b0f-bc1f-bc31238fb006",
+     "name": "NORDICNINJA VC LIMITED",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "dfb76b6a-0833-45e4-a5f5-81352c35b7b7",
+     "name": "Holdix Oy Ab",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "e76e2c31-924c-4fa5-8763-5b74af6fdf8e",
+     "name": "EIT Food",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2024/04/02/onego-bio-secures-40m-series-a/",
+    "date": "2024-04-02",
+    "rank": "PRESS"
+   },
+   {
+    "name": "paaomasijoittajat.fi",
+    "url": "https://paaomasijoittajat.fi/en/?p=26682",
+    "date": "2024-04-02",
+    "rank": "PRESS"
+   },
+   {
+    "name": "finland.dlapiper.com",
+    "url": "https://finland.dlapiper.com/en/news/dla-piper-advised-food-biotech-company-onego-bio-40-million-series-funding-round",
+    "date": "2024-04-03",
+    "rank": "PRESS"
+   },
+   {
+    "name": "techcrunch.com",
+    "url": "https://techcrunch.com/2024/04/01/animal-free-egg-protein-onego-bio-40m",
+    "date": "2024-04-01",
+    "rank": "PRESS"
+   },
+   {
+    "name": "onego.bio",
+    "url": "https://www.onego.bio/about",
+    "date": "2026-11-07",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "id": "4d32bf08-9199-5ed4-8748-2ab81a772b60",
+  "company_id": "3e0524ad-7104-44a6-8f0f-788bc2772922",
+  "label": "Preferred Equity round",
+  "date": "2022-07-22",
+  "amount_text": "€128M",
+  "amount_eur": 128000000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "08ee5e5e-8079-491b-af45-1a6cf3e51f96",
+     "name": "Santo Venture Capital GmbH",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "0fb520bb-741e-4a68-9f39-bd5396da268d",
+     "name": "OurCrowd",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "27f9a0df-ee93-447e-8b6a-48c122957935",
+     "name": "MIG Nemovitostní otevřený podílový fond",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "28e91db3-9426-4238-9a5e-18a25cc09068",
+     "name": "World Fund",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "2aaa36b4-4b6e-4247-9171-4d4f6665cca3",
+     "name": "Vsquared Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "4bbc0c69-a656-4309-9482-480a718a9f00",
+     "name": "Tofino B.V.",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "52deb9d2-b265-4f68-bf2f-be0f503812aa",
+     "name": "Keskinäinen työeläkevakuutusyhtiö Varma",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "6d47a7a0-e42e-525b-aa34-e825ded354a1",
+     "name": "Openocean Oy",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "868f0805-c66e-420b-a6c5-d718a1992128",
+     "name": "Salvia GmbH",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "8b48d1a5-8b64-43a6-a1ee-aac5022bb54d",
+     "name": "European Innovation Council Fund",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "963ecd95-fb22-5acd-9140-52fc452b5004",
+     "name": "Bayern Kapit",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "b6d6e5d9-6b8a-54f4-9ccc-f23e5a661008",
+     "name": "Matadero QED",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "d7232725-3524-473e-bd38-679d3f1365b4",
+     "name": "Tencent",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "f9501f4d-cb04-478e-a0de-512731beadaf",
+     "name": "QUA SERIES QCI A SERIES LLC OF QUA LLC",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/european-quantum-computing-leader-iqm-raises-e128m-led-by-world-fund-to-help-combat-the-climate-crisis/",
+    "date": "2022-07-22",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "sec.gov",
+    "url": "https://www.sec.gov/Archives/edgar/data/2113060/000119312526259957/d900375d424b3.htm",
+    "date": "2026-06-05",
+    "rank": "FILING"
+   }
+  ]
+ },
+ {
+  "id": "dd7748cc-6d81-5a54-9a97-8f40d144734b",
+  "company_id": "3e0524ad-7104-44a6-8f0f-788bc2772922",
+  "label": "Preferred Equity round",
+  "date": "2020-11-10",
+  "amount_text": "€39M",
+  "amount_eur": 39000000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "08ee5e5e-8079-491b-af45-1a6cf3e51f96",
+     "name": "Santo Venture Capital GmbH",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "27f9a0df-ee93-447e-8b6a-48c122957935",
+     "name": "MIG Nemovitostní otevřený podílový fond",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "2aaa36b4-4b6e-4247-9171-4d4f6665cca3",
+     "name": "Vsquared Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "6d47a7a0-e42e-525b-aa34-e825ded354a1",
+     "name": "Openocean Oy",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "717c77a9-68b0-4e3a-a48a-06908af7e30b",
+     "name": "VITO Ventures Fonds I GmbH & Co KG",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "868f0805-c66e-420b-a6c5-d718a1992128",
+     "name": "Salvia GmbH",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "b6d6e5d9-6b8a-54f4-9ccc-f23e5a661008",
+     "name": "Matadero QED",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "d7232725-3524-473e-bd38-679d3f1365b4",
+     "name": "Tencent",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/europe-is-on-its-way-to-quantum-leadership-iqm-raises-e39-m-in-series-a-funding/",
+    "date": "2020-11-10",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/european-quantum-computing-leader-iqm-raises-e128m-led-by-world-fund-to-help-combat-the-climate-crisis/",
+    "date": "2022-07-22",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "sec.gov",
+    "url": "https://www.sec.gov/Archives/edgar/data/2113060/000119312526259957/d900375d424b3.htm",
+    "date": "2026-06-05",
+    "rank": "FILING"
+   }
+  ]
+ },
+ {
+  "id": "1e8f6e8e-6753-592f-b535-0f0a31a7a3ad",
+  "company_id": "31ab6e8a-3dd2-5da1-a76e-f8538a809347",
+  "label": "Funding round",
+  "date": null,
+  "amount_text": "$5.2M",
+  "amount_eur": 4784000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": true
+   }
+  ],
+  "sources": [
+   {
+    "name": "ethira.dev",
+    "url": "https://www.ethira.dev/",
+    "date": "2026-11-13",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "allabolag.se",
+    "url": "https://www.allabolag.se/befattningshavare/ethira-ab/stockholm/internet-konsulter-operatc3b6rer/2KJAXYWI5YFHL",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ }
+]

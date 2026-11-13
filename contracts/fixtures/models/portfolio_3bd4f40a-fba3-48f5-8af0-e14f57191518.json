@@ -1,0 +1,19 @@
+[
+ {
+  "investor_id": "3bd4f40a-fba3-48f5-8af0-e14f57191518",
+  "company": {
+   "id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+   "name": "Rainfall Ventures",
+   "type": "Organization",
+   "description": "A venture capital firm that has invested in companies such as Arist and Plane."
+  },
+  "sources": [
+   {
+    "name": "Technology & Data for Venture Capital, Corp Dev, Investment Banks",
+    "url": "https://www.tracxn.com/d/companies/arist/__vT6Nla8BFQWMcfkNtlBcxUEnFXmtmv-GZvRD_hEgYfo",
+    "date": "2026-07-10",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

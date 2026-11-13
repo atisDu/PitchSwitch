@@ -1,0 +1,49 @@
+{
+ "investor_id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+ "company_id": "202e9283-6455-486f-8868-03c7e0d0cf29",
+ "markdown": "# Gungnir Capital × Sensofusion Oy\n\n**Verdict: worth a pitch.** No tie to your direct competitors in Cala's data.\n\n## Activity in your space\n- Joined Kelluu Oy's Series A round (2026-04-14, €15M) [1][2].\n- Last lead: Creoir, 2026-09-03 [3][4].\n\n## Portfolio\n- 3 companies in Cala, including Acodyne, Creoir, Kelluu Oy [5][6][7].\n",
+ "citations": [
+  {
+   "name": "nif.fund",
+   "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+   "date": "2026-04-14",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "kelluu.com",
+   "url": "https://kelluu.com/news",
+   "date": "2026-04-14",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "creoir.com",
+   "url": "https://creoir.com/creoir-raises-investment-from-gungnir-capital/",
+   "date": "2026-09-03",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "resiliencemedia.co",
+   "url": "https://resiliencemedia.co/finlands-creoir-gets-backing-from-gungnir-capital-for-its-on-device-speech-tech/",
+   "date": "2026-09-14",
+   "rank": "PRESS"
+  },
+  {
+   "name": "eu-startups.com",
+   "url": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+   "date": "2026-06-22",
+   "rank": "PRESS"
+  },
+  {
+   "name": "via.ritzau.dk",
+   "url": "https://via.ritzau.dk/pressemeddelelse/15004667/eifo-finansierer-dansk-fragtdrone-startup?lang=da",
+   "date": "2026-06-22",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "axios.com",
+   "url": "https://www.axios.com/pro/climate-deals/2026/06/27/energy-climate-deals-vc-pe-ipos",
+   "date": "2026-07-02",
+   "rank": "UNKNOWN"
+  }
+ ]
+}

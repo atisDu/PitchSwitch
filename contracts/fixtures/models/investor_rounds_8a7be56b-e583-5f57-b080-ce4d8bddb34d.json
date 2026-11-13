@@ -1,0 +1,44 @@
+[
+ {
+  "id": "41afa582-ea81-51db-b270-8054e1bff83e",
+  "company_id": "b2501123-e040-4c42-8599-41630a549c90",
+  "label": "Seed",
+  "date": "2025-06-10",
+  "amount_text": "€3M",
+  "amount_eur": 3000000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "8a7be56b-e583-5f57-b080-ce4d8bddb34d",
+     "name": "First Fellow Partners",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "siliconcanals.com",
+    "url": "https://siliconcanals.com/helsinkis-financekey-secures-e3m/",
+    "date": "2025-06-10",
+    "rank": "PRESS"
+   },
+   {
+    "name": "financekey.com",
+    "url": "https://financekey.com/press/",
+    "date": "2026-11-04",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

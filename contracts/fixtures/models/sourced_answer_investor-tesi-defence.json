@@ -1,0 +1,89 @@
+{
+ "question": "Which defence technology companies has Tesi invested in, and which rounds did it lead?",
+ "markdown": "## Tesi's Defence Technology Investments\n\n**Tesi** (Finnish Industry Investment Ltd) is a Finnish state-owned investment company that has identified defence and dual-use technology as a strategic investment theme. Tesi currently has around 10 defence-related companies in its portfolio. Below are the key defence technology companies Tesi has invested in, along with details on the funding rounds:\n\n### Defence & Dual-Use Portfolio Companies\n\n| Company | Sector | Tesi's Role in Rounds |\n|---|---|---|\n| **ICEYE** | SAR satellite imagery / space-based defence intelligence | Participant — first direct investment in 2018, follow-on in 2022; participated in €150M Series E (led by General Catalyst) and €450M Series F (led by General Atlantic). Tesi holds ~7% of ICEYE shares. |\n| **NestAI** | Physical AI for autonomous systems, C2 platforms, defence & critical infrastructure | **Co-lead** — Tesi co-led the €100M funding round alongside Nokia (November 2025), with an estimated allocation of ~€57.5M. |\n| **Kelluu** | Autonomous hydrogen-powered airships for persistent aerial surveillance (defence & civilian) | Participant — joined the €15M Series A (April 2026), which was led by the NATO Innovation Fund (NIF). Other co-investors included Keen Venture Partners and Gungnir Capital. |\n| **IQM Quantum Computers** | Quantum computing (dual-use: secure computing for defence) | Participant — invested across multiple rounds including Seed, Series A (led by MIG Fonds), and the $320M Series B (led by Ten Eleven Ventures), where Tesi increased its commitment. |\n| **Varjo Technologies** | Industrial-grade VR/XR hardware (dual-use: military simulation & training) | Participant — joined Varjo's ~$54M Series C round alongside Lifeline Ventures, Atomico, EQT Ventures, and others. |\n| **Dispelix** | Augmented reality waveguide displays (dual-use) | Participant — Tesi first invested in 2018 and participated in the €28.4M Series B round. |\n| **Axel Technologies (Axel AI)** | AI-powered military intelligence software | **Co-lead** — Tesi co-led a €120M funding round alongside Swedish defence company Saab. |\n| **Forcit Pori** | Explosives manufacturing (TNT factory — single-use defence) | Direct investment — a purely defence-focused portfolio company. |\n| **Savox Communications** | Defence communications equipment | Direct investment managed by Tesi's defence-focused investment manager. |\n| **Finnforel** | Defence-related industrial company | Direct investment managed within Tesi's defence portfolio. |\n\n### Rounds Led or Co-Led by Tesi\n\nBased on available information, Tesi **led or co-led** the following defence-related rounds:\n\n- **NestAI** — Co-led the €100M round with Nokia (November 2025)\n- **Axel AI (Axel Technologies)** — Co-led the €120M round with Saab\n\nIn most other cases (ICEYE, Kelluu, IQM, Varjo, Dispelix), Tesi participated as a co-investor alongside other lead investors. Tesi typically invests as a minority investor on the same terms as private co-investors.\n",
+ "reasons": [
+  {
+   "text": "Tesi co‑led the €100 million funding round for NestAI together with Nokia, as described in the news article about NestAI’s €100 M deal and the investor table showing Tesi as a lead investor.",
+   "sources": [
+    {
+     "name": "Nokia and Finnish NestAI Join Forces in €100M Deal to Revolutionise Defence Technology – Finnish AI Region",
+     "url": "https://www.fairedih.fi/en/2025/11/25/nokia-and-finnish-nestai-join-forces-in-e100m-deal-to-revolutionise-defence-technology",
+     "date": null,
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "NestAI Raises 115.0M USD in Other Funding | Seedtable",
+     "url": "https://www.seedtable.com/funding-round/NestAI_Venture_Round%2C_November_2025-64XNXRZ",
+     "date": null,
+     "rank": "UNKNOWN"
+    }
+   ]
+  },
+  {
+   "text": "Tesi co‑led the €120 million funding round for Axel AI (Axel Technologies) alongside Saab, as reported in the Dealroom‑style summary stating the round was led by Saab and Tesi.",
+   "sources": [
+    {
+     "name": "Dealroom.co | Finnish AI startup Axel AI lands $135.6M from Saab and Tesi for military intelligence software",
+     "url": "https://app.dealroom.co/news/feed/finnish-ai-startup-axel-ai-lands-135-6m-from-saab-and-tesi-for-military-intelligence-software",
+     "date": null,
+     "rank": "UNKNOWN"
+    }
+   ]
+  },
+  {
+   "text": "Tesi participated in ICEYE’s Series E and Series F rounds but did not lead them; the facts mention Tesi’s participation alongside other investors.",
+   "sources": [
+    {
+     "name": "ICEYE secures EUR 150 million Series E round - tesi.fi",
+     "url": "https://tesi.fi/en/news-item/iceye-eur-150-series-e-general-catalyst",
+     "date": null,
+     "rank": "UNKNOWN"
+    }
+   ]
+  },
+  {
+   "text": "Tesi participated in Kelluu’s €15 million Series A round, which was led by the NATO Innovation Fund, as indicated in the Kelluu press release.",
+   "sources": [
+    {
+     "name": "Kelluu raises EUR 15 million in Series A - tesi.fi",
+     "url": "https://tesi.fi/en/news-item/kelluu-series-a",
+     "date": null,
+     "rank": "UNKNOWN"
+    }
+   ]
+  },
+  {
+   "text": "Tesi participated in IQM’s Series B round led by Ten Eleven Ventures, as noted in the IQM funding description.",
+   "sources": [
+    {
+     "name": "IQM Quantum Computers Raises over $300 Million in Series B Funding Round Led by U.S. Investor Ten Eleven Ventures with strong support from Tesi - IQM Quantum Computers",
+     "url": "https://meetiqm.com/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjI1MCIsInRvZ2dsZSI6ZmFsc2V9",
+     "date": null,
+     "rank": "UNKNOWN"
+    }
+   ]
+  },
+  {
+   "text": "Tesi participated in Varjo’s Series C round, which was led by other investors, as shown in the Varjo funding summary.",
+   "sources": [
+    {
+     "name": "6 largest funding rounds closed by Finnish startups in 2020 - AIN",
+     "url": "https://en.ain.ua/2021/01/16/6-largest-funding-rounds-closed-by-finnish-startups-in-2020",
+     "date": null,
+     "rank": "UNKNOWN"
+    }
+   ]
+  },
+  {
+   "text": "Tesi participated in Dispelix’s growth funding, as the facts state Tesi made its first investment in 2018 and took part in later rounds.",
+   "sources": [
+    {
+     "name": "Dispelix raises EUR 28.4 million in a Series B round - tesi.fi",
+     "url": "https://tesi.fi/en/news-item/smart-glass-and-ar-display-developer-dispelix-raises-eur-28-4-million-in-a-series-b-round",
+     "date": null,
+     "rank": "UNKNOWN"
+    }
+   ]
+  }
+ ]
+}

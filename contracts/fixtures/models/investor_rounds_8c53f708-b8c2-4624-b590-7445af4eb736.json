@@ -1,0 +1,59 @@
+[
+ {
+  "id": "48e3ac91-c6f1-51a5-aa6e-88ff00935a6f",
+  "company_id": "65f601c1-32e2-4a12-a0f8-d0f15ae90a1d",
+  "label": "Pre-Seed",
+  "date": "2025-09-01",
+  "amount_text": "$4.5M",
+  "amount_eur": 4140000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "4db7ebf9-b42b-42f9-a487-f63b1dcb9ce9",
+     "name": "SNÖ Ventures",
+     "type": "Company",
+     "description": "Oslo-based venture capital fund investing in early-stage tech companies."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "8c53f708-b8c2-4624-b590-7445af4eb736",
+     "name": "Diede van Lamoen",
+     "type": "Person",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "b191306c-aa8a-447a-b468-df2a95de8f36",
+     "name": "General Catalyst",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   }
+  ],
+  "sources": [
+   {
+    "name": "nollahealth.com",
+    "url": "https://www.nollahealth.com/blog/debut-skin-platform",
+    "date": "2025-09-01",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "generalcatalyst.com",
+    "url": "https://www.generalcatalyst.com/stories/our-investment-in-nolla-health",
+    "date": "2025-09-18",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "beautyindependent.com",
+    "url": "https://www.beautyindependent.com/4-5m-raise-nolla-health-ai-startup-offers-acne-care",
+    "date": "2025-09-18",
+    "rank": "PRESS"
+   }
+  ]
+ }
+]

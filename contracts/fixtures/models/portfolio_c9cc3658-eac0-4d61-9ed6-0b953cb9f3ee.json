@@ -1,0 +1,25 @@
+[
+ {
+  "investor_id": "c9cc3658-eac0-4d61-9ed6-0b953cb9f3ee",
+  "company": {
+   "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+   "name": "NATO Innovation Fund",
+   "type": "Organization",
+   "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO."
+  },
+  "sources": [
+   {
+    "name": "CB Insights — Predictive Intelligence on Private Companies",
+    "url": "https://www.cbinsights.com/investor/ridgeline-ventures",
+    "date": "2026-06-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "CB Insights — Predictive Intelligence on Private Companies",
+    "url": "https://www.cbinsights.com/investor/adara-venture-partners",
+    "date": "2026-06-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

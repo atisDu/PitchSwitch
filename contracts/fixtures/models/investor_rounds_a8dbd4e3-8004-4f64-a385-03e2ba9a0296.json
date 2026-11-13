@@ -1,0 +1,62 @@
+[
+ {
+  "id": "1b13ff93-4906-5716-ae5d-c7ba2d1c2e22",
+  "company_id": "f9bf65a6-a85e-46ad-b086-d2c0cfd3a7b7",
+  "label": "Series A",
+  "date": "2026-07-06",
+  "amount_text": "$14M",
+  "amount_eur": 12880000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+     "name": "Lifeline Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "a8dbd4e3-8004-4f64-a385-03e2ba9a0296",
+     "name": "HealthCap",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "cd227237-cf1f-4aa7-ac14-9ab44bfe8256",
+     "name": "SANDWATER AS",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "eu-startups.com",
+    "url": "https://www.eu-startups.com/2026/07/finlands-curifylabs-raises-e12-million-to-expand-3d-printing-based-medicine-compounding/",
+    "date": "2026-07-06",
+    "rank": "PRESS"
+   },
+   {
+    "name": "news.curifylabs.com",
+    "url": "https://news.curifylabs.com/curifylabs-raises-14m-series-a-to-power-the-future-of-personalized-medicine",
+    "date": "2026-07-06",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

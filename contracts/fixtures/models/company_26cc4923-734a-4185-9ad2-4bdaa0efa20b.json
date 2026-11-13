@@ -1,0 +1,80 @@
+{
+ "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+ "name": "Keen Venture Partners",
+ "type": "Company",
+ "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models.",
+ "industries": [
+  "VENTURE_CAPITAL"
+ ],
+ "stage": null,
+ "country": null,
+ "total_funding_text": null,
+ "sources": [
+  {
+   "name": "VC Scene in Europe: Top VC Funds In The Netherlands",
+   "url": "https://vestbee.com/insights/articles/top-vc-funds-in-the-netherlands-to-finance-your-startup",
+   "date": "2023-02-09",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "Top Investors & VC Firms in Amsterdam 2026: 30+ Listed",
+   "url": "https://vc-mapping.gilion.com/venture-capital-firms/amsterdam",
+   "date": "2023-03-09",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "eu-startups.com",
+   "url": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+   "date": "2026-09-07",
+   "rank": "PRESS"
+  },
+  {
+   "name": "osborneclarke.com",
+   "url": "https://www.osborneclarke.com/de/news/osborne-clarke-beraet-mika-bei-seed-finanzierungsrunde-ueber-eur-6-millionen-fuer-ki-native",
+   "date": "2026-10-05",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "getmika.de",
+   "url": "https://getmika.de/presse",
+   "date": "2026-09-23",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "siliconcanals.com",
+   "url": "https://siliconcanals.com/avalor-ai-secures-2m/",
+   "date": "2024-06-19",
+   "rank": "PRESS"
+  },
+  {
+   "name": "bebeez.eu",
+   "url": "https://bebeez.eu/2024/06/19/amsterdam-based-defense-tech-avalor-ai-raises-e2-million-to-enhance-military-unmanned-systems",
+   "date": "2024-06-19",
+   "rank": "PRESS"
+  },
+  {
+   "name": "keenventurepartners.com",
+   "url": "https://keenventurepartners.com/portfolio/empowering-defense-with-the-future-of-unmanned-systems",
+   "date": "2026-11-09",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "nif.fund",
+   "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+   "date": "2026-04-14",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "tech.eu",
+   "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+   "date": "2026-04-14",
+   "rank": "PRESS"
+  },
+  {
+   "name": "techcrunch.com",
+   "url": "https://techcrunch.com/2024/01/24/googles-gradient-backs-send-ai-to-help-enterprises-extract-data-from-complex-documents",
+   "date": "2024-01-24",
+   "rank": "PRESS"
+  }
+ ]
+}

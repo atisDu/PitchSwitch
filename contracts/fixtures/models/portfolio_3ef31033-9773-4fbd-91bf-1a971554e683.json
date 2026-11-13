@@ -1,0 +1,1328 @@
+[
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "189c25c1-1eae-46c5-9776-fa04ce7b178c",
+   "name": "Adline",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/fund/14971-33F",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "b5431f33-ad55-44e4-87ed-3e791698e54a",
+   "name": "Aiba AI",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "aiba.ai",
+    "url": "https://aiba.ai/pressrelease-july-2022/",
+    "date": "2022-07-02",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "0757eb72-5ece-4d36-8696-20e7af54fe2a",
+   "name": "Aidee Health",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/fund/23075-20F",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "28f8c0da-a4db-4474-a264-fb14afd88dda",
+   "name": "Altek AI",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/altek-ai-in-an-equity-funding-deal-with-startuplab-founders-in-norway",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "8243331b-8a80-4cac-82b7-e6f963f8514c",
+   "name": "Anker DB",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/anker-raised-funding-from-startuplab-founders-in-norway",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "bf9853a3-539f-4380-babe-1eb813df04c9",
+   "name": "ARDOQ AS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/startup-lab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "7da201f0-8de9-4a05-a969-f7fab709cc26",
+   "name": "ATTENSI AS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Startuplab — Forskningsparken",
+    "url": "https://forskningsparken.no/en/company/startuplab",
+    "date": "2013-06-14",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "1082405d-e04f-4280-b5b3-b2ee08b0f26f",
+   "name": "Brandpad",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/brandpad-announced-raising-300k-from-thorgate-ventures-iii-startuplab-and-sagene-tech-ventures-news4661058988",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "1207d028-1a47-484a-812c-44590edae567",
+   "name": "Cloudgeni",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Startuplab | LinkedIn",
+    "url": "https://www.linkedin.com/company/startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/investor/57005-74",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "bffe5a2b-e9f3-4461-a82c-98b096c00135",
+   "name": "Diffia",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "arcticstartup.com",
+    "url": "https://arcticstartup.com/startuplab-raises-second-fund",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Diffia | Forskningsparken — Forskningsparken",
+    "url": "https://www.forskningsparken.no/en/news/diffia-ehelseselskaper",
+    "date": "2024-01-03",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "a95ad8ac-a39b-4700-af77-f4e3a52e0db8",
+   "name": "DragonBox",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "angelmatch.io",
+    "url": "https://angelmatch.io/accelerators/StartupLab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "2ee8e939-3466-40a1-a725-57cdce76307f",
+   "name": "Edda AI",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/edda-ai-to-raise-nok-75-million-with-startuplab-andenes-ventures-and-aidiom-in-norway",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "f37c0b80-29f8-4585-92fe-0d64b9b8c015",
+   "name": "EDINSIGHTS AS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "angelmatch.io",
+    "url": "https://angelmatch.io/accelerators/StartupLab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "6a580c2a-e43f-4322-a15b-4c24077e01d8",
+   "name": "EXABEL AS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "arcticstartup.com",
+    "url": "https://arcticstartup.com/startuplab-raises-second-fund",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "STARTUPLAB Job Board",
+    "url": "https://jobs.startuplab.no/companies/exabel",
+    "date": "2025-04-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "7f88e36c-88b1-478d-81c9-8b8c35e821c3",
+   "name": "Findable",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "STARTUPLAB Job Board",
+    "url": "https://jobs.startuplab.no/companies/findable",
+    "date": "2025-04-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "839f4906-b7a9-4a21-9af0-4db0249adf8b",
+   "name": "FUNDINGPARTNER AS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/fundingpartner/___6XalVsiu3gJFQ4AdweYFDWhT43SGXO1CCo14YM2VLY/funding-and-investors",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Roller, aksjonærer og styresammensetning av Fundingpartner Group AS",
+    "url": "https://www.regnskapstall.no/roller-og-eiere-av-fundingpartner-group-as-106797248S0",
+    "date": "2021-01-20",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "65818922-9639-4dcf-b811-dbfc421c18cb",
+   "name": "GameStones",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "arcticstartup.com",
+    "url": "https://arcticstartup.com/startuplab-raises-second-fund",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "cdbbceb7-e667-4c33-ade6-a6507d80d05f",
+   "name": "Hive Autonomy",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/investor/57005-74",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "7e4088e9-ccfe-4ed8-aeb5-6e060edb6c32",
+   "name": "HOLD PÅ AS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "arcticstartup.com",
+    "url": "https://arcticstartup.com/startuplab-raises-second-fund",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "7272e656-3485-4062-8824-23e7c8723021",
+   "name": "HUDDLY AS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/startup-lab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Startuplab | LinkedIn",
+    "url": "https://www.linkedin.com/company/startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "2409cccd-f8b8-49b6-93ec-aa2b6dcda7f6",
+   "name": "ID Tracker",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "eaf71edb-7d82-4678-8901-37641bc3ea3c",
+   "name": "Imerso",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/imerso-gets-funded-by-the-founders-fund-news6475620713",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "2c2ac3e6-8ae5-4442-b58e-7ff3a3d33e33",
+   "name": "Immence",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "arcticstartup.com",
+    "url": "https://arcticstartup.com/startuplab-raises-second-fund",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "29ec9c5b-2dc5-4c33-9727-9d351eaa5ff6",
+   "name": "Intelecy",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "angelmatch.io",
+    "url": "https://angelmatch.io/accelerators/StartupLab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "8fe2b7b4-ee53-4b2f-8794-1832225784af",
+   "name": "Kahoot!",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "sifted.eu",
+    "url": "https://sifted.eu/articles/norwegian-startuplab-closes-32m-fund",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/startup-lab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "2e2aba0f-00ab-4566-8d80-617bfd011b60",
+   "name": "Koble",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/koble-secured-350k-from-startuplab-founders-and-skyfall-ventures-news4016972677",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "8c1a9f57-29b3-4e08-9ae5-a9ad895fd9e1",
+   "name": "Leasi",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/leasi-was-incubated-by-startuplab-founders-in-norway",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "986d3d79-1632-48d0-b3db-271f145f14ce",
+   "name": "Legelisten",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "3c533c71-9e41-5f18-a5e3-4eed7b8be550",
+   "name": "Lybe Scientific",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "lybescientific.com",
+    "url": "https://lybescientific.com/press-release-successful-capital-increase-for-further-growth-for-development-within-aquaculture-and-fish-health/",
+    "date": "2024-12-19",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "ilaks.no",
+    "url": "https://ilaks.no/lybe-scientific-henter-atte-millioner-kroner-i-frisk-kapital/",
+    "date": "2024-12-19",
+    "rank": "PRESS"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "de25029f-f952-4f37-a605-28608d4fee7e",
+   "name": "Maindeck",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "www.thecompanycheck.com",
+    "url": "https://www.thecompanycheck.com/company/b/maindeck/5lo0zdz2v56eg782q",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "unicorn-nest.com",
+    "url": "https://unicorn-nest.com/funds/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "77476dcc-7b1b-4608-838e-1f141e917aa3",
+   "name": "Manolin",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/231152-23",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/manolin",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "2a21a7a1-fab1-4633-a80c-a22adcf2e264",
+   "name": "No Isolation",
+   "type": "Organization",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Startuplab | LinkedIn",
+    "url": "https://www.linkedin.com/company/startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "startuplabno.medium.com",
+    "url": "https://startuplabno.medium.com/startuplab-accelerator-5-cd693db9fab0",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "db4a2b46-7bd1-472d-82ab-769f7acec056",
+   "name": "NOFENCE AS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/fund/15758-74F",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "STARTUPLAB Job Board",
+    "url": "https://jobs.startuplab.no/companies/nofence-as",
+    "date": "2025-04-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "89489a4d-36e7-4324-b848-2e84f0847934",
+   "name": "Nomy AB",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/fund/23075-20F",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "c0340f59-e58c-4cc8-b219-bee634a8ba5a",
+   "name": "Norwegian Mycelium",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "greenqueen.com.hk",
+    "url": "https://www.greenqueen.com.hk/nomy-mycelium-seed-funding/",
+    "date": "2021-09-14",
+    "rank": "PRESS"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "b969ae84-b47e-41e0-aaa8-1c3e2dbd502c",
+   "name": "Odins.ai",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "3f78af34-6d66-425d-8837-ae0922b6008b",
+   "name": "Oivi",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "6c5d944e-a87c-499a-9cf9-fb701b646b3a",
+   "name": "ONCOIMMUNITY AS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "angelmatch.io",
+    "url": "https://angelmatch.io/accelerators/StartupLab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "dd8a5968-6ccd-59b2-9173-f152fb8afb2f",
+   "name": "OTee",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2024/02/05/oslo-based-otee-secures-eur125m-funding-for-industrial-automation-software",
+    "date": "2024-02-05",
+    "rank": "PRESS"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "7bbf19fd-bb17-431a-a5d1-b161d4281fd1",
+   "name": "OTOVO ASA",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "in.marketscreener.com",
+    "url": "https://in.marketscreener.com/quote/stock/OTOVO-ASA-119139310/news/Otovo-AS-announced-that-it-has-received-funding-from-StartupLab-38114786",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.seedtable.com",
+    "url": "https://www.seedtable.com/investors/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "startuplabno.medium.com",
+    "url": "https://startuplabno.medium.com/startuplab-accelerator-5-cd693db9fab0",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "9e9906e9-a5b1-4b8d-a9f3-72ee93ae4b94",
+   "name": "Parqio",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/fund/23075-20F",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "d5f8974b-7765-44f7-afc6-6f1767b8bad0",
+   "name": "Photoncycle",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "sifted.eu",
+    "url": "https://sifted.eu/articles/norwegian-startuplab-closes-32m-fund",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Photoncycle AS - Aksjonærer i Norge.",
+    "url": "https://www.proff.no/aksjon%C3%A6rer/-/photoncycle-as/925751359",
+    "date": "2025-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "790be486-c105-42b9-8e92-c9c2ab885546",
+   "name": "Poio",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "angelmatch.io",
+    "url": "https://angelmatch.io/accelerators/StartupLab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "8c79fa1b-ce11-4381-a82a-1099f86cd0bd",
+   "name": "Prompt Shields",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/prompt-shields-in-an-equity-financing-deal-with-startuplab-aidiom-antler-and-angel-investors-in-norway",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "347d4120-1c14-5e74-aa5f-17eeebe64c1c",
+   "name": "Reggy",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "bebeez.eu",
+    "url": "https://bebeez.eu/2024/08/01/oslos-fortifai-secures-funding-to-transform-esg-compliance-with-continuous-management-platform/",
+    "date": "2024-08-01",
+    "rank": "PRESS"
+   },
+   {
+    "name": "itbrief.co.uk",
+    "url": "https://itbrief.co.uk/story/reggy-launches-compliance-software-platform-in-europe",
+    "date": "2026-11-12",
+    "rank": "PRESS"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "47cdbdce-4b1a-4f32-ad83-a5fcab04698b",
+   "name": "REMARKABLE AS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "sifted.eu",
+    "url": "https://sifted.eu/articles/norwegian-startuplab-closes-32m-fund",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/startup-lab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "8e55039d-93b7-4e8b-b3ff-f5fee99ba1da",
+   "name": "Rucoria",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Rucoria AS | Valuation, Funding Rounds & Stock Price | Caplight",
+    "url": "https://www.caplight.com/company/rucoria",
+    "date": "2021-01-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/rubus/__NBZ_UA3qeBLhZO38V2p0roaIAPY0oPh5U3I2sJVyTFA/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "a6f1fb6f-a4b9-5b14-897d-87405af6a92d",
+   "name": "Saro Robotics",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "caplight.com",
+    "url": "https://www.caplight.com/company/sarorobotics",
+    "date": "2026-09-08",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "01df5bb7-a95f-4e4f-b9e8-6a2bfca38fd4",
+   "name": "sensiBel",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Startuplab · Venture Capital in Norway · Nordic Hardtech",
+    "url": "https://www.nordichardtech.com/funding/startuplab",
+    "date": "2015-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "62e9e13c-7d47-4884-93fa-3a459e658ac5",
+   "name": "ShareMy3D",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "arcticstartup.com",
+    "url": "https://arcticstartup.com/founders-fund-norway-angels-are-supporting-new-tech-talent-in-norway",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "0d344daf-9337-52cb-bf9e-3dc2a3d35edc",
+   "name": "Sirken",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "caplight.com",
+    "url": "https://www.caplight.com/company/sirken",
+    "date": "2026-11-12",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "fba11615-bc29-48ee-908a-8294021477f3",
+   "name": "Sonair",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/sonair-raises-nok-30-million-with-proventure-sintef-venture-vi-startuplab-founders-fund-and-stratel",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/sonair-was-funded-by-startuplab-founders",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "83fc40e1-d6e7-4f17-8f41-d21189e89d0d",
+   "name": "Spoor",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "sifted.eu",
+    "url": "https://sifted.eu/articles/norwegian-startuplab-closes-32m-fund",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "STARTUPLAB Job Board",
+    "url": "https://jobs.startuplab.no/companies/spoor",
+    "date": "2025-04-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "3afdc63c-b992-4b25-b69d-807ab346352d",
+   "name": "Stendr",
+   "type": "Company",
+   "description": "Norwegian defence technology company developing AI-native multi-sensor platform for drone defence."
+  },
+  "sources": [
+   {
+    "name": "www.finsmes.com",
+    "url": "https://www.finsmes.com/2026/04/stendr-raises-5-4m-in-pre-seed-funding.html",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Stendr raises $5.4M in oversubscribed pre-seed round to build the Nordics'next defence prime",
+    "url": "https://stendr.com/news/stendr-pre-seed-announcement",
+    "date": "2026-04-15",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/investor/57005-74",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "c77bfe69-dc63-4365-95db-f2599b589557",
+   "name": "TUNABLE AS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "19a1054b-7c8b-4b89-b1ec-3cb21fadd579",
+   "name": "Versiro",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "venturecapitalarchive.com",
+    "url": "https://venturecapitalarchive.com/venture-funds/startuplab-ventures-startuplab-no",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/startup-lab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "be75b775-db43-444e-9f25-a742d1055b3a",
+   "name": "Visoid",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/venture-capital/startuplab/__zt3CPH8eWop_wFy0g_ixCrmEbnaXtgUxHYZhXs-WkQU",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "🧠 Visoid's $0.8 million Seed round [AI] | Pitch.Guide",
+    "url": "https://founders.pitch.guide/c/sub-20m-funding-rounds/visoid-s-0-8-million-seed-round-ai",
+    "date": "2024-11-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "d9f208cb-e6e6-46e5-8627-b6f42bcc8cfa",
+   "name": "Vivaldi",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "investorhunt.co",
+    "url": "https://investorhunt.co/accelerators/startuplab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "angelmatch.io",
+    "url": "https://angelmatch.io/accelerators/StartupLab",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "98021347-7b64-4c43-ab74-7dd1cefb4dce",
+   "name": "Völur",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/fund/15758-74F",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/volur-announced-raising-nok-10-million-from-startuplab-simula-and-angel-investors-from-norway",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "STARTUPLAB Job Board",
+    "url": "https://jobs.startuplab.no/companies/volur",
+    "date": "2025-04-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "nordic9.com",
+    "url": "https://nordic9.com/news/volur-in-a-3-million-equity-round-backed-by-fusion-fund-scribble-ventures-beat-ventures-and-idekapital/",
+    "date": "2022-10-28",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "investor_id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+  "company": {
+   "id": "76ed7ce3-86e2-49ed-9120-cef176840e9b",
+   "name": "ZEG POWER AS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/fund/15758-74F",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "\"A Visit To Norway, Europe’s Energy Factory\" Featuring Startuplab, ZEG Power, and Heimdall Power - Veriten",
+    "url": "https://veriten.com/stream/a-visit-to-norway-europes-energy-factory-featuring-startuplab-zeg-power-and-heimdall-power",
+    "date": "2023-03-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

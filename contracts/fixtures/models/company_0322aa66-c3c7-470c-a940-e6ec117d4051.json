@@ -1,0 +1,24 @@
+{
+ "id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+ "name": "Rainfall Ventures",
+ "type": "Organization",
+ "description": "A venture capital firm that has invested in companies such as Arist and Plane.",
+ "industries": [],
+ "stage": null,
+ "country": null,
+ "total_funding_text": null,
+ "sources": [
+  {
+   "name": "Cala AI",
+   "url": null,
+   "date": "2026-08-02",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "startupi.com.br",
+   "url": "https://startupi.com.br/fintech-de-credito-instantaneo-para-microempreendedores-recebe-aporte-de-us-16-milhoes/",
+   "date": "2022-06-09",
+   "rank": "PRESS"
+  }
+ ]
+}

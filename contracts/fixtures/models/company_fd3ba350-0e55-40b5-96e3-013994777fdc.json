@@ -1,0 +1,48 @@
+{
+ "id": "fd3ba350-0e55-40b5-96e3-013994777fdc",
+ "name": "Inventure",
+ "type": "Organization",
+ "description": "a Finnish investment firm headquartered in Helsinki",
+ "industries": [],
+ "stage": null,
+ "country": "Southern Finland FI",
+ "total_funding_text": null,
+ "sources": [
+  {
+   "name": "Cala AI",
+   "url": null,
+   "date": "2026-08-24",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "tech.eu",
+   "url": "https://tech.eu/2022/03/29/anyday-raises-4-million-in-seed-round-offering-an-active-stance-on-ethical-payments/",
+   "date": "2022-03-29",
+   "rank": "PRESS"
+  },
+  {
+   "name": "arcticstartup.com",
+   "url": "https://arcticstartup.com/?p=95750",
+   "date": "2026-11-10",
+   "rank": "PRESS"
+  },
+  {
+   "name": "news.cision.com",
+   "url": "https://news.cision.com/san-francisco-oy/r/thirdpresence-raises--2-4m-to-transform-in-app-programmatic-video-advertising-with-ai,c2456776",
+   "date": "2018-02-21",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "tech.eu",
+   "url": "https://tech.eu/2018/02/21/thirdpresence-funding/",
+   "date": "2018-02-21",
+   "rank": "PRESS"
+  },
+  {
+   "name": "unquote.com",
+   "url": "https://www.unquote.com/nordics/official-record/3008731/inventure-tesi-raise-usd24m-for-thirdpresence",
+   "date": "2018-02-21",
+   "rank": "PRESS"
+  }
+ ]
+}

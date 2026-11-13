@@ -1,0 +1,50 @@
+{
+ "id": "16fa515b-1434-58c9-be73-8754e77ade00",
+ "name": "Metaktik",
+ "type": "Company",
+ "description": "A Finnish aerospace and defense company founded in 2026 and headquartered in Espoo.",
+ "industries": [
+  "AEROSPACE_AND_DEFENSE"
+ ],
+ "stage": "Pre-Seed",
+ "country": "Finland",
+ "total_funding_text": "€1M",
+ "sources": [
+  {
+   "name": "Cala AI",
+   "url": null,
+   "date": "2026-11-13",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "arcticstartup.com",
+   "url": "https://arcticstartup.com/metaktik-raises-e1-million/",
+   "date": "2026-03-31",
+   "rank": "PRESS"
+  },
+  {
+   "name": "metaktik.com",
+   "url": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+   "date": "2026-03-30",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "sttinfo.fi",
+   "url": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+   "date": "2026-03-31",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "linkedin.com",
+   "url": "https://www.linkedin.com/company/metaktik",
+   "date": "2026-11-02",
+   "rank": "AGGREGATOR"
+  },
+  {
+   "name": "metaktik.com",
+   "url": "https://metaktik.com/",
+   "date": "2026-11-02",
+   "rank": "PRIMARY"
+  }
+ ]
+}

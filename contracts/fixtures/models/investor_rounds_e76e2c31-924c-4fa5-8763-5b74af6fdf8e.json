@@ -1,0 +1,107 @@
+[
+ {
+  "id": "e53b8892-9563-514d-ae81-aa2f8009e811",
+  "company_id": "16223230-e787-4182-bae2-f7c5e03c3acf",
+  "label": "Series A",
+  "date": "2024-04-02",
+  "amount_text": "$40M",
+  "amount_eur": 36800000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "4b459339-7df6-4137-ab16-76c60b5c67d6",
+     "name": "Agronomics Limited",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "8030d7c4-1e41-4b0e-8ebc-9fb362e84398",
+     "name": "Turret Holding Corp",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "a46a1058-93a7-4b0f-bc1f-bc31238fb006",
+     "name": "NORDICNINJA VC LIMITED",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "dfb76b6a-0833-45e4-a5f5-81352c35b7b7",
+     "name": "Holdix Oy Ab",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "e76e2c31-924c-4fa5-8763-5b74af6fdf8e",
+     "name": "EIT Food",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2024/04/02/onego-bio-secures-40m-series-a/",
+    "date": "2024-04-02",
+    "rank": "PRESS"
+   },
+   {
+    "name": "paaomasijoittajat.fi",
+    "url": "https://paaomasijoittajat.fi/en/?p=26682",
+    "date": "2024-04-02",
+    "rank": "PRESS"
+   },
+   {
+    "name": "finland.dlapiper.com",
+    "url": "https://finland.dlapiper.com/en/news/dla-piper-advised-food-biotech-company-onego-bio-40-million-series-funding-round",
+    "date": "2024-04-03",
+    "rank": "PRESS"
+   },
+   {
+    "name": "techcrunch.com",
+    "url": "https://techcrunch.com/2024/04/01/animal-free-egg-protein-onego-bio-40m",
+    "date": "2024-04-01",
+    "rank": "PRESS"
+   },
+   {
+    "name": "onego.bio",
+    "url": "https://www.onego.bio/about",
+    "date": "2026-11-07",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

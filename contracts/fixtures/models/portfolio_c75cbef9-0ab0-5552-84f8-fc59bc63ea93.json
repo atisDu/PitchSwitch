@@ -1,0 +1,25 @@
+[
+ {
+  "investor_id": "c75cbef9-0ab0-5552-84f8-fc59bc63ea93",
+  "company": {
+   "id": "b7226c97-3a44-5176-8544-cb91246b2249",
+   "name": "Kova Labs",
+   "type": "Company",
+   "description": "Kova Labs builds the foundational autonomy layer for unmanned systems in GPS-denied, contested, and complex environments. Based in Helsinki, Finland."
+  },
+  "sources": [
+   {
+    "name": "resiliencemedia.co",
+    "url": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+    "date": "2026-11-04",
+    "rank": "PRESS"
+   },
+   {
+    "name": "lifelineventures.com",
+    "url": "https://lifelineventures.com/",
+    "date": "2026-11-12",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

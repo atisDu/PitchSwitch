@@ -1,0 +1,25 @@
+[
+ {
+  "investor_id": "8a7be56b-e583-5f57-b080-ce4d8bddb34d",
+  "company": {
+   "id": "b2501123-e040-4c42-8599-41630a549c90",
+   "name": "FinanceKey Oy",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "siliconcanals.com",
+    "url": "https://siliconcanals.com/helsinkis-financekey-secures-e3m/",
+    "date": "2025-06-10",
+    "rank": "PRESS"
+   },
+   {
+    "name": "financekey.com",
+    "url": "https://financekey.com/press/",
+    "date": "2026-11-04",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

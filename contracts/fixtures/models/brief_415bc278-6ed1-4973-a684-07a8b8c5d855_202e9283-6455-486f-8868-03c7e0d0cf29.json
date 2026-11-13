@@ -1,0 +1,43 @@
+{
+ "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+ "company_id": "202e9283-6455-486f-8868-03c7e0d0cf29",
+ "markdown": "# Maki.vc × Sensofusion Oy\n\n**Verdict: skip.** Maki.vc backs Aavuus, a direct competitor [1][2].\n- Also tied to Metaktik [3][4].\n\n## Activity in your space\n- Led Aavuus's Pre-Seed round (2026-06-09) [1][2].\n- Led Metaktik's Pre-Seed round (2026-03-30, €1M) [5][3].\n- Last lead: Aavuus, 2026-06-09 [1][2].\n\n## Portfolio\n- 23 companies in Cala, including Aavuus, AI Agents, Auto Retail AI, Baseimmune, Distance Technologies Oy [1][2][6].\n",
+ "citations": [
+  {
+   "name": "aavuus.com",
+   "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+   "date": "2026-06-09",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "tech.eu",
+   "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+   "date": "2026-06-09",
+   "rank": "PRESS"
+  },
+  {
+   "name": "metaktik.com",
+   "url": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+   "date": "2026-03-30",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "sttinfo.fi",
+   "url": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+   "date": "2026-03-31",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "arcticstartup.com",
+   "url": "https://arcticstartup.com/metaktik-raises-e1-million/",
+   "date": "2026-03-31",
+   "rank": "PRESS"
+  },
+  {
+   "name": "cbinsights.com",
+   "url": "https://www.cbinsights.com/company/aavuus/financials",
+   "date": "2026-11-13",
+   "rank": "AGGREGATOR"
+  }
+ ]
+}

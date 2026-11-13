@@ -1,0 +1,33 @@
+{
+ "id": "69c43164-30cb-492f-aeb9-efa658ff5bef",
+ "name": "PostScriptum Ventures",
+ "type": "Company",
+ "description": "Venture capital investment group established in 2006, investing in sustainable energy, innovative technology, and disruptive business models including wind, solar, biomass, storage, and hydrogen.",
+ "industries": [
+  "PRIVATE_EQUITY",
+  "VENTURE_CAPITAL"
+ ],
+ "stage": null,
+ "country": null,
+ "total_funding_text": null,
+ "sources": [
+  {
+   "name": "PostScriptum Ventures",
+   "url": "https://www.postscriptum.com",
+   "date": "2022-01-01",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "Invest | RE:TURN",
+   "url": "https://return.bg/invest",
+   "date": "2019-02-01",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "Advisory board - BVCA",
+   "url": "https://bvca.bg/en/advisory-board",
+   "date": "2025-06-04",
+   "rank": "UNKNOWN"
+  }
+ ]
+}

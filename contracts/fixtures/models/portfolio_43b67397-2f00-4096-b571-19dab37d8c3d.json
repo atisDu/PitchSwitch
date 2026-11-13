@@ -1,0 +1,19 @@
+[
+ {
+  "investor_id": "43b67397-2f00-4096-b571-19dab37d8c3d",
+  "company": {
+   "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+   "name": "Heart Aerospace",
+   "type": "Company",
+   "description": "Heart makes electric airplanes with an all-electric range of 250 miles"
+  },
+  "sources": [
+   {
+    "name": "Norrsken - Be part of the solution",
+    "url": "https://norrsken.org/investments",
+    "date": "2026-07-14",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

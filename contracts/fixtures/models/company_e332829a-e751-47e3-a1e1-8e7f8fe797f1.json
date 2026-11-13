@@ -1,0 +1,29 @@
+{
+ "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+ "name": "Heart Aerospace",
+ "type": "Company",
+ "description": "Heart makes electric airplanes with an all-electric range of 250 miles",
+ "industries": [
+  "RENEWABLE_ENERGY",
+  "MACHINERY",
+  "AEROSPACE_AND_DEFENSE",
+  "MANUFACTURING_AUTOMOTIVE"
+ ],
+ "stage": "Series A+ (multiple rounds)",
+ "country": "Sweden",
+ "total_funding_text": "~$107M+",
+ "sources": [
+  {
+   "name": "Y Combinator",
+   "url": "https://github.com/yc-oss/api",
+   "date": "2026-07-25",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "Cala AI",
+   "url": null,
+   "date": "2026-05-15",
+   "rank": "UNKNOWN"
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+ "name": "REDSTONE",
+ "type": "Company",
+ "description": "French venture capital firm founded in 2022",
+ "industries": [
+  "REAL_ESTATE",
+  "VENTURE_CAPITAL"
+ ],
+ "stage": null,
+ "country": "France",
+ "total_funding_text": null,
+ "sources": [
+  {
+   "name": "Cala AI",
+   "url": null,
+   "date": "2026-08-22",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "GLEIF",
+   "url": "https://search.gleif.org/#/record/969500LIXGOTQTK87642",
+   "date": "2026-10-14",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "swapbat.io",
+   "url": "https://swapbat.io/investors/",
+   "date": "2026-11-13",
+   "rank": "PRIMARY"
+  }
+ ]
+}

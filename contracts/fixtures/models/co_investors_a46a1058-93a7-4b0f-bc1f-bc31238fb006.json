@@ -1,0 +1,56 @@
+[
+ [
+  {
+   "id": "4b459339-7df6-4137-ab16-76c60b5c67d6",
+   "name": "Agronomics Limited",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "e76e2c31-924c-4fa5-8763-5b74af6fdf8e",
+   "name": "EIT Food",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "dfb76b6a-0833-45e4-a5f5-81352c35b7b7",
+   "name": "Holdix Oy Ab",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+   "name": "Maki.vc",
+   "type": "Company",
+   "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+  },
+  1
+ ],
+ [
+  {
+   "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+   "name": "Tesi",
+   "type": "Organization",
+   "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+  },
+  1
+ ],
+ [
+  {
+   "id": "8030d7c4-1e41-4b0e-8ebc-9fb362e84398",
+   "name": "Turret Holding Corp",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ]
+]

@@ -1,0 +1,222 @@
+[
+ {
+  "investor_id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+  "company": {
+   "id": "6b10d0c7-6bfe-477a-a527-524600671878",
+   "name": "G.S InnPlay Labs Ltd",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/gs-innplay-labs-ltd",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/funding_round/gs-innplay-labs-ltd-series-unknown--a781ec19",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+  "company": {
+   "id": "0861cf20-d8c0-47fa-ae17-b9f3623585a0",
+   "name": "LITHIC, INC.",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Privacy.com rebrands to Lithic, raises $43M for virtual payment cards | TechCrunch",
+    "url": "https://techcrunch.com/2021/05/20/privacy-com-rebrands-to-lithic-raises-43m-for-virtual-payment-cards",
+    "date": "2021-05-20",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Privacy.com rebrands to Lithic, raises $43M for virtual payment cards | TechCrunch",
+    "url": "https://techcrunch.com/2021/05/20/privacy-com-rebrands-to-lithic-raises-43m-for-virtual-payment-cards#!",
+    "date": "2021-05-20",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+  "company": {
+   "id": "136b7d7e-17e3-4342-ba74-9409e13e6118",
+   "name": "NOVO CONSEILS",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Novo, a neobank for SMBs, banks $41M | TechCrunch",
+    "url": "https://techcrunch.com/2021/06/16/novo-a-neobank-for-smbs-banks-41m",
+    "date": "2021-06-16",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/184747-15",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/novo/__HJRkIj_tnudg5LmeYuAxIfYaw8qzWQq4t7ieDYTFAq8/funding-and-investors",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+  "company": {
+   "id": "80faf6fa-fe4c-47ed-ab50-048f2c94b6bf",
+   "name": "Plane",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "Plane: Funding, Team & Investors",
+    "url": "https://startupintros.com/orgs/plane",
+    "date": "2026-07-13",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Plane funding, news & analysis",
+    "url": "https://sacra.com/c/plane",
+    "date": "2024-12-26",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+  "company": {
+   "id": "3afdc63c-b992-4b25-b69d-807ab346352d",
+   "name": "Stendr",
+   "type": "Company",
+   "description": "Norwegian defence technology company developing AI-native multi-sensor platform for drone defence."
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/stendr/__7VSvHoLx3hjMEv6yAnnHfm3bFhEeOWBkgqe3NhG5Jbc",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/1376632-18",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/skyfall-ventures/signals_and_news/timeline",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/rainfall-ventures/investor_summary/overview_timeline",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/investor/57005-74",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+  "company": {
+   "id": "a8a0f5b0-6efe-4546-b8e5-25b0e4f17975",
+   "name": "UNSTOPPABLE DOMAINS INC.",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/unstoppable-domains/__5yK6TVAPTXnNb2zNMdcTpmVHN7NvV6ZGoWi9vQdwYz8",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/unstoppable-domains/__5yK6TVAPTXnNb2zNMdcTpmVHN7NvV6ZGoWi9vQdwYz8/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/newsletter/unstoppable-domains-picks-up-65m",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/267559-93",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Web3 digital identity startup Unstoppable Domains raises funds at $1B valuation | TechCrunch",
+    "url": "https://techcrunch.com/2022/07/27/web3-digital-identity-startup-unstoppable-domains-raises-funds-at-1-billion-valuation",
+    "date": "2022-07-27",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+  "company": {
+   "id": "273de661-8eff-4ebc-a303-6f3e0dc3d2bf",
+   "name": "WEBFLOW LTD",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/webflow/__4ydLbavRvsWn4Llop1QC4CHeauSFwj7rhDh41SueLuE/funding-and-investors",
+    "date": "2026-08-05",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "news.crunchbase.com",
+    "url": "https://news.crunchbase.com/venture/webflow-raises-72m-series-a-continuing-the-trend-of-outsized-early-stage-rounds",
+    "date": "2026-08-05",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+  "company": {
+   "id": "2448c7b3-eda5-443f-a300-31fa51993515",
+   "name": "Zippi",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "startupi.com.br",
+    "url": "https://startupi.com.br/fintech-de-credito-instantaneo-para-microempreendedores-recebe-aporte-de-us-16-milhoes/",
+    "date": "2022-06-09",
+    "rank": "PRESS"
+   }
+  ]
+ }
+]

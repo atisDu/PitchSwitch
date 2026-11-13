@@ -1,0 +1,452 @@
+[
+ [
+  {
+   "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+   "name": "Lifeline Ventures",
+   "type": "Organization",
+   "description": null
+  },
+  4
+ ],
+ [
+  {
+   "id": "fd3ba350-0e55-40b5-96e3-013994777fdc",
+   "name": "Inventure",
+   "type": "Organization",
+   "description": "a Finnish investment firm headquartered in Helsinki"
+  },
+  3
+ ],
+ [
+  {
+   "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+   "name": "Maki.vc",
+   "type": "Company",
+   "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+  },
+  3
+ ],
+ [
+  {
+   "id": "4b459339-7df6-4137-ab16-76c60b5c67d6",
+   "name": "Agronomics Limited",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "1d1bfed9-d198-446d-b368-5a35dff40782",
+   "name": "Albert Wenger",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "a8aef419-39d8-5287-b5c8-eddb9b25ad79",
+   "name": "Alex Patist",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "dc70f649-8f97-5222-ad02-d9e0ccebcaba",
+   "name": "Ari Korhonen",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "c2789093-8132-5e95-b7d3-03acd7e78aca",
+   "name": "Atte Palomäki",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "0abdbafe-e628-5733-ae94-97e6d912152c",
+   "name": "Axel Sjöblom",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "963ecd95-fb22-5acd-9140-52fc452b5004",
+   "name": "Bayern Kapit",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "a7ef453b-938f-43ee-9bb2-294921d7cc5c",
+   "name": "ByFounders",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "c06adc97-e2d8-4590-a329-4462750ee4e6",
+   "name": "Cherry Ventures",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "e8bd020d-4348-491d-86a6-91567d716f52",
+   "name": "Counterview Capital",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "5bcdc544-7120-4b04-8951-18201e578a65",
+   "name": "Curus AB",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "ec992709-456f-547c-a079-3467e3f25fce",
+   "name": "Dan Bragiel",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "4276c81c-f80f-529d-89f0-dc8d0375e5cf",
+   "name": "David Helgason",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "b8f34378-af55-4f7c-a6f3-045904b0bbe0",
+   "name": "DIANA UK ENTERPRISES LTD",
+   "type": "Company",
+   "description": "A London‑based British company incorporated in 2024."
+  },
+  1
+ ],
+ [
+  {
+   "id": "e76e2c31-924c-4fa5-8763-5b74af6fdf8e",
+   "name": "EIT Food",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "cf5ae4e9-7a41-4c8d-b0ae-51113523793f",
+   "name": "Elo Mutual Pension Insurance",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "8b48d1a5-8b64-43a6-a1ee-aac5022bb54d",
+   "name": "European Innovation Council Fund",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "3328757b-6011-4295-b645-7f0c0b6edd71",
+   "name": "GenZero",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "3c34f50c-cd21-406e-b4dd-8105d574d1bf",
+   "name": "GTT Strategic Ventures",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+   "name": "Gungnir Capital",
+   "type": "Organization",
+   "description": "A venture capital firm that led the pre‑seed round for Acodyne."
+  },
+  1
+ ],
+ [
+  {
+   "id": "a8dbd4e3-8004-4f64-a385-03e2ba9a0296",
+   "name": "HealthCap",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "dfb76b6a-0833-45e4-a5f5-81352c35b7b7",
+   "name": "Holdix Oy Ab",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "491eb014-f386-4f7d-85e5-e408611df1a5",
+   "name": "Ilmarinen",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "1967e328-1430-5c93-839e-e6acb6335d2a",
+   "name": "Jussi Heinilä",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "5eacd721-5000-5ee0-9f3e-7eb1e4b1844b",
+   "name": "Jussi Ilmarinen",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "55f38ddc-028e-413e-a793-042602a552d8",
+   "name": "Kaamos Trading OÜ",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+   "name": "Keen Venture Partners",
+   "type": "Company",
+   "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models."
+  },
+  1
+ ],
+ [
+  {
+   "id": "52deb9d2-b265-4f68-bf2f-be0f503812aa",
+   "name": "Keskinäinen työeläkevakuutusyhtiö Varma",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "30054269-e591-5569-bf3c-cb7633db9e53",
+   "name": "Maija Itkonen",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "b6d6e5d9-6b8a-54f4-9ccc-f23e5a661008",
+   "name": "Matadero QED",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "e1a70162-c11b-56f4-9e4a-733e05c00d8a",
+   "name": "Matti Suokko",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "27f9a0df-ee93-447e-8b6a-48c122957935",
+   "name": "MIG Nemovitostní otevřený podílový fond",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "da07fad7-db5e-57c9-8861-44d806f2864d",
+   "name": "Mika Ihamuotila",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "85f67a08-17ec-56b0-bb34-0309ffa5076b",
+   "name": "Moaffak Ahmed",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+   "name": "NATO Innovation Fund",
+   "type": "Organization",
+   "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO."
+  },
+  1
+ ],
+ [
+  {
+   "id": "a46a1058-93a7-4b0f-bc1f-bc31238fb006",
+   "name": "NORDICNINJA VC LIMITED",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "9dbdd7a8-9afa-4070-9b26-82f6629b9d10",
+   "name": "NREP AB",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "131ae405-ee99-56fb-a9c5-973058c0ef70",
+   "name": "Olli-Pekka Kallasvuo",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "6d47a7a0-e42e-525b-aa34-e825ded354a1",
+   "name": "Openocean Oy",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "0fb520bb-741e-4a68-9f39-bd5396da268d",
+   "name": "OurCrowd",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "e09816af-3f88-43de-baf3-0cfbf276ad6b",
+   "name": "Paul Bragiel",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "3f96f5e0-ecce-56c7-a1f1-08f8d4242685",
+   "name": "Peter Ort",
+   "type": "Person",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "a40ce49c-cbf2-4170-b2ca-bfe93a0c6f27",
+   "name": "Practica Capital",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "f9501f4d-cb04-478e-a0de-512731beadaf",
+   "name": "QUA SERIES QCI A SERIES LLC OF QUA LLC",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+   "name": "REDSTONE",
+   "type": "Company",
+   "description": "French venture capital firm founded in 2022"
+  },
+  1
+ ],
+ [
+  {
+   "id": "d6c36f47-647d-5a0d-9e11-9f71b57708a8",
+   "name": "Riku Asikainen",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "868f0805-c66e-420b-a6c5-d718a1992128",
+   "name": "Salvia GmbH",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ]
+]

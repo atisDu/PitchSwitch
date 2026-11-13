@@ -1,0 +1,43 @@
+[
+ {
+  "investor_id": "8030d7c4-1e41-4b0e-8ebc-9fb362e84398",
+  "company": {
+   "id": "16223230-e787-4182-bae2-f7c5e03c3acf",
+   "name": "Onego Bio",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2024/04/02/onego-bio-secures-40m-series-a/",
+    "date": "2024-04-02",
+    "rank": "PRESS"
+   },
+   {
+    "name": "paaomasijoittajat.fi",
+    "url": "https://paaomasijoittajat.fi/en/?p=26682",
+    "date": "2024-04-02",
+    "rank": "PRESS"
+   },
+   {
+    "name": "finland.dlapiper.com",
+    "url": "https://finland.dlapiper.com/en/news/dla-piper-advised-food-biotech-company-onego-bio-40-million-series-funding-round",
+    "date": "2024-04-03",
+    "rank": "PRESS"
+   },
+   {
+    "name": "techcrunch.com",
+    "url": "https://techcrunch.com/2024/04/01/animal-free-egg-protein-onego-bio-40m",
+    "date": "2024-04-01",
+    "rank": "PRESS"
+   },
+   {
+    "name": "onego.bio",
+    "url": "https://www.onego.bio/about",
+    "date": "2026-11-07",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

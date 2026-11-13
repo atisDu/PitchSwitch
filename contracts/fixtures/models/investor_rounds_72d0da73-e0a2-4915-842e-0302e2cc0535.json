@@ -1,0 +1,194 @@
+[
+ {
+  "id": "a54fc6de-5464-529b-8fe2-00212add1007",
+  "company_id": "54bb8ae5-76bd-412d-adef-92812879b3f3",
+  "label": "Seed",
+  "date": "2026-09-03",
+  "amount_text": null,
+  "amount_eur": null,
+  "investors": [
+   {
+    "investor": {
+     "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+     "name": "Gungnir Capital",
+     "type": "Organization",
+     "description": "A venture capital firm that led the pre‑seed round for Acodyne."
+    },
+    "is_lead": true
+   }
+  ],
+  "sources": [
+   {
+    "name": "creoir.com",
+    "url": "https://creoir.com/creoir-raises-investment-from-gungnir-capital/",
+    "date": "2026-09-03",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "resiliencemedia.co",
+    "url": "https://resiliencemedia.co/finlands-creoir-gets-backing-from-gungnir-capital-for-its-on-device-speech-tech/",
+    "date": "2026-09-14",
+    "rank": "PRESS"
+   },
+   {
+    "name": "dealroom.co",
+    "url": "https://dealroom.co/news/148845-ex-nokia-engineers-defence-startup-creoir-raises-seed-round-from-swedens/",
+    "date": "2026-09-04",
+    "rank": "PRESS"
+   },
+   {
+    "name": "funding.tech.eu",
+    "url": "https://funding.tech.eu/companies/FD62526B-B3B5-4E9F-B0BF-3EFB0E6D9B96",
+    "date": "2026-11-13",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ },
+ {
+  "id": "8dc085fd-971a-569e-8a54-8d9e5f95f108",
+  "company_id": "de9b26f3-63f6-4421-ae18-78c2d532c4d1",
+  "label": "Pre-Seed",
+  "date": "2026-06-22",
+  "amount_text": "€2.5M",
+  "amount_eur": 2500000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "00567057-ff98-419f-a14d-163f41b18a7b",
+     "name": "PSV Hafnium",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "6bdf243a-2769-4ca3-9ecd-ad4bb6d440fc",
+     "name": "SAP9 GROUP A/S",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+     "name": "Gungnir Capital",
+     "type": "Organization",
+     "description": "A venture capital firm that led the pre‑seed round for Acodyne."
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "7bc5536e-89ac-4bd8-b2d4-3634336e0835",
+     "name": "EIFO",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "e47def52-cbaf-4cb9-be8e-737f0418c007",
+     "name": "GreenUP IV Invest",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "eu-startups.com",
+    "url": "https://www.eu-startups.com/2026/06/unmanned-cargo-aircraft-developer-acodyne-secures-e2-5-million-for-defence-and-offshore-logistics/",
+    "date": "2026-06-22",
+    "rank": "PRESS"
+   },
+   {
+    "name": "via.ritzau.dk",
+    "url": "https://via.ritzau.dk/pressemeddelelse/15004667/eifo-finansierer-dansk-fragtdrone-startup?lang=da",
+    "date": "2026-06-22",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "techfundingnews.com",
+    "url": "https://techfundingnews.com/acodyne-2-5m-pre-seed-jet-speed-cargo-drones/",
+    "date": "2026-06-22",
+    "rank": "PRESS"
+   },
+   {
+    "name": "arcticstartup.com",
+    "url": "https://arcticstartup.com/acodyne-raises-e2-5m-pre-seed/",
+    "date": "2026-06-29",
+    "rank": "PRESS"
+   }
+  ]
+ },
+ {
+  "id": "97d82be9-51db-59e4-bb04-f69213aff7e9",
+  "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+  "label": "Series A",
+  "date": "2026-04-14",
+  "amount_text": "€15M",
+  "amount_eur": 15000000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+     "name": "Keen Venture Partners",
+     "type": "Company",
+     "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+     "name": "NATO Innovation Fund",
+     "type": "Organization",
+     "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO."
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+     "name": "Gungnir Capital",
+     "type": "Organization",
+     "description": "A venture capital firm that led the pre‑seed round for Acodyne."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "nif.fund",
+    "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+    "date": "2026-04-14",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "kelluu.com",
+    "url": "https://kelluu.com/news",
+    "date": "2026-04-14",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+    "date": "2026-04-14",
+    "rank": "PRESS"
+   }
+  ]
+ }
+]

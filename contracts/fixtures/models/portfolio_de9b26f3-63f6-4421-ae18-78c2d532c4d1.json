@@ -1,0 +1,19 @@
+[
+ {
+  "investor_id": "de9b26f3-63f6-4421-ae18-78c2d532c4d1",
+  "company": {
+   "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+   "name": "Gungnir Capital",
+   "type": "Organization",
+   "description": "A venture capital firm that led the pre‑seed round for Acodyne."
+  },
+  "sources": [
+   {
+    "name": "axios.com",
+    "url": "https://www.axios.com/pro/climate-deals/2026/06/27/energy-climate-deals-vc-pe-ipos",
+    "date": "2026-07-02",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

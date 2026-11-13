@@ -1,0 +1,47 @@
+[
+ [
+  {
+   "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+   "name": "Gungnir Capital",
+   "type": "Organization",
+   "description": "A venture capital firm that led the pre‑seed round for Acodyne."
+  },
+  1
+ ],
+ [
+  {
+   "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+   "name": "Keen Venture Partners",
+   "type": "Company",
+   "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models."
+  },
+  1
+ ],
+ [
+  {
+   "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+   "name": "NATO Innovation Fund",
+   "type": "Organization",
+   "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO."
+  },
+  1
+ ],
+ [
+  {
+   "id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+   "name": "REDSTONE",
+   "type": "Company",
+   "description": "French venture capital firm founded in 2022"
+  },
+  1
+ ],
+ [
+  {
+   "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+   "name": "Tesi",
+   "type": "Organization",
+   "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+  },
+  1
+ ]
+]

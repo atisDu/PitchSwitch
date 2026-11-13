@@ -1,0 +1,128 @@
+{
+ "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+ "name": "Maki.vc",
+ "type": "Company",
+ "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one.",
+ "industries": [
+  "VENTURE_CAPITAL"
+ ],
+ "stage": null,
+ "country": null,
+ "total_funding_text": null,
+ "sources": [
+  {
+   "name": "Maki.vc - Helsinki-based venture capital firm",
+   "url": "https://maki.vc",
+   "date": "2026-03-23",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "Top 10 VC Firms in Finland",
+   "url": "https://investorhunt.co/blogs/top-10-vc-firms-in-finland",
+   "date": "2025-03-31",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "aavuus.com",
+   "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+   "date": "2026-06-09",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "tech.eu",
+   "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+   "date": "2026-06-09",
+   "rank": "PRESS"
+  },
+  {
+   "name": "cbinsights.com",
+   "url": "https://www.cbinsights.com/company/aavuus/financials",
+   "date": "2026-11-13",
+   "rank": "AGGREGATOR"
+  },
+  {
+   "name": "callsono.com",
+   "url": "https://callsono.com/funding/",
+   "date": "2026-06-03",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "callsono.com",
+   "url": "https://callsono.com/about/",
+   "date": "2026-11-10",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "siliconcanals.com",
+   "url": "https://siliconcanals.com/helsinkis-financekey-secures-e3m/",
+   "date": "2025-06-10",
+   "rank": "PRESS"
+  },
+  {
+   "name": "aalto.fi",
+   "url": "https://www.aalto.fi/en/news/aalto-quantum-computing-spinout-secures-eu1145m-in-funding",
+   "date": "2019-07-10",
+   "rank": "PRESS"
+  },
+  {
+   "name": "tech.eu",
+   "url": "https://tech.eu/2019/07/09/finnish-hardware-startup-raises-e11-million-in-seed-funding-to-take-quantum-computing-to-the-next-level/",
+   "date": "2019-07-09",
+   "rank": "PRESS"
+  },
+  {
+   "name": "metaktik.com",
+   "url": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+   "date": "2026-03-30",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "sttinfo.fi",
+   "url": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+   "date": "2026-03-31",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "ethira.dev",
+   "url": "https://www.ethira.dev/",
+   "date": "2026-11-13",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "allabolag.se",
+   "url": "https://www.allabolag.se/befattningshavare/ethira-ab/stockholm/internet-konsulter-operatc3b6rer/2KJAXYWI5YFHL",
+   "date": "2026-11-13",
+   "rank": "AGGREGATOR"
+  },
+  {
+   "name": "Cala AI",
+   "url": null,
+   "date": "2026-07-27",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "distance.tech",
+   "url": "https://distance.tech/news/launch_release",
+   "date": "2024-06-13",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "en.ain.ua",
+   "url": "https://en.ain.ua/2024/06/14/distance-technologies-pre-seed-investment",
+   "date": "2024-06-14",
+   "rank": "PRESS"
+  },
+  {
+   "name": "nordic9.com",
+   "url": "https://nordic9.com/news/upheat-in-a-seed-round-with-maki-vc-and-vsqua/",
+   "date": "2025-12-01",
+   "rank": "AGGREGATOR"
+  },
+  {
+   "name": "maki.vc",
+   "url": "https://maki.vc/case/upheat/",
+   "date": "2026-11-13",
+   "rank": "PRIMARY"
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+{
+ "id": "b8f34378-af55-4f7c-a6f3-045904b0bbe0",
+ "name": "DIANA UK ENTERPRISES LTD",
+ "type": "Company",
+ "description": "A London‑based British company incorporated in 2024.",
+ "industries": [],
+ "stage": null,
+ "country": "ENGLAND",
+ "total_funding_text": null,
+ "sources": [
+  {
+   "name": "Cala AI",
+   "url": null,
+   "date": "2026-08-23",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "Companies House UK",
+   "url": "https://find-and-update.company-information.service.gov.uk/company/16134712",
+   "date": "2026-05-01",
+   "rank": "UNKNOWN"
+  }
+ ]
+}

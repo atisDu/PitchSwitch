@@ -1,0 +1,38 @@
+[
+ [
+  {
+   "id": "7faf31b1-b7a2-4e93-b820-1fed0d86d2fa",
+   "name": "Candor",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "06f2c1c2-a992-427e-a011-de55e94af981",
+   "name": "EQT VENTURES INVESTMENTS LIMITED PARTNERSHIP",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "c0d5bf8c-3f43-4531-8ef6-8c8d1f0dcf5a",
+   "name": "Norrsken VC",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "1e86655e-373d-4fe8-be13-af3713581f73",
+   "name": "Y Combinator",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ]
+]

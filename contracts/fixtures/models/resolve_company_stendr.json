@@ -1,0 +1,50 @@
+[
+ {
+  "id": "3afdc63c-b992-4b25-b69d-807ab346352d",
+  "name": "Stendr",
+  "type": "Company",
+  "description": "Norwegian defence technology company developing AI-native multi-sensor platform for drone defence."
+ },
+ {
+  "id": "6e07f23c-ae00-4757-a793-a8d0d03131de",
+  "name": "TENDR LIMITED",
+  "type": "Company",
+  "description": "British software and services company headquartered in London, founded in 2021."
+ },
+ {
+  "id": "29c6bf92-242b-4517-b616-783ed59c9509",
+  "name": "STENOR LIMITED",
+  "type": "Company",
+  "description": "A British consulting firm founded in 2010 and based in Swansea, Wales."
+ },
+ {
+  "id": "ccf49170-2d3e-5ea1-ab26-52472fc7cfea",
+  "name": "STENDOR électricité",
+  "type": "Company",
+  "description": "A French construction and engineering company headquartered in Toulon."
+ },
+ {
+  "id": "1361c4ff-0a47-4f51-94a4-6fa4d1cab4da",
+  "name": "ATENOR",
+  "type": "Company",
+  "description": "A Belgian real estate development and investment company headquartered in La Hulpe, founded in 1950 and listed on Euronext Brussels."
+ },
+ {
+  "id": "064de155-fd28-5a64-996c-55f59c0a0888",
+  "name": "STENDO",
+  "type": "Company",
+  "description": "French consulting company founded in 2011 and headquartered in Louviers."
+ },
+ {
+  "id": "5bf78fd4-1ca8-4c9f-aeab-46887dc9f468",
+  "name": "Xtendr Zártkörűen Működő Részvénytársaság",
+  "type": "Company",
+  "description": "A Hungarian private joint-stock company founded in 2019 and based in Budapest."
+ },
+ {
+  "id": "e6982eea-9f59-4d52-bc74-8683109d37c2",
+  "name": "ATENDE SPÓŁKA AKCYJNA",
+  "type": "Company",
+  "description": "Polish joint-stock company headquartered in Warsaw, founded in 2009."
+ }
+]

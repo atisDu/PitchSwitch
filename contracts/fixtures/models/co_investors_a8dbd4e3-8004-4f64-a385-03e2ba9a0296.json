@@ -1,0 +1,29 @@
+[
+ [
+  {
+   "id": "476a73ac-afa2-4713-9f73-188bc7ec0b95",
+   "name": "Lifeline Ventures",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "cd227237-cf1f-4aa7-ac14-9ab44bfe8256",
+   "name": "SANDWATER AS",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+   "name": "Tesi",
+   "type": "Organization",
+   "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+  },
+  1
+ ]
+]

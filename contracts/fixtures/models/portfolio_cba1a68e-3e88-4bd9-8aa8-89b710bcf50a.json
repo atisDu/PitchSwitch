@@ -1,0 +1,31 @@
+[
+ {
+  "investor_id": "cba1a68e-3e88-4bd9-8aa8-89b710bcf50a",
+  "company": {
+   "id": "afba0cba-5006-5d2f-b50a-9dca60fa309a",
+   "name": "Sono",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "callsono.com",
+    "url": "https://callsono.com/funding/",
+    "date": "2026-06-03",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "kauppalehti.fi",
+    "url": "https://www.kauppalehti.fi/uutiset/a/3809562d-3fb1-4e6e-933b-740d28c45578",
+    "date": "2026-06-03",
+    "rank": "PRESS"
+   },
+   {
+    "name": "callsono.com",
+    "url": "https://callsono.com/about/",
+    "date": "2026-11-10",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

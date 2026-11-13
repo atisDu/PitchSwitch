@@ -1,0 +1,41 @@
+[
+ {
+  "id": "835691d5-2ad0-5017-9642-0c6e4f6ab448",
+  "company_id": "16fa515b-1434-58c9-be73-8754e77ade00",
+  "label": "Pre-Seed",
+  "date": "2026-03-30",
+  "amount_text": "€1M",
+  "amount_eur": 1000000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": true
+   }
+  ],
+  "sources": [
+   {
+    "name": "arcticstartup.com",
+    "url": "https://arcticstartup.com/metaktik-raises-e1-million/",
+    "date": "2026-03-31",
+    "rank": "PRESS"
+   },
+   {
+    "name": "metaktik.com",
+    "url": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+    "date": "2026-03-30",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "sttinfo.fi",
+    "url": "https://www.sttinfo.fi/tiedote/71918726/metaktik-sai-miljoonan-euron-rahoituksen-suomalainen-antenni-innovaatio-vakuutti-sijoittajat",
+    "date": "2026-03-31",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

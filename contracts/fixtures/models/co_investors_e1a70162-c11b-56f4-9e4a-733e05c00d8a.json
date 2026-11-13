@@ -1,0 +1,65 @@
+[
+ [
+  {
+   "id": "dc70f649-8f97-5222-ad02-d9e0ccebcaba",
+   "name": "Ari Korhonen",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "fd3ba350-0e55-40b5-96e3-013994777fdc",
+   "name": "Inventure",
+   "type": "Organization",
+   "description": "a Finnish investment firm headquartered in Helsinki"
+  },
+  1
+ ],
+ [
+  {
+   "id": "1967e328-1430-5c93-839e-e6acb6335d2a",
+   "name": "Jussi Heinilä",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "5eacd721-5000-5ee0-9f3e-7eb1e4b1844b",
+   "name": "Jussi Ilmarinen",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "131ae405-ee99-56fb-a9c5-973058c0ef70",
+   "name": "Olli-Pekka Kallasvuo",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "d6c36f47-647d-5a0d-9e11-9f71b57708a8",
+   "name": "Riku Asikainen",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+   "name": "Tesi",
+   "type": "Organization",
+   "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+  },
+  1
+ ]
+]

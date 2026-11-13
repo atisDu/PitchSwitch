@@ -1,0 +1,38 @@
+[
+ {
+  "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+  "name": "Gungnir Capital",
+  "type": "Organization",
+  "description": "A venture capital firm that led the pre‑seed round for Acodyne."
+ },
+ {
+  "id": "71906e6d-a82c-4736-a53a-63fa00c68e56",
+  "name": "GUNGNIR LTD",
+  "type": "Company",
+  "description": "British company incorporated in 2016 and headquartered in Chatham, England."
+ },
+ {
+  "id": "1f935e3f-b338-4814-8d36-e946408a27c1",
+  "name": "GUNGNIR LP",
+  "type": "Company",
+  "description": "A Scottish limited partnership based in Edinburgh, incorporated in 2020."
+ },
+ {
+  "id": "c537c3f5-3686-4625-b65f-017228806c6f",
+  "name": "Gungnir AB",
+  "type": "Company",
+  "description": "Swedish company founded in 2018 and headquartered in Stockholm."
+ },
+ {
+  "id": "584257e3-6ddd-42fd-901a-4226793ab90e",
+  "name": "Gungnir ehf.",
+  "type": "Company",
+  "description": "Icelandic company founded in 2014 and based in Reykjavík."
+ },
+ {
+  "id": "1bb9020a-e4ed-4640-a39f-979e92b2fd11",
+  "name": "GUNGNIR CONSULTANCY LIMITED",
+  "type": "Company",
+  "description": "A British construction and engineering consultancy founded in 2016 and headquartered in Coventry, England."
+ }
+]

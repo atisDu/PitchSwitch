@@ -1,0 +1,73 @@
+[
+ {
+  "investor_id": "717c77a9-68b0-4e3a-a48a-06908af7e30b",
+  "company": {
+   "id": "3e0524ad-7104-44a6-8f0f-788bc2772922",
+   "name": "IQM Quantum Computers Oyj",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/iqm-a-global-leader-for-quantum-computing-to-become-the-first-listed-european-quantum-company-through-merger-with-real-asset-acquisition-corp/",
+    "date": "2026-02-23",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/iqm-quantum-computers-and-real-asset-acquisition-corp-complete-the-combination-trading-in-iqms-adss-and-iqm-warrants-on-nasdaq-stock-market-llc-commences-on-july-2-2026/",
+    "date": "2026-07-01",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2019/07/09/finnish-hardware-startup-raises-e11-million-in-seed-funding-to-take-quantum-computing-to-the-next-level/",
+    "date": "2019-07-09",
+    "rank": "PRESS"
+   },
+   {
+    "name": "aalto.fi",
+    "url": "https://www.aalto.fi/en/news/aalto-quantum-computing-spinout-secures-eu1145m-in-funding",
+    "date": "2019-07-10",
+    "rank": "PRESS"
+   },
+   {
+    "name": "sec.gov",
+    "url": "https://www.sec.gov/Archives/edgar/data/2113060/000119312526259957/d900375d424b3.htm",
+    "date": "2026-06-05",
+    "rank": "FILING"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round/",
+    "date": "2025-09-03",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "eu-startups.com",
+    "url": "https://www.eu-startups.com/2025/09/finnish-startup-iqm-quantum-computers-secures-e275-million-in-largest-series-b-raise-ever-in-the-quantum-space/",
+    "date": "2025-09-03",
+    "rank": "PRESS"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/iqm-a-global-leader-in-quantum-computing-and-real-asset-acquisition-corp-announce-upsized-usd-146-million-pipe-with-new-commitment-from-ilmarinen/",
+    "date": "2026-06-02",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/europe-is-on-its-way-to-quantum-leadership-iqm-raises-e39-m-in-series-a-funding/",
+    "date": "2020-11-10",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/european-quantum-computing-leader-iqm-raises-e128m-led-by-world-fund-to-help-combat-the-climate-crisis/",
+    "date": "2022-07-22",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

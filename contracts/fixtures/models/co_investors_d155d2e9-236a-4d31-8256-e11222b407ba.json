@@ -1,0 +1,20 @@
+[
+ [
+  {
+   "id": "f8d6c852-c3c0-4914-b835-800f4096a834",
+   "name": "ELO",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "cdd4fc83-8fda-4922-ab3b-59aaf1a9063b",
+   "name": "FIBAN LTD",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ]
+]

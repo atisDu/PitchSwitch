@@ -1,0 +1,25 @@
+[
+ {
+  "investor_id": "d6e0e87a-7337-4276-9844-47cddb015583",
+  "company": {
+   "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+   "name": "Keen Venture Partners",
+   "type": "Company",
+   "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models."
+  },
+  "sources": [
+   {
+    "name": "Dealroom.co | Mapping the world's tech ecosystems",
+    "url": "https://dealroom.co/news/149165-cato-raises-7m-seed-to-automate-public-tender-bids",
+    "date": "2026-09-09",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Ground News",
+    "url": "https://ground.news/article/milan-based-cato-raises-6-million-to-help-companies-find-and-win-public-tenders-with-ai",
+    "date": "2026-09-09",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

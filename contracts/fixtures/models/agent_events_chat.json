@@ -1,0 +1,71 @@
+[
+ {
+  "type": "step",
+  "message": "Reading Lifeline Ventures AB's rounds in Cala",
+  "brief": null,
+  "investor_name": null,
+  "investor": null,
+  "citations": []
+ },
+ {
+  "type": "step",
+  "message": "Comparing with Kelluu Oy's competitors",
+  "brief": null,
+  "investor_name": null,
+  "investor": null,
+  "citations": []
+ },
+ {
+  "type": "text",
+  "message": "Joined Kova Labs's Pre-Seed round ",
+  "brief": null,
+  "investor_name": null,
+  "investor": null,
+  "citations": []
+ },
+ {
+  "type": "text",
+  "message": "(2026-11-04) [1][2]. Conflict: Lifeline Ventures ",
+  "brief": null,
+  "investor_name": null,
+  "investor": null,
+  "citations": []
+ },
+ {
+  "type": "text",
+  "message": "AB is tied to your ",
+  "brief": null,
+  "investor_name": null,
+  "investor": null,
+  "citations": []
+ },
+ {
+  "type": "text",
+  "message": "competitor Kova Labs [2][1].",
+  "brief": null,
+  "investor_name": null,
+  "investor": null,
+  "citations": []
+ },
+ {
+  "type": "done",
+  "message": null,
+  "brief": null,
+  "investor_name": null,
+  "investor": null,
+  "citations": [
+   {
+    "name": "resiliencemedia.co",
+    "url": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+    "date": "2026-11-04",
+    "rank": "PRESS"
+   },
+   {
+    "name": "lifelineventures.com",
+    "url": "https://lifelineventures.com/",
+    "date": "2026-11-12",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

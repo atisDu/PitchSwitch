@@ -1,0 +1,25 @@
+[
+ {
+  "investor_id": "c37e699e-602d-427f-a72c-d27e17e1ad8c",
+  "company": {
+   "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+   "name": "NATO Innovation Fund",
+   "type": "Organization",
+   "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO."
+  },
+  "sources": [
+   {
+    "name": "The Czech Republic has joined the NATO Innovation Fund!",
+    "url": "https://www.mo.gov.cz/en/ministry-of-defence/newsroom/news/the-czech-republic-has-joined-the-nato-innovation-fund!-245798",
+    "date": "2023-08-21",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "News",
+    "url": "https://www.mo.gov.cz/scripts/detail.php?pgid=193&conn=1218&pg=13",
+    "date": "2023-08-31",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

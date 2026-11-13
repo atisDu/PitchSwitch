@@ -1,0 +1,43 @@
+{
+ "investor_id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+ "company_id": "202e9283-6455-486f-8868-03c7e0d0cf29",
+ "markdown": "# Keen Venture Partners × Sensofusion Oy\n\n**Verdict: worth a pitch.** No tie to your direct competitors in Cala's data.\n\n## Activity in your space\n- Joined Kelluu Oy's Series A round (2026-04-14, €15M) [1][2].\n- Last lead: Cato, 2026-09-07 [3].\n\n## Portfolio\n- 39 companies in Cala, including AirHub, allO, ATMOS Space Cargo, AVALOR AI B.V., Azumuta [4][5][6].\n",
+ "citations": [
+  {
+   "name": "nif.fund",
+   "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+   "date": "2026-04-14",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "kelluu.com",
+   "url": "https://kelluu.com/news",
+   "date": "2026-04-14",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "eu-startups.com",
+   "url": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+   "date": "2026-09-07",
+   "rank": "PRESS"
+  },
+  {
+   "name": "Portfolio | Keen",
+   "url": "https://keenventurepartners.com/portfolio",
+   "date": "2025-01-01",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "siliconcanals.com",
+   "url": "https://siliconcanals.com/avalor-ai-secures-2m/",
+   "date": "2024-06-19",
+   "rank": "PRESS"
+  },
+  {
+   "name": "bebeez.eu",
+   "url": "https://bebeez.eu/2024/06/19/amsterdam-based-defense-tech-avalor-ai-raises-e2-million-to-enhance-military-unmanned-systems",
+   "date": "2024-06-19",
+   "rank": "PRESS"
+  }
+ ]
+}

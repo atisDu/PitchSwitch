@@ -1,0 +1,34 @@
+{
+ "id": "3afdc63c-b992-4b25-b69d-807ab346352d",
+ "name": "Stendr",
+ "type": "Company",
+ "description": "Norwegian defence technology company developing AI-native multi-sensor platform for drone defence.",
+ "industries": [
+  "SOFTWARE_AND_SERVICES",
+  "AEROSPACE_AND_DEFENSE",
+  "HARDWARE_AND_EQUIPMENT"
+ ],
+ "stage": "Pre-Seed",
+ "country": "Norway",
+ "total_funding_text": "~$5.4M (Pre-Seed, April 2026)",
+ "sources": [
+  {
+   "name": "www.finsmes.com",
+   "url": "https://www.finsmes.com/2026/04/stendr-raises-5-4m-in-pre-seed-funding.html",
+   "date": "2026-08-24",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "Stendr raises $5.4M in oversubscribed pre-seed round to build the Nordics'next defence prime",
+   "url": "https://stendr.com/news/stendr-pre-seed-announcement",
+   "date": "2026-04-15",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "pitchbook.com",
+   "url": "https://pitchbook.com/profiles/investor/57005-74",
+   "date": "2026-08-24",
+   "rank": "UNKNOWN"
+  }
+ ]
+}

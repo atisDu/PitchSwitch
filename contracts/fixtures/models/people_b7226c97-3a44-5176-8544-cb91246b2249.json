@@ -1,0 +1,128 @@
+[
+ {
+  "person": {
+   "id": "3fbe7c60-cdeb-5554-ab16-1e21998d351e",
+   "name": "Luukas Lohilahti",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "b7226c97-3a44-5176-8544-cb91246b2249",
+  "role": "FOUNDER",
+  "sources": [
+   {
+    "name": "kovahq.com",
+    "url": "https://kovahq.com/news/kova-bravetech",
+    "date": "2026-07-15",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "5f3ab8d9-bebe-556c-a8b9-1fc6f8032581",
+   "name": "Teemu Rautavalta",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "b7226c97-3a44-5176-8544-cb91246b2249",
+  "role": "FOUNDER",
+  "sources": [
+   {
+    "name": "lifelineventures.com",
+    "url": "https://lifelineventures.com/",
+    "date": "2026-11-12",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "kovahq.com",
+    "url": "https://kovahq.com/news/chapter-ii",
+    "date": "2026-06-13",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "6ad298fd-37ec-5798-98cd-43acf924441a",
+   "name": "Touko Rautiainen",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "b7226c97-3a44-5176-8544-cb91246b2249",
+  "role": "FOUNDER",
+  "sources": [
+   {
+    "name": "kovahq.com",
+    "url": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+    "date": "2026-10-15",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "lifelineventures.com",
+    "url": "https://lifelineventures.com/",
+    "date": "2026-11-12",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "dda8ce73-962e-589f-9fca-c46f9142a41d",
+   "name": "Otso Lehtovuori",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "b7226c97-3a44-5176-8544-cb91246b2249",
+  "role": "FOUNDER",
+  "sources": [
+   {
+    "name": "lifelineventures.com",
+    "url": "https://lifelineventures.com/",
+    "date": "2026-11-12",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "kovahq.com",
+    "url": "https://kovahq.com/news/chapter-ii",
+    "date": "2026-06-13",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "6ad298fd-37ec-5798-98cd-43acf924441a",
+   "name": "Touko Rautiainen",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "b7226c97-3a44-5176-8544-cb91246b2249",
+  "role": "CEO",
+  "sources": [
+   {
+    "name": "kovahq.com",
+    "url": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+    "date": "2026-10-15",
+    "rank": "PRIMARY"
+   }
+  ]
+ },
+ {
+  "person": {
+   "id": "3fbe7c60-cdeb-5554-ab16-1e21998d351e",
+   "name": "Luukas Lohilahti",
+   "type": "Person",
+   "description": null
+  },
+  "company_id": "b7226c97-3a44-5176-8544-cb91246b2249",
+  "role": "EMPLOYEE",
+  "sources": [
+   {
+    "name": "kovahq.com",
+    "url": "https://kovahq.com/news/kova-bravetech",
+    "date": "2026-07-15",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

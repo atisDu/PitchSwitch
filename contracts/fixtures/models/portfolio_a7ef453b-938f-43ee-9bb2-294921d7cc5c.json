@@ -1,0 +1,19 @@
+[
+ {
+  "investor_id": "a7ef453b-938f-43ee-9bb2-294921d7cc5c",
+  "company": {
+   "id": "266be895-86f1-5d37-8a6c-24625aa2df83",
+   "name": "Bob W",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2021/04/06/helsinki-based-autonomous-hosptech-platform-bob-w-raises-e10-million-in-seed-funding",
+    "date": "2021-04-06",
+    "rank": "PRESS"
+   }
+  ]
+ }
+]

@@ -1,0 +1,20 @@
+[
+ [
+  {
+   "id": "b191306c-aa8a-447a-b468-df2a95de8f36",
+   "name": "General Catalyst",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "4db7ebf9-b42b-42f9-a487-f63b1dcb9ce9",
+   "name": "SNÖ Ventures",
+   "type": "Company",
+   "description": "Oslo-based venture capital fund investing in early-stage tech companies."
+  },
+  1
+ ]
+]

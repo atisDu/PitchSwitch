@@ -1,0 +1,68 @@
+[
+ {
+  "id": "3f11bdcf-b419-5ad3-90fb-a2bd38534592",
+  "company_id": "7d550cc0-1c62-4e9e-bbe4-98cf1386a636",
+  "label": "Pre-Seed",
+  "date": "2024-01-24",
+  "amount_text": "€2.2M",
+  "amount_eur": 2200000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+     "name": "Keen Venture Partners",
+     "type": "Company",
+     "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models."
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "e930d430-0367-49e1-99e3-6d7a9115023f",
+     "name": "Gradient Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": true
+   }
+  ],
+  "sources": [
+   {
+    "name": "techcrunch.com",
+    "url": "https://techcrunch.com/2024/01/24/googles-gradient-backs-send-ai-to-help-enterprises-extract-data-from-complex-documents",
+    "date": "2024-01-24",
+    "rank": "PRESS"
+   },
+   {
+    "name": "siliconcanals.com",
+    "url": "https://siliconcanals.com/send-ai-raises-2-2m/",
+    "date": "2024-01-24",
+    "rank": "PRESS"
+   },
+   {
+    "name": "funding.tech.eu",
+    "url": "https://funding.tech.eu/companies/93C3CD9F-DB83-45BF-BED4-44061338DB9B",
+    "date": "2026-11-12",
+    "rank": "AGGREGATOR"
+   },
+   {
+    "name": "vcbacked.co",
+    "url": "https://www.vcbacked.co/company/send-ai",
+    "date": "2026-11-04",
+    "rank": "AGGREGATOR"
+   },
+   {
+    "name": "startupintros.com",
+    "url": "https://startupintros.com/orgs/send-ai",
+    "date": "2026-11-04",
+    "rank": "PRESS"
+   },
+   {
+    "name": "fundediq.co",
+    "url": "https://fundediq.co/send-ai-send-ai-funding/",
+    "date": "2026-11-04",
+    "rank": "AGGREGATOR"
+   }
+  ]
+ }
+]

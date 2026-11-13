@@ -1,0 +1,47 @@
+[
+ [
+  {
+   "id": "a7ef453b-938f-43ee-9bb2-294921d7cc5c",
+   "name": "ByFounders",
+   "type": "Organization",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "55f38ddc-028e-413e-a793-042602a552d8",
+   "name": "Kaamos Trading OÜ",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "c685cd30-57fd-477f-a253-1eee9afa0976",
+   "name": "Superangel OÜ",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ],
+ [
+  {
+   "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+   "name": "Tesi",
+   "type": "Organization",
+   "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+  },
+  1
+ ],
+ [
+  {
+   "id": "883349ee-e591-4b63-9588-c3424c22c44b",
+   "name": "Usaldusfond United Angels Fund I",
+   "type": "Company",
+   "description": null
+  },
+  1
+ ]
+]

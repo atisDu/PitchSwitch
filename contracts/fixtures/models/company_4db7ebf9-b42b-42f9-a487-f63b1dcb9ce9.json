@@ -1,0 +1,38 @@
+{
+ "id": "4db7ebf9-b42b-42f9-a487-f63b1dcb9ce9",
+ "name": "SNÖ Ventures",
+ "type": "Company",
+ "description": "Oslo-based venture capital fund investing in early-stage tech companies.",
+ "industries": [
+  "VENTURE_CAPITAL"
+ ],
+ "stage": null,
+ "country": null,
+ "total_funding_text": null,
+ "sources": [
+  {
+   "name": "Top 10 Venture Capital Firms in Norway (2026)",
+   "url": "https://www.failory.com/blog/venture-capital-firms-norway",
+   "date": "2025-08-05",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "www.seedtable.com",
+   "url": "https://www.seedtable.com/investors-norway",
+   "date": "2026-06-08",
+   "rank": "UNKNOWN"
+  },
+  {
+   "name": "nollahealth.com",
+   "url": "https://www.nollahealth.com/blog/debut-skin-platform",
+   "date": "2025-09-01",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "beautyindependent.com",
+   "url": "https://www.beautyindependent.com/4-5m-raise-nolla-health-ai-startup-offers-acne-care",
+   "date": "2025-09-18",
+   "rank": "PRESS"
+  }
+ ]
+}

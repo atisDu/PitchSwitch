@@ -1,0 +1,248 @@
+[
+ {
+  "type": "step",
+  "message": "Looking up Lifeline Ventures AB in Cala",
+  "brief": null,
+  "investor_name": "Lifeline Ventures AB",
+  "investor": null,
+  "citations": []
+ },
+ {
+  "type": "step",
+  "message": "Found Lifeline Ventures AB. Checking conflicts and recent rounds",
+  "brief": null,
+  "investor_name": "Lifeline Ventures AB",
+  "investor": {
+   "id": "4d668c75-c7a0-4f5b-baea-ce0fa6a34e31",
+   "name": "Lifeline Ventures AB",
+   "type": "Company",
+   "description": null
+  },
+  "citations": []
+ },
+ {
+  "type": "brief",
+  "message": null,
+  "brief": {
+   "investor_id": "4d668c75-c7a0-4f5b-baea-ce0fa6a34e31",
+   "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+   "markdown": "# Lifeline Ventures AB × Kelluu Oy\n\n**Verdict: skip.** Lifeline Ventures AB backs Kova Labs, a direct competitor [1][2].\n\n## Activity in your space\n- Joined Kova Labs's Pre-Seed round (2026-11-04) [2][1].\n- Lead investors are not marked on every round, so the lead count may be low.\n\n## Portfolio\n- 1 companies in Cala, including Kova Labs [1][2].\n",
+   "citations": [
+    {
+     "name": "lifelineventures.com",
+     "url": "https://lifelineventures.com/",
+     "date": "2026-11-12",
+     "rank": "PRIMARY"
+    },
+    {
+     "name": "resiliencemedia.co",
+     "url": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+     "date": "2026-11-04",
+     "rank": "PRESS"
+    }
+   ]
+  },
+  "investor_name": "Lifeline Ventures AB",
+  "investor": {
+   "id": "4d668c75-c7a0-4f5b-baea-ce0fa6a34e31",
+   "name": "Lifeline Ventures AB",
+   "type": "Company",
+   "description": null
+  },
+  "citations": []
+ },
+ {
+  "type": "step",
+  "message": "Looking up Maki.vc in Cala",
+  "brief": null,
+  "investor_name": "Maki.vc",
+  "investor": null,
+  "citations": []
+ },
+ {
+  "type": "step",
+  "message": "Found Maki.vc. Checking conflicts and recent rounds",
+  "brief": null,
+  "investor_name": "Maki.vc",
+  "investor": {
+   "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+   "name": "Maki.vc",
+   "type": "Company",
+   "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+  },
+  "citations": []
+ },
+ {
+  "type": "brief",
+  "message": null,
+  "brief": {
+   "investor_id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+   "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+   "markdown": "# Maki.vc × Kelluu Oy\n\n**Verdict: worth a pitch.** No tie to your direct competitors in Cala's data.\n\n## Activity in your space\n- Led Aavuus's Pre-Seed round (2026-06-09) [1][2].\n- Led Metaktik's Pre-Seed round (2026-03-30, €1M) [3][4].\n- Last lead: Aavuus, 2026-06-09 [1][2].\n\n## Portfolio\n- 23 companies in Cala, including Aavuus, AI Agents, Auto Retail AI, Baseimmune, Distance Technologies Oy [1][2][5].\n\n## Warm paths\n- Co-invested with Tesi in 3 companies [6][7].\n",
+   "citations": [
+    {
+     "name": "aavuus.com",
+     "url": "https://www.aavuus.com/news/aavuus-raises-pre-seed",
+     "date": "2026-06-09",
+     "rank": "PRIMARY"
+    },
+    {
+     "name": "tech.eu",
+     "url": "https://tech.eu/2026/06/09/finnish-space-safety-startup-aavuus-lands-pre-seed-funding-to-tackle-space-debris-tracking",
+     "date": "2026-06-09",
+     "rank": "PRESS"
+    },
+    {
+     "name": "arcticstartup.com",
+     "url": "https://arcticstartup.com/metaktik-raises-e1-million/",
+     "date": "2026-03-31",
+     "rank": "PRESS"
+    },
+    {
+     "name": "metaktik.com",
+     "url": "https://metaktik.com/news/2026-03/metaktik-receives-one-million-euro-funding",
+     "date": "2026-03-30",
+     "rank": "PRIMARY"
+    },
+    {
+     "name": "cbinsights.com",
+     "url": "https://www.cbinsights.com/company/aavuus/financials",
+     "date": "2026-11-13",
+     "rank": "AGGREGATOR"
+    },
+    {
+     "name": "tech.eu",
+     "url": "https://tech.eu/2024/04/02/onego-bio-secures-40m-series-a/",
+     "date": "2024-04-02",
+     "rank": "PRESS"
+    },
+    {
+     "name": "paaomasijoittajat.fi",
+     "url": "https://paaomasijoittajat.fi/en/?p=26682",
+     "date": "2024-04-02",
+     "rank": "PRESS"
+    }
+   ]
+  },
+  "investor_name": "Maki.vc",
+  "investor": {
+   "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+   "name": "Maki.vc",
+   "type": "Company",
+   "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+  },
+  "citations": []
+ },
+ {
+  "type": "step",
+  "message": "Looking up Inventure in Cala",
+  "brief": null,
+  "investor_name": "Inventure",
+  "investor": null,
+  "citations": []
+ },
+ {
+  "type": "step",
+  "message": "Found Inventure. Checking conflicts and recent rounds",
+  "brief": null,
+  "investor_name": "Inventure",
+  "investor": {
+   "id": "fd3ba350-0e55-40b5-96e3-013994777fdc",
+   "name": "Inventure",
+   "type": "Organization",
+   "description": "a Finnish investment firm headquartered in Helsinki"
+  },
+  "citations": []
+ },
+ {
+  "type": "brief",
+  "message": null,
+  "brief": {
+   "investor_id": "fd3ba350-0e55-40b5-96e3-013994777fdc",
+   "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+   "markdown": "# Inventure × Kelluu Oy\n\n**Verdict: worth a pitch.** No tie to your direct competitors in Cala's data.\n\n## Activity in your space\n- Backs ReOrbit [1][2].\n- Last lead: Anyday, 2022-03-29 [3][4].\n- Lead investors are not marked on every round, so the lead count may be low.\n\n## Portfolio\n- 23 companies in Cala, including AI & Robotics-Powered IVF Platform, Anyday, Avenue Biosciences, Biomatter, Blueprint Genetics Oy [5][6][4].\n\n## Warm paths\n- Co-invested with Tesi in 3 companies [7][8].\n",
+   "citations": [
+    {
+     "name": "ReOrbit lands record funding to take on Musk's Starlink from Europe | TechCrunch",
+     "url": "https://techcrunch.com/2025/09/08/reorbit-lands-record-funding-to-take-on-musks-starlink-from-europe",
+     "date": "2025-09-08",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "tracxn.com",
+     "url": "https://tracxn.com/d/companies/reorbit/__jHH-J3eAQMBCCadIhwtvwYXFm3lkmdlH_FvBx81hPew/funding-and-investors",
+     "date": "2026-08-24",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "tech.eu",
+     "url": "https://tech.eu/2022/03/29/anyday-raises-4-million-in-seed-round-offering-an-active-stance-on-ethical-payments",
+     "date": "2022-03-29",
+     "rank": "PRESS"
+    },
+    {
+     "name": "arcticstartup.com",
+     "url": "https://arcticstartup.com/?p=95750",
+     "date": "2026-11-10",
+     "rank": "PRESS"
+    },
+    {
+     "name": "Fertility startup Mojo wants to take the trial and error out of IVF | TechCrunch",
+     "url": "https://techcrunch.com/2019/11/18/fertility-startup-mojo-wants-to-take-the-trial-and-error-out-of-ivf",
+     "date": "2019-11-18",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "tech.eu",
+     "url": "https://tech.eu/2022/03/29/anyday-raises-4-million-in-seed-round-offering-an-active-stance-on-ethical-payments/",
+     "date": "2022-03-29",
+     "rank": "PRESS"
+    },
+    {
+     "name": "tracxn.com",
+     "url": "https://tracxn.com/d/companies/rightware/__ac_Agdd1VsMkytaJjBrvG_jXShNyzQOiZJM-aBhWzic/funding-and-investors",
+     "date": "2026-08-25",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "news.cision.com",
+     "url": "https://news.cision.com/san-francisco-oy/r/thirdpresence-raises--2-4m-to-transform-in-app-programmatic-video-advertising-with-ai,c2456776",
+     "date": "2018-02-21",
+     "rank": "PRIMARY"
+    }
+   ]
+  },
+  "investor_name": "Inventure",
+  "investor": {
+   "id": "fd3ba350-0e55-40b5-96e3-013994777fdc",
+   "name": "Inventure",
+   "type": "Organization",
+   "description": "a Finnish investment firm headquartered in Helsinki"
+  },
+  "citations": []
+ },
+ {
+  "type": "step",
+  "message": "Looking up Nonexistent Capital in Cala",
+  "brief": null,
+  "investor_name": "Nonexistent Capital",
+  "investor": null,
+  "citations": []
+ },
+ {
+  "type": "error",
+  "message": "No investor named \"Nonexistent Capital\" found in Cala",
+  "brief": null,
+  "investor_name": "Nonexistent Capital",
+  "investor": null,
+  "citations": []
+ },
+ {
+  "type": "done",
+  "message": null,
+  "brief": null,
+  "investor_name": null,
+  "investor": null,
+  "citations": []
+ }
+]

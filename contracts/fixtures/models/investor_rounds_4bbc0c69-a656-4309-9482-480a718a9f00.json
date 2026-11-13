@@ -1,0 +1,170 @@
+[
+ {
+  "id": "4d32bf08-9199-5ed4-8748-2ab81a772b60",
+  "company_id": "3e0524ad-7104-44a6-8f0f-788bc2772922",
+  "label": "Preferred Equity round",
+  "date": "2022-07-22",
+  "amount_text": "€128M",
+  "amount_eur": 128000000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "08ee5e5e-8079-491b-af45-1a6cf3e51f96",
+     "name": "Santo Venture Capital GmbH",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "0fb520bb-741e-4a68-9f39-bd5396da268d",
+     "name": "OurCrowd",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "27f9a0df-ee93-447e-8b6a-48c122957935",
+     "name": "MIG Nemovitostní otevřený podílový fond",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "28e91db3-9426-4238-9a5e-18a25cc09068",
+     "name": "World Fund",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "2aaa36b4-4b6e-4247-9171-4d4f6665cca3",
+     "name": "Vsquared Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "4bbc0c69-a656-4309-9482-480a718a9f00",
+     "name": "Tofino B.V.",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "52deb9d2-b265-4f68-bf2f-be0f503812aa",
+     "name": "Keskinäinen työeläkevakuutusyhtiö Varma",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "6d47a7a0-e42e-525b-aa34-e825ded354a1",
+     "name": "Openocean Oy",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "868f0805-c66e-420b-a6c5-d718a1992128",
+     "name": "Salvia GmbH",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "8b48d1a5-8b64-43a6-a1ee-aac5022bb54d",
+     "name": "European Innovation Council Fund",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "963ecd95-fb22-5acd-9140-52fc452b5004",
+     "name": "Bayern Kapit",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "b6d6e5d9-6b8a-54f4-9ccc-f23e5a661008",
+     "name": "Matadero QED",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "d7232725-3524-473e-bd38-679d3f1365b4",
+     "name": "Tencent",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "f9501f4d-cb04-478e-a0de-512731beadaf",
+     "name": "QUA SERIES QCI A SERIES LLC OF QUA LLC",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "iqm.tech",
+    "url": "https://iqm.tech/press-releases/european-quantum-computing-leader-iqm-raises-e128m-led-by-world-fund-to-help-combat-the-climate-crisis/",
+    "date": "2022-07-22",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "sec.gov",
+    "url": "https://www.sec.gov/Archives/edgar/data/2113060/000119312526259957/d900375d424b3.htm",
+    "date": "2026-06-05",
+    "rank": "FILING"
+   }
+  ]
+ }
+]

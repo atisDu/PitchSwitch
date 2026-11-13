@@ -1,0 +1,59 @@
+[
+ {
+  "id": "875cd38a-27ff-55d9-9a87-1f6220e9b38c",
+  "company_id": "afba0cba-5006-5d2f-b50a-9dca60fa309a",
+  "label": "Pre-Seed",
+  "date": "2026-06-03",
+  "amount_text": "$1.5M",
+  "amount_eur": 1380000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+     "name": "Maki.vc",
+     "type": "Company",
+     "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "40ac95ab-763e-43f0-aea2-cfda0a506d50",
+     "name": "Wave Ventures",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "cba1a68e-3e88-4bd9-8aa8-89b710bcf50a",
+     "name": "Failup Ventures",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "callsono.com",
+    "url": "https://callsono.com/funding/",
+    "date": "2026-06-03",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "kauppalehti.fi",
+    "url": "https://www.kauppalehti.fi/uutiset/a/3809562d-3fb1-4e6e-933b-740d28c45578",
+    "date": "2026-06-03",
+    "rank": "PRESS"
+   },
+   {
+    "name": "callsono.com",
+    "url": "https://callsono.com/about/",
+    "date": "2026-11-10",
+    "rank": "PRIMARY"
+   }
+  ]
+ }
+]

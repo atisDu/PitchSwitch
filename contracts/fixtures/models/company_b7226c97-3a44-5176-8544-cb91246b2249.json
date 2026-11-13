@@ -1,0 +1,50 @@
+{
+ "id": "b7226c97-3a44-5176-8544-cb91246b2249",
+ "name": "Kova Labs",
+ "type": "Company",
+ "description": "Kova Labs builds the foundational autonomy layer for unmanned systems in GPS-denied, contested, and complex environments. Based in Helsinki, Finland.",
+ "industries": [
+  "AEROSPACE_AND_DEFENSE"
+ ],
+ "stage": "Pre-Seed",
+ "country": "Finland",
+ "total_funding_text": "€420K",
+ "sources": [
+  {
+   "name": "kovahq.com",
+   "url": "https://kovahq.com/",
+   "date": "2026-11-02",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "lifelineventures.com",
+   "url": "https://lifelineventures.com/",
+   "date": "2026-11-12",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "kovahq.com",
+   "url": "https://kovahq.com/news/kova-bravetech",
+   "date": "2026-07-15",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "kovahq.com",
+   "url": "https://kovahq.com/news/kova-labs-bravetech-phase-2",
+   "date": "2026-10-15",
+   "rank": "PRIMARY"
+  },
+  {
+   "name": "resiliencemedia.co",
+   "url": "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+   "date": "2026-11-04",
+   "rank": "PRESS"
+  },
+  {
+   "name": "linkedin.com",
+   "url": "https://www.linkedin.com/company/kova-labs/",
+   "date": "2026-11-02",
+   "rank": "AGGREGATOR"
+  }
+ ]
+}

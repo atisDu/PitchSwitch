@@ -1,0 +1,38 @@
+[
+ [
+  {
+   "id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+   "name": "STARTUPLAB FOUNDERS AS",
+   "type": "Company",
+   "description": "Norwegian venture capital firm founded in 2018 and headquartered in Oslo."
+  },
+  3
+ ],
+ [
+  {
+   "id": "415bc278-6ed1-4973-a684-07a8b8c5d855",
+   "name": "Maki.vc",
+   "type": "Company",
+   "description": "Helsinki-based venture capital firm managing €260M across three funds, backing ambitious Nordic technology companies from day one."
+  },
+  1
+ ],
+ [
+  {
+   "id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+   "name": "Rainfall Ventures",
+   "type": "Organization",
+   "description": "A venture capital firm that has invested in companies such as Arist and Plane."
+  },
+  1
+ ],
+ [
+  {
+   "id": "4db7ebf9-b42b-42f9-a487-f63b1dcb9ce9",
+   "name": "SNÖ Ventures",
+   "type": "Company",
+   "description": "Oslo-based venture capital fund investing in early-stage tech companies."
+  },
+  1
+ ]
+]

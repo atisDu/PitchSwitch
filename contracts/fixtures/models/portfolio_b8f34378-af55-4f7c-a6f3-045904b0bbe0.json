@@ -1,0 +1,78 @@
+[
+ {
+  "investor_id": "b8f34378-af55-4f7c-a6f3-045904b0bbe0",
+  "company": {
+   "id": "851673ac-a5b0-47e4-97c6-4d77205e4f05",
+   "name": "C2GRID",
+   "type": "Company",
+   "description": null
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/c2grid/__6B-DKlPbxADO4GBifWdVHUUHt2qAurUxT3Ucyn-VGg4/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/1000814-23",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/investor/902526-49",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/venture-capital/sunfish-partners/__IdbT6AgAnjvFYgufrXybt_4f0hBf_mATCoDP-4lUtOY",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/baltic-sandbox-ventures/investor_summary/overview_timeline",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ },
+ {
+  "investor_id": "b8f34378-af55-4f7c-a6f3-045904b0bbe0",
+  "company": {
+   "id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+   "name": "Kelluu Oy",
+   "type": "Company",
+   "description": "Kelluu builds and operates hydrogen-powered autonomous airships that collect aerial data for defence, critical infrastructure and environmental monitoring, and turns the data into digital twins and..."
+  },
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/kelluu-oy",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/459217-27",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

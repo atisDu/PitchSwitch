@@ -1,0 +1,68 @@
+[
+ {
+  "id": "97d82be9-51db-59e4-bb04-f69213aff7e9",
+  "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+  "label": "Series A",
+  "date": "2026-04-14",
+  "amount_text": "€15M",
+  "amount_eur": 15000000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+     "name": "Keen Venture Partners",
+     "type": "Company",
+     "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+     "name": "NATO Innovation Fund",
+     "type": "Organization",
+     "description": "A Luxembourg-based private equity and venture capital fund founded in 2022, backed by NATO."
+    },
+    "is_lead": true
+   },
+   {
+    "investor": {
+     "id": "72d0da73-e0a2-4915-842e-0302e2cc0535",
+     "name": "Gungnir Capital",
+     "type": "Organization",
+     "description": "A venture capital firm that led the pre‑seed round for Acodyne."
+    },
+    "is_lead": false
+   },
+   {
+    "investor": {
+     "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+     "name": "Tesi",
+     "type": "Organization",
+     "description": "A Finnish public investment company based in Helsinki that provides private equity and venture capital to technology firms."
+    },
+    "is_lead": false
+   }
+  ],
+  "sources": [
+   {
+    "name": "nif.fund",
+    "url": "https://www.nif.fund/news/the-nato-innovation-fund-leads-e15mn-series-a-in-kelluu-to-build-europes-persistent-aerial-intelligence-layer-and-strengthen-natos-surveillance-capabilities/",
+    "date": "2026-04-14",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "kelluu.com",
+    "url": "https://kelluu.com/news",
+    "date": "2026-04-14",
+    "rank": "PRIMARY"
+   },
+   {
+    "name": "tech.eu",
+    "url": "https://tech.eu/2026/04/14/kelluu-raises-eur15m-to-scale-autonomous-airship-intelligence-platform/",
+    "date": "2026-04-14",
+    "rank": "PRESS"
+   }
+  ]
+ }
+]
