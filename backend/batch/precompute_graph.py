@@ -21,7 +21,9 @@ import asyncio
 import logging
 import os
 import time
+from collections import Counter, defaultdict
 from collections.abc import Callable
+from datetime import UTC, datetime, timedelta
 
 from cache.graph import GraphDB, default_graph
 from contracts.schemas import DataStore, EntityRef
@@ -31,6 +33,9 @@ from data.mappers import ORG_TYPES, looks_like_investor, map_entity_ref, name_ke
 log = logging.getLogger("batch.graph")
 
 CRAWLED = "crawl_investors"
+GRAPH = "investor_graph"
+ACTIVITY = "investor_activity"
+MAX_CO_INVESTORS = 50
 FRESH_FOR = 24 * 60 * 60
 
 # Companies whose space we care about first (the demo cases).
@@ -160,15 +165,97 @@ async def crawl(
     return counts
 
 
-async def _run(args: argparse.Namespace) -> int:
-    os.environ["USE_FAKE_STORE"] = "false"  # a batch job is only useful on live data
-    from data import get_store
+async def derive(graph: GraphDB, *, clock: Callable[[], float] = time.time) -> dict:
+    """Part 2. From the crawled investors, write per investor:
 
-    store = get_store()
+    investor_graph     {investor, co_investors: [{investor, count}]}  count = companies shared
+    investor_activity  {investor, last_lead_date, last_deal_date, deals_last_12m, leads_total,
+                        rounds_total, companies_total, rounds_by_stage}
+
+    Returns counts: {"investors", "with_co_investors"}.
+    """
+    now = clock()
+    year_ago = (datetime.fromtimestamp(now, UTC) - timedelta(days=365)).date().isoformat()
+    documents = {}
+    for investor_id in await graph.ids(CRAWLED):
+        document = await graph.get(CRAWLED, investor_id)
+        if document and not document.get("error"):
+            documents[investor_id] = document
+
+    # One ID per investor name: a crawled entry wins over one only seen in somebody's round.
+    main_by_name = {name_key(doc["name"]): investor_id for investor_id, doc in documents.items()}
+    refs: dict[str, dict] = {}
+    held: dict[str, set[str]] = defaultdict(set)  # investor -> companies it is tied to
+
+    def main_id(ref: dict) -> str:
+        found = main_by_name.setdefault(name_key(ref["name"]), ref["id"])
+        refs.setdefault(found, {**ref, "id": found})
+        return found
+
+    rounds_of: dict[str, dict[str, dict]] = defaultdict(dict)  # investor -> round id -> round
+    for investor_id, document in documents.items():
+        profile = document["investor"]
+        ref = {key: profile.get(key) for key in ("id", "name", "type", "description")}
+        refs[investor_id] = {**ref, "id": investor_id}
+        for link in document["portfolio"]:
+            held[investor_id].add(link["company"]["id"])
+        for item in document["rounds"]:
+            for participant in item["investors"]:
+                other = main_id(participant["investor"])
+                held[other].add(item["company_id"])
+                rounds_of[other][item["id"]] = {**item, "_lead": participant.get("is_lead")}
+
+    counts = {"investors": len(documents), "with_co_investors": 0}
+    for investor_id in documents:
+        partners = [
+            {"investor": refs[other], "count": len(held[investor_id] & companies)}
+            for other, companies in held.items()
+            if other != investor_id and held[investor_id] & companies
+        ]
+        partners.sort(key=lambda p: (-p["count"], p["investor"]["name"].lower()))
+        counts["with_co_investors"] += bool(partners)
+        await graph.put(
+            GRAPH,
+            investor_id,
+            {
+                "investor": refs[investor_id],
+                "co_investors": partners[:MAX_CO_INVESTORS],
+                "derived_at": now,
+            },
+        )
+
+        deals = list(rounds_of[investor_id].values())
+        dated = sorted(item["date"] for item in deals if item.get("date"))
+        led = sorted(item["date"] for item in deals if item["_lead"] is True and item.get("date"))
+        stages = Counter(item.get("label") or "Unknown" for item in deals)
+        await graph.put(
+            ACTIVITY,
+            investor_id,
+            {
+                "investor": refs[investor_id],
+                "last_lead_date": led[-1] if led else None,
+                "last_deal_date": dated[-1] if dated else None,
+                "deals_last_12m": sum(day >= year_ago for day in dated),
+                "leads_total": sum(item["_lead"] is True for item in deals),
+                "rounds_total": len(deals),
+                "companies_total": len(held[investor_id]),
+                "rounds_by_stage": dict(sorted(stages.items())),
+                "derived_at": now,
+            },
+        )
+    return counts
+
+
+async def _run(args: argparse.Namespace) -> int:
     graph = default_graph()
-    log.info("store: %s, graph: %s", type(store).__name__, type(graph).__name__)
+    log.info("graph: %s", type(graph).__name__)
+    store = None
     try:
         if args.step in ("crawl", "all"):
+            os.environ["USE_FAKE_STORE"] = "false"  # a crawl is only useful on live data
+            from data import get_store
+
+            store = get_store()
             counts = await crawl(
                 store,
                 graph,
@@ -180,10 +267,10 @@ async def _run(args: argparse.Namespace) -> int:
             log.info("crawl done: %s", counts)
             log.info("cala calls: %s", store.cala.stats())
         if args.step in ("derive", "all"):
-            log.error("derive is task A15 and is not built yet")
-            return 2 if args.step == "derive" else 0
+            log.info("derive done: %s", await derive(graph))
     finally:
-        await store.aclose()
+        if store is not None:
+            await store.aclose()
         if hasattr(graph, "aclose"):
             await graph.aclose()
     return 0

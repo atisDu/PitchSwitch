@@ -128,3 +128,108 @@ async def test_graph_backends_store_and_list_documents(tmp_path):
         assert await graph.get("investor_graph", "a") == {"n": 3}
         assert await graph.get("investor_graph", "b") == {"n": 2, "names": ["ö"]}
         assert await graph.ids("investor_graph") == ["a", "b"]
+
+
+# --- derive (A15) --------------------------------------------------------------------------------
+
+
+def ref(investor_id, name):
+    return {"id": investor_id, "name": name, "type": "Organization", "description": None}
+
+
+def link(investor_id, company_id):
+    return {"investor_id": investor_id, "company": ref(company_id, company_id), "sources": []}
+
+
+def deal(round_id, company_id, date, label, *investors):
+    return {
+        "id": round_id,
+        "company_id": company_id,
+        "label": label,
+        "date": date,
+        "amount_text": None,
+        "amount_eur": None,
+        "investors": [{"investor": ref(i, n), "is_lead": lead} for i, n, lead in investors],
+        "sources": [],
+    }
+
+
+async def crawled_graph():
+    from batch.precompute_graph import CRAWLED as crawled
+
+    graph = MemoryGraph()
+    a_round = deal("r1", "c1", "2026-04-14", "Series A", ("A", "Alpha", True), ("B", "Beta", False))
+    old_round = deal(
+        "r2", "c2", "2023-01-10", "Seed", ("A", "Alpha", None), ("X", "Outsider", True)
+    )
+    twin_round = deal(
+        "r3", "c3", "2026-09-01", "Seed", ("B", "Beta", True), ("A2", "ALPHA Oy", False)
+    )
+    documents = {
+        "A": {"portfolio": [link("A", "c1"), link("A", "c9")], "rounds": [a_round, old_round]},
+        "B": {"portfolio": [link("B", "c1"), link("B", "c9")], "rounds": [a_round, twin_round]},
+        "C": {"portfolio": [link("C", "c7")], "rounds": []},
+    }
+    names = {"A": "Alpha", "B": "Beta", "C": "Gamma"}
+    for investor_id, document in documents.items():
+        document.update(name=names[investor_id], investor=ref(investor_id, names[investor_id]))
+        await graph.put(crawled, investor_id, document)
+    await graph.put(crawled, "broken", {"name": "Broken", "error": "timeout", "crawled_at": 1})
+    return graph
+
+
+async def test_derive_counts_shared_companies_and_folds_same_named_investors():
+    from batch.precompute_graph import GRAPH, derive
+
+    graph = await crawled_graph()
+    july_2026 = 1_782_000_000.0
+    counts = await derive(graph, clock=lambda: july_2026)
+    assert counts == {"investors": 3, "with_co_investors": 2}
+    assert await graph.ids(GRAPH) == ["A", "B", "C"]  # the failed crawl is left out
+
+    alpha = (await graph.get(GRAPH, "A"))["co_investors"]
+    # Beta shares c1, c9 and (through the same-named "ALPHA Oy" in r3) c3; Outsider shares c2.
+    assert [(p["investor"]["name"], p["count"]) for p in alpha] == [("Beta", 3), ("Outsider", 1)]
+    beta = (await graph.get(GRAPH, "B"))["co_investors"]
+    assert [(p["investor"]["id"], p["count"]) for p in beta] == [("A", 3)]
+    assert (await graph.get(GRAPH, "C"))["co_investors"] == []
+
+
+async def test_derive_summarises_each_investors_activity():
+    from batch.precompute_graph import ACTIVITY, derive
+
+    graph = await crawled_graph()
+    await derive(graph, clock=lambda: 1_782_000_000.0)  # 2026-06-21
+    alpha = await graph.get(ACTIVITY, "A")
+    assert alpha["last_lead_date"] == "2026-04-14" and alpha["last_deal_date"] == "2026-09-01"
+    assert alpha["leads_total"] == 1 and alpha["rounds_total"] == 3
+    assert alpha["deals_last_12m"] == 2  # r1 and r3; r2 is from 2023
+    assert alpha["rounds_by_stage"] == {"Seed": 2, "Series A": 1}
+    assert alpha["companies_total"] == 4
+
+    gamma = await graph.get(ACTIVITY, "C")
+    assert gamma["last_lead_date"] is None and gamma["rounds_total"] == 0
+    assert gamma["deals_last_12m"] == 0 and gamma["companies_total"] == 1
+
+
+async def test_store_co_investors_reads_the_derived_graph(store):
+    from batch.precompute_graph import derive
+
+    graph = MemoryGraph()
+    await crawl(store, graph, seeds=["Kelluu"], countries=[], clock=Clock())
+    await derive(graph)
+
+    reader = CalaDataStore(RecordedCala(), graph=graph)
+    partners = await reader.co_investors(TESI)
+    assert partners and all(isinstance(r, EntityRef) and count >= 1 for r, count in partners)
+    assert [count for _, count in partners] == sorted((c for _, c in partners), reverse=True)
+    assert NATO in {r.id for r, _ in partners}  # both are in Kelluu's Series A
+    assert await reader.co_investors("00000000-0000-0000-0000-000000000000") == []
+
+
+async def test_store_co_investors_survives_a_broken_graph():
+    class Broken:
+        async def get(self, collection, doc_id):
+            raise ConnectionError("mongo down")
+
+    assert await CalaDataStore(RecordedCala(), graph=Broken()).co_investors(TESI) == []
