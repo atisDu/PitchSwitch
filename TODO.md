@@ -34,7 +34,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 
 ### CP3/CP4 — Saturday evening & night
 - [ ] **A13 Vector search** — embeddings via Verda Inference API (Gemini fallback), Atlas Vector Search index, merge into `candidate_competitors`. Needs: A11.
-- [ ] **A14 Batch job: crawl** — `batch/precompute_graph.py` part 1: list active Nordic/Baltic investors, fetch portfolios + rounds into Atlas. Idempotent, resumable. Needs: A7, A8, A10.
+- [x] **A14 Batch job: crawl** — `batch/precompute_graph.py` part 1: list active Nordic/Baltic investors, fetch portfolios + rounds into Atlas. Idempotent, resumable. Needs: A7, A8, A10.
 - [ ] **A15 Batch job: derive** — part 2: `investor_graph` (co-investor counts), `investor_activity` (last lead, rounds per sector/stage). `co_investors()` reads it. Needs: A14.
 - [ ] **A16 Run batch on Verda** — package as a Verda batch job, run overnight, document in `deploy/verda.md`. Needs: A15.
 - [ ] **A17 Docker + deploy** — Dockerfile (API + MCP server), deploy to a Verda CPU instance with HTTPS; share URL. Needs: B10.
