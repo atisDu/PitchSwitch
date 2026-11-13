@@ -30,7 +30,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [x] **A9 Store: sourced_answer** — `knowledge_search` → markdown + `Reason[]` built from `explainability` claims and `context` source URLs. Needs: A3.
 - [x] **A10 Atlas cache** — `cache/atlas.py` wraps client calls (key, 24 h TTL, `CACHE_ONLY` mode); hit/miss in the call log. Needs: A3.
 - [x] **A11 candidate_competitors v1** — `knowledge_query` on industry + Nordic/Baltic countries + adjacent stages, dedupe, exclude self. (Vector search comes in A13.) Needs: A6.
-- [ ] **A12 Switch-over** — `USE_FAKE_STORE=false` works end to end for one demo company; tell B. **= CP2.** Needs: A6–A11.
+- [x] **A12 Switch-over** — `USE_FAKE_STORE=false` works end to end for one demo company; tell B. **= CP2.** Needs: A6–A11.
 
 ### CP3/CP4 — Saturday evening & night
 - [ ] **A13 Vector search** — embeddings via Verda Inference API (Gemini fallback), Atlas Vector Search index, merge into `candidate_competitors`. Needs: A11.
