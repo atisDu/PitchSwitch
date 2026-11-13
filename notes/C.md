@@ -31,3 +31,26 @@ as a bare ID. A Skip row needs `InvestorScore.investor: EntityRef`, so B would n
 **C's follow-up when 1.2.0 lands:** bump `CONTRACT_VERSION` in `frontend/lib/types.ts`; mirror any new
 model there (if `Backer` is added); make `frontend/mock/handlers.test.ts` read the version from
 `index.json` instead of hard-coding it. C does not edit `contracts/`.
+
+## C8: frontend on the real API (14 Nov)
+
+Checked through the frontend's `/api` proxy against B's API (`USE_FAKE_STORE=false`, shared Atlas):
+resolve, founder/analyze for Kelluu (6.8 s), Sensofusion (3.1 s), Stendr (3.3 s), and investor/check
+for Rainfall × Sensofusion (0.1 s, PORTFOLIO conflict via Stendr), Tesi × NestAI (77 s cold, no
+conflict live), Maki.vc × Stendr (0.05 s). All 200, shapes as the screens expect.
+
+Frontend changes from this: Pitch list shows the top 10 with "Show all N" (live reports have 30–45);
+`/api` proxy timeout raised to 30 min earlier (the 77 s check would have failed at 30 s). Demo script
+moved to the live Sensofusion → Rainfall Ventures conflict.
+
+For B / A (minor, not blocking):
+
+- **Two names for one firm in the same session.** `resolve("Sensofusion")` returns `202e9283`
+  "Sensofusion Oy", but Stendr's report lists the competitor as "Sensofusion **Oyj**" (the alias
+  entry). Showing the main entry's name everywhere would avoid confusing the audience.
+- **Warm paths are empty in every live report** (co_investors not filled yet; A15 done, so maybe
+  the graph isn't loaded into the shared Atlas?). The UI hides the section when empty.
+- **Cold investor checks take over a minute** (Tesi × NestAI: 77 s). Pre-cache every check the demo
+  might flip to (A18). The demo's three (Rainfall Ventures, Startuplab, Skyfall × Sensofusion)
+  are already cached (< 0.1 s); Tesi × NestAI is now cached too.
+- brief, slush-prep and chat still serve A's samples (B11, B13, B14 open); C10–C12 build on those.
