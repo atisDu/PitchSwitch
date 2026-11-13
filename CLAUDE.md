@@ -48,6 +48,7 @@ The goal is to avoid merge conflicts. They come from long-lived branches and fro
 9. **Don't add a dependency** if a few lines of code would do. Never commit secrets; put them in `.env`, which must be gitignored. Only Agent A adds variable *names* to `.env.example`.
 10. **Keep sources attached and use IDs.** Every fact you pass on keeps its `sources: list[Source]`. Use Cala entity IDs, never names, as keys (Cala has 5 different "Inventure"s).
 11. **If a task is unclear or blocked, stop and ask your human.** Don't guess across someone else's area.
+12. **An empty key in `.env` doesn't block you.** Build against fakes: `FakeDataStore`, a mocked Gemini client in tests, the frontend mock. Add one line to `notes/<your letter>.md` saying "<task>: not yet checked against live <service>", and do that live check once the key arrives. Only stop if the task can't be done without the real service (A1 needs `CALA_API_KEY`).
 
 ### Task loop (every task, exactly like this)
 
