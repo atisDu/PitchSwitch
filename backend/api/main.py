@@ -1,7 +1,7 @@
 """Pitchlist REST API (contracts/api.md).
 
-resolve, founder/analyze and investor/check run on core/. brief, slush-prep and chat still serve
-A's sample fixtures from contracts/fixtures/models/ until B11 and B13-B14.
+resolve, founder/analyze, investor/check and brief run on core/. slush-prep and chat still replay
+A's sample event streams from contracts/fixtures/models/ until B13-B14.
 """
 
 from __future__ import annotations
@@ -30,6 +30,7 @@ from contracts.schemas import (
     FounderReport,
     InvestorCheck,
 )
+from core.briefs import investor_brief
 from core.competitors import Judgement, cached_judge
 from core.conflict import check_conflict
 from core.scoring import rank_investors
@@ -107,11 +108,6 @@ def _sample(name: str):
     if "/" in name or "\\" in name or not path.exists():  # ids end up in the file name
         raise HTTPException(404, f"no sample data for this request ({name})")
     return json.loads(path.read_text())
-
-
-def _canonical(entity_id: str) -> str:
-    """Cala has several IDs for one firm; fixtures are keyed by the main one."""
-    return (_sample("index.json").get("aliases") or {}).get(entity_id, entity_id)
 
 
 def _events(name: str) -> list[AgentEvent]:
@@ -205,8 +201,9 @@ async def investor_check(body: PairBody) -> InvestorCheck:
 
 @app.post("/api/brief")
 async def brief(body: PairBody) -> Brief:
-    inv, co = _canonical(body.investor_id), _canonical(body.company_id)
-    return _sample(f"brief_{inv}_{co}.json")
+    company = await get_store().company(body.company_id)
+    judged = await _judged(company)
+    return await investor_brief(body.investor_id, company.id, judged.direct, judged.space)
 
 
 @app.post("/api/slush-prep")

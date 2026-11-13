@@ -4,6 +4,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 import api.main as api
+import core.briefs as briefs
 from agent.llm import LLMError
 from api.main import app
 from cache.graph import MemoryGraph
@@ -114,9 +115,16 @@ def test_investor_check(client):
     assert any(rd.company_id == KELLUU for rd in check.rounds)
 
 
-def test_brief_sample(client):
+def test_brief(client, monkeypatch):
+    async def fake(prompt, schema, **kw):
+        return schema.model_validate(
+            {"sections": [{"heading": "Verdict", "sentences": [{"text": "Fits.", "facts": [2]}]}]}
+        )
+
+    monkeypatch.setattr(briefs, "structured", fake)
     pair = {"investor_id": MAKI, "company_id": STENDR}
-    Brief.model_validate(client.post("/api/brief", json=pair).json())
+    brief = Brief.model_validate(client.post("/api/brief", json=pair).json())
+    assert brief.markdown.startswith("## Verdict\n\nFits. [1]") and brief.citations
 
 
 def test_gemini_unavailable_is_503(client, monkeypatch):

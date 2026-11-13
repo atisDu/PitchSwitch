@@ -85,3 +85,13 @@ Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
 - Stored now: Sensofusion -> MyDefence, Stendr (Skip = Stendr's backers Rainfall, Skyfall,
   Startuplab); Stendr -> Sensofusion, MyDefence (Skip empty); Kelluu -> Aispeco, Granta (Skip 6).
 - **For C (C8):** run the backend with `USE_FAKE_STORE=false` and point `API_URL` at it.
+
+## B11 done: briefs (14 Nov)
+
+- `/api/brief` runs on core: sourced facts from the store + Cala's sourced answer -> Gemini writes
+  sentences citing fact numbers -> code renders `[n]` markers and drops any sentence that cites
+  nothing valid or states a number its facts don't hold. Max 3 sources per fact (best rank first),
+  2 facts per sentence. Uses the stored judgement, so "conflict" matches the founder report.
+- Live (Sensofusion): Maki.vc -> "Pitch, no conflict" (26 citations); Rainfall Ventures -> "Skip,
+  backs Stendr" (16 citations). ~20 s per brief once Cala's answer is cached (first: ~60 s).
+- For C (C10): `Brief.markdown` uses `## ` headings and `[n]` markers after sentences.
