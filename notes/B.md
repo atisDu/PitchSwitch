@@ -52,3 +52,25 @@ Requests for other areas and "not yet checked against live <service>" lines go h
   three clones the same `MONGODB_URI`, do the pending A10 live check, and add a one-off import of
   local `.cache/cala/` files into Atlas (B's clone has 295 responses: Kelluu, Stendr, Sensofusion
   and their candidates' rounds) so the work already paid for isn't lost.
+
+## B9 done: live results (14 Nov, Atlas cache, gemini-4-hydrogen)
+
+Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
+
+- **Sensofusion** (54 s warm): direct = MyDefence, Stendr, Frankenburg (+1). Skip 9: Stendr's
+  backers Rainfall, Skyfall, Startuplab; Frankenburg's Skaala, NATO, Nova Founders, SMARTCAP;
+  Origin Robotics' Silicon Roundabout, Change Ventures. Pitch top: Maki.vc 73 (2 defence pre-seed
+  leads), NATO Innovation Fund 49, ScaleWolf 45.
+- **Stendr** (101 s, 11 live calls): direct = Sensofusion, MyDefence, Weibel Scientific. **Skip is
+  empty** (Cala has no backers for those three). Pitch top: Maki.vc 49, NIF 49, ScaleWolf 45.
+- **Kelluu**: direct = Aispeco, Granta Autonomy. Skip 6 (ScaleWolf, Superhero Capital, ...).
+  Pitch top: Maki.vc.
+
+### For C (demo script, `docs/demo-script.md`)
+
+- Beat 3 ("Stendr -> Maki.vc on Skip, backed Aavuus") does **not** happen live: the judge doesn't
+  rate Aavuus a direct Stendr rival, so Maki.vc is Stendr's top **Pitch**, and Stendr's Skip is empty.
+- Live, the conflict moment is **Sensofusion**: Skip shows Stendr's backers (Rainfall Ventures,
+  Skyfall, Startuplab) with the PORTFOLIO conflict and sources; flip on Rainfall Ventures.
+- The judge is not fully deterministic (same input, different same-space set between runs), so
+  rehearse on the deployed process; B may persist judgements (open question to the humans).
