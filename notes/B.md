@@ -39,3 +39,11 @@ Requests for other areas and "not yet checked against live <service>" lines go h
   firm (`202e9283` "Sensofusion Oy") or a sibling, query by the description text / a
   `knowledge_search` ("counter-drone companies in the Nordics"), or the A13 vector neighbours.
   Stendr (counter-drone, Norway) must come back as a candidate for the demo.
+- **Stendr's real candidates are 30 generic SaaS companies, no defence at all** (CRM, dental
+  SaaS, VAT refunds...). Stendr has industries SOFTWARE_AND_SERVICES, AEROSPACE_AND_DEFENSE,
+  HARDWARE_AND_EQUIPMENT; the queries look like they use only the first. Ask: query the most
+  specific industry (AEROSPACE_AND_DEFENSE over SOFTWARE_AND_SERVICES), or one query per industry
+  and rank by how many industries match. The judge kept 0 of the 30, correctly.
+- Cost seen: Stendr cold = 213 live Cala calls, 21 min (rounds of all 30 candidates + every
+  investor's `investor_rounds`). B now feeds only judge-approved "same space" candidates into
+  scoring (fewer calls), but the cache must be warm before the demo either way.
