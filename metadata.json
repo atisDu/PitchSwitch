@@ -1,0 +1,46 @@
+{
+  "cli_version": "0.13.3",
+  "checkpoint_id": "01M7BETX0E535K2EQTB2CG6MB0",
+  "strategy": "manual-commit",
+  "branch": "b/B9-real-data",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "backend/api/main.py",
+    "backend/core/competitors.py",
+    "backend/core/scoring.py",
+    "backend/tests/api/test_main.py",
+    "backend/tests/core/test_competitors.py",
+    "backend/tests/core/test_eval.py",
+    "backend/tests/core/test_scoring.py"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 22,
+    "cache_creation_tokens": 19744,
+    "cache_read_tokens": 2296899,
+    "output_tokens": 14809,
+    "api_call_count": 11
+  },
+  "redaction": {
+    "replacements": 11,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 2,
+      "credentialed_uri": 0,
+      "entropy": 9,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  }
+}
