@@ -55,7 +55,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [x] **B5 Conflict: board** — BOARD kind via `people()` + tests. Needs: B4.
 - [x] **B6 Scoring** — `core/scoring.py`: collect investors from competitors' rounds, compute signals, weights dict, conflict → skip, reasons with sources → `FounderReport`. Needs: B3, B4.
 - [x] **B7 Wire founder + investor routes** — `/api/resolve`, `/api/founder/analyze`, `/api/investor/check` use core (still fake store). Needs: B1, B6, B5.
-- [ ] **B8 Eval set** — `backend/tests/core/test_eval.py`: Kelluu → NATO Innovation Fund appears as lead; Maki.vc shows defence pre-seed leads; counter-drone conflict detected; runs on fake + real store. Needs: B6.
+- [x] **B8 Eval set** — `backend/tests/core/test_eval.py`: Kelluu → NATO Innovation Fund appears as lead; Maki.vc shows defence pre-seed leads; counter-drone conflict detected; runs on fake + real store. Needs: B6.
 
 ### CP3 — Saturday ~20:00
 - [ ] **B9 Real-data pass** — run everything with `USE_FAKE_STORE=false`, fix mapping surprises (via notes to A), tune weights. Needs: A12, B8.
