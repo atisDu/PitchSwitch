@@ -18,7 +18,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 
 ### CP1 — Friday night (unblocks B and C)
 - [x] **A1 Raw fixtures** — script `backend/data/record_fixtures.py` that calls Cala for the T3 cases and saves raw JSON to `contracts/fixtures/raw/`. Needs: T1–T3. *(Contract files: fixture data only, approved by T2.)*
-- [ ] **A2 Model fixtures + FakeDataStore** — mappers raw → contract models into `contracts/fixtures/models/`; `fake_store.py` implementing `DataStore` from them; `get_store()` with `USE_FAKE_STORE`. Tests: every fake method returns valid models. Needs: A1.
+- [x] **A2 Model fixtures + FakeDataStore** — mappers raw → contract models into `contracts/fixtures/models/`; `fake_store.py` implementing `DataStore` from them; `get_store()` with `USE_FAKE_STORE`. Tests: every fake method returns valid models. Needs: A1.
 
 ### CP2 — Saturday until ~15:00 (real data)
 - [ ] **A3 Cala client** — `cala_client.py`: async httpx, `X-API-KEY`, retries/backoff, semaphore, timeouts, call log. Tests with mocked HTTP. Needs: T1.
