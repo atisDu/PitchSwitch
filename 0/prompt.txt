@@ -1,0 +1,5 @@
+should A and C update to 1.2.0 first?
+
+---
+
+yes, but should A be told to do that or will it see that change?
