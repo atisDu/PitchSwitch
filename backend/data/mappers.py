@@ -18,21 +18,12 @@ from contracts.schemas import (
     RoundInvestor,
     Source,
 )
+from data.parsers import to_eur
 
 RANKS = {"PRIMARY", "FILING", "PRESS", "AGGREGATOR"}
 ORG_TYPES = {"Company", "Organization"}
 INVESTOR_WORDS = ("venture", "capital", "fund", "invest", "equity", "angel", "accelerator")
 
-# Fixed rates to EUR, good enough for ranking (not for accounting).
-FX_TO_EUR = {
-    "EUR": 1.0,
-    "USD": 0.92,
-    "GBP": 1.17,
-    "SEK": 0.088,
-    "NOK": 0.086,
-    "DKK": 0.134,
-    "CHF": 1.05,
-}
 CURRENCY_SIGNS = {"EUR": "€", "USD": "$", "GBP": "£"}
 
 COUNTRY_CODES = {
@@ -135,14 +126,6 @@ def label(code: str | None) -> str | None:
         return code
     text = code.replace("_", " ").title()
     return text.replace("Pre Seed", "Pre-Seed").replace("Ipo", "IPO")
-
-
-def to_eur(value, units: str | None) -> float | None:
-    """A numeric amount in `units` as EUR, or None if either is unusable."""
-    if not isinstance(value, int | float) or isinstance(value, bool):
-        return None
-    rate = FX_TO_EUR.get((units or "").upper())
-    return round(float(value) * rate, 2) if rate else None
 
 
 def money_text(value, units: str | None) -> str | None:
