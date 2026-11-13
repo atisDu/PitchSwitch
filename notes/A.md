@@ -41,3 +41,12 @@ TODO.md is owned by humans, so these extend my tasks here instead:
   conflict. The sample reports therefore rank investors from the wider candidate pool (the
   "space") and put those tied to a direct competitor on the Skip list. Your scoring needs some
   such split or the Pitch list is always empty.
+
+## For B and C: undated rounds (A7, 13 Nov)
+
+Cala often links an investor to a company (`INVESTED_IN`) without any round. So that code walking
+`rounds()` still finds those investors, `rounds(company_id)` ends with one extra `Round` when such
+investors exist: id `"<company_id>:backers"`, no `label`, `date` or amount, `is_lead` unknown, with
+the sources of those links. Both the fake and the real store do this (Stendr has only this one).
+B: count it as "backs the company", not as a dated deal. C: show it as "Investors (round details
+not known)" rather than an empty round row.
