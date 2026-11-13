@@ -19,6 +19,7 @@ from pydantic import BaseModel, Field
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from agent.llm import LLMError
+from cache.graph import GraphDB, default_graph
 from contracts.schemas import (
     CONTRACT_VERSION,
     AgentEvent,
@@ -29,7 +30,7 @@ from contracts.schemas import (
     FounderReport,
     InvestorCheck,
 )
-from core.competitors import Judgement, judge
+from core.competitors import Judgement, cached_judge
 from core.conflict import check_conflict
 from core.scoring import rank_investors
 from data import NotFound, Upstream, get_store
@@ -141,14 +142,18 @@ async def resolve(body: ResolveBody) -> list[EntityRef]:
     return await get_store().resolve(body.name, body.kind)
 
 
-# ponytail: per-process memo of judgements (saves a Gemini call per repeat and keeps the reasons
-# when the frontend sends competitor_ids). Unbounded; fine for a demo-sized set.
+# Judgements persist in the graph store (Atlas when MONGODB_URI is set): the same competitors after
+# a restart and on every machine, and no 20-25 s Gemini call per report. The dict is a per-process
+# shortcut in front of it. ponytail: unbounded; fine for a demo-sized set.
 _judgements: dict[str, Judgement] = {}
+_graph: GraphDB | None = None
 
 
 async def _judged(company: Company) -> Judgement:
+    global _graph
     if company.id not in _judgements:
-        _judgements[company.id] = await judge(company)
+        _graph = _graph or default_graph()
+        _judgements[company.id] = await cached_judge(company, _graph)
     return _judgements[company.id]
 
 

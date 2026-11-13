@@ -6,6 +6,7 @@ from fastapi.testclient import TestClient
 import api.main as api
 from agent.llm import LLMError
 from api.main import app
+from cache.graph import MemoryGraph
 from contracts.schemas import (
     CONTRACT_VERSION,
     AgentEvent,
@@ -32,7 +33,7 @@ def judged(monkeypatch):
     """Fake Gemini judge: fixed rivals per company; records which companies it was asked about."""
     calls = []
 
-    async def fake_judge(company):
+    async def fake_judge(company, graph):
         calls.append(company.id)
         store = get_store()
         ids = RIVALS.get(company.id, [])
@@ -40,7 +41,8 @@ def judged(monkeypatch):
         space = [c for c in await store.candidate_competitors(company) if c.id not in ids]
         return Judgement(direct=direct, space=space)
 
-    monkeypatch.setattr(api, "judge", fake_judge)
+    monkeypatch.setattr(api, "cached_judge", fake_judge)
+    monkeypatch.setattr(api, "_graph", MemoryGraph())
     monkeypatch.setattr(api, "_judgements", {})
     return calls
 
@@ -118,10 +120,10 @@ def test_brief_sample(client):
 
 
 def test_gemini_unavailable_is_503(client, monkeypatch):
-    async def down(company):
+    async def down(company, graph):
         raise LLMError("GEMINI_API_KEY is not set in .env")
 
-    monkeypatch.setattr(api, "judge", down)
+    monkeypatch.setattr(api, "cached_judge", down)
     r = client.post("/api/founder/analyze", json={"company_id": STENDR})
     assert r.status_code == 503 and "GEMINI_API_KEY" in r.json()["error"]
 

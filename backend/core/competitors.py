@@ -6,6 +6,9 @@ Gemini only picks among candidate IDs and writes a one-line reason; any ID it in
 
 from __future__ import annotations
 
+import logging
+from typing import Any
+
 from pydantic import BaseModel
 
 from agent.llm import structured
@@ -13,6 +16,9 @@ from contracts.schemas import Company, Competitor
 from data import get_store
 
 MAX_COMPETITORS = 15
+JUDGEMENTS = "judgements"  # graph collection: one judgement per (store, company)
+
+log = logging.getLogger("core.competitors")
 
 SYSTEM = """You judge which companies are DIRECT competitors of a startup, for a founder deciding \
 which investors to pitch (an investor who backed a direct competitor has a conflict).
@@ -58,10 +64,15 @@ def _line(c: Company) -> str:
     )
 
 
-async def judge(company: Company, k: int = 30) -> Judgement:
-    candidates = [
-        c for c in await get_store().candidate_competitors(company, k) if c.id != company.id
-    ]
+async def _candidates(company: Company, k: int) -> list[Company]:
+    return [c for c in await get_store().candidate_competitors(company, k) if c.id != company.id]
+
+
+async def judge(
+    company: Company, k: int = 30, candidates: list[Company] | None = None
+) -> Judgement:
+    if candidates is None:
+        candidates = await _candidates(company, k)
     if not candidates:
         return Judgement(direct=[], space=[])
     by_id = {c.id: c for c in candidates}
@@ -82,3 +93,26 @@ async def judge(company: Company, k: int = 30) -> Judgement:
 
 async def find_competitors(company: Company, k: int = 30) -> list[Competitor]:
     return (await judge(company, k)).direct
+
+
+async def cached_judge(company: Company, graph: Any, k: int = 30) -> Judgement:
+    """judge() once per company and candidate list, kept in `graph` (cache.graph: Atlas when
+    MONGODB_URI is set). Same report across restarts and machines, and no 20-25 s Gemini call.
+    A changed candidate list means a new judgement. Graph trouble never fails the request."""
+    store = get_store()
+    candidates = await _candidates(company, k)
+    key = f"{type(store).__name__}:{company.id}"
+    fingerprint = sorted(c.id for c in candidates)
+    try:
+        doc = await graph.get(JUDGEMENTS, key)
+        if doc and doc.get("candidates") == fingerprint:
+            return Judgement.model_validate(doc["judgement"])
+    except Exception as exc:  # a cache, not a source of truth
+        log.warning("judgement cache read failed, judging again: %r", exc)
+    judged = await judge(company, k, candidates)
+    try:
+        document = {"candidates": fingerprint, "judgement": judged.model_dump(mode="json")}
+        await graph.put(JUDGEMENTS, key, document)
+    except Exception as exc:
+        log.warning("judgement cache write failed: %r", exc)
+    return judged

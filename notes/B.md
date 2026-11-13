@@ -74,3 +74,14 @@ Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
   Skyfall, Startuplab) with the PORTFOLIO conflict and sources; flip on Rainfall Ventures.
 - The judge is not fully deterministic (same input, different same-space set between runs), so
   rehearse on the deployed process; B may persist judgements (open question to the humans).
+
+## B10 done: founder mode end to end on the real store (14 Nov)
+
+- `/api/founder/analyze` on live data (Atlas cache): Kelluu 2.8-3.9 s, Sensofusion 1.9-2.1 s,
+  Stendr 2.0 s once judged; the first call per company judges (~30 s) and stores it.
+- **Judgements persist** in the graph store (Atlas collection `judgements`, id
+  `CalaDataStore:<company_id>`): same competitors after a restart and on every machine. A company
+  is judged again only when its candidate list changes. To force a fresh judgement, delete its doc.
+- Stored now: Sensofusion -> MyDefence, Stendr (Skip = Stendr's backers Rainfall, Skyfall,
+  Startuplab); Stendr -> Sensofusion, MyDefence (Skip empty); Kelluu -> Aispeco, Granta (Skip 6).
+- **For C (C8):** run the backend with `USE_FAKE_STORE=false` and point `API_URL` at it.
