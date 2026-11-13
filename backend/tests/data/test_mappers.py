@@ -274,3 +274,15 @@ def test_candidate_rows_need_an_entity():
     assert company.stage == "Seed" and company.total_funding_text == "~€4M"
     assert company.country == "Finland"
     assert map_candidate_rows(None) == []
+
+
+def test_stage_helpers():
+    from data.mappers import clean_stage, stage_index
+
+    assert [stage_index(s) for s in ("PRE_SEED", "Pre-Seed", "preseed round")] == [0, 0, 0]
+    assert stage_index("Seed") == 1 and stage_index("SERIES_A") == 2
+    assert stage_index("Series A (Oct 2025)") == 2 and stage_index("Series B") == 3
+    assert stage_index("Grant") is None and stage_index(None) is None
+    assert clean_stage("Series A+ (multiple rounds)") == "Series A"
+    assert clean_stage("Growth equity") == "Growth equity"
+    assert clean_stage(None) is None

@@ -400,6 +400,28 @@ def map_sourced_answer(search_response: dict | None) -> tuple[str, list[Reason]]
     return response.get("content") or "", reasons
 
 
+STAGES = ["Pre-Seed", "Seed", "Series A", "Series B", "Series C", "Series D", "Series E"]
+_STAGE_IN_TEXT = re.compile(r"pre[\s_-]?seed|seed|series[\s_-]?[a-e]\b", re.IGNORECASE)
+
+
+def stage_index(text: str | None) -> int | None:
+    """Where a stage sits in STAGES, read from text like 'SERIES_A', 'Series A (Oct 2025)' or
+    'Seed round'. None if no stage is named."""
+    match = _STAGE_IN_TEXT.search(text or "")
+    if not match:
+        return None
+    found = match.group().lower()
+    if found.startswith("pre"):
+        return 0
+    return 1 if found == "seed" else 2 + "abcde".index(found[-1])
+
+
+def clean_stage(text: str | None) -> str | None:
+    """'Series A+ (multiple rounds)' -> 'Series A'. Text without a known stage is kept."""
+    index = stage_index(text)
+    return STAGES[index] if index is not None else (text or None)
+
+
 def map_candidate_rows(query_response: dict | None) -> list[Company]:
     """A knowledge_query for companies -> Company per row that Cala tied to an entity."""
     response = query_response or {}
@@ -423,7 +445,9 @@ def map_candidate_rows(query_response: dict | None) -> list[Company]:
                 name=entity.get("name") or str(row["name"]),
                 type=entity.get("entity_type") or "Company",
                 description=str(description) if description else None,
-                stage=label(str(row["funding_stage"])) if row.get("funding_stage") else None,
+                stage=clean_stage(label(str(row["funding_stage"])))
+                if row.get("funding_stage")
+                else None,
                 country=str(country) if country else country_of(None, description),
                 total_funding_text=str(row["total_funding"]) if row.get("total_funding") else None,
             )
