@@ -168,3 +168,56 @@ async def test_investor_rounds_use_the_main_id_after_resolve(store, cases):
     rounds = await store.investor_rounds(maki["alt"][0])  # asked by the other entry's ID
     assert rounds and all(any(i.investor.id == maki["id"] for i in r.investors) for r in rounds)
     assert not any(i.investor.id == maki["alt"][0] for r in rounds for i in r.investors)
+
+
+# --- portfolio and people ----------------------------------------------------------------------
+
+
+async def test_portfolio_lists_sourced_links_under_the_investor(store, cases):
+    tesi = cases["investors"]["tesi"]["id"]
+    portfolio = await store.portfolio(tesi)
+    held = {link.company.id for link in portfolio}
+    assert cases["companies"]["kelluu"]["id"] in held
+    # Cala's graph has no Tesi -> NestAI link (only its text answers know that round).
+    assert cases["companies"]["nestai"]["id"] not in held
+    assert len(portfolio) >= 40 and len(held) == len(portfolio)
+    assert all(link.investor_id == tesi for link in portfolio)
+    assert sum(bool(link.sources) for link in portfolio) > len(portfolio) // 2
+    names = [link.company.name.lower() for link in portfolio]
+    assert names == sorted(names)
+
+
+async def test_portfolio_joins_both_entries_of_a_firm_after_resolve(store, cases):
+    maki = cases["investors"]["maki-vc"]
+    alone = await store.portfolio(maki["id"])
+    await store.resolve("Maki.vc", "investor")
+    joined = await store.portfolio(maki["alt"][0])
+    assert len(joined) > len(alone)
+    assert all(link.investor_id == maki["id"] for link in joined)
+    assert len({link.company.id for link in joined}) == len(joined)
+
+
+async def test_people_of_a_company_carry_roles_and_sources(store, cases):
+    kelluu = cases["companies"]["kelluu"]["id"]
+    people = await store.people(kelluu)
+    roles = [person.role for person in people]
+    assert roles.count("BOARD") == 4 and "CEO" in roles and "FOUNDER" in roles
+    assert "EMPLOYEE" in roles
+    assert all(person.company_id == kelluu for person in people)
+    assert all(person.person.type == "Person" for person in people)
+    assert any(person.sources for person in people)
+
+
+async def test_people_work_for_an_investor_id_too(store, cases):
+    redstone = await store.people("a1f7d57d-39a4-486f-bd9b-39b8b50ab1ff")
+    assert isinstance(redstone, list)
+    tesi = await store.people(cases["investors"]["tesi"]["id"])
+    assert tesi == [] or all(
+        person.company_id == cases["investors"]["tesi"]["id"] for person in tesi
+    )
+
+
+async def test_portfolio_and_people_are_empty_for_unknown_ids(store):
+    nobody = "00000000-0000-0000-0000-000000000000"
+    assert await store.portfolio(nobody) == []
+    assert await store.people(nobody) == []

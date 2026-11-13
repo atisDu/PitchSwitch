@@ -34,6 +34,8 @@ from data.mappers import (
     fill_gaps,
     map_company,
     map_entity_ref,
+    map_people,
+    map_portfolio,
     map_resolve,
     map_round,
     merge_sources,
@@ -292,10 +294,49 @@ class CalaDataStore:
         return sorted(rounds, key=lambda r: (r.date or "", r.id), reverse=True)
 
     async def portfolio(self, investor_id: str) -> list[PortfolioLink]:
-        raise NotImplementedError("portfolio() arrives with task A8")
+        """Companies the investor backs (Cala's INVESTED_IN links), by name. [] if unknown.
+
+        The links carry sources but no dates; `investor_rounds()` has the dated deals.
+        """
+        try:
+            main_id, entities = await self._org_family(investor_id)
+        except NotFound:
+            return []
+        links: dict[str, PortfolioLink] = {}
+        for entity in entities:
+            for link in map_portfolio(entity):
+                company_id = self.canonical(link.company.id)
+                if company_id == main_id:
+                    continue
+                previous = links.get(company_id)
+                links[company_id] = PortfolioLink(
+                    investor_id=main_id,
+                    company=link.company.model_copy(update={"id": company_id}),
+                    sources=merge_sources(previous.sources if previous else [], link.sources),
+                )
+        return sorted(links.values(), key=lambda link: link.company.name.lower())
 
     async def people(self, company_id: str) -> list[PersonLink]:
-        raise NotImplementedError("people() arrives with task A8")
+        """Board members, founders, CEO and employees of a company or an investor.
+        [] if Cala lists none or the ID is unknown."""
+        try:
+            main_id, entities = await self._org_family(company_id)
+        except NotFound:
+            return []
+        people: dict[tuple[str, str], PersonLink] = {}
+        for entity in entities:
+            for person in map_people(entity):
+                key = (person.person.id, person.role)
+                previous = people.get(key)
+                people[key] = person.model_copy(
+                    update={
+                        "company_id": main_id,
+                        "sources": merge_sources(
+                            previous.sources if previous else [], person.sources
+                        ),
+                    }
+                )
+        return list(people.values())
 
     async def candidate_competitors(self, company: Company, k: int = 30) -> list[Company]:
         raise NotImplementedError("candidate_competitors() arrives with task A11")
