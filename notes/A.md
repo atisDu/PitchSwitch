@@ -62,3 +62,10 @@ use `sourced_answer()`.
 
 `portfolio()` on the real store is Cala's `INVESTED_IN` links only (one call). Deals that exist
 only as rounds are in `investor_rounds()`.
+
+## Not yet checked against live services
+
+- **A10: not yet checked against live MongoDB Atlas** (`MONGODB_URI` is empty). The cache passes
+  its tests on a fake collection and on a local MongoDB 127.0.0.1 instance
+  (`MONGODB_TEST_URI=mongodb://... pytest backend/tests/cache`). To do when the URI arrives:
+  run that test with the Atlas URI, then one real `get_store()` call with `USE_FAKE_STORE=false`.
