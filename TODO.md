@@ -21,7 +21,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [x] **A2 Model fixtures + FakeDataStore** — mappers raw → contract models into `contracts/fixtures/models/`; `fake_store.py` implementing `DataStore` from them; `get_store()` with `USE_FAKE_STORE`. Tests: every fake method returns valid models. Needs: A1.
 
 ### CP2 — Saturday until ~15:00 (real data)
-- [ ] **A3 Cala client** — `cala_client.py`: async httpx, `X-API-KEY`, retries/backoff, semaphore, timeouts, call log. Tests with mocked HTTP. Needs: T1.
+- [x] **A3 Cala client** — `cala_client.py`: async httpx, `X-API-KEY`, retries/backoff, semaphore, timeouts, call log. Tests with mocked HTTP. Needs: T1.
 - [ ] **A4 Introspection map** — fetch introspection once per entity type (Company, Organization, FundingRound, Person), cache to `backend/data/introspection.json`; helper `fields_for(type)`. Needs: A3.
 - [ ] **A5 Parsers** — `parsers.py`: amount text → EUR, partial dates → ISO. Table-driven tests ("~€15M", "over $100M", "$12M", "Oct 2025", "2026"). Needs: T1.
 - [ ] **A6 Store: resolve + company** — `CalaDataStore.resolve()` (with investor type/description guard) and `.company()`. Tests on raw fixtures. Needs: A3, A4.
