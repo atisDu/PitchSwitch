@@ -10,7 +10,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 
 - [x] **T1 Repo scaffold** — every clone runs `entire enable --agent <agent>` and checks `.git/hooks/post-commit` exists; layout from CLAUDE.md, empty folders with `__init__.py`, `backend/pyproject.toml`, `frontend/` Next.js init, `notes/A.md|B.md|C.md`, `.gitignore`, `.env.example`. *(A drives, others review)*
 - [x] **T2 Contracts** — `contracts/schemas.py`, `contracts/api.md`, `contracts/CHANGELOG.md` exactly as CLAUDE.md §5. All three approve. **Frozen after merge.**
-- [ ] **T3 Pick demo cases** — 3 founder-mode companies + 2 investor-mode pairs, incl. one counter-drone set (Sensofusion / Stendr / Nordic Air Defence) for the conflict moment. Write them in `contracts/fixtures/README.md`.
+- [x] **T3 Pick demo cases** — 3 founder-mode companies + 2 investor-mode pairs, incl. one counter-drone set (Sensofusion / Stendr / Nordic Air Defence) for the conflict moment. Write them in `contracts/fixtures/README.md`.
 
 ---
 
