@@ -145,6 +145,17 @@ async def test_rounds_do_not_repeat_round_investors_as_backers(store, cases):
         assert not in_real_rounds & {i.investor.id for i in extra.investors}
 
 
+async def test_an_investor_listed_under_two_ids_appears_once(store, cases):
+    kelluu = cases["companies"]["kelluu"]
+    await store.resolve("Kelluu", "company")  # joins the two Kelluu entries and their backers
+    rounds = await store.rounds(kelluu["id"])
+    names = [i.investor.name.lower() for r in rounds for i in r.investors]
+    assert names.count("gungnir capital") == 1 and names.count("redstone") == 1
+    backers = rounds[-1]
+    assert backers.id.endswith(":backers")
+    assert "gungnir capital" not in [i.investor.name.lower() for i in backers.investors]
+
+
 async def test_rounds_are_empty_when_cala_has_none_or_the_id_is_unknown(store, cases):
     assert await store.rounds(cases["companies"]["sensofusion"]["id"]) == []
     assert await store.rounds("00000000-0000-0000-0000-000000000000") == []

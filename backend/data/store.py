@@ -263,14 +263,21 @@ class CalaDataStore:
             return []
         rounds = await self._rounds([rid for e in entities for rid in _round_ids(e, "ISSUER")])
         rounds = [r.model_copy(update={"company_id": main_id}) for r in rounds]
-        in_rounds = {i.investor.id for r in rounds for i in r.investors}
+        # Cala can list one investor under two IDs around the same company, so backers are
+        # matched to round investors, and to each other, by name as well as by ID.
+        by_name = {name_key(i.investor.name): i.investor.id for r in rounds for i in r.investors}
+        in_rounds = set(by_name.values())
         loose: dict[str, EntityRef] = {}
         sources: list[list] = []
         for entity in entities:
             for edge in related(entity, "incoming", "INVESTED_IN"):
                 ref = self._ref(edge)
-                if ref.id not in in_rounds and ref.id not in loose:
+                known_id = by_name.setdefault(name_key(ref.name), ref.id)
+                if known_id != ref.id:
+                    self._aliases[ref.id] = known_id  # the same investor under another ID
+                elif ref.id not in in_rounds and ref.id not in loose:
                     loose[ref.id] = ref
+                if known_id in loose:
                     sources.append(edge_sources(edge))
         extra = undated_round(main_id, list(loose.values()), merge_sources(*sources))
         return [*rounds, extra] if extra else rounds
