@@ -18,7 +18,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 import time
 from collections.abc import Callable
@@ -28,6 +27,7 @@ from pathlib import Path
 import httpx
 
 from data.config import RAW_DIR, env, load_env
+from data.mappers import slug
 
 # --- The demo cases (contracts/fixtures/README.md), pinned to Cala IDs -------------------------
 # `alt` = other Cala entries for the same firm (Cala often has a Company and an Organization).
@@ -151,11 +151,6 @@ REL_IN = [
     "WORKS_AT",
 ]
 ORG_TYPES = {"Company", "Organization"}
-
-
-def slug(text: str) -> str:
-    """Lowercase, non-alphanumerics to '-': the `slug` used in fixture file names."""
-    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
 
 
 class BudgetExceeded(RuntimeError):
