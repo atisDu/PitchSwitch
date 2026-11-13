@@ -15,6 +15,10 @@ import { analyzeFounder, ApiError } from "@/lib/api";
 import { keptCompetitorIds, prettyEnum } from "@/lib/format";
 import type { Company, FounderReport } from "@/lib/types";
 
+// Live reports rank 30-45 investors; the top ones matter, and the Skip list below
+// (the conflict) must stay within reach.
+const PITCH_SHOWN = 10;
+
 type Load =
   | { status: "loading" }
   | { status: "error"; message: string; notFound: boolean }
@@ -24,6 +28,7 @@ export function FounderReportView({ companyId }: { companyId: string }) {
   const [load, setLoad] = useState<Load>({ status: "loading" });
   const [removed, setRemoved] = useState<Set<string>>(new Set());
   const [narrowed, setNarrowed] = useState(false); // ranked against a user-edited list
+  const [showAllPitch, setShowAllPitch] = useState(false);
   const abort = useRef<AbortController | null>(null);
 
   const run = useCallback(
@@ -45,6 +50,7 @@ export function FounderReportView({ companyId }: { companyId: string }) {
         setLoad({ status: "ready", report, reranking: false, rerankError: null });
         setRemoved(new Set());
         setNarrowed(Boolean(competitorIds));
+        setShowAllPitch(false);
       } catch (err) {
         if (ctrl.signal.aborted) return;
         const message = err instanceof ApiError ? err.message : "Something went wrong.";
@@ -170,13 +176,24 @@ export function FounderReportView({ companyId }: { companyId: string }) {
               No investors without a conflict found in your space yet.
             </p>
           ) : (
-            <ol className="mt-6">
-              {report.pitch.map((s, i) => (
-                <li key={s.investor.id}>
-                  <PitchCard item={s} rank={i + 1} />
-                </li>
-              ))}
-            </ol>
+            <>
+              <ol className="mt-6">
+                {(showAllPitch ? report.pitch : report.pitch.slice(0, PITCH_SHOWN)).map((s, i) => (
+                  <li key={s.investor.id}>
+                    <PitchCard item={s} rank={i + 1} />
+                  </li>
+                ))}
+              </ol>
+              {report.pitch.length > PITCH_SHOWN && (
+                <button
+                  type="button"
+                  onClick={() => setShowAllPitch((v) => !v)}
+                  className="btn-ghost mt-2 h-10"
+                >
+                  {showAllPitch ? `Show top ${PITCH_SHOWN}` : `Show all ${report.pitch.length}`}
+                </button>
+              )}
+            </>
           )}
         </section>
 
