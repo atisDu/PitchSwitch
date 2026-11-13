@@ -2,3 +2,18 @@
 .env.*
 !.env.example
 CLAUDE.local.md
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+.next/
+
+# OS / editors
+.DS_Store
