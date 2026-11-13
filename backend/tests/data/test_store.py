@@ -240,3 +240,64 @@ async def test_sourced_answer_for_nothing(store, cala):
     assert await store.sourced_answer("   ") == ("", [])
     assert cala.calls == []
     assert await store.sourced_answer("A question Cala has no answer for") == ("", [])
+
+
+# --- candidate_competitors ---------------------------------------------------------------------
+
+
+async def test_candidates_come_from_one_query_per_country_own_country_first(store, cala, cases):
+    kelluu = await store.company(cases["companies"]["kelluu"]["id"])
+    cala.calls.clear()
+    candidates = await store.candidate_competitors(kelluu)
+
+    queries = [text for kind, text in cala.calls if kind == "query"]
+    assert len(queries) == 7 and ".country=Finland." in queries[0]
+    assert all(q.startswith("companies.industry=AEROSPACE_AND_DEFENSE.country=") for q in queries)
+    assert queries[0] == cases["queries"]["candidates-finland"]  # the recorded query, word for word
+
+    names = [c.name for c in candidates]
+    assert {"Aavuus", "Kova Labs", "Metaktik", "ReOrbit", "Heart Aerospace"} <= set(names)
+    assert kelluu.id not in {c.id for c in candidates} and "Kelluu Oy" not in names
+    assert len({c.id for c in candidates}) == len(candidates)
+    countries = [c.country for c in candidates]
+    assert countries[: countries.count("Finland")] == ["Finland"] * countries.count("Finland")
+    assert all(c.description for c in candidates)
+    # Series A like Kelluu, so ahead of a pre-seed company from the same country
+    assert names.index("ReOrbit") < names.index("Metaktik")
+
+
+async def test_candidates_respect_k_and_survive_a_failing_country(store, cala, cases):
+    kelluu = await store.company(cases["companies"]["kelluu"]["id"])
+    assert len(await store.candidate_competitors(kelluu, k=2)) == 2
+    assert await store.candidate_competitors(kelluu, k=0) == []
+
+    real_query = cala.query
+
+    async def flaky(text):
+        if ".country=Sweden." in text:
+            raise RuntimeError("Cala timed out")
+        return await real_query(text)
+
+    cala.query = flaky
+    names = {c.name for c in await store.candidate_competitors(kelluu)}
+    assert "Aavuus" in names and "Heart Aerospace" not in names
+
+
+async def test_candidates_fail_loudly_when_every_query_fails(store, cala, cases):
+    kelluu = await store.company(cases["companies"]["kelluu"]["id"])
+
+    async def down(text):
+        raise RuntimeError("Cala is down")
+
+    cala.query = down
+    with pytest.raises(RuntimeError):
+        await store.candidate_competitors(kelluu)
+
+
+async def test_a_company_without_an_industry_gets_a_described_query(store, cala, cases):
+    sensofusion = await store.company(cases["companies"]["sensofusion"]["id"])
+    assert sensofusion.industries == []
+    cala.calls.clear()
+    assert await store.candidate_competitors(sensofusion) == []  # nothing recorded for it
+    ((kind, text),) = cala.calls
+    assert kind == "query" and "compete with this company" in text and "Finland" in text

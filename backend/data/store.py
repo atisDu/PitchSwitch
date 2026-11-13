@@ -32,6 +32,7 @@ from data.mappers import (
     country_of,
     edge_sources,
     fill_gaps,
+    map_candidate_rows,
     map_company,
     map_entity_ref,
     map_people,
@@ -42,6 +43,7 @@ from data.mappers import (
     merge_sources,
     name_key,
     related,
+    stage_index,
     undated_round,
 )
 
@@ -76,6 +78,9 @@ _ROUND_FIELDS = fields_for("FundingRound").only(
     incoming=["PARTICIPATES_IN_FUNDING_ROUND"],
 )
 _EDGE_LIMIT = 100
+_REGION = ["Finland", "Sweden", "Norway", "Denmark", "Estonia", "Latvia", "Lithuania"]
+_EARLY_STAGES = "Pre-Seed OR Seed OR Series A"
+_LATER_STAGES = "Series A OR Series B OR Series C"
 _MAX_INVESTOR_ROUNDS = 40
 _MAX_SIBLINGS = 3  # entries of one firm we are willing to fetch and compare
 
@@ -94,6 +99,41 @@ def _round_ids(entity: dict, role: str) -> list[str]:
         edge["id"]
         for edge in related(entity, "outgoing", "PARTICIPATES_IN_FUNDING_ROUND")
         if (edge.get("properties") or {}).get("role", role) == role
+    ]
+
+
+def candidate_queries(company: Company) -> list[tuple[str | None, str]]:
+    """(country, knowledge_query text) pairs to find competitor candidates.
+
+    One query per country: a single query across countries is "too complex" for Cala. The text
+    depends only on industry, country and stage group, so companies in the same space share
+    cached answers.
+    """
+    index = stage_index(company.stage)
+    stages = _LATER_STAGES if index is not None and index > 2 else _EARLY_STAGES
+    countries = list(_REGION)
+    if company.country in countries:  # the company's own country first
+        countries.remove(company.country)
+        countries.insert(0, company.country)
+    if company.industries:
+        return [
+            (
+                country,
+                f"companies.industry={company.industries[0]}.country={country}"
+                f".funding_stage={stages}"
+                ".return(name, description, funding_stage, total_funding).limit=15",
+            )
+            for country in countries
+        ]
+    # No industry tag (thin entry): describe the company and let Cala find lookalikes.
+    about = (company.description or company.name).strip().rstrip(".")
+    where = company.country or "the Nordic and Baltic countries"
+    return [
+        (
+            company.country,
+            f"Startups in {where} that compete with this company: {about}. "
+            "Return name, description, country, funding stage, total funding",
+        )
     ]
 
 
@@ -340,7 +380,42 @@ class CalaDataStore:
         return list(people.values())
 
     async def candidate_competitors(self, company: Company, k: int = 30) -> list[Company]:
-        raise NotImplementedError("candidate_competitors() arrives with task A11")
+        """Companies that may compete with this one: same industry, in the Nordic and Baltic
+        countries, at early (or later) stages. The company itself is left out.
+
+        Ordered by: the company's own country first, then stages next to its own, then Cala's
+        order. This is a wide net on purpose; judging who is a direct competitor is B's step.
+        Candidates come from query rows, so they carry no sources; `company(id)` has them.
+        """
+        queries = candidate_queries(company)
+        answers = await asyncio.gather(
+            *[self.cala.query(text) for _, text in queries], return_exceptions=True
+        )
+        if answers and all(isinstance(answer, BaseException) for answer in answers):
+            raise answers[0]  # Cala is down, not "no competitors"
+
+        own_ids = {self.canonical(company.id), company.id, *self._siblings.get(company.id, [])}
+        own_stage = stage_index(company.stage)
+        found: dict[str, tuple[tuple, Company]] = {}
+        for position, ((country, _), answer) in enumerate(zip(queries, answers, strict=True)):
+            if isinstance(answer, BaseException):
+                continue  # one country failing should not lose the others
+            for row_number, candidate in enumerate(map_candidate_rows(answer)):
+                main_id = self.canonical(candidate.id)
+                if main_id in own_ids or name_key(candidate.name) == name_key(company.name):
+                    continue
+                if main_id in found:
+                    continue
+                if not candidate.country and country:
+                    candidate = candidate.model_copy(update={"country": country})
+                stage = stage_index(candidate.stage)
+                far_stage = (
+                    own_stage is not None and stage is not None and abs(stage - own_stage) > 1
+                )
+                rank = (candidate.country != company.country, far_stage, position, row_number)
+                found[main_id] = (rank, candidate.model_copy(update={"id": main_id}))
+        ranked = sorted(found.values(), key=lambda pair: pair[0])
+        return [candidate for _, candidate in ranked[: max(k, 0)]]
 
     async def co_investors(self, investor_id: str) -> list[tuple[EntityRef, int]]:
         return []  # filled by the batch job (A15); until then nothing is known
