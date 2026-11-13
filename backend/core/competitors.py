@@ -15,11 +15,15 @@ MAX_COMPETITORS = 15
 
 SYSTEM = """You judge which companies are DIRECT competitors of a startup, for a founder deciding \
 which investors to pitch (an investor who backed a direct competitor has a conflict).
-A direct competitor sells a similar product or service to similar customers. Same broad industry \
-alone is not enough; investors, funds, agencies and suppliers are never competitors.
-Use only the descriptions given. Return at most 15, the most direct first; return fewer (or none) \
-if fewer qualify. Use only IDs from the candidate list, copied exactly. Each reason is one short \
-factual sentence on what overlaps, with no numbers, dates or names not in the descriptions."""
+A direct competitor sells an overlapping product to the same customers (e.g. both build \
+counter-drone systems, or both sell aerial surveillance). Sharing a broad industry such as \
+"aerospace and defense" is not enough. Investors, funds, agencies and suppliers are never \
+competitors.
+The descriptions come from a database and are often thin: combine them with what you reliably \
+know about these named companies. Do not guess about companies you do not know.
+Return the direct competitors, most direct first, at most 15; return none if none qualify. Use \
+only IDs from the candidate list, copied exactly. Each reason is one short sentence naming the \
+overlap; no numbers, dates, funding or investor names."""
 
 
 class _Pick(BaseModel):
@@ -54,7 +58,7 @@ async def find_competitors(company: Company, k: int = 30) -> list[Competitor]:
         f"Startup:\n{_line(company)}\n\n"
         f"Candidates:\n" + "\n".join(_line(c) for c in by_id.values())
     )
-    judged = await structured(prompt, _Judgement, system=SYSTEM)
+    judged = await structured(prompt, _Judgement, system=SYSTEM, tier="smart")
 
     out: list[Competitor] = []
     for pick in judged.competitors:

@@ -8,8 +8,9 @@ Requests for other areas and "not yet checked against live <service>" lines go h
 
 ## Pending live checks (rule 12)
 
-- B2: `agent/llm.structured()` not yet checked against live Gemini (no GEMINI_API_KEY yet). Check: one call with a nested contract model as schema.
-- B3: `core/competitors.find_competitors()` not yet checked against live Gemini. Check: Kelluu, Sensofusion, Stendr candidates → sensible picks + reasons, no invented IDs.
+- B2: checked live 13 Nov (nested contract model as schema, ~3 s).
+- B3: checked live 13 Nov. First prompt ("use only the descriptions") kept 0/9 on every model: Cala descriptions are too thin (Sensofusion = "Finnish defense technology company"). Prompt now lets Gemini add what it reliably knows about named companies; IDs still restricted to candidates. Sensofusion <-> Stendr judged counter-drone rivals; Kelluu gets none (no airship/ISR rival among its 9 candidates -> A11/A13 candidates).
+- Models (human: "no flash, make it smart"): `gemini-4-hydrogen` for FAST and SMART in .env; the judge uses tier `smart`. Gemini 4 names (argon/carbon/hydrogen) don't say which is top; hydrogen has the largest output limit. Swap in .env if the ranking is known. `gemini-2.5-pro` is closed to new users.
 
 ## B6 scoring decision (13 Nov, agreed with human)
 

@@ -15,6 +15,9 @@ from core.competitors import find_competitors
 from core.conflict import check_conflict
 from core.scoring import rank_investors
 from data import get_store
+from data.config import load_env
+
+load_env()  # the live-Gemini skipif below reads GEMINI_API_KEY at import time
 
 KELLUU = "78d7490a-dd04-5119-a7f1-e940b861219b"
 SENSOFUSION = "202e9283-6455-486f-8868-03c7e0d0cf29"
