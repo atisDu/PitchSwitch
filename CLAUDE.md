@@ -17,7 +17,9 @@ The full product write-up is in `OVERVIEW.md`.
 - **Theme:** Junction 2026 — Cala challenge "Make Unicorns Real": a product for founders/investors built on Cala's public data.
 - **Idea:** Pitchlist — who's a fit, and who has a conflict, from either side of the table (details in §1).
 - **Stack:** Python/FastAPI backend, Next.js frontend, Cala, Gemini, MongoDB Atlas, Verda (details in §3).
-- **Run:** set in task T1 — backend `uvicorn api.main:app --reload` from `backend/`; frontend `npm run dev` in `frontend/`. Update this line when T1 lands.
+- **Setup (once per clone):** from the repo root, `python3 -m venv .venv && source .venv/bin/activate && pip install -e "backend[dev]"` (Python 3.11+; this also makes `contracts` importable), then `cd frontend && npm install`. Copy `.env.example` to `.env` and fill in what you have.
+- **Run:** backend `uvicorn api.main:app --reload --env-file ../.env` from `backend/` (once B1 adds `api/main.py`); frontend `npm run dev` in `frontend/`.
+- **Check:** `pytest backend/tests/<your folder>` and `ruff check backend contracts` from the repo root (venv active); `npm run build && npm run lint` in `frontend/`.
 
 ---
 
