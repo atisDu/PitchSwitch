@@ -288,6 +288,22 @@ def map_round(entity: dict) -> Round | None:
     )
 
 
+def undated_round(
+    company_id: str, investors: list[EntityRef], sources: list[Source]
+) -> Round | None:
+    """Investors Cala links to a company without any round details, as one Round with no label,
+    date or amount (id "<company_id>:backers"). It lets code that walks rounds find them.
+    None when there are no such investors."""
+    if not investors:
+        return None
+    return Round(
+        id=f"{company_id}:backers",
+        company_id=company_id,
+        investors=[RoundInvestor(investor=investor, is_lead=None) for investor in investors],
+        sources=sources,
+    )
+
+
 def map_portfolio(entity: dict) -> list[PortfolioLink]:
     """An investor retrieval -> the companies it invested in (outgoing INVESTED_IN)."""
     return [

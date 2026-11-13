@@ -221,3 +221,9 @@ def test_event_streams_end_with_done():
     text = "".join(e.message for e in chat if e.type == "text")
     numbers = [int(n) for n in re.findall(r"\[(\d+)\]", text)]
     assert numbers and max(numbers) == len(chat[-1].citations)
+
+
+async def test_fake_rounds_include_backers_without_round_details(store):
+    stendr = COMPANIES["stendr"]["id"]
+    rounds = await store.rounds(stendr)
+    assert rounds[-1].id == f"{stendr}:backers" and len(rounds[-1].investors) == 3

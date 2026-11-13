@@ -1,0 +1,41 @@
+[
+ {
+  "id": "14359613-a45f-4804-892d-3b9dd9e927a9:backers",
+  "company_id": "14359613-a45f-4804-892d-3b9dd9e927a9",
+  "label": null,
+  "date": null,
+  "amount_text": null,
+  "amount_eur": null,
+  "investors": [
+   {
+    "investor": {
+     "id": "69c43164-30cb-492f-aeb9-efa658ff5bef",
+     "name": "PostScriptum Ventures",
+     "type": "Company",
+     "description": "Venture capital investment group established in 2006, investing in sustainable energy, innovative technology, and disruptive business models including wind, solar, biomass, storage, and hydrogen."
+    },
+    "is_lead": null
+   }
+  ],
+  "sources": [
+   {
+    "name": "Finland's NestAI lands €100M, partners with Nokia to build AI for defense applications | TechCrunch",
+    "url": "https://techcrunch.com/2025/11/20/finlands-nestai-lands-e100m-partners-with-nokia-to-build-ai-for-defense-applications",
+    "date": "2025-11-20",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Peter Sarlin – Founder of PostScriptum",
+    "url": "https://sarlin.ai",
+    "date": "2026-04-08",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Proud to see PostScriptum-backed NestAI take another step today – a strategic partnership with Nokia and €100M in funding from Nokia and the Finnish sovereign fund Tesi for next-gen physical AI… | Peter Sarlin | 91 comments",
+    "url": "https://www.linkedin.com/posts/psarlin_proud-to-see-postscriptum-backed-nestai-take-activity-7397256801483763713-o00J",
+    "date": "2025-11-20",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

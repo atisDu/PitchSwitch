@@ -81,5 +81,65 @@
     "rank": "FILING"
    }
   ]
+ },
+ {
+  "id": "78d7490a-dd04-5119-a7f1-e940b861219b:backers",
+  "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+  "label": null,
+  "date": null,
+  "amount_text": null,
+  "amount_eur": null,
+  "investors": [
+   {
+    "investor": {
+     "id": "b8f34378-af55-4f7c-a6f3-045904b0bbe0",
+     "name": "DIANA UK ENTERPRISES LTD",
+     "type": "Company",
+     "description": "A London‑based British company incorporated in 2024."
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+     "name": "REDSTONE",
+     "type": "Company",
+     "description": "French venture capital firm founded in 2022"
+    },
+    "is_lead": null
+   }
+  ],
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/kelluu-oy",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/459217-27",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Redstone | Portfolio",
+    "url": "https://redstone.vc/portfolio",
+    "date": "2026-01-01",
+    "rank": "UNKNOWN"
+   }
+  ]
  }
 ]

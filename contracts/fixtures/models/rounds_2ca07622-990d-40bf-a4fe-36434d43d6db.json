@@ -1,0 +1,77 @@
+[
+ {
+  "id": "2ca07622-990d-40bf-a4fe-36434d43d6db:backers",
+  "company_id": "2ca07622-990d-40bf-a4fe-36434d43d6db",
+  "label": null,
+  "date": null,
+  "amount_text": null,
+  "amount_eur": null,
+  "investors": [
+   {
+    "investor": {
+     "id": "c37e699e-602d-427f-a72c-d27e17e1ad8c",
+     "name": "Ministerio de Defensa de la República Checa",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "e59e252c-276a-4dce-83ed-7ebb3981baa0",
+     "name": "Polish Development Fund (PFR)",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "c9cc3658-eac0-4d61-9ed6-0b953cb9f3ee",
+     "name": "SatVu",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": null
+   }
+  ],
+  "sources": [
+   {
+    "name": "The Czech Republic has joined the NATO Innovation Fund!",
+    "url": "https://www.mo.gov.cz/en/ministry-of-defence/newsroom/news/the-czech-republic-has-joined-the-nato-innovation-fund!-245798",
+    "date": "2023-08-21",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "News",
+    "url": "https://www.mo.gov.cz/scripts/detail.php?pgid=193&conn=1218&pg=13",
+    "date": "2023-08-31",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "News",
+    "url": "https://innovatepoland.pl/en/news?page=0%2C1",
+    "date": "2021-05-03",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Polish Development Fund invests in NATO Innovation Fund",
+    "url": "https://pfrventures.pl/en/artykul/polish-development-fund-invests-nato-innovation-fund",
+    "date": "2023-07-10",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "CB Insights — Predictive Intelligence on Private Companies",
+    "url": "https://www.cbinsights.com/investor/ridgeline-ventures",
+    "date": "2026-06-01",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "CB Insights — Predictive Intelligence on Private Companies",
+    "url": "https://www.cbinsights.com/investor/adara-venture-partners",
+    "date": "2026-06-01",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

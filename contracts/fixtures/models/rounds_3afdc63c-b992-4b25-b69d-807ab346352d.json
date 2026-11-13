@@ -1,0 +1,83 @@
+[
+ {
+  "id": "3afdc63c-b992-4b25-b69d-807ab346352d:backers",
+  "company_id": "3afdc63c-b992-4b25-b69d-807ab346352d",
+  "label": null,
+  "date": null,
+  "amount_text": null,
+  "amount_eur": null,
+  "investors": [
+   {
+    "investor": {
+     "id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+     "name": "Rainfall Ventures",
+     "type": "Organization",
+     "description": "A venture capital firm that has invested in companies such as Arist and Plane."
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+     "name": "Skyfall Ventures",
+     "type": "Organization",
+     "description": "A venture capital firm headquartered in Glasgow, Scotland."
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+     "name": "STARTUPLAB FOUNDERS AS",
+     "type": "Company",
+     "description": "Norwegian venture capital firm founded in 2018 and headquartered in Oslo."
+    },
+    "is_lead": null
+   }
+  ],
+  "sources": [
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/stendr/__7VSvHoLx3hjMEv6yAnnHfm3bFhEeOWBkgqe3NhG5Jbc",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/company/1376632-18",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/skyfall-ventures/signals_and_news/timeline",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.crunchbase.com",
+    "url": "https://www.crunchbase.com/organization/rainfall-ventures/investor_summary/overview_timeline",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "pitchbook.com",
+    "url": "https://pitchbook.com/profiles/investor/57005-74",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "www.finsmes.com",
+    "url": "https://www.finsmes.com/2026/04/stendr-raises-5-4m-in-pre-seed-funding.html",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Stendr raises $5.4M in oversubscribed pre-seed round to build the Nordics'next defence prime",
+    "url": "https://stendr.com/news/stendr-pre-seed-announcement",
+    "date": "2026-04-15",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

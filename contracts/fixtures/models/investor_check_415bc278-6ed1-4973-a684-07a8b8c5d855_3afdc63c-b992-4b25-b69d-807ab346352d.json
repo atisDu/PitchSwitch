@@ -244,6 +244,87 @@
  ],
  "rounds": [
   {
+   "id": "3afdc63c-b992-4b25-b69d-807ab346352d:backers",
+   "company_id": "3afdc63c-b992-4b25-b69d-807ab346352d",
+   "label": null,
+   "date": null,
+   "amount_text": null,
+   "amount_eur": null,
+   "investors": [
+    {
+     "investor": {
+      "id": "0322aa66-c3c7-470c-a940-e6ec117d4051",
+      "name": "Rainfall Ventures",
+      "type": "Organization",
+      "description": "A venture capital firm that has invested in companies such as Arist and Plane."
+     },
+     "is_lead": null
+    },
+    {
+     "investor": {
+      "id": "9b65ed62-a126-4255-8339-44c59fbf0ad8",
+      "name": "Skyfall Ventures",
+      "type": "Organization",
+      "description": "A venture capital firm headquartered in Glasgow, Scotland."
+     },
+     "is_lead": null
+    },
+    {
+     "investor": {
+      "id": "3ef31033-9773-4fbd-91bf-1a971554e683",
+      "name": "STARTUPLAB FOUNDERS AS",
+      "type": "Company",
+      "description": "Norwegian venture capital firm founded in 2018 and headquartered in Oslo."
+     },
+     "is_lead": null
+    }
+   ],
+   "sources": [
+    {
+     "name": "tracxn.com",
+     "url": "https://tracxn.com/d/companies/stendr/__7VSvHoLx3hjMEv6yAnnHfm3bFhEeOWBkgqe3NhG5Jbc",
+     "date": "2026-08-24",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "pitchbook.com",
+     "url": "https://pitchbook.com/profiles/company/1376632-18",
+     "date": "2026-08-24",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "www.crunchbase.com",
+     "url": "https://www.crunchbase.com/organization/skyfall-ventures/signals_and_news/timeline",
+     "date": "2026-08-24",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "www.crunchbase.com",
+     "url": "https://www.crunchbase.com/organization/rainfall-ventures/investor_summary/overview_timeline",
+     "date": "2026-08-24",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "pitchbook.com",
+     "url": "https://pitchbook.com/profiles/investor/57005-74",
+     "date": "2026-08-24",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "www.finsmes.com",
+     "url": "https://www.finsmes.com/2026/04/stendr-raises-5-4m-in-pre-seed-funding.html",
+     "date": "2026-08-24",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "Stendr raises $5.4M in oversubscribed pre-seed round to build the Nordics'next defence prime",
+     "url": "https://stendr.com/news/stendr-pre-seed-announcement",
+     "date": "2026-04-15",
+     "rank": "UNKNOWN"
+    }
+   ]
+  },
+  {
    "id": "97d82be9-51db-59e4-bb04-f69213aff7e9",
    "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
    "label": "Series A",
@@ -327,6 +408,66 @@
    ]
   },
   {
+   "id": "78d7490a-dd04-5119-a7f1-e940b861219b:backers",
+   "company_id": "78d7490a-dd04-5119-a7f1-e940b861219b",
+   "label": null,
+   "date": null,
+   "amount_text": null,
+   "amount_eur": null,
+   "investors": [
+    {
+     "investor": {
+      "id": "b8f34378-af55-4f7c-a6f3-045904b0bbe0",
+      "name": "DIANA UK ENTERPRISES LTD",
+      "type": "Company",
+      "description": "A London‑based British company incorporated in 2024."
+     },
+     "is_lead": null
+    },
+    {
+     "investor": {
+      "id": "92a0d44f-3796-40e5-aef2-68ef66d18745",
+      "name": "REDSTONE",
+      "type": "Company",
+      "description": "French venture capital firm founded in 2022"
+     },
+     "is_lead": null
+    }
+   ],
+   "sources": [
+    {
+     "name": "tracxn.com",
+     "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ",
+     "date": "2026-08-25",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "tracxn.com",
+     "url": "https://tracxn.com/d/companies/kelluu/__XgTJlwiw13UPAtmPtXeceyQszDnObO3fYC4VZ_a_mnQ/funding-and-investors",
+     "date": "2026-08-25",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "www.crunchbase.com",
+     "url": "https://www.crunchbase.com/organization/kelluu-oy",
+     "date": "2026-08-25",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "pitchbook.com",
+     "url": "https://pitchbook.com/profiles/company/459217-27",
+     "date": "2026-08-25",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "Redstone | Portfolio",
+     "url": "https://redstone.vc/portfolio",
+     "date": "2026-01-01",
+     "rank": "UNKNOWN"
+    }
+   ]
+  },
+  {
    "id": "343975e5-1269-5839-8d7a-e2c3eb1c5fd8",
    "company_id": "f755b17d-26a2-5d1f-9e95-1cb19935d325",
    "label": "Pre-Seed",
@@ -362,6 +503,81 @@
      "url": "https://www.cbinsights.com/company/aavuus/financials",
      "date": "2026-11-13",
      "rank": "AGGREGATOR"
+    }
+   ]
+  },
+  {
+   "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1:backers",
+   "company_id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+   "label": null,
+   "date": null,
+   "amount_text": null,
+   "amount_eur": null,
+   "investors": [
+    {
+     "investor": {
+      "id": "7faf31b1-b7a2-4e93-b820-1fed0d86d2fa",
+      "name": "Candor",
+      "type": "Company",
+      "description": null
+     },
+     "is_lead": null
+    },
+    {
+     "investor": {
+      "id": "06f2c1c2-a992-427e-a011-de55e94af981",
+      "name": "EQT VENTURES INVESTMENTS LIMITED PARTNERSHIP",
+      "type": "Company",
+      "description": null
+     },
+     "is_lead": null
+    },
+    {
+     "investor": {
+      "id": "c0d5bf8c-3f43-4531-8ef6-8c8d1f0dcf5a",
+      "name": "Norrsken VC",
+      "type": "Organization",
+      "description": null
+     },
+     "is_lead": null
+    },
+    {
+     "investor": {
+      "id": "43b67397-2f00-4096-b571-19dab37d8c3d",
+      "name": "Stiftelsen Norrsken Foundation",
+      "type": "Company",
+      "description": null
+     },
+     "is_lead": null
+    },
+    {
+     "investor": {
+      "id": "1e86655e-373d-4fe8-be13-af3713581f73",
+      "name": "Y Combinator",
+      "type": "Company",
+      "description": null
+     },
+     "is_lead": null
+    }
+   ],
+   "sources": [
+    {
+     "name": "Y Combinator",
+     "url": "https://github.com/yc-oss/api",
+     "date": "2026-06-05",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "EQT Ventures Portfolio — 119 Companies & Co-Investors (2026)",
+     "url": "https://www.vcbacked.co/directory/investors/eqt-ventures?page=2",
+     "date": "2026-06-16",
+     "rank": "UNKNOWN"
+    },
+    {
+     "name": "Norrsken - Be part of the solution",
+     "url": "https://norrsken.org/investments",
+     "date": "2026-08-25",
+     "rank": "UNKNOWN"
     }
    ]
   }

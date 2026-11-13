@@ -1,0 +1,50 @@
+[
+ {
+  "id": "a1f7d57d-39a4-486f-bd9b-39b8b50ab1ff:backers",
+  "company_id": "a1f7d57d-39a4-486f-bd9b-39b8b50ab1ff",
+  "label": null,
+  "date": null,
+  "amount_text": null,
+  "amount_eur": null,
+  "investors": [
+   {
+    "investor": {
+     "id": "f8d6c852-c3c0-4914-b835-800f4096a834",
+     "name": "ELO",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "fd3ba350-0e55-40b5-96e3-013994777fdc",
+     "name": "Inventure",
+     "type": "Organization",
+     "description": "a Finnish investment firm headquartered in Helsinki"
+    },
+    "is_lead": null
+   }
+  ],
+  "sources": [
+   {
+    "name": "Elo doubles pace of Finnish unlisted growth bets with €100m push in H1",
+    "url": "https://www.ipe.com/news/elo-doubles-pace-of-finnish-unlisted-growth-bets-with-100m-push-in-h1/10136315.article",
+    "date": "2026-04-22",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "ReOrbit lands record funding to take on Musk's Starlink from Europe | TechCrunch",
+    "url": "https://techcrunch.com/2025/09/08/reorbit-lands-record-funding-to-take-on-musks-starlink-from-europe",
+    "date": "2025-09-08",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "tracxn.com",
+    "url": "https://tracxn.com/d/companies/reorbit/__jHH-J3eAQMBCCadIhwtvwYXFm3lkmdlH_FvBx81hPew/funding-and-investors",
+    "date": "2026-08-24",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

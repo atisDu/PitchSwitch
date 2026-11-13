@@ -41,6 +41,7 @@ from data.mappers import (
     merge_sources,
     related,
     slug,
+    undated_round,
 )
 
 MAX_CANDIDATES = 30
@@ -223,7 +224,16 @@ class Graph:
     # --- Views ---------------------------------------------------------------------------------
 
     def rounds_of(self, company_id: str) -> list[Round]:
-        return _newest_first(r for r in self.rounds.values() if r.company_id == company_id)
+        """The company's rounds, newest first, then its backers that appear in no round."""
+        rounds = _newest_first(r for r in self.rounds.values() if r.company_id == company_id)
+        in_rounds = {i.investor.id for r in rounds for i in r.investors}
+        loose = [link for link in self.backers(company_id) if link.investor_id not in in_rounds]
+        extra = undated_round(
+            company_id,
+            [self.refs[link.investor_id] for link in loose if link.investor_id in self.refs],
+            merge_sources(*[link.sources for link in loose]),
+        )
+        return [*rounds, extra] if extra else rounds
 
     def investor_rounds(self, investor_id: str) -> list[Round]:
         return _newest_first(

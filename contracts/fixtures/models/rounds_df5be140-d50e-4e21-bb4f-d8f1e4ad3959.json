@@ -1,0 +1,65 @@
+[
+ {
+  "id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959:backers",
+  "company_id": "df5be140-d50e-4e21-bb4f-d8f1e4ad3959",
+  "label": null,
+  "date": null,
+  "amount_text": null,
+  "amount_eur": null,
+  "investors": [
+   {
+    "investor": {
+     "id": "f8d6c852-c3c0-4914-b835-800f4096a834",
+     "name": "ELO",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "cdd4fc83-8fda-4922-ab3b-59aaf1a9063b",
+     "name": "FIBAN LTD",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "d155d2e9-236a-4d31-8256-e11222b407ba",
+     "name": "IQM Quantum Computers",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": null
+   }
+  ],
+  "sources": [
+   {
+    "name": "Elo pushes back on claims pension funds are failing to support Finnish growth",
+    "url": "https://www.europeanpensions.net/ep/Elo-pushes-back-on-claims-pension-funds-are-failing-to-support-Finnish-growth.php",
+    "date": "2026-04-08",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Partners | FiBAN",
+    "url": "https://fiban.org/portfolio",
+    "date": "2025-08-26",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "IQM Quantum Computers - Built for Real Impact",
+    "url": "https://meetiqm.com/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round",
+    "date": "2026-06-20",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "IQM Quantum Computers - Built for Real Impact",
+    "url": "https://meetiqm.com/press-releases/iqm-quantum-computers-raises-over-300-million-in-series-b-funding-round#elementor-action%3Aaction%3Dpopup%3Aclose%26settings%3DeyJkb19ub3Rfc2hvd19hZ2FpbiI6IiJ9",
+    "date": "2026-06-20",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

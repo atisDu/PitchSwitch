@@ -1,0 +1,35 @@
+[
+ {
+  "id": "13b90514-ba02-4974-9078-dfcea29ae8d0:backers",
+  "company_id": "13b90514-ba02-4974-9078-dfcea29ae8d0",
+  "label": null,
+  "date": null,
+  "amount_text": null,
+  "amount_eur": null,
+  "investors": [
+   {
+    "investor": {
+     "id": "7fec93a7-6518-45fb-a276-70eec4eeda4c",
+     "name": "Statkraft Ventures GmbH",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": null
+   }
+  ],
+  "sources": [
+   {
+    "name": "Norway funds",
+    "url": "https://www.statkraftventures.com/norway-fund",
+    "date": "2023-02-03",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Ubiq Aerospace and Statkraft Ventures to Propel Sustainable Autonomous Aviation",
+    "url": "https://www.ubiqaerospace.com/news/ubiq-aerospace-and-statkraft-ventures-to-propel-sustainable-autonomous-aviation",
+    "date": "2025-05-06",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]

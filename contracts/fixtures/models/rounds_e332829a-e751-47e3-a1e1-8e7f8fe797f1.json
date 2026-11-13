@@ -1,0 +1,77 @@
+[
+ {
+  "id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1:backers",
+  "company_id": "e332829a-e751-47e3-a1e1-8e7f8fe797f1",
+  "label": null,
+  "date": null,
+  "amount_text": null,
+  "amount_eur": null,
+  "investors": [
+   {
+    "investor": {
+     "id": "7faf31b1-b7a2-4e93-b820-1fed0d86d2fa",
+     "name": "Candor",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "06f2c1c2-a992-427e-a011-de55e94af981",
+     "name": "EQT VENTURES INVESTMENTS LIMITED PARTNERSHIP",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "c0d5bf8c-3f43-4531-8ef6-8c8d1f0dcf5a",
+     "name": "Norrsken VC",
+     "type": "Organization",
+     "description": null
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "43b67397-2f00-4096-b571-19dab37d8c3d",
+     "name": "Stiftelsen Norrsken Foundation",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": null
+   },
+   {
+    "investor": {
+     "id": "1e86655e-373d-4fe8-be13-af3713581f73",
+     "name": "Y Combinator",
+     "type": "Company",
+     "description": null
+    },
+    "is_lead": null
+   }
+  ],
+  "sources": [
+   {
+    "name": "Y Combinator",
+    "url": "https://github.com/yc-oss/api",
+    "date": "2026-06-05",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "EQT Ventures Portfolio — 119 Companies & Co-Investors (2026)",
+    "url": "https://www.vcbacked.co/directory/investors/eqt-ventures?page=2",
+    "date": "2026-06-16",
+    "rank": "UNKNOWN"
+   },
+   {
+    "name": "Norrsken - Be part of the solution",
+    "url": "https://norrsken.org/investments",
+    "date": "2026-08-25",
+    "rank": "UNKNOWN"
+   }
+  ]
+ }
+]
