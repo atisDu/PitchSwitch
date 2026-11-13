@@ -52,7 +52,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [x] **B2 Gemini wrapper** — `agent/llm.py`: one function for structured (JSON-schema) calls with retries + temperature 0; model names from env. Tests with a mocked client. Needs: T1.
 - [x] **B3 find_competitors** — `core/competitors.py`: candidates → Gemini judge → 10–15 `Competitor`s; reject IDs not in the candidate list. Needs: A2, B2.
 - [x] **B4 Conflict: portfolio** — `core/conflict.py` PORTFOLIO kind + tests on fixtures. Needs: A2.
-- [ ] **B5 Conflict: board** — BOARD kind via `people()` + tests. Needs: B4.
+- [x] **B5 Conflict: board** — BOARD kind via `people()` + tests. Needs: B4.
 - [ ] **B6 Scoring** — `core/scoring.py`: collect investors from competitors' rounds, compute signals, weights dict, conflict → skip, reasons with sources → `FounderReport`. Needs: B3, B4.
 - [ ] **B7 Wire founder + investor routes** — `/api/resolve`, `/api/founder/analyze`, `/api/investor/check` use core (still fake store). Needs: B1, B6, B5.
 - [ ] **B8 Eval set** — `backend/tests/core/test_eval.py`: Kelluu → NATO Innovation Fund appears as lead; Maki.vc shows defence pre-seed leads; counter-drone conflict detected; runs on fake + real store. Needs: B6.
