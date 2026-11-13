@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --test 'lib/**/*.test.ts'"
+    "test": "node --test 'lib/**/*.test.ts' 'mock/**/*.test.ts'",
+    "mock": "node mock/server.ts"
   },
   "dependencies": {
     "next": "16.4.6",
