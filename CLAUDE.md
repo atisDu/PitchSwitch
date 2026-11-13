@@ -3,13 +3,14 @@
 Several people, each with their own coding agent, work in this repo at once. `AGENTS.md` points to this
 file, so every agent (Claude Code, Codex, Gemini CLI, Cursor) reads the same instructions.
 
-**Read this whole file before writing any code.** A human will tell you which agent you are:
+**Read this whole file before writing any code.** You are one of three agents:
 **Agent A (Data & infra)**, **Agent B (Intelligence)** or **Agent C (Product)**.
-Your tasks are in `TODO.md` under your letter. Do them in order, one short branch per task.
+**Your role is in `CLAUDE.local.md`** in the repo root. That file is gitignored, so each clone has its own. If the file is missing, or your human gave you no role, ask your human before doing anything.
+Your tasks are in `TODO.md` under your letter. Follow the **Task loop** and the **Gates** below.
 The full product write-up is in `OVERVIEW.md`.
 
-> Start prompt for humans:
-> `Read CLAUDE.md and TODO.md. You are Agent A. Start with the first unchecked A-task.`
+> Setup for humans, once per clone: `echo "You are Agent B (Intelligence)." > CLAUDE.local.md`
+> Then start each session with: `Read CLAUDE.md, CLAUDE.local.md and TODO.md, then continue with my next task.`
 
 ## Project
 
@@ -47,6 +48,42 @@ The goal is to avoid merge conflicts. They come from long-lived branches and fro
 9. **Don't add a dependency** if a few lines of code would do. Never commit secrets; put them in `.env`, which must be gitignored. Only Agent A adds variable *names* to `.env.example`.
 10. **Keep sources attached and use IDs.** Every fact you pass on keeps its `sources: list[Source]`. Use Cala entity IDs, never names, as keys (Cala has 5 different "Inventure"s).
 11. **If a task is unclear or blocked, stop and ask your human.** Don't guess across someone else's area.
+
+### Task loop (every task, exactly like this)
+
+```sh
+# 1. Start: fresh main, then pick the task
+git switch main && git pull --rebase
+git fetch origin 'refs/entire/*:refs/entire/*'      # teammates' checkpoints
+#    Next task = your first unchecked task in TODO.md whose `Needs:` are all [x] on main
+#    and whose gate (table below) is open. If none is ready, tell your human what you're waiting for.
+git switch -c b/B3-find-competitors                 # <letter>/<task-id>-<slug>
+
+# 2. Work: only in your folders, small commits titled "[B3] ..."
+
+# 3. Finish: once the definition of done (below) is met
+git fetch origin && git rebase origin/main          # rerun your tests if anything new came in
+git switch main && git pull --rebase
+git merge --ff-only b/B3-find-competitors           # if it fails, main moved: go back to the branch and repeat step 3
+git push origin main && git branch -d b/B3-find-competitors
+
+# 4. Tick: your own TODO.md line only, in its own commit
+git add TODO.md && git commit -m "[B3] done" && git push origin main
+```
+
+If a push is rejected: `git pull --rebase`, rerun your tests, push again. Never `--force`.
+After ticking a task that opens a gate, **tell your human: "Gate Gx is open; tell the others to pull."**
+
+### Gates (when the others can continue)
+
+A gate is open when its task is ticked on `main`. To check: `git pull --rebase && grep -E '^- \[x\] \*\*A2 ' TODO.md` (replace A2 with the task that opens the gate).
+
+| Gate | Opened by | Open when | Unblocks | While waiting |
+| --- | --- | --- | --- | --- |
+| **G0 Scaffold** | A (with all three) | T1 + T2 ticked | A1 (also needs T3), A3, A5 · B2 · C1, C4 | — |
+| **G1 Fixtures** (CP1) | A | **A2** ticked: `contracts/fixtures/models/*.json` + `get_store()` returning `FakeDataStore` | B1, B3, B4 → rest of B on the fake store · C2 → C3, C5–C7 | A: only A1 → A2, nothing else first · B: B2 · C: C1, C4 |
+| **G2 Real data** (CP2) | A | **A12** ticked: `USE_FAKE_STORE=false` works for one demo company | B9 | B: B8 and polish on the fake store · C: screens on the mock |
+| **G3 Founder E2E** (CP3) | B | **B10** ticked: real `FounderReport`s for the 3 demo companies | C8 · A17 · B11–B15 | A: A13–A16 · C: C7, C9 on the mock |
 
 ### Definition of done (every task)
 
