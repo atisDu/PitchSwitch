@@ -28,3 +28,14 @@ Requests for other areas and "not yet checked against live <service>" lines go h
   Stendr's backers reach Skip. No contract change needed; the 1.2.0 `backers()` idea is dropped.
   `test_eval.py::test_counter_drone_conflict` guards it.
 - Open, minor: `co_investors()` returns no sources, so warm-path `Reason`s have `sources=[]`.
+
+## B9 real-data pass: requests for A (13 Nov)
+
+- **Sensofusion has no candidates on the real store → empty founder report (demo company!).**
+  `resolve("Sensofusion")` → `5c699806` "Sensofusion Oyj": `industries=[]`, description "Finnish
+  company founded in 2016 and headquartered in Vantaa." `candidate_competitors()` makes one
+  `knowledge_query` and returns 0, so the judge gets nothing and Pitch/Skip are empty.
+  Ask: a fallback when industries are empty, e.g. take the industry from the other entry of the
+  firm (`202e9283` "Sensofusion Oy") or a sibling, query by the description text / a
+  `knowledge_search` ("counter-drone companies in the Nordics"), or the A13 vector neighbours.
+  Stendr (counter-drone, Norway) must come back as a candidate for the demo.
