@@ -2,7 +2,7 @@
 
 import pytest
 
-from contracts.schemas import Competitor
+from contracts.schemas import Competitor, Source
 from core.conflict import check_conflict
 from data import get_store
 
@@ -38,3 +38,39 @@ async def test_no_conflict_when_competitor_not_in_portfolio(store):
 async def test_no_competitors_or_unknown_investor(store):
     assert await check_conflict(NIF, []) == []
     assert await check_conflict("unknown-investor", await rivals(store, KELLUU)) == []
+
+
+async def test_board_conflict_via_shared_person(store, monkeypatch):
+    """No fixture has a real BOARD overlap, so give the investor Kelluu's board member."""
+    board = [p for p in await store.people(KELLUU) if p.role == "BOARD"][0]
+    partner = board.model_copy(
+        update={"company_id": MAKI, "role": "EMPLOYEE", "sources": [Source(name="maki.vc")]}
+    )
+    real_people = store.people
+
+    async def people(entity_id):
+        return [partner] if entity_id == MAKI else await real_people(entity_id)
+
+    monkeypatch.setattr(store, "people", people)
+    out = await check_conflict(MAKI, await rivals(store, KELLUU, STENDR))
+
+    assert [(c.kind, c.competitor.id, c.via_person.id) for c in out] == [
+        ("BOARD", KELLUU, board.person.id)
+    ]
+    assert out[0].sources == [*board.sources, Source(name="maki.vc")]
+
+
+async def test_board_needs_board_role(store, monkeypatch):
+    """A shared person who is only the competitor's CEO/founder is not a BOARD conflict."""
+    ceo = [p for p in await store.people(KELLUU) if p.role == "CEO"][0]
+    if any(p.person.id == ceo.person.id and p.role == "BOARD" for p in await store.people(KELLUU)):
+        pytest.skip("fixture CEO also sits on the board")
+    real_people = store.people
+
+    async def people(entity_id):
+        if entity_id == MAKI:
+            return [ceo.model_copy(update={"company_id": MAKI})]
+        return await real_people(entity_id)
+
+    monkeypatch.setattr(store, "people", people)
+    assert await check_conflict(MAKI, await rivals(store, KELLUU)) == []
