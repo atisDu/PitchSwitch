@@ -58,7 +58,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [x] **B8 Eval set** — `backend/tests/core/test_eval.py`: Kelluu → NATO Innovation Fund appears as lead; Maki.vc shows defence pre-seed leads; counter-drone conflict detected; runs on fake + real store. Needs: B6.
 
 ### CP3 — Saturday ~20:00
-- [ ] **B9 Real-data pass** — run everything with `USE_FAKE_STORE=false`, fix mapping surprises (via notes to A), tune weights. Needs: A12, B8.
+- [x] **B9 Real-data pass** — run everything with `USE_FAKE_STORE=false`, fix mapping surprises (via notes to A), tune weights. Needs: A12, B8.
 - [ ] **B10 Founder mode end to end** — the API serves real `FounderReport`s for the 3 demo companies under ~10 s (cached). **= CP3 with C.** Needs: B9.
 
 ### CP4 — Saturday night
