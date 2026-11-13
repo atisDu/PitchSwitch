@@ -62,7 +62,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [x] **B10 Founder mode end to end** — the API serves real `FounderReport`s for the 3 demo companies under ~10 s (cached). **= CP3 with C.** Needs: B9.
 
 ### CP4 — Saturday night
-- [ ] **B11 Briefs** — `core/briefs.py` + `/api/brief`: facts + `sourced_answer` claims → Gemini formats → `Brief` with citations; no uncited sentences. Needs: B10, A9.
+- [x] **B11 Briefs** — `core/briefs.py` + `/api/brief`: facts + `sourced_answer` claims → Gemini formats → `Brief` with citations; no uncited sentences. Needs: B10, A9.
 - [ ] **B12 Agent tools** — `agent/tools.py`: tool schemas for core functions + `sourced_answer`. Needs: B10.
 - [ ] **B13 Agent loop + slush-prep** — `agent/gemini_agent.py` function-calling loop (max 12 calls), job store in memory, `/api/slush-prep` + `/api/jobs/{id}/stream` SSE of `AgentEvent`s. Needs: B12, B11.
 - [ ] **B14 Chat** — `/api/chat` streaming over the same loop, scoped to the current company/investor. Needs: B13.
