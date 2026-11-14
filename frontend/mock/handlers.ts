@@ -6,6 +6,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
+import { fitForCheck, fitForRaise } from "./funding.ts";
 import type {
   AgentEvent,
   Brief,
@@ -14,6 +15,7 @@ import type {
   FounderReport,
   InvestorCheck,
   InvestorScore,
+  Round,
 } from "../lib/types.ts";
 
 export interface IndexEntity extends EntityRef {
@@ -41,6 +43,12 @@ export function slug(text: string): string {
 
 const json = (body: unknown, status = 200): MockResult => ({ kind: "json", status, body });
 const error = (status: number, message: string): MockResult => json({ error: message }, status);
+
+/** An optional positive amount: undefined when absent, null when present but invalid (422). */
+function amount(v: unknown): number | undefined | null {
+  if (v === undefined || v === null) return undefined;
+  return typeof v === "number" && Number.isFinite(v) && v > 0 ? v : null;
+}
 
 function str(v: unknown): string | null {
   return typeof v === "string" && v.trim() ? v.trim() : null;
@@ -120,21 +128,38 @@ export class MockApi {
   private founder(body: Record<string, unknown>): MockResult {
     const id = str(body.company_id);
     if (!id) return error(422, "company_id is required");
+    const target = amount(body.target_amount_eur);
+    if (target === null) return error(422, "target_amount_eur must be a positive number");
     const report = this.tryRead<FounderReport>(`founder_report_${this.canonical(id)}.json`);
     if (!report) return error(404, "The mock has no founder report for this company.");
     const ids = body.competitor_ids;
-    if (!Array.isArray(ids)) return json(report);
-    return json(restrictToCompetitors(report, new Set(ids.map(String))));
+    const ranked = Array.isArray(ids) ? restrictToCompetitors(report, new Set(ids.map(String))) : report;
+    // Until B21: funding_fit from the investor's recorded round sizes (mock/funding.ts).
+    const withFit = (s: InvestorScore): InvestorScore => ({
+      ...s,
+      funding_fit:
+        target === undefined
+          ? null
+          : fitForRaise(target, s.investor.name, this.tryRead<Round[]>(`investor_rounds_${s.investor.id}.json`) ?? []),
+    });
+    return json({ ...ranked, pitch: ranked.pitch.map(withFit), skip: ranked.skip.map(withFit) });
   }
 
   private investorCheck(body: Record<string, unknown>): MockResult {
     const inv = str(body.investor_id);
     const co = str(body.company_id);
     if (!inv || !co) return error(422, "investor_id and company_id are required");
+    const maxCheck = amount(body.max_check_eur);
+    if (maxCheck === null) return error(422, "max_check_eur must be a positive number");
     const check = this.tryRead<InvestorCheck>(
       `investor_check_${this.canonical(inv)}_${this.canonical(co)}.json`,
     );
-    return check ? json(check) : error(404, "The mock has no investor check for this pair.");
+    if (!check) return error(404, "The mock has no investor check for this pair.");
+    const own = check.rounds.filter((r) => r.company_id === check.company.id);
+    return json({
+      ...check,
+      funding_fit: maxCheck === undefined ? null : fitForCheck(maxCheck, check.company.name, own),
+    });
   }
 
   private brief(body: Record<string, unknown>): MockResult {

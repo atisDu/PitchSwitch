@@ -4,7 +4,7 @@ import { dirname, join } from "node:path";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
 
-import type { AgentEvent, EntityRef, FounderReport } from "../lib/types.ts";
+import type { AgentEvent, EntityRef, FounderReport, InvestorCheck } from "../lib/types.ts";
 import { MockApi, restrictToCompetitors, slug, type FixtureIndex } from "./handlers.ts";
 
 const DIR = join(dirname(fileURLToPath(import.meta.url)), "../../contracts/fixtures/models");
@@ -116,4 +116,25 @@ test("chat streams text chunks and ends with citations on done", () => {
   assert.ok(events.some((e) => e.type === "text"));
   assert.ok((events.at(-1)?.citations.length ?? 0) > 0);
   assert.equal(status("POST", "/api/chat", {}), 422);
+});
+
+test("funding fit (mock of B21): only with an amount, every card gets one, bad amounts are 422", () => {
+  const company_id = index.founder_mode[0].company_id;
+  const plain = ok<FounderReport>("POST", "/api/founder/analyze", { company_id });
+  assert.ok([...plain.pitch, ...plain.skip].every((s) => s.funding_fit === null));
+
+  const fit = ok<FounderReport>("POST", "/api/founder/analyze", { company_id, target_amount_eur: 3_000_000 });
+  const cards = [...fit.pitch, ...fit.skip];
+  assert.ok(cards.length > 0 && cards.every((s) => s.funding_fit !== null));
+  const verdicts = new Set(cards.map((s) => s.funding_fit!.verdict));
+  assert.ok([...verdicts].every((v) => ["fits", "too_small", "too_large", "unknown"].includes(v)));
+  assert.ok(cards.some((s) => s.funding_fit!.verdict !== "unknown"), "some investors have round sizes");
+
+  for (const bad of [0, -5, "3M"]) {
+    assert.equal(status("POST", "/api/founder/analyze", { company_id, target_amount_eur: bad }), 422);
+  }
+  const pair = index.investor_mode[0];
+  const check = ok<InvestorCheck>("POST", "/api/investor/check", { ...pair, max_check_eur: 500_000 });
+  assert.ok(check.funding_fit && check.funding_fit.text.length > 0);
+  assert.equal(ok<InvestorCheck>("POST", "/api/investor/check", { ...pair }).funding_fit, null);
 });
