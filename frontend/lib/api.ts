@@ -4,7 +4,7 @@
 // rewrites to `${API_URL}/api/*` (B's server, or C's mock on another port).
 // On the server (server components, route handlers) we call API_URL directly.
 
-import { parseAgentEvents } from "./sse";
+import { parseAgentEvents } from "./sse.ts";
 import type {
   AgentEvent,
   Brief,

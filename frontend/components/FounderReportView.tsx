@@ -12,7 +12,8 @@ import { CompetitorChips } from "@/components/CompetitorChips";
 import { PitchCard, SkipCard } from "@/components/InvestorCard";
 import { SlowNotice } from "@/components/SlowNotice";
 import { SourceBadges } from "@/components/SourceBadge";
-import { analyzeFounder, ApiError } from "@/lib/api";
+import { analyzeFounder } from "@/lib/api";
+import { describeError } from "@/lib/errors";
 import { keptCompetitorIds, prettyEnum } from "@/lib/format";
 import { prepPath } from "@/lib/routes";
 import type { Company, FounderReport } from "@/lib/types";
@@ -23,7 +24,7 @@ const PITCH_SHOWN = 5;
 
 type Load =
   | { status: "loading" }
-  | { status: "error"; message: string; notFound: boolean }
+  | { status: "error"; message: string; notFound: boolean; detail: string | null }
   | { status: "ready"; report: FounderReport; reranking: boolean; rerankError: string | null };
 
 export function FounderReportView({ companyId }: { companyId: string }) {
@@ -33,43 +34,51 @@ export function FounderReportView({ companyId }: { companyId: string }) {
   const [showAllPitch, setShowAllPitch] = useState(false);
   const abort = useRef<AbortController | null>(null);
 
-  const run = useCallback(
-    async (competitorIds?: string[]) => {
+  // Fetches and stores a report. State is set only in the promise callbacks, so the initial
+  // load can run from an effect; `run` below flips the loading state first, from handlers.
+  const fetchReport = useCallback(
+    (competitorIds?: string[]) => {
       abort.current?.abort();
       const ctrl = new AbortController();
       abort.current = ctrl;
-      setLoad((prev) =>
-        prev.status === "ready" && competitorIds
-          ? { ...prev, reranking: true, rerankError: null }
-          : { status: "loading" },
+      return analyzeFounder(
+        { company_id: companyId, ...(competitorIds ? { competitor_ids: competitorIds } : {}) },
+        ctrl.signal,
+      ).then(
+        (report) => {
+          if (ctrl.signal.aborted) return;
+          setLoad({ status: "ready", report, reranking: false, rerankError: null });
+          setRemoved(new Set());
+          setNarrowed(Boolean(competitorIds));
+          setShowAllPitch(false);
+        },
+        (err: unknown) => {
+          if (ctrl.signal.aborted) return;
+          const e = describeError(err);
+          setLoad((prev) =>
+            prev.status === "ready" && competitorIds
+              ? { ...prev, reranking: false, rerankError: e.message }
+              : { status: "error", message: e.message, notFound: e.notFound, detail: e.detail },
+          );
+        },
       );
-      try {
-        const report = await analyzeFounder(
-          { company_id: companyId, ...(competitorIds ? { competitor_ids: competitorIds } : {}) },
-          ctrl.signal,
-        );
-        if (ctrl.signal.aborted) return;
-        setLoad({ status: "ready", report, reranking: false, rerankError: null });
-        setRemoved(new Set());
-        setNarrowed(Boolean(competitorIds));
-        setShowAllPitch(false);
-      } catch (err) {
-        if (ctrl.signal.aborted) return;
-        const message = err instanceof ApiError ? err.message : "Something went wrong.";
-        setLoad((prev) =>
-          prev.status === "ready" && competitorIds
-            ? { ...prev, reranking: false, rerankError: message }
-            : { status: "error", message, notFound: err instanceof ApiError && err.status === 404 },
-        );
-      }
     },
     [companyId],
   );
 
+  function run(competitorIds?: string[]) {
+    setLoad((prev) =>
+      prev.status === "ready" && competitorIds
+        ? { ...prev, reranking: true, rerankError: null }
+        : { status: "loading" },
+    );
+    void fetchReport(competitorIds);
+  }
+
   useEffect(() => {
-    void run();
+    void fetchReport();
     return () => abort.current?.abort();
-  }, [run]);
+  }, [fetchReport]);
 
   if (load.status === "loading") return <LoadingReport />;
   if (load.status === "error") {
@@ -80,6 +89,12 @@ export function FounderReportView({ companyId }: { companyId: string }) {
           {load.notFound ? "We couldn't find that company." : "The report didn't load."}
         </h1>
         <p className="mt-6 border-l-2 border-foreground pl-3">{load.message}</p>
+        {load.detail && (
+          <details className="mt-3 text-sm text-muted">
+            <summary className="cursor-pointer">Technical details</summary>
+            <p className="mt-2 font-mono text-xs break-all">{load.detail}</p>
+          </details>
+        )}
         <div className="mt-8 flex gap-3">
           {!load.notFound && (
             <button type="button" className="btn-primary" onClick={() => void run()}>

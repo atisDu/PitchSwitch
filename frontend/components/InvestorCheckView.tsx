@@ -9,7 +9,8 @@ import { useEffect, useState } from "react";
 import { ChatPanel } from "@/components/ChatPanel";
 import { SlowNotice } from "@/components/SlowNotice";
 import { SourceBadges } from "@/components/SourceBadge";
-import { ApiError, checkInvestor } from "@/lib/api";
+import { describeError } from "@/lib/errors";
+import { checkInvestor } from "@/lib/api";
 import { investorConflictText, marketMap, roundTitle, type MarketEntry } from "@/lib/check";
 import { prettyEnum } from "@/lib/format";
 import { founderPath } from "@/lib/routes";
@@ -18,7 +19,7 @@ import type { InvestorCheck, Round } from "@/lib/types";
 
 type Load =
   | { status: "loading" }
-  | { status: "error"; message: string; notFound: boolean }
+  | { status: "error"; message: string; notFound: boolean; detail: string | null }
   | { status: "ready"; check: InvestorCheck };
 
 export function InvestorCheckView({ investorId, companyId }: { investorId: string; companyId: string }) {
@@ -33,11 +34,8 @@ export function InvestorCheckView({ investorId, companyId }: { investorId: strin
       },
       (err: unknown) => {
         if (ctrl.signal.aborted) return;
-        setLoad({
-          status: "error",
-          message: err instanceof ApiError ? err.message : "Something went wrong.",
-          notFound: err instanceof ApiError && err.status === 404,
-        });
+        const e = describeError(err);
+        setLoad({ status: "error", message: e.message, notFound: e.notFound, detail: e.detail });
       },
     );
     return () => ctrl.abort();
@@ -64,6 +62,12 @@ export function InvestorCheckView({ investorId, companyId }: { investorId: strin
           {load.notFound ? "We couldn't check that pair." : "The check didn't load."}
         </h1>
         <p className="mt-6 border-l-2 border-foreground pl-3">{load.message}</p>
+        {load.detail && (
+          <details className="mt-3 text-sm text-muted">
+            <summary className="cursor-pointer">Technical details</summary>
+            <p className="mt-2 font-mono text-xs break-all">{load.detail}</p>
+          </details>
+        )}
         <div className="mt-8 flex gap-3">
           {!load.notFound && (
             <button
