@@ -341,4 +341,33 @@ investors in rounds too, so the fake store has the same gap.
   `find_competitors` on Sensofusion answer (MyDefence, Stendr, Frankenburg, Origin Robotics),
   0.4-1.8 s. The demo question: Skyfall Ventures x Sensofusion -> PORTFOLIO conflict via Stendr,
   7 sources, 4.8 s. No token or a wrong one (header or `?key=`) -> 401 with the hint.
-- **Still not checked:** Claude's custom-connector screen and Cursor (need a human at the app).
+- **Claude Code 2.1.325 as the client** (`claude -p` with the server added): the header form
+  exactly as `setup` prints it and the `?key=` URL both connect; "Using only PitchSwitch: should
+  Sensofusion pitch Rainfall Ventures?" -> "No, skip: Rainfall backs Stendr, a direct competitor",
+  with sources, 9-11 s.
+- **Still not checked:** the custom-connector screen in claude.ai / Claude Desktop (needs a
+  human at the app) and Cursor (not installed here). The server side is ready for both: with
+  `?key=` the first request is already allowed, and it advertises no OAuth (all
+  `/.well-known/oauth-*` paths and `/register` answer 404, the 401 carries no
+  `WWW-Authenticate`). Cursor takes the same JSON as the `setup` output.
+
+### For C (`docs/mcp-demo.md`, demo script)
+
+- Setup text: paste what `python -m mcp_server.server setup https://95-133-252-219.sslip.io`
+  prints (run from `backend/` with `MCP_TOKEN` set; it fills in the token). Put `<token>` in
+  the docs, never the token itself: it is a password and the docs are public.
+- Use the header form for Claude Code and Cursor, and the `?key=` URL only for the
+  claude.ai / Claude Desktop connector, which has no header field.
+- **Troubleshooting line worth adding:** with no token or a wrong one, Claude Code does not show
+  our "missing or wrong token" message. After the 401 it tries OAuth by itself and reports
+  "Dynamic Client Registration ... 404". That message means the token is missing or wrong;
+  nothing is broken on the server.
+- Expect an answer in about 10 s for the three demo companies (everything is stored); a company
+  nobody asked about before can take a minute, and the tool then answers "Still working, call
+  again", which the client does.
+- **Careful with Rainfall x Sensofusion on stage:** the stored brief says both "Stendr (Pre-Seed,
+  Apr 2026)" [14][15] and "led the Seed round for Stendr (~$5M)" [16]. Cala's round data has no
+  label or amount for that round; both lines come from Cala's knowledge search, whose sources
+  disagree. Two runs over MCP repeated one or the other. Skyfall (C16's MCP question) is not
+  affected. **Open for B:** make the brief name a disagreement between sources instead of
+  stating both.
