@@ -1,0 +1,46 @@
+{
+  "cli_version": "0.13.3",
+  "checkpoint_id": "01M7CK6FABT1GA50PSZXWR5KG7",
+  "session_id": "11508950-d8c9-4219-9738-d2bd1728ff22",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-14T08:36:19.019837169Z",
+  "branch": "b/B13-agent-loop",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "backend/agent/gemini_agent.py"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-fable-5-2",
+  "turn_id": "266a0fdc5525",
+  "checkpoint_transcript_start": 200,
+  "transcript_lines_at_start": 200,
+  "compact_transcript_start": 16,
+  "token_usage": {
+    "input_tokens": 20,
+    "cache_creation_tokens": 36269,
+    "cache_read_tokens": 1432901,
+    "output_tokens": 32473,
+    "api_call_count": 10
+  },
+  "session_token_usage": {
+    "input_tokens": 50,
+    "cache_creation_tokens": 146716,
+    "cache_read_tokens": 2899703,
+    "output_tokens": 65836,
+    "api_call_count": 25
+  },
+  "redaction": {
+    "replacements": 6,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 2,
+      "credentialed_uri": 0,
+      "entropy": 4,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  }
+}
