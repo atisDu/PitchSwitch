@@ -116,16 +116,17 @@ async def collect_facts(
     left out: they could not be cited)."""
     store = get_store()
     investor = await store.company(investor_id)
-    conflicts, rounds, portfolio = await asyncio.gather(
-        check_conflict(investor.id, competitors),
-        store.investor_rounds(investor.id),
-        store.portfolio(investor.id),
-    )
     question = (
         f"Which {_sector(company)} companies has {investor.name} invested in, "
         f"and which rounds did it lead?"
     )
-    _, claims = await store.sourced_answer(question)
+    # Cala's search (the slow part, up to a minute uncached) runs alongside the rest.
+    conflicts, rounds, portfolio, (_, claims) = await asyncio.gather(
+        check_conflict(investor.id, competitors),
+        store.investor_rounds(investor.id),
+        store.portfolio(investor.id),
+        store.sourced_answer(question),
+    )
 
     names = {link.company.id: link.company.name for link in portfolio}
     names |= {c.id: c.name for c in space} | {c.company.id: c.company.name for c in competitors}
