@@ -55,7 +55,7 @@ export function HomeForm() {
   }
 
   return (
-    <div className="max-w-xl lg:pt-3">
+    <div className="max-w-xl">
       <div role="radiogroup" aria-label="Mode" className="flex gap-8 border-b border-line">
         {MODES.map((m) => (
           <button

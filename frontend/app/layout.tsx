@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Inter } from "next/font/google";
+import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import Link from "next/link";
 
 import { Suspense } from "react";
@@ -7,9 +7,10 @@ import { Suspense } from "react";
 import { Links, NavLinks } from "@/components/NavLinks";
 import "./globals.css";
 
-// Stand-ins for DESIGN.md's commercial faces: Inter for TWK Lausanne,
-// Instrument Serif for the PP Mondwest display serif.
-const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
+// Stand-ins for DESIGN.md's commercial faces: Instrument Sans for TWK Lausanne (a grotesk from
+// the same family as the display serif, so the two read as one voice), Instrument Serif for the
+// PP Mondwest display serif.
+const sans = Instrument_Sans({ variable: "--font-ui", subsets: ["latin"] });
 const display = Instrument_Serif({
   variable: "--font-display",
   subsets: ["latin"],
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} ${display.variable} h-full antialiased`}>
+    <html lang="en" className={`${sans.variable} ${display.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <header className="border-b border-line print:hidden">
           <div className="mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between px-5 md:px-10">
@@ -39,7 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </nav>
           </div>
         </header>
-        <main className="mx-auto w-full max-w-[1400px] flex-1 px-5 pt-12 pb-28 md:px-10 md:py-20">
+        <main className="mx-auto w-full max-w-[1400px] flex-1 px-5 pt-8 pb-24 md:px-10">
           {children}
         </main>
         <footer className="bg-press text-background print:hidden">
