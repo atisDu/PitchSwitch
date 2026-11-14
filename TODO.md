@@ -107,5 +107,5 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [ ] **C16 Demo + pitch** — demo script (founder conflict → flip to investor mode → MCP in Claude Desktop), slides, rehearse twice with the team, record a backup video.
 
 ### After CP5 — added 14 Nov
-- [ ] **C17 Score transparency + Slush button** — show each investor's score breakdown (first reason, starts with "Score "; parts split by " + ") clearly on the card, e.g. a small bar per signal; Slush prep: a "Prep every Slush 2026 investor Cala knows of" option that sends `all_slush_investors: true` (names optional then). Wording and stream details in `notes/B.md`. Needs: B17.
+- [x] **C17 Score transparency + Slush button** — show each investor's score breakdown (first reason, starts with "Score "; parts split by " + ") clearly on the card, e.g. a small bar per signal; Slush prep: a "Prep every Slush 2026 investor Cala knows of" option that sends `all_slush_investors: true` (names optional then). Wording and stream details in `notes/B.md`. Needs: B17.
 - [x] **C18 Funding amount inputs** — optional "amount you want to raise" on the founder side and "most you will fund" on the investor side, sent to B's new optional fields; show the fit signal / flag on the cards. Needs: B21.
