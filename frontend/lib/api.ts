@@ -4,6 +4,7 @@
 // rewrites to `${API_URL}/api/*` (B's server, or C's mock on another port).
 // On the server (server components, route handlers) we call API_URL directly.
 
+import { isSample, sampleBrief, sampleChat, sampleCheck, sampleReport } from "./sample.ts";
 import { parseAgentEvents } from "./sse.ts";
 import type {
   AgentEvent,
@@ -74,6 +75,10 @@ async function* stream(res: Response): AsyncGenerator<AgentEvent> {
   yield* parseAgentEvents(res.body);
 }
 
+// The landing page's sample report (lib/sample.ts): "sample-…" IDs never reach the server.
+const fromSample = <T>(value: T | null): Promise<T> =>
+  value ? Promise.resolve(value) : Promise.reject(new ApiError("This sample has no such fund.", 404));
+
 // --- Routes (contracts/api.md) -----------------------------------------------
 
 export function health(signal?: AbortSignal): Promise<HealthResponse> {
@@ -88,6 +93,7 @@ export function analyzeFounder(
   body: FounderAnalyzeRequest,
   signal?: AbortSignal,
 ): Promise<FounderReport> {
+  if (isSample(body.company_id)) return Promise.resolve(sampleReport(body.competitor_ids));
   return postJson("/api/founder/analyze", body, signal);
 }
 
@@ -95,10 +101,12 @@ export function checkInvestor(
   body: InvestorCheckRequest,
   signal?: AbortSignal,
 ): Promise<InvestorCheck> {
+  if (isSample(body.company_id)) return fromSample(sampleCheck(body.investor_id));
   return postJson("/api/investor/check", body, signal);
 }
 
 export function getBrief(body: BriefRequest, signal?: AbortSignal): Promise<Brief> {
+  if (isSample(body.company_id)) return fromSample(sampleBrief(body.investor_id));
   return postJson("/api/brief", body, signal);
 }
 
@@ -120,6 +128,7 @@ export async function* jobEvents(jobId: string, signal?: AbortSignal): AsyncGene
 
 /** Streams a chat answer: `text` chunks, then `done` carrying the citations. */
 export async function* chat(body: ChatRequest, signal?: AbortSignal): AsyncGenerator<AgentEvent> {
+  if (isSample(body.company_id)) return yield* sampleChat();
   const res = await request("/api/chat", {
     method: "POST",
     body: JSON.stringify(body),

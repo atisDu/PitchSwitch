@@ -11,7 +11,18 @@ import { safeUrl } from "@/lib/sources";
 import type { Source } from "@/lib/types";
 
 /** Brief text and its numbered sources. `anchor` keeps citation links unique when several briefs share a page. */
-export function BriefBody({ blocks, citations, anchor }: { blocks: Block[]; citations: Source[]; anchor: string }) {
+/** `extra`: a section shown after the brief's own sections, before its sources (the score). */
+export function BriefBody({
+  blocks,
+  citations,
+  anchor,
+  extra,
+}: {
+  blocks: Block[];
+  citations: Source[];
+  anchor: string;
+  extra?: ReactNode;
+}) {
   return (
     <>
       {blocks.length === 0 ? (
@@ -25,6 +36,7 @@ export function BriefBody({ blocks, citations, anchor }: { blocks: Block[]; cita
           ))}
         </div>
       )}
+      {extra}
       <section className="mt-16 border-t border-line pt-8">
         <h2 className="label">Sources · {citations.length}</h2>
         <ol className="mt-4 space-y-3">

@@ -6,6 +6,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { BriefScore } from "@/components/BriefScore";
 import { ChatPanel } from "@/components/ChatPanel";
 import { BriefBody, InlineContent } from "@/components/CitedText";
 import { SlowNotice } from "@/components/SlowNotice";
@@ -15,6 +16,7 @@ import { displayName, investorKind } from "@/lib/format";
 import { INVESTOR_WORDS } from "@/lib/match";
 import { parseMarkdown, type Inline } from "@/lib/markdown";
 import { checkPath, founderPath } from "@/lib/routes";
+import { isSample } from "@/lib/sample";
 import type { Brief, EntityRef } from "@/lib/types";
 
 type Load =
@@ -38,7 +40,7 @@ export function BriefView({
   const [entity, setEntity] = useState<EntityRef | null>(null);
 
   useEffect(() => {
-    if (!names.investor) return;
+    if (!names.investor || isSample(investorId)) return;
     const ctrl = new AbortController();
     resolve(names.investor, "investor", ctrl.signal).then(
       (items) => {
@@ -155,7 +157,12 @@ export function BriefView({
             ]}
           />
         </div>
-        <BriefBody blocks={body} citations={brief.citations} anchor="cite" />
+        <BriefBody
+          blocks={body}
+          citations={brief.citations}
+          anchor="cite"
+          extra={<BriefScore investorId={investorId} companyId={companyId} />}
+        />
       </div>
     </article>
   );

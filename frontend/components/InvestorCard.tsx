@@ -171,7 +171,7 @@ function Breakdown({ item, open = false, skip = false }: { item: InvestorScore; 
   );
 }
 
-function BreakdownRows({ breakdown, sources }: { breakdown: ScoreBreakdown; sources: Source[] }) {
+export function BreakdownRows({ breakdown, sources }: { breakdown: ScoreBreakdown; sources: Source[] }) {
   const widest = Math.max(...breakdown.parts.map((p) => p.max), 1);
   return (
     <div className="mt-3">

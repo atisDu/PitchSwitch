@@ -6,6 +6,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { BriefScore } from "@/components/BriefScore";
 import { ChatPanel } from "@/components/ChatPanel";
 import { BriefBody } from "@/components/CitedText";
 import { EntityPicker } from "@/components/EntityPicker";
@@ -372,7 +373,12 @@ function Card({
               <span className="hidden group-open:inline">− Hide</span>
             </summary>
             <div className="text-base [&_.text-lg]:text-base">
-              <BriefBody blocks={blocks} citations={card.brief.citations} anchor={`prep-${index}-cite`} />
+              <BriefBody
+                blocks={blocks}
+                citations={card.brief.citations}
+                anchor={`prep-${index}-cite`}
+                extra={companyId && <BriefScore investorId={card.brief.investor_id} companyId={companyId} />}
+              />
             </div>
           </details>
         </>
