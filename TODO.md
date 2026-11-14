@@ -41,7 +41,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 
 ### CP5 — Sunday morning
 - [x] **A18 Pre-cache demo** — warm the cache for all T3 cases; verify `CACHE_ONLY=true` runs the full demo offline. Needs: A10, A17.
-- [ ] **A19 Deploy notes** — finish `deploy/verda.md` (services used, why, costs, how to run). Hand to C for the README.
+- [x] **A19 Deploy notes** — finish `deploy/verda.md` (services used, why, costs, how to run). Hand to C for the README.
 
 ---
 
