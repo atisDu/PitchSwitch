@@ -9,7 +9,7 @@ import core.briefs as briefs
 import core.competitors as competitors
 from agent import gemini_agent, tools
 from cache.graph import MemoryGraph
-from contracts.schemas import Competitor
+from contracts.schemas import AgentEvent, Competitor
 from core.competitors import Judgement
 from data import get_store
 
@@ -190,3 +190,35 @@ async def test_gemini_down_is_an_error_event_then_done(monkeypatch):
     events = await collect(gemini_agent.chat("hi", client=Script()))
     assert [e.type for e in events] == ["error", "done"]
     assert "GEMINI_MODEL_FAST" in events[0].message
+
+
+async def test_slush_investors_are_names_cala_wrote(monkeypatch):
+    async def answer(question):
+        assert "Slush 2026" in question
+        return "Tesi and Planet A Ventures will be at Slush 2026.", []
+
+    async def picked(prompt, schema, **_):
+        return schema(names=["Tesi", "Planet A Ventures", "Sequoia Capital"])  # last: invented
+
+    monkeypatch.setattr(get_store(), "sourced_answer", answer)
+    monkeypatch.setattr(gemini_agent, "structured", picked)
+    assert await gemini_agent.slush_investors() == ["Tesi", "Planet A Ventures"]
+
+
+async def test_slush_prep_adds_the_slush_list_to_pasted_names(monkeypatch):
+    async def slush_list(**_):
+        return ["tesi", "Planet A Ventures"]  # "tesi" was pasted already
+
+    async def prep_one(name, company, **_):
+        yield AgentEvent(type="error", message="skipped", investor_name=name)
+
+    monkeypatch.setattr(gemini_agent, "slush_investors", slush_list)
+    monkeypatch.setattr(gemini_agent, "prep_one", prep_one)
+    events = await collect(
+        gemini_agent.slush_prep(await stendr(), ["Tesi"], all_slush=True, client=Script())
+    )
+    assert sorted(e.investor_name for e in events if e.type == "error") == [
+        "Planet A Ventures", "Tesi"
+    ]
+    assert "Found 2 Slush 2026 investors in Cala; preparing 2" in [e.message for e in events]
+

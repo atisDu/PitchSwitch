@@ -16,7 +16,7 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from agent import gemini_agent, tools
@@ -37,7 +37,6 @@ from core.scoring import rank_investors
 from data import NotFound, Upstream, get_store
 
 log = logging.getLogger("api")
-MAX_SLUSH_INVESTORS = 25  # one Gemini loop and one brief each
 
 app = FastAPI(title="PitchSwitch API", version=CONTRACT_VERSION)
 # ponytail: any origin, no credentials; pin to the deployed frontend URL if that ever matters.
@@ -99,7 +98,16 @@ class PairBody(BaseModel):
 
 class SlushPrepBody(BaseModel):
     company_id: str = Field(min_length=1)
-    investor_names: list[str] = Field(min_length=1, max_length=MAX_SLUSH_INVESTORS)
+    investor_names: list[str] = Field(
+        default_factory=list, max_length=gemini_agent.SLUSH_MAX_INVESTORS
+    )
+    all_slush_investors: bool = False  # also every Slush 2026 investor Cala names
+
+    @model_validator(mode="after")
+    def _someone(self) -> SlushPrepBody:
+        if not self.investor_names and not self.all_slush_investors:
+            raise ValueError("paste at least one investor name, or ask for all Slush investors")
+        return self
 
 
 class ChatBody(BaseModel):
@@ -201,7 +209,9 @@ async def slush_prep(body: SlushPrepBody) -> dict:
     events = _jobs[job_id] = []
 
     async def work() -> None:
-        async for event in gemini_agent.slush_prep(company, body.investor_names):
+        async for event in gemini_agent.slush_prep(
+            company, body.investor_names, all_slush=body.all_slush_investors
+        ):
             events.append(event)
 
     task = asyncio.create_task(work())

@@ -353,7 +353,7 @@ class DataStore(Protocol):
 | POST | `/api/founder/analyze` | `{company_id, competitor_ids?: string[]}` | `FounderReport` |
 | POST | `/api/investor/check` | `{investor_id, company_id}` | `InvestorCheck` |
 | POST | `/api/brief` | `{investor_id, company_id}` | `Brief` |
-| POST | `/api/slush-prep` | `{company_id, investor_names: string[]}` | `{job_id}` |
+| POST | `/api/slush-prep` | `{company_id, investor_names?: string[], all_slush_investors?: boolean}` | `{job_id}` |
 | GET | `/api/jobs/{id}/stream` | — | SSE stream of `AgentEvent` |
 | POST | `/api/chat` | `{company_id?, investor_id?, message}` | SSE stream of `AgentEvent` (type `text` = answer chunks) |
 | GET | `/api/health` | — | `{ok: true, contract_version}` |
@@ -362,7 +362,7 @@ Errors: HTTP 4xx/5xx with `{error: string}`. CORS open for the frontend origin.
 
 - `competitor_ids` (optional): if given, B skips competitor discovery and ranks against exactly those company IDs. The frontend sends the IDs still shown after the user removed some.
 - Streams: one `data: <AgentEvent JSON>\n\n` per event, no named events; the stream closes after `done`. `/api/chat` is read with a streaming `fetch`.
-- Slush prep: events about one pasted investor carry `investor_name` (as pasted) and, once resolved, `investor`. An unresolved or ambiguous name gets an `error` event with that `investor_name`.
+- Slush prep: events about one pasted investor carry `investor_name` (as pasted) and, once resolved, `investor`. An unresolved or ambiguous name gets an `error` event with that `investor_name`. `all_slush_investors: true` adds every Slush 2026 investor Cala names (at most 25 in all; `investor_names` may then be empty).
 - Chat: the answer arrives as `text` events; its sources arrive in `citations` on the `done` event.
 - Full rules: `contracts/api.md`.
 

@@ -12,19 +12,20 @@ import logging
 from collections.abc import AsyncIterator, Callable
 
 from google.genai import types
-from pydantic import ValidationError, validate_call
+from pydantic import BaseModel, ValidationError, validate_call
 
 from agent import tools
-from agent.llm import LLMError, generate
+from agent.llm import LLMError, generate, structured
 from contracts.schemas import AgentEvent, Company, EntityRef, Reason, Source
 from core.briefs import Sentence, cited
 from core.competitors import stored_judgement
-from data import DataError
+from data import DataError, get_store
 
 MAX_CALLS = 12  # tool calls per agent run; after that only the closing tool is allowed
 CLOSING_TRIES = 2  # extra turns to get a usable closing call before the run gives up
 SLUSH_MAX_CALLS = 5  # per pasted investor: look up, maybe retry a spelling, brief
 SLUSH_PARALLEL = 3  # pasted investors worked on at once
+SLUSH_MAX_INVESTORS = 25  # one Gemini loop and one brief each
 CHAT_SEARCHES = 1  # Cala searches (sourced_answer, 15-50 s each live) per chat question
 
 log = logging.getLogger("agent")
@@ -183,7 +184,46 @@ async def prep_one(name: str, company: Company, *, client=None) -> AsyncIterator
         yield event.model_copy(update={"investor_name": name, "investor": investor})
 
 
-async def _slush(company: Company, names: list[str], client) -> AsyncIterator[AgentEvent]:
+SLUSH_2026 = "Which investors are attending Slush 2026 in Helsinki?"
+SLUSH_NAMES_SYSTEM = """From the text, list every investor it says will be at Slush 2026: venture \
+capital firms, funds, investment organisations and individual investors. For a person named with \
+their firm, give the firm. Copy each name exactly as the text writes it. Leave out startups, event \
+organisers, places, and anyone the text does not say is attending."""
+
+
+class _Names(BaseModel):
+    names: list[str]
+
+
+async def slush_investors(*, client=None) -> list[str]:
+    """The investors Cala's sourced answer says attend Slush 2026, named as Cala writes them: what
+    Cala's sources name (a few dozen), not everyone at the event. Gemini only picks the names out
+    of Cala's text; a name the text does not contain is dropped."""
+    text, claims = await get_store().sourced_answer(SLUSH_2026)
+    said = "\n".join([text, *(c.text for c in claims)])
+    if not said.strip():
+        return []
+    found = await structured(said, _Names, system=SLUSH_NAMES_SYSTEM, tier="smart", client=client)
+    return [n.strip() for n in found.names if n.strip() and n.strip() in said]
+
+
+async def _slush(
+    company: Company, names: list[str], client, all_slush: bool = False
+) -> AsyncIterator[AgentEvent]:
+    if all_slush:
+        yield _step("Finding the Slush 2026 investors Cala knows of")
+        try:
+            found = await slush_investors(client=client)
+        except (DataError, LLMError) as exc:
+            found = []
+            yield AgentEvent(type="error", message=f"Cala's Slush 2026 list is unavailable: {exc}")
+        known = {n.casefold() for n in names}
+        for name in found:
+            if name.casefold() not in known:
+                known.add(name.casefold())
+                names.append(name)
+        names = names[:SLUSH_MAX_INVESTORS]
+        yield _step(f"Found {len(found)} Slush 2026 investors in Cala; preparing {len(names)}")
     yield _step(f"Finding {company.name}'s direct competitors")
     await stored_judgement(company)  # once, before the investors need it in parallel
 
@@ -212,11 +252,14 @@ async def _slush(company: Company, names: list[str], client) -> AsyncIterator[Ag
             task.cancel()
 
 
-def slush_prep(company: Company, names: list[str], *, client=None) -> AsyncIterator[AgentEvent]:
+def slush_prep(
+    company: Company, names: list[str], *, all_slush: bool = False, client=None
+) -> AsyncIterator[AgentEvent]:
     """One brief (or one error) per pasted investor name, a few at a time; ends with `done`.
+    `all_slush` adds every Slush 2026 investor Cala names (up to SLUSH_MAX_INVESTORS in all).
     Events of different investors interleave; each carries its `investor_name`."""
     pasted = list(dict.fromkeys(n for n in names if n.strip()))
-    return _closed(_slush(company, pasted, client), list)
+    return _closed(_slush(company, pasted, client, all_slush), list)
 
 
 # --- chat ---------------------------------------------------------------------------------------

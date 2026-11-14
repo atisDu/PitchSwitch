@@ -3,6 +3,19 @@
 Every change to `contracts/` (schemas, API, fixtures format) is listed here, with the new
 `CONTRACT_VERSION`. Fixture *data* written by Agent A (tasks A1, A2) is not a contract change.
 
+## 1.1.1 + optional Slush flag — 2026-11-14 (no version bump: additive, human decision)
+
+Slush prep can take every Slush 2026 investor Cala knows of. Existing requests work unchanged;
+`CONTRACT_VERSION` stays 1.1.1. No model changes.
+
+- `POST /api/slush-prep` gains `all_slush_investors?: boolean` (default false); `investor_names`
+  becomes optional when it is true. B asks Cala's sourced answer who attends Slush 2026, adds
+  those investors (named as Cala writes them) to the pasted ones, dedupes, caps at 25.
+- Live (14 Nov): Cala names 12 (Planet A Ventures, Revaia, Spintop Ventures, SSE Ventures, Tesi,
+  Transition, Index Ventures, General Catalyst, Nefco, imec.Venture, Stephen Industries, EIC).
+- To follow: C: a "Prep every Slush 2026 investor" option on the Slush prep screen (and the
+  field in `frontend/lib/api.ts`). A: nothing. B: done (API, agent, tests).
+
 ## 1.1.1 — 2026-11-14
 
 People who invest (angels) are investors too. No model, field or signature changes.

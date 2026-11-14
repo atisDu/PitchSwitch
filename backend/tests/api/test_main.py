@@ -152,8 +152,8 @@ def test_unforeseen_failure_is_still_json(monkeypatch, judged):
 
 
 def test_slush_prep_job_streams_and_replays(client, monkeypatch):
-    async def fake_agent(company, names):
-        assert company.id == KELLUU
+    async def fake_agent(company, names, all_slush):
+        assert company.id == KELLUU and not all_slush
         for name in names:
             yield AgentEvent(type="step", message="Looking up", investor_name=name)
         yield AgentEvent(type="done")
@@ -166,6 +166,18 @@ def test_slush_prep_job_streams_and_replays(client, monkeypatch):
         assert [(e.type, e.investor_name) for e in got] == [
             ("step", "Maki.vc"), ("step", "Tesi"), ("done", None)
         ]
+
+
+def test_slush_prep_can_take_every_slush_investor_without_pasted_names(client, monkeypatch):
+    async def fake_agent(company, names, all_slush):
+        yield AgentEvent(type="step", message=f"{names} {all_slush}")
+        yield AgentEvent(type="done")
+
+    monkeypatch.setattr(api.gemini_agent, "slush_prep", fake_agent)
+    body = {"company_id": KELLUU, "all_slush_investors": True}
+    job_id = client.post("/api/slush-prep", json=body).json()["job_id"]
+    assert events(client.get(f"/api/jobs/{job_id}/stream"))[0].message == "[] True"
+    assert client.post("/api/slush-prep", json={"company_id": KELLUU}).status_code == 422
 
 
 def test_chat_stream_is_scoped(client, monkeypatch):

@@ -15,7 +15,7 @@ All model names below (`EntityRef`, `FounderReport`, ...) are the Pydantic model
 | POST | `/api/founder/analyze` | `{company_id, competitor_ids?: string[]}` | `FounderReport` |
 | POST | `/api/investor/check` | `{investor_id, company_id}` | `InvestorCheck` |
 | POST | `/api/brief` | `{investor_id, company_id}` | `Brief` |
-| POST | `/api/slush-prep` | `{company_id, investor_names: string[]}` | `{job_id}` |
+| POST | `/api/slush-prep` | `{company_id, investor_names?: string[], all_slush_investors?: boolean}` | `{job_id}` |
 | GET | `/api/jobs/{id}/stream` | — | SSE stream of `AgentEvent` |
 | POST | `/api/chat` | `{company_id?, investor_id?, message}` | SSE stream of `AgentEvent` |
 | GET | `/api/health` | — | `{ok: true, contract_version}` |
@@ -53,6 +53,12 @@ All model names below (`EntityRef`, `FounderReport`, ...) are the Pydantic model
 - **Slush prep:** every event about one pasted investor carries `investor_name` (the name exactly
   as pasted) and, once resolved, `investor`. A name that doesn't resolve, or matches several
   entities that can't be told apart, gets an `error` event with that `investor_name`.
+  `all_slush_investors: true` (default false) adds every investor that Cala's sourced answer says
+  attends Slush 2026 (a few dozen at most: what Cala's sources name, not the whole event); their
+  events carry the name as Cala writes it in `investor_name`. Pasted names stay; duplicates are
+  dropped; at most 25 investors in all. `investor_names` may then be empty (without the flag it
+  needs at least one name: else 422). If Cala's list is unavailable, one `error` event without
+  `investor_name` says so and the pasted names still run.
 - **Chat:** the answer arrives as `text` events. Its sources arrive in `citations` on the `done`
   event; `[n]` in the text is a 1-based index into that list.
 
