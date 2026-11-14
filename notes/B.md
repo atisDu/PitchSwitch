@@ -328,7 +328,15 @@ investors in rounds too, so the fake store has the same gap.
   (`core/competitors.py`, `core/briefs.py`). The docs already in Atlas are still read. Checked on
   the real store with the server's setting: all three demo judgements read back in under a
   second, no Gemini call, nothing written.
-- **A:** the deployed server needs this commit (a redeploy) before it matters there; until then
-  it behaves as before. Nothing else to do.
+- **Redeployed (14 Nov), checked on the server:** the three demo reports come back in 2-4 s from
+  the stored judgements (Sensofusion: 4 competitors, 9 on Skip, as in C16's demo script); Tuomas
+  Rasila x Kelluu check and brief answer (10 citations).
 - **Everyone running the real store locally:** set `USE_VECTOR_SEARCH=true` in your `.env` to see
   what the server shows. Without it your reports differ from the demo (fewer competitors).
+
+## MCP on the server still down after the redeploy (14 Nov)
+
+- `https://95-133-252-219.sslip.io/mcp` answers **502** (with a running server and no token it would
+  be 401). `MCP_TOKEN` is still in neither `.env.example` nor `deploy/`, so the `mcp` container
+  exits at start. **For A:** see "For A (blocking the `mcp` container)" above; after that,
+  B checks the remote MCP through Caddy.
