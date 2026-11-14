@@ -475,8 +475,13 @@ investors in rounds too, so the fake store has the same gap.
 - **For C (C17, item f of the review):** the contract keeps Skip sorted by score, so label the
   Skip card's score "fit despite the conflict" (or hide it there). Sorting Skip by conflict
   strength would need a contract change.
-- **Open for B (not B18):** Kelluu's Skip flipped once between two identical runs (Change Ventures
-  and Silicon Roundabout gained a conflict, then lost it again): the conflict check isn't stable
-  on live data; looking into it. Kelluu also lists two "Maki.vc" (two Cala entities, same name;
-  that was so before B18).
+- **Fixed (after B18): Kelluu's Skip flipping.** Cause: Cala's candidate list for Kelluu drifts
+  by one company (Sensofusion vs Hyperion Robotics); each list had its own stored judgement, and
+  re-judging made Gemini call Origin Robotics "direct" once and "same space" once, so its backers
+  Change Ventures and Silicon Roundabout moved between Pitch and Skip. Now each candidate is
+  judged once, ever (graph collection `verdicts`, one doc per company); a new list only sends its
+  new candidates to Gemini. Old judgements were migrated with no Gemini call; the direct
+  competitors of Sensofusion, Stendr and Kelluu are exactly what the server shows today, stable
+  on either Kelluu list. Eval 6/6 live. Takes effect on the server after A's redeploy.
+- **Still open:** Kelluu lists two "Maki.vc" (two Cala entities with the same name; so before B18).
 - On the server after A's next redeploy; re-run `warm.py` after it.
