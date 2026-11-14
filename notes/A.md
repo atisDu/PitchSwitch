@@ -130,7 +130,7 @@ it), which leaves room for a second busy process on the same key; a refusal is s
 Cold runs are about six times faster than the timings written earlier in these notes. Pull to
 get it: nothing to change in your code.
 
-## Vector search (A13) is built, behind a switch that is off (14 Nov)
+## Vector search (A13): built, and switched ON on the server (14 Nov)
 
 `USE_VECTOR_SEARCH=true` makes `candidate_competitors()` also add the stored companies closest in
 meaning to the company (Gemini embeddings, Atlas Vector Search index `company_vectors_index`),
@@ -149,3 +149,12 @@ Measured on live Atlas and Gemini for the three demo companies:
   shift. Turn it on after the demo, or earlier only with a re-warm and a recheck of the script.
 - Verda's Inference API has no embeddings endpoint, so `VERDA_EMBED_MODEL` is unused; the model
   is `GEMINI_EMBED_MODEL` (default `gemini-embedding-001`, 768 dimensions).
+
+**Update, 14 Nov afternoon: the team switched it on.** `USE_VECTOR_SEARCH=true` is set on the
+deployed server (`deploy/ship.sh` copies it from the local `.env`) and in A's `.env`. Checked on
+the server right after: the founder reports of Sensofusion, Stendr and Kelluu are **unchanged**
+(same competitors, same Skip lists, same top five on Pitch, same Pitch length), and
+`python deploy/warm.py --check` passes (50 calls in 23 s, none slow). No vector errors in the
+server log. B and C: to run with it locally, add `USE_VECTOR_SEARCH=true` to your `.env`; without
+it your local runs behave as before. If a report ever looks different from the demo script,
+setting it to `false` and redeploying puts the old candidate lists back.
