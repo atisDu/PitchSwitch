@@ -6,7 +6,6 @@ Gemini only picks among candidate IDs and writes a one-line reason; any ID it in
 
 from __future__ import annotations
 
-import hashlib
 import logging
 from typing import Any
 
@@ -97,31 +96,74 @@ async def find_competitors(company: Company, k: int = 30) -> list[Competitor]:
     return (await judge(company, k)).direct
 
 
+VERDICTS = "verdicts"  # graph collection: one doc per (store, company), candidate id -> verdict
+
+
+def _verdicts_of(judgement: dict, candidates: list[str]) -> dict[str, dict]:
+    """A stored judgement as per-candidate verdicts; candidates in neither list are unrelated."""
+    out = {i: {"tier": "unrelated"} for i in candidates}
+    for n, c in enumerate(judgement["direct"]):
+        out[c["company"]["id"]] = {"tier": "direct", "reason": c["reason"], "order": n}
+    out |= {c["id"]: {"tier": "space"} for c in judgement["space"]}
+    return out
+
+
+async def _old_verdicts(graph: Any, prefix: str, now: list[str]) -> dict[str, dict]:
+    """Verdicts from the judgements stored before VERDICTS (one per candidate list). Where they
+    disagree, the one for today's candidate list wins (what the screens show now), then the
+    oldest (the plain per-company doc)."""
+    ids = [i for i in await graph.ids(JUDGEMENTS) if i == prefix or i.startswith(prefix + ":")]
+    docs = [d for i in sorted(ids, key=len) if (d := await graph.get(JUDGEMENTS, i))]
+    docs.sort(key=lambda d: d.get("candidates") != now)  # stable: today's list first
+    out: dict[str, dict] = {}
+    for d in docs:
+        for cid, v in _verdicts_of(d["judgement"], d.get("candidates", [])).items():
+            out.setdefault(cid, v)
+    return out
+
+
 async def cached_judge(company: Company, graph: Any, k: int = 30) -> Judgement:
-    """judge() once per company and candidate list, kept in `graph` (cache.graph: Atlas when
-    MONGODB_URI is set). Same report across restarts and machines, and no 20-25 s Gemini call.
-    Each candidate list has its own stored judgement, so two machines that see different
-    candidates for one company (vector search on / off) never overwrite each other, and a list
-    that comes back gets its earlier judgement back. Graph trouble never fails the request."""
+    """judge() each candidate once, ever: its verdict (direct / same space / unrelated) is kept in
+    `graph` (cache.graph: Atlas when MONGODB_URI is set) and reused whatever list it comes back
+    in. Only candidates never judged go to Gemini. Before this, a list that differed by one
+    company was judged again from scratch and Gemini could change its mind about the others
+    (live: Kelluu's Origin Robotics flipped between same-space and direct, moving its backers
+    between Pitch and Skip). Graph trouble never fails the request."""
     store = get_store()
     candidates = await _candidates(company, k)
-    legacy = f"{type(store).__name__}:{company.id}"  # one doc per company, written before this
-    fingerprint = sorted(c.id for c in candidates)
-    key = f"{legacy}:{hashlib.sha256(' '.join(fingerprint).encode()).hexdigest()[:16]}"
+    doc_id = f"{type(store).__name__}:{company.id}"
+    now = sorted(c.id for c in candidates)
     try:
-        for doc_id in (key, legacy):
-            doc = await graph.get(JUDGEMENTS, doc_id)
-            if doc and doc.get("candidates") == fingerprint:
-                return Judgement.model_validate(doc["judgement"])
+        doc = await graph.get(VERDICTS, doc_id)
+        known = doc["verdicts"] if doc else await _old_verdicts(graph, doc_id, now)
     except Exception as exc:  # a cache, not a source of truth
-        log.warning("judgement cache read failed, judging again: %r", exc)
-    judged = await judge(company, k, candidates)
-    try:
-        document = {"candidates": fingerprint, "judgement": judged.model_dump(mode="json")}
-        await graph.put(JUDGEMENTS, key, document)
-    except Exception as exc:
-        log.warning("judgement cache write failed: %r", exc)
-    return judged
+        log.warning("verdicts read failed, judging again: %r", exc)
+        known, doc = {}, None
+    new = [c for c in candidates if c.id not in known]
+    if new or doc is None:
+        if new:
+            judged = await judge(company, k, new)
+            start = 1 + max((v.get("order", -1) for v in known.values()), default=-1)
+            fresh = {c.id: {"tier": "unrelated"} for c in new}
+            for n, c in enumerate(judged.direct):
+                fresh[c.company.id] = {"tier": "direct", "reason": c.reason, "order": start + n}
+            fresh |= {c.id: {"tier": "space"} for c in judged.space}
+            known = known | fresh
+        try:
+            await graph.put(VERDICTS, doc_id, {"verdicts": known})
+        except Exception as exc:
+            log.warning("verdicts write failed: %r", exc)
+    tier = {c.id: known.get(c.id, {}) for c in candidates}
+    direct = sorted(
+        (c for c in candidates if tier[c.id].get("tier") == "direct"),
+        key=lambda c: tier[c.id].get("order", 0),
+    )
+    return Judgement(
+        direct=[Competitor(company=c, reason=tier[c.id].get("reason", "")) for c in direct][
+            :MAX_COMPETITORS
+        ],
+        space=[c for c in candidates if tier[c.id].get("tier") == "space"],
+    )
 
 
 # One judgement per company for the whole process: the API routes, the agent tools and the MCP

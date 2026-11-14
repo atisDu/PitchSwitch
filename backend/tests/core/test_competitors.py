@@ -90,57 +90,71 @@ async def test_same_space_excludes_direct_unknown_and_repeats(store, monkeypatch
     assert [c.id for c in out.space] == [cands[1], cands[2]]
 
 
-async def test_cached_judge_reuses_until_candidates_change(store, monkeypatch):
+async def test_cached_judge_judges_each_candidate_once(store, monkeypatch):
+    """A changed candidate list only sends its new candidates to Gemini; every earlier verdict is
+    kept, even if Gemini would now say otherwise (live: Kelluu's Origin Robotics flipped)."""
     from cache.graph import MemoryGraph
 
     company = await store.company(KELLUU)
     graph = MemoryGraph()
+    real = store.candidate_competitors
+    all_ = await real(company, 30)
+
+    async def without_last(company, k=30):
+        return all_[:-1]
+
+    monkeypatch.setattr(store, "candidate_competitors", without_last)
+    asked = []
     fake, seen = judge(lambda ids: [{"id": ids[0], "reason": "direct"}], lambda ids: ids[1:3])
-    calls = []
 
     async def counted(*a, **kw):
-        calls.append(1)
-        return await fake(*a, **kw)
+        out = await fake(*a, **kw)
+        asked.append(seen["ids"][1:])
+        return out
 
     monkeypatch.setattr(competitors, "structured", counted)
     first = await competitors.cached_judge(company, graph)
-    again = await competitors.cached_judge(company, graph)
-    assert again == first and len(calls) == 1
-    (first_id,) = await graph.ids(competitors.JUDGEMENTS)
-    assert first_id.startswith(f"FakeDataStore:{KELLUU}:")  # one doc per candidate list
+    assert await competitors.cached_judge(company, graph) == first and len(asked) == 1
 
-    real = store.candidate_competitors
+    monkeypatch.setattr(store, "candidate_competitors", real)  # one new candidate comes in
+    later = await competitors.cached_judge(company, graph)
+    assert asked[1] == [all_[-1].id]  # only the new one was judged
+    assert later.direct[0] == first.direct[0]  # and it was judged direct, after the first
+    assert [c.company.id for c in later.direct] == [first.direct[0].company.id, all_[-1].id]
 
-    async def fewer(company, k=30):
-        return (await real(company, k))[:-1]
-
-    monkeypatch.setattr(store, "candidate_competitors", fewer)
-    await competitors.cached_judge(company, graph)
-    assert len(calls) == 2  # candidate list changed -> judged again
-    assert len(await graph.ids(competitors.JUDGEMENTS)) == 2  # ...next to the first, not over it
-
-    monkeypatch.setattr(store, "candidate_competitors", real)
-    assert await competitors.cached_judge(company, graph) == first and len(calls) == 2
+    monkeypatch.setattr(store, "candidate_competitors", without_last)  # it drops out again
+    assert await competitors.cached_judge(company, graph) == first and len(asked) == 2
 
 
-async def test_cached_judge_still_reads_a_judgement_stored_per_company(store, monkeypatch):
-    """Docs written before judgements were kept per candidate list stay valid."""
+async def test_cached_judge_takes_over_the_judgements_stored_per_candidate_list(
+    store, monkeypatch
+):
+    """No Gemini call for what was judged before; where old docs disagree, the one for today's
+    candidate list wins, then the oldest."""
     from cache.graph import MemoryGraph
 
     company = await store.company(KELLUU)
-    graph, old = MemoryGraph(), MemoryGraph()
-    fake, _ = judge(lambda ids: [{"id": ids[0], "reason": "direct"}])
-    monkeypatch.setattr(competitors, "structured", fake)
-    first = await competitors.cached_judge(company, old)
-    (doc_id,) = await old.ids(competitors.JUDGEMENTS)
-    stored = await old.get(competitors.JUDGEMENTS, doc_id)
-    await graph.put(competitors.JUDGEMENTS, f"FakeDataStore:{KELLUU}", stored)
+    cands = [c for c in await store.candidate_competitors(company, 30) if c.id != KELLUU]
+    a, b = cands[0], cands[1]
+    now = sorted(c.id for c in cands)
+
+    def doc(direct, ids):
+        judged = competitors.Judgement(
+            direct=[competitors.Competitor(company=c, reason="r") for c in direct], space=[]
+        )
+        return {"candidates": ids, "judgement": judged.model_dump(mode="json")}
+
+    graph = MemoryGraph()
+    await graph.put(competitors.JUDGEMENTS, f"FakeDataStore:{KELLUU}", doc([a, b], now[:-1]))
+    await graph.put(competitors.JUDGEMENTS, f"FakeDataStore:{KELLUU}:abc", doc([a], now))
 
     async def never(*a, **kw):
         raise AssertionError("judged again")
 
     monkeypatch.setattr(competitors, "structured", never)
-    assert await competitors.cached_judge(company, graph) == first
+    out = await competitors.cached_judge(company, graph)
+    assert [c.company.id for c in out.direct] == [a.id]  # today's list says b is not direct
+    assert await graph.get(competitors.VERDICTS, f"FakeDataStore:{KELLUU}")  # migrated once
 
 
 async def test_cached_judge_survives_a_broken_graph(store, monkeypatch):
