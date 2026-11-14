@@ -21,6 +21,7 @@ against the screen after the Sunday-morning freeze** (warm + cache-only, see Pre
 | 6 | Investor check | Verdict **Conflict.**: "Stendr is in your portfolio and competes with Sensofusion Oy" |
 | 7 | Claude Desktop | Web search **off**; ask: *"Using only PitchSwitch, should Sensofusion pitch Skyfall Ventures?"* (asked once beforehand; setup: `docs/mcp-demo.md`) |
 
+**Checked 14 Nov evening:** steps 1-6 on the deployed API (C), step 7 in Claude Desktop (the team).
 **Live site: <https://95-133-252-219.sslip.io>.** Deployed API at 1.2.0 (C, 14 Nov, evening):
 Pitch Maki.vc 69.9 (shown as 70), NATO Innovation Fund 39.2, Tesi 35.7, Lifeline 35.6; Skip (11)
 starts with BSV Ventures (Zvook, found by B22's portfolio X-ray, not a chip), then Skyfall
