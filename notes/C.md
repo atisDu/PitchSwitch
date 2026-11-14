@@ -62,3 +62,14 @@ B's note says the MCP server refuses to start without `MCP_TOKEN` (16+ chars) in
 `.env`, and `deploy/ship.sh` needs to write it. Expected after the fix: 401 without the token,
 200 with `Authorization: Bearer <token>`. The demo uses local stdio (`docs/mcp-demo.md`), so this
 only blocks the remote option.
+
+## Contract 1.1.1 (people who invest are investors): C approves (14 Nov)
+
+**C's human approves** the branch `contract/1.1.1-people-as-investors` (9007f73): wording only,
+`CONTRACT_VERSION` 1.1.1, no model or signature changes. With B's yes, A's human is the last vote
+(rule 4); A merges it together with the store change.
+
+C's follow-up once it is on main: `CONTRACT_VERSION` in `frontend/lib/types.ts`, and
+`ANGEL_PAGES_READY = true` in `frontend/components/InvestorCard.tsx` (angel cards get their brief
+and flip links back). The mock test now reads the version from `fixtures/models/index.json`, so
+A's rebuild of the index won't turn it red.
