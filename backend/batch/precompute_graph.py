@@ -207,10 +207,11 @@ async def derive(graph: GraphDB, *, clock: Callable[[], float] = time.time) -> d
 
     counts = {"investors": len(documents), "with_co_investors": 0}
     for investor_id in documents:
+        mine = held.get(investor_id, set())  # .get: an investor with nothing must not add a key
         partners = [
-            {"investor": refs[other], "count": len(held[investor_id] & companies)}
+            {"investor": refs[other], "count": len(mine & companies)}
             for other, companies in held.items()
-            if other != investor_id and held[investor_id] & companies
+            if other != investor_id and mine & companies
         ]
         partners.sort(key=lambda p: (-p["count"], p["investor"]["name"].lower()))
         counts["with_co_investors"] += bool(partners)
@@ -224,7 +225,7 @@ async def derive(graph: GraphDB, *, clock: Callable[[], float] = time.time) -> d
             },
         )
 
-        deals = list(rounds_of[investor_id].values())
+        deals = list(rounds_of.get(investor_id, {}).values())
         dated = sorted(item["date"] for item in deals if item.get("date"))
         led = sorted(item["date"] for item in deals if item["_lead"] is True and item.get("date"))
         stages = Counter(item.get("label") or "Unknown" for item in deals)
@@ -238,7 +239,7 @@ async def derive(graph: GraphDB, *, clock: Callable[[], float] = time.time) -> d
                 "deals_last_12m": sum(day >= year_ago for day in dated),
                 "leads_total": sum(item["_lead"] is True for item in deals),
                 "rounds_total": len(deals),
-                "companies_total": len(held[investor_id]),
+                "companies_total": len(mine),
                 "rounds_by_stage": dict(sorted(stages.items())),
                 "derived_at": now,
             },

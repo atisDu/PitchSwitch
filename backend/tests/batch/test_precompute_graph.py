@@ -233,3 +233,21 @@ async def test_store_co_investors_survives_a_broken_graph():
             raise ConnectionError("mongo down")
 
     assert await CalaDataStore(RecordedCala(), graph=Broken()).co_investors(TESI) == []
+
+
+async def test_derive_handles_an_investor_with_no_companies_and_no_rounds():
+    from batch.precompute_graph import ACTIVITY, GRAPH, derive
+    from batch.precompute_graph import CRAWLED as crawled
+
+    graph = await crawled_graph()
+    empty = {
+        "name": "Empty Fund",
+        "investor": ref("E", "Empty Fund"),
+        "portfolio": [],
+        "rounds": [],
+    }
+    await graph.put(crawled, "E", empty)
+    counts = await derive(graph, clock=lambda: 1_782_000_000.0)
+    assert counts["investors"] == 4
+    assert (await graph.get(GRAPH, "E"))["co_investors"] == []
+    assert (await graph.get(ACTIVITY, "E"))["companies_total"] == 0
