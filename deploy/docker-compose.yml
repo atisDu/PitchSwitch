@@ -1,0 +1,68 @@
+# Pitchlist on one machine (a Verda CPU instance): Caddy -> frontend + backend API.
+#
+#   cd deploy
+#   docker compose --env-file ../.env up -d --build          # start or update
+#   docker compose --env-file ../.env logs -f api            # watch the backend
+#   docker compose --env-file ../.env down                   # stop
+#
+# ../.env holds the keys (see .env.example). On the server set there:
+#   USE_FAKE_STORE=false    real Cala data
+#   SITE_ADDRESS=<ip-with-dashes>.sslip.io    for HTTPS (see Caddyfile); leave unset for plain HTTP
+
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    env_file: ../.env
+    environment:
+      USE_FAKE_STORE: ${USE_FAKE_STORE:-false}
+    restart: unless-stopped
+    expose:
+      - "8000"
+
+  # The MCP server arrives with task B15. Start it with:  docker compose --profile mcp up -d
+  mcp:
+    profiles: ["mcp"]
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    env_file: ../.env
+    environment:
+      USE_FAKE_STORE: ${USE_FAKE_STORE:-false}
+    command: ["python", "-m", "mcp_server.server"]
+    restart: unless-stopped
+    expose:
+      - "8001"
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: deploy/frontend.Dockerfile
+    environment:
+      API_URL: http://api:8000
+    depends_on:
+      - api
+    restart: unless-stopped
+    expose:
+      - "3000"
+
+  caddy:
+    image: caddy:2
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-:80}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - api
+      - frontend
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:

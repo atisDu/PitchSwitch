@@ -1,0 +1,29 @@
+# Public entry point. SITE_ADDRESS decides how it is served:
+#   :80                      plain HTTP on the instance's IP (default; fine for a first check)
+#   203-0-113-7.sslip.io     HTTPS with an automatic Let's Encrypt certificate, no domain needed
+#                            (the instance's IP with dashes; ports 80 and 443 must be open)
+#   pitchlist.example.com    HTTPS on your own domain
+{$SITE_ADDRESS::80} {
+	encode gzip
+
+	# API and event streams go straight to the backend (no buffering, long answers allowed).
+	handle /api/* {
+		reverse_proxy api:8000 {
+			flush_interval -1
+			transport http {
+				read_timeout 30m
+			}
+		}
+	}
+
+	# MCP server (task B15). Returns 502 until that service is started.
+	handle /mcp* {
+		reverse_proxy mcp:8001 {
+			flush_interval -1
+		}
+	}
+
+	handle {
+		reverse_proxy frontend:3000
+	}
+}
