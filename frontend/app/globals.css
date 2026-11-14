@@ -18,6 +18,26 @@
   --control: #7d8a90; /* input outlines, 3.4:1 on the ground (WCAG 1.4.11) */
   --control-lg: 44px; /* the primary button's height; secondary buttons beside it match */
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* The landing page's frame (public/assets/system.css): side margin and header height. */
+  --gut: 24px;
+  --nav: 56px;
+}
+@media (min-width: 640px) {
+  :root {
+    --gut: 48px;
+    --nav: 72px;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --gut: 80px;
+  }
+}
+
+/* The landing page's .wrap: header, content and footer share its left and right edges. */
+@utility wrap {
+  width: min(100% - 2 * var(--gut), 1280px);
+  margin-inline: auto;
 }
 
 @theme inline {

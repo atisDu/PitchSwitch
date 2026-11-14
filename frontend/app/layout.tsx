@@ -30,25 +30,29 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${sans.variable} ${mono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
-        <header className="sticky top-0 z-20 border-b border-line bg-background/90 backdrop-blur print:hidden">
-          <div className="mx-auto flex h-16 w-full max-w-[1280px] items-center justify-between gap-4 px-5 md:px-10">
-            <a href="/" className="inline-flex items-center gap-2 text-[22px] leading-none font-medium tracking-[-0.02em]">
+        {/* The landing page's bar (nav--centre): logo left, words centred, the one button right. */}
+        <header className="sticky top-0 z-20 h-(--nav) border-b border-line bg-background print:hidden">
+          <div className="wrap flex h-full items-center justify-between gap-4 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+            <a
+              href="/"
+              className="inline-flex flex-none items-center gap-2 justify-self-start text-xl leading-none font-medium tracking-[-0.02em] sm:text-[22px]"
+            >
               <Mark />
               PitchSwitch
             </a>
-            <nav className="flex items-center gap-5 sm:gap-7" aria-label="Main">
+            <nav className="flex items-center gap-1 self-stretch" aria-label="Main">
               <Suspense fallback={<Links />}>
                 <NavLinks />
               </Suspense>
-              <Link href="/start" className="btn-primary hidden md:inline-flex">
-                Run a check
-              </Link>
             </nav>
+            <Link href="/start" className="btn-primary hidden justify-self-end px-6 lg:inline-flex">
+              Run a check
+            </Link>
           </div>
         </header>
-        <main className="mx-auto w-full max-w-[1280px] flex-1 px-5 pt-10 pb-24 md:px-10 md:pt-14">{children}</main>
+        <main className="wrap flex-1 pt-10 pb-24 md:pt-14">{children}</main>
         <footer className="bg-press text-background print:hidden">
-          <div className="mx-auto grid w-full max-w-[1280px] gap-8 px-5 py-14 md:grid-cols-[1fr_auto] md:px-10">
+          <div className="wrap grid gap-8 py-14 md:grid-cols-[1fr_auto]">
             <div className="max-w-sm">
               <a href="/" className="inline-flex items-center gap-2 text-[22px] leading-none font-medium tracking-[-0.02em]">
                 <Mark className="fill-moss" />

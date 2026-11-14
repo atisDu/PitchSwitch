@@ -23,11 +23,14 @@ export function Links({ path = null }: { path?: string | null }) {
     <>
       {LINKS.map((l) => {
         const here = path === l.href;
-        const className = `whitespace-nowrap text-[15px] underline-offset-[6px] decoration-2 py-1 pointer-coarse:py-3 ${
-          "wide" in l ? "max-sm:hidden " : ""
-        }${
-          here ? "underline decoration-accent" : "text-muted hover:text-foreground"
-        }`;
+        // The landing's .nav__link: ink words, a 2px line drawn in from the left on hover and focus,
+        // and held under the page you are on.
+        const className = `relative inline-flex h-9 items-center whitespace-nowrap px-2 text-[15px] font-medium sm:px-3 pointer-coarse:h-11
+          before:absolute before:inset-x-2 before:-bottom-0.5 before:h-0.5 before:origin-right before:scale-x-0 before:rounded-full
+          before:bg-current before:transition-transform before:duration-200 hover:before:origin-left hover:before:scale-x-100
+          focus-visible:before:origin-left focus-visible:before:scale-x-100 sm:before:inset-x-3 ${"wide" in l ? "max-sm:hidden " : ""}${
+            here ? "after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-current sm:after:inset-x-3" : ""
+          }`;
         return l.external ? (
           <a key={l.href} href={l.href} className={className}>
             {l.label}

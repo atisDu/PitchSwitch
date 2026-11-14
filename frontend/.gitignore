@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# taste-skill checker output and its Chrome profiles (Tailwind would scan them)
+/.taste-skill/
