@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { ChatPanel } from "@/components/ChatPanel";
+import { AmountField, FundingFitLine } from "@/components/FundingFit";
 import { SlowNotice } from "@/components/SlowNotice";
 import { SourceBadges } from "@/components/SourceBadge";
 import { describeError } from "@/lib/errors";
@@ -22,24 +23,50 @@ type Load =
   | { status: "error"; message: string; notFound: boolean; detail: string | null }
   | { status: "ready"; check: InvestorCheck };
 
-export function InvestorCheckView({ investorId, companyId }: { investorId: string; companyId: string }) {
+export function InvestorCheckView({
+  investorId,
+  companyId,
+  initialMaxCheck = null,
+}: {
+  investorId: string;
+  companyId: string;
+  initialMaxCheck?: number | null; // ?check= in the URL (C18)
+}) {
   const [load, setLoad] = useState<Load>({ status: "loading" });
   const [attempt, setAttempt] = useState(0); // "Try again" bumps this to refetch
+  const [maxCheck, setMaxCheck] = useState<number | null>(initialMaxCheck); // the most the fund puts in (B21)
+  const [updating, setUpdating] = useState(false); // a new amount is being checked; keep the page
 
   useEffect(() => {
     const ctrl = new AbortController();
-    checkInvestor({ investor_id: investorId, company_id: companyId }, ctrl.signal).then(
+    checkInvestor(
+      { investor_id: investorId, company_id: companyId, ...(maxCheck ? { max_check_eur: maxCheck } : {}) },
+      ctrl.signal,
+    ).then(
       (check) => {
-        if (!ctrl.signal.aborted) setLoad({ status: "ready", check });
+        if (ctrl.signal.aborted) return;
+        setLoad({ status: "ready", check });
+        setUpdating(false);
       },
       (err: unknown) => {
         if (ctrl.signal.aborted) return;
         const e = describeError(err);
         setLoad({ status: "error", message: e.message, notFound: e.notFound, detail: e.detail });
+        setUpdating(false);
       },
     );
     return () => ctrl.abort();
-  }, [investorId, companyId, attempt]);
+  }, [investorId, companyId, attempt, maxCheck]);
+
+  // A new amount is kept in the URL (?check=) and re-checked; the page stays while it loads.
+  function applyMaxCheck(amount: number | null) {
+    const url = new URL(window.location.href);
+    if (amount) url.searchParams.set("check", String(amount));
+    else url.searchParams.delete("check");
+    window.history.replaceState(null, "", url);
+    setUpdating(true);
+    setMaxCheck(amount);
+  }
 
   if (load.status === "loading") {
     return (
@@ -161,6 +188,25 @@ export function InvestorCheckView({ investorId, companyId }: { investorId: strin
           </p>
         </section>
       )}
+
+      <section
+        className={`mt-12 border-t border-line pt-8 transition-opacity ${updating ? "opacity-40" : ""}`}
+        aria-label="Check size"
+        aria-busy={updating}
+      >
+        <AmountField side="investor" value={maxCheck} onApply={applyMaxCheck} disabled={updating} />
+        {maxCheck !== null && !updating && (
+          <div className="mt-4">
+            {check.funding_fit ? (
+              <FundingFitLine fit={check.funding_fit} side="investor" />
+            ) : (
+              <p className="text-sm text-muted">
+                Fit by round size isn&apos;t available on this server yet; it will show here once it is.
+              </p>
+            )}
+          </div>
+        )}
+      </section>
 
       <section className="mt-20" aria-labelledby="map-heading">
         <p className="label text-muted">Market map · {check.competitors.length} competitors</p>

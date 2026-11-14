@@ -9,6 +9,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { ChatPanel } from "@/components/ChatPanel";
 import { CompetitorChips } from "@/components/CompetitorChips";
+import { AmountField } from "@/components/FundingFit";
 import { PitchCard, SkipCard } from "@/components/InvestorCard";
 import { SlowNotice } from "@/components/SlowNotice";
 import { SourceBadges } from "@/components/SourceBadge";
@@ -27,22 +28,33 @@ type Load =
   | { status: "error"; message: string; notFound: boolean; detail: string | null }
   | { status: "ready"; report: FounderReport; reranking: boolean; rerankError: string | null };
 
-export function FounderReportView({ companyId }: { companyId: string }) {
+export function FounderReportView({
+  companyId,
+  initialTarget = null,
+}: {
+  companyId: string;
+  initialTarget?: number | null; // ?raise= in the URL (C18)
+}) {
   const [load, setLoad] = useState<Load>({ status: "loading" });
   const [removed, setRemoved] = useState<Set<string>>(new Set());
   const [narrowed, setNarrowed] = useState(false); // ranked against a user-edited list
   const [showAllPitch, setShowAllPitch] = useState(false);
+  const [target, setTarget] = useState<number | null>(initialTarget); // the founder's raise (B21)
   const abort = useRef<AbortController | null>(null);
 
   // Fetches and stores a report. State is set only in the promise callbacks, so the initial
   // load can run from an effect; `run` below flips the loading state first, from handlers.
   const fetchReport = useCallback(
-    (competitorIds?: string[]) => {
+    (competitorIds?: string[], raise?: number | null) => {
       abort.current?.abort();
       const ctrl = new AbortController();
       abort.current = ctrl;
       return analyzeFounder(
-        { company_id: companyId, ...(competitorIds ? { competitor_ids: competitorIds } : {}) },
+        {
+          company_id: companyId,
+          ...(competitorIds ? { competitor_ids: competitorIds } : {}),
+          ...(raise ? { target_amount_eur: raise } : {}),
+        },
         ctrl.signal,
       ).then(
         (report) => {
@@ -66,19 +78,31 @@ export function FounderReportView({ companyId }: { companyId: string }) {
     [companyId],
   );
 
-  function run(competitorIds?: string[]) {
+  function run(competitorIds?: string[], raise: number | null = target, keepReport = false) {
     setLoad((prev) =>
-      prev.status === "ready" && competitorIds
+      prev.status === "ready" && (competitorIds || keepReport)
         ? { ...prev, reranking: true, rerankError: null }
         : { status: "loading" },
     );
-    void fetchReport(competitorIds);
+    void fetchReport(competitorIds, raise);
+  }
+
+  // A new raise re-ranks against the same competitors, and is kept in the URL (?raise=).
+  function applyRaise(raise: number | null) {
+    setTarget(raise);
+    const url = new URL(window.location.href);
+    if (raise) url.searchParams.set("raise", String(raise));
+    else url.searchParams.delete("raise");
+    window.history.replaceState(null, "", url);
+    const current =
+      load.status === "ready" && narrowed ? load.report.competitors.map((c) => c.company.id) : undefined;
+    run(current, raise, true);
   }
 
   useEffect(() => {
-    void fetchReport();
+    void fetchReport(undefined, initialTarget);
     return () => abort.current?.abort();
-  }, [fetchReport]);
+  }, [fetchReport, initialTarget]);
 
   if (load.status === "loading") return <LoadingReport />;
   if (load.status === "error") {
@@ -186,6 +210,16 @@ export function FounderReportView({ companyId }: { companyId: string }) {
             />
           )}
         </div>
+      </section>
+
+      <section className="mt-12 border-t border-line pt-8" aria-label="Funding amount">
+        <AmountField side="founder" value={target} onApply={applyRaise} disabled={reranking} />
+        {target !== null && !reranking && ![...report.pitch, ...report.skip].some((s) => s.funding_fit) && (
+          <p className="mt-3 text-sm text-muted">
+            Fit by round size isn&apos;t available on this server yet; it will show on each card once
+            it is.
+          </p>
+        )}
       </section>
 
       <div className={`transition-opacity ${reranking ? "opacity-40" : ""}`} aria-busy={reranking}>

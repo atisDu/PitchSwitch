@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { EntityPicker } from "@/components/EntityPicker";
+import { formatEuro, parseEuro } from "@/lib/money";
 import { checkPath, founderPath } from "@/lib/routes";
 import type { EntityRef } from "@/lib/types";
 
@@ -26,12 +27,17 @@ export function HomeForm() {
   const [company, setCompany] = useState<EntityRef | null>(null);
   const [fund, setFund] = useState<EntityRef | null>(null);
   const [startup, setStartup] = useState<EntityRef | null>(null);
+  // Optional amount (C18): the raise (founder) or the most the fund puts in (investor).
+  const [amountText, setAmountText] = useState({ founder: "", investor: "" });
+  const text = amountText[mode];
+  const amount = parseEuro(text);
+  const amountInvalid = text.trim() !== "" && amount === null;
 
-  const ready = mode === "founder" ? company !== null : fund !== null && startup !== null;
+  const ready = (mode === "founder" ? company !== null : fund !== null && startup !== null) && !amountInvalid;
 
   function go() {
-    if (mode === "founder" && company) router.push(founderPath(company.id));
-    if (mode === "investor" && fund && startup) router.push(checkPath(fund.id, startup.id));
+    if (mode === "founder" && company) router.push(founderPath(company.id, amount));
+    if (mode === "investor" && fund && startup) router.push(checkPath(fund.id, startup.id, amount));
   }
 
   return (
@@ -89,6 +95,32 @@ export function HomeForm() {
             />
           </>
         )}
+        <div>
+          <label htmlFor="home-amount" className="label">
+            {mode === "founder" ? "Amount you want to raise" : "Most you will fund"}{" "}
+            <span className="text-muted normal-case">(optional, EUR)</span>
+          </label>
+          <input
+            id="home-amount"
+            value={text}
+            onChange={(e) => setAmountText((t) => ({ ...t, [mode]: e.target.value }))}
+            placeholder={mode === "founder" ? "e.g. 3M" : "e.g. 500k"}
+            inputMode="decimal"
+            autoComplete="off"
+            aria-invalid={amountInvalid}
+            aria-describedby="home-amount-hint"
+            className="mt-3 block h-11 w-48 rounded-[5px] border border-line bg-background px-3 text-base outline-none placeholder:text-muted focus:border-foreground aria-[invalid=true]:border-foreground"
+          />
+          <p id="home-amount-hint" className="mt-2 text-sm text-muted" aria-live="polite">
+            {amountInvalid
+              ? "Type an amount like 3M, 500k or 3 000 000."
+              : amount !== null
+                ? `${formatEuro(amount)}: compared with the round sizes in Cala.`
+                : mode === "founder"
+                  ? "Shows which investors join rounds of your size."
+                  : "Shows whether this startup raises rounds your check fits."}
+          </p>
+        </div>
       </div>
 
       <button

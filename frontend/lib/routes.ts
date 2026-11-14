@@ -1,9 +1,13 @@
 // App URLs in one place, so screens link to each other the same way.
 
-export const founderPath = (companyId: string) => `/founder/${encodeURIComponent(companyId)}`;
+/** `raise`: the founder's optional raise in EUR (C18), kept as ?raise= */
+export const founderPath = (companyId: string, raise?: number | null) =>
+  `/founder/${encodeURIComponent(companyId)}` + (raise ? `?raise=${Math.round(raise)}` : "");
 
-export const checkPath = (investorId: string, companyId: string) =>
-  `/check/${encodeURIComponent(investorId)}/${encodeURIComponent(companyId)}`;
+/** `maxCheck`: the most the investor will fund in EUR (C18), kept as ?check= */
+export const checkPath = (investorId: string, companyId: string, maxCheck?: number | null) =>
+  `/check/${encodeURIComponent(investorId)}/${encodeURIComponent(companyId)}` +
+  (maxCheck ? `?check=${Math.round(maxCheck)}` : "");
 
 export const prepPath = (company?: { id: string; name: string }) =>
   "/prep" + (company ? `?${new URLSearchParams({ company: company.id, companyName: company.name })}` : "");

@@ -3,6 +3,7 @@
 
 import Link from "next/link";
 
+import { FundingFitLine } from "@/components/FundingFit";
 import { SourceBadges } from "@/components/SourceBadge";
 import { activitySummary, conflictText, leadSummary } from "@/lib/investor";
 import { briefPath, checkPath } from "@/lib/routes";
@@ -29,6 +30,11 @@ export function PitchCard({
       <div className="min-w-0">
         <Name item={item} />
         <Signals item={item} />
+        {item.funding_fit && (
+          <div className="mt-3">
+            <FundingFitLine fit={item.funding_fit} side="founder" />
+          </div>
+        )}
         <Reasons reasons={item.reasons} />
         <WarmPaths paths={item.warm_paths} />
         <p className="mt-4 text-sm">
@@ -73,6 +79,11 @@ export function SkipCard({
             </li>
           ))}
         </ul>
+        {item.funding_fit && (
+          <div className="mt-3">
+            <FundingFitLine fit={item.funding_fit} side="founder" />
+          </div>
+        )}
         <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
           <Link href={checkPath(item.investor.id, companyId)} className="underline underline-offset-4">
             Flip: see this from {item.investor.name}&apos;s side

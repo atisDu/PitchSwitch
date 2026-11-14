@@ -2,17 +2,26 @@ import { Suspense } from "react";
 
 import { FounderReportView } from "@/components/FounderReportView";
 
-type Params = PageProps<"/founder/[companyId]">["params"];
+type Props = PageProps<"/founder/[companyId]">;
 
-export default function FounderPage({ params }: { params: Params }) {
+export default function FounderPage({ params, searchParams }: Props) {
   return (
     <Suspense fallback={null}>
-      <Report params={params} />
+      <Report params={params} searchParams={searchParams} />
     </Suspense>
   );
 }
 
-async function Report({ params }: { params: Params }) {
+// ?raise=3000000 carries the founder's optional raise (C18).
+async function Report({ params, searchParams }: Pick<Props, "params" | "searchParams">) {
   const { companyId } = await params;
-  return <FounderReportView key={companyId} companyId={companyId} />;
+  const q = await searchParams;
+  const raise = typeof q.raise === "string" ? Number(q.raise) : NaN;
+  return (
+    <FounderReportView
+      key={companyId}
+      companyId={companyId}
+      initialTarget={Number.isFinite(raise) && raise > 0 ? raise : null}
+    />
+  );
 }
