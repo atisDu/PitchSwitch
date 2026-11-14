@@ -20,3 +20,4 @@ node_modules/
 
 # OS / editors
 .DS_Store
+.gstack/
