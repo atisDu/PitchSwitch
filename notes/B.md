@@ -254,8 +254,11 @@ Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
   and answers 401 to any request without it. Accepted as `Authorization: Bearer <token>` or as
   `?key=<token>` in the URL (for clients that only take a URL). stdio is unchanged (no token).
 - Checked live on a local port: no token 401, wrong token 401, token in URL 200, in header 200.
-  **Not yet checked:** a real client over HTTP with the token (Claude custom connector, Claude
-  Code `--transport http`, Cursor), and through Caddy on the deployed server.
+  With a real client (Claude Code over HTTP, real store): token in the header -> connected, 7
+  tools, correct answer in 10 s; token in the URL -> the same in 8 s; no token -> the server shows
+  as failed with "HTTP 401, missing or wrong token" and the client says how to fix it.
+  **Not yet checked:** Claude's custom-connector screen and Cursor (need a human at the app),
+  and the whole thing through Caddy on the deployed server (not deployed yet).
 - **Easy setup:** `python -m mcp_server.server setup https://<site>` prints the ready-to-paste
   line for Claude (custom connector URL), Claude Code and Cursor.
 - **For A (blocking the `mcp` container):** add `MCP_TOKEN` to `.env.example` and to the server's
