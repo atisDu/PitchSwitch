@@ -365,9 +365,22 @@ investors in rounds too, so the fake store has the same gap.
 - Expect an answer in about 10 s for the three demo companies (everything is stored); a company
   nobody asked about before can take a minute, and the tool then answers "Still working, call
   again", which the client does.
-- **Careful with Rainfall x Sensofusion on stage:** the stored brief says both "Stendr (Pre-Seed,
-  Apr 2026)" [14][15] and "led the Seed round for Stendr (~$5M)" [16]. Cala's round data has no
-  label or amount for that round; both lines come from Cala's knowledge search, whose sources
-  disagree. Two runs over MCP repeated one or the other. Skyfall (C16's MCP question) is not
-  affected. **Open for B:** make the brief name a disagreement between sources instead of
-  stating both.
+- **Rainfall x Sensofusion: fixed (058bb48, B).** The brief stated both "Stendr (Pre-Seed)" and
+  "led the Seed round for Stendr (~$5M)". The brief prompt now uses the most specific fact for a
+  round and leaves the other version out; it says "sources differ" only when two equally specific
+  facts give different amounts or dates. Checked on the real store: Rainfall now says once "led
+  Stendr's Seed round of ~$5 M in Apr 2026"; Maki.vc (demo #1 Pitch) has no false "sources
+  differ"; Skyfall says it once, for Cardboard's amount.
+- **Skyfall on stage (C16's MCP question), not new and not from B:** its brief says "Skyfall
+  Ventures is a Glasgow-based hospitality and tourism company incorporated in 2013". That is
+  what Cala's entity `9b65ed62` holds (its search snippet says "a venture capital firm
+  headquartered in Glasgow"); the Oslo funds are separate entities (`8aa002e5` Fund II, `434eeb6f`
+  Fund I). The conflict itself (backs Stendr, 7 sources) is right. Say "Skyfall" on stage, and
+  don't read out its description.
+
+### For A: redeploy, then warm
+
+- The prompt is part of each stored brief's fingerprint, so **all stored briefs are written again**
+  on first request after the redeploy (30-50 s each). Three are already stored under the new code
+  (Rainfall, Maki.vc and Skyfall x Sensofusion). After the redeploy, run `python deploy/warm.py`
+  (and `--check`) before any rehearsal.
