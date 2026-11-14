@@ -607,3 +607,31 @@ needs all three humans' OK, then CONTRACT_VERSION + CHANGELOG + CLAUDE.md §5.2 
   Kelluu: Lakestar is new at #4 (32.5). No contract change.
 - **Cost:** first report per sector ~1 min more (Cala search ~55 s), each new top investor
   ~15-40 s once; then nothing (stored).
+
+## Contract 1.2.0 is on main: B24 notes + B25 sanctions (14 Nov, for C, please read)
+
+Agreed by the humans (A, B, C): one additive bump. CHANGELOG, api.md, CLAUDE.md §5 updated.
+
+- **For C, needed before a sanction can show correctly** (none on the demo companies today):
+  `frontend/lib/types.ts` (`ConflictKind` gains `"SANCTION"`, `FounderReport.notes`,
+  `CONTRACT_VERSION = "1.2.0"`), and `conflictText` in `lib/investor.ts`: today a SANCTION
+  conflict would read "Backed your competitor <X>". For SANCTION, `competitor` is **the
+  sanctioned entity** (the fund itself or its LP); suggested text: "Sanctions record in Cala on
+  <X>" (+ "its LP" when X is not the investor). Same for the Skip roll call and the check.
+- **B25 Sanctions screen:** every ranked investor and up to 5 LPs each, against Cala's
+  `IS_SUBJECT_OF_SANCTION` (ID-based, sourced, e.g. Rosoboronexport → "Sanctioned: EU.7808.66
+  (EU), since 2023-03-15", EUR-Lex). A hit = `SANCTION` conflict → Skip, reason "Conflict: <X>
+  has a sanctions record in Cala: …". No hit = the reason **"screened: no sanctions record in
+  Cala"** (exact; C shows it as a plain line). Cala trouble = neither (not screened). Also in
+  the investor check, briefs and the agent's check_conflict. Live: 153 investors screened on the
+  3 demo companies, 0 hits.
+- **B24 Notes:** `FounderReport.notes` = sourced lines on the direct competitors.
+  "Non-dilutive: <claim>" for grants they won (one Cala search naming them: NATO DIANA, EDF,
+  EIC, national programmes); "At Slush 2026: <claim>" for rivals that attend (none found
+  today). One note per competitor and topic; stored per startup. Live:
+  - Sensofusion: Frankenburg (EDF 2025, EURODAMM), MyDefence (Innobooster, Innovation Fund
+    Denmark).
+  - Stendr: Origin Robotics (€4.5M EDF 2023), MyDefence.
+  - Kelluu: Aispeco (EIC, €2.4M, Nov 2024).
+- **Cost:** first report per startup: sanctions ~140 Cala calls, notes 2 searches (~1 min); then
+  stored.
