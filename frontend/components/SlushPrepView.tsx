@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { BriefScore } from "@/components/BriefScore";
-import { ChatPanel } from "@/components/ChatPanel";
+import { BriefAsk } from "@/components/BriefAsk";
 import { BriefBody } from "@/components/CitedText";
 import { EntityPicker } from "@/components/EntityPicker";
 import { describeError } from "@/lib/errors";
@@ -358,12 +358,12 @@ function Card({
           </div>
           {companyId && (
             <div className="mt-4">
-              <ChatPanel
-                inline
+              <BriefAsk
                 companyId={companyId}
                 investorId={card.brief.investor_id}
-                scope={`${shownName} × ${company?.name ?? "your company"}`}
-                suggestions={["Should I pitch them, and why?", "Did they back any of my competitors?"]}
+                investorName={shownName}
+                companyName={company?.name ?? "my company"}
+                suggestions={["Did they back any of my competitors?", "Who led their last round?"]}
               />
             </div>
           )}

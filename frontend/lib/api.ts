@@ -128,7 +128,7 @@ export async function* jobEvents(jobId: string, signal?: AbortSignal): AsyncGene
 
 /** Streams a chat answer: `text` chunks, then `done` carrying the citations. */
 export async function* chat(body: ChatRequest, signal?: AbortSignal): AsyncGenerator<AgentEvent> {
-  if (isSample(body.company_id)) return yield* sampleChat();
+  if (isSample(body.company_id)) return yield* sampleChat(body.message, body.investor_id);
   const res = await request("/api/chat", {
     method: "POST",
     body: JSON.stringify(body),

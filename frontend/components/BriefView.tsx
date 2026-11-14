@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { BriefScore } from "@/components/BriefScore";
-import { ChatPanel } from "@/components/ChatPanel";
+import { BriefAsk } from "@/components/BriefAsk";
 import { BriefBody, InlineContent } from "@/components/CitedText";
 import { SlowNotice } from "@/components/SlowNotice";
 import { describeError } from "@/lib/errors";
@@ -143,20 +143,17 @@ export function BriefView({
       {entity && <AboutEntity entity={entity} />}
 
       <div className="window mt-8 p-6 md:p-10 print:border-0 print:p-0 print:shadow-none">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 rounded-xl bg-surface p-3 pl-4 print:hidden">
-          <p className="mr-auto text-sm">Questions about {title}? Answers come with their sources.</p>
-          <ChatPanel
-            inline
-            companyId={companyId}
-            investorId={investorId}
-            scope={title}
-            suggestions={[
-              "What else has this investor led in my space?",
-              "Did they back any of my competitors?",
-              "Should I pitch them, and why?",
-            ]}
-          />
-        </div>
+        <BriefAsk
+          companyId={companyId}
+          investorId={investorId}
+          investorName={names.investor ?? title.split(" × ")[0]}
+          companyName={names.company ?? title.split(" × ")[1] ?? "my company"}
+          suggestions={[
+            "What else has this investor led in my space?",
+            "Did they back any of my competitors?",
+            "Who led their last round?",
+          ]}
+        />
         <BriefBody
           blocks={body}
           citations={brief.citations}

@@ -49,7 +49,7 @@ export function BriefBody({
   );
 }
 
-function BlockView({ block, citations, anchor }: { block: Block; citations: Source[]; anchor: string }) {
+export function BlockView({ block, citations, anchor }: { block: Block; citations: Source[]; anchor: string }) {
   if (block.kind === "heading") {
     const cls = "label pt-6 text-muted";
     const inner = <InlineContent nodes={block.content} citations={citations} anchor={anchor} />;

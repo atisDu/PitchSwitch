@@ -16,6 +16,7 @@ import type {
   Round,
   Source,
 } from "./types";
+import { parseBreakdown } from "./score.ts";
 
 export const SAMPLE_COMPANY_ID = "sample-norvale";
 export const isSample = (id: string | null | undefined) => !!id && id.startsWith("sample-");
@@ -242,12 +243,21 @@ export function sampleCheck(investorId: string): InvestorCheck | null {
   return { investor: s.investor, company: COMPANY, conflicts: s.conflicts, competitors: COMPETITORS, rounds: ROUNDS, funding_fit: null };
 }
 
+/** `[n]` markers for `sources`, adding each new source to `citations` once (same name and date = same source). */
+const citer = (citations: Source[]) => (sources: Source[]) =>
+  sources
+    .map((x) => {
+      const n = citations.findIndex((c) => c.name === x.name && c.date === x.date);
+      return `[${n >= 0 ? n + 1 : citations.push(x)}]`;
+    })
+    .join("");
+
 /** A sample brief built from the fund's score: verdict, conflicts, what it did in the space. */
 export function sampleBrief(investorId: string): Brief | null {
   const s = findScore(investorId);
   if (!s) return null;
   const citations: Source[] = [];
-  const cite = (sources: Source[]) => sources.map((x) => `[${citations.push(x)}]`).join("");
+  const cite = citer(citations);
   const name = s.investor.name;
   const lines = [`# ${name} × ${COMPANY.name}`, "", "*A sample brief: the companies, funds and sources are made up.*", ""];
   const first = s.conflicts[0];
@@ -265,13 +275,60 @@ export function sampleBrief(investorId: string): Brief | null {
   return { investor_id: s.investor.id, company_id: COMPANY.id, markdown: lines.join("\n"), citations };
 }
 
-/** Chat on a sample page: there is nothing to look up, so it says so. */
-export async function* sampleChat(): AsyncGenerator<AgentEvent> {
+const PART_LABEL: Record<string, string> = {
+  leads: "Leads rounds in this space",
+  "companies here": "Companies in your space",
+  recency: "Recent activity here",
+  activity: "Deals in the last 12 months",
+  "warm paths": "Warm paths",
+  "stage fit": "Backs your stage",
+  "Nordic/Baltic": "Nordic or Baltic fund",
+};
+
+/** "Deeper analysis" on the sample: strong and weak points from the fund's own score and facts. */
+function sampleDeeper(investorId: string): { text: string; citations: Source[] } | null {
+  const s = findScore(investorId);
+  const b = s && parseBreakdown(s.reasons[0].text);
+  if (!s || !b) return null;
+  const citations: Source[] = [];
+  const cite = (sources: Source[]) => citer(citations)(sources.slice(0, 2));
+  const scoreCite = cite(s.reasons[0].sources);
+  const label = (n: string) => PART_LABEL[n] ?? n;
+  const strong = [
+    ...b.parts.filter((p) => p.got / p.max >= 0.6).map((p) => `- ${label(p.name)}: ${fmt(p.got)} of ${p.max} points (${p.detail}) ${scoreCite}.`),
+    ...s.reasons.slice(1).map((f) => `- ${f.text} ${cite(f.sources)}.`),
+  ];
+  const weak = [
+    ...s.conflicts.map((c) => `- It backs ${c.competitor.name}, a direct competitor: a pitch would reach a rival's backer ${cite(c.sources)}.`),
+    ...b.parts.filter((p) => p.got === 0).map((p) => `- ${label(p.name)}: no points (${p.detail}).`),
+  ];
+  const approach = s.conflicts.length
+    ? `Leave ${s.investor.name} out of this round, or ask openly how they handle ${s.conflicts[0].competitor.name} before you share the deck.`
+    : s.score >= 50
+      ? `Lead with what you share with the companies it already backs here, and ask for a first meeting at Slush.`
+      : `A warm introduction will matter more than the deck: look for a founder it backed in this space.`;
+  const text = [
+    "*Sample analysis: the companies, funds and sources are made up.*",
+    "## Strong points",
+    ...(strong.length ? strong : ["- None stand out in the data."]),
+    "## Weak points",
+    ...(weak.length ? weak : ["- None stand out in the data."]),
+    "## How to approach them",
+    approach,
+  ].join("\n");
+  return { text, citations };
+}
+
+/** Chat on a sample page: "Deeper analysis" is answered from the sample; anything else says it's a sample. */
+export async function* sampleChat(message: string, investorId?: string): AsyncGenerator<AgentEvent> {
   const event = { message: null, brief: null, investor_name: null, investor: null, citations: [] };
+  const deeper = message.startsWith("Deeper analysis") && investorId ? sampleDeeper(investorId) : null;
   yield {
     ...event,
     type: "text",
-    message: "This is a sample with made-up companies and funds, so there is nothing to look up. Run a check on your own company to ask about it.",
+    message:
+      deeper?.text ??
+      "This is a sample with made-up companies and funds, so there is nothing to look up. Run a check on your own company to ask about it.",
   };
-  yield { ...event, type: "done" };
+  yield { ...event, type: "done", citations: deeper?.citations ?? [] };
 }

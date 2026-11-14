@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { SAMPLE_COMPANY_ID, isSample, sampleBrief, sampleCheck, sampleReport } from "./sample.ts";
+import { SAMPLE_COMPANY_ID, isSample, sampleBrief, sampleChat, sampleCheck, sampleReport } from "./sample.ts";
 import { parseBreakdown } from "./score.ts";
 
 test("the sample report matches the landing page: 9 to skip, 26 to pitch, sorted, Skip only with conflicts", () => {
@@ -42,4 +42,14 @@ test("checks and briefs exist for every sample fund, with valid citation numbers
     assert.ok(marks.length > 0 && marks.every((n) => n >= 1 && n <= brief.citations.length), s.investor.name);
   }
   assert.equal(sampleBrief("sample-nobody"), null);
+});
+
+test("the sample answers 'Deeper analysis' with strong and weak points, every [n] a citation", async () => {
+  const events = [];
+  for await (const e of sampleChat("Deeper analysis: should Norvale pitch Fjordline?", "sample-fjordline-ventures")) events.push(e);
+  const text = events[0].message ?? "";
+  const cites = events.at(-1)!.citations;
+  assert.match(text, /## Strong points[\s\S]*## Weak points[\s\S]*Hjelmvik/);
+  const marks = [...text.matchAll(/\[(\d+)\]/g)].map((m) => Number(m[1]));
+  assert.ok(marks.length > 0 && marks.every((n) => n >= 1 && n <= cites.length));
 });

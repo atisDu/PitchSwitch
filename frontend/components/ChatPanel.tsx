@@ -7,18 +7,60 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { InlineContent } from "@/components/CitedText";
+import { BlockView } from "@/components/CitedText";
 import { SourceBadge } from "@/components/SourceBadge";
 import { describeError } from "@/lib/errors";
 import { chat } from "@/lib/api";
 import { applyChatEvent, emptyAnswer, type ChatAnswer } from "@/lib/chat";
-import { parseInline } from "@/lib/markdown";
+import { parseMarkdown } from "@/lib/markdown";
 import { safeUrl } from "@/lib/sources";
 
-interface Turn {
+export interface Turn {
   id: number;
   question: string;
   answer: ChatAnswer;
+}
+
+/** The Q&A state behind the side panel and the in-card brief questions (BriefAsk). */
+export function useChat({ companyId, investorId }: { companyId?: string; investorId?: string }) {
+  const [turns, setTurns] = useState<Turn[]>([]);
+  const [busy, setBusy] = useState(false);
+  const abort = useRef<AbortController | null>(null);
+  const nextId = useRef(1);
+
+  useEffect(() => () => abort.current?.abort(), []);
+
+  // `label`: what the thread shows as the question (a canned prompt shows its button's name).
+  async function ask(question: string, label?: string) {
+    const q = question.trim();
+    if (!q || busy) return;
+    const id = nextId.current++;
+    const ctrl = new AbortController();
+    abort.current = ctrl;
+    setBusy(true);
+    setTurns((t) => [...t, { id, question: label ?? q, answer: emptyAnswer() }]);
+    const update = (f: (a: ChatAnswer) => ChatAnswer) =>
+      setTurns((t) => t.map((x) => (x.id === id ? { ...x, answer: f(x.answer) } : x)));
+    try {
+      for await (const e of chat(
+        { message: q, ...(companyId ? { company_id: companyId } : {}), ...(investorId ? { investor_id: investorId } : {}) },
+        ctrl.signal,
+      )) {
+        update((a) => applyChatEvent(a, e));
+      }
+      update((a) => (a.done || a.error ? a : { ...a, done: true }));
+    } catch (err) {
+      if (!ctrl.signal.aborted) {
+        update((a) => ({ ...a, error: describeError(err).message }));
+      } else {
+        update((a) => ({ ...a, error: a.error ?? "Stopped." }));
+      }
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return { turns, busy, ask, stop: () => abort.current?.abort() };
 }
 
 export function ChatPanel({
@@ -26,27 +68,21 @@ export function ChatPanel({
   investorId,
   scope,
   suggestions,
-  inline = false,
 }: {
   companyId?: string;
   investorId?: string;
   scope: string; // e.g. "Sensofusion Oy" or "Rainfall Ventures × Sensofusion Oy"
   suggestions: string[];
-  inline?: boolean; // the button sits where the panel is placed (inside a brief's box), not fixed bottom right
 }) {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
-  const [turns, setTurns] = useState<Turn[]>([]);
-  const [busy, setBusy] = useState(false);
-  const abort = useRef<AbortController | null>(null);
-  const nextId = useRef(1);
+  const { turns, busy, ask: send, stop } = useChat({ companyId, investorId });
   const endRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
   const panelRef = useRef<HTMLElement | null>(null);
   const openerRef = useRef<HTMLButtonElement | null>(null);
   const wasOpen = useRef(false);
 
-  useEffect(() => () => abort.current?.abort(), []);
   // Block body on purpose: newer Chrome's scrollIntoView returns a value, and an expression body
   // would hand it to React as the effect's cleanup, which React then calls ("i is not a function").
   useEffect(() => {
@@ -82,34 +118,10 @@ export function ChatPanel({
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  async function ask(question: string) {
-    const q = question.trim();
-    if (!q || busy) return;
-    const id = nextId.current++;
-    const ctrl = new AbortController();
-    abort.current = ctrl;
+  function ask(question: string) {
+    if (!question.trim() || busy) return;
     setInput("");
-    setBusy(true);
-    setTurns((t) => [...t, { id, question: q, answer: emptyAnswer() }]);
-    const update = (f: (a: ChatAnswer) => ChatAnswer) =>
-      setTurns((t) => t.map((x) => (x.id === id ? { ...x, answer: f(x.answer) } : x)));
-    try {
-      for await (const e of chat(
-        { message: q, ...(companyId ? { company_id: companyId } : {}), ...(investorId ? { investor_id: investorId } : {}) },
-        ctrl.signal,
-      )) {
-        update((a) => applyChatEvent(a, e));
-      }
-      update((a) => (a.done || a.error ? a : { ...a, done: true }));
-    } catch (err) {
-      if (!ctrl.signal.aborted) {
-        update((a) => ({ ...a, error: describeError(err).message }));
-      } else {
-        update((a) => ({ ...a, error: a.error ?? "Stopped." }));
-      }
-    } finally {
-      setBusy(false);
-    }
+    void send(question);
   }
 
   return (
@@ -119,10 +131,10 @@ export function ChatPanel({
           ref={openerRef}
           type="button"
           onClick={() => setOpen(true)}
-          className={`btn-primary print:hidden ${inline ? "" : "fixed right-5 bottom-5 z-30"}`}
+          className="btn-primary fixed right-5 bottom-5 z-30 print:hidden"
           aria-haspopup="dialog"
         >
-          {inline ? "Ask about this brief" : "Ask about this"}
+          Ask about this
         </button>
       )}
       {open && (
@@ -183,7 +195,7 @@ export function ChatPanel({
             className="border-t border-line p-4"
             onSubmit={(e) => {
               e.preventDefault();
-              void ask(input);
+              ask(input);
             }}
           >
             <label htmlFor="chat-input" className="sr-only">
@@ -199,14 +211,14 @@ export function ChatPanel({
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
-                    void ask(input);
+                    ask(input);
                   }
                 }}
                 placeholder="e.g. Who led their last round?"
                 className="min-w-0 flex-1 resize-none rounded-lg border border-control bg-white p-2.5 outline-none placeholder:text-muted focus:border-accent"
               />
               {busy ? (
-                <button type="button" className="btn-ghost h-11" onClick={() => abort.current?.abort()}>
+                <button type="button" className="btn-ghost h-11" onClick={stop}>
                   Stop
                 </button>
               ) : (
@@ -222,9 +234,10 @@ export function ChatPanel({
   );
 }
 
-function TurnView({ turn }: { turn: Turn }) {
+/** `prefix` keeps citation anchors unique when several threads share a page (Slush prep cards). */
+export function TurnView({ turn, prefix = "chat" }: { turn: Turn; prefix?: string }) {
   const { question, answer, id } = turn;
-  const anchor = `chat-${id}-cite`;
+  const anchor = `${prefix}-${id}-cite`;
   const waiting = !answer.text && !answer.done && !answer.error;
   return (
     <article>
@@ -236,9 +249,11 @@ function TurnView({ turn }: { turn: Turn }) {
         </p>
       )}
       {answer.text && (
-        <p className="mt-3 leading-relaxed">
-          <InlineContent nodes={parseInline(answer.text)} citations={answer.citations} anchor={anchor} />
-        </p>
+        <div className="mt-3 space-y-3 leading-relaxed [&_h2]:pt-2 [&_h3]:pt-2">
+          {parseMarkdown(answer.text).map((b, i) => (
+            <BlockView key={i} block={b} citations={answer.citations} anchor={anchor} />
+          ))}
+        </div>
       )}
       {answer.done && !answer.text && !answer.error && (
         <p className="mt-3 text-muted">No sourced answer came back for this question.</p>
