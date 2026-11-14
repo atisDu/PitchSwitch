@@ -8,16 +8,21 @@ Gemini only writes sentences that cite fact numbers. The code then renders the m
 from __future__ import annotations
 
 import asyncio
+import hashlib
+import json
+import logging
 import re
+from typing import Any
 
 from pydantic import BaseModel
 
-from agent.llm import structured
+from agent.llm import LLMError, structured
 from contracts.schemas import Brief, Company, Competitor, Conflict, Reason, Round, Source
 from core.competitors import judge
 from core.conflict import check_conflict
 from data import NotFound, get_store
 
+BRIEFS = "briefs"  # graph collection: one brief per (store, investor, company)
 MAX_ROUNDS = 8  # most recent rounds of the investor shown as facts
 MAX_ANSWER_CLAIMS = 8
 MAX_SOURCES_PER_FACT = 3  # best-ranked first
@@ -35,6 +40,7 @@ Sections, in order, skipping any without facts: "Verdict", "Fit with <company>",
 "Recent activity", "Conflicts". Use each fact in one section only. At most 12 sentences in all. \
 Short, plain sentences; no marketing language."""
 
+log = logging.getLogger("core.briefs")
 _NUMBER = re.compile(r"\d+(?:[.,]\d+)?")
 
 
@@ -188,9 +194,13 @@ async def investor_brief(
     company_id: str,
     competitors: list[Competitor] | None = None,
     space: list[Company] | None = None,
+    *,
+    graph: Any = None,
 ) -> Brief:
     """`competitors` / `space` from the founder report's judgement (the API passes its stored
-    one); missing = ask the judge."""
+    one); missing = ask the judge.
+    `graph` (cache.graph) keeps the brief: the same facts give the same brief again, with no
+    Gemini call (20-60 s) and the same wording on every machine. Graph trouble never fails it."""
     store = get_store()
     company = await store.company(company_id)
     if competitors is None or space is None:
@@ -206,8 +216,27 @@ async def investor_brief(
         f"Company (the founder's startup): {company.name}\nInvestor: {investor_name}\n\n"
         f"Facts:\n{numbered}"
     )
+    key = f"{type(store).__name__}:{investor_id}:{company.id}"
+    told = json.dumps([SYSTEM, prompt, [f.model_dump() for f in facts]])
+    fingerprint = hashlib.sha256(told.encode()).hexdigest()
+    if graph is not None:
+        try:
+            doc = await graph.get(BRIEFS, key)
+            if doc and doc.get("facts") == fingerprint:
+                return Brief.model_validate(doc["brief"])
+        except Exception as exc:  # a cache, not a source of truth
+            log.warning("brief cache read failed, writing it again: %r", exc)
+
     draft = await structured(prompt, _Draft, system=SYSTEM, tier="smart")
     markdown, citations = render(draft, facts)
-    return Brief(
+    if not markdown:
+        raise LLMError("Gemini wrote no sentence that the facts back; try again")
+    brief = Brief(
         investor_id=investor_id, company_id=company.id, markdown=markdown, citations=citations
     )
+    if graph is not None:
+        try:
+            await graph.put(BRIEFS, key, {"facts": fingerprint, "brief": brief.model_dump()})
+        except Exception as exc:
+            log.warning("brief cache write failed: %r", exc)
+    return brief

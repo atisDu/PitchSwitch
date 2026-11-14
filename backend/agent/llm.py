@@ -20,6 +20,7 @@ T = TypeVar("T", bound=BaseModel)
 R = TypeVar("R")
 
 RETRY_CODES = {429, 500, 502, 503, 504}
+TIMEOUT_MS = 90_000  # per call; the judge and a brief take 20-30 s, so this only cuts a hang
 
 
 class LLMError(RuntimeError):
@@ -40,7 +41,8 @@ def _client() -> genai.Client:
     key = os.environ.get("GEMINI_API_KEY", "").strip()
     if not key:
         raise LLMError("GEMINI_API_KEY is not set in .env")
-    return genai.Client(api_key=key)
+    options = types.HttpOptions(timeout=TIMEOUT_MS)
+    return genai.Client(api_key=key, http_options=options)
 
 
 async def generate(

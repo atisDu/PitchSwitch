@@ -35,6 +35,20 @@ async def test_no_conflict_when_competitor_not_in_portfolio(store):
     assert await check_conflict(MAKI, await rivals(store, KELLUU)) == []
 
 
+async def test_round_without_portfolio_edge_is_a_conflict(store, monkeypatch):
+    """Cala sometimes has the round but not the INVESTED_IN edge: taking part is backing."""
+
+    async def no_portfolio(investor_id):
+        return []
+
+    monkeypatch.setattr(store, "portfolio", no_portfolio)
+    out = await check_conflict(NIF, await rivals(store, KELLUU, STENDR))
+    assert [(c.kind, c.competitor.id) for c in out] == [("PORTFOLIO", KELLUU)]
+    led = [rd for rd in await store.rounds(KELLUU) if NIF in {r.investor.id for r in rd.investors}]
+    assert led and out[0].sources == led[0].sources
+    assert await check_conflict(NIF, await rivals(store, KELLUU), rounds=[]) == []  # as given
+
+
 async def test_no_competitors_or_unknown_investor(store):
     assert await check_conflict(NIF, []) == []
     assert await check_conflict("unknown-investor", await rivals(store, KELLUU)) == []

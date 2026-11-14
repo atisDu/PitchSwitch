@@ -28,7 +28,7 @@ from contracts.schemas import (
     Round,
 )
 from core import briefs, conflict, scoring
-from core.competitors import stored_judgement
+from core.competitors import shared_graph, stored_judgement
 from data import get_store
 
 MAX_PROFILE_ROUNDS = 10  # most recent rounds in an investor profile
@@ -108,7 +108,9 @@ async def investor_brief(investor_id: str, company_id: str) -> Brief:
     skip, fit, recent activity, conflicts."""
     company = await get_store().company(company_id)
     judged = await stored_judgement(company)
-    return await briefs.investor_brief(investor_id, company.id, judged.direct, judged.space)
+    return await briefs.investor_brief(
+        investor_id, company.id, judged.direct, judged.space, graph=shared_graph()
+    )
 
 
 async def sourced_answer(question: str) -> list[Reason]:

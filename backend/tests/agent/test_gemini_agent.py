@@ -8,6 +8,7 @@ from google.genai import types
 import core.briefs as briefs
 import core.competitors as competitors
 from agent import gemini_agent, tools
+from cache.graph import MemoryGraph
 from contracts.schemas import Competitor
 from core.competitors import Judgement
 from data import get_store
@@ -65,7 +66,7 @@ def fakes(monkeypatch):
         )
 
     monkeypatch.setattr(competitors, "cached_judge", fake_judge)
-    monkeypatch.setattr(competitors, "_graph", object())
+    monkeypatch.setattr(competitors, "_graph", MemoryGraph())
     monkeypatch.setattr(competitors, "_memo", {})
     monkeypatch.setattr(briefs, "structured", fake_draft)
     yield

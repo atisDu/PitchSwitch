@@ -138,6 +138,18 @@ def test_gemini_unavailable_is_503(client, monkeypatch):
     assert r.status_code == 503 and "GEMINI_API_KEY" in r.json()["error"]
 
 
+def test_unforeseen_failure_is_still_json(monkeypatch, judged):
+    async def boom(company, graph):
+        raise RuntimeError("secret detail")
+
+    monkeypatch.setenv("USE_FAKE_STORE", "true")
+    get_store.cache_clear()
+    monkeypatch.setattr(competitors, "cached_judge", boom)
+    quiet = TestClient(app, raise_server_exceptions=False)
+    r = quiet.post("/api/founder/analyze", json={"company_id": STENDR})
+    assert r.status_code == 500 and r.json() == {"error": "internal error (RuntimeError)"}
+
+
 def test_slush_prep_job_streams_and_replays(client, monkeypatch):
     async def fake_agent(company, names):
         assert company.id == KELLUU

@@ -5,6 +5,7 @@ import re
 import pytest
 
 import core.briefs as briefs
+from cache.graph import MemoryGraph
 from contracts.schemas import Competitor, Reason, Source
 from data import get_store
 
@@ -89,3 +90,36 @@ async def test_every_fact_offered_has_sources(store):
     assert all(f.sources for f in facts)
     assert any(f.text.startswith("Led ") for f in facts)  # Maki.vc's pre-seed leads
     assert any(f.text.startswith("Cala: ") for f in facts)  # the sourced answer
+
+
+async def test_brief_is_kept_until_its_facts_change(store, monkeypatch):
+    rivals = [Competitor(company=await store.company(KELLUU), reason="test")]
+    graph, calls = MemoryGraph(), []
+
+    async def fake(prompt, schema, **kw):
+        calls.append(prompt)
+        return draft(("Verdict", [("Draft " + "again " * (len(calls) - 1) + "done.", [1])]))
+
+    monkeypatch.setattr(briefs, "structured", fake)
+    first = await briefs.investor_brief(NIF, STENDR, rivals, [], graph=graph)
+    again = await briefs.investor_brief(NIF, STENDR, rivals, [], graph=graph)
+    assert again == first and len(calls) == 1  # same facts: no second Gemini call
+    changed = await briefs.investor_brief(NIF, STENDR, [], [], graph=graph)  # the conflict is gone
+    assert len(calls) == 2 and changed.markdown.startswith("## Verdict\n\nDraft again done.")
+
+    class Broken:
+        async def get(self, *a):
+            raise OSError("atlas down")
+
+        put = get
+
+    assert (await briefs.investor_brief(NIF, STENDR, rivals, [], graph=Broken())).markdown
+
+
+async def test_brief_with_nothing_backed_is_an_error_not_an_empty_page(store, monkeypatch):
+    async def fake(prompt, schema, **kw):
+        return draft(("Verdict", [("They manage 9999 unicorns.", [1])]))
+
+    monkeypatch.setattr(briefs, "structured", fake)
+    with pytest.raises(briefs.LLMError, match="no sentence"):
+        await briefs.investor_brief(NIF, STENDR, [], [])

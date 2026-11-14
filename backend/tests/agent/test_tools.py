@@ -4,6 +4,7 @@ import pytest
 
 import core.competitors as competitors
 from agent import tools
+from cache.graph import MemoryGraph
 from contracts.schemas import Competitor, FounderReport
 from core.competitors import Judgement
 from data import get_store
@@ -27,7 +28,7 @@ def judged(monkeypatch):
         return Judgement(direct=direct, space=space)
 
     monkeypatch.setattr(competitors, "cached_judge", fake_judge)
-    monkeypatch.setattr(competitors, "_graph", object())
+    monkeypatch.setattr(competitors, "_graph", MemoryGraph())
     monkeypatch.setattr(competitors, "_memo", {})
     yield
     get_store.cache_clear()

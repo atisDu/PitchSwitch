@@ -158,3 +158,31 @@ Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
   `python -m mcp_server.server http` serves streamable HTTP on `$MCP_HOST:$MCP_PORT/mcp`
   (default `0.0.0.0:8001`); no arguments = stdio. It shares `.env` and the Atlas cache with the API.
   If you want `MCP_HOST` / `MCP_PORT` in `.env.example`, they are yours to add.
+
+## B16 done: hardening (14 Nov)
+
+- **One definition of "conflict".** Taking part in a direct competitor's round now counts inside
+  `core/conflict.check_conflict` (before, only the founder report knew it), so the report, the
+  investor check, briefs, chat and the MCP tools cannot disagree. Live: no demo result changed.
+- **Briefs are kept** in the graph store (Atlas collection `briefs`, id
+  `<store>:<investor_id>:<company_id>`): the same facts give the same brief with no Gemini call.
+  Live: Rainfall × Sensofusion 41 s the first time, 0.4 s after; a slush-prep job reuses them.
+  A brief is written again only when its facts change. To force a new one, delete its doc.
+- **Timeouts and errors.** Gemini calls time out after 90 s (retried like other transient
+  failures). Any unforeseen failure is `500 {error: "internal error (<type>)"}`; Gemini trouble is
+  `503 {error: "Gemini is unavailable: ..."}`. A brief whose every sentence fails the citation
+  check is a 503, not an empty page.
+- **Weights unchanged.** Eval set 5/5 on the real store; live top-3 for Sensofusion and Stendr:
+  Maki.vc 73, NATO Innovation Fund 49, ScaleWolf 45. Warm paths now show for Kelluu (17 pitch
+  investors), none for Sensofusion / Stendr (no co-investor data for their backers).
+- Checked over HTTP on the real store: founder/analyze 3-6 s for the three demo companies,
+  investor/check 0.3 s, chat 11 s, slush prep (3 names) 73 s, stream replay instant.
+
+### Requests / open
+
+- **For A:** `company("nope")` (an ID that is not a UUID) raises `Upstream` with Cala's raw 422
+  JSON, so the API answers 502 with that text. `NotFound` would give a clean 404.
+- **For A (A18 pre-cache):** warm the demo's briefs too: one `POST /api/brief` per investor the
+  demo opens (or one slush-prep job with their names) stores them; after that they need neither
+  Cala nor Gemini.
+- Not yet checked in Claude Desktop: the MCP server (C13; config in the B15 note above).

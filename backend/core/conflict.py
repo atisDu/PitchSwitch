@@ -1,13 +1,14 @@
 """check_conflict (B4 PORTFOLIO, B5 BOARD): does an investor have a stake in a direct competitor?
 
 Plain set logic over store data; every Conflict carries the sources of the edges it rests on.
+The founder report, the investor check, briefs, chat and the MCP tools all decide here.
 """
 
 from __future__ import annotations
 
 import asyncio
 
-from contracts.schemas import Competitor, Conflict, EntityRef, Source
+from contracts.schemas import Competitor, Conflict, EntityRef, Round, Source
 from data import get_store
 
 
@@ -23,23 +24,37 @@ def merge_sources(*lists: list[Source]) -> list[Source]:
     return out
 
 
-async def check_conflict(investor_id: str, competitors: list[Competitor]) -> list[Conflict]:
-    """PORTFOLIO: the investor's portfolio holds a competitor (one Conflict per competitor).
+async def check_conflict(
+    investor_id: str, competitors: list[Competitor], rounds: list[Round] | None = None
+) -> list[Conflict]:
+    """PORTFOLIO: the investor's portfolio holds a competitor, or the investor took part in one
+    of its rounds (Cala sometimes lacks the portfolio edge). One Conflict per competitor.
     BOARD: a competitor's BOARD member is one of the investor's people (one per competitor+person).
+    `rounds`: the competitors' rounds, when the caller already has them; otherwise fetched here.
     """
     store = get_store()
+    if rounds is None:
+        fetched = await asyncio.gather(*(store.rounds(c.company.id) for c in competitors))
+        rounds = [rd for rds in fetched for rd in rds]
     portfolio, investor_people = await asyncio.gather(
         store.portfolio(investor_id), store.people(investor_id)
     )
     by_id = {c.company.id: c for c in competitors}
 
     portfolio_hits: dict[str, Conflict] = {}
-    for link in portfolio:
-        comp = by_id.get(link.company.id)
+
+    def backs(company_id: str, sources: list[Source]) -> None:
+        comp = by_id.get(company_id)
         if comp is not None:
             new = Conflict(kind="PORTFOLIO", competitor=ref_of(comp))
             hit = portfolio_hits.setdefault(comp.company.id, new)
-            hit.sources = merge_sources(hit.sources, link.sources)
+            hit.sources = merge_sources(hit.sources, sources)
+
+    for link in portfolio:
+        backs(link.company.id, link.sources)
+    for rd in rounds:
+        if any(ri.investor.id == investor_id for ri in rd.investors):
+            backs(rd.company_id, rd.sources)
 
     ours: dict[str, list[Source]] = {}  # investor's person id -> sources of their link to it
     for link in investor_people:

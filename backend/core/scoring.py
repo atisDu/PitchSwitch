@@ -25,7 +25,7 @@ from contracts.schemas import (
     Round,
 )
 from core.competitors import judge
-from core.conflict import check_conflict, merge_sources, ref_of
+from core.conflict import check_conflict, merge_sources
 from data import get_store
 
 # Points per signal; they add up to 100. A signal earns its full points at its cap.
@@ -132,7 +132,7 @@ async def rank_investors(
 
     ids = list(pool)
     found = await asyncio.gather(
-        asyncio.gather(*(check_conflict(i, competitors) for i in ids)),
+        asyncio.gather(*(check_conflict(i, competitors, space) for i in ids)),
         asyncio.gather(*(store.investor_rounds(i) for i in ids)),
     )
 
@@ -140,7 +140,6 @@ async def rank_investors(
     skip: list[InvestorScore] = []
     for inv_id, conflicts, history in zip(ids, *found, strict=True):
         rounds = in_space[inv_id]
-        conflicts = _add_round_conflicts(conflicts, inv_id, rounds, competitors)
         scored = _score(pool[inv_id], rounds, history, warm[inv_id], conflicts, label, today)
         (skip if conflicts else pitch).append(scored)
 
@@ -151,25 +150,6 @@ async def rank_investors(
         company=company, competitors=competitors, pitch=sorted(pitch, key=order),
         skip=sorted(skip, key=order),
     )
-
-
-def _add_round_conflicts(
-    conflicts: list[Conflict], inv_id: str, rounds: list[Round], competitors: list[Competitor]
-) -> list[Conflict]:
-    """Taking part in a direct competitor's round is backing it, even if the portfolio edge is
-    missing in Cala: add (or cite) a PORTFOLIO conflict with the round's sources."""
-    comps = {c.company.id: c for c in competitors}
-    by_comp = {c.competitor.id: c for c in conflicts if c.kind == "PORTFOLIO"}
-    for rd in rounds:
-        comp = comps.get(rd.company_id)
-        if comp is None:
-            continue
-        hit = by_comp.get(rd.company_id)
-        if hit is None:
-            hit = by_comp[rd.company_id] = Conflict(kind="PORTFOLIO", competitor=ref_of(comp))
-            conflicts = [hit, *conflicts]
-        hit.sources = merge_sources(hit.sources, rd.sources)
-    return conflicts
 
 
 def _score(

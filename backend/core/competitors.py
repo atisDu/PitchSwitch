@@ -126,9 +126,14 @@ _memo: dict[str, Judgement] = {}
 _graph: Any = None
 
 
-async def stored_judgement(company: Company) -> Judgement:
+def shared_graph() -> Any:
+    """The graph store of this process (Atlas when MONGODB_URI is set)."""
     global _graph
+    _graph = _graph or default_graph()
+    return _graph
+
+
+async def stored_judgement(company: Company) -> Judgement:
     if company.id not in _memo:
-        _graph = _graph or default_graph()
-        _memo[company.id] = await cached_judge(company, _graph)
+        _memo[company.id] = await cached_judge(company, shared_graph())
     return _memo[company.id]

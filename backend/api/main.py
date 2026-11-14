@@ -7,6 +7,7 @@ Gemini agent (agent/gemini_agent.py).
 from __future__ import annotations
 
 import asyncio
+import logging
 import uuid
 from collections.abc import AsyncIterator
 from typing import Literal
@@ -35,6 +36,7 @@ from core.conflict import check_conflict
 from core.scoring import rank_investors
 from data import NotFound, Upstream, get_store
 
+log = logging.getLogger("api")
 MAX_SLUSH_INVESTORS = 25  # one Gemini loop and one brief each
 
 app = FastAPI(title="Pitchlist API", version=CONTRACT_VERSION)
@@ -68,7 +70,13 @@ async def _upstream(_: Request, exc: Upstream) -> JSONResponse:
 
 @app.exception_handler(LLMError)
 async def _llm(_: Request, exc: LLMError) -> JSONResponse:
-    return JSONResponse({"error": f"competitor judging unavailable: {exc}"}, status_code=503)
+    return JSONResponse({"error": f"Gemini is unavailable: {exc}"}, status_code=503)
+
+
+@app.exception_handler(Exception)  # anything unforeseen: still {error}, details stay in the log
+async def _crash(request: Request, exc: Exception) -> JSONResponse:
+    log.exception("%s %s failed", request.method, request.url.path)
+    return JSONResponse({"error": f"internal error ({type(exc).__name__})"}, status_code=500)
 
 
 # --- request bodies -----------------------------------------------------------------------------
@@ -165,16 +173,15 @@ async def investor_check(body: PairBody) -> InvestorCheck:
         store.company(body.investor_id), store.company(body.company_id)
     )
     competitors = (await stored_judgement(company)).direct
-    conflicts, *round_lists = await asyncio.gather(
-        check_conflict(investor.id, competitors),
-        *(store.rounds(i) for i in [company.id, *(c.company.id for c in competitors)]),
-    )
+    ids = [company.id, *(c.company.id for c in competitors)]
+    rounds = [rd for rds in await asyncio.gather(*(store.rounds(i) for i in ids)) for rd in rds]
+    conflicts = await check_conflict(investor.id, competitors, rounds)
     return InvestorCheck(
         investor=EntityRef(**investor.model_dump(include={"id", "name", "type", "description"})),
         company=company,
         conflicts=conflicts,
         competitors=competitors,
-        rounds=[rd for rounds in round_lists for rd in rounds],
+        rounds=rounds,
     )
 
 
