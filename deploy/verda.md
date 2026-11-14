@@ -186,5 +186,6 @@ Cala's limit on our key is 100 calls a minute (10 until Saturday noon). One proc
 - `VERDA_API_KEY` in `.env` is rejected by Verda and is not used anywhere; the working keys are
   `VERDA_CLIENT_ID`/`VERDA_CLIENT_SECRET`, `VERDA_REGISTRY_USER`/`VERDA_REGISTRY_SECRET` and
   `VERDA_INFERENCE_KEY`.
-- Vector search (A13) is not built; competitor candidates come from Cala queries.
+- Vector search (A13) is built but switched off (`USE_VECTOR_SEARCH`): Gemini embeddings and an
+  Atlas Vector Search index over the companies we have seen. See `notes/A.md` for what it adds.
 - After the hackathon: `python deploy/verda.py batch-delete` and `delete`, and rotate the keys.

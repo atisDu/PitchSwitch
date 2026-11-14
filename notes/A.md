@@ -129,3 +129,23 @@ refused). The client now lets one process make 60 a minute (`CALA_PER_MINUTE` in
 it), which leaves room for a second busy process on the same key; a refusal is still retried.
 Cold runs are about six times faster than the timings written earlier in these notes. Pull to
 get it: nothing to change in your code.
+
+## Vector search (A13) is built, behind a switch that is off (14 Nov)
+
+`USE_VECTOR_SEARCH=true` makes `candidate_competitors()` also add the stored companies closest in
+meaning to the company (Gemini embeddings, Atlas Vector Search index `company_vectors_index`),
+after the peers and before the industry lists. Default is off: nothing changes unless it is set.
+
+Measured on live Atlas and Gemini for the three demo companies:
+
+- **What it adds today: almost nothing.** Sensofusion +0, Stendr +0, Kelluu +1 (Sensofusion Oy).
+  Only 28 companies are stored, the ones already in these three candidate lists. It can only
+  find companies some earlier search has seen; it pays off as more spaces are searched.
+- **Speed:** a warm search costs about 0.1 s more (0.11-0.35 s against 0.04-0.28 s). The first
+  search in a new process costs 1.5-2 s more, once. A company's embedding is stored, so repeat
+  searches make no Gemini call; a Gemini or index failure just leaves the candidates as they were.
+- **Why it is off for the demo:** it changes Kelluu's candidate list, and B re-judges a company
+  when its candidates change, so the competitors and Skip lists the demo script relies on could
+  shift. Turn it on after the demo, or earlier only with a re-warm and a recheck of the script.
+- Verda's Inference API has no embeddings endpoint, so `VERDA_EMBED_MODEL` is unused; the model
+  is `GEMINI_EMBED_MODEL` (default `gemini-embedding-001`, 768 dimensions).
