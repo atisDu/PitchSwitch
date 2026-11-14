@@ -95,6 +95,6 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [x] **C13 MCP demo setup** — Claude Desktop config for Cala + Pitchlist MCP; test the "Should I pitch Fund X?" question; steps in `docs/mcp-demo.md`. Needs: B15.
 
 ### CP5 — Sunday morning
-- [ ] **C14 Polish** — loading / empty / error states, responsive check, copy pass.
+- [x] **C14 Polish** — loading / empty / error states, responsive check, copy pass.
 - [x] **C15 README + docs** — `README.md` + `docs/`: setup, architecture, how Cala / Gemini / Atlas / Verda are used (from A19). Needs: A19.
 - [ ] **C16 Demo + pitch** — demo script (founder conflict → flip to investor mode → MCP in Claude Desktop), slides, rehearse twice with the team, record a backup video.
