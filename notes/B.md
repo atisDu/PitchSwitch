@@ -635,3 +635,18 @@ Agreed by the humans (A, B, C): one additive bump. CHANGELOG, api.md, CLAUDE.md 
   - Kelluu: Aispeco (EIC, €2.4M, Nov 2024).
 - **Cost:** first report per startup: sanctions ~140 Cala calls, notes 2 searches (~1 min); then
   stored.
+
+## B26 report polish (2026-11-14): for A (redeploy + warm) and C (numbers)
+
+- **A:** please redeploy from `main` and run `python deploy/warm.py` (then `--check`). B26 bumps
+  two stored-answer keys (fresh funds v2, partners v3), so the first report per demo company is
+  cold again (~35-60 s locally); after warm it is back to seconds.
+- **C (no format change):** "Partner for your space: <name>. <claim>" and "Fresh fund: <claim>"
+  keep their shape; the partner claim now names a deal (Maki.vc: Paavo Räisänen on Metaktik;
+  NIF: Patrick Schneider-Sikorsky on Kelluu). A fresh fund's breakdown can read
+  `companies here 7.5/15 (fresh fund for your sector, counted half)`.
+- **One card per firm:** two Cala entries of a fund merge (Kelluu: Maki.vc was #1 and #5);
+  conflicts of both are kept. Kelluu Pitch 39 -> 37.
+- **Demo numbers move** (local live run; check on the server after the warm): Sensofusion Maki.vc
+  69.6, NIF 38.0, Keen 34.1 (#5, now with its €150M fund and partner Giuseppe Lacerenza),
+  Earlybird/Lakestar 21.2 (#7-8); Stendr Maki.vc 73.1, Keen #6; Kelluu Lakestar 37.5 (#4).
