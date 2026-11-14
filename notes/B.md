@@ -512,3 +512,18 @@ investors in rounds too, so the fake store has the same gap.
   "Kelluu Oy's latest round (Series A) was €15M; your €2M check fits"; `too_large` under 10% of it.
 - It is a flag only: it does not move the score (so nothing in the score breakdown). 0 or negative: 422.
 
+## B20 warm paths (for A and C)
+
+- Warm paths are now built from sourced evidence: a round both investors took part in, or a company
+  in both portfolios (sources = those rounds and links, at most 6). `co_investors()` only picks who
+  else to rank, so **A: no sources needed on co_investors() any more**.
+- No known investor of the startup (Sensofusion): the funds that led a round in its space stand in,
+  counted half: "Co-invested in 3 companies with Maki.vc, which led a round in your space (e.g. Egg
+  White Company, IQM Quantum Computers)"; breakdown "warm paths 3.8/15 (1, through funds that lead
+  here, counted half)". Sensofusion: 8 of 37 investors have one (was 0).
+- Own investors: "Co-invested in 3 companies with your investor Tesi (e.g. ...)".
+- Pairs the graph claims but Cala can't source are dropped (Kelluu: Lifeline Ventures AB lost "Tesi
+  4x": the sourced rounds are on a separate "Lifeline Ventures" entity; 48.0 -> 40.5, still #2).
+- Live: Sensofusion Maki 69.6, Lifeline 36.3, NIF 35.5, Tesi 35.4; Skip now starts with Skyfall.
+  Stendr Maki 73.1; Kelluu Maki 57.3. Eval 6/6 live. Needs A's redeploy + warm.
+
