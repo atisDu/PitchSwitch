@@ -79,3 +79,13 @@ A's rebuild of the index won't turn it red.
 C's human decided not to run sessions with real founders. `docs/user-testing.md` stays as an unused
 guide (marked "Not run"); the demo script no longer ends with a founder quote. C9 stays unticked in
 TODO.md because it wasn't done; the humans can strike or tick it.
+
+## Decision: agents use our MCP server only (14 Nov)
+
+C's human: "we provide our own MCP, not use Cala's one for agents." Cala's MCP server is out of the
+demo and the docs (`docs/mcp-demo.md` step 3 now says so). PitchSwitch's MCP tools already sit on
+Cala and return its sources. `CLAUDE.md` §3 ("+ Cala MCP for the demo"), `TODO.md` C13 and
+`OVERVIEW.md` still mention Cala's MCP; those are the humans' files.
+
+C13 is ticked on that basis: the PitchSwitch MCP server is set up and was tested in Claude Desktop
+by a person (`notes/B.md`, "MCP server checked in Claude Desktop"); `docs/mcp-demo.md` has the steps.

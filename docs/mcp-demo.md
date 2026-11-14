@@ -6,8 +6,8 @@ Rainfall Ventures?"* and get a sourced answer through PitchSwitch's MCP server.
 Status, 14 Nov: PitchSwitch over stdio **works in Claude Desktop** (checked by a person at the app, `notes/B.md`): the
 server starts, lists its tools and answers the demo question with "skip, backs Stendr". Also checked
 over stdio with the official MCP client: `check_conflict` for Rainfall Ventures × Sensofusion
-returns the PORTFOLIO conflict via Stendr in about 2 s. Still to do by a person: connect Cala's
-connector (step 3, two minutes) and run the question once on the demo laptop. The deployed `/mcp`
+returns the PORTFOLIO conflict via Stendr in about 2 s. Left for demo day: run the question once on
+the demo laptop (it warms the cache). The deployed `/mcp`
 endpoint is **down** (502, see the last section).
 
 ## 1. Before you start
@@ -49,32 +49,11 @@ Quit Claude Desktop completely (⌘Q) and open it again. In a new chat, the tool
 **pitchswitch** with seven tools: `resolve_company`, `find_competitors`, `get_rounds`,
 `investor_profile`, `check_conflict`, `rank_investors`, `investor_brief`.
 
-## 3. Add Cala's own MCP server (optional)
+## 3. Only PitchSwitch's MCP server
 
-The plan (OVERVIEW.md) shows PitchSwitch next to Cala's MCP server, so the audience sees both layers:
-Cala's raw graph tools and PitchSwitch's fundraising tools on top. Source:
-<https://docs.cala.ai/integrations/mcp> (read 14 Nov).
-
-**Claude Desktop (recommended): the Connectors screen, no config file and no key.** In Claude
-Desktop: **Customize → Connectors → Add → Browse connectors**, search for **Cala**, click
-**Connect to Claude**, and log in to Cala in the browser tab that opens (use the team's Cala
-account).
-
-**Other clients** use the remote server `https://api.cala.ai/mcp/` (HTTP) with the header
-`X-API-KEY: <CALA_API_KEY>` (key from <https://console.cala.ai/api-keys>). For a client that only
-takes a command, the docs give an `mcp-remote` bridge:
-
-```json
-"Cala": {
-  "command": "npx",
-  "args": ["mcp-remote", "https://api.cala.ai/mcp/", "--header", "X-API-KEY: YOUR_CALA_API_KEY"]
-}
-```
-
-Cala's tools: `knowledge_search`, `knowledge_query`, `entity_search`, `entity_introspection`,
-`entity_retrieval`. With both servers connected, ask the demo question with "Using only
-PitchSwitch" so Claude uses our tools for the verdict; Cala's tools are there for follow-ups like
-*"Using Cala, what does Stendr build?"*.
+We provide our own MCP server for agents and don't use Cala's MCP server in the demo (team
+decision, 14 Nov). PitchSwitch's tools already sit on top of Cala and return Cala's sources with
+every answer, so an agent needs only `pitchswitch`.
 
 ## 4. Test the demo question
 
