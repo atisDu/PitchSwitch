@@ -14,7 +14,7 @@ Without `API_URL` set, the app reads it from the repo-root `.env` (default
 
 ## How it fits together
 
-- `lib/types.ts` mirrors `contracts/schemas.py` field for field (contract 1.1.0).
+- `lib/types.ts` mirrors `contracts/schemas.py` field for field (contract 1.1.1).
 - `lib/api.ts` is the only code that calls the backend. The browser calls same-origin
   `/api/*`; `next.config.ts` forwards that to `API_URL`. Switching between the mock and the
   real API means changing `API_URL`, nothing else.

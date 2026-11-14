@@ -136,6 +136,6 @@ Next.js (App Router) + TypeScript + Tailwind, in `frontend/`.
 ## Contracts and fixtures
 
 `contracts/` holds the shared models, the REST API description (`api.md`) and recorded Cala data.
-The contracts were frozen after the first evening (version 1.1.0); changes need all three
+The contracts were frozen after the first evening (1.1.0; 1.1.1 on 14 Nov added angels as investors, wording only); changes need all three
 workstreams to agree. `contracts/fixtures/raw/` holds raw Cala responses for the demo cases,
 `models/` the contract models built from them, used by the fake store and the frontend mock.

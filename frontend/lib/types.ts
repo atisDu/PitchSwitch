@@ -1,10 +1,10 @@
-// Mirrors contracts/schemas.py (CONTRACT_VERSION 1.1.0) field for field.
+// Mirrors contracts/schemas.py (CONTRACT_VERSION 1.1.1) field for field.
 // Do not change shapes here without a contract change (CLAUDE.md rule 4).
 //
 // Pydantic always serialises every field, so fields with defaults are present
 // in the JSON: they are required here, and `X | None = None` becomes `X | null`.
 
-export const CONTRACT_VERSION = "1.1.0";
+export const CONTRACT_VERSION = "1.1.1";
 
 export type SourceRank = "PRIMARY" | "FILING" | "PRESS" | "AGGREGATOR" | "UNKNOWN";
 
@@ -18,7 +18,7 @@ export interface Source {
 export interface EntityRef {
   id: string; // Cala UUID
   name: string;
-  type: string; // Company | Organization | Person | FundingRound ...
+  type: string; // Company | Organization | Person | FundingRound ... (1.1.1: an investor can be a Person, an angel)
   description: string | null;
 }
 
