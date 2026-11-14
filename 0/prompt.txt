@@ -1,0 +1,106 @@
+yes
+
+---
+
+try now
+
+---
+
+yes, but i also added a DESIGN.md
+
+---
+
+Contract change proposal → 1.2.0 (from B). Founder mode only finds "Skip" investors through competitors' funding rounds, because DataStore can't ask "who invested in company X". Only 4 companies have rounds in the fixtures, so Stendr's backers (Rainfall, Skyfall, Startuplab) never show up, and the Sensofusion-vs-Stendr conflict demo shows no conflict.
+▎ Proposal: add async def backers(self, company_id: str) -> list[PortfolioLink] to DataStore (incoming INVESTED_IN, sources kept).
+
+---
+
+yes
+
+---
+
+git pull, the contract change was unnecessary
+
+---
+
+yes
+
+---
+
+yes
+
+---
+
+do the C9 template
+
+---
+
+yes
+
+---
+
+git pull
+
+---
+
+git pull
+
+---
+
+yes
+
+---
+
+yes
+
+---
+
+git pull
+
+---
+
+git pull
+
+---
+
+i added env but it isnt with the . fix it
+
+---
+
+yes
+
+---
+
+git pull
+
+---
+
+yes
+
+---
+
+git pull
+
+---
+
+yes
+
+---
+
+yes
+
+---
+
+yes
+
+---
+
+git pull
+
+---
+
+yes, code level names can stay
+
+---
+
+git pull
