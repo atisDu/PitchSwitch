@@ -313,5 +313,22 @@ investors in rounds too, so the fake store has the same gap.
     error state.
   - After it: nothing special is needed; a label such as "Angel" on those cards would help
     (`investor.type` is in every `InvestorScore`).
-- **B:** nothing to change now. After A's change lands, B runs the brief and the check for
-  Tuomas Rasila x Kelluu live and adds an angel case to the eval set.
+- **B, done (14 Nov, after A's change):** on the real store Tuomas Rasila x Kelluu works end to
+  end: `company()` returns him as `Person`, he is #8 on Kelluu's Pitch (three more angels lower
+  down), the conflict check answers, the brief came in 11 s with 10 citations. The eval set has
+  an angel case (6/6 on fixtures and live).
+
+## Stored judgements and briefs no longer overwrite each other (14 Nov)
+
+- Found while checking angels: a machine with `USE_VECTOR_SEARCH` off sees other candidate lists
+  than the server (Sensofusion 26 vs 28, Stendr 27 vs 30, Kelluu 24 vs 26). With one stored
+  judgement per company, a founder report run from such a machine on the real store would have
+  judged again and **replaced the server's judgement**, and its briefs the same way.
+- Now: one stored judgement per candidate list and one stored brief per set of facts
+  (`core/competitors.py`, `core/briefs.py`). The docs already in Atlas are still read. Checked on
+  the real store with the server's setting: all three demo judgements read back in under a
+  second, no Gemini call, nothing written.
+- **A:** the deployed server needs this commit (a redeploy) before it matters there; until then
+  it behaves as before. Nothing else to do.
+- **Everyone running the real store locally:** set `USE_VECTOR_SEARCH=true` in your `.env` to see
+  what the server shows. Without it your reports differ from the demo (fewer competitors).
