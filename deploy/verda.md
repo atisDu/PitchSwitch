@@ -115,8 +115,61 @@ docker compose --env-file ../.env run --rm -T api python -m batch.precompute_gra
 The serverless batch-job deployment described above is ready in code (`batch/job_server.py`) but
 not created yet: it needs the image in a registry Verda can pull from.
 
+## Demo day: warm the cache, then go cache-only (task A18)
+
+```sh
+python deploy/warm.py --check                  # calls every page the demo can reach; fails if slow
+deploy/cache-only.sh 95.133.252.219 on         # the server now answers only from the Atlas cache
+python deploy/warm.py --check                  # prove it: must pass again
+# ... demo ...
+deploy/cache-only.sh 95.133.252.219 off        # back to normal
+```
+
+`warm.py` covers the founder reports of Sensofusion, Stendr and Kelluu, the investor check and
+brief of the top 3 Pitch and up to 6 Skip investors of each, and the pairs Tesi x NestAI and
+Maki.vc x Stendr: 50 calls.
+
+Checked on the deployed server on 14 Nov:
+
+| Run | Result |
+| --- | --- |
+| First pass (cold briefs) | 50 calls in 280 s, 0 failed; 9 briefs took 17-57 s to write |
+| Second pass | 50 calls in 50 s, 0 failed |
+| **With `CACHE_ONLY=true`** | **50 calls in 22 s, 0 failed, 0 slow, 0 requests to Cala** |
+| A never-seen name with `CACHE_ONLY=true` | HTTP 502 "CACHE_ONLY is on and GET /entities is not cached", at once |
+
+So the demo path needs no live Cala call. Anything typed that was never looked up before will
+show an error in cache-only mode: stick to the script, or switch it off for questions.
+Rerun `warm.py` after anything that changes the reports (new judgements, a new crawl).
+
+## Costs (task A19)
+
+| Service | What we use | Cost |
+| --- | --- | --- |
+| Verda CPU instance | `CPU.4V.16G.CC`, on demand, FIN-03 | EUR 0.044 an hour, about EUR 1.05 a day; EUR 0.05 spent by Saturday noon of a EUR 200 balance |
+| Verda batch (nightly crawl) | Runs on the same instance by cron | No extra cost |
+| MongoDB Atlas | M0 free tier: ~800 cached Cala responses, 110 investors in the graph, judgements, briefs | Free (512 MB limit; we use a few MB) |
+| Cala | About 1,500 calls over the weekend; the full crawl was 229 live calls | Hackathon credits (they ran out once on Saturday and were topped up) |
+| Gemini | Competitor judging and briefs (B) | Hackathon key |
+| HTTPS | Let's Encrypt through Caddy, `sslip.io` name | Free |
+
+Cala's limit on our key is 100 calls a minute (10 until Saturday noon). One process uses at most
+60 (`CALA_PER_MINUTE`).
+
+## For the README (hand-over to C)
+
+- **How Verda is used:** one small CPU instance hosts the whole product (frontend, API, MCP
+  server) behind Caddy with automatic HTTPS; the same image runs the nightly precompute job that
+  keeps the investor graph and the cache fresh. The instance is created and deleted through
+  Verda's Cloud API (`deploy/verda.py`); a deploy is one command (`deploy/ship.sh <ip>`).
+- **Why not GPUs or Verda Inference:** the workload is I/O, not compute, and Verda's Inference
+  API has no embeddings endpoint.
+- **Process, in order:** local Docker Compose check -> instance via API -> ship -> Atlas network
+  access fixed (the server was blocked at first and called Cala uncached; we added
+  `CALA_REQUIRE_CACHE`) -> warm -> cache-only check.
+
 ## Still open
 
 - Create the serverless batch-job deployment (push the image to a registry first).
 - `VERDA_API_KEY` in `.env` is rejected by Verda's Inference API; it is not used anywhere.
-- Costs and the final write-up for the README: task A19.
+- Vector search (A13) is not built; competitor candidates come from Cala queries.
