@@ -32,7 +32,12 @@ const nextConfig: NextConfig = {
   // Browser calls same-origin /api/*; this forwards them to B's server or C's mock
   // (no CORS, and switching backends is just API_URL).
   async rewrites() {
-    return [{ source: "/api/:path*", destination: `${API_URL}/api/:path*` }];
+    return [
+      { source: "/api/:path*", destination: `${API_URL}/api/:path*` },
+      // The landing page is a static page built with the taste skill's kit (public/about.html,
+      // public/assets/), outside the app's Tailwind layout so the two systems never mix.
+      { source: "/about", destination: "/about.html" },
+    ];
   },
 };
 

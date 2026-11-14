@@ -5,9 +5,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// /about is a static page outside the app (public/about.html), so it gets a plain <a>:
+// a client-side <Link> would ask the app router for a route that doesn't exist.
 const LINKS = [
-  { href: "/about", label: "How it works" },
-  { href: "/prep", label: "Slush prep" },
+  { href: "/about", label: "How it works", external: true },
+  { href: "/prep", label: "Slush prep", external: false },
 ];
 
 export function NavLinks() {
@@ -20,15 +22,15 @@ export function Links({ path = null }: { path?: string | null }) {
     <>
       {LINKS.map((l) => {
         const here = path === l.href;
-        return (
-          <Link
-            key={l.href}
-            href={l.href}
-            aria-current={here ? "page" : undefined}
-            className={`label border-b-2 py-1 pointer-coarse:py-3 ${
-              here ? "border-accent" : "border-transparent hover:border-foreground"
-            }`}
-          >
+        const className = `label border-b-2 py-1 pointer-coarse:py-3 ${
+          here ? "border-accent" : "border-transparent hover:border-foreground"
+        }`;
+        return l.external ? (
+          <a key={l.href} href={l.href} className={className}>
+            {l.label}
+          </a>
+        ) : (
+          <Link key={l.href} href={l.href} aria-current={here ? "page" : undefined} className={className}>
             {l.label}
           </Link>
         );
