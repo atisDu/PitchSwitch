@@ -28,6 +28,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               Pitch<span className="border-b-2 border-accent">Switch</span>
             </Link>
             <nav className="flex items-center gap-6">
+              <Link href="/about" className="label hover:underline hover:underline-offset-4">
+                How it works
+              </Link>
               <Link href="/prep" className="label hover:underline hover:underline-offset-4">
                 Slush prep
               </Link>
