@@ -96,5 +96,5 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 
 ### CP5 — Sunday morning
 - [ ] **C14 Polish** — loading / empty / error states, responsive check, copy pass.
-- [ ] **C15 README + docs** — `README.md` + `docs/`: setup, architecture, how Cala / Gemini / Atlas / Verda are used (from A19). Needs: A19.
+- [x] **C15 README + docs** — `README.md` + `docs/`: setup, architecture, how Cala / Gemini / Atlas / Verda are used (from A19). Needs: A19.
 - [ ] **C16 Demo + pitch** — demo script (founder conflict → flip to investor mode → MCP in Claude Desktop), slides, rehearse twice with the team, record a backup video.
