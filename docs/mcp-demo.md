@@ -3,11 +3,12 @@
 Goal: in the demo (step 7 of `docs/demo-script.md`), ask Claude Desktop *"Should Sensofusion pitch
 Rainfall Ventures?"* and get a sourced answer through PitchSwitch's MCP server.
 
-Status, 14 Nov: **works in Claude Desktop** (checked by a person at the app, `notes/B.md`): the
+Status, 14 Nov: PitchSwitch over stdio **works in Claude Desktop** (checked by a person at the app, `notes/B.md`): the
 server starts, lists its tools and answers the demo question with "skip, backs Stendr". Also checked
 over stdio with the official MCP client: `check_conflict` for Rainfall Ventures × Sensofusion
-returns the PORTFOLIO conflict via Stendr in about 2 s. Still open: Cala's own MCP server (step 3)
-and a run on the demo laptop.
+returns the PORTFOLIO conflict via Stendr in about 2 s. Still to do by a person: connect Cala's
+connector (step 3, two minutes) and run the question once on the demo laptop. The deployed `/mcp`
+endpoint is **down** (502, see the last section).
 
 ## 1. Before you start
 
@@ -50,11 +51,30 @@ Quit Claude Desktop completely (⌘Q) and open it again. In a new chat, the tool
 
 ## 3. Add Cala's own MCP server (optional)
 
-The plan (OVERVIEW.md) shows PitchSwitch next to Cala's MCP server. Its connection details are not in
-this repo; get them from Cala's docs or the mentors, add it as a second entry under `mcpServers`
-(or under Settings → Connectors if it is a remote URL), and note it here:
+The plan (OVERVIEW.md) shows PitchSwitch next to Cala's MCP server, so the audience sees both layers:
+Cala's raw graph tools and PitchSwitch's fundraising tools on top. Source:
+<https://docs.cala.ai/integrations/mcp> (read 14 Nov).
 
-- Cala MCP: _to fill in_
+**Claude Desktop (recommended): the Connectors screen, no config file and no key.** In Claude
+Desktop: **Customize → Connectors → Add → Browse connectors**, search for **Cala**, click
+**Connect to Claude**, and log in to Cala in the browser tab that opens (use the team's Cala
+account).
+
+**Other clients** use the remote server `https://api.cala.ai/mcp/` (HTTP) with the header
+`X-API-KEY: <CALA_API_KEY>` (key from <https://console.cala.ai/api-keys>). For a client that only
+takes a command, the docs give an `mcp-remote` bridge:
+
+```json
+"Cala": {
+  "command": "npx",
+  "args": ["mcp-remote", "https://api.cala.ai/mcp/", "--header", "X-API-KEY: YOUR_CALA_API_KEY"]
+}
+```
+
+Cala's tools: `knowledge_search`, `knowledge_query`, `entity_search`, `entity_introspection`,
+`entity_retrieval`. With both servers connected, ask the demo question with "Using only
+PitchSwitch" so Claude uses our tools for the verdict; Cala's tools are there for follow-ups like
+*"Using Cala, what does Stendr build?"*.
 
 ## 4. Test the demo question
 
@@ -101,8 +121,10 @@ Record the result here:
 
 ## Alternative: the deployed server (remote)
 
-Once A17 deploys the stack, the same tools are served over streamable HTTP at `https://<site>/mcp`
-(see `deploy/verda.md`). Over HTTP the server **needs a token** (`MCP_TOKEN` in the server's
+The same tools are served over streamable HTTP at `https://95-133-252-219.sslip.io/mcp`
+(see `deploy/verda.md`). **On 14 Nov it answered 502**: the `mcp` container isn't running, most
+likely because the server's `.env` has no `MCP_TOKEN` (`notes/B.md`; A's fix). Until then, use the
+local stdio setup above. Over HTTP the server **needs a token** (`MCP_TOKEN` in the server's
 `.env`, 16+ characters): without it every request gets 401.
 
 Get the ready-to-paste client setup from the repo (it reads `MCP_TOKEN` from `.env`):
