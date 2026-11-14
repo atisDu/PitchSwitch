@@ -17,9 +17,10 @@ from typing import Any
 from pydantic import BaseModel
 
 from agent.llm import LLMError, structured
-from contracts.schemas import Brief, Company, Competitor, Conflict, Reason, Round, Source
+from contracts.schemas import Brief, Company, Competitor, Conflict, EntityRef, Reason, Round, Source
 from core.competitors import judge
 from core.conflict import check_conflict
+from core.sanctions import sanction_fact, screen
 from core.xray import hidden_rivals
 from data import NotFound, get_store
 
@@ -93,6 +94,8 @@ async def company_names(ids: list[str], known: dict[str, str]) -> dict[str, str]
 
 
 def conflict_fact(c: Conflict, investor: str, company: str) -> Reason:
+    if c.kind == "SANCTION":  # B25: about the investor or its LP, not a competitor
+        return sanction_fact(c, investor)
     via = f" through {c.via_person.name}, who sits on its board" if c.via_person else ""
     return Reason(
         text=f"Conflict: {investor} backs {c.competitor.name}{via}, a direct competitor of "
@@ -123,8 +126,12 @@ async def collect_facts(
     )
     # Cala's search (the slow part, up to a minute uncached) runs alongside the rest.
     async def conflicts_with_hidden() -> list[Conflict]:
-        hidden = await hidden_rivals(company, investor.id, competitors, space)
-        return await check_conflict(investor.id, competitors, hidden=hidden)
+        ref = EntityRef(**investor.model_dump(include={"id", "name", "type", "description"}))
+        hidden, screened = await asyncio.gather(
+            hidden_rivals(company, investor.id, competitors, space), screen(ref)
+        )
+        found = await check_conflict(investor.id, competitors, hidden=hidden)
+        return found + screened.conflicts  # B25
 
     conflicts, rounds, portfolio, (_, claims) = await asyncio.gather(
         conflicts_with_hidden(),

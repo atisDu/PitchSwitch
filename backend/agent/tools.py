@@ -31,6 +31,7 @@ from contracts.schemas import (
 from core import briefs, conflict, scoring
 from core.competitors import shared_graph, stored_judgement
 from core.fresh import stored_partner_conflicts
+from core.sanctions import screen
 from core.xray import hidden_rivals
 from data import NotFound, get_store
 
@@ -112,9 +113,8 @@ async def check_conflict(investor_id: str, company_id: str) -> list[Conflict]:
     hidden = await hidden_rivals(company, investor_id, judged.direct, judged.space)
     found = await conflict.check_conflict(investor_id, judged.direct, hidden=hidden)
     ref = EntityRef(**investor.model_dump(include={"id", "name", "type", "description"}))
-    return found + await stored_partner_conflicts(
-        ref, company, judged.direct, judged.space
-    )  # B23
+    found += await stored_partner_conflicts(ref, company, judged.direct, judged.space)  # B23
+    return found + (await screen(ref)).conflicts  # B25
 
 
 async def rank_investors(company_id: str, limit: int = 10) -> FounderReport:
@@ -125,7 +125,8 @@ async def rank_investors(company_id: str, limit: int = 10) -> FounderReport:
     judged = await stored_judgement(company)
     space = [*(c.company for c in judged.direct), *judged.space]
     report = await scoring.rank_investors(
-        company, judged.direct, space, xray=True, this_week=True
+        company, judged.direct, space, xray=True, this_week=True, screen=True,
+        notes=True,
     )
     return report.model_copy(update={"pitch": report.pitch[: max(limit, 0)]})
 

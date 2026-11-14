@@ -35,6 +35,10 @@ def xray_off(monkeypatch):
     async def no_partner(investor, sector, look_up=True):
         return None
 
+    async def no_notes(company, competitors):
+        return []
+
+    monkeypatch.setattr(scoring, "report_notes", no_notes)  # B24 asks Cala's search and Gemini
     monkeypatch.setattr(scoring, "fresh_funds", no_funds)
     monkeypatch.setattr(scoring, "lead_partner", no_partner)
     monkeypatch.setattr(fresh, "lead_partner", no_partner)  # stored_partner_conflicts

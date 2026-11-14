@@ -39,6 +39,8 @@ from core.fresh import (
     sector_of,
 )
 from core.funding import raise_fit
+from core.notes import report_notes
+from core.sanctions import screen_all
 from core.xray import XRay, hidden_reasons, portfolios_of, thesis_reason
 from core.xray import xray as portfolio_xray
 from data import get_store
@@ -215,13 +217,18 @@ async def rank_investors(
     target_amount_eur: float | None = None,
     xray: bool = False,
     this_week: bool = False,
+    screen: bool = False,
+    notes: bool = False,
 ) -> FounderReport:
     """Rank investors for `company` against direct `competitors` within the market `space`.
     Either one missing = ask the judge (the API passes both, from its memo / competitor_ids).
     `xray` (B22): also judge every ranked investor's whole portfolio (Gemini, stored once per
     startup): hidden rivals there move it to Skip, same-space companies count as its thesis.
     `this_week` (B23): funds that just closed for the sector join the pool, and the top Pitch
-    investors get their lead partner, who is checked against the direct competitors' boards."""
+    investors get their lead partner, who is checked against the direct competitors' boards.
+    `screen` (B25): every ranked investor and its LPs against Cala's sanctions records; a record
+    is a SANCTION conflict (Skip), none gives "screened: no sanctions record in Cala".
+    `notes` (B24): sourced lines on the direct competitors (grants won, at Slush 2026)."""
     store = get_store()
     today = today or date.today()
     if competitors is None or space is None:
@@ -231,6 +238,7 @@ async def rank_investors(
     sector = sector_of(company, [*(c.company for c in competitors), *space])
     # Cala's search for fresh funds is slow when not stored: start it now.
     funds_task = asyncio.create_task(fresh_funds(sector, today)) if this_week else None
+    notes_task = asyncio.create_task(report_notes(company, competitors)) if notes else None
     direct = {c.company.id for c in competitors}
     others = list({c.id: c for c in space if c.id not in direct and c.id != company.id}.values())
     names = {c.company.id: c.company.name for c in competitors} | {c.id: c.name for c in others}
@@ -300,6 +308,7 @@ async def rank_investors(
         asyncio.gather(*(store.investor_rounds(i) for i in ids)),
         asyncio.gather(*(store.company(i) for i in ids), return_exceptions=True),
     )
+    screens = await screen_all([pool[i] for i in ids]) if screen else {}
     close = await _closeness(company, direct, others)
     stage = _startup_stage(company, own_rounds)
     leaders = {ri.investor.id: ri.investor for rd in space for ri in rd.investors if ri.is_lead}
@@ -310,12 +319,17 @@ async def rank_investors(
     pitch: list[InvestorScore] = []
     skip: list[InvestorScore] = []
     for inv_id, conflicts, history, profile in zip(ids, *found, strict=True):
+        screened = screens.get(inv_id)
+        if screened:
+            conflicts = [*conflicts, *screened.conflicts]
         scored = _score(
             pool[inv_id], in_space[inv_id], history, warm[inv_id], conflicts, label, today,
             closeness=close, stage=stage, warm_weight=warm_weight,
             profile=profile if isinstance(profile, Company) else None,
             xray=xrays.get(inv_id), fresh=fresh.get(inv_id),
         )
+        if screened:
+            scored.reasons.extend(screened.reasons)
         if target_amount_eur:
             scored.funding_fit = raise_fit(target_amount_eur, history, pool[inv_id].name)
         (skip if conflicts else pitch).append(scored)
@@ -346,7 +360,7 @@ async def rank_investors(
 
     return FounderReport(
         company=company, competitors=competitors, pitch=sorted(pitch, key=order),
-        skip=sorted(skip, key=order),
+        skip=sorted(skip, key=order), notes=await notes_task if notes_task else [],
     )
 
 
