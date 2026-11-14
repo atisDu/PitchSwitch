@@ -283,6 +283,30 @@ Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
   cache entries expire after 24 h and 44 calls went to Cala live.
 - So results drift while the cache keeps refreshing. For the demo, run with A's cache-only mode on
   (`deploy/cache-only.sh`) from the last rehearsal onwards, and rehearse on that.
-- **Open, waiting for the human:** a person (angel) on a list opens a brief that fails (Kelluu:
-  Tuomas Rasila, was #6 on Pitch): the store cannot look a person up as an investor. A stopgap
-  that leaves people off both lists is on the local branch `b/B16-people-off-lists`, not merged.
+- A person (angel) on a list opens a brief that fails: see "Angels stay on the lists" below.
+
+## Angels stay on the lists (human, 14 Nov): requests for A and C
+
+Decision: **people who invest (angels) stay on Pitch and Skip.** B's stopgap that removed them is
+dropped. What is broken today: an angel's card opens a brief / investor check that answers 404.
+Seen live on Kelluu: Tuomas Rasila (`c75cbef9-0ab0-5552-84f8-fc59bc63ea93`, type `Person`), #6 on
+Pitch; `company(id)` answers "is not a company or an investor (Person)". The fixtures hold person
+investors in rounds too, so the fake store has the same gap.
+
+- **For A (store, real and fake): accept a person's ID wherever an investor's ID is accepted.**
+  - `company(id)` returns a `Company` for a person: `type: "Person"`, name, description (what
+    Cala says about them), `sources`. No schema change: `EntityRef.type` already allows it.
+  - `investor_rounds(id)` and `portfolio(id)` return the person's own rounds and `INVESTED_IN`
+    companies (or `[]`), and `people(id)` returns `[]`; none of them raises for a person.
+  - With that, B's brief, investor check, chat and MCP tools work for angels with no change in
+    B's code: they only call these four methods.
+  - `contracts/api.md` says `company(id)` "works for any organisation ID". Adding "or a person
+    who invests" there is a wording change for the three humans, not for an agent.
+- **For C (frontend): an angel's card must not lead to an error.**
+  - Until A's change is on `main`: when `investor.type === "Person"`, hide the brief link and the
+    flip to the investor check, or show "No brief for individual investors yet" instead of the
+    error state.
+  - After it: nothing special is needed; a label such as "Angel" on those cards would help
+    (`investor.type` is in every `InvestorScore`).
+- **B:** nothing to change now. After A's change lands, B runs the brief and the check for
+  Tuomas Rasila x Kelluu live and adds an angel case to the eval set.
