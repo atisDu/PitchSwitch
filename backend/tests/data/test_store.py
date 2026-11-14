@@ -3,7 +3,8 @@
 import pytest
 
 from cache.graph import MemoryGraph
-from data.errors import NotFound
+from contracts.schemas import EntityRef
+from data.errors import NotFound, Upstream
 from data.store import CalaDataStore
 from tests.data.conftest import RecordedCala
 
@@ -82,6 +83,108 @@ async def test_resolve_a_name_cala_does_not_know_gives_lookalikes_or_nothing(sto
     before = len(cala.calls)
     assert await store.resolve("   ", "company") == []
     assert len(cala.calls) == before
+
+
+# --- resolve: people who invest (angels) ------------------------------------------------------
+
+_ANGEL = {"id": "p-angel", "name": "Tuomas Rasila", "entity_type": "Person"}
+_NAMESAKE = {"id": "p-other", "name": "Tuomas Rasila", "entity_type": "Person"}
+
+
+def _people_search(cala, people, *, fail=False):
+    """Cala's name search: two lookalike companies, and `people` when asked for Person."""
+
+    async def search(name, entity_types=None, limit=10):
+        cala.calls.append(("search_entities", name, tuple(entity_types or ())))
+        if entity_types == ["Person"]:
+            if fail:
+                raise Upstream("CACHE_ONLY is on and GET /entities is not cached")
+            return {"entities": people}
+        return {
+            "entities": [
+                {"id": "c-1", "name": "Tuomas Grönman Oy", "entity_type": "Company"},
+                {"id": "c-2", "name": "RASILA LTD", "entity_type": "Company"},
+            ]
+        }
+
+    cala.search_entities = search
+
+
+def _person_entities(cala, by_id):
+    async def entity(entity_id, **projection):
+        cala.calls.append(("entity", entity_id))
+        if entity_id not in by_id:
+            raise NotFound(entity_id)
+        return by_id[entity_id]
+
+    cala.entity = entity
+
+
+async def test_resolve_investor_finds_a_person_seen_investing_in_a_round(cala):
+    graph = MemoryGraph()
+    _people_search(cala, [_NAMESAKE])  # Cala's search only knows a namesake with no deals
+    _person_entities(cala, {"p-other": {**_NAMESAKE, "relationships": {}}})
+    seen_in_round = CalaDataStore(cala, graph=graph)
+    angel = EntityRef(id="p-angel", name="Tuomas Rasila", type="Person", description="Angel")
+    await seen_in_round._note_people([angel])
+
+    later = CalaDataStore(cala, graph=graph)  # another process, same shared graph
+    refs = await later.resolve("Tuomas Rasila", "investor")
+    assert refs[0] == angel  # before the lookalike companies
+    assert {ref.id for ref in refs} == {"p-angel", "c-1", "c-2"}  # the namesake is dropped
+    assert [ref.id for ref in await later.resolve("Tuomas Rasila", "company")] == ["c-1", "c-2"]
+
+
+async def test_resolve_investor_keeps_a_namesake_only_if_cala_links_them_to_deals(cala):
+    invests = {
+        **_ANGEL,
+        "properties": {"description": "An investor who has funded Kova Labs."},
+        "relationships": {"outgoing": {"INVESTED_IN": [{"id": "kova"}]}},
+    }
+    _people_search(cala, [_ANGEL, _NAMESAKE, {**_NAMESAKE, "id": "p-3", "name": "Rasila Patel"}])
+    _person_entities(cala, {"p-angel": invests, "p-other": {**_NAMESAKE, "relationships": {}}})
+    store = CalaDataStore(cala, graph=MemoryGraph())
+    refs = await store.resolve("Tuomas Rasila", "investor")
+    assert refs[0].id == "p-angel" and refs[0].type == "Person"
+    assert refs[0].description == "An investor who has funded Kova Labs."
+    assert "p-other" not in {ref.id for ref in refs}
+    assert ("entity", "p-3") not in cala.calls  # another name is never fetched
+    # Remembered: the next process finds the angel without asking Cala's person search.
+    again = CalaDataStore(RecordedCala(), graph=store._graph)
+    _people_search(again.cala, [])
+    assert (await again.resolve("Tuomas Rasila", "investor"))[0].id == "p-angel"
+
+
+async def test_resolve_investor_still_works_when_the_person_search_fails(cala):
+    _people_search(cala, [], fail=True)
+    store = CalaDataStore(cala, graph=MemoryGraph())
+    assert [ref.id for ref in await store.resolve("Tuomas Rasila", "investor")] == ["c-1", "c-2"]
+
+
+async def test_rounds_remember_the_people_who_invested(cala):
+    def edge(id_, name, kind, role):
+        return {"id": id_, "name": name, "entity_type": kind, "properties": {"role": role}}
+
+    round_ = {
+        "id": "r-1",
+        "entity_type": "FundingRound",
+        "relationships": {
+            "incoming": {
+                "PARTICIPATES_IN_FUNDING_ROUND": [
+                    edge("kova", "Kova Labs", "Company", "ISSUER"),
+                    edge("p-angel", "Tuomas Rasila", "Person", "INVESTOR"),
+                    edge("f-1", "Some Fund", "Organization", "INVESTOR"),
+                ]
+            }
+        },
+    }
+    _person_entities(cala, {"r-1": round_})
+    graph = MemoryGraph()
+    store = CalaDataStore(cala, graph=graph)
+    await store._rounds(["r-1"])
+    document = await graph.get("known_people", "tuomas-rasila")
+    assert [raw["id"] for raw in document["people"]] == ["p-angel"]  # the fund is not a person
+    assert await graph.get("known_people", "some-fund") is None
 
 
 # --- company ----------------------------------------------------------------------------------

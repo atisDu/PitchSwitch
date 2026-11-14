@@ -28,7 +28,7 @@ from contracts.schemas import (
 )
 from data.cala_client import CalaClient
 from data.config import env, env_flag, load_env
-from data.errors import NotFound
+from data.errors import DataError, NotFound
 from data.introspection import fields_for
 from data.mappers import (
     INVESTOR_TYPES,
@@ -88,6 +88,10 @@ _ROUND_FIELDS = fields_for("FundingRound").only(
 )
 _EDGE_LIMIT = 100
 _ALIASES = "entity_aliases"  # graph collection: other entry's ID -> {"main": EntityRef}
+# graph collection: name key -> {"people": [EntityRef]}, people seen investing in a round.
+# Cala's name search can miss them (it finds a namesake with no deals instead).
+_PEOPLE = "known_people"
+_MAX_PERSON_CHECKS = 2  # same-named people fetched per resolve to see whether they invest
 _REGION = ["Finland", "Sweden", "Norway", "Denmark", "Estonia", "Latvia", "Lithuania"]
 _PLACE_WORDS = {"finnish", "swedish", "norwegian", "danish", "estonian", "vantaa", "helsinki"}
 _REGION_TEXT = "Finland, Sweden, Norway, Denmark, Estonia, Latvia and Lithuania"
@@ -238,6 +242,7 @@ class CalaDataStore:
         self._siblings: dict[str, list[str]] = {}  # main entry -> its other entries
         self._main_refs: dict[str, EntityRef] = {}  # main entry -> how to show it
         self._aliases_loaded = False
+        self._people: dict[str, dict[str, EntityRef]] = {}  # name key -> investing people
 
     async def aclose(self) -> None:
         await self.cala.aclose()
@@ -325,16 +330,18 @@ class CalaDataStore:
     async def resolve(self, name: str, kind: Literal["company", "investor"]) -> list[EntityRef]:
         """Companies and organisations matching the name, best first, one entry per firm.
 
-        People, products and places are dropped. For investors, entries that read like an
-        investor come first (so "Inflection" does not resolve to Inflection AI).
+        Products and places are dropped. For investors, entries that read like an investor
+        come first (so "Inflection" does not resolve to Inflection AI), and people who invest
+        under exactly that name (angels, type "Person") are included.
         """
         if not name.strip():
             return []
         await self._load_aliases()
         found = await self.cala.search_entities(name, entity_types=sorted(ORG_TYPES), limit=10)
         hits = map_resolve(found, kind, query=name)
+        people = await self._investing_people(name) if kind == "investor" else []
         if not hits:
-            return []
+            return people
         # Among equally good matches, a Nordic or Baltic firm first: that is who our users
         # mean (there is a Belgian VC called Inventure as well as the Finnish one).
         wanted = name_key(name)
@@ -379,7 +386,82 @@ class CalaDataStore:
         for hit in hits:
             if not any(_same_firm(hit, earlier) for earlier in seen):
                 seen.append(hit)
-        return seen
+        if not people:
+            return seen
+        # A person who invests under exactly this name comes after funds of that exact name
+        # and before everything else ("Tuomas Rasila" the angel, not "Tuomas Grönman Oy").
+        first = [h for h in seen if name_key(h.name) == wanted and looks_like_investor(h)]
+        return [*first, *people, *[h for h in seen if h not in first]]
+
+    async def _investing_people(self, name: str) -> list[EntityRef]:
+        """People named exactly `name` who invest: those seen in a round's investors (by any
+        process), and Cala's same-named people that have investment links. [] on any error."""
+        wanted = name_key(name)
+        if not wanted:
+            return []
+        known = dict(self._people.get(wanted, {}))
+        try:
+            document = await self._graph_db().get(_PEOPLE, wanted)
+            for raw in (document or {}).get("people") or []:
+                ref = EntityRef.model_validate(raw)
+                known.setdefault(ref.id, ref)
+        except Exception as exc:  # the graph is optional here
+            log.warning("known people not readable: %r", exc)
+        try:
+            found = await self.cala.search_entities(name, entity_types=["Person"], limit=5)
+        except DataError as exc:  # e.g. CACHE_ONLY and never searched: known people suffice
+            log.info("person search for %r skipped: %s", name, exc)
+            found = {}
+        namesakes = [
+            hit
+            for hit in found.get("entities") or []
+            if hit.get("entity_type") == "Person"
+            and hit.get("id")
+            and hit["id"] not in known
+            and name_key(hit.get("name") or "") == wanted
+        ][:_MAX_PERSON_CHECKS]
+        fetched = await asyncio.gather(
+            *[self._org(hit["id"]) for hit in namesakes], return_exceptions=True
+        )
+        invests = [
+            entity
+            for entity in fetched
+            if isinstance(entity, dict)
+            and (
+                related(entity, "outgoing", "INVESTED_IN")
+                or related(entity, "outgoing", "PARTICIPATES_IN_FUNDING_ROUND")
+            )
+        ]
+        found_now = []
+        for entity in invests:
+            person = map_company(entity)
+            found_now.append(
+                EntityRef(
+                    id=person.id, name=person.name, type="Person", description=person.description
+                )
+            )
+        await self._note_people(found_now)
+        for ref in found_now:
+            known.setdefault(ref.id, ref)
+        return list(known.values())
+
+    async def _note_people(self, refs: list[EntityRef]) -> None:
+        """Remember people seen investing, so investor resolve finds them by name."""
+        for ref in refs:
+            key = name_key(ref.name)
+            if ref.type != "Person" or not key or ref.id in self._people.get(key, {}):
+                continue
+            self._people.setdefault(key, {})[ref.id] = ref
+            try:
+                graph = self._graph_db()
+                document = await graph.get(_PEOPLE, key) or {}
+                stored = {raw.get("id"): raw for raw in document.get("people") or []}
+                if ref.id in stored:
+                    continue
+                stored[ref.id] = ref.model_dump(mode="json")
+                await graph.put(_PEOPLE, key, {"people": list(stored.values())})
+            except Exception as exc:
+                log.warning("person %s not saved: %r", ref.id, exc)
 
     async def company(self, id: str) -> Company:
         """A company, an investor firm, or a person who invests (then `type` is "Person").
@@ -434,6 +516,7 @@ class CalaDataStore:
                     loose[ref.id] = ref
                 if known_id in loose:
                     sources.append(edge_sources(edge))
+        await self._note_people(list(loose.values()))
         extra = undated_round(main_id, list(loose.values()), merge_sources(*sources))
         return [*rounds, extra] if extra else rounds
 
@@ -506,6 +589,7 @@ class CalaDataStore:
             mapped = map_round(entity)
             if mapped is None:
                 continue
+            await self._note_people([item.investor for item in mapped.investors])
             investors: dict[str, RoundInvestor] = {}
             for item in mapped.investors:  # one entry per firm, under its main ID and name
                 ref = self._shown(item.investor)
