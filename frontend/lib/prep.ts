@@ -96,3 +96,44 @@ export function finish(state: PrepState): PrepState {
     ),
   };
 }
+
+// --- "Did you mean" on a card that couldn't be briefed ------------------------
+// Investor search falls back to fuzzy company names (a golf company for "Tuomas Rasila"), and
+// briefing one of those as an investor would be worse than "not found". So a suggestion must
+// look like an investor AND resemble the typed name.
+
+const INVESTOR_WORDS = /\b(ventur\w*|capital|funds?|invest\w*|partners|angels?|equity|vc)\b/i;
+const GENERIC = new Set(["ventures", "venture", "capital", "fund", "funds", "partners", "invest", "investments", "vc", "the", "and", "oy", "ab", "ltd", "llc", "gmbh"]);
+
+const words = (s: string) =>
+  s.toLowerCase().normalize("NFKD").replace(/[^a-z0-9 ]+/g, " ").split(/\s+/).filter(Boolean);
+const squash = (s: string) => words(s).join("");
+
+/** True when the name has no investor word, so "<name> Ventures" is worth searching too. */
+export function needsInvestorSuffix(name: string): boolean {
+  return !INVESTOR_WORDS.test(name);
+}
+
+export function looksLikeInvestor(e: EntityRef): boolean {
+  return e.type === "Person" || INVESTOR_WORDS.test(e.name) || INVESTOR_WORDS.test(e.description ?? "");
+}
+
+export function resemblesName(query: string, candidate: string): boolean {
+  const distinctive = words(query).filter((w) => w.length >= 4 && !GENERIC.has(w));
+  const cand = new Set(words(candidate));
+  if (distinctive.some((w) => cand.has(w))) return true;
+  const q = squash(query);
+  return q.length >= 4 && squash(candidate).startsWith(q.slice(0, 4));
+}
+
+/** Candidates worth offering, deduped by ID, investment firms first, at most `max`. */
+export function investorSuggestions(query: string, hits: EntityRef[], max = 4): EntityRef[] {
+  const seen = new Set<string>();
+  const ok = hits.filter((e) => {
+    if (seen.has(e.id) || !looksLikeInvestor(e) || !resemblesName(query, e.name)) return false;
+    seen.add(e.id);
+    return true;
+  });
+  const firm = (e: EntityRef) => (/venture capital|investment firm|invests?\b/i.test(e.description ?? "") ? 0 : 1);
+  return ok.map((e, i) => ({ e, i })).sort((a, b) => firm(a.e) - firm(b.e) || a.i - b.i).slice(0, max).map((x) => x.e);
+}

@@ -4,7 +4,7 @@ import { dirname, join } from "node:path";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
 
-import { applyEvent, finish, initialPrep, parseNames } from "./prep.ts";
+import { applyEvent, finish, initialPrep, investorSuggestions, needsInvestorSuffix, parseNames } from "./prep.ts";
 import type { AgentEvent } from "./types.ts";
 
 const ev = (over: Partial<AgentEvent> & Pick<AgentEvent, "type">): AgentEvent => ({
@@ -73,4 +73,48 @@ test("the recorded slush-prep stream folds into one card per pasted name", () =>
   assert.ok(s.cards.every((c) => c.status === "done" || c.status === "error"));
   assert.ok(s.cards.some((c) => c.brief));
   assert.ok(s.cards.some((c) => c.error));
+});
+
+const e = (name: string, type: string, description: string | null, id = name) => ({ id, name, type, description });
+
+test("suggestions: only investor-like entities that resemble the typed name", () => {
+  // Live results from /api/resolve, 14 Nov.
+  const lifeline = [
+    e("Lifeline Ventures AB", "Company", "A Swedish company incorporated in 2010"),
+    e("LIFELINE PLC", "Company", "British healthcare provider company"),
+    e("Lifeline Ventures", "Organization", "Finnish venture capital firm headquartered in Helsinki"),
+    e("Lifeline Ventures Fund II Ky", "Company", "Finnish venture capital fund based in Helsinki"),
+  ];
+  assert.deepEqual(investorSuggestions("Lifeline", lifeline).map((x) => x.name), [
+    "Lifeline Ventures",
+    "Lifeline Ventures Fund II Ky",
+    "Lifeline Ventures AB",
+  ]);
+  const rasila = [
+    e("Tuomas Grönman Oy", "Company", "A Finnish company founded in 2010"),
+    e("Tuomas Seppälä Golf Oy", "Company", "A Finnish golf company"),
+    e("RASILA LTD", "Company", "A British construction company"),
+  ];
+  assert.deepEqual(investorSuggestions("Tuomas Rasila", rasila), []);
+  const nonexistent = [
+    e("Entree Capital", "Company", "Israel and US-based venture capital firm"),
+    e("Notable Capital", "Company", "Venture capital firm"),
+  ];
+  assert.deepEqual(investorSuggestions("Nonexistent Capital", nonexistent), [], "sharing only 'Capital' isn't a match");
+  const maki = [e("Maki.vc", "Company", "Helsinki-based venture capital firm"), e("MAKILA INVEST", "Company", "French company")];
+  assert.deepEqual(investorSuggestions("Makivc", maki).map((x) => x.name), ["Maki.vc", "MAKILA INVEST"]);
+  assert.deepEqual(investorSuggestions("Jane Angel", [e("Jane Angel", "Person", null)]).map((x) => x.type), ["Person"]);
+});
+
+test("suggestions: dedupe and limit", () => {
+  const hits = [e("A Ventures", "Company", null, "1"), e("A Ventures", "Company", null, "1"), e("A Ventures 2", "Company", null, "2")];
+  assert.equal(investorSuggestions("A Ventures", hits, 1).length, 1);
+  assert.equal(investorSuggestions("A Ventures", hits).length, 2);
+});
+
+test("needsInvestorSuffix", () => {
+  assert.equal(needsInvestorSuffix("Lifeline"), true);
+  assert.equal(needsInvestorSuffix("Lifeline Ventures"), false);
+  assert.equal(needsInvestorSuffix("Inventure"), true);
+  assert.equal(needsInvestorSuffix("Maki.vc"), false);
 });
