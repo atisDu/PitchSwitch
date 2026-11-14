@@ -384,3 +384,6 @@ investors in rounds too, so the fake store has the same gap.
   on first request after the redeploy (30-50 s each). Three are already stored under the new code
   (Rainfall, Maki.vc and Skyfall x Sensofusion). After the redeploy, run `python deploy/warm.py`
   (and `--check`) before any rehearsal.
+- **Done (14 Nov):** A redeployed and warmed. On the server, the Rainfall brief gives Stendr's
+  round once (as Seed), Maki.vc has no "sources differ", Skyfall has it once. `warm.py --check`:
+  68 calls in 64 s, 0 failed, 0 slow. Remote MCP answers with the token (7 tools), 401 without.
