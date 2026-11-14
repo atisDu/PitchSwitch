@@ -92,3 +92,15 @@ Cala and return its sources. `CLAUDE.md` §3 ("+ Cala MCP for the demo"), `TODO.
 
 C13 is ticked on that basis: the PitchSwitch MCP server is set up and was tested in Claude Desktop
 by a person (`notes/B.md`, "MCP server checked in Claude Desktop"); `docs/mcp-demo.md` has the steps.
+
+## For A / B: people can't be found by name (14 Nov, from testing Slush prep)
+
+`/api/resolve` with `kind: "investor"` never returns a `Person`: "Tuomas Rasila" (an angel the store
+accepts since 1.1.1, #10 on Sensofusion's Pitch) gives only companies (Tuomas Grönman Oy, a golf
+company, RASILA LTD). So an angel pasted into Slush prep always ends in "Couldn't brief", and the
+frontend's new "Did you mean" can't offer them either. Ask: let investor resolve also search people
+who invest (Cala entity search filtered to Person, kept only if they have rounds or `INVESTED_IN`).
+
+Also seen: Slush prep's agent sometimes fails "Lifeline" ("only non-investor companies matched")
+and sometimes finds Lifeline Ventures. The frontend now recovers either way: a failed card offers
+investor-like matches (searching "<name> Ventures" too) and writes the brief by ID via `/api/brief`.
