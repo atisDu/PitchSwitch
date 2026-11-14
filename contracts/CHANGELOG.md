@@ -3,6 +3,22 @@
 Every change to `contracts/` (schemas, API, fixtures format) is listed here, with the new
 `CONTRACT_VERSION`. Fixture *data* written by Agent A (tasks A1, A2) is not a contract change.
 
+## 1.2.0 — 2026-11-14 (additive; agreed by A, B and C)
+
+For B24 (grants + rivals at Slush) and B25 (sanctions screen). Every 1.1.1 request and
+response stays valid; old clients can ignore the new values.
+
+- `Conflict.kind` gains `"SANCTION"`: a sanctions record on the investor or one of its LPs;
+  `competitor` is the sanctioned entity, `via_person` null, sources = the record. The investor
+  goes to `skip`. No record = the reason "screened: no sanctions record in Cala" (never "clean").
+- `FounderReport.notes: Reason[] = []`: sourced lines about the direct competitors (grants
+  won, at Slush 2026).
+- `DataStore.sanctions(id) -> list[Reason]` and `DataStore.limited_partners(id) ->
+  list[EntityRef]`: `[]` when none or unknown; never raise for a person. Fake store: `[]`.
+- To follow: C: `frontend/lib/types.ts` (`"SANCTION"`, `notes`), `conflictText` and the Skip
+  roll call for a sanction (it names the sanctioned entity, not a competitor), the check's
+  verdict, a place for `notes` on the report. A: the store methods. B: B24, B25.
+
 ## 1.1.1 + optional funding amount — 2026-11-14 (no version bump: additive, human decision)
 
 Fixed now so C can build the inputs (C18) while B builds the logic (B21). Existing requests and

@@ -90,6 +90,8 @@ class DataStore(Protocol):
     async def candidate_competitors(self, company: Company, k: int = 30) -> list[Company]: ...
     async def co_investors(self, investor_id: str) -> list[tuple[EntityRef, int]]: ...
     async def sourced_answer(self, question: str) -> tuple[str, list[Reason]]: ...  # knowledge_search
+    async def sanctions(self, id: str) -> list[Reason]: ...  # 1.2.0
+    async def limited_partners(self, id: str) -> list[EntityRef]: ...  # 1.2.0
 ```
 
 `backend/data/__init__.py` exposes `get_store() -> DataStore`, returning `FakeDataStore` when
@@ -106,6 +108,23 @@ class DataStore(Protocol):
   person who is also one of the investor's people.
 - `co_investors(id)` returns `[]` when nothing is known yet (the precomputed graph arrives with the
   batch job, after the real store). It never raises for that.
+- `sanctions(id)` (1.2.0): one `Reason` per sanctions record Cala links to the entity
+  (`IS_SUBJECT_OF_SANCTION`), text like `"Sanctioned: EU.7808.66 (EU), since 2023-03-15"`,
+  sources from the record. `limited_partners(id)` (1.2.0): the entities that invested in a fund
+  (incoming `INVESTED_IN`). Both return `[]` when there are none or the ID is unknown, and never
+  raise for a person.
+
+### Sanctions and report notes (1.2.0)
+
+- `Conflict.kind` can be `"SANCTION"`: Cala has a sanctions record on the investor itself or on
+  one of its LPs. `competitor` is then **the sanctioned entity** (the fund or the LP), not a
+  competitor; `via_person` is null; `sources` are the record's. Like any conflict, it puts the
+  investor in `skip`.
+- An investor screened with no record gets the reason **"screened: no sanctions record in
+  Cala"** (exact wording, never "clean"): absence in Cala is not proof.
+- `FounderReport.notes: Reason[]`: sourced lines about the direct competitors that belong to no
+  single investor: grants they won (non-dilutive funding: NATO DIANA, EDF, EIC) and which attend
+  Slush 2026. Empty when Cala has none.
 
 ## MCP tools — B implements (thin wrappers over core)
 

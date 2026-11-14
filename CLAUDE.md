@@ -220,7 +220,7 @@ Demo data: Kelluu (Series A, led by NATO Innovation Fund; also Keen Venture Part
 from typing import Literal, Protocol
 from pydantic import BaseModel
 
-CONTRACT_VERSION = "1.1.1"
+CONTRACT_VERSION = "1.2.0"
 
 SourceRank = Literal["PRIMARY", "FILING", "PRESS", "AGGREGATOR", "UNKNOWN"]
 
@@ -274,7 +274,7 @@ class Competitor(BaseModel):
     similarity: float | None = None
 
 class Conflict(BaseModel):
-    kind: Literal["PORTFOLIO", "BOARD"]
+    kind: Literal["PORTFOLIO", "BOARD", "SANCTION"]   # SANCTION (1.2.0): competitor = the sanctioned fund or LP
     competitor: EntityRef
     via_person: EntityRef | None = None
     sources: list[Source] = []
@@ -306,6 +306,7 @@ class FounderReport(BaseModel):
     competitors: list[Competitor]
     pitch: list[InvestorScore]       # no conflicts; sorted by score, highest first
     skip: list[InvestorScore]        # one or more conflicts; sorted by score, highest first
+    notes: list[Reason] = []         # 1.2.0: sourced lines on the competitors (grants won, at Slush 2026)
 
 class InvestorCheck(BaseModel):
     investor: EntityRef
@@ -343,6 +344,8 @@ class DataStore(Protocol):
     async def candidate_competitors(self, company: Company, k: int = 30) -> list[Company]: ...
     async def co_investors(self, investor_id: str) -> list[tuple[EntityRef, int]]: ...
     async def sourced_answer(self, question: str) -> tuple[str, list[Reason]]: ...  # knowledge_search
+    async def sanctions(self, id: str) -> list[Reason]: ...          # 1.2.0
+    async def limited_partners(self, id: str) -> list[EntityRef]: ...  # 1.2.0
 ```
 
 `backend/data/__init__.py` exposes `get_store() -> DataStore`, returning `FakeDataStore` when `USE_FAKE_STORE=true`, else the real store. B only ever calls `get_store()`.
@@ -351,6 +354,7 @@ class DataStore(Protocol):
 - `investor_rounds(id)`, `portfolio(id)` and `people(id)` accept such a person's ID too and return `[]` when nothing is known; they never raise for a person.
 - `people(id)` also accepts an investor ID and returns that investor's own people (BOARD conflicts need this).
 - `co_investors(id)` returns `[]` when nothing is known yet (the precomputed graph arrives after the real store); it never raises for that.
+- `sanctions(id)` (1.2.0): one Reason per Cala sanctions record on the entity; `limited_partners(id)`: a fund's LPs (incoming `INVESTED_IN`). Both `[]` when none or unknown; never raise for a person. A `SANCTION` conflict (on the investor or an LP) puts it in `skip`; no record = "screened: no sanctions record in Cala", never "clean".
 
 ### 5.3 REST API — B implements, C consumes
 

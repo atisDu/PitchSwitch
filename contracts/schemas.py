@@ -9,7 +9,7 @@ from typing import Literal, Protocol
 
 from pydantic import BaseModel
 
-CONTRACT_VERSION = "1.1.1"
+CONTRACT_VERSION = "1.2.0"
 
 SourceRank = Literal["PRIMARY", "FILING", "PRESS", "AGGREGATOR", "UNKNOWN"]
 
@@ -75,7 +75,10 @@ class Competitor(BaseModel):
 
 
 class Conflict(BaseModel):
-    kind: Literal["PORTFOLIO", "BOARD"]
+    # PORTFOLIO / BOARD: about a direct competitor. SANCTION (1.2.0): Cala has a sanctions record
+    # on the investor or on one of its LPs; `competitor` is then that sanctioned entity (not a
+    # competitor), `via_person` is None and `sources` are the sanction record's.
+    kind: Literal["PORTFOLIO", "BOARD", "SANCTION"]
     competitor: EntityRef
     via_person: EntityRef | None = None
     sources: list[Source] = []
@@ -116,6 +119,9 @@ class FounderReport(BaseModel):
     competitors: list[Competitor]
     pitch: list[InvestorScore]  # no conflicts; sorted by score, highest first
     skip: list[InvestorScore]  # one or more conflicts; sorted by score, highest first
+    # 1.2.0: sourced lines about the direct competitors that are not about one investor: grants
+    # they won (non-dilutive funding, e.g. NATO DIANA) and which attend Slush 2026. May be empty.
+    notes: list[Reason] = []
 
 
 class InvestorCheck(BaseModel):
@@ -167,3 +173,8 @@ class DataStore(Protocol):
     # co_investors(): [] when nothing is known yet (before the batch job); never raises for that
     async def co_investors(self, investor_id: str) -> list[tuple[EntityRef, int]]: ...
     async def sourced_answer(self, question: str) -> tuple[str, list[Reason]]: ...  # knowledge_search
+    # 1.2.0. sanctions(): one Reason per sanctions record Cala links to the entity (text: record,
+    # authority, since; sources from the record). limited_partners(): who invested in a fund (its
+    # LPs, incoming INVESTED_IN). Both: [] when none or the ID is unknown; never raise for a person
+    async def sanctions(self, id: str) -> list[Reason]: ...
+    async def limited_partners(self, id: str) -> list[EntityRef]: ...
