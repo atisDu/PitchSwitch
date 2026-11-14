@@ -4,6 +4,7 @@ import asyncio
 
 import pytest
 from mcp.server.mcpserver.exceptions import ToolError
+from starlette.testclient import TestClient
 
 import core.competitors as competitors
 import mcp_server.server as mcp
@@ -90,3 +91,42 @@ async def test_failure_after_the_deadline_is_told_on_the_retry(monkeypatch):
     ready.set()
     with pytest.raises(ToolError, match="no entity with this ID"):
         await tool(company_id="x")
+
+
+def test_http_needs_the_token_in_a_header_or_in_the_url():
+    token = "t" * 24
+    init = {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {
+        "protocolVersion": "2025-06-18", "capabilities": {},
+        "clientInfo": {"name": "test", "version": "0"}}}
+    accept = {"accept": "application/json, text/event-stream"}
+    app = mcp.TokenGate(server.streamable_http_app(host="0.0.0.0"), token)
+    with TestClient(app, base_url="https://demo.example") as client:
+        for path, extra in [
+            ("/mcp", {}),
+            ("/mcp", {"authorization": "Bearer wrong"}),
+            ("/mcp?key=wrong", {}),
+            ("/mcp?key=", {}),
+        ]:
+            refused = client.post(path, json=init, headers=accept | extra)
+            assert refused.status_code == 401 and "token" in refused.json()["error"]
+        for path, extra in [
+            ("/mcp", {"authorization": f"Bearer {token}"}),
+            ("/mcp", {"authorization": f"bearer {token}"}),
+            (f"/mcp?key={token}", {}),
+        ]:
+            ok = client.post(path, json=init, headers=accept | extra)
+            assert ok.status_code == 200 and '"pitchswitch"' in ok.text
+
+
+def test_http_refuses_to_start_without_a_real_token(monkeypatch):
+    for bad in ("", "short"):
+        monkeypatch.setenv("MCP_TOKEN", bad)
+        with pytest.raises(SystemExit, match="MCP_TOKEN must be set"):
+            mcp._token()
+
+
+def test_setup_text_has_a_ready_line_per_client():
+    text = mcp.setup("https://demo.example/", "t" * 24)
+    assert "https://demo.example/mcp?key=" + "t" * 24 in text
+    assert 'claude mcp add --transport http pitchswitch https://demo.example/mcp --header' in text
+    assert '"Authorization": "Bearer ' + "t" * 24 in text

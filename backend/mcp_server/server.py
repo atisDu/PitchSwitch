@@ -3,27 +3,33 @@
 Thin by design: the tools are the functions in agent/tools.py, the same ones the Gemini agent
 calls. Each takes entity IDs and returns contract models as JSON, sources attached.
 
-    python -m mcp_server.server           stdio, for Claude Desktop / Cursor
-    python -m mcp_server.server http      streamable HTTP on $MCP_HOST:$MCP_PORT/mcp (0.0.0.0:8001)
+    python -m mcp_server.server                stdio, for a client on this machine (no token)
+    python -m mcp_server.server http           streamable HTTP on $MCP_HOST:$MCP_PORT/mcp
+                                               (0.0.0.0:8001); needs MCP_TOKEN, see TokenGate
+    python -m mcp_server.server setup [url]    print what to paste into Claude, Claude Code and
+                                               Cursor to connect to the server at `url`
 
 Reads the repo's .env like the API does (USE_FAKE_STORE, CALA_API_KEY, GEMINI_API_KEY, ...).
 
 Behind a reverse proxy keep MCP_HOST=0.0.0.0: bound to 127.0.0.1 the SDK only accepts requests
 whose Host header is localhost and answers the site's own hostname with 421.
-ponytail: no auth; anyone who knows the URL can call the tools. Add a token check before this
-is public for longer than a demo.
 """
 
 from __future__ import annotations
 
 import asyncio
 import functools
+import json
 import os
+import secrets
 import sys
 from collections.abc import Callable
+from urllib.parse import parse_qs
 
+import uvicorn
 from mcp.server.mcpserver import MCPServer
 from mcp.server.mcpserver.exceptions import ToolError
+from starlette.responses import JSONResponse
 
 from agent import tools
 from agent.llm import LLMError
@@ -90,10 +96,80 @@ for _tool in tools.MCP_TOOLS:
     server.add_tool(_told(_tool))  # name, description and schema come from the function itself
 
 
+# --- over HTTP: a shared token ------------------------------------------------------------------
+
+MIN_TOKEN = 16  # characters; a short token on a public URL is no lock
+
+
+class TokenGate:
+    """ASGI wrapper for the HTTP transport: every request must carry the shared token, either as
+    `Authorization: Bearer <token>` or as `?key=<token>` in the URL (for clients that only take a
+    URL). stdio needs none: there the client starts the server on its own machine."""
+
+    def __init__(self, app, token: str) -> None:
+        self.app, self.token = app, token.encode()
+
+    async def __call__(self, scope, receive, send) -> None:
+        if scope["type"] == "http":
+            auth = dict(scope["headers"]).get(b"authorization", b"")
+            given = auth[7:].strip() if auth[:7].lower() == b"bearer " else b""
+            given = given or parse_qs(scope["query_string"]).get(b"key", [b""])[0]
+            if not secrets.compare_digest(given, self.token):
+                denied = JSONResponse(
+                    {"error": "PitchSwitch MCP: missing or wrong token. Send it as "
+                     "'Authorization: Bearer <token>' or add ?key=<token> to the URL."},
+                    status_code=401,
+                )
+                await denied(scope, receive, send)
+                return
+        await self.app(scope, receive, send)
+
+
+def _token() -> str:
+    token = os.environ.get("MCP_TOKEN", "").strip()
+    if len(token) < MIN_TOKEN:
+        sys.exit(
+            f"MCP_TOKEN must be set (at least {MIN_TOKEN} characters) to serve MCP over HTTP: "
+            "without it anyone with the URL could call the tools.\n"
+            "Make one and put it in .env:\n"
+            '  python -c "import secrets; print(\'MCP_TOKEN=\' + secrets.token_urlsafe(24))"'
+        )
+    return token
+
+
+def setup(url: str, token: str) -> str:
+    """What to paste into each client to connect it to the server at `url`."""
+    url = url.rstrip("/")
+    url = url if url.endswith("/mcp") else f"{url}/mcp"
+    cursor = {"mcpServers": {"pitchswitch": {"url": url, "headers": {
+        "Authorization": f"Bearer {token}"}}}}
+    return f"""PitchSwitch MCP server: {url}
+
+Claude (claude.ai or Claude Desktop): Settings > Connectors > Add custom connector, paste this URL
+  {url}?key={token}
+
+Claude Code:
+  claude mcp add --transport http pitchswitch {url} --header "Authorization: Bearer {token}"
+
+Cursor (.cursor/mcp.json) and other clients that take a URL and headers:
+  {json.dumps(cursor)}
+
+Then ask: "Using only PitchSwitch: should Sensofusion pitch Rainfall Ventures?"
+The token is a password: share it only with people who may use the server."""
+
+
 if __name__ == "__main__":
     load_env()
-    if "http" in sys.argv[1:]:
+    mode = sys.argv[1] if len(sys.argv) > 1 else "stdio"
+    if mode == "http":
         host, port = os.environ.get("MCP_HOST", "0.0.0.0"), int(os.environ.get("MCP_PORT", "8001"))
-        server.run("streamable-http", host=host, port=port)
-    else:
+        gated = TokenGate(server.streamable_http_app(host=host), _token())
+        uvicorn.run(gated, host=host, port=port)
+    elif mode == "setup":
+        site = os.environ.get("SITE_ADDRESS", "").strip()
+        default = f"https://{site}" if site and not site.startswith(":") else "http://localhost:8001"
+        print(setup(sys.argv[2] if len(sys.argv) > 2 else default, _token()))
+    elif mode == "stdio":
         server.run("stdio")
+    else:
+        sys.exit(f"unknown mode {mode!r}: use no argument (stdio), 'http' or 'setup [url]'")

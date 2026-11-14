@@ -247,3 +247,21 @@ Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
   then came back in 0.2 s.
 - **For C (C13, `docs/mcp-demo.md`):** a first question about a new company can still take a
   minute or two in total; for the demo, ask each demo question once beforehand so it is cached.
+
+## MCP over HTTP needs a token (14 Nov, human: "it should need auth and easy setup")
+
+- `python -m mcp_server.server http` now **refuses to start without `MCP_TOKEN`** (16+ characters)
+  and answers 401 to any request without it. Accepted as `Authorization: Bearer <token>` or as
+  `?key=<token>` in the URL (for clients that only take a URL). stdio is unchanged (no token).
+- Checked live on a local port: no token 401, wrong token 401, token in URL 200, in header 200.
+  **Not yet checked:** a real client over HTTP with the token (Claude custom connector, Claude
+  Code `--transport http`, Cursor), and through Caddy on the deployed server.
+- **Easy setup:** `python -m mcp_server.server setup https://<site>` prints the ready-to-paste
+  line for Claude (custom connector URL), Claude Code and Cursor.
+- **For A (blocking the `mcp` container):** add `MCP_TOKEN` to `.env.example` and to the server's
+  `.env` (`deploy/ship.sh` writes it): without it the `mcp` service exits at start and `/mcp`
+  answers 502. Make one with
+  `python -c "import secrets; print(secrets.token_urlsafe(24))"`. With `?key=` the token is in the
+  URL, so it will show in Caddy's access log if that is on.
+- **For C (`docs/mcp-demo.md`):** the remote option now needs the token; paste the output of the
+  `setup` command.
