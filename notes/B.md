@@ -585,3 +585,25 @@ needs all three humans' OK, then CONTRACT_VERSION + CHANGELOG + CLAUDE.md §5.2 
 - **Cost:** 40-48 s extra the first time per startup (Gemini screen + confirm, ~40 Cala calls),
   then 5-7 s for the whole report. Tests never reach Gemini or Atlas for it
   (`tests/xray_off.py`, autouse in B's test folders).
+
+## B23 Pitch this week: fresh funds + the partner (14 Nov, for C and the demo script)
+
+- **(a) Fresh funds:** Cala's search asks which VC firms closed a fund for the startup's sector
+  this year or last; Gemini only copies firm names out of the cited claims (a name that is not
+  in its claim word for word is dropped), each is resolved to a Cala investor. They join the
+  Pitch pool; reason "Fresh fund: <the claim>" with its sources; activity counts full ("activity
+  10/10 (fresh fund for your sector)"). Aerospace and defence today: Lakestar (Resilience I,
+  €262M, Jul 2026), Earlybird + AVP (E2D, €500M), Expansion Ventures (€137M). Stored per sector.
+- **Sector:** the startup's industry tag, else the tag most of its competitors and space share
+  (Sensofusion has none in Cala: "aerospace and defense").
+- **(b) The partner:** for the top 5 Pitch investors, "Partner for your space: <name>. <claim>"
+  with sources (Maki.vc: Paavo Räisänen, Gungnir: Max Villman, Lakestar: Simon King; none found
+  for NIF, Lifeline, Tesi in this sector). Stored per investor and sector, also "none".
+  The name is matched against every direct competitor's BOARD members: a match is a `BOARD`
+  conflict (`via_person` = the board member) → Skip, reason "Conflict: its partner X sits on
+  the board of Y, a direct competitor". None on the demo companies today. The investor check and
+  the agent's check_conflict apply a partner a report already found (no search there).
+- **Live tops (server after redeploy):** Sensofusion Maki.vc 69.6, NIF 38.0, Lifeline 36.3;
+  Kelluu: Lakestar is new at #4 (32.5). No contract change.
+- **Cost:** first report per sector ~1 min more (Cala search ~55 s), each new top investor
+  ~15-40 s once; then nothing (stored).
