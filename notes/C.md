@@ -54,3 +54,11 @@ For B / A (minor, not blocking):
   might flip to (A18). The demo's three (Rainfall Ventures, Startuplab, Skyfall × Sensofusion)
   are already cached (< 0.1 s); Tesi × NestAI is now cached too.
 - brief, slush-prep and chat still serve A's samples (B11, B13, B14 open); C10–C12 build on those.
+
+## For A: deployed MCP endpoint is down (14 Nov)
+
+`POST https://95-133-252-219.sslip.io/mcp` answers **502** (Caddy can't reach the `mcp` service).
+B's note says the MCP server refuses to start without `MCP_TOKEN` (16+ chars) in the server's
+`.env`, and `deploy/ship.sh` needs to write it. Expected after the fix: 401 without the token,
+200 with `Authorization: Bearer <token>`. The demo uses local stdio (`docs/mcp-demo.md`), so this
+only blocks the remote option.
