@@ -1,0 +1,49 @@
+{
+  "cli_version": "0.13.3",
+  "checkpoint_id": "01M7CKGR91ENE0ZJJ8Y77JKX4A",
+  "session_id": "11508950-d8c9-4219-9738-d2bd1728ff22",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-14T08:41:55.915429535Z",
+  "branch": "b/B15-mcp-server",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "backend/agent/tools.py",
+    "backend/mcp_server/server.py",
+    "backend/tests/mcp_server/test_server.py",
+    "notes/B.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-fable-5-2",
+  "turn_id": "266a0fdc5525",
+  "checkpoint_transcript_start": 337,
+  "transcript_lines_at_start": 337,
+  "compact_transcript_start": 31,
+  "token_usage": {
+    "input_tokens": 22,
+    "cache_creation_tokens": 20586,
+    "cache_read_tokens": 2003808,
+    "output_tokens": 10856,
+    "api_call_count": 11
+  },
+  "session_token_usage": {
+    "input_tokens": 82,
+    "cache_creation_tokens": 174140,
+    "cache_read_tokens": 5749375,
+    "output_tokens": 81178,
+    "api_call_count": 41
+  },
+  "redaction": {
+    "replacements": 6,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 2,
+      "credentialed_uri": 0,
+      "entropy": 4,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  }
+}
