@@ -4,8 +4,10 @@ Goal: in the demo (step 7 of `docs/demo-script.md`), ask Claude Desktop *"Should
 Skyfall Ventures?"* and get a sourced answer through PitchSwitch's MCP server.
 
 Status, 14 Nov: PitchSwitch over stdio **works in Claude Desktop** (checked by a person at the app, `notes/B.md`): the
-server starts, lists its tools and answers the demo question with "skip, backs Stendr". Also checked
-over stdio with the official MCP client: `check_conflict` for Rainfall Ventures × Sensofusion
+server starts, lists its tools and answers the demo question with "skip, backs Stendr". **The demo
+fund is Skyfall Ventures** (deck, demo script and the question below); Rainfall Ventures, which also
+backs Stendr, was the fund in the first tests. Also checked over stdio with the official MCP client:
+`check_conflict` for Rainfall Ventures × Sensofusion
 returns the PORTFOLIO conflict via Stendr in about 2 s. Left for demo day: run the question once on
 the demo laptop (it warms the cache). The deployed server's `/mcp` endpoint also works (token
 required; last section).
