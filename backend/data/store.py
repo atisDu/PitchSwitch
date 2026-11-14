@@ -220,7 +220,11 @@ def default_client() -> CalaClient:
         from cache.files import FileCache
 
         cache = FileCache()
-    return CalaClient.from_env(cache=cache, cache_only=env_flag("CACHE_ONLY"))
+    return CalaClient.from_env(
+        cache=cache,
+        cache_only=env_flag("CACHE_ONLY"),
+        require_cache=env_flag("CALA_REQUIRE_CACHE"),
+    )
 
 
 class CalaDataStore:

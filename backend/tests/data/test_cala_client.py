@@ -263,3 +263,53 @@ def test_from_env_needs_a_key(monkeypatch):
     monkeypatch.setenv("CALA_API_KEY", "k")
     monkeypatch.setenv("CALA_BASE_URL", "https://cala.test/v1")
     assert CalaClient.from_env(per_minute=3).per_minute == 3
+
+
+async def test_a_failing_cache_is_left_alone_for_a_minute_then_tried_again():
+    attempts = []
+
+    class Flaky:
+        down = True
+
+        async def get(self, key):
+            attempts.append("get")
+            if self.down:
+                raise ConnectionError("database unreachable")
+            return None
+
+        async def set(self, key, value):
+            attempts.append("set")
+
+    cache = Flaky()
+    handler, seen = replies(httpx.Response(200, json={"ok": True}))
+    client, fake = make_client(handler, cache=cache)
+    for i in range(5):
+        assert await client.query(f"q{i}") == {"ok": True}
+    assert attempts == ["get"] and len(seen) == 5  # one failed read, then the cache is skipped
+
+    fake.now += 61
+    cache.down = False
+    await client.query("later")
+    assert attempts == ["get", "get", "set"]
+
+
+async def test_require_cache_refuses_to_call_cala_when_the_cache_is_down():
+    from data.cala_client import CacheUnavailable
+
+    class Down:
+        async def get(self, key):
+            raise ConnectionError("database unreachable")
+
+        async def set(self, key, value):
+            raise ConnectionError("database unreachable")
+
+    handler, seen = replies(httpx.Response(200, json={"ok": True}))
+    client, fake = make_client(handler, cache=Down(), require_cache=True)
+    with pytest.raises(CacheUnavailable):
+        await client.query("q1")
+    with pytest.raises(CacheUnavailable):
+        await client.query("q2")
+    assert seen == []  # nothing reached Cala
+
+    relaxed, _ = make_client(handler, cache=Down())  # the default: carry on without the cache
+    assert await relaxed.query("q1") == {"ok": True}

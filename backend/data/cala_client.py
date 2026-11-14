@@ -35,6 +35,7 @@ from data.errors import NotFound, Upstream
 log = logging.getLogger("data.cala")
 
 DEFAULT_BASE_URL = "https://api.cala.ai/v1"
+_CACHE_PAUSE = 60  # seconds without the cache after it failed
 _UUID = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
 
 
@@ -48,6 +49,10 @@ class CalaError(Upstream):
 
 class CacheOnlyMiss(Upstream):
     """CACHE_ONLY is on and this request is not in the cache."""
+
+
+class CacheUnavailable(Upstream):
+    """The cache can't be reached and this client is set to never call Cala without it."""
 
 
 class ResponseCache(Protocol):
@@ -101,6 +106,7 @@ class CalaClient:
         *,
         cache: ResponseCache | None = None,
         cache_only: bool = False,
+        require_cache: bool = False,
         concurrency: int = 8,
         per_minute: int = 10,
         timeout: float = 180.0,
@@ -118,6 +124,7 @@ class CalaClient:
         )
         self.cache = cache
         self.cache_only = cache_only
+        self.require_cache = require_cache  # refuse to call Cala when the cache is unreachable
         self.per_minute = per_minute
         self.max_retries = max_retries
         self.backoff = backoff
@@ -127,6 +134,7 @@ class CalaClient:
         self._rate_lock = asyncio.Lock()
         self._recent: deque[float] = deque()  # start times of calls in the last minute
         self._in_flight: dict[str, asyncio.Future] = {}
+        self._cache_down_until = 0.0
         self.calls: list[CallRecord] = []
 
     @classmethod
@@ -211,6 +219,13 @@ class CalaClient:
             return cached
         if self.cache_only:
             raise CacheOnlyMiss(f"CACHE_ONLY is on and {endpoint} is not cached")
+        if self.require_cache and self._cache_is_down():
+            # A server that cannot reach its cache would pay Cala for every request, again and
+            # again. Failing is cheaper than emptying the team's credits.
+            raise CacheUnavailable(
+                f"the cache is unreachable, so {endpoint} was not sent to Cala "
+                "(CALA_REQUIRE_CACHE is on; check MongoDB Atlas network access)"
+            )
 
         waiting = self._in_flight.get(key)
         if waiting is not None:  # someone is already fetching exactly this
@@ -241,7 +256,7 @@ class CalaClient:
 
     async def _cache_get(self, key: str, *, allow_stale: bool) -> dict | None:
         """Read the cache. A broken cache is logged and treated as a miss (unless CACHE_ONLY)."""
-        if self.cache is None:
+        if self.cache is None or self._cache_is_down():
             return None
         try:
             found = await self.cache.get(key)
@@ -252,16 +267,30 @@ class CalaClient:
         except Exception as exc:
             if self.cache_only:
                 raise
-            log.warning("cache read failed, calling Cala instead: %r", exc)
+            self._cache_failed("read", exc)
             return None
 
     async def _cache_set(self, key: str, value: dict) -> None:
-        if self.cache is None:
+        if self.cache is None or self._cache_is_down():
             return
         try:
             await self.cache.set(key, value)
         except Exception as exc:
-            log.warning("cache write failed, continuing without it: %r", exc)
+            self._cache_failed("write", exc)
+
+    def _cache_is_down(self) -> bool:
+        """After a cache failure we stop asking it for a minute: an unreachable database
+        costs seconds per attempt, and every Cala call would pay that twice."""
+        return not self.cache_only and self._clock() < self._cache_down_until
+
+    def _cache_failed(self, what: str, exc: Exception) -> None:
+        self._cache_down_until = self._clock() + _CACHE_PAUSE
+        log.warning(
+            "cache %s failed; not using the cache for %d s (calling Cala directly): %r",
+            what,
+            _CACHE_PAUSE,
+            exc,
+        )
 
     async def _fetch(
         self,
