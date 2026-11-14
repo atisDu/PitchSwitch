@@ -86,7 +86,9 @@ async def check_conflict(investor_id: str, company_id: str) -> list[Conflict]:
     """Does this investor have a conflict with this company: has it backed one of the company's
     direct competitors, or does one of its people sit on a competitor's board? An empty list
     means no conflict was found."""
-    company = await get_store().company(company_id)
+    store = get_store()
+    # Looking the investor up too: a made-up ID must fail, not read as "no conflict".
+    company, _ = await asyncio.gather(store.company(company_id), store.company(investor_id))
     return await conflict.check_conflict(investor_id, (await stored_judgement(company)).direct)
 
 

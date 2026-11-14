@@ -131,3 +131,30 @@ Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
   facts" line.
 - For C (C12): no chat history in the contract, so each message stands alone; send
   `company_id` / `investor_id` of the page so "my company" / "this investor" resolve.
+
+## B15 done: MCP server (14 Nov)
+
+- `backend/mcp_server/server.py`: the seven §5.4 tools, the same functions the Gemini agent
+  calls (`agent/tools.py`). `resolve_company` takes an optional `kind` ("company" default,
+  "investor") so a client can also turn "Fund X" into an ID; `rank_investors` takes an optional
+  `limit` (default 10) for the Pitch list.
+- Checked with the SDK's own client over stdio on live data (Sensofusion): all seven tools answer;
+  Rainfall Ventures → PORTFOLIO conflict via Stendr; unknown IDs come back as readable tool errors.
+  Result sizes: check_conflict 1 kB, investor_brief 4 kB (~30 s), rank_investors 67 kB,
+  investor_profile up to 85 kB (Tesi).
+- **Not yet checked in Claude Desktop** (needs a human at the app; C13). Config for it, with the
+  repo's venv (the editable install makes the module importable from any folder; `.env` is read
+  from the repo root):
+
+  ```json
+  {"mcpServers": {"pitchlist": {
+    "command": "<repo>/.venv/bin/python",
+    "args": ["-m", "mcp_server.server"],
+    "env": {"USE_FAKE_STORE": "false"}
+  }}}
+  ```
+
+- **For A (A17, Docker):** the MCP server is its own process:
+  `python -m mcp_server.server http` serves streamable HTTP on `$MCP_HOST:$MCP_PORT/mcp`
+  (default `0.0.0.0:8001`); no arguments = stdio. It shares `.env` and the Atlas cache with the API.
+  If you want `MCP_HOST` / `MCP_PORT` in `.env.example`, they are yours to add.
