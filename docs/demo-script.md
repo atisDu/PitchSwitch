@@ -43,23 +43,36 @@ don't demo from the mock unless everything else fails.
 
 ## What to say
 
-Deck: "PitchSwitch pitch" (Claude Slides; the speaker notes there are the same lines). Six slides
-plus one backup; **the live demo runs 0:40-2:00**. Story spine: one conflict, two sides of the table.
+**0:00 · The hook (20 s).**
+"Founders at Slush will spend this week pitching investors who were never going to say yes. The
+worst ones already backed a competitor: you're handing your deck to a rival's board. PitchSwitch tells
+you who to pitch, and who to skip."
 
-| Time | Slide | Say |
-| --- | --- | --- |
-| 0:00-0:15 | 1 Cover | "Slush starts tomorrow. Founders will pitch investors who were never going to say yes; the worst already backed a direct competitor. PitchSwitch catches that, from both sides of the table." |
-| 0:15-0:35 | 2 Two sides | "The founder hands a rival's investor their deck. The investor gets pitched by a company that competes with one they own. One fact in Cala's graph, read two ways. Let me show it." |
-| 0:35-0:40 | 3 Live demo | "This is a real Finnish counter-drone startup." Switch to the browser. |
-| 0:40-1:15 | *Live, steps 1-4* | Four direct rivals; "Don't pitch these 11"; BSV backs Zvook, a rival I never listed; click Skyfall, its card, the source badge. |
-| 1:15-1:25 | *Live, step 4* | Maki.vc, 70 out of 100, open the breakdown, "ask for Paavo Räisänen". |
-| 1:25-1:45 | *Live, steps 5-6* | Flip on Skyfall's card: "I'm the partner at Skyfall. Conflict: Stendr is in my portfolio and competes with Sensofusion." |
-| 1:45-2:00 | *Live, step 7* | Claude Desktop, answer already open from the warm-up: "Same functions, same sources, through any agent." Back to slides. |
-| 2:00-2:25 | 4 Why Cala | The four-hop walk (company, rivals, rounds, 41 investors, whole portfolios); search gives articles, Cala gives edges with IDs and a source on each; five firms called "Inventure". |
-| 2:25-2:45 | 5 Trust | Gemini only picks from Cala's candidate IDs; code drops uncited sentences and numbers the facts don't hold; the score is plain code. One check everywhere: app, briefs, chat, MCP. |
-| 2:45-3:00 | 6 Close | "Cala is the data layer for agents; PitchSwitch is the fundraising layer on top. Run your company, or flip any pitch, before your first Slush meeting." |
+**0:20 · Founder mode (60 s).** *Steps 1–4.*
+"I'm Sensofusion, a Finnish counter-drone company. PitchSwitch finds my direct competitors in Cala's
+graph, four of them (here's why Stendr counts), then every round they raised and every investor
+behind them."
+"Before anything else, it tells me who to skip: eleven funds that each backed a direct rival. One,
+BSV, backs a rival I didn't even list: PitchSwitch found it in their portfolio. Skyfall Ventures
+backed Stendr. Pitch them and your deck lands with a competitor's
+investors. That's not a guess: here's the source." *(Click the badge.)*
+"And who should I pitch? Maki.vc fits best, 70 out of 100: it led defence pre-seeds this year, and
+here's how the score adds up. It even names the partner to ask for, with the source. Every fund
+here was also screened against Cala's sanctions records."
 
-Step 7 is too tight to type live: ask the question during the warm-up and keep that answer open.
+**1:20 · The flip (45 s).** *Steps 5–6.*
+"Now flip the table. I'm the partner at Skyfall Ventures, and Sensofusion just pitched me between
+meetings. Same graph, other direction: **Conflict**. Stendr is in my portfolio and competes with
+Sensofusion. Below: every rival, who backed it, and their rounds. That's a 60-second check an
+associate would otherwise spend an afternoon on."
+
+**2:05 · The agent (35 s).** *Step 7.*
+"PitchSwitch is also an MCP server. Any agent can ask it: 'Should Sensofusion pitch Skyfall
+Ventures?'" *(Read the answer and its sources.)* "Same functions, same sources, through Claude."
+
+**2:40 · The close (20 s).**
+"Cala is the data layer for agents. PitchSwitch is the fundraising layer on top. Every claim you saw
+links to its source, and founders can use it at Slush tomorrow."
 
 ## Why this path (for the judges' four criteria)
 
