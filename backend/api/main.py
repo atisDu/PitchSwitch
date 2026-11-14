@@ -33,6 +33,7 @@ from contracts.schemas import (
 )
 from core.competitors import Judgement, stored_judgement
 from core.conflict import check_conflict
+from core.funding import check_fit
 from core.scoring import rank_investors
 from data import NotFound, Upstream, get_store
 
@@ -89,11 +90,16 @@ class ResolveBody(BaseModel):
 class FounderBody(BaseModel):
     company_id: str = Field(min_length=1)
     competitor_ids: list[str] | None = None
+    target_amount_eur: float | None = Field(default=None, gt=0)  # B21: the founder's raise
 
 
 class PairBody(BaseModel):
     investor_id: str = Field(min_length=1)
     company_id: str = Field(min_length=1)
+
+
+class CheckBody(PairBody):
+    max_check_eur: float | None = Field(default=None, gt=0)  # B21: the investor's largest check
 
 
 class SlushPrepBody(BaseModel):
@@ -172,11 +178,13 @@ async def founder_analyze(body: FounderBody) -> FounderReport:
     else:
         competitors = await _chosen(company, body.competitor_ids, judged)
     space = [*(c.company for c in judged.direct), *judged.space]  # a removed rival stays in space
-    return await rank_investors(company, competitors, space)
+    return await rank_investors(
+        company, competitors, space, target_amount_eur=body.target_amount_eur
+    )
 
 
 @app.post("/api/investor/check")
-async def investor_check(body: PairBody) -> InvestorCheck:
+async def investor_check(body: CheckBody) -> InvestorCheck:
     tools.check_ids(body.investor_id, body.company_id)
     store = get_store()
     investor, company = await asyncio.gather(
@@ -192,6 +200,9 @@ async def investor_check(body: PairBody) -> InvestorCheck:
         conflicts=conflicts,
         competitors=competitors,
         rounds=rounds,
+        funding_fit=check_fit(
+            body.max_check_eur, [rd for rd in rounds if rd.company_id == company.id], company.name
+        ) if body.max_check_eur else None,
     )
 
 

@@ -118,6 +118,20 @@ def test_investor_check(client):
     assert any(rd.company_id == KELLUU for rd in check.rounds)
 
 
+def test_funding_amounts_are_optional_and_checked(client):
+    plain = client.post("/api/founder/analyze", json={"company_id": STENDR}).json()
+    assert all(s["funding_fit"] is None for s in plain["pitch"] + plain["skip"])
+    body = {"company_id": STENDR, "target_amount_eur": 3_000_000}
+    report = FounderReport.model_validate(client.post("/api/founder/analyze", json=body).json())
+    assert report.pitch and all(s.funding_fit for s in report.pitch + report.skip)
+    pair = {"investor_id": NIF, "company_id": KELLUU, "max_check_eur": 2_000_000}
+    check = InvestorCheck.model_validate(client.post("/api/investor/check", json=pair).json())
+    assert check.funding_fit and check.funding_fit.verdict != "unknown"
+    assert client.post("/api/investor/check", json={**pair, "max_check_eur": 0}).status_code == 422
+    assert client.post("/api/founder/analyze", json={**body, "target_amount_eur": -1}).status_code \
+        == 422
+
+
 def test_brief(client, monkeypatch):
     async def fake(prompt, schema, **kw):
         return schema.model_validate(

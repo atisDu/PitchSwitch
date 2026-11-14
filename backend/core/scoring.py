@@ -29,6 +29,7 @@ from contracts.schemas import (
 )
 from core.competitors import judge, shared_graph
 from core.conflict import check_conflict, merge_sources
+from core.funding import raise_fit
 from data import get_store
 from data.mappers import STAGES, stage_index
 
@@ -145,6 +146,7 @@ async def rank_investors(
     space: list[Company] | None = None,
     *,
     today: date | None = None,
+    target_amount_eur: float | None = None,
 ) -> FounderReport:
     """Rank investors for `company` against direct `competitors` within the market `space`.
     Either one missing = ask the judge (the API passes both, from its memo / competitor_ids)."""
@@ -216,6 +218,8 @@ async def rank_investors(
             closeness=close, stage=stage,
             profile=profile if isinstance(profile, Company) else None,
         )
+        if target_amount_eur:
+            scored.funding_fit = raise_fit(target_amount_eur, history, pool[inv_id].name)
         (skip if conflicts else pitch).append(scored)
 
     def order(s: InvestorScore):  # ties: the more active, then the wider in the space
