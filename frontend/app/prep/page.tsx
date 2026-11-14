@@ -20,7 +20,7 @@ async function Prep({ searchParams }: Pick<Props, "searchParams">) {
   const name = one(q.companyName);
   return (
     <SlushPrepView
-      initialCompany={id && name ? { id, name, type: "Company", description: null } : null}
+      initialCompany={id && name ? { id, name, type: "Company", description: "" } : null}
     />
   );
 }

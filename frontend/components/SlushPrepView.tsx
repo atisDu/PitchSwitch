@@ -8,11 +8,21 @@ import { useEffect, useRef, useState } from "react";
 
 import { BriefBody } from "@/components/BriefView";
 import { EntityPicker } from "@/components/EntityPicker";
-import { ApiError, jobEvents, startSlushPrep } from "@/lib/api";
+import { ApiError, getBrief, jobEvents, resolve, startSlushPrep } from "@/lib/api";
 import { parseMarkdown, type Block } from "@/lib/markdown";
-import { applyEvent, finish, initialPrep, MAX_NAMES, parseNames, type PrepCard, type PrepState } from "@/lib/prep";
+import {
+  applyEvent,
+  finish,
+  initialPrep,
+  investorSuggestions,
+  MAX_NAMES,
+  needsInvestorSuffix,
+  parseNames,
+  type PrepCard,
+  type PrepState,
+} from "@/lib/prep";
 import { briefPath, founderPath } from "@/lib/routes";
-import type { EntityRef } from "@/lib/types";
+import type { Brief, EntityRef } from "@/lib/types";
 
 const EXAMPLE = "Maki.vc\nRainfall Ventures\nInventure\nNonexistent Capital";
 
@@ -29,6 +39,8 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
   const [names, setNames] = useState<string[]>([]); // the names of the current job
   const [prep, setPrep] = useState<PrepState | null>(null);
   const [run, setRun] = useState<Run>({ status: "idle" });
+  // Briefs the user recovered by hand on a "Couldn't brief" card, by pasted name.
+  const [recovered, setRecovered] = useState<Record<string, { investor: EntityRef; brief: Brief }>>({});
   const abort = useRef<AbortController | null>(null);
 
   useEffect(() => () => abort.current?.abort(), []);
@@ -67,6 +79,7 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
     const jobNames = parsed;
     setNames(jobNames);
     setPrep(null);
+    setRecovered({});
     setRun({ status: "starting" });
     try {
       const { job_id } = await startSlushPrep({ company_id: company.id, investor_names: jobNames });
@@ -86,8 +99,13 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
     setRun((r) => (r.status === "running" ? { status: "finished", jobId: r.jobId } : r));
   }
 
-  const ready = prep?.cards.filter((c) => c.status === "done").length ?? 0;
-  const failed = prep?.cards.filter((c) => c.status === "error").length ?? 0;
+  // Cards as shown: a brief recovered by hand on a "Couldn't brief" card counts as ready.
+  const cards: PrepCard[] = (prep?.cards ?? []).map((raw) => {
+    const fix = recovered[raw.name];
+    return fix ? { ...raw, status: "done", error: null, ...fix } : raw;
+  });
+  const ready = cards.filter((c) => c.status === "done").length;
+  const failed = cards.filter((c) => c.status === "error").length;
 
   return (
     <div>
@@ -179,15 +197,14 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
               {run.status === "running"
                 ? "Briefs take 20–60 s each; three run at a time"
                 : failed > 0
-                  ? `${failed} couldn't be briefed`
+                  ? `${failed} couldn't be briefed: see the card${failed === 1 ? "" : "s"} below`
                   : "All done"}
             </p>
           </div>
-          {(prep.general.length > 0 || prep.errors.length > 0) && (
+          {((run.status === "running" && prep.general.length > 0) || prep.errors.length > 0) && (
             <ul className="mt-4 space-y-1 text-sm text-muted">
-              {prep.general.map((g, i) => (
-                <li key={`g${i}`}>{g}</li>
-              ))}
+              {/* Progress lines only while the job runs; once done they'd read as still happening. */}
+              {run.status === "running" && prep.general.map((g, i) => <li key={`g${i}`}>{g}</li>)}
               {prep.errors.map((m, i) => (
                 <li key={`e${i}`} className="text-foreground">
                   {m}
@@ -195,12 +212,22 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
               ))}
             </ul>
           )}
-          <ol className="mt-6 grid gap-4 lg:grid-cols-2">
-            {prep.cards.map((c, i) => (
-              <li key={c.name}>
-                <Card card={c} index={i} company={company} />
-              </li>
-            ))}
+          <ol className="mt-6 grid items-start gap-4 lg:grid-cols-2">
+            {cards.map((c, i) => {
+              const id = c.investor?.id;
+              const earlier = id ? cards.slice(0, i).find((o) => o.investor?.id === id) : undefined;
+              return (
+                <li key={c.name}>
+                  <Card
+                    card={c}
+                    index={i}
+                    company={company}
+                    sameAs={earlier?.name ?? null}
+                    onRecovered={(investor, brief) => setRecovered((r) => ({ ...r, [c.name]: { investor, brief } }))}
+                  />
+                </li>
+              );
+            })}
           </ol>
         </section>
       )}
@@ -215,7 +242,19 @@ const STATUS_LABEL: Record<PrepCard["status"], string> = {
   error: "Couldn't brief",
 };
 
-function Card({ card, index, company }: { card: PrepCard; index: number; company: EntityRef | null }) {
+function Card({
+  card,
+  index,
+  company,
+  sameAs,
+  onRecovered,
+}: {
+  card: PrepCard;
+  index: number;
+  company: EntityRef | null;
+  sameAs: string | null;
+  onRecovered: (investor: EntityRef, brief: Brief) => void;
+}) {
   const blocks = card.brief ? parseMarkdown(card.brief.markdown) : [];
   const verdict = verdictOf(blocks);
   const shownName = card.investor?.name ?? card.name;
@@ -223,7 +262,7 @@ function Card({ card, index, company }: { card: PrepCard; index: number; company
 
   return (
     <article
-      className={`h-full border p-5 ${
+      className={`border p-5 ${
         card.status === "error" ? "border-dashed border-line" : card.status === "done" ? "border-foreground" : "border-line"
       }`}
     >
@@ -248,7 +287,15 @@ function Card({ card, index, company }: { card: PrepCard; index: number; company
       {card.status === "working" && card.steps.length > 0 && (
         <p className="mt-3 text-sm text-muted">{card.steps[card.steps.length - 1]}</p>
       )}
-      {card.status === "error" && <p className="mt-3 text-sm">{card.error}</p>}
+      {sameAs && (
+        <p className="mt-2 text-sm text-muted">Same investor as “{sameAs}” above.</p>
+      )}
+      {card.status === "error" && (
+        <>
+          <p className="mt-3 text-sm">{card.error}</p>
+          {company && <FindInstead name={card.name} companyId={company.id} onBrief={onRecovered} />}
+        </>
+      )}
 
       {card.brief && (
         <>
@@ -279,6 +326,130 @@ function Card({ card, index, company }: { card: PrepCard; index: number; company
         </>
       )}
     </article>
+  );
+}
+
+type Fix =
+  | { status: "searching" }
+  | { status: "ready"; candidates: EntityRef[] }
+  | { status: "briefing"; pick: EntityRef; candidates: EntityRef[] }
+  | { status: "failed"; message: string; candidates: EntityRef[] };
+
+/**
+ * On a "Couldn't brief" card: the closest Cala matches for the pasted name ("Did you mean…"),
+ * a box to try another spelling, and picking a match writes that investor's brief by ID.
+ */
+function FindInstead({
+  name,
+  companyId,
+  onBrief,
+}: {
+  name: string;
+  companyId: string;
+  onBrief: (investor: EntityRef, brief: Brief) => void;
+}) {
+  const [query, setQuery] = useState(name);
+  const [searched, setSearched] = useState(name);
+  const [fix, setFix] = useState<Fix>({ status: "searching" });
+
+  useEffect(() => {
+    const ctrl = new AbortController();
+    // "Lifeline" only finds the Finnish VC as "Lifeline Ventures", so search that too.
+    const queries = needsInvestorSuffix(searched) ? [searched, `${searched} Ventures`] : [searched];
+    Promise.all(queries.map((q) => resolve(q, "investor", ctrl.signal).catch(() => [])))
+      .then((lists) => {
+        if (!ctrl.signal.aborted) {
+          setFix({ status: "ready", candidates: investorSuggestions(searched, lists.flat()) });
+        }
+      })
+      .catch(() => {
+        if (!ctrl.signal.aborted) setFix({ status: "ready", candidates: [] });
+      });
+    return () => ctrl.abort();
+  }, [searched]);
+
+  const candidates = fix.status === "searching" ? [] : fix.candidates;
+
+  function pick(c: EntityRef) {
+    setFix({ status: "briefing", pick: c, candidates });
+    getBrief({ investor_id: c.id, company_id: companyId }).then(
+      (brief) => onBrief(c, brief),
+      (err: unknown) =>
+        setFix({
+          status: "failed",
+          candidates,
+          message: `Couldn't write a brief for ${c.name}: ${
+            err instanceof ApiError ? err.message : "something went wrong"
+          }.`,
+        }),
+    );
+  }
+
+  if (fix.status === "briefing") {
+    return (
+      <p className="mt-4 border-l-2 border-accent pl-3 text-sm" aria-live="polite">
+        Writing the brief for {fix.pick.name}… this takes 20–60 s.
+      </p>
+    );
+  }
+
+  return (
+    <div className="mt-4 border-t border-line pt-4">
+      {fix.status === "searching" ? (
+        <p className="text-sm text-muted">Looking for close matches in Cala…</p>
+      ) : candidates.length > 0 ? (
+        <>
+          <p className="label text-muted">Did you mean</p>
+          <ul className="mt-2 space-y-1.5">
+            {candidates.map((c) => (
+              <li key={c.id}>
+                <button
+                  type="button"
+                  onClick={() => pick(c)}
+                  className="w-full rounded-[5px] border border-line px-3 py-2 text-left hover:border-foreground"
+                >
+                  <span className="text-sm font-medium">{c.name}</span>
+                  <span className="label ml-2 text-muted">{c.type}</span>
+                  {c.description && (
+                    <span className="mt-0.5 block line-clamp-1 text-xs text-muted">{c.description}</span>
+                  )}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p className="text-sm text-muted">
+          No investor in Cala looks like “{searched}”. Check the spelling, or try the fund&apos;s full
+          name. Individual angels often can&apos;t be found by name yet.
+        </p>
+      )}
+      {fix.status === "failed" && <p className="mt-3 text-sm">{fix.message}</p>}
+      <form
+        className="mt-3 flex gap-2"
+        onSubmit={(e) => {
+          e.preventDefault();
+          const q = query.trim();
+          if (!q || q === searched) return;
+          setFix({ status: "searching" });
+          setSearched(q);
+        }}
+      >
+        <label className="sr-only" htmlFor={`fix-${name}`}>
+          Try another spelling for {name}
+        </label>
+        <input
+          id={`fix-${name}`}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Try another spelling"
+          className="h-9 min-w-0 flex-1 rounded-[5px] border border-line bg-background px-2.5 text-sm outline-none focus:border-foreground"
+        />
+        <button type="submit" className="btn-ghost h-9" disabled={!query.trim() || query.trim() === searched}>
+          Search
+        </button>
+      </form>
+    </div>
   );
 }
 

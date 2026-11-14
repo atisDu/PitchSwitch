@@ -178,7 +178,8 @@ function EntityLine({ entity }: { entity: EntityRef }) {
         <span className="label text-muted">{entity.type}</span>
       </p>
       <p className="mt-0.5 line-clamp-2 text-sm text-muted">
-        {entity.description ?? "No description in Cala."}
+        {/* "" = description not passed along (e.g. preselected from a link), so say nothing. */}
+        {entity.description === "" ? null : (entity.description ?? "No description in Cala.")}
       </p>
     </div>
   );
