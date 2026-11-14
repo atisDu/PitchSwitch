@@ -229,7 +229,7 @@ export function FounderReportView({
             label="Pitch"
             count={report.pitch.length}
             title="Who to pitch"
-            hint="Ranked by fit: how often they lead in your space, how recently, and warm paths to them. None of them backed your competitors."
+            hint="Ranked by fit: how often they lead and invest in your space, how recently and actively, warm paths, stage fit and a Nordic or Baltic focus. Open a card to see how its score adds up. None of them backed your competitors."
           />
           {report.skip.length > 0 && (
             <a href="#skip-heading" className="mt-3 inline-block text-sm underline underline-offset-4">

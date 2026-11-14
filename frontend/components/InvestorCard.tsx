@@ -7,7 +7,8 @@ import { FundingFitLine } from "@/components/FundingFit";
 import { SourceBadges } from "@/components/SourceBadge";
 import { activitySummary, conflictText, leadSummary } from "@/lib/investor";
 import { briefPath, checkPath } from "@/lib/routes";
-import type { InvestorScore, Reason } from "@/lib/types";
+import { splitReasons, type ScoreBreakdown } from "@/lib/score";
+import type { InvestorScore, Reason, Source } from "@/lib/types";
 
 const VISIBLE_REASONS = 3;
 
@@ -35,7 +36,8 @@ export function PitchCard({
             <FundingFitLine fit={item.funding_fit} side="founder" />
           </div>
         )}
-        <Reasons reasons={item.reasons} />
+        <Breakdown item={item} open={rank === 1} />
+        <Reasons reasons={splitReasons(item.reasons).rest} />
         <WarmPaths paths={item.warm_paths} />
         <p className="mt-4 text-sm">
           <Link
@@ -97,11 +99,14 @@ export function SkipCard({
         </p>
         <details className="group mt-4">
           <summary className="label cursor-pointer list-none text-muted hover:text-foreground [&::-webkit-details-marker]:hidden">
-            <span className="group-open:hidden">+ Other signals · fit {Math.round(item.score)}/100</span>
+            <span className="group-open:hidden">
+              + Other signals · fit despite the conflict {Math.round(item.score)}/100
+            </span>
             <span className="hidden group-open:inline">− Other signals</span>
           </summary>
           <Signals item={item} />
-          <Reasons reasons={item.reasons} all />
+          <Breakdown item={item} open skip />
+          <Reasons reasons={splitReasons(item.reasons).rest} all />
           <WarmPaths paths={item.warm_paths} />
         </details>
       </div>
@@ -140,6 +145,68 @@ function Score({ value }: { value: number }) {
     </div>
   );
 }
+
+/**
+ * How the score adds up (C17): B's first reason as one bar per signal. Each bar's track is as
+ * long as that signal's weight, so the 25-point signals look bigger than the 10-point ones.
+ */
+function Breakdown({ item, open = false, skip = false }: { item: InvestorScore; open?: boolean; skip?: boolean }) {
+  const { breakdown, source } = splitReasons(item.reasons);
+  if (!breakdown) return null;
+  const title = skip
+    ? `How the ${fmt(breakdown.total)} (fit despite the conflict) adds up`
+    : `How the ${fmt(breakdown.total)} adds up`;
+  return (
+    <details className="group/b mt-4" open={open}>
+      <summary className="label cursor-pointer list-none text-muted hover:text-foreground [&::-webkit-details-marker]:hidden">
+        <span className="group-open/b:hidden">+ {title}</span>
+        <span className="hidden group-open/b:inline">− {title}</span>
+      </summary>
+      <BreakdownRows breakdown={breakdown} sources={source?.sources ?? []} />
+    </details>
+  );
+}
+
+function BreakdownRows({ breakdown, sources }: { breakdown: ScoreBreakdown; sources: Source[] }) {
+  const widest = Math.max(...breakdown.parts.map((p) => p.max), 1);
+  return (
+    <div className="mt-3">
+      <table className="w-full max-w-2xl text-sm">
+        <caption className="sr-only">Score breakdown, {fmt(breakdown.total)} out of {breakdown.outOf}</caption>
+        <tbody>
+          {breakdown.parts.map((p) => (
+            <tr key={p.name} className="align-top">
+              <th scope="row" className="w-36 py-1 pr-3 text-left font-normal first-letter:uppercase">
+                {p.name}
+              </th>
+              <td className="w-40 py-1 pr-3">
+                <div
+                  className="mt-1.5 h-1.5 bg-surface"
+                  style={{ width: `${(p.max / widest) * 100}%` }}
+                  role="img"
+                  aria-label={`${fmt(p.got)} of ${fmt(p.max)} points`}
+                >
+                  <div className="h-1.5 bg-accent" style={{ width: `${p.max ? Math.min(100, (p.got / p.max) * 100) : 0}%` }} />
+                </div>
+              </td>
+              <td className="w-14 py-1 pr-3 text-right tabular-nums">
+                {fmt(p.got)}/{fmt(p.max)}
+              </td>
+              <td className="py-1 text-muted">{p.detail}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {sources.length > 0 && (
+        <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-muted">
+          Rounds counted <SourceBadges sources={sources} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+const fmt = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(1));
 
 function Reasons({ reasons, all = false }: { reasons: Reason[]; all?: boolean }) {
   if (reasons.length === 0) return null;
