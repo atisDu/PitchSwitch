@@ -22,7 +22,7 @@ from core.competitors import judge
 from core.conflict import check_conflict
 from data import NotFound, get_store
 
-BRIEFS = "briefs"  # graph collection: one brief per (store, investor, company)
+BRIEFS = "briefs"  # graph collection: one brief per (store, investor, company, facts)
 MAX_ROUNDS = 8  # most recent rounds of the investor shown as facts
 MAX_ANSWER_CLAIMS = 8
 MAX_SOURCES_PER_FACT = 3  # best-ranked first
@@ -216,14 +216,18 @@ async def investor_brief(
         f"Company (the founder's startup): {company.name}\nInvestor: {investor_name}\n\n"
         f"Facts:\n{numbered}"
     )
-    key = f"{type(store).__name__}:{investor_id}:{company.id}"
+    legacy = f"{type(store).__name__}:{investor_id}:{company.id}"  # one doc per pair, older
     told = json.dumps([SYSTEM, prompt, [f.model_dump() for f in facts]])
     fingerprint = hashlib.sha256(told.encode()).hexdigest()
+    # One doc per set of facts: a machine that sees other facts (other competitors) adds its
+    # brief next to this one instead of replacing it.
+    key = f"{legacy}:{fingerprint[:16]}"
     if graph is not None:
         try:
-            doc = await graph.get(BRIEFS, key)
-            if doc and doc.get("facts") == fingerprint:
-                return Brief.model_validate(doc["brief"])
+            for doc_id in (key, legacy):
+                doc = await graph.get(BRIEFS, doc_id)
+                if doc and doc.get("facts") == fingerprint:
+                    return Brief.model_validate(doc["brief"])
         except Exception as exc:  # a cache, not a source of truth
             log.warning("brief cache read failed, writing it again: %r", exc)
 

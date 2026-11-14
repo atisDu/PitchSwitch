@@ -106,7 +106,8 @@ async def test_cached_judge_reuses_until_candidates_change(store, monkeypatch):
     first = await competitors.cached_judge(company, graph)
     again = await competitors.cached_judge(company, graph)
     assert again == first and len(calls) == 1
-    assert await graph.ids(competitors.JUDGEMENTS) == [f"FakeDataStore:{KELLUU}"]
+    (first_id,) = await graph.ids(competitors.JUDGEMENTS)
+    assert first_id.startswith(f"FakeDataStore:{KELLUU}:")  # one doc per candidate list
 
     real = store.candidate_competitors
 
@@ -116,6 +117,30 @@ async def test_cached_judge_reuses_until_candidates_change(store, monkeypatch):
     monkeypatch.setattr(store, "candidate_competitors", fewer)
     await competitors.cached_judge(company, graph)
     assert len(calls) == 2  # candidate list changed -> judged again
+    assert len(await graph.ids(competitors.JUDGEMENTS)) == 2  # ...next to the first, not over it
+
+    monkeypatch.setattr(store, "candidate_competitors", real)
+    assert await competitors.cached_judge(company, graph) == first and len(calls) == 2
+
+
+async def test_cached_judge_still_reads_a_judgement_stored_per_company(store, monkeypatch):
+    """Docs written before judgements were kept per candidate list stay valid."""
+    from cache.graph import MemoryGraph
+
+    company = await store.company(KELLUU)
+    graph, old = MemoryGraph(), MemoryGraph()
+    fake, _ = judge(lambda ids: [{"id": ids[0], "reason": "direct"}])
+    monkeypatch.setattr(competitors, "structured", fake)
+    first = await competitors.cached_judge(company, old)
+    (doc_id,) = await old.ids(competitors.JUDGEMENTS)
+    stored = await old.get(competitors.JUDGEMENTS, doc_id)
+    await graph.put(competitors.JUDGEMENTS, f"FakeDataStore:{KELLUU}", stored)
+
+    async def never(*a, **kw):
+        raise AssertionError("judged again")
+
+    monkeypatch.setattr(competitors, "structured", never)
+    assert await competitors.cached_judge(company, graph) == first
 
 
 async def test_cached_judge_survives_a_broken_graph(store, monkeypatch):

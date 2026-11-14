@@ -106,6 +106,16 @@ async def test_brief_is_kept_until_its_facts_change(store, monkeypatch):
     assert again == first and len(calls) == 1  # same facts: no second Gemini call
     changed = await briefs.investor_brief(NIF, STENDR, [], [], graph=graph)  # the conflict is gone
     assert len(calls) == 2 and changed.markdown.startswith("## Verdict\n\nDraft again done.")
+    # other facts were stored next to the first brief, not over it
+    assert await briefs.investor_brief(NIF, STENDR, rivals, [], graph=graph) == first
+    assert len(calls) == 2
+    # a brief stored under the older per-pair key is still read
+    older = MemoryGraph()
+    docs = [await graph.get(briefs.BRIEFS, i) for i in await graph.ids(briefs.BRIEFS)]
+    (kept,) = [d for d in docs if d["brief"] == first.model_dump()]
+    await older.put(briefs.BRIEFS, f"FakeDataStore:{NIF}:{STENDR}", kept)
+    assert await briefs.investor_brief(NIF, STENDR, rivals, [], graph=older) == first
+    assert len(calls) == 2
 
     class Broken:
         async def get(self, *a):

@@ -6,6 +6,7 @@ Gemini only picks among candidate IDs and writes a one-line reason; any ID it in
 
 from __future__ import annotations
 
+import hashlib
 import logging
 from typing import Any
 
@@ -99,15 +100,19 @@ async def find_competitors(company: Company, k: int = 30) -> list[Competitor]:
 async def cached_judge(company: Company, graph: Any, k: int = 30) -> Judgement:
     """judge() once per company and candidate list, kept in `graph` (cache.graph: Atlas when
     MONGODB_URI is set). Same report across restarts and machines, and no 20-25 s Gemini call.
-    A changed candidate list means a new judgement. Graph trouble never fails the request."""
+    Each candidate list has its own stored judgement, so two machines that see different
+    candidates for one company (vector search on / off) never overwrite each other, and a list
+    that comes back gets its earlier judgement back. Graph trouble never fails the request."""
     store = get_store()
     candidates = await _candidates(company, k)
-    key = f"{type(store).__name__}:{company.id}"
+    legacy = f"{type(store).__name__}:{company.id}"  # one doc per company, written before this
     fingerprint = sorted(c.id for c in candidates)
+    key = f"{legacy}:{hashlib.sha256(' '.join(fingerprint).encode()).hexdigest()[:16]}"
     try:
-        doc = await graph.get(JUDGEMENTS, key)
-        if doc and doc.get("candidates") == fingerprint:
-            return Judgement.model_validate(doc["judgement"])
+        for doc_id in (key, legacy):
+            doc = await graph.get(JUDGEMENTS, doc_id)
+            if doc and doc.get("candidates") == fingerprint:
+                return Judgement.model_validate(doc["judgement"])
     except Exception as exc:  # a cache, not a source of truth
         log.warning("judgement cache read failed, judging again: %r", exc)
     judged = await judge(company, k, candidates)
