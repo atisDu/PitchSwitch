@@ -67,10 +67,13 @@ export function Landing() {
               with the source for each number one click away.
             </p>
             <dl className="mt-10 divide-y divide-line border-y border-line">
-              <Signal term="Leads in your space" weight="35" text="How often they set the terms in rounds like yours." />
-              <Signal term="Still active" weight="25" text="Months since their last lead, deals in the last year." />
-              <Signal term="Rounds in your space" weight="20" text="How often they show up at all." />
-              <Signal term="Warm paths" weight="20" text="Funds that already co-invest with your backers." />
+              <Signal term="Leads in your space" weight="25" text="How often they set the terms in rounds like yours." />
+              <Signal term="Companies in your space" weight="15" text="Weighted by how close each one is to you." />
+              <Signal term="Recency" weight="15" text="How recently they invested in your space." />
+              <Signal term="Warm paths" weight="15" text="Funds that already co-invest with your backers." />
+              <Signal term="Activity" weight="10" text="Deals in the last 12 months." />
+              <Signal term="Stage fit" weight="10" text="How often they invest at your stage or the next." />
+              <Signal term="Nordic or Baltic" weight="10" text="Funds based in the region." />
             </dl>
           </div>
           <Frame title="Sensofusion Oy · Pitch · 28">
