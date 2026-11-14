@@ -1,0 +1,17 @@
+How can we cutdown the time it takes for new searches? Check cala docs, since we have rate limit of 100 per minute, which should be good no?
+
+---
+
+Okay, do just 2, but also make it so that slush prep has an option to compare against all investors at slush 2026.
+
+---
+
+Okay, just make it so that slush prep has an option to compare against all investors at slush 2026.
+
+---
+
+No, but dont do 1.2.0, can we stay on the old one or no
+
+---
+
+merge it and tell C to add the button
