@@ -22,7 +22,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} ${display.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
-        <header className="border-b border-line">
+        <header className="border-b border-line print:hidden">
           <div className="mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between px-5 md:px-10">
             <Link href="/" className="text-lg font-semibold tracking-tight">
               <span className="border-b-2 border-accent">Pitch</span>list
@@ -33,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="mx-auto w-full max-w-[1400px] flex-1 px-5 py-12 md:px-10 md:py-20">
           {children}
         </main>
-        <footer className="bg-press text-background">
+        <footer className="bg-press text-background print:hidden">
           <div className="mx-auto flex w-full max-w-[1400px] flex-wrap items-center justify-between gap-4 px-5 py-8 md:px-10">
             <span className="label">Pitchlist</span>
             <span className="label text-sage">Data: Cala · Junction 2026</span>
