@@ -485,3 +485,19 @@ investors in rounds too, so the fake store has the same gap.
   on either Kelluu list. Eval 6/6 live. Takes effect on the server after A's redeploy.
 - **Still open:** Kelluu lists two "Maki.vc" (two Cala entities with the same name; so before B18).
 - On the server after A's next redeploy; re-run `warm.py` after it.
+
+## B19 scoring: closeness, stage fit, geography (for C and the demo script)
+
+- Weights now: leads 25, companies here 15, recency 15, activity 10, warm paths 15, **stage fit 10**,
+  **Nordic/Baltic 10**. The breakdown reason (first reason, parts split by " + ") shows the new parts,
+  e.g. `stage fit 5/10 (5 of 10 rounds at Series A-Series B)`, `Nordic/Baltic 10/10 (Sweden)` or
+  `(Helsinki, from its description)` when Cala has no country, `0/10 (country unknown)`.
+- Closeness: each company in the space counts 0.75-1.25 by vector similarity to the startup (direct
+  competitors 1.25); "companies here" reads `(2 companies, 2.3 weighted by closeness)`.
+- Stage fit uses the investor's own labelled rounds from the store (same data as
+  `investor_activity.rounds_by_stage`, but sourced); stage and geography count only for investors with
+  a company in the space (like activity). No contract change.
+- Live tops: Sensofusion Maki 69.6, Lifeline 36.3, NIF 35.5; Stendr Maki 65.6, Lifeline 42.9, NIF 30.4;
+  Kelluu Maki 57.3, Lifeline 48.0, BSV 25.6. Sensofusion Skip: Skyfall is now #5 (13.1). Demo script:
+  name investors, not positions. Eval 6/6 live. Needs A's redeploy + warm.
+
