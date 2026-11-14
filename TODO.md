@@ -89,7 +89,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [ ] **C9 Founder testing** — show C6 to 3–5 founders at Junction; record feedback + one quote in `docs/user-testing.md`.
 
 ### CP4 — Saturday night
-- [ ] **C10 Brief page** — markdown render + citation list with badges. Needs: C8.
+- [x] **C10 Brief page** — markdown render + citation list with badges. Needs: C8.
 - [ ] **C11 Slush prep** — paste investor names → `/api/slush-prep` → live SSE steps → brief cards. Needs: C10 (mock SSE until B13).
 - [ ] **C12 Chat panel** — streaming chat on report/brief pages. Needs: C8 (mock until B14).
 - [ ] **C13 MCP demo setup** — Claude Desktop config for Cala + Pitchlist MCP; test the "Should I pitch Fund X?" question; steps in `docs/mcp-demo.md`. Needs: B15.
