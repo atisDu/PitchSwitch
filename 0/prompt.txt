@@ -1,0 +1,9 @@
+what's my next task in TODO.md?
+
+---
+
+git pull
+
+---
+
+yes do 1 then 3
