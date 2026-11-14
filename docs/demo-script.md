@@ -16,7 +16,7 @@ against the screen after the Sunday-morning freeze** (warm + cache-only, see Pre
 | 1 | Home | "I'm raising" → type **Sensofusion** → Find → pick **Sensofusion Oy** → **Find who to pitch** |
 | 2 | Founder report | Four competitor chips: **MyDefence, Stendr, Frankenburg Technologies, Origin Robotics**; hover **Stendr** to show the reason. Below them, "Also about your competitors": Frankenburg's EDF grant, MyDefence's Innobooster (don't read out) |
 | 3 | Report top | The verdict line under the name: **11 investors to skip**, 30 to pitch. Then the dark **Don't pitch these 11.** list: **BSV Ventures** first, "backed Zvook (a rival found in its portfolio)"; **Skyfall Ventures** second, "backed Stendr" |
-| 4 | Evidence, then Pitch | Click **Skyfall Ventures** in that list: it jumps to its card, "Backed your competitor Stendr"; click a source badge. Scroll up to **Who to pitch**: top card **Maki.vc** (fit 70), open breakdown; its last line reads "screened: no sanctions record in Cala" |
+| 4 | Evidence, then Pitch | Click **Skyfall Ventures** in that list: it jumps to its card, "Backed your competitor Stendr"; click a source badge. Scroll up to **Who to pitch**: top card **Maki.vc** (fit 70), open breakdown; below it, **Ask for: Paavo Räisänen** with its source |
 | 5 | Flip | On the **Skyfall Ventures** card: **Flip: see this from Skyfall Ventures' side** |
 | 6 | Investor check | Verdict **Conflict.**: "Stendr is in your portfolio and competes with Sensofusion Oy" |
 | 7 | Claude Desktop | Web search **off**; ask: *"Using only PitchSwitch, should Sensofusion pitch Skyfall Ventures?"* (asked once beforehand; setup: `docs/mcp-demo.md`) |
@@ -56,7 +56,8 @@ BSV, backs a rival I didn't even list: PitchSwitch found it in their portfolio. 
 backed Stendr. Pitch them and your deck lands with a competitor's
 investors. That's not a guess: here's the source." *(Click the badge.)*
 "And who should I pitch? Maki.vc fits best, 70 out of 100: it led defence pre-seeds this year, and
-here's how the score adds up."
+here's how the score adds up. It even names the partner to ask for, with the source. Every fund
+here was also screened against Cala's sanctions records."
 
 **1:20 · The flip (45 s).** *Steps 5–6.*
 "Now flip the table. I'm the partner at Skyfall Ventures, and Sensofusion just pitched me between
@@ -79,7 +80,7 @@ links to its source, and founders can use it at Slush tomorrow."
 | Real need | A specific user (seed founder at Slush), a costly mistake (pitching a rival's backer) |
 | Execution | One pipeline end to end, both directions, fast because it's cached |
 | Originality | Filters investors *out*; the same conflict found from the founder and the investor side |
-| Use of Cala | Multi-hop graph walk (company → competitor → round → investor → portfolio), source badges with rank and date, MCP on top |
+| Use of Cala | Multi-hop graph walk (company → competitor → round → investor → whole portfolio), sanctions records by ID, sourced search for fresh funds and partners, source badges with rank and date, MCP on top |
 
 ## Pre-flight (Sunday morning)
 
@@ -119,7 +120,8 @@ Keep it to five; the product carries the demo.
 2. **Problem:** founders pitch funds that were never going to say yes: funds that don't lead, funds
    gone quiet, funds that backed a competitor. Investors at Slush screen 30+ startups in two days.
 3. *(Live demo.)*
-4. **How it works:** the graph walk (company → competitors → rounds → investors → portfolio), facts
+4. **How it works:** the graph walk (company → competitors → rounds → investors → whole portfolio,
+   plus a sanctions screen), facts
    only from Cala, Gemini only judges competitors and writes, scoring is plain code; Atlas cache,
    Verda batch and hosting.
 5. **Close:** "Cala is the data layer for agents; PitchSwitch is the fundraising layer on top." Team,

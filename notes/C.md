@@ -156,3 +156,8 @@ LP, the Skip list and verdict say "sanctions record in Cala", the check's headin
 "Sanctions record." when that is the only hit, the screened line sorts last in reasons, notes
 show under the chips, and B22's hidden rivals are marked "(a rival found in its portfolio)" on
 the Skip list. Checked on the deployed API (Sensofusion: 11 Skip, 0 sanctions hits).
+
+**C16, 14 Nov evening:** cards now give B22-B25 their own places (`lib/reasons.ts` parses B's
+prefixes: "Partner for your space:", "Fresh fund:", "Hidden conflict: backs …", drops "Conflict: …"
+restatements). **For B: please keep those prefixes as they are;** if one changes, the line falls
+back to a plain reason (nothing breaks). Demo path steps 1-6 re-run on the deployed API: OK.

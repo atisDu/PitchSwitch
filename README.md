@@ -9,7 +9,9 @@ walks Cala's graph of companies, rounds and investors to answer two questions, w
 every claim:
 
 - **Founder mode:** *Who should I pitch, and who should I skip?* Enter your company and get a ranked
-  **Pitch** list and a **Skip** list of investors who backed a direct competitor or sit on its board.
+  **Pitch** list (funds that just closed a fund for your sector tagged, the partner to ask for named)
+  and a **Skip** list of investors who backed a direct competitor (even one found only by checking
+  their whole portfolio), sit on its board, or have a sanctions record in Cala.
 - **Investor mode (the flip):** *Does this startup conflict with my portfolio, and who backed its
   rivals?* Enter your fund and a startup that pitched you.
 
@@ -24,7 +26,8 @@ every claim:
 ## How it works
 
 Company → competitors (Cala candidates, judged by Gemini) → their funding rounds → the investors
-behind them → deterministic scoring. Facts come only from Cala; the LLM never invents numbers, dates
+behind them, plus funds that just closed a fund for the sector → each investor's whole portfolio
+checked for hidden rivals, and a sanctions screen → deterministic scoring. Facts come only from Cala; the LLM never invents numbers, dates
 or investors. Details: [docs/architecture.md](docs/architecture.md).
 
 ## Run it

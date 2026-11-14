@@ -44,16 +44,34 @@ one client and one cache; everything above the data layer works on the shared co
 4. **Rounds and investors.** The store walks `PARTICIPATES_IN_FUNDING_ROUND` and `INVESTED_IN`
    edges for those companies. When Cala has backers but no round details, they come back as one
    undated round, so they still count.
-5. **Conflicts.** `core/conflict.py`: an investor that backed a direct competitor (`PORTFOLIO`), or
+5. **Fresh funds** (`core/fresh.py`). A Cala search asks which VC firms closed a fund for the
+   startup's sector this year or last; Gemini only copies firm names out of the cited claims, and
+   each is resolved to a Cala investor. They join the Pitch pool with the claim as a reason.
+6. **Portfolio X-ray** (`core/xray.py`). Every ranked investor's whole portfolio is judged against
+   the startup, not only the ~30 candidates: Gemini screens the names, the flagged companies go
+   through the regular judge. A direct rival found there is a hidden `PORTFOLIO` conflict; same-space
+   holdings become a thesis reason and count half in the score. Verdicts are stored once per startup.
+7. **Conflicts.** `core/conflict.py`: an investor that backed a direct competitor (`PORTFOLIO`), or
    whose person sits on its board (`BOARD`), goes on **Skip**. Plain set logic; each conflict keeps
-   the sources of the edges it rests on.
-6. **Score.** `core/scoring.py`, deterministic, 0–100: leads in the space (35), rounds in the
-   space (20), recency of the last lead (25), warm paths via co-investors of the company's current
-   investors (20). The company's own investors are left out of both lists.
-7. **Show.** The frontend renders the `FounderReport`: competitor chips the user can remove (then
-   re-rank with `competitor_ids`), the Pitch list, and the Skip list with the conflict first.
+   the sources of the edges it rests on. The partner named for each top investor (step 9) is checked
+   against every rival's board too.
+8. **Sanctions screen** (`core/sanctions.py`). Every ranked investor and up to five of its LPs are
+   checked against Cala's sanctions records (by ID). A record is a `SANCTION` conflict → Skip; no
+   record is stated as "screened: no sanctions record in Cala", never as "clean".
+9. **Score.** `core/scoring.py`, deterministic, 0–100, seven signals: leads in the space (25),
+   companies in the space (15, weighted by closeness), recency of the last lead (15), activity in
+   the last 12 months (10, full for a fresh fund), warm paths via co-investors of the company's
+   current investors (15), stage fit (10), Nordic or Baltic focus (10). Every card shows how its
+   score adds up. For the top five, the partner for the space is named from sourced claims. The
+   company's own investors are left out of both lists.
+10. **Notes** (`core/notes.py`). Sourced lines about the direct competitors that belong to no one
+    investor: grants they won (NATO DIANA, EDF, EIC, national programmes) and which attend Slush.
+11. **Show.** The frontend renders the `FounderReport`: a one-line verdict, competitor chips the
+    user can remove (then re-rank with `competitor_ids`) with the notes under them, the Skip list in
+    brief, the Pitch list (fresh funds tagged, the partner to ask for), then the evidence for each
+    Skip, hidden rivals and sanctions labelled.
 
-**Investor mode** reuses steps 1–5 from the other side: the fund's portfolio against the startup's
+**Investor mode** reuses steps 1–4, 7 and 8 from the other side: the fund's portfolio against the startup's
 competitors, plus who backed each rival and their round history (`InvestorCheck`).
 
 ## How we use each service
@@ -140,6 +158,7 @@ Next.js (App Router) + TypeScript + Tailwind, in `frontend/`.
 ## Contracts and fixtures
 
 `contracts/` holds the shared models, the REST API description (`api.md`) and recorded Cala data.
-The contracts were frozen after the first evening (1.1.0; 1.1.1 on 14 Nov added angels as investors, wording only); changes need all three
+The contracts were frozen after the first evening (1.1.0; 1.1.1 on 14 Nov added angels as investors,
+wording only; 1.2.0 the same day added the `SANCTION` conflict and report notes); changes need all three
 workstreams to agree. `contracts/fixtures/raw/` holds raw Cala responses for the demo cases,
 `models/` the contract models built from them, used by the fake store and the frontend mock.
