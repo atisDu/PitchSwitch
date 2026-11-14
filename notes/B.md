@@ -268,3 +268,21 @@ Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
   URL, so it will show in Caddy's access log if that is on.
 - **For C (`docs/mcp-demo.md`):** the remote option now needs the token; paste the output of the
   `setup` command.
+
+## Demo warmed; what moved (14 Nov)
+
+- Warmed on the real store (shared Atlas): the founder reports of Sensofusion, Stendr and Kelluu
+  and the brief of every investor on their screens (top 10 Pitch + all of Skip): **39 briefs
+  stored**, each now back in about a second (cold: 50-85 s). Eval set 5/5 live. Second pass:
+  1974 Cala calls, 44 of them live, no rate-limit answer.
+- **Sensofusion (the demo path) is unchanged:** MyDefence + Stendr; Pitch top Maki.vc, NATO
+  Innovation Fund, ScaleWolf; Skip Skyfall, Startuplab, Rainfall.
+- **Stendr was judged again** (its candidate list changed; 239 s): Weibel Scientific is now a
+  third direct competitor, Skip is still empty, Pitch #3 is now Lifeline Ventures.
+- **Kelluu's order moved:** BSV Ventures is now #2 (was #4). Most likely refreshed Cala data:
+  cache entries expire after 24 h and 44 calls went to Cala live.
+- So results drift while the cache keeps refreshing. For the demo, run with A's cache-only mode on
+  (`deploy/cache-only.sh`) from the last rehearsal onwards, and rehearse on that.
+- **Open, waiting for the human:** a person (angel) on a list opens a brief that fails (Kelluu:
+  Tuomas Rasila, was #6 on Pitch): the store cannot look a person up as an investor. A stopgap
+  that leaves people off both lists is on the local branch `b/B16-people-off-lists`, not merged.
