@@ -334,9 +334,11 @@ investors in rounds too, so the fake store has the same gap.
 - **Everyone running the real store locally:** set `USE_VECTOR_SEARCH=true` in your `.env` to see
   what the server shows. Without it your reports differ from the demo (fewer competitors).
 
-## MCP on the server still down after the redeploy (14 Nov)
+## Remote MCP checked through Caddy (14 Nov, after A17)
 
-- `https://95-133-252-219.sslip.io/mcp` answers **502** (with a running server and no token it would
-  be 401). `MCP_TOKEN` is still in neither `.env.example` nor `deploy/`, so the `mcp` container
-  exits at start. **For A:** see "For A (blocking the `mcp` container)" above; after that,
-  B checks the remote MCP through Caddy.
+- With the MCP SDK's own client over HTTPS (`https://95-133-252-219.sslip.io/mcp`): token in the
+  header and token as `?key=` both connect, 7 tools listed, `resolve_company` and
+  `find_competitors` on Sensofusion answer (MyDefence, Stendr, Frankenburg, Origin Robotics),
+  0.4-1.8 s. The demo question: Skyfall Ventures x Sensofusion -> PORTFOLIO conflict via Stendr,
+  7 sources, 4.8 s. No token or a wrong one (header or `?key=`) -> 401 with the hint.
+- **Still not checked:** Claude's custom-connector screen and Cursor (need a human at the app).
