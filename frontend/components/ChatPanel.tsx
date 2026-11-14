@@ -158,7 +158,7 @@ export function ChatPanel({
                           setInput(s);
                           inputRef.current?.focus();
                         }}
-                        className="w-full rounded-[5px] border border-line px-3 py-2 text-left text-sm hover:border-foreground"
+                        className="w-full rounded-lg border border-line px-3 py-2 text-left text-sm hover:border-foreground"
                       >
                         {s}
                       </button>
@@ -202,7 +202,7 @@ export function ChatPanel({
                   }
                 }}
                 placeholder="e.g. Who led their last round?"
-                className="min-w-0 flex-1 resize-none rounded-[5px] border border-control bg-background p-2.5 outline-none placeholder:text-muted focus:border-foreground"
+                className="min-w-0 flex-1 resize-none rounded-lg border border-control bg-white p-2.5 outline-none placeholder:text-muted focus:border-accent"
               />
               {busy ? (
                 <button type="button" className="btn-ghost h-11" onClick={() => abort.current?.abort()}>

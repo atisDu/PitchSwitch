@@ -140,7 +140,10 @@ export function InvestorCheckView({
         ]}
       />
       <header>
-        <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-lg">
+        <p className="inline-flex h-8 items-center rounded-full border border-line bg-white px-3 text-[13px] text-muted">
+          Investor check
+        </p>
+        <p className="mt-5 flex flex-wrap items-baseline gap-x-3 gap-y-1 text-lg">
           <span className="text-muted">Checking as</span>
           <span className="border-b-2 border-accent font-medium">{fund}</span>
           <span className="label text-muted">{investorKind(investor.type)}</span>
@@ -148,7 +151,7 @@ export function InvestorCheckView({
             Not your fund?
           </Link>
         </p>
-        <h1 className="display mt-6 text-5xl break-words sm:text-6xl md:text-8xl">{startup}</h1>
+        <h1 className="display mt-4 text-5xl break-words sm:text-6xl md:text-7xl">{startup}</h1>
         {facts.length > 0 && (
           <p className="label mt-6 flex flex-wrap gap-x-4 gap-y-1 text-muted">
             {facts.map((f) => (
@@ -183,8 +186,8 @@ export function InvestorCheckView({
       </header>
 
       {conflicts.length > 0 ? (
-        <section className="mt-14 bg-press px-6 py-10 text-background md:px-10 md:py-14" aria-labelledby="verdict">
-          <h2 id="verdict" className="display text-5xl md:text-7xl">
+        <section className="mt-12 rounded-[20px] bg-press px-6 py-10 text-background md:px-10 md:py-14" aria-labelledby="verdict">
+          <h2 id="verdict" className="display text-5xl md:text-6xl">
             Conflict.
           </h2>
           <ul className="mt-8 space-y-6">
@@ -199,8 +202,8 @@ export function InvestorCheckView({
           </ul>
         </section>
       ) : (
-        <section className="mt-14 border-t-4 border-accent pt-8" aria-labelledby="verdict">
-          <h2 id="verdict" className="display text-5xl md:text-6xl">
+        <section className="window mt-12 border-t-4 border-t-accent p-6 md:p-10" aria-labelledby="verdict">
+          <h2 id="verdict" className="display text-4xl md:text-5xl">
             No conflict found.
           </h2>
           <p className="mt-4 max-w-2xl text-muted">
@@ -212,7 +215,7 @@ export function InvestorCheckView({
       )}
 
       <section className="mt-20" aria-labelledby="map-heading">
-        <h2 id="map-heading" className="display text-5xl md:text-6xl">
+        <h2 id="map-heading" className="display text-4xl md:text-5xl">
           Who backed the rivals
         </h2>
         <p className="mt-4 max-w-2xl text-muted">
@@ -234,7 +237,7 @@ function MarketCard({ entry, isStartup, investorId }: { entry: MarketEntry; isSt
   const c = competitor?.company;
   const meta = c ? [c.stage, c.country].filter(Boolean).join(" · ") : "";
   return (
-    <article className="grid gap-x-10 gap-y-4 border-t border-line py-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
+    <article className="window mb-3 grid gap-x-10 gap-y-4 p-5 md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] md:p-7">
       <div>
         <p className="label text-muted">{isStartup ? "The startup" : competitor ? "Competitor" : "Other"}</p>
         <h3 className="mt-2 text-2xl font-medium tracking-tight">{displayName(company.name)}</h3>
@@ -266,8 +269,8 @@ function MarketCard({ entry, isStartup, investorId }: { entry: MarketEntry; isSt
               return (
                 <li
                   key={b.investor.id}
-                  className={`rounded-[5px] border px-2 py-1 text-sm ${
-                    you ? "border-foreground bg-accent font-medium" : "border-line"
+                  className={`rounded-lg border px-2 py-1 text-sm ${
+                    you ? "border-accent bg-echo font-medium" : "border-foreground/15 bg-white"
                   }`}
                 >
                   {displayName(b.investor.name)}

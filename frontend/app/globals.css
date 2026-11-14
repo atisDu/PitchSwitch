@@ -1,22 +1,23 @@
 @import "tailwindcss";
 
-/* Design system: frontend/DESIGN.md ("editorial broadsheet in a green room").
-   Light only. Green is the single chromatic accent; everything else is ink on paper. */
+/* Design system: the landing page's (public/about.html, built with the taste skill): cool white,
+   slate ink, one teal accent, Instrument Sans throughout, DM Mono for sources, pill buttons. */
 
 :root {
-  --background: #fafffa; /* Bone White: paper canvas, never pure #fff */
-  --foreground: #000000; /* Typesetter Ink */
-  --press: #121613; /* Press Black: dark sections, footer */
-  --slate: #232924; /* Slate Verdant */
-  --muted: #516254; /* Newsprint Gray: captions, helper text */
-  --sage: #c8d2c8; /* Muted Sage: light text on dark; hairlines on light */
-  --line: #d6ded6; /* hairline structure */
-  --surface: #f0f6f0; /* quiet tint for hover / selected rows */
-  --accent: #2bee4b; /* Highlighter Green: primary action, active underline */
-  --moss: #93b799; /* Shadow Moss */
-  --echo: #c4e4c9; /* Echo Green */
-  --control: #7a917e; /* Control Sage: input outlines, 3.4:1 on bone (WCAG 1.4.11); hairlines stay --line */
-  --control-lg: 48px; /* the primary button's height; ghost buttons beside it match */
+  --background: #f7f9fa; /* the page ground */
+  --foreground: #1f3038; /* slate ink */
+  --press: #1f3038; /* dark panels and the footer */
+  --slate: #2c3c44; /* hairlines and surfaces on dark */
+  --muted: #5d6b72; /* helper text, 5.4:1 on the ground */
+  --sage: #c3ccd0; /* text on dark */
+  --line: #dde3e6; /* hairline structure */
+  --surface: #ecf0f2; /* rows, selected and hover tints */
+  --accent: #0d7480; /* teal: primary action, active underline, score bars; white text on it */
+  --moss: #9fc7cc; /* teal tint for borders */
+  --echo: #d7ecee; /* pale teal: citations, "you", the best source rank */
+  --control: #7d8a90; /* input outlines, 3.4:1 on the ground (WCAG 1.4.11) */
+  --control-lg: 44px; /* the primary button's height; secondary buttons beside it match */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 @theme inline {
@@ -34,7 +35,8 @@
   --color-control: var(--control);
   --spacing-control-lg: var(--control-lg);
   --font-sans: var(--font-ui);
-  --font-serif: var(--font-display);
+  --font-serif: var(--font-ui);
+  --font-mono: var(--font-code);
 }
 
 body {
@@ -55,7 +57,7 @@ dd {
   text-wrap: pretty;
 }
 
-/* Browser surfaces in the palette: selection in Echo Green, the caret in ink. */
+/* Browser surfaces in the palette: selection in pale teal, the caret in ink. */
 ::selection {
   background: var(--echo);
   color: var(--foreground);
@@ -65,76 +67,118 @@ textarea {
   caret-color: var(--foreground);
 }
 
-/* Small-caps micro-label: nav, buttons, section labels. */
-/* DESIGN.md sets 11px / +0.01em; 12px / +0.03em keeps the broadsheet look and reads at a glance,
-   which matters for the state words (Conflict, Fits your raise, Fund) set in it. */
+/* Micro-label: section labels and state words (Conflict, Fits your raise, Fund), sentence case
+   as on the landing page's windows. */
 @utility label {
-  font-size: 12px;
-  line-height: 1.15;
-  font-weight: 550;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: 0.005em;
 }
 
-/* Serif display headline: tight leading and tracking read as printed ink. */
+/* Display headline: Instrument Sans 500, slightly narrowed and tightly tracked (the landing's h1). */
 @utility display {
-  font-family: var(--font-display), Georgia, serif;
-  font-weight: 400;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
+  font-family: var(--font-ui), system-ui, sans-serif;
+  font-weight: 500;
+  font-stretch: 96%;
+  line-height: 1;
+  letter-spacing: -0.032em;
 }
 
-/* The one filled, saturated button; its shadow is green, never gray. */
+/* The one filled button: a teal pill with a chevron that steps on hover; it presses on click. */
 @utility btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
+  gap: 8px;
+  border-radius: 999px;
   background: var(--accent);
-  color: var(--foreground);
+  color: #fff;
   min-height: var(--control-lg);
-  padding: 0 28px;
-  font-size: 12px;
-  font-weight: 550;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  box-shadow: rgba(16, 94, 29, 0.45) 1px 8px 20px 0;
+  padding: 0 22px;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 180ms var(--ease),
+    transform 180ms var(--ease);
+  &::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    margin-right: -2px;
+    background: currentColor;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M4.5 2.5 8 6l-3.5 3.5' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+      center / contain no-repeat;
+    transition: transform 180ms var(--ease);
+  }
+  &:hover:not(:disabled) {
+    background: color-mix(in oklab, var(--accent) 86%, var(--foreground));
+  }
+  &:hover:not(:disabled)::after {
+    transform: translateX(3px);
+  }
+  &:active:not(:disabled) {
+    transform: translateY(1px) scale(0.985);
+  }
   &:disabled {
-    background: transparent;
+    background: var(--surface);
     color: var(--muted);
-    box-shadow: inset 0 0 0 1px var(--line);
     cursor: not-allowed;
+  }
+  &:disabled::after {
+    display: none;
   }
 }
 
-/* Secondary action: ink outline, no fill, no shadow. */
+/* Secondary action: a tinted pill, no outline (the landing's pill secondary). */
 @utility btn-ghost {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
-  border: 1px solid var(--foreground);
-  padding: 0 16px;
-  font-size: 12px;
-  font-weight: 550;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--foreground) 8%, var(--background));
+  color: var(--foreground);
+  padding: 0 18px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 180ms var(--ease),
+    transform 180ms var(--ease);
   &:hover:not(:disabled) {
-    background: var(--foreground);
-    color: var(--background);
+    background: color-mix(in oklab, var(--foreground) 14%, var(--background));
+  }
+  &:active:not(:disabled) {
+    transform: translateY(1px) scale(0.985);
   }
   &:disabled {
-    opacity: 0.35;
+    opacity: 0.45;
     cursor: not-allowed;
   }
 }
 
+/* A white window, as the landing page draws the app: hairline, soft corners, a long soft shadow. */
+@utility window {
+  background: #fff;
+  border: 1px solid rgb(31 48 56 / 0.12);
+  border-radius: 14px;
+  box-shadow: 0 24px 48px -28px rgb(31 48 56 / 0.45);
+}
+
 :focus-visible {
-  outline: 2px solid var(--foreground);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 /* Never a sideways scroll on the app's pages. */
 body {
   overflow-x: clip;
+}
+
+/* The landing page's lit ground behind its app windows (.hero__window there). */
+.lit-ground {
+  background: radial-gradient(70% 90% at 15% 110%, #0d7480 0 30%, transparent 62%), radial-gradient(60% 80% at 90% 0%, #9fc7cc 0 25%, transparent 60%), linear-gradient(160deg, #cfe2e4, #e6eef0 55%, #b9d3d6);
 }

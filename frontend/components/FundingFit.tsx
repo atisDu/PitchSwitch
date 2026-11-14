@@ -26,7 +26,7 @@ const LABEL: Record<FundingSide, Record<FundingVerdict, string>> = {
   },
 };
 
-// One accent (DESIGN.md): a fit is green, a mismatch is ink, unknown is faint.
+// One accent (DESIGN.md): a fit is teal-tinted, a mismatch is ink, unknown is faint.
 const STYLE: Record<FundingVerdict, string> = {
   fits: "bg-echo border-moss text-foreground",
   too_small: "bg-background border-foreground text-foreground",
@@ -37,7 +37,7 @@ const STYLE: Record<FundingVerdict, string> = {
 export function FundingFitLine({ fit, side }: { fit: FundingFit; side: FundingSide }) {
   return (
     <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
-      <span className={`label rounded-[5px] border px-1.5 py-1 ${STYLE[fit.verdict]}`}>{LABEL[side][fit.verdict]}</span>
+      <span className={`label rounded-lg border px-1.5 py-1 ${STYLE[fit.verdict]}`}>{LABEL[side][fit.verdict]}</span>
       <span className={fit.verdict === "unknown" ? "text-muted" : ""}>{fit.text}</span>
       {fit.sources.length > 0 && <SourceBadges sources={fit.sources} />}
     </div>
@@ -87,7 +87,7 @@ export function AmountField({
           aria-invalid={invalid}
           aria-describedby={`${id}-hint`}
           disabled={disabled}
-          className="block h-10 w-44 rounded-[5px] border border-control bg-background px-3 outline-none placeholder:text-muted focus:border-foreground aria-[invalid=true]:border-foreground disabled:opacity-50"
+          className="block h-10 w-44 rounded-lg border border-control bg-white px-3 outline-none placeholder:text-muted focus:border-accent aria-[invalid=true]:border-foreground disabled:opacity-50"
         />
         <button type="submit" className="btn-ghost h-10" disabled={disabled || invalid || !changed}>
           {parsed === null && value !== null ? "Clear" : "Apply"}

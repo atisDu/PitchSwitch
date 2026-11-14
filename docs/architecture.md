@@ -134,7 +134,7 @@ Next.js (App Router) + TypeScript + Tailwind, in `frontend/`.
   per investor) and an "Ask" chat panel on report, check and brief pages.
 - Streams (`/api/jobs/{id}/stream`, `/api/chat`) are read with `fetch` and parsed in `lib/sse.ts`;
   small pure reducers (`lib/prep.ts`, `lib/chat.ts`) turn events into UI state and are unit-tested.
-- Design follows `frontend/DESIGN.md`: editorial, monochrome, one green accent, a source badge on
+- Design follows `frontend/DESIGN.md` (the /about landing page's system): cool white, slate ink, one teal accent, a source badge on
   every claim.
 
 ## Contracts and fixtures

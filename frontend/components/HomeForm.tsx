@@ -56,8 +56,8 @@ export function HomeForm({ initialMode = "founder" }: { initialMode?: Mode }) {
   }
 
   return (
-    <div className="max-w-xl">
-      <div role="radiogroup" aria-label="Mode" className="flex gap-8 border-b border-line">
+    <div>
+      <div role="radiogroup" aria-label="Mode" className="inline-flex gap-1 rounded-full bg-surface p-1">
         {MODES.map((m) => (
           <button
             key={m.value}
@@ -65,17 +65,15 @@ export function HomeForm({ initialMode = "founder" }: { initialMode?: Mode }) {
             role="radio"
             aria-checked={mode === m.value}
             onClick={() => setMode(m.value)}
-            className={`label -mb-px border-b-2 pb-3 transition-colors ${
-              mode === m.value
-                ? "border-accent text-foreground"
-                : "border-transparent text-muted hover:text-foreground"
+            className={`h-9 rounded-full px-4 text-sm font-medium transition-colors ${
+              mode === m.value ? "bg-foreground text-white" : "text-muted hover:text-foreground"
             }`}
           >
             {m.label}
           </button>
         ))}
       </div>
-      <p className="mt-4 text-muted">{MODES.find((m) => m.value === mode)?.hint}</p>
+      <p className="mt-5 text-lg font-medium tracking-[-0.01em]">{MODES.find((m) => m.value === mode)?.hint}</p>
 
       <div className="mt-10 space-y-8">
         {mode === "founder" ? (
@@ -113,7 +111,7 @@ export function HomeForm({ initialMode = "founder" }: { initialMode?: Mode }) {
         <div>
           <label htmlFor="home-amount" className="label">
             {mode === "founder" ? "Amount you want to raise" : "Most you will fund"}{" "}
-            <span className="text-muted normal-case">(optional, EUR)</span>
+            <span className="font-normal text-muted">(optional, EUR)</span>
           </label>
           <input
             id="home-amount"
@@ -124,7 +122,7 @@ export function HomeForm({ initialMode = "founder" }: { initialMode?: Mode }) {
             autoComplete="off"
             aria-invalid={amountInvalid}
             aria-describedby="home-amount-hint"
-            className="mt-3 block h-11 w-48 rounded-[5px] border border-control bg-background px-3 text-base outline-none placeholder:text-muted focus:border-foreground aria-[invalid=true]:border-foreground"
+            className="mt-3 block h-11 w-48 rounded-lg border border-control bg-white px-3 text-base outline-none placeholder:text-muted focus:border-accent aria-[invalid=true]:border-foreground"
           />
           <p id="home-amount-hint" className="mt-2 text-sm text-muted" aria-live="polite">
             {amountInvalid

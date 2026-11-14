@@ -117,8 +117,10 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
   return (
     <div>
       <title>Slush prep · PitchSwitch</title>
-      <p className="label text-muted">Slush prep</p>
-      <h1 className="display mt-4 max-w-4xl text-5xl sm:text-6xl md:text-7xl">
+      <p className="inline-flex h-8 items-center rounded-full border border-line bg-white px-3 text-[13px] text-muted">
+        Slush prep
+      </p>
+      <h1 className="display mt-5 max-w-4xl text-5xl sm:text-6xl md:text-7xl">
         One sourced brief for every investor you&apos;re meeting.
       </h1>
       <p className="mt-6 max-w-2xl text-lg leading-snug text-muted">
@@ -126,81 +128,86 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
         your competitors and writes a one-page brief where every sentence cites its source.
       </p>
 
-      <div className="mt-12 grid max-w-4xl gap-10 md:grid-cols-2">
-        <EntityPicker
-          kind="company"
-          label="Your company"
-          placeholder="e.g. Sensofusion"
-          value={company}
-          onChange={setCompany}
-          examples={["Sensofusion", "Kelluu", "Stendr"]}
-        />
-        <div>
-          <label htmlFor="names" className="label">
-            Investors you&apos;re meeting
-          </label>
-          <textarea
-            id="names"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            rows={6}
-            placeholder={"One per line, or separated by commas\ne.g. Maki.vc\nRainfall Ventures"}
-            disabled={busy}
-            className="mt-3 w-full rounded-[5px] border border-control bg-background p-3 text-base outline-none placeholder:text-muted focus:border-foreground disabled:opacity-50"
-          />
-          <p className={`mt-1 text-sm ${tooMany ? "font-medium" : "text-muted"}`}>
-            {parsed.length === 0 ? (
-              <>
-                Try{" "}
-                <button type="button" className="text-foreground underline underline-offset-4" onClick={() => setText(EXAMPLE)}>
-                  four example names
-                </button>
-              </>
-            ) : tooMany ? (
-              `${parsed.length} names: the limit is ${MAX_NAMES} per run.`
-            ) : (
-              `${parsed.length} ${parsed.length === 1 ? "name" : "names"}`
-            )}
-          </p>
-          <label className="mt-5 flex cursor-pointer items-start gap-3">
-            <input
-              type="checkbox"
-              checked={allSlush}
-              onChange={(e) => setAllSlush(e.target.checked)}
-              disabled={busy}
-              className="mt-1 h-4 w-4 shrink-0 accent-[var(--accent)]"
+      {/* The form in a white window on the landing page's lit ground, as on the home page. */}
+      <div className="lit-ground mt-12 rounded-[20px] p-3 sm:p-8">
+        <div className="window p-5 sm:p-8">
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-10 md:grid-cols-2">
+            <EntityPicker
+              kind="company"
+              label="Your company"
+              placeholder="e.g. Sensofusion"
+              value={company}
+              onChange={setCompany}
+              examples={["Sensofusion", "Kelluu", "Stendr"]}
             />
-            <span>
-              <span className="font-medium">Add the Slush 2026 investors Cala knows of</span>
-              <span className="mt-0.5 block text-sm text-muted">
-                The funds Cala&apos;s sources name as attending Slush, not everyone there. Up to{" "}
-                {MAX_NAMES} briefs in all; the first run takes a few minutes.
-              </span>
-            </span>
-          </label>
-        </div>
-      </div>
+            <div>
+              <label htmlFor="names" className="label">
+                Investors you&apos;re meeting
+              </label>
+              <textarea
+                id="names"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                rows={6}
+                placeholder={"One per line, or separated by commas\ne.g. Maki.vc\nRainfall Ventures"}
+                disabled={busy}
+                className="mt-3 w-full rounded-lg border border-control bg-white p-3 text-base outline-none placeholder:text-muted focus:border-accent disabled:opacity-50"
+              />
+              <p className={`mt-1 text-sm ${tooMany ? "font-medium" : "text-muted"}`}>
+                {parsed.length === 0 ? (
+                  <>
+                    Try{" "}
+                    <button type="button" className="text-foreground underline underline-offset-4" onClick={() => setText(EXAMPLE)}>
+                      four example names
+                    </button>
+                  </>
+                ) : tooMany ? (
+                  `${parsed.length} names: the limit is ${MAX_NAMES} per run.`
+                ) : (
+                  `${parsed.length} ${parsed.length === 1 ? "name" : "names"}`
+                )}
+              </p>
+              <label className="mt-5 flex cursor-pointer items-start gap-3">
+                <input
+                  type="checkbox"
+                  checked={allSlush}
+                  onChange={(e) => setAllSlush(e.target.checked)}
+                  disabled={busy}
+                  className="mt-1 h-4 w-4 shrink-0 accent-[var(--accent)]"
+                />
+                <span>
+                  <span className="font-medium">Add the Slush 2026 investors Cala knows of</span>
+                  <span className="mt-0.5 block text-sm text-muted">
+                    The funds Cala&apos;s sources name as attending Slush, not everyone there. Up to{" "}
+                    {MAX_NAMES} briefs in all; the first run takes a few minutes.
+                  </span>
+                </span>
+              </label>
+            </div>
+          </div>
 
-      <div className="mt-8 flex flex-wrap items-center gap-4">
-        <button type="button" className="btn-primary" disabled={!canStart} onClick={() => void start()}>
-          {run.status === "starting"
-            ? "Starting…"
-            : allSlush
-              ? parsed.length
-                ? `Prepare ${parsed.length} + Slush investors' briefs`
-                : "Prepare the Slush investors' briefs"
-              : `Prepare ${parsed.length || ""} ${parsed.length === 1 ? "brief" : "briefs"}`.replace("  ", " ")}
-        </button>
-        {run.status === "running" && (
-          <button type="button" className="btn-ghost h-control-lg" onClick={stop}>
-            Stop
-          </button>
-        )}
-        {company && (
-          <Link href={founderPath(company.id)} className="text-sm underline underline-offset-4">
-            {company.name}&apos;s founder report
-          </Link>
-        )}
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <button type="button" className="btn-primary" disabled={!canStart} onClick={() => void start()}>
+              {run.status === "starting"
+                ? "Starting…"
+                : allSlush
+                  ? parsed.length
+                    ? `Prepare ${parsed.length} + Slush investors' briefs`
+                    : "Prepare the Slush investors' briefs"
+                  : `Prepare ${parsed.length || ""} ${parsed.length === 1 ? "brief" : "briefs"}`.replace("  ", " ")}
+            </button>
+            {run.status === "running" && (
+              <button type="button" className="btn-ghost h-control-lg" onClick={stop}>
+                Stop
+              </button>
+            )}
+            {company && (
+              <Link href={founderPath(company.id)} className="text-sm underline underline-offset-4">
+                {company.name}&apos;s founder report
+              </Link>
+            )}
+          </div>
+        </div>
       </div>
 
       {run.status === "failed" && (
@@ -291,8 +298,12 @@ function Card({
 
   return (
     <article
-      className={`border p-5 ${
-        card.status === "error" ? "border-dashed border-line" : card.status === "done" ? "border-foreground" : "border-line"
+      className={`rounded-[14px] p-5 ${
+        card.status === "error"
+          ? "border border-dashed border-control"
+          : card.status === "done"
+            ? "window"
+            : "border border-line bg-white/60"
       }`}
     >
       <div className="flex items-start justify-between gap-3">
@@ -304,8 +315,8 @@ function Card({
           {card.investor && <p className="label mt-1 text-muted">{card.investor.type}</p>}
         </div>
         <span
-          className={`label shrink-0 rounded-[5px] px-1.5 py-1 ${
-            card.status === "done" ? "bg-accent" : card.status === "working" ? "bg-surface" : "text-muted"
+          className={`label shrink-0 rounded-lg px-1.5 py-1 ${
+            card.status === "done" ? "bg-accent text-white" : card.status === "working" ? "bg-surface" : "text-muted"
           }`}
         >
           {STATUS_LABEL[card.status]}
@@ -435,7 +446,7 @@ function FindInstead({
                 <button
                   type="button"
                   onClick={() => pick(c)}
-                  className="w-full rounded-[5px] border border-line px-3 py-2 text-left hover:border-foreground"
+                  className="w-full rounded-lg border border-line px-3 py-2 text-left hover:border-foreground"
                 >
                   <span className="text-sm font-medium">{c.name}</span>
                   <span className="label ml-2 text-muted">{c.type}</span>
@@ -472,7 +483,7 @@ function FindInstead({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Try another spelling"
-          className="h-9 min-w-0 flex-1 rounded-[5px] border border-control bg-background px-2.5 text-sm outline-none focus:border-foreground"
+          className="h-9 min-w-0 flex-1 rounded-lg border border-control bg-white px-2.5 text-sm outline-none focus:border-accent"
         />
         <button type="submit" className="btn-ghost h-9" disabled={!query.trim() || query.trim() === searched}>
           Search

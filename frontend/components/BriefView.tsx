@@ -131,7 +131,9 @@ export function BriefView({
         ]}
       />
       <div className="flex flex-wrap items-center justify-between gap-4 print:hidden">
-        <p className="text-sm text-muted">Investor brief: every sentence cites its source</p>
+        <p className="inline-flex h-8 items-center rounded-full border border-line bg-white px-3 text-[13px] text-muted">
+          Investor brief · every sentence cites its source
+        </p>
         <div className="flex flex-wrap items-center gap-4 text-sm">
           <Link href={founderPath(companyId)} className="underline underline-offset-4">
             Founder report
@@ -144,12 +146,14 @@ export function BriefView({
           </button>
         </div>
       </div>
-      <h1 className="display mt-4 text-5xl break-words sm:text-6xl md:text-7xl">
+      <h1 className="display mt-6 text-5xl break-words sm:text-6xl md:text-7xl">
         {titleBlock ? <InlineContent nodes={titleBlock.content} citations={brief.citations} /> : title}
       </h1>
       {entity && <AboutEntity entity={entity} />}
 
-      <BriefBody blocks={body} citations={brief.citations} anchor="cite" />
+      <div className="window mt-8 p-6 md:p-10 print:border-0 print:p-0 print:shadow-none [&>:first-child]:mt-0">
+        <BriefBody blocks={body} citations={brief.citations} anchor="cite" />
+      </div>
     </article>
   );
 }
@@ -167,7 +171,7 @@ function AboutEntity({ entity }: { entity: EntityRef }) {
   const desc = entity.description?.trim() || null;
   const doubtful = entity.type !== "Person" && (!desc || !INVESTOR_WORDS.test(desc));
   return (
-    <div className="mt-8 border-y border-line py-4 text-sm">
+    <div className="window mt-8 p-4 text-sm md:px-5">
       <p className="flex flex-wrap items-baseline gap-x-2">
         <span className="font-medium">{name}</span>
         <span className="label text-muted">{investorKind(entity.type)} in Cala</span>

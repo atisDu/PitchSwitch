@@ -97,7 +97,7 @@ export function EntityPicker({ kind, label, placeholder, value, onChange, exampl
             onChange={(e) => setName(e.target.value)}
             placeholder={placeholder}
             autoComplete="off"
-            className="h-11 min-w-0 flex-1 rounded-[5px] border border-control bg-background px-3 text-base outline-none placeholder:text-muted focus:border-foreground"
+            className="h-11 min-w-0 flex-1 rounded-lg border border-control bg-white px-3 text-base outline-none placeholder:text-muted focus:border-accent"
           />
           <button
             type="submit"

@@ -156,7 +156,7 @@ export function FounderReportView({
       <CompanyHeader company={report.company} />
       <Verdict report={report} />
 
-      <section id="competitors" className="mt-14 scroll-mt-6 border-t border-line pt-8" aria-labelledby="competitors-heading">
+      <section id="competitors" className="window mt-12 scroll-mt-24 p-5 md:p-7" aria-labelledby="competitors-heading">
         <div className="flex flex-wrap items-baseline justify-between gap-4">
           <div>
             <h2 id="competitors-heading" className="label">
@@ -283,9 +283,9 @@ export function FounderReportView({
         )}
       </div>
 
-      <section className="mt-20 border-t border-line pt-10 print:hidden" aria-label="Next step">
+      <section className="lit-ground mt-20 rounded-[20px] px-6 py-12 md:px-12 md:py-16 print:hidden" aria-label="Next step">
         <p className="display text-4xl md:text-5xl">Meeting investors at Slush?</p>
-        <p className="mt-3 max-w-xl text-muted">
+        <p className="mt-3 max-w-xl text-foreground/80">
           Paste the funds from your calendar and get a one-page brief on each, every sentence cited.
         </p>
         <Link href={prepPath(report.company)} className="btn-primary mt-6">
@@ -333,10 +333,10 @@ const shortConflict = (c: Conflict) =>
 function SkipRollCall({ report }: { report: FounderReport }) {
   return (
     <section
-      className="mt-16 bg-press px-6 py-10 text-background md:px-10 md:py-12"
+      className="mt-12 rounded-[20px] bg-press px-6 py-10 text-background md:px-10 md:py-12"
       aria-labelledby="skip-summary"
     >
-      <h2 id="skip-summary" className="display scroll-mt-6 text-5xl md:text-6xl">
+      <h2 id="skip-summary" className="display scroll-mt-24 text-4xl md:text-5xl">
         Don&apos;t pitch these {report.skip.length}.
       </h2>
       <p className="mt-3 max-w-2xl text-sage">
@@ -400,7 +400,7 @@ function CopySkipList({ report }: { report: FounderReport }) {
 function ListHeading({ id, title, hint }: { id: string; title: string; hint: string }) {
   return (
     <div className="max-w-2xl">
-      <h2 id={id} className="display scroll-mt-6 text-5xl md:text-6xl">
+      <h2 id={id} className="display scroll-mt-24 text-4xl md:text-5xl">
         {title}
       </h2>
       <p className="mt-4 text-muted">{hint}</p>
@@ -417,7 +417,10 @@ function CompanyHeader({ company }: { company: Company }) {
   ].filter(Boolean);
   return (
     <header>
-      <h1 className="display text-5xl break-words sm:text-6xl md:text-8xl">{displayName(company.name)}</h1>
+      <p className="inline-flex h-8 items-center rounded-full border border-line bg-white px-3 text-[13px] text-muted">
+        Founder report
+      </p>
+      <h1 className="display mt-5 text-5xl break-words sm:text-6xl md:text-7xl">{displayName(company.name)}</h1>
       {facts.length > 0 && (
         <p className="label mt-6 flex flex-wrap gap-x-4 gap-y-1 text-muted">
           {facts.map((f) => (
@@ -438,7 +441,7 @@ function CompanyHeader({ company }: { company: Company }) {
 function LoadingReport() {
   return (
     <div aria-busy="true" aria-live="polite">
-      <div className="h-20 w-2/3 max-w-xl animate-pulse bg-surface" />
+      <div className="h-20 w-2/3 max-w-xl animate-pulse rounded-[14px] bg-surface" />
       <p className="mt-8 max-w-xl text-muted">
         Finding your competitors in Cala, then the rounds they raised and the investors behind
         them.
@@ -446,7 +449,7 @@ function LoadingReport() {
       <SlowNotice />
       <div className="mt-12 flex gap-2">
         {[0, 1, 2, 3].map((i) => (
-          <div key={i} className="h-9 w-28 animate-pulse rounded-[5px] bg-surface" />
+          <div key={i} className="h-9 w-28 animate-pulse rounded-lg bg-surface" />
         ))}
       </div>
     </div>

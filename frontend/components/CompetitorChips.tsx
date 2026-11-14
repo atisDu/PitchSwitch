@@ -75,7 +75,7 @@ function Chip({
       onMouseLeave={() => setOpen(false)}
       onKeyDown={(e) => e.key === "Escape" && setOpen(false)}
     >
-      <span className="inline-flex items-center rounded-[5px] border border-foreground bg-background">
+      <span className="inline-flex items-center rounded-lg border border-foreground bg-white">
         <button
           type="button"
           aria-controls={tipId}

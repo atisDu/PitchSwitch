@@ -97,7 +97,7 @@ export function InlineContent({
             <a
               href={`#${anchor}-${node.n}`}
               title={`${src.name}${src.date ? `, ${src.date}` : ""}`}
-              className="rounded-[3px] bg-echo px-1 font-sans text-[0.7em] font-medium text-foreground no-underline hover:bg-accent"
+              className="rounded-[3px] bg-echo px-1 font-sans text-[0.7em] font-medium text-foreground no-underline hover:bg-accent hover:text-white"
             >
               {node.n}
             </a>

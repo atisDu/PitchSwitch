@@ -27,7 +27,7 @@ export function PitchCard({
   return (
     <article
       id={`pitch-${item.investor.id}`}
-      className="grid scroll-mt-6 grid-cols-[2.5rem_1fr] gap-x-4 border-t border-line py-6 md:grid-cols-[4rem_1fr_7rem]"
+      className="window mb-3 grid scroll-mt-24 grid-cols-[2.5rem_1fr] gap-x-4 p-5 transition-transform duration-200 hover:-translate-y-0.5 md:grid-cols-[4rem_1fr_7rem] md:p-7"
     >
       <p className="display text-3xl text-muted md:text-4xl" aria-label={`Rank ${rank}`}>
         {String(rank).padStart(2, "0")}
@@ -67,14 +67,14 @@ export function SkipCard({
   companyName: string;
 }) {
   return (
-    <article id={`skip-${item.investor.id}`} className="scroll-mt-6 border-t border-line py-6 target:bg-surface">
-      <div className="border-l-4 border-press pl-4 md:pl-6">
+    <article id={`skip-${item.investor.id}`} className="window mb-3 scroll-mt-24 p-5 target:outline-2 target:outline-accent md:p-7">
+      <div className="border-l-4 border-foreground pl-4 md:pl-6">
         <Name item={item} />
         <ul className="mt-3 space-y-2">
           {item.conflicts.map((c, i) => (
             <li key={`${c.competitor.id}-${c.kind}-${i}`}>
               <p className="text-lg leading-snug font-medium">
-                <span className="label mr-2 inline-block rounded-[5px] bg-press px-1.5 py-1 align-middle text-background">
+                <span className="label mr-2 inline-block rounded-md bg-foreground px-2 py-1 align-middle text-white">
                   {c.kind === "BOARD" ? "Board conflict" : "Conflict"}
                 </span>
                 {conflictText(c)}
@@ -141,10 +141,10 @@ function Score({ value }: { value: number }) {
   const v = Math.round(value);
   return (
     <div className="col-start-2 mt-4 md:col-start-auto md:mt-0 md:text-right">
-      <p className="display text-4xl text-muted md:text-5xl">{v}</p>
+      <p className="display text-4xl text-accent md:text-5xl">{v}</p>
       <p className="label mt-1 text-muted">Fit / 100</p>
-      <div className="mt-2 h-1 w-24 bg-surface md:ml-auto" aria-hidden="true">
-        <div className="h-1 bg-accent" style={{ width: `${Math.max(0, Math.min(100, v))}%` }} />
+      <div className="mt-2 h-1.5 w-24 overflow-hidden rounded-full bg-surface md:ml-auto" aria-hidden="true">
+        <div className="h-1.5 rounded-full bg-accent" style={{ width: `${Math.max(0, Math.min(100, v))}%` }} />
       </div>
     </div>
   );
@@ -189,12 +189,12 @@ function BreakdownRows({ breakdown, sources }: { breakdown: ScoreBreakdown; sour
               </th>
               <td className="w-16 py-1 pr-3 sm:w-40">
                 <div
-                  className="mt-1.5 h-1.5 bg-surface"
+                  className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-surface"
                   style={{ width: `${(p.max / widest) * 100}%` }}
                   role="img"
                   aria-label={`${fmt(p.got)} of ${fmt(p.max)} points`}
                 >
-                  <div className="h-1.5 bg-accent" style={{ width: `${p.max ? Math.min(100, (p.got / p.max) * 100) : 0}%` }} />
+                  <div className="h-1.5 rounded-full bg-accent" style={{ width: `${p.max ? Math.min(100, (p.got / p.max) * 100) : 0}%` }} />
                 </div>
               </td>
               <td className="w-14 py-1 pr-3 text-right tabular-nums">

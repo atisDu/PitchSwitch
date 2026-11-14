@@ -4,20 +4,20 @@
 import { dedupeSources, displayRank, formatSourceDate, publisher, rankLabel, safeUrl } from "@/lib/sources";
 import type { Source, SourceRank } from "@/lib/types";
 
-// DESIGN.md allows one accent, so reliability is shown by weight, not hue:
-// green tints for first-hand sources, ink outline for press, faint for the rest.
+// One accent, so reliability is shown by weight, not hue: teal tints for first-hand sources,
+// an ink outline for press, faint for the rest. The landing page's .pw__src look: mono publisher.
 const RANK_STYLE: Record<SourceRank, string> = {
   PRIMARY: "border-moss bg-echo text-foreground",
   FILING: "border-moss bg-surface text-foreground",
-  PRESS: "border-foreground/40 bg-background text-foreground",
-  AGGREGATOR: "border-line bg-background text-muted",
-  UNKNOWN: "border-dashed border-line bg-background text-muted",
+  PRESS: "border-foreground/40 bg-white text-foreground",
+  AGGREGATOR: "border-foreground/15 bg-white text-muted",
+  UNKNOWN: "border-dashed border-foreground/20 bg-white text-muted",
 };
 
 // overflow-hidden + a shrinking publisher: on a phone the name truncates, the date stays visible.
 // Taller on touch screens, so a thumb hits one source, not its neighbour.
 const BASE =
-  "inline-flex max-w-full items-center gap-1.5 overflow-hidden rounded-[5px] border px-1.5 py-0.5 text-xs leading-4 whitespace-nowrap pointer-coarse:min-h-8 pointer-coarse:px-2";
+  "inline-flex max-w-full items-center gap-1.5 overflow-hidden rounded-md border px-1.5 py-0.5 font-mono text-xs leading-4 whitespace-nowrap pointer-coarse:min-h-8 pointer-coarse:px-2";
 
 /**
  * One source. `bare` shows the rank alone (the legend on /about); `count` > 1 says that several
@@ -31,7 +31,7 @@ export function SourceBadge({ source, bare = false, count = 1 }: { source: Sourc
   const title = [rankLabel(rank), source.name, source.date, source.url].filter(Boolean).join(" · ");
   const body = (
     <>
-      <span className="label shrink-0">{rankLabel(rank)}</span>
+      <span className="shrink-0 font-sans font-medium text-foreground">{rankLabel(rank)}</span>
       {from && <span className="max-w-[13rem] min-w-0 truncate">{from}</span>}
       {date && <span className="shrink-0">{date}</span>}
       {count > 1 && (
