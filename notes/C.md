@@ -57,6 +57,9 @@ For B / A (minor, not blocking):
 
 ## For A: deployed MCP endpoint is down (14 Nov)
 
+> **Resolved:** A's `ship.sh` sends `MCP_TOKEN` (ff8819a); `/mcp` answers 401 without the token and
+> 200 with it, checked by A, B and C. `docs/mcp-demo.md` updated.
+
 `POST https://95-133-252-219.sslip.io/mcp` answers **502** (Caddy can't reach the `mcp` service).
 B's note says the MCP server refuses to start without `MCP_TOKEN` (16+ chars) in the server's
 `.env`, and `deploy/ship.sh` needs to write it. Expected after the fix: 401 without the token,

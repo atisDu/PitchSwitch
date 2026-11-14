@@ -7,8 +7,8 @@ Status, 14 Nov: PitchSwitch over stdio **works in Claude Desktop** (checked by a
 server starts, lists its tools and answers the demo question with "skip, backs Stendr". Also checked
 over stdio with the official MCP client: `check_conflict` for Rainfall Ventures × Sensofusion
 returns the PORTFOLIO conflict via Stendr in about 2 s. Left for demo day: run the question once on
-the demo laptop (it warms the cache). The deployed `/mcp`
-endpoint is **down** (502, see the last section).
+the demo laptop (it warms the cache). The deployed server's `/mcp` endpoint also works (token
+required; last section).
 
 ## 1. Before you start
 
@@ -102,23 +102,31 @@ Record the result here:
 
 ## Alternative: the deployed server (remote)
 
-The same tools are served over streamable HTTP at `https://95-133-252-219.sslip.io/mcp`
-(see `deploy/verda.md`). **On 14 Nov it answered 502**: the `mcp` container isn't running, most
-likely because the server's `.env` has no `MCP_TOKEN` (`notes/B.md`; A's fix). Until then, use the
-local stdio setup above. Over HTTP the server **needs a token** (`MCP_TOKEN` in the server's
-`.env`, 16+ characters): without it every request gets 401.
+The same tools are served over streamable HTTP at **`https://95-133-252-219.sslip.io/mcp`**, behind a
+token (`MCP_TOKEN`): 401 without it, 200 with it. Checked on 14 Nov through the live site with the
+MCP SDK client and with Claude Code (`notes/B.md`): 7 tools, the demo question answers with the
+Stendr conflict in about 10 s.
 
-Get the ready-to-paste client setup from the repo (it reads `MCP_TOKEN` from `.env`):
+**Get the token from a teammate privately**, like the other keys; it is a password. These docs
+write it as `<token>`; never paste the real one into the repo. Then print the ready-to-paste setup
+(run from `backend/` on a machine whose `.env` has `MCP_TOKEN`; it fills the token in):
 
 ```sh
-cd <repo>/backend && ../.venv/bin/python -m mcp_server.server setup https://<site>
+../.venv/bin/python -m mcp_server.server setup https://95-133-252-219.sslip.io
 ```
 
-It prints the lines for Claude (custom connector URL, Settings → Connectors → Add custom connector),
-Claude Code and Cursor. The token goes in an `Authorization: Bearer` header, or as `?key=<token>` in
-the URL for clients that only take a URL (then it can show up in server logs; share that URL only
-with the team). Checked with Claude Code over HTTP (header and URL key both connect, no token is
-refused); Claude's custom-connector screen and Cursor are not tried yet.
+Which form to use:
+
+- **Claude Code and Cursor:** the header form (`Authorization: Bearer <token>`), as `setup` prints it.
+- **Claude Desktop / claude.ai custom connector** (Settings → Connectors → Add custom connector):
+  that screen has no header field, so use the URL form
+  `https://95-133-252-219.sslip.io/mcp?key=<token>`. Not tried at the app yet.
+
+| Symptom | Meaning |
+| --- | --- |
+| Claude Code says "Dynamic Client Registration … 404" | The token is missing or wrong. After the 401 Claude Code tries OAuth by itself, which our server doesn't offer; nothing is broken on the server |
+| "Still working, call again" | A company nobody asked about before; the client retries and the work finishes (up to a minute). The three demo companies answer in about 10 s |
+| 401 "missing or wrong token" (other clients) | As it says: check the header or `?key=` |
 
 Running the HTTP server locally: `MCP_TOKEN=<token> ../.venv/bin/python -m mcp_server.server http`
 (from `backend/`) serves `http://localhost:8001/mcp`. That is the same port as the frontend mock

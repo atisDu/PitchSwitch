@@ -28,6 +28,10 @@ brief cached. Direct URLs, if typing fails:
 - Founder report: `/founder/202e9283-6455-486f-8868-03c7e0d0cf29`
 - Investor check: `/check/9b65ed62-a126-4255-8339-44c59fbf0ad8/202e9283-6455-486f-8868-03c7e0d0cf29`
 
+**On stage, say "Skyfall" and don't read out its description:** Cala's entry for it
+(`9b65ed62`) describes "a Glasgow-based hospitality and tourism company", so its brief does too.
+The conflict itself (backs Stendr, 7 sources) is right (`notes/B.md`).
+
 Rainfall Ventures and Startuplab also backed Stendr and work the same way, but Rainfall is now #8
 of 9 on Skip (below warm.py's top 6). The recorded sample data tells a different story altogether;
 don't demo from the mock unless everything else fails.
@@ -76,6 +80,8 @@ links to its source, and founders can use it at Slush tomorrow."
 - [ ] **Data still matches this script.** Run the path on the deployed API. Competitor judgements
       are stored in Atlas (B10), so they should not change; if Sensofusion's competitors or Skip list
       differ, update steps 2–6 and the lines above.
+- [ ] **After every redeploy, warm again.** Stored briefs are rewritten when B's brief code changes
+      (30–50 s each on first request), so run `warm.py` before any rehearsal.
 - [ ] **Cache warm, then cache-only.** From the last rehearsal on, results must not drift (cached
       answers refresh after 24 h and the judge can change its mind; `notes/B.md`):
       `python deploy/warm.py --check`, then `deploy/cache-only.sh 95.133.252.219 on`, then
