@@ -38,6 +38,8 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
   const [company, setCompany] = useState<EntityRef | null>(initialCompany);
   const [text, setText] = useState("");
   const [names, setNames] = useState<string[]>([]); // the names of the current job
+  // B17: also prep every Slush 2026 investor Cala's sources name (their cards arrive in the stream).
+  const [allSlush, setAllSlush] = useState(false);
   const [prep, setPrep] = useState<PrepState | null>(null);
   const [run, setRun] = useState<Run>({ status: "idle" });
   // Briefs the user recovered by hand on a "Couldn't brief" card, by pasted name.
@@ -49,7 +51,7 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
   const parsed = parseNames(text);
   const tooMany = parsed.length > MAX_NAMES;
   const busy = run.status === "starting" || run.status === "running";
-  const canStart = company !== null && parsed.length > 0 && !tooMany && !busy;
+  const canStart = company !== null && (parsed.length > 0 || allSlush) && !tooMany && !busy;
 
   // The stream replays from the start when (re)opened, so state is rebuilt from scratch.
   async function follow(jobId: string, jobNames: string[]) {
@@ -83,7 +85,11 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
     setRecovered({});
     setRun({ status: "starting" });
     try {
-      const { job_id } = await startSlushPrep({ company_id: company.id, investor_names: jobNames });
+      const { job_id } = await startSlushPrep({
+        company_id: company.id,
+        investor_names: jobNames,
+        ...(allSlush ? { all_slush_investors: true } : {}),
+      });
       await follow(job_id, jobNames);
     } catch (err) {
       setRun({
@@ -156,6 +162,22 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
               `${parsed.length} ${parsed.length === 1 ? "name" : "names"}`
             )}
           </p>
+          <label className="mt-5 flex cursor-pointer items-start gap-3">
+            <input
+              type="checkbox"
+              checked={allSlush}
+              onChange={(e) => setAllSlush(e.target.checked)}
+              disabled={busy}
+              className="mt-1 h-4 w-4 shrink-0 accent-[var(--accent)]"
+            />
+            <span>
+              <span className="font-medium">Add the Slush 2026 investors Cala knows of</span>
+              <span className="mt-0.5 block text-sm text-muted">
+                The funds Cala&apos;s sources name as attending Slush, not everyone there. Up to{" "}
+                {MAX_NAMES} briefs in all; the first run takes a few minutes.
+              </span>
+            </span>
+          </label>
         </div>
       </div>
 
@@ -163,7 +185,11 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
         <button type="button" className="btn-primary" disabled={!canStart} onClick={() => void start()}>
           {run.status === "starting"
             ? "Starting…"
-            : `Prepare ${parsed.length || ""} ${parsed.length === 1 ? "brief" : "briefs"}`.replace("  ", " ")}
+            : allSlush
+              ? parsed.length
+                ? `Prepare ${parsed.length} + Slush investors' briefs`
+                : "Prepare the Slush investors' briefs"
+              : `Prepare ${parsed.length || ""} ${parsed.length === 1 ? "brief" : "briefs"}`.replace("  ", " ")}
         </button>
         {run.status === "running" && (
           <button type="button" className="btn-ghost h-[47px]" onClick={stop}>
@@ -192,7 +218,9 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
         <section className="mt-16" aria-live="polite" aria-labelledby="prep-progress">
           <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-line pb-4">
             <h2 id="prep-progress" className="display text-4xl md:text-5xl">
-              {ready} of {prep.cards.length} ready
+              {prep.cards.length === 0 && run.status === "running"
+                ? "Finding the investors…"
+                : `${ready} of ${prep.cards.length} ready`}
             </h2>
             <p className="label text-muted">
               {run.status === "running"

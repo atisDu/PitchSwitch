@@ -138,3 +138,10 @@ test("funding fit (mock of B21): only with an amount, every card gets one, bad a
   assert.ok(check.funding_fit && check.funding_fit.text.length > 0);
   assert.equal(ok<InvestorCheck>("POST", "/api/investor/check", { ...pair }).funding_fit, null);
 });
+
+test("slush prep: all_slush_investors makes the names optional (B17)", () => {
+  const company_id = index.founder_mode[0].company_id;
+  assert.equal(status("POST", "/api/slush-prep", { company_id, investor_names: [], all_slush_investors: true }), 200);
+  assert.equal(status("POST", "/api/slush-prep", { company_id, all_slush_investors: true }), 200);
+  assert.equal(status("POST", "/api/slush-prep", { company_id }), 422);
+});

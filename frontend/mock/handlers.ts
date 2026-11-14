@@ -171,10 +171,11 @@ export class MockApi {
   }
 
   private slushPrep(body: Record<string, unknown>): MockResult {
-    const names = body.investor_names;
+    const names = body.investor_names ?? [];
+    const allSlush = body.all_slush_investors === true; // B17: names optional then
     if (!str(body.company_id)) return error(422, "company_id is required");
-    if (!Array.isArray(names) || names.length === 0) {
-      return error(422, "investor_names must be a non-empty list");
+    if (!Array.isArray(names) || (names.length === 0 && !allSlush)) {
+      return error(422, "investor_names must be a non-empty list, or all_slush_investors true");
     }
     // The recorded stream is replayed whatever names were pasted.
     const id = `mock-job-${this.nextJob++}`;
