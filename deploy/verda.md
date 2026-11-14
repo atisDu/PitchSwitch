@@ -85,41 +85,46 @@ python deploy/verda.py delete      # when the hackathon is over
 
 ## The batch job on Verda (task A16)
 
-The same backend image, started with a different command:
+**Live since 14 Nov:** a Verda serverless **batch-job deployment** named `pitchlist-batch`, on a
+`CPU Node` (size 8). Each trigger starts one container from our backend image; it crawls the
+investors around the demo companies and per Nordic and Baltic country, derives co-investor counts
+and activity stats into Atlas, answers with the counts, and exits, which ends the billing. It is
+safe to rerun: investors crawled in the last 24 hours are skipped and every Cala response is
+cached.
 
-- **Image:** the backend image, pushed to a registry Verda can pull from.
-- **Command:** `python -m batch.job_server` (port 8000, health check `GET /health`).
-- **Environment:** the same variables as `.env` (`CALA_API_KEY`, `MONGODB_URI`, `MONGODB_DB`, ...).
-- **Type:** batch job deployment, max concurrent jobs 1, deadline 4 hours.
-- **Trigger** (once a night, or by hand):
-  `curl -X POST "https://tasks.verda.com/<deployment-name>/run?per_minute=30"`
-
-Each trigger starts one container. It crawls the investors around the demo companies and per
-Nordic and Baltic country, derives co-investor counts and activity stats into Atlas, answers with
-the counts, and exits (which ends the billing). It is safe to stop and rerun: investors crawled
-in the last 24 hours are skipped and every Cala response is cached.
-
-The same job runs anywhere without Verda: `python -m batch.precompute_graph all --per-minute 30`.
-
-### What actually runs today
-
-The crawl first ran from a laptop on 14 Nov (112 investors found, 106 crawled, 229 live Cala
-calls, 45 minutes at 6 calls a minute), then derive wrote 110 investors to Atlas, 96 of them with
-co-investors. On the instance, `ship.sh` installs a **nightly cron job** (03:00 UTC) that runs the
-same job in the backend image:
+How it was set up (all through Verda's API, in `deploy/verda.py`):
 
 ```sh
-docker compose --env-file ../.env run --rm -T api python -m batch.precompute_graph all --per-minute 30
+python deploy/verda.py batch-image     # tag the image built on the instance, push it to vccr.io
+python deploy/verda.py batch-create    # 2 secrets, the registry login, the job deployment
+python deploy/verda.py batch-run       # trigger one job and follow it to its result
+python deploy/verda.py batch-logs      # the container's log
 ```
 
-Run by hand on the instance on 14 Nov (09:46 UTC): 111 investors found, 110 skipped as fresh,
-derive rewrote 110 investors (96 with co-investors), 11 seconds, no Cala calls because everything
-was cached. The cron job is installed (`crontab -l` on the instance); its log is
-`/var/log/pitchlist-batch.log`.
+- **Image:** `vccr.io/<project>/pitchlist-backend:<commit>` in Verda's Container Registry, pushed
+  from the instance (it is already built there for linux/amd64).
+- **Command:** `python -m batch.job_server` (port 8000, health check `GET /health`): serves one
+  request, runs the job, returns the result as JSON, exits 0 or 1.
+- **Keys:** `CALA_API_KEY` and `MONGODB_URI` are Verda secrets referenced by the deployment; the
+  other settings are plain environment variables.
+- **Scaling:** at most 1 replica, 4-hour deadline, queued requests dropped after an hour.
+- **Trigger:** `POST https://tasks.datacrunch.io/pitchlist-batch/run?per_minute=30` with an
+  inference API key. The call returns a job ID at once; status and result are read with the
+  `X-Inference-Id` header (`deploy/verda.py batch-run <id>` does it). Note the host: Verda's docs
+  say `tasks.verda.com`, which does not resolve; the deployment reports the `datacrunch.io` name.
+- **Schedule:** a cron job on the instance (installed by `ship.sh`) runs
+  `deploy/run-batch.sh` at 03:00 UTC, which only sends that trigger.
 
-The serverless batch-job deployment described above is ready in code (`batch/job_server.py`) but
-not created: it needs the image in a registry Verda can pull from. The cron job on the instance
-does the same work.
+First run, 14 Nov 10:04 UTC: status `Completed` in under a minute;
+`{"crawl": {"found": 111, "skipped": 110, "failed": 1}, "derive": {"investors": 110,
+"with_co_investors": 96}}`, no Cala calls because the morning's crawl was still fresh. The one
+failure is a person listed as an investor (not a company or a fund), which the crawl skips.
+
+After a code change that affects the job, run `batch-image` and `batch-create` again: the
+deployment keeps using the image tag it was created with.
+
+The same job runs anywhere without Verda: `python -m batch.precompute_graph all --per-minute 30`
+(the first full crawl ran this way from a laptop: 106 investors crawled, 229 live Cala calls).
 
 ## Demo day: warm the cache, then go cache-only (task A18)
 
@@ -153,7 +158,8 @@ Rerun `warm.py` after anything that changes the reports (new judgements, a new c
 | Service | What we use | Cost |
 | --- | --- | --- |
 | Verda CPU instance | `CPU.4V.16G.CC`, on demand, FIN-03 | EUR 0.044 an hour, about EUR 1.05 a day; EUR 0.05 spent by Saturday noon of a EUR 200 balance |
-| Verda batch (nightly crawl) | Runs on the same instance by cron | No extra cost |
+| Verda batch job (nightly crawl) | Serverless batch-job deployment on a CPU node; billed only while a job runs (under a minute when fresh, about ten for a full crawl) | Cents a night |
+| Verda Container Registry | One backend image (~130 MB compressed) | USD 0.20 per GB a month |
 | MongoDB Atlas | M0 free tier: ~800 cached Cala responses, 110 investors in the graph, judgements, briefs | Free (512 MB limit; we use a few MB) |
 | Cala | About 1,500 calls over the weekend; the full crawl was 229 live calls | Hackathon credits (they ran out once on Saturday and were topped up) |
 | Gemini | Competitor judging and briefs (B) | Hackathon key |
@@ -165,8 +171,9 @@ Cala's limit on our key is 100 calls a minute (10 until Saturday noon). One proc
 ## For the README (hand-over to C)
 
 - **How Verda is used:** one small CPU instance hosts the whole product (frontend, API, MCP
-  server) behind Caddy with automatic HTTPS; the same image runs the nightly precompute job that
-  keeps the investor graph and the cache fresh. The instance is created and deleted through
+  server) behind Caddy with automatic HTTPS; the same image, pushed to Verda's Container
+  Registry, runs as a serverless batch job every night to keep the investor graph and the cache
+  fresh. The instance is created and deleted through
   Verda's Cloud API (`deploy/verda.py`); a deploy is one command (`deploy/ship.sh <ip>`).
 - **Why not GPUs or Verda Inference:** the workload is I/O, not compute, and Verda's Inference
   API has no embeddings endpoint.
@@ -176,6 +183,8 @@ Cala's limit on our key is 100 calls a minute (10 until Saturday noon). One proc
 
 ## Still open
 
-- Create the serverless batch-job deployment (push the image to a registry first).
-- `VERDA_API_KEY` in `.env` is rejected by Verda's Inference API; it is not used anywhere.
+- `VERDA_API_KEY` in `.env` is rejected by Verda and is not used anywhere; the working keys are
+  `VERDA_CLIENT_ID`/`VERDA_CLIENT_SECRET`, `VERDA_REGISTRY_USER`/`VERDA_REGISTRY_SECRET` and
+  `VERDA_INFERENCE_KEY`.
 - Vector search (A13) is not built; competitor candidates come from Cala queries.
+- After the hackathon: `python deploy/verda.py batch-delete` and `delete`, and rotate the keys.
