@@ -8,7 +8,7 @@ export default function Home() {
         Who&apos;s a fit, and who has a <em>conflict</em>.
       </h1>
       <p className="mt-8 max-w-xl text-lg leading-snug text-muted">
-        Pitchlist walks Cala&apos;s graph from a company to its competitors, their rounds and the
+        PitchSwitch walks Cala&apos;s graph from a company to its competitors, their rounds and the
         investors behind them, and shows a source for every claim.
       </p>
       <HomeForm />

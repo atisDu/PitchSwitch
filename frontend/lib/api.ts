@@ -45,7 +45,7 @@ async function request(path: string, init: RequestInit = {}): Promise<Response> 
       cache: "no-store",
     });
   } catch {
-    throw new ApiError("Can't reach the Pitchlist server.", 0);
+    throw new ApiError("Can't reach the PitchSwitch server.", 0);
   }
   if (!res.ok) {
     let message = `Request failed (${res.status}).`;

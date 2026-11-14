@@ -101,7 +101,7 @@ export function BriefView({
 
   return (
     <article className="max-w-3xl">
-      <title>{`${title} · Brief · Pitchlist`}</title>
+      <title>{`${title} · Brief · PitchSwitch`}</title>
       <ChatPanel
         companyId={companyId}
         investorId={investorId}

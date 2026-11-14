@@ -1,4 +1,4 @@
-# Pitchlist frontend
+# PitchSwitch frontend
 
 Next.js (App Router) + TypeScript + Tailwind. Owner: Agent C.
 

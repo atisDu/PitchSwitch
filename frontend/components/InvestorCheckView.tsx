@@ -97,7 +97,7 @@ export function InvestorCheckView({ investorId, companyId }: { investorId: strin
 
   return (
     <div>
-      <title>{`${company.name} × ${investor.name} · Investor check · Pitchlist`}</title>
+      <title>{`${company.name} × ${investor.name} · Investor check · PitchSwitch`}</title>
       <ChatPanel
         companyId={company.id}
         investorId={investor.id}

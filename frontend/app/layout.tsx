@@ -14,7 +14,7 @@ const display = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Pitchlist",
+  title: "PitchSwitch",
   description: "Who's a fit, and who has a conflict, from either side of the table. Built on Cala.",
 };
 
@@ -25,7 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <header className="border-b border-line print:hidden">
           <div className="mx-auto flex h-16 w-full max-w-[1400px] items-center justify-between px-5 md:px-10">
             <Link href="/" className="text-lg font-semibold tracking-tight">
-              <span className="border-b-2 border-accent">Pitch</span>list
+              Pitch<span className="border-b-2 border-accent">Switch</span>
             </Link>
             <nav className="flex items-center gap-6">
               <Link href="/prep" className="label hover:underline hover:underline-offset-4">
@@ -40,7 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <footer className="bg-press text-background print:hidden">
           <div className="mx-auto flex w-full max-w-[1400px] flex-wrap items-center justify-between gap-4 px-5 py-8 md:px-10">
-            <span className="label">Pitchlist</span>
+            <span className="label">PitchSwitch</span>
             <span className="label text-sage">Data: Cala · Junction 2026</span>
           </div>
           <div className="h-3 bg-accent" />

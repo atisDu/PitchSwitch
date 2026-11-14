@@ -91,7 +91,7 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
 
   return (
     <div>
-      <title>Slush prep · Pitchlist</title>
+      <title>Slush prep · PitchSwitch</title>
       <p className="label text-muted">Slush prep</p>
       <h1 className="display mt-4 max-w-4xl text-5xl sm:text-6xl md:text-7xl">
         One sourced brief for every investor you&apos;re meeting.

@@ -93,5 +93,5 @@ createServer((req, res) => {
     else res.end();
   });
 }).listen(PORT, () => {
-  console.log(`Pitchlist mock API on http://localhost:${PORT} (fixtures: ${FIXTURES})`);
+  console.log(`PitchSwitch mock API on http://localhost:${PORT} (fixtures: ${FIXTURES})`);
 });

@@ -100,7 +100,7 @@ export function FounderReportView({ companyId }: { companyId: string }) {
 
   return (
     <div>
-      <title>{`${report.company.name} · Founder report · Pitchlist`}</title>
+      <title>{`${report.company.name} · Founder report · PitchSwitch`}</title>
       <ChatPanel
         companyId={report.company.id}
         scope={report.company.name}
