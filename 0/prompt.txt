@@ -1,0 +1,12 @@
+I dont think it worked, it just searched
+
+---
+
+yes it responded: 
+
+<pasted_content id="837c">
+I’d skip Rainfall Ventures. Rainfall backs Stendr, which competes directly with Sensofusion.
+
+The conflict: Stendr is a defence startup founded in 2026 in Oslo. It builds AI-driven multi-sensor hardware and software, and its first product area is drone defence. That puts it head-to-head with Sensofusion’s counter-drone business. Rainfall, ACME, and Skyfall led the $5.4M pre-seed round in April 2026. Pitchlist puts Rainfall’s share at about $5M, and Crunchbase and PitchBook also link Rainfall to the round. The FinSMEs article only says “Rainfall”, not “Rainfall Ventures”, but the other sources fill that gap. 
+www.finsmes.com
+</pasted_content id="837c">
