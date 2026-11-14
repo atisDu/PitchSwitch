@@ -7,10 +7,10 @@
 #   1. installs Docker on the instance if it is missing;
 #   2. copies the code of the current git commit (git archive: no .git, no local files);
 #   3. writes the server's .env from the local one: only the keys the server needs
-#      (Cala, Gemini, MongoDB), plus USE_FAKE_STORE=false, CALA_REQUIRE_CACHE=true (never call
+#      (Cala, Gemini, MongoDB, and the key that triggers the batch job), plus USE_FAKE_STORE=false, CALA_REQUIRE_CACHE=true (never call
 #      Cala when Atlas is unreachable) and SITE_ADDRESS for HTTPS;
 #   4. builds and starts everything with Docker Compose;
-#   5. installs a nightly cron job that reruns the investor crawl on the instance.
+#   5. installs a nightly cron job that triggers the Verda batch job (the investor crawl).
 # Rerun it after new commits to update the deployment.
 set -eu
 
@@ -31,14 +31,15 @@ run "rm -rf $REMOTE/src && mkdir -p $REMOTE/src"
 git -C "$ROOT" archive --format=tar HEAD | run "tar -x -C $REMOTE/src"
 
 echo "3/4 server .env"
-grep -E '^(CALA_|GEMINI_|MONGODB_|CACHE_ONLY=)' "$ROOT/.env" | run "umask 077; cat > $REMOTE/src/.env"
+grep -E '^(CALA_|GEMINI_|MONGODB_|CACHE_ONLY=|VERDA_INFERENCE_KEY=)' "$ROOT/.env" | run "umask 077; cat > $REMOTE/src/.env"
 run "printf 'USE_FAKE_STORE=false\nCALA_REQUIRE_CACHE=true\nSITE_ADDRESS=%s\n' '$SITE' >> $REMOTE/src/.env"
 
 echo "4/4 build and start"
 run "cd $REMOTE/src/deploy && docker compose --env-file ../.env up -d --build 2>&1 | tail -8"
 
-# Nightly at 03:00 UTC: refresh the investor graph and the cache on this machine (task A16).
-CRON="0 3 * * * cd $REMOTE/src/deploy && docker compose --env-file ../.env run --rm -T api python -m batch.precompute_graph all --per-minute 30 >> /var/log/pitchlist-batch.log 2>&1"
-run "(crontab -l 2>/dev/null | grep -v precompute_graph; echo '$CRON') | crontab -"
+# Nightly at 03:00 UTC: trigger the Verda batch job that refreshes the investor graph and the
+# cache (task A16; the deployment itself is created by `python deploy/verda.py batch-create`).
+CRON="0 3 * * * $REMOTE/src/deploy/run-batch.sh >> /var/log/pitchlist-batch.log 2>&1"
+printf '%s\n' "$CRON" | run "cat > /tmp/pitchlist.cron && (crontab -l 2>/dev/null | grep -v -e precompute_graph -e run-batch; cat /tmp/pitchlist.cron) | crontab - && rm /tmp/pitchlist.cron"
 
 echo "deployed: https://$SITE"
