@@ -1,0 +1,5 @@
+next steps for B?
+
+---
+
+yes it should need auth and easy setup as mcp
