@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The landing page's static kit (taste skill), plain browser scripts outside the app.
+    "public/**",
   ]),
 ]);
 
