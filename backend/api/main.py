@@ -1,4 +1,4 @@
-"""Pitchlist REST API (contracts/api.md).
+"""PitchSwitch REST API (contracts/api.md).
 
 resolve, founder/analyze, investor/check and brief run on core/; slush-prep and chat run the
 Gemini agent (agent/gemini_agent.py).
@@ -39,7 +39,7 @@ from data import NotFound, Upstream, get_store
 log = logging.getLogger("api")
 MAX_SLUSH_INVESTORS = 25  # one Gemini loop and one brief each
 
-app = FastAPI(title="Pitchlist API", version=CONTRACT_VERSION)
+app = FastAPI(title="PitchSwitch API", version=CONTRACT_VERSION)
 # ponytail: any origin, no credentials; pin to the deployed frontend URL if that ever matters.
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 

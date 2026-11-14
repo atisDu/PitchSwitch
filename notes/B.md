@@ -7,9 +7,9 @@ Requests for other areas and "not yet checked against live <service>" lines go h
 - **The company's name is PitchSwitch.** "Pitchlist" in the code, the docs, `CLAUDE.md`,
   `OVERVIEW.md` and the notes below is the earlier working name for the same thing, not a second
   product.
-- Nothing is renamed yet. In B's area the old name is in the API title, the MCP server's name
-  (`pitchlist`, which is also the key in the Claude Desktop config and in `docs/mcp-demo.md`),
-  its instructions, and `MONGODB_DB=pitchlist`.
+- Renamed in B's area (14 Nov): the API title, the MCP server's title and instructions, the chat
+  prompt. **Not renamed:** the MCP server's name `pitchlist` (it is the key in every client config
+  and in `docs/mcp-demo.md`) and `MONGODB_DB=pitchlist` (A's; the shared cache lives there).
 - **For C:** README, `docs/` (demo script, MCP demo, pitch notes) and the UI say "Pitchlist".
 - **For the humans:** `CLAUDE.md` and `OVERVIEW.md` say "Pitchlist"; say if the code-level names
   (MCP server name, API title) should change too. Renaming the MCP server means updating every
@@ -231,3 +231,15 @@ Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
   co-lead our data does not have) and read the round's "~$5M" as Rainfall's share. The server
   instructions now say amounts are round sizes and outside facts must be labelled; for the demo,
   also turn web search off in the chat or start the question with "Using only Pitchlist".
+
+## MCP: slow calls no longer time out in the client (14 Nov)
+
+- Seen in Claude Desktop: "should ICEYE pitch Y Combinator?" -> `investor_brief` on a company
+  nobody had asked about took over 80 s, the app gave up ("Device did not respond within 80s"),
+  and only a retry worked.
+- Now every MCP tool answers within 50 s. If the work is not done it replies "Still working ...
+  call again with the same arguments" while the work goes on; the next identical call joins that
+  same work (it never starts twice) or finds it finished. Live: an 80 s cold brief ran once and
+  then came back in 0.2 s.
+- **For C (C13, `docs/mcp-demo.md`):** a first question about a new company can still take a
+  minute or two in total; for the demo, ask each demo question once beforehand so it is cached.

@@ -221,7 +221,7 @@ def slush_prep(company: Company, names: list[str], *, client=None) -> AsyncItera
 # --- chat ---------------------------------------------------------------------------------------
 
 CHAT_SYSTEM = """You answer questions from a startup founder or an investor about investors, \
-competitors and funding rounds, using Pitchlist's tools over Cala's data.
+competitors and funding rounds, using PitchSwitch's tools over Cala's data.
 Tools return numbered facts and the ids of the entities in them. Use ids only as tool arguments; \
 never show an id. A conflict means an investor backs a direct competitor; rank_investors gives \
 who to pitch and who to skip; check_conflict answers "should I pitch this investor?".

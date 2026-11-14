@@ -1,4 +1,4 @@
-"""Pitchlist MCP server (B15): the §5.4 tools for any MCP client (Claude Desktop, Cursor).
+"""PitchSwitch MCP server (B15): the §5.4 tools for any MCP client (Claude Desktop, Cursor).
 
 Thin by design: the tools are the functions in agent/tools.py, the same ones the Gemini agent
 calls. Each takes entity IDs and returns contract models as JSON, sources attached.
@@ -16,6 +16,7 @@ is public for longer than a demo.
 
 from __future__ import annotations
 
+import asyncio
 import functools
 import os
 import sys
@@ -29,7 +30,7 @@ from agent.llm import LLMError
 from data import DataError
 from data.config import load_env
 
-INSTRUCTIONS = """Pitchlist tells a startup founder which investors to pitch and which to skip, \
+INSTRUCTIONS = """PitchSwitch tells a startup founder which investors to pitch and which to skip, \
 from Cala's sourced data. An investor has a conflict when it backs a direct competitor of the \
 company (or one of its people sits on that competitor's board).
 Start with resolve_company (kind "company" or "investor") to turn names into IDs; every other \
@@ -41,25 +42,51 @@ funding, investors or dates that the tools did not return.
 the investor did not lead. investor_brief also draws on Cala's knowledge search, so it can name \
 a lead or an amount that the round data lacks; that is more detail, not a contradiction.
 Amounts are always the size of the whole round, never one investor's share. If you add anything \
-from outside these tools (a web search, your own knowledge), say that it is not from Pitchlist."""
+from outside these tools (a web search, your own knowledge), say that it is not from PitchSwitch.
+A tool that answers "still working" has not failed: call it again with the same arguments."""
 
+
+
+# Clients give a tool call about a minute (Claude Desktop: 80 s), and the first question about a
+# company nobody asked about before can take longer (Cala lookups, the judge, the brief). So a
+# call that is not done in time says "call again", while its work goes on; the next identical
+# call waits for that same work, or finds it finished and cached.
+REPLY_WITHIN = 50.0  # seconds
+_running: dict[str, asyncio.Task] = {}  # call -> its work, until the work ends
 
 
 def _told(fn: Callable) -> Callable:
-    """The tool, with the failures we expect (unknown ID, Cala or Gemini unavailable) told to the
-    client in words. Without this the SDK treats them as crashes and withholds the reason."""
+    """The tool, answering within REPLY_WITHIN, with the failures we expect (unknown ID, Cala or
+    Gemini unavailable) told to the client in words. Without that the SDK treats them as crashes
+    and withholds the reason."""
 
     @functools.wraps(fn)
     async def tool(*args, **kwargs):
+        key = repr((fn.__name__, args, sorted(kwargs.items())))
+        work = _running.get(key)
+        if work is None:
+            work = _running[key] = asyncio.ensure_future(fn(*args, **kwargs))
+            # Forget it once done; reading the exception keeps an unclaimed failure quiet.
+            work.add_done_callback(
+                lambda t: (_running.pop(key, None), t.cancelled() or t.exception())
+            )
         try:
-            return await fn(*args, **kwargs)
+            return await asyncio.wait_for(asyncio.shield(work), REPLY_WITHIN)
+        except TimeoutError:
+            raise ToolError(
+                f"Still working: this is the first question about this company or investor, so "
+                f"the data is being fetched and judged. Nothing failed. Call {fn.__name__} again "
+                f"with the same arguments in about 30 seconds; calling again is safe and picks "
+                f"up the same work."
+            ) from None
         except (DataError, LLMError) as exc:
             raise ToolError(str(exc) or type(exc).__name__) from exc
 
     return tool
 
 
-server = MCPServer("pitchlist", instructions=INSTRUCTIONS)
+# The name stays "pitchlist": it is the key in every client config (docs/mcp-demo.md).
+server = MCPServer("pitchlist", title="PitchSwitch", instructions=INSTRUCTIONS)
 for _tool in tools.MCP_TOOLS:
     server.add_tool(_told(_tool))  # name, description and schema come from the function itself
 
