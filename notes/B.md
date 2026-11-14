@@ -456,3 +456,27 @@ investors in rounds too, so the fake store has the same gap.
 - **For A (one command, one red test until then):** the sample fixtures now dump
   `"funding_fit": null`, so `test_fixtures_are_rebuilt_from_raw_without_changes` fails until you
   run `cd backend && python -m data.build_fixtures` and commit `contracts/fixtures/models/`.
+
+## Scoring v2 (B18, 14 Nov): what changed, and for C
+
+- **Signals now** (weights 30/20/15/15/20): leads (a round where Cala names no lead gives each
+  of its n investors 1/n of a lead), companies in the space (not rounds; a company known only
+  from an undated "backers" entry counts half), recency (only rounds in the space), activity
+  (`deals_last_12m`, only for investors with a company in the space), warm paths. Ties: more
+  active first, then wider in the space, then name. Eval set 6/6 on the real store.
+- **Breakdown line** now has 5 parts, same format ("Score X/100 = ... + ... "; parts split by
+  " + ", never inside a part), e.g. Maki.vc on Sensofusion: "Score 70.8/100 = leads 30/30
+  (2 led) + companies here 13.3/20 (2) + recency 15/15 (last lead here 2026-06-09) + activity
+  12.5/15 (5 in 12 mo) + warm paths 0/20 (0)".
+- **For C, demo script (Sensofusion, live):** Pitch top 3 is Maki.vc 70.8, NATO Innovation
+  Fund 39.2, Lifeline Ventures 34.2 (ScaleWolf and BSV dropped: their points were leads outside
+  the space). **Skip order changed:** Skyfall Ventures is now #9 (was #3), Rainfall #6 (was #8);
+  Skip scores are all 3.3-5.8 now. Point at Skyfall by name, not by position.
+- **For C (C17, item f of the review):** the contract keeps Skip sorted by score, so label the
+  Skip card's score "fit despite the conflict" (or hide it there). Sorting Skip by conflict
+  strength would need a contract change.
+- **Open for B (not B18):** Kelluu's Skip flipped once between two identical runs (Change Ventures
+  and Silicon Roundabout gained a conflict, then lost it again): the conflict check isn't stable
+  on live data; looking into it. Kelluu also lists two "Maki.vc" (two Cala entities, same name;
+  that was so before B18).
+- On the server after A's next redeploy; re-run `warm.py` after it.
