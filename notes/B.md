@@ -527,3 +527,10 @@ investors in rounds too, so the fake store has the same gap.
 - Live: Sensofusion Maki 69.6, Lifeline 36.3, NIF 35.5, Tesi 35.4; Skip now starts with Skyfall.
   Stendr Maki 73.1; Kelluu Maki 57.3. Eval 6/6 live. Needs A's redeploy + warm.
 
+## REQUEST for A (2026-11-14 17:00): redeploy + warm
+
+Please redeploy the backend from current `main` and run `python deploy/warm.py` (then `--check`).
+It brings B16 (stable competitors), B17, B18-B21 (scoring v2, new signals, funding fit, sourced warm
+paths), the 404 for bad IDs, chat speed and the brief fix to the server. Competitor verdicts and
+briefs are in Atlas already, so the demo reports stay at 2-4 s. B checks the site right after.
+
