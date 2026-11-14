@@ -39,6 +39,28 @@ body {
   font-family: var(--font-inter), system-ui, sans-serif;
 }
 
+/* Headlines break evenly; paragraphs avoid a lone last word. */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
+/* Browser surfaces in the palette: selection in Echo Green, the caret in ink. */
+::selection {
+  background: var(--echo);
+  color: var(--foreground);
+}
+input,
+textarea {
+  caret-color: var(--foreground);
+}
+
 /* Small-caps micro-label: nav, buttons, section labels. */
 @utility label {
   font-size: 11px;

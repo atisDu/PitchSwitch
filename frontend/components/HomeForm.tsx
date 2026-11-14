@@ -34,6 +34,20 @@ export function HomeForm() {
   const amountInvalid = text.trim() !== "" && amount === null;
 
   const ready = (mode === "founder" ? company !== null : fund !== null && startup !== null) && !amountInvalid;
+  // Why the main button is still disabled, said under it.
+  const missing =
+    mode === "founder"
+      ? company === null
+        ? "Find your company and pick the right match first."
+        : null
+      : fund === null && startup === null
+        ? "Find your fund and the startup first."
+        : fund === null
+          ? "Find your fund first."
+          : startup === null
+            ? "Find the startup first."
+            : null;
+  const blocker = missing ?? (amountInvalid ? "Fix the amount, or leave it empty." : null);
 
   function go() {
     if (mode === "founder" && company) router.push(founderPath(company.id, amount));
@@ -41,7 +55,7 @@ export function HomeForm() {
   }
 
   return (
-    <div className="mt-14 max-w-xl">
+    <div className="max-w-xl lg:pt-3">
       <div role="radiogroup" aria-label="Mode" className="flex gap-8 border-b border-line">
         {MODES.map((m) => (
           <button
@@ -127,10 +141,14 @@ export function HomeForm() {
         type="button"
         onClick={go}
         disabled={!ready}
+        aria-describedby="home-go-hint"
         className="btn-primary mt-10"
       >
         {mode === "founder" ? "Find who to pitch" : "Check this startup"}
       </button>
+      <p id="home-go-hint" className="mt-3 min-h-5 text-sm text-muted" aria-live="polite">
+        {blocker}
+      </p>
     </div>
   );
 }

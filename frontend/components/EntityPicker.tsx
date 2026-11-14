@@ -8,7 +8,8 @@ import { useEffect, useId, useRef, useState } from "react";
 import { SlowNotice } from "@/components/SlowNotice";
 import { describeError } from "@/lib/errors";
 import { resolve } from "@/lib/api";
-import { splitMatches } from "@/lib/match";
+import { displayName, investorKind } from "@/lib/format";
+import { looksLikeInvestor, splitMatches } from "@/lib/match";
 import type { EntityKind, EntityRef } from "@/lib/types";
 
 type State =
@@ -65,7 +66,7 @@ export function EntityPicker({ kind, label, placeholder, value, onChange, exampl
       <div>
         <p className="label">{label}</p>
         <div className="mt-3 flex items-start justify-between gap-3 border-l-2 border-accent bg-surface py-3 pr-3 pl-4">
-          <EntityLine entity={value} />
+          <EntityLine entity={value} investor={kind === "investor"} />
           <button
             type="button"
             onClick={() => onChange(null)}
@@ -199,7 +200,7 @@ function Results({
                 onClick={() => onPick(e)}
                 className="w-full px-1 py-3 text-left hover:bg-surface focus-visible:bg-surface"
               >
-                <EntityLine entity={e} />
+                <EntityLine entity={e} investor={kind === "investor" && looksLikeInvestor(e)} />
               </button>
             </li>
           ))}
@@ -215,12 +216,14 @@ function Results({
   );
 }
 
-function EntityLine({ entity }: { entity: EntityRef }) {
+function EntityLine({ entity, investor = false }: { entity: EntityRef; investor?: boolean }) {
+  // Cala types funds as Company or Organization; as an investor they read "Fund" (or "Angel").
+  const kind = investor ? investorKind(entity.type) : entity.type === "Organization" ? "Organisation" : entity.type;
   return (
     <div className="min-w-0">
       <p className="flex flex-wrap items-center gap-2">
-        <span className="font-medium">{entity.name}</span>
-        <span className="label text-muted">{entity.type}</span>
+        <span className="font-medium">{displayName(entity.name)}</span>
+        <span className="label text-muted">{kind}</span>
       </p>
       <p className="mt-0.5 line-clamp-2 text-sm text-muted">
         {/* "" = description not passed along (e.g. preselected from a link), so say nothing. */}

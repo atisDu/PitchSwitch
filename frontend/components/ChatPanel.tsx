@@ -40,6 +40,9 @@ export function ChatPanel({
   const nextId = useRef(1);
   const endRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
+  const panelRef = useRef<HTMLElement | null>(null);
+  const openerRef = useRef<HTMLButtonElement | null>(null);
+  const wasOpen = useRef(false);
 
   useEffect(() => () => abort.current?.abort(), []);
   // Block body on purpose: newer Chrome's scrollIntoView returns a value, and an expression body
@@ -48,9 +51,31 @@ export function ChatPanel({
     endRef.current?.scrollIntoView({ block: "end" });
   }, [turns]);
   useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      // Back to the button that opened the panel, so keyboard users don't land at the top.
+      if (wasOpen.current) openerRef.current?.focus();
+      return;
+    }
+    wasOpen.current = true;
     inputRef.current?.focus();
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+      if (e.key !== "Tab" || !panelRef.current) return;
+      // A modal panel keeps Tab inside it.
+      const items = panelRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), summary',
+      );
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
@@ -89,6 +114,7 @@ export function ChatPanel({
     <>
       {!open && (
         <button
+          ref={openerRef}
           type="button"
           onClick={() => setOpen(true)}
           className="btn-primary fixed right-5 bottom-5 z-30 print:hidden"
@@ -99,7 +125,9 @@ export function ChatPanel({
       )}
       {open && (
         <aside
+          ref={panelRef}
           role="dialog"
+          aria-modal="true"
           aria-label={`Ask about ${scope}`}
           className="fixed inset-0 z-40 flex flex-col border-line bg-background sm:inset-y-0 sm:right-0 sm:left-auto sm:w-[28rem] sm:border-l print:hidden"
         >
@@ -118,14 +146,18 @@ export function ChatPanel({
               <div>
                 <p className="text-muted">
                   Ask anything about {scope}. Each question is answered on its own, from Cala facts
-                  only; every sentence links to its source.
+                  only; every sentence links to its source. Pick a question to edit it before you
+                  ask.
                 </p>
                 <ul className="mt-5 space-y-2">
                   {suggestions.map((s) => (
                     <li key={s}>
                       <button
                         type="button"
-                        onClick={() => void ask(s)}
+                        onClick={() => {
+                          setInput(s);
+                          inputRef.current?.focus();
+                        }}
                         className="w-full rounded-[5px] border border-line px-3 py-2 text-left text-sm hover:border-foreground"
                       >
                         {s}

@@ -10,10 +10,12 @@ import { ChatPanel } from "@/components/ChatPanel";
 import { BriefBody, InlineContent } from "@/components/CitedText";
 import { SlowNotice } from "@/components/SlowNotice";
 import { describeError } from "@/lib/errors";
-import { getBrief } from "@/lib/api";
+import { getBrief, resolve } from "@/lib/api";
+import { displayName, investorKind } from "@/lib/format";
+import { INVESTOR_WORDS } from "@/lib/match";
 import { parseMarkdown, type Inline } from "@/lib/markdown";
 import { checkPath, founderPath } from "@/lib/routes";
-import type { Brief } from "@/lib/types";
+import type { Brief, EntityRef } from "@/lib/types";
 
 type Load =
   | { status: "loading" }
@@ -31,6 +33,21 @@ export function BriefView({
 }) {
   const [load, setLoad] = useState<Load>({ status: "loading" });
   const [attempt, setAttempt] = useState(0);
+  // Which Cala entity the brief is about (looked up by the name from the link). Several firms
+  // share names, and a brief about the wrong one reads as fact, so it's shown at the top.
+  const [entity, setEntity] = useState<EntityRef | null>(null);
+
+  useEffect(() => {
+    if (!names.investor) return;
+    const ctrl = new AbortController();
+    resolve(names.investor, "investor", ctrl.signal).then(
+      (items) => {
+        if (!ctrl.signal.aborted) setEntity(items.find((e) => e.id === investorId) ?? null);
+      },
+      () => {}, // the brief still stands on its own; the entity line is extra
+    );
+    return () => ctrl.abort();
+  }, [names.investor, investorId]);
 
   useEffect(() => {
     const ctrl = new AbortController();
@@ -50,8 +67,7 @@ export function BriefView({
   if (load.status === "loading") {
     return (
       <div aria-busy="true" aria-live="polite">
-        <p className="label text-muted">Investor brief</p>
-        <div className="mt-4 h-16 w-2/3 max-w-xl animate-pulse bg-surface" />
+        <div className="h-16 w-2/3 max-w-xl animate-pulse bg-surface" />
         <p className="mt-8 max-w-xl text-muted">
           Gathering this investor&apos;s rounds, portfolio and sourced answers from Cala, then
           writing one page where every sentence cites its source.
@@ -63,8 +79,7 @@ export function BriefView({
   if (load.status === "error") {
     return (
       <div className="max-w-xl">
-        <p className="label text-muted">Investor brief</p>
-        <h1 className="display mt-4 text-5xl">
+        <h1 className="display text-5xl">
           {load.notFound ? "We couldn't brief that pair." : "The brief didn't load."}
         </h1>
         <p className="mt-6 border-l-2 border-foreground pl-3">{load.message}</p>
@@ -116,7 +131,7 @@ export function BriefView({
         ]}
       />
       <div className="flex flex-wrap items-center justify-between gap-4 print:hidden">
-        <p className="label text-muted">Investor brief · every sentence cites its source</p>
+        <p className="text-sm text-muted">Investor brief: every sentence cites its source</p>
         <div className="flex flex-wrap items-center gap-4 text-sm">
           <Link href={founderPath(companyId)} className="underline underline-offset-4">
             Founder report
@@ -132,6 +147,7 @@ export function BriefView({
       <h1 className="display mt-4 text-5xl break-words sm:text-6xl md:text-7xl">
         {titleBlock ? <InlineContent nodes={titleBlock.content} citations={brief.citations} /> : title}
       </h1>
+      {entity && <AboutEntity entity={entity} />}
 
       <BriefBody blocks={body} citations={brief.citations} anchor="cite" />
     </article>
@@ -143,4 +159,32 @@ function plainText(nodes: Inline[]): string {
     .map((n) => (n.kind === "text" ? n.text : n.kind === "cite" ? "" : plainText(n.children)))
     .join("")
     .trim();
+}
+
+/** The investor as Cala knows it, and a warning when that doesn't look like an investor at all. */
+function AboutEntity({ entity }: { entity: EntityRef }) {
+  const name = displayName(entity.name);
+  const desc = entity.description?.trim() || null;
+  const doubtful = entity.type !== "Person" && (!desc || !INVESTOR_WORDS.test(desc));
+  return (
+    <div className="mt-8 border-y border-line py-4 text-sm">
+      <p className="flex flex-wrap items-baseline gap-x-2">
+        <span className="font-medium">{name}</span>
+        <span className="label text-muted">{investorKind(entity.type)} in Cala</span>
+        <span className="text-muted">{desc ?? "No description in Cala."}</span>
+      </p>
+      {doubtful && (
+        <p className="mt-3 border-l-2 border-foreground pl-3">
+          {desc
+            ? "Cala's description of this entity doesn't read like an investor's"
+            : "Cala has no description of this entity"}
+          , and several firms can share a name. If the brief below describes a different business, it
+          is about another {name}.{" "}
+          <Link href="/" className="underline underline-offset-4 print:hidden">
+            Not this {name}? Search again
+          </Link>
+        </p>
+      )}
+    </div>
+  );
 }

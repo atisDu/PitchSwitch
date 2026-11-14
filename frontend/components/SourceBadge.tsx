@@ -1,7 +1,7 @@
-// Source badge: rank + date + link, shown next to every claim (CLAUDE.md §6, C4).
+// Source badge: rank, publisher and date, linked, next to every claim (CLAUDE.md §6, C4).
 // No client JS: <details> handles "+N more", so it works in server components too.
 
-import { formatSourceDate, rankLabel, safeUrl, sortSources } from "@/lib/sources";
+import { dedupeSources, displayRank, formatSourceDate, publisher, rankLabel, safeUrl } from "@/lib/sources";
 import type { Source, SourceRank } from "@/lib/types";
 
 // DESIGN.md allows one accent, so reliability is shown by weight, not hue:
@@ -17,21 +17,32 @@ const RANK_STYLE: Record<SourceRank, string> = {
 const BASE =
   "inline-flex max-w-full items-center gap-1.5 rounded-[5px] border px-1.5 py-0.5 text-xs leading-4 whitespace-nowrap";
 
-export function SourceBadge({ source }: { source: Source }) {
-  const date = formatSourceDate(source.date);
-  const href = safeUrl(source.url);
-  const title = [source.name, source.date, source.url].filter(Boolean).join(" · ");
+/**
+ * One source. `bare` shows the rank alone (the legend on /about); `count` > 1 says that several
+ * sources from the same publisher and date were folded into this one.
+ */
+export function SourceBadge({ source, bare = false, count = 1 }: { source: Source; bare?: boolean; count?: number }) {
+  const rank = displayRank(source);
+  const date = bare ? null : formatSourceDate(source.date);
+  const href = bare ? null : safeUrl(source.url);
+  const from = bare ? null : publisher(source);
+  const title = [rankLabel(rank), source.name, source.date, source.url].filter(Boolean).join(" · ");
   const body = (
     <>
-      <span className="label">{rankLabel(source.rank)}</span>
-      {date && <span className="opacity-75">{date}</span>}
+      <span className="label">{rankLabel(rank)}</span>
+      {from && <span className="max-w-[13rem] truncate">{from}</span>}
+      {date && <span>{date}</span>}
+      {count > 1 && <span aria-hidden="true">×{count}</span>}
       {href && <span aria-hidden="true">↗</span>}
     </>
   );
+  const spoken = `${rankLabel(rank)} source${from ? `: ${from}` : ""}${date ? `, ${date}` : ""}${
+    count > 1 ? `, ${count} pages` : ""
+  }`;
 
   if (!href) {
     return (
-      <span className={`${BASE} ${RANK_STYLE[source.rank]}`} title={title}>
+      <span className={`${BASE} ${RANK_STYLE[rank]}`} title={title} aria-label={bare ? undefined : spoken}>
         {body}
       </span>
     );
@@ -42,8 +53,8 @@ export function SourceBadge({ source }: { source: Source }) {
       target="_blank"
       rel="noopener noreferrer"
       title={title}
-      aria-label={`${rankLabel(source.rank)} source: ${source.name}${date ? `, ${date}` : ""} (opens in a new tab)`}
-      className={`${BASE} ${RANK_STYLE[source.rank]} hover:border-foreground`}
+      aria-label={`${spoken} (opens in a new tab)`}
+      className={`${BASE} ${RANK_STYLE[rank]} hover:border-foreground`}
     >
       {body}
     </a>
@@ -51,32 +62,33 @@ export function SourceBadge({ source }: { source: Source }) {
 }
 
 /**
- * All sources of one claim: the most reliable first, the rest behind "+N".
+ * All sources of one claim: the most reliable first, repeats folded, the rest behind "+N".
  * Renders "No source" when the list is empty, so a missing source is visible.
  */
 export function SourceBadges({ sources, max = 1 }: { sources: Source[]; max?: number }) {
   if (sources.length === 0) {
     return <span className={`${BASE} ${RANK_STYLE.UNKNOWN} italic`}>No source</span>;
   }
-  const sorted = sortSources(sources);
-  const shown = sorted.slice(0, max);
-  const rest = sorted.slice(max);
+  const entries = dedupeSources(sources);
+  const shown = entries.slice(0, max);
+  const rest = entries.slice(max);
   return (
-    <span className="inline-flex flex-wrap items-center gap-1 align-middle">
-      {shown.map((s, i) => (
-        <SourceBadge key={`${s.url ?? s.name}-${i}`} source={s} />
+    <span className="inline-flex max-w-full flex-wrap items-center gap-1 align-middle">
+      {shown.map((e, i) => (
+        <SourceBadge key={`${e.source.url ?? e.source.name}-${i}`} source={e.source} count={e.count} />
       ))}
       {rest.length > 0 && (
-        <details className="group inline-block">
+        <details className="group inline-block max-w-full">
           <summary
             className={`${BASE} ${RANK_STYLE.UNKNOWN} cursor-pointer list-none hover:text-foreground [&::-webkit-details-marker]:hidden`}
+            aria-label={`${rest.length} more ${rest.length === 1 ? "source" : "sources"}`}
           >
             <span className="group-open:hidden">+{rest.length}</span>
             <span className="hidden group-open:inline">less</span>
           </summary>
           <span className="mt-1 flex flex-wrap gap-1">
-            {rest.map((s, i) => (
-              <SourceBadge key={`${s.url ?? s.name}-${i}`} source={s} />
+            {rest.map((e, i) => (
+              <SourceBadge key={`${e.source.url ?? e.source.name}-${i}`} source={e.source} count={e.count} />
             ))}
           </span>
         </details>

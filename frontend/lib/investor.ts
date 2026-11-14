@@ -1,6 +1,7 @@
 // Wording for investor cards (C6). Pure, so the rules are unit-tested.
 
 import { formatSourceDate } from "./sources.ts";
+import { displayName } from "./format.ts";
 import type { Conflict, InvestorScore } from "./types";
 
 const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
@@ -11,6 +12,7 @@ export function leadSummary(s: InvestorScore): string {
   if (rounds === 0) return "No rounds in your space yet";
   switch (s.lead_data) {
     case "known":
+      if (s.leads_in_space === 0) return `In ${plural(rounds, "round")} in your space, none led`;
       return `Led ${s.leads_in_space} of ${plural(rounds, "round")} in your space`;
     case "partial":
       return `Led at least ${s.leads_in_space} of ${plural(rounds, "round")} in your space (lead known for some)`;
@@ -31,8 +33,8 @@ export function activitySummary(s: InvestorScore): string {
 export function conflictText(c: Conflict): string {
   if (c.kind === "BOARD") {
     return c.via_person
-      ? `${c.via_person.name} sits on the board of your competitor ${c.competitor.name}`
-      : `Has a seat on the board of your competitor ${c.competitor.name}`;
+      ? `${c.via_person.name} sits on the board of your competitor ${displayName(c.competitor.name)}`
+      : `Has a seat on the board of your competitor ${displayName(c.competitor.name)}`;
   }
-  return `Backed your competitor ${c.competitor.name}`;
+  return `Backed your competitor ${displayName(c.competitor.name)}`;
 }

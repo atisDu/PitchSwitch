@@ -115,3 +115,23 @@ investor-like matches (searching "<name> Ventures" too) and writes the brief by 
 - **Chat can take ~100 s** ("Who led NestAI's last round?" on Tesi × NestAI: two `sourced_answer`
   calls). It answered correctly (Tesi and Nokia co-led the €100M round, 4 sources). The panel now
   shows elapsed seconds; anything that shortens the second Cala search helps.
+
+## For A and B: from the design critique (14 Nov)
+
+- **B: a brief mixes up two firms with one name.** In the brief for Skyfall Ventures × Sensofusion,
+  Cala's entity is "a venture capital firm headquartered in Glasgow", but the brief also says
+  "Skyfall Ventures is a Glasgow-based hospitality and tourism company incorporated in 2013",
+  cited to company registers. That sentence comes from `sourced_answer` matching another firm with
+  the same name. Please keep only facts tied to the investor's ID, or drop register hits whose
+  description isn't investment-related. The brief page now shows Cala's own description of the
+  entity at the top. It also warns when that description doesn't read like an investor's, or
+  when Cala has none.
+- **A/B: most conflict sources have no rank.** Tracxn, PitchBook and Crunchbase come through as
+  `UNKNOWN`. The badge now *shows* them as "Aggregator" (display only; the `Source` is passed on
+  unchanged) and labels everything else without a rank "Unrated". Setting `rank: AGGREGATOR` on
+  those domains upstream would also fix it in MCP output.
+- **B: MyDefence is counted as a competitor** though Cala marks it acquired, with 0 backers and
+  0 rounds. Consider leaving acquired companies out.
+- **B: stage fit 0/10 when the startup's own stage is unknown.** This takes up to 10 points from
+  every investor for Sensofusion. Consider scoring that signal as neutral, or leaving it out and
+  rescaling, when the startup's stage is missing.

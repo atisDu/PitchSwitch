@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Inter } from "next/font/google";
 import Link from "next/link";
+
+import { Suspense } from "react";
+
+import { Links, NavLinks } from "@/components/NavLinks";
 import "./globals.css";
 
 // Stand-ins for DESIGN.md's commercial faces: Inter for TWK Lausanne,
@@ -28,12 +32,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               Pitch<span className="border-b-2 border-accent">Switch</span>
             </Link>
             <nav className="flex items-center gap-6">
-              <Link href="/about" className="label hover:underline hover:underline-offset-4">
-                How it works
-              </Link>
-              <Link href="/prep" className="label hover:underline hover:underline-offset-4">
-                Slush prep
-              </Link>
+              <Suspense fallback={<Links />}>
+                <NavLinks />
+              </Suspense>
               <span className="label hidden text-muted md:inline">Every claim sourced from Cala</span>
             </nav>
           </div>

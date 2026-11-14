@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { FundingFitLine } from "@/components/FundingFit";
 import { SourceBadges } from "@/components/SourceBadge";
+import { displayName, investorKind, possessive, prettyDates } from "@/lib/format";
 import { activitySummary, conflictText, leadSummary } from "@/lib/investor";
 import { briefPath, checkPath } from "@/lib/routes";
 import { splitReasons, type ScoreBreakdown } from "@/lib/score";
@@ -24,7 +25,10 @@ export function PitchCard({
   companyName: string;
 }) {
   return (
-    <article className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-t border-line py-6 md:grid-cols-[4rem_1fr_7rem]">
+    <article
+      id={`pitch-${item.investor.id}`}
+      className="grid scroll-mt-6 grid-cols-[2.5rem_1fr] gap-x-4 border-t border-line py-6 md:grid-cols-[4rem_1fr_7rem]"
+    >
       <p className="display text-3xl text-muted md:text-4xl" aria-label={`Rank ${rank}`}>
         {String(rank).padStart(2, "0")}
       </p>
@@ -63,7 +67,7 @@ export function SkipCard({
   companyName: string;
 }) {
   return (
-    <article className="border-t border-line py-6">
+    <article id={`skip-${item.investor.id}`} className="scroll-mt-6 border-t border-line py-6 target:bg-surface">
       <div className="border-l-4 border-press pl-4 md:pl-6">
         <Name item={item} />
         <ul className="mt-3 space-y-2">
@@ -88,7 +92,7 @@ export function SkipCard({
         )}
         <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
           <Link href={checkPath(item.investor.id, companyId)} className="underline underline-offset-4">
-            Flip: see this from {item.investor.name}&apos;s side
+            Flip: see this from {possessive(displayName(item.investor.name))} side
           </Link>
           <Link
             href={briefPath(item.investor.id, companyId, { investor: item.investor.name, company: companyName })}
@@ -117,8 +121,8 @@ export function SkipCard({
 function Name({ item }: { item: InvestorScore }) {
   return (
     <h3 className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-      <span className="text-xl font-medium tracking-tight">{item.investor.name}</span>
-      <span className="label text-muted">{item.investor.type === "Person" ? "Angel" : item.investor.type}</span>
+      <span className="text-xl font-medium tracking-tight">{displayName(item.investor.name)}</span>
+      <span className="label text-muted">{investorKind(item.investor.type)}</span>
     </h3>
   );
 }
@@ -154,8 +158,8 @@ function Breakdown({ item, open = false, skip = false }: { item: InvestorScore; 
   const { breakdown, source } = splitReasons(item.reasons);
   if (!breakdown) return null;
   const title = skip
-    ? `How the ${fmt(breakdown.total)} (fit despite the conflict) adds up`
-    : `How the ${fmt(breakdown.total)} adds up`;
+    ? `How the ${Math.round(breakdown.total)} (fit despite the conflict) adds up`
+    : `How the ${Math.round(breakdown.total)} adds up`;
   return (
     <details className="group/b mt-4" open={open}>
       <summary className="label cursor-pointer list-none text-muted hover:text-foreground [&::-webkit-details-marker]:hidden">
@@ -172,12 +176,14 @@ function BreakdownRows({ breakdown, sources }: { breakdown: ScoreBreakdown; sour
   return (
     <div className="mt-3">
       <table className="w-full max-w-2xl text-sm">
-        <caption className="sr-only">Score breakdown, {fmt(breakdown.total)} out of {breakdown.outOf}</caption>
+        <caption className="sr-only">
+          Score breakdown, {Math.round(breakdown.total)} out of {breakdown.outOf}
+        </caption>
         <tbody>
           {breakdown.parts.map((p) => (
             <tr key={p.name} className="align-top">
-              <th scope="row" className="w-36 py-1 pr-3 text-left font-normal first-letter:uppercase">
-                {p.name}
+              <th scope="row" className="w-48 py-1 pr-3 text-left font-normal first-letter:uppercase">
+                {partName(p.name)}
               </th>
               <td className="w-40 py-1 pr-3">
                 <div
@@ -192,7 +198,7 @@ function BreakdownRows({ breakdown, sources }: { breakdown: ScoreBreakdown; sour
               <td className="w-14 py-1 pr-3 text-right tabular-nums">
                 {fmt(p.got)}/{fmt(p.max)}
               </td>
-              <td className="py-1 text-muted">{p.detail}</td>
+              <td className="py-1 text-muted">{p.detail && partDetail(p.detail)}</td>
             </tr>
           ))}
         </tbody>
@@ -207,6 +213,14 @@ function BreakdownRows({ breakdown, sources }: { breakdown: ScoreBreakdown; sour
 }
 
 const fmt = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(1));
+
+// B's signal names, in the words the rest of the app (and /about) uses.
+const PART_NAMES: Record<string, string> = { "companies here": "Companies in your space" };
+const partName = (name: string) => PART_NAMES[name.toLowerCase()] ?? name;
+const partDetail = (detail: string) =>
+  prettyDates(detail)
+    .replace(/(\d+(?:\.\d+)?) weighted by closeness/, "worth $1 after weighting by closeness")
+    .replace(/^(\d+) in 12 mo$/, "$1 in the last 12 months");
 
 function Reasons({ reasons, all = false }: { reasons: Reason[]; all?: boolean }) {
   if (reasons.length === 0) return null;
@@ -233,7 +247,7 @@ function ReasonList({ reasons }: { reasons: Reason[] }) {
     <ul className="space-y-1.5">
       {reasons.map((r, i) => (
         <li key={`${r.text}-${i}`} className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
-          <span>{r.text}</span>
+          <span>{prettyDates(r.text)}</span>
           <SourceBadges sources={r.sources} />
         </li>
       ))}

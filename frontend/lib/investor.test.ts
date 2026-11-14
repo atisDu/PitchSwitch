@@ -33,7 +33,7 @@ test("leadSummary follows lead_data", () => {
   );
   assert.equal(
     leadSummary(score({ leads_in_space: 0, rounds_in_space: 1, lead_data: "known" })),
-    "Led 0 of 1 round in your space",
+    "In 1 round in your space, none led",
   );
   assert.equal(
     leadSummary(score({ leads_in_space: 1, rounds_in_space: 4, lead_data: "partial" })),

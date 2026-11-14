@@ -30,17 +30,17 @@ const NIF: Source = {
   date: "2026-04-14",
   rank: "PRIMARY",
 };
-const VEGVISIR: Source = {
-  name: "tracxn.com",
-  url: "https://tracxn.com/d/companies/vegvisir/__PbV15XkQ5HDNwjwidwv4gAN2oGWU1gO6VbylguwEJ-E/funding-and-investors",
-  date: "2026-08-25",
-  rank: "UNKNOWN",
+const KOVA: Source = {
+  name: "resiliencemedia.co",
+  url: "https://resiliencemedia.co/kova-labs-bets-on-low-cost-autonomy-for-europes-forested-battlefields/",
+  date: "2026-11-04",
+  rank: "PRESS",
 };
 const COMPETITORS = ["MyDefence", "Stendr", "Frankenburg Technologies", "Origin Robotics"];
 const PITCH = [
-  { name: "Maki.vc", fit: 73, line: "Led 2 of 2 rounds in your space · Last lead 9 Jun 2026", reason: "Led Aavuus and Metaktik pre-seeds", source: AAVUUS },
-  { name: "NATO Innovation Fund", fit: 49, line: "Led 1 of 1 round in your space · Last lead 14 Apr 2026", reason: "Led Kelluu's Series A", source: NIF },
-  { name: "ScaleWolf", fit: 45, line: "In 3 rounds in your space · Cala doesn't say who led", reason: "Took part in Vegvisir, Granta Autonomy, Broswarm", source: VEGVISIR },
+  { name: "Maki.vc", fit: 70, line: "Led 2 of 2 rounds in your space · Last lead 9 Jun 2026", reason: "Led the Aavuus and Metaktik pre-seeds", source: AAVUUS },
+  { name: "Lifeline Ventures", fit: 36, line: "In 1 round in your space · Cala doesn't say who led", reason: "Took part in Kova Labs' pre-seed", source: KOVA },
+  { name: "Tesi", fit: 34, line: "In 1 round in your space, none led · Last lead 6 Apr 2021", reason: "Took part in Kelluu's Series A", source: NIF },
 ];
 // The rest of Sensofusion's Skip list, each with the rival it backed (live, 14 Nov).
 const SKIP_REST: [string, string][] = [
@@ -51,7 +51,7 @@ const SKIP_REST: [string, string][] = [
   ["NATO", "Frankenburg Technologies"],
   ["Nova Founders Capital", "Frankenburg Technologies"],
   ["Rainfall Ventures", "Stendr"],
-  ["SMARTCAP", "Frankenburg Technologies"],
+  ["Smartcap", "Frankenburg Technologies"],
 ];
 
 export function Landing() {
@@ -76,7 +76,7 @@ export function Landing() {
               <Signal term="Nordic or Baltic" weight="10" text="Funds based in the region." />
             </dl>
           </div>
-          <Frame title="Sensofusion Oy · Pitch · 28">
+          <Frame title="Sensofusion Oy · Pitch · 26">
             <ol className="divide-y divide-line">
               {PITCH.map((p, i) => (
                 <li key={p.name} className="grid grid-cols-[2.5rem_1fr_auto] gap-x-4 p-5 md:px-6">
@@ -123,7 +123,7 @@ export function Landing() {
             <div className="p-5 md:p-6">
               <div className="border-l-4 border-press pl-4">
                 <p className="text-xl font-medium">
-                  Skyfall Ventures <span className="label ml-2 text-muted">Organization</span>
+                  Skyfall Ventures <span className="label ml-2 text-muted">Fund</span>
                 </p>
                 <p className="mt-3 text-lg leading-snug font-medium">
                   <span className="label mr-2 inline-block rounded-[5px] bg-press px-1.5 py-1 align-middle text-background">
@@ -190,12 +190,13 @@ export function Landing() {
                   ["PRIMARY", "The company or fund's own announcement"],
                   ["FILING", "A company register or official filing"],
                   ["PRESS", "A news article"],
-                  ["AGGREGATOR", "A database that collects funding data"],
+                  ["AGGREGATOR", "A database that collects funding data (Tracxn, PitchBook, Crunchbase)"],
+                  ["UNKNOWN", "Cala gave it no rank; the badge still names the website and date"],
                 ] as const
               ).map(([rank, text]) => (
                 <div key={rank} className="flex items-center gap-4 py-3">
                   <dt className="w-28 shrink-0">
-                    <SourceBadge source={{ name: rank, url: null, date: null, rank }} />
+                    <SourceBadge source={{ name: rank, url: null, date: null, rank }} bare />
                   </dt>
                   <dd className="text-sm text-muted">{text}</dd>
                 </div>
@@ -343,7 +344,7 @@ function Hero() {
           <div className="grid grid-cols-3 divide-x divide-line border-b border-line">
             {[
               ["4", "direct competitors"],
-              ["28", "funds to pitch"],
+              ["26", "funds to pitch"],
               ["9", "funds to skip"],
             ].map(([n, t]) => (
               <div key={t} className="p-5">
@@ -375,7 +376,7 @@ function Hero() {
               </p>
             </div>
             <div className="text-right">
-              <p className="display text-4xl text-muted">73</p>
+              <p className="display text-4xl text-muted">70</p>
               <p className="label mt-1 text-muted">Fit / 100</p>
             </div>
           </div>

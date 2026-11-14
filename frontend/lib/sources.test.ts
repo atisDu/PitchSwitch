@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { formatSourceDate, rankLabel, safeUrl, sortSources } from "./sources.ts";
+import { dedupeSources, displayRank, formatSourceDate, publisher, rankLabel, safeUrl, sortSources } from "./sources.ts";
 import type { Source } from "./types.ts";
 
 const src = (rank: Source["rank"], date: string | null, name: string = rank): Source => ({
@@ -14,7 +14,7 @@ const src = (rank: Source["rank"], date: string | null, name: string = rank): So
 test("rank labels", () => {
   assert.equal(rankLabel("PRIMARY"), "Primary");
   assert.equal(rankLabel("AGGREGATOR"), "Aggregator");
-  assert.equal(rankLabel("UNKNOWN"), "Source");
+  assert.equal(rankLabel("UNKNOWN"), "Unrated");
 });
 
 test("partial dates", () => {
@@ -48,4 +48,41 @@ test("sorts by rank, then newest", () => {
     ["PRIMARY", "new press", "old press", "AGGREGATOR", "UNKNOWN"],
   );
   assert.equal(input[0].name, "old press"); // not mutated
+});
+
+const at = (url: string | null, rank: Source["rank"] = "UNKNOWN", date: string | null = "2026-08-24", name = "x"): Source => ({
+  name,
+  url,
+  date,
+  rank,
+});
+
+test("unranked funding databases show as aggregators; others stay unrated", () => {
+  assert.equal(displayRank(at("https://tracxn.com/d/companies/stendr")), "AGGREGATOR");
+  assert.equal(displayRank(at("https://www.crunchbase.com/organization/x")), "AGGREGATOR");
+  assert.equal(displayRank(at("https://stendr.com/news")), "UNKNOWN");
+  assert.equal(displayRank(at(null)), "UNKNOWN");
+  assert.equal(displayRank(at("https://tracxn.com/x", "PRESS")), "PRESS"); // Cala's rank wins
+});
+
+test("publisher is the website, else a short name", () => {
+  assert.equal(publisher(at("https://www.crunchbase.com/a")), "crunchbase.com");
+  assert.equal(publisher(at(null, "UNKNOWN", null, "Portfolio")), "Portfolio");
+  assert.equal(
+    publisher(at(null, "UNKNOWN", null, "SKAALA INVESTMENTS OÜ (11168790) - Overview @ Inforegister.ee")),
+    "SKAALA INVESTMENTS OÜ (11168790…",
+  );
+});
+
+test("dedupe folds one publisher on one date", () => {
+  const out = dedupeSources([
+    at("https://www.crunchbase.com/a"),
+    at("https://stendr.com/news", "UNKNOWN", "2026-04-15"),
+    at("https://www.crunchbase.com/b"),
+    at("https://pitchbook.com/p"),
+  ]);
+  assert.deepEqual(
+    out.map((e) => [publisher(e.source), e.count]),
+    [["crunchbase.com", 2], ["pitchbook.com", 1], ["stendr.com", 1]],
+  );
 });

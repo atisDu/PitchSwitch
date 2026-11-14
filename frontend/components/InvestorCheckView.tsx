@@ -13,10 +13,10 @@ import { SourceBadges } from "@/components/SourceBadge";
 import { describeError } from "@/lib/errors";
 import { checkInvestor } from "@/lib/api";
 import { investorConflictText, marketMap, roundTitle, type MarketEntry } from "@/lib/check";
-import { prettyEnum } from "@/lib/format";
+import { displayName, investorKind, possessive, prettyEnum } from "@/lib/format";
 import { founderPath } from "@/lib/routes";
 import { formatSourceDate } from "@/lib/sources";
-import type { InvestorCheck, Round } from "@/lib/types";
+import type { InvestorCheck, Round, Source } from "@/lib/types";
 
 type Load =
   | { status: "loading" }
@@ -71,8 +71,7 @@ export function InvestorCheckView({
   if (load.status === "loading") {
     return (
       <div aria-busy="true" aria-live="polite">
-        <p className="label text-muted">Investor check</p>
-        <div className="mt-4 h-20 w-2/3 max-w-xl animate-pulse bg-surface" />
+        <div className="h-20 w-2/3 max-w-xl animate-pulse bg-surface" />
         <p className="mt-8 max-w-xl text-muted">
           Comparing your portfolio with this startup&apos;s competitors in Cala, and pulling who
           backed each of them.
@@ -84,8 +83,7 @@ export function InvestorCheckView({
   if (load.status === "error") {
     return (
       <div className="max-w-xl">
-        <p className="label text-muted">Investor check</p>
-        <h1 className="display mt-4 text-5xl">
+        <h1 className="display text-5xl">
           {load.notFound ? "We couldn't check that pair." : "The check didn't load."}
         </h1>
         <p className="mt-6 border-l-2 border-foreground pl-3">{load.message}</p>
@@ -118,6 +116,8 @@ export function InvestorCheckView({
 
   const { check } = load;
   const { investor, company, conflicts } = check;
+  const fund = displayName(investor.name);
+  const startup = displayName(company.name);
   const map = marketMap(check);
   const facts = [
     company.stage,
@@ -128,20 +128,27 @@ export function InvestorCheckView({
 
   return (
     <div>
-      <title>{`${company.name} × ${investor.name} · Investor check · PitchSwitch`}</title>
+      <title>{`${startup} × ${fund} · Investor check · PitchSwitch`}</title>
       <ChatPanel
         companyId={company.id}
         investorId={investor.id}
-        scope={`${investor.name} × ${company.name}`}
+        scope={`${fund} × ${startup}`}
         suggestions={[
-          `Does ${company.name} compete with anything ${investor.name} backs?`,
-          `Who backed ${company.name}'s competitors?`,
-          `Who led ${company.name}'s last round?`,
+          `Who led ${possessive(startup)} last round?`,
+          `Who backed ${possessive(startup)} competitors?`,
+          `What has ${fund} led in this space recently?`,
         ]}
       />
       <header>
-        <p className="label text-muted">Investor check · as {investor.name}</p>
-        <h1 className="display mt-4 text-5xl break-words sm:text-6xl md:text-8xl">{company.name}</h1>
+        <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-lg">
+          <span className="text-muted">Checking as</span>
+          <span className="border-b-2 border-accent font-medium">{fund}</span>
+          <span className="label text-muted">{investorKind(investor.type)}</span>
+          <Link href="/" className="text-sm text-muted underline underline-offset-4 hover:text-foreground">
+            Not your fund?
+          </Link>
+        </p>
+        <h1 className="display mt-6 text-5xl break-words sm:text-6xl md:text-8xl">{startup}</h1>
         {facts.length > 0 && (
           <p className="label mt-6 flex flex-wrap gap-x-4 gap-y-1 text-muted">
             {facts.map((f) => (
@@ -153,21 +160,37 @@ export function InvestorCheckView({
         <div className="mt-4 flex flex-wrap items-center gap-4">
           <SourceBadges sources={company.sources} />
           <Link href={founderPath(company.id)} className="text-sm underline underline-offset-4">
-            Flip: see {company.name}&apos;s founder view
+            Flip: see {possessive(startup)} founder view
           </Link>
+        </div>
+        <div
+          className={`mt-8 max-w-xl transition-opacity ${updating ? "opacity-40" : ""}`}
+          aria-busy={updating}
+        >
+          <AmountField side="investor" value={maxCheck} onApply={applyMaxCheck} disabled={updating} />
+          {maxCheck !== null && !updating && (
+            <div className="mt-3">
+              {check.funding_fit ? (
+                <FundingFitLine fit={check.funding_fit} side="investor" />
+              ) : (
+                <p className="text-sm text-muted">
+                  Fit by round size isn&apos;t available on this server yet; it will show here once it is.
+                </p>
+              )}
+            </div>
+          )}
         </div>
       </header>
 
       {conflicts.length > 0 ? (
-        <section className="mt-16 bg-press px-6 py-10 text-background md:px-10 md:py-14" aria-labelledby="verdict">
-          <p className="label text-sage">Verdict</p>
-          <h2 id="verdict" className="display mt-4 text-5xl md:text-7xl">
+        <section className="mt-14 bg-press px-6 py-10 text-background md:px-10 md:py-14" aria-labelledby="verdict">
+          <h2 id="verdict" className="display text-5xl md:text-7xl">
             Conflict.
           </h2>
           <ul className="mt-8 space-y-6">
             {conflicts.map((c, i) => (
               <li key={`${c.competitor.id}-${c.kind}-${i}`}>
-                <p className="max-w-3xl text-xl leading-snug">{investorConflictText(c, company.name)}</p>
+                <p className="max-w-3xl text-xl leading-snug">{investorConflictText(c, startup)}</p>
                 <div className="mt-2">
                   <SourceBadges sources={c.sources} max={3} />
                 </div>
@@ -176,45 +199,24 @@ export function InvestorCheckView({
           </ul>
         </section>
       ) : (
-        <section className="mt-16 border-l-4 border-accent py-2 pl-6" aria-labelledby="verdict">
-          <p className="label text-muted">Verdict</p>
-          <h2 id="verdict" className="display mt-3 text-5xl md:text-6xl">
+        <section className="mt-14 border-t-4 border-accent pt-8" aria-labelledby="verdict">
+          <h2 id="verdict" className="display text-5xl md:text-6xl">
             No conflict found.
           </h2>
           <p className="mt-4 max-w-2xl text-muted">
-            None of {company.name}&apos;s {check.competitors.length} competitors is in {investor.name}&apos;s
+            None of {possessive(startup)} {check.competitors.length} competitors is in {possessive(fund)}{" "}
             portfolio in Cala, and no board links were found. Cala&apos;s portfolio data can be
             incomplete, so check anything that looks off.
           </p>
         </section>
       )}
 
-      <section
-        className={`mt-12 border-t border-line pt-8 transition-opacity ${updating ? "opacity-40" : ""}`}
-        aria-label="Check size"
-        aria-busy={updating}
-      >
-        <AmountField side="investor" value={maxCheck} onApply={applyMaxCheck} disabled={updating} />
-        {maxCheck !== null && !updating && (
-          <div className="mt-4">
-            {check.funding_fit ? (
-              <FundingFitLine fit={check.funding_fit} side="investor" />
-            ) : (
-              <p className="text-sm text-muted">
-                Fit by round size isn&apos;t available on this server yet; it will show here once it is.
-              </p>
-            )}
-          </div>
-        )}
-      </section>
-
       <section className="mt-20" aria-labelledby="map-heading">
-        <p className="label text-muted">Market map · {check.competitors.length} competitors</p>
-        <h2 id="map-heading" className="display mt-3 text-5xl md:text-6xl">
+        <h2 id="map-heading" className="display text-5xl md:text-6xl">
           Who backed the rivals
         </h2>
         <p className="mt-4 max-w-2xl text-muted">
-          {company.name} and its competitors, with every investor Cala links to them and their
+          {startup} and its {check.competitors.length} competitors, with every investor Cala links to them and their
           round history. Leads are marked; your fund is highlighted.
         </p>
         <div className="mt-8">
@@ -235,7 +237,7 @@ function MarketCard({ entry, isStartup, investorId }: { entry: MarketEntry; isSt
     <article className="grid gap-x-10 gap-y-4 border-t border-line py-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
       <div>
         <p className="label text-muted">{isStartup ? "The startup" : competitor ? "Competitor" : "Other"}</p>
-        <h3 className="mt-2 text-2xl font-medium tracking-tight">{company.name}</h3>
+        <h3 className="mt-2 text-2xl font-medium tracking-tight">{displayName(company.name)}</h3>
         {meta && <p className="label mt-2 text-muted">{meta}</p>}
         {competitor && (
           <p className="mt-3 text-sm leading-snug">
@@ -252,7 +254,11 @@ function MarketCard({ entry, isStartup, investorId }: { entry: MarketEntry; isSt
       <div>
         <p className="label">Backed by · {backers.length}</p>
         {backers.length === 0 ? (
-          <p className="mt-2 text-sm text-muted">No investors in Cala.</p>
+          <p className="mt-2 text-sm text-muted">
+            {isStartup
+              ? `Cala lists no investors for ${displayName(company.name)} yet.`
+              : "Cala lists no investors for this company."}
+          </p>
         ) : (
           <ul className="mt-2 flex flex-wrap gap-1.5">
             {backers.map((b) => {
@@ -264,7 +270,7 @@ function MarketCard({ entry, isStartup, investorId }: { entry: MarketEntry; isSt
                     you ? "border-foreground bg-accent font-medium" : "border-line"
                   }`}
                 >
-                  {b.investor.name}
+                  {displayName(b.investor.name)}
                   {b.led && <span className="label ml-1.5">Lead</span>}
                   {you && <span className="label ml-1.5">You</span>}
                 </li>
@@ -278,9 +284,12 @@ function MarketCard({ entry, isStartup, investorId }: { entry: MarketEntry; isSt
           <p className="mt-2 text-sm text-muted">No rounds in Cala.</p>
         ) : (
           <ul className="mt-2 divide-y divide-line border-y border-line">
-            {rounds.map((r) => (
-              <RoundRow key={r.id} round={r} investorId={investorId} />
-            ))}
+            {rounds
+              .filter((r) => roundTitle(r) !== "Round details unknown")
+              .map((r) => (
+                <RoundRow key={r.id} round={r} investorId={investorId} />
+              ))}
+            <UnknownRounds rounds={rounds.filter((r) => roundTitle(r) === "Round details unknown")} investorId={investorId} />
           </ul>
         )}
       </div>
@@ -305,7 +314,7 @@ function RoundRow({ round, investorId }: { round: Round; investorId: string }) {
             <span key={ri.investor.id}>
               {i > 0 && ", "}
               <span className={ri.investor.id === investorId ? "font-medium text-foreground" : ""}>
-                {ri.investor.name}
+                {displayName(ri.investor.name)}
               </span>
               {ri.is_lead && " (lead)"}
             </span>
@@ -314,6 +323,41 @@ function RoundRow({ round, investorId }: { round: Round; investorId: string }) {
       )}
       <div className="mt-1.5">
         <SourceBadges sources={round.sources} />
+      </div>
+    </li>
+  );
+}
+
+/**
+ * Backers Cala links to a company without any round details (A7) used to be one "Round details
+ * unknown" row each; they read as one fact, so they get one row.
+ */
+function UnknownRounds({ rounds, investorId }: { rounds: Round[]; investorId: string }) {
+  if (rounds.length === 0) return null;
+  const seen = new Set<string>();
+  const investors = rounds
+    .flatMap((r) => r.investors)
+    .filter((ri) => (seen.has(ri.investor.id) ? false : (seen.add(ri.investor.id), true)));
+  const sources: Source[] = rounds.flatMap((r) => r.sources);
+  return (
+    <li className="py-3 text-sm">
+      <p className="text-muted italic">
+        {rounds.length === 1 ? "A round" : `${rounds.length} rounds`} with no label, date or amount in Cala
+      </p>
+      {investors.length > 0 && (
+        <p className="mt-1 text-muted">
+          {investors.map((ri, i) => (
+            <span key={ri.investor.id}>
+              {i > 0 && ", "}
+              <span className={ri.investor.id === investorId ? "font-medium text-foreground" : ""}>
+                {displayName(ri.investor.name)}
+              </span>
+            </span>
+          ))}
+        </p>
+      )}
+      <div className="mt-1.5">
+        <SourceBadges sources={sources} max={2} />
       </div>
     </li>
   );

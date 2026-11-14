@@ -6,6 +6,7 @@
 import { useState } from "react";
 
 import { SourceBadges } from "@/components/SourceBadge";
+import { displayName } from "@/lib/format";
 import type { Competitor } from "@/lib/types";
 
 export function CompetitorChips({
@@ -37,7 +38,7 @@ export function CompetitorChips({
           {gone.map((c, i) => (
             <span key={c.company.id}>
               {i > 0 && ", "}
-              <s>{c.company.name}</s>{" "}
+              <s>{displayName(c.company.name)}</s>{" "}
               <button
                 type="button"
                 disabled={disabled}
@@ -80,15 +81,15 @@ function Chip({
           aria-describedby={tipId}
           aria-expanded={open}
           onClick={() => setOpen((o) => !o)}
-          className="py-1.5 pr-1 pl-3 text-sm font-medium"
+          className="py-1.5 pr-1 pl-3 text-sm font-medium underline decoration-line decoration-dotted underline-offset-4 hover:decoration-foreground"
         >
-          {company.name}
+          {displayName(company.name)}
         </button>
         <button
           type="button"
           disabled={disabled}
           onClick={() => onRemove(company.id)}
-          aria-label={`Remove ${company.name} — not a real competitor`}
+          aria-label={`Remove ${displayName(company.name)}: not a real competitor`}
           title="Not a competitor? Remove it"
           className="px-2 py-1.5 text-muted hover:text-foreground disabled:opacity-40"
         >
