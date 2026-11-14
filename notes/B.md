@@ -557,3 +557,31 @@ authority + since, sources from the edge; `[]` when the edge is absent; never ra
 plus the fake store returning `[]`. Also expose a fund's LPs (incoming `INVESTED_IN` on the fund;
 e.g. NIF ← Czech MoD, PFR) or let `sanctions()` take them. Additive method = contract 1.2.0:
 needs all three humans' OK, then CONTRACT_VERSION + CHANGELOG + CLAUDE.md §5.2 in one commit.
+
+## B22 Portfolio X-ray (14 Nov, for C and the demo script)
+
+- **What it does:** every ranked investor's whole portfolio is judged against the startup, not
+  only the ~30 candidates. Portfolio links carry names only, so Gemini first screens the names
+  (batches of 120), then only the flagged companies are fetched whole from Cala and go through
+  the regular judge. Verdicts join the per-startup `verdicts` doc: judged once, ever. A
+  name-only "unrelated" never stands in for a real verdict on a candidate.
+- **(a) Hidden conflicts:** a direct rival found there that is not on the competitor list is a
+  `PORTFOLIO` conflict (sources = the portfolio link) → Skip. Reason, right after the score
+  breakdown: "Hidden conflict: backs Hive Autonomy, a direct rival not on your competitor list
+  (<the judge's one-line reason>)". Same answer in the founder report, the investor check,
+  briefs, chat and MCP. **For C: the conflict's competitor may not be among the chips** (nor in
+  `InvestorCheck.competitors`); show it from `conflict.competitor` and the reason.
+- **(b) Thesis:** same-space companies in the portfolio, as a reason ("Its portfolio holds 4
+  companies in your space: AVALOR AI B.V., AirHub, DeltaQuad B.V., Kelluu Oy") and in the score:
+  one found only in the portfolio counts half in "companies here" (detail: "5 companies, 3 of
+  them only in its portfolio, counted half; 3.5 in all"). Still 7 signals, weights unchanged.
+- **Live (local run on the real store, verdicts now stored in Atlas):**
+  - Sensofusion: BSV Ventures → Skip (backs Zvook, drone detection). Pitch: Maki.vc 69.6,
+    NATO Innovation Fund 38.0, Lifeline 36.3, Tesi 35.4, Gungnir 31.6, Keen 29.1 (was 21.6).
+  - Stendr: BSV Ventures → Skip (Zvook). New in the top 4: Nysnø Climate Investments 27.5.
+  - Kelluu: Skip 6 → 10: STARTUPLAB and Skyfall (Hive Autonomy), SMARTCAP (Farsight Vision),
+    BSV (SKYCORP Technologies). Pitch #3 is now Bayern Kapital 38.0 (3 earth-observation
+    companies in its portfolio). The two "Maki.vc" entries are still there (open, A's store).
+- **Cost:** 40-48 s extra the first time per startup (Gemini screen + confirm, ~40 Cala calls),
+  then 5-7 s for the whole report. Tests never reach Gemini or Atlas for it
+  (`tests/xray_off.py`, autouse in B's test folders).
