@@ -10,16 +10,6 @@ import type { InvestorScore, Reason } from "@/lib/types";
 
 const VISIBLE_REASONS = 3;
 
-// Angels (type "Person") stay on the lists, but the store can't open a person's brief or investor
-// check yet (404; notes/B.md, "Angels stay on the lists"). Flip to true once A's store accepts a
-// person's ID wherever an investor's is accepted.
-const ANGEL_PAGES_READY = false;
-const hasPages = (item: InvestorScore) => ANGEL_PAGES_READY || item.investor.type !== "Person";
-
-function NoAngelPages() {
-  return <span className="text-muted">No brief for individual investors yet</span>;
-}
-
 export function PitchCard({
   item,
   rank,
@@ -42,16 +32,12 @@ export function PitchCard({
         <Reasons reasons={item.reasons} />
         <WarmPaths paths={item.warm_paths} />
         <p className="mt-4 text-sm">
-          {hasPages(item) ? (
-            <Link
-              href={briefPath(item.investor.id, companyId, { investor: item.investor.name, company: companyName })}
-              className="underline underline-offset-4"
-            >
-              Read the brief
-            </Link>
-          ) : (
-            <NoAngelPages />
-          )}
+          <Link
+            href={briefPath(item.investor.id, companyId, { investor: item.investor.name, company: companyName })}
+            className="underline underline-offset-4"
+          >
+            Read the brief
+          </Link>
         </p>
       </div>
       <Score value={item.score} />
@@ -88,21 +74,15 @@ export function SkipCard({
           ))}
         </ul>
         <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
-          {hasPages(item) ? (
-            <>
-              <Link href={checkPath(item.investor.id, companyId)} className="underline underline-offset-4">
-                Flip: see this from {item.investor.name}&apos;s side
-              </Link>
-              <Link
-                href={briefPath(item.investor.id, companyId, { investor: item.investor.name, company: companyName })}
-                className="underline underline-offset-4"
-              >
-                Read the brief
-              </Link>
-            </>
-          ) : (
-            <NoAngelPages />
-          )}
+          <Link href={checkPath(item.investor.id, companyId)} className="underline underline-offset-4">
+            Flip: see this from {item.investor.name}&apos;s side
+          </Link>
+          <Link
+            href={briefPath(item.investor.id, companyId, { investor: item.investor.name, company: companyName })}
+            className="underline underline-offset-4"
+          >
+            Read the brief
+          </Link>
         </p>
         <details className="group mt-4">
           <summary className="label cursor-pointer list-none text-muted hover:text-foreground [&::-webkit-details-marker]:hidden">
