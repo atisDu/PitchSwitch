@@ -70,7 +70,13 @@ export function parseInline(text: string): Inline[] {
     last = re.lastIndex;
   }
   if (last < text.length) out.push({ kind: "text", text: text.slice(last) });
-  return out;
+  // "…Oy. [1][2] In Aug…": markers belong to the sentence before them. Drop the space before a
+  // marker so a line break can't push them to the start of the next sentence.
+  for (let i = 0; i < out.length - 1; i++) {
+    const cur = out[i];
+    if (cur.kind === "text" && out[i + 1].kind === "cite") cur.text = cur.text.replace(/\s+$/, "");
+  }
+  return out.filter((n) => n.kind !== "text" || n.text !== "");
 }
 
 /** Citation numbers used anywhere in the document, in order of first use. */

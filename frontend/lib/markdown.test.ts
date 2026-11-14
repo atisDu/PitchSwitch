@@ -10,7 +10,7 @@ import type { Brief } from "./types.ts";
 test("inline: bold, italic, citations, plain text", () => {
   assert.deepEqual(parseInline("**Verdict: skip.** Backs Aavuus [1][2]."), [
     { kind: "bold", children: [{ kind: "text", text: "Verdict: skip." }] },
-    { kind: "text", text: " Backs Aavuus " },
+    { kind: "text", text: " Backs Aavuus" },
     { kind: "cite", n: 1 },
     { kind: "cite", n: 2 },
     { kind: "text", text: "." },
@@ -22,6 +22,16 @@ test("inline: bold, italic, citations, plain text", () => {
   ]);
   // Not markup: lone asterisks, link-like brackets, HTML stays text.
   assert.deepEqual(parseInline("2 * 3 [a] <b>x</b>"), [{ kind: "text", text: "2 * 3 [a] <b>x</b>" }]);
+});
+
+test("citation markers attach to the sentence before them", () => {
+  assert.deepEqual(parseInline("Skip them. [1][2] Next one."), [
+    { kind: "text", text: "Skip them." },
+    { kind: "cite", n: 1 },
+    { kind: "cite", n: 2 },
+    { kind: "text", text: " Next one." },
+  ]);
+  assert.deepEqual(parseInline(" [3]"), [{ kind: "cite", n: 3 }]);
 });
 
 test("blocks: headings, lists, paragraphs, continuation lines", () => {
