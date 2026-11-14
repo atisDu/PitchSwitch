@@ -16,7 +16,7 @@ against the screen after the Sunday-morning freeze** (warm + cache-only, see Pre
 | 2 | Founder report | Four competitor chips: **MyDefence, Stendr, Frankenburg Technologies, Origin Robotics**; hover **Stendr** to show the reason |
 | 3 | Pitch list | Top card **Maki.vc** (fit 73): led defence pre-seeds this year; show one source badge |
 | 4 | Skip list | Click **Jump to the 9 to skip ↓** under the Pitch heading. Point at **Skyfall Ventures** (#3): "Backed your competitor Stendr"; click a source badge |
-| 5 | Flip | On the **Skyfall Ventures** card: **Flip: see this from Skyfall Ventures's side** |
+| 5 | Flip | On the **Skyfall Ventures** card: **See it from Skyfall Ventures's side** |
 | 6 | Investor check | Verdict **Conflict.**: "Stendr is in your portfolio and competes with Sensofusion Oy" |
 | 7 | Claude Desktop | Web search **off**; ask: *"Using only PitchSwitch, should Sensofusion pitch Skyfall Ventures?"* (asked once beforehand; setup: `docs/mcp-demo.md`) |
 

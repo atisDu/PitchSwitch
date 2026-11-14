@@ -163,7 +163,7 @@ export function InvestorCheckView({
         <div className="mt-4 flex flex-wrap items-center gap-4">
           <SourceBadges sources={company.sources} />
           <Link href={founderPath(company.id)} className="text-sm underline underline-offset-4">
-            Flip: see {possessive(startup)} founder view
+            See {possessive(startup)} founder view
           </Link>
         </div>
         <div

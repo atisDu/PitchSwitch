@@ -69,8 +69,7 @@ export function BriefView({
       <div aria-busy="true" aria-live="polite">
         <div className="h-16 w-2/3 max-w-xl animate-pulse bg-surface" />
         <p className="mt-8 max-w-xl text-muted">
-          Gathering this investor&apos;s rounds, portfolio and sourced answers from Cala, then
-          writing one page where every sentence cites its source.
+          Gathering this investor&apos;s rounds and portfolio from Cala, then writing the brief.
         </p>
         <SlowNotice />
       </div>
@@ -120,19 +119,9 @@ export function BriefView({
   return (
     <article className="max-w-3xl">
       <title>{`${title} · Brief · PitchSwitch`}</title>
-      <ChatPanel
-        companyId={companyId}
-        investorId={investorId}
-        scope={title}
-        suggestions={[
-          "What else has this investor led in my space?",
-          "Did they back any of my competitors?",
-          "Should I pitch them, and why?",
-        ]}
-      />
       <div className="flex flex-wrap items-center justify-between gap-4 print:hidden">
         <p className="inline-flex h-8 items-center rounded-full border border-line bg-white px-3 text-[13px] text-muted">
-          Investor brief · every sentence cites its source
+          Investor brief
         </p>
         <div className="flex flex-wrap items-center gap-4 text-sm">
           <Link href={founderPath(companyId)} className="underline underline-offset-4">
@@ -151,7 +140,21 @@ export function BriefView({
       </h1>
       {entity && <AboutEntity entity={entity} />}
 
-      <div className="window mt-8 p-6 md:p-10 print:border-0 print:p-0 print:shadow-none [&>:first-child]:mt-0">
+      <div className="window mt-8 p-6 md:p-10 print:border-0 print:p-0 print:shadow-none">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 rounded-xl bg-surface p-3 pl-4 print:hidden">
+          <p className="mr-auto text-sm">Questions about {title}? Answers come with their sources.</p>
+          <ChatPanel
+            inline
+            companyId={companyId}
+            investorId={investorId}
+            scope={title}
+            suggestions={[
+              "What else has this investor led in my space?",
+              "Did they back any of my competitors?",
+              "Should I pitch them, and why?",
+            ]}
+          />
+        </div>
         <BriefBody blocks={body} citations={brief.citations} anchor="cite" />
       </div>
     </article>

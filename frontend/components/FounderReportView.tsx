@@ -286,7 +286,7 @@ export function FounderReportView({
       <section className="lit-ground mt-20 rounded-[20px] px-6 py-12 md:px-12 md:py-16 print:hidden" aria-label="Next step">
         <p className="display text-4xl md:text-5xl">Meeting investors at Slush?</p>
         <p className="mt-3 max-w-xl text-foreground/80">
-          Paste the funds from your calendar and get a one-page brief on each, every sentence cited.
+          Paste the funds from your calendar and get a one-page brief on each.
         </p>
         <Link href={prepPath(report.company)} className="btn-primary mt-6">
           Prep a brief for each meeting

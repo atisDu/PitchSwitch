@@ -92,7 +92,7 @@ export function SkipCard({
         )}
         <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
           <Link href={checkPath(item.investor.id, companyId)} className="underline underline-offset-4">
-            Flip: see this from {possessive(displayName(item.investor.name))} side
+            See it from {possessive(displayName(item.investor.name))} side
           </Link>
           <Link
             href={briefPath(item.investor.id, companyId, { investor: item.investor.name, company: companyName })}

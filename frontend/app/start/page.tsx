@@ -17,7 +17,7 @@ export default function Start({ searchParams }: PageProps<"/start">) {
         <h1 className="display mt-6 text-[44px] sm:text-6xl xl:text-[76px]">Who&apos;s a fit, and who has a conflict</h1>
         <p className="mt-6 max-w-lg text-lg text-muted">
           From either side of the table. PitchSwitch walks Cala&apos;s graph from a company to its competitors, their
-          rounds and the investors behind them, and links every claim to its source.
+          rounds and the investors behind them, with a source link for each.
         </p>
         <dl className="mt-10 grid max-w-lg grid-cols-2 gap-6 border-t border-line pt-5">
           <div>

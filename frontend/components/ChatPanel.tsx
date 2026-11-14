@@ -26,11 +26,13 @@ export function ChatPanel({
   investorId,
   scope,
   suggestions,
+  inline = false,
 }: {
   companyId?: string;
   investorId?: string;
   scope: string; // e.g. "Sensofusion Oy" or "Rainfall Ventures × Sensofusion Oy"
   suggestions: string[];
+  inline?: boolean; // the button sits where the panel is placed (inside a brief's box), not fixed bottom right
 }) {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
@@ -117,10 +119,10 @@ export function ChatPanel({
           ref={openerRef}
           type="button"
           onClick={() => setOpen(true)}
-          className="btn-primary fixed right-5 bottom-5 z-30 print:hidden"
+          className={`btn-primary print:hidden ${inline ? "" : "fixed right-5 bottom-5 z-30"}`}
           aria-haspopup="dialog"
         >
-          Ask about this
+          {inline ? "Ask about this brief" : "Ask about this"}
         </button>
       )}
       {open && (
@@ -133,7 +135,7 @@ export function ChatPanel({
         >
           <header className="flex items-start justify-between gap-4 border-b border-line px-5 py-4">
             <div className="min-w-0">
-              <p className="label text-muted">Ask · answers cite Cala</p>
+              <p className="label text-muted">Ask</p>
               <p className="mt-1 truncate font-medium">{scope}</p>
             </div>
             <button type="button" onClick={() => setOpen(false)} className="label text-muted hover:text-foreground">
@@ -145,9 +147,8 @@ export function ChatPanel({
             {turns.length === 0 ? (
               <div>
                 <p className="text-muted">
-                  Ask anything about {scope}. Each question is answered on its own, from Cala facts
-                  only; every sentence links to its source. Pick a question to edit it before you
-                  ask.
+                  Ask anything about {scope}. Each question is answered on its own, from Cala data.
+                  Pick a question to edit it before you ask.
                 </p>
                 <ul className="mt-5 space-y-2">
                   {suggestions.map((s) => (

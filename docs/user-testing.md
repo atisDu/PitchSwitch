@@ -45,7 +45,7 @@ tool, not you. There are no wrong answers; please think out loud."
   conflict line?)*
 - "One of these competitors looks wrong to you. Remove it." *(Watch: do they find the ×, and
   re-rank?)*
-- Optional: "Now imagine you're that investor. What would they see?" *(The Flip link on a Skip
+- Optional: "Now imagine you're that investor. What would they see?" *(The "See it from …" link on a Skip
   card.)*
 - Optional: "Open the brief for your top investor." *(Watch: do they trust the cited sentences,
   click a citation number? Angels have no brief yet: their cards say so.)*

@@ -6,6 +6,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { ChatPanel } from "@/components/ChatPanel";
 import { BriefBody } from "@/components/CitedText";
 import { EntityPicker } from "@/components/EntityPicker";
 import { describeError } from "@/lib/errors";
@@ -121,11 +122,11 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
         Slush prep
       </p>
       <h1 className="display mt-5 max-w-4xl text-5xl sm:text-6xl md:text-7xl">
-        One sourced brief for every investor you&apos;re meeting.
+        A brief for every investor you&apos;re meeting.
       </h1>
       <p className="mt-6 max-w-2xl text-lg leading-snug text-muted">
         Paste the names from your calendar. An agent looks each one up in Cala, checks them against
-        your competitors and writes a one-page brief where every sentence cites its source.
+        your competitors and writes a one-page brief.
       </p>
 
       {/* The form in a white window on the landing page's lit ground, as on the home page. */}
@@ -354,6 +355,17 @@ function Card({
             )}
             <span className="text-muted">{card.brief.citations.length} sources</span>
           </div>
+          {companyId && (
+            <div className="mt-4">
+              <ChatPanel
+                inline
+                companyId={companyId}
+                investorId={card.brief.investor_id}
+                scope={`${shownName} × ${company?.name ?? "your company"}`}
+                suggestions={["Should I pitch them, and why?", "Did they back any of my competitors?"]}
+              />
+            </div>
+          )}
           <details className="group mt-3">
             <summary className="label cursor-pointer list-none text-muted hover:text-foreground [&::-webkit-details-marker]:hidden">
               <span className="group-open:hidden">+ Read it here</span>

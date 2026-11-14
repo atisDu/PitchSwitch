@@ -10,6 +10,7 @@ import { usePathname } from "next/navigation";
 const LINKS = [
   { href: "/", label: "How it works", external: true },
   { href: "/prep", label: "Slush prep", external: false },
+  { href: "/agents", label: "MCP", external: false },
 ];
 
 export function NavLinks() {

@@ -74,6 +74,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                   Check a startup
                 </Link>
               </li>
+              <li>
+                <Link href="/agents" className="text-sage underline-offset-4 hover:text-background hover:underline">
+                  MCP server
+                </Link>
+              </li>
             </ul>
             <p className="border-t border-slate pt-6 text-sm text-sage md:col-span-2">© 2026 PitchSwitch · Data from Cala</p>
           </div>

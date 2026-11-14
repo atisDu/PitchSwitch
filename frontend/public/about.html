@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>PitchSwitch: who's a fit, and who has a conflict, from either side of the table</title>
-<meta name="description" content="Founders see which funds backed their direct competitors. Funds see which startups compete with their portfolio. Every claim links to its source in Cala.">
+<meta name="description" content="Founders see which funds backed their direct competitors. Funds see which startups compete with their portfolio. Built on Cala's company data.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="PitchSwitch: who's a fit, and who has a conflict, from either side of the table">
-<meta property="og:description" content="Conflict checks for founders and investors before Slush, with a source on every claim.">
+<meta property="og:description" content="Conflict checks for founders and investors before Slush, built on Cala's company data.">
 <meta property="og:image" content="https://95-133-252-219.sslip.io/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="PitchSwitch: who's a fit, and who has a conflict, from either side of the table. For Sensofusion, 9 funds to skip and 26 to pitch.">
+<meta property="og:image:alt" content="PitchSwitch: who's a fit, and who has a conflict, from either side of the table. A sample founder report with 9 funds to skip and 26 to pitch.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#f7f9fa">
@@ -50,7 +50,6 @@
 <link rel="modulepreload" href="assets/moments/moments.js">
 <link rel="modulepreload" href="assets/moments/lib.js">
 <link rel="modulepreload" href="assets/moments/liquid-type/moment.js">
-<link rel="modulepreload" href="assets/moments/iris-opens/moment.js">
 <!-- page CSS: only what sits inside a visual (PitchSwitch's own screens, drawn as live HTML) -->
 <style>
 /* one window look for every PitchSwitch screen on the page: the app's chrome, its rows and its badges */
@@ -140,21 +139,6 @@
 #statement .facts { display: flex; flex-wrap: wrap; gap: var(--s-4) var(--s-8); margin-top: var(--s-8); padding-top: var(--s-5); border-top: 1px solid rgb(31 48 56 / .14); }
 #statement .facts div { display: grid; gap: 4px; } #statement .facts dt { font-size: 14px; color: var(--muted); } #statement .facts dd { margin: 0; font-size: 20px; font-weight: 500; }
 
-/* the investor check in the flip frame */
-#flip .stage > .at-corner { --ax: 56px; --ay: 56px; }
-.pw--check { width: 640px; }
-.chk { padding: 18px 20px; display: grid; gap: 14px; }
-.chk__as { font-size: 14px; color: var(--p-muted); } .chk__as b { color: var(--p-ink); font-weight: 500; border-bottom: 2px solid var(--p-accent); }
-.chk__verdict { background: var(--p-ink); color: #fff; border-radius: 10px; padding: 16px 18px; display: grid; gap: 6px; }
-.chk__verdict strong { font: 500 34px/1 var(--font-display); letter-spacing: -0.02em; }
-.chk__verdict p { margin: 0; font-size: 15px; color: #dfe6e8; }
-.chk__co { display: grid; gap: 8px; padding-top: 4px; }
-.chk__co h4 { margin: 0; font: 500 18px/1.2 var(--font-display); }
-.pw__chip--you { background: #d7ecee; border-color: var(--p-accent); }
-.chk__round { display: flex; gap: 12px; align-items: baseline; font-size: 14px; padding: 10px 0; border-top: 1px solid rgb(31 48 56 / .09); }
-.chk__round b { font-weight: 500; } .chk__round span { color: var(--p-muted); }
-@media (max-width: 639px) { .pw--check { width: 100%; } }
-
 /* the tablet stacks the three steps: two screens there (layout-v4.md, the tablet) */
 @media (min-width: 640px) and (max-width: 1023px) { #how { --h: 2; } }
 
@@ -178,10 +162,10 @@
 </head>
 <body>
 <!-- type: software
-     deal: hero centred, nav nav-centre, close close-type, footer footer-dark, rhythm surface-pairs (#flip, #how),
+     deal: hero centred, nav nav-centre, close close-type, footer footer-dark, rhythm surface-pairs (#how),
            buttons pill, mark arc, palette cool-white-slate, type instrument, ground sky (lit), effect aurora-curtains in the hero frame
-     moments: liquid-type on #statement (the six-word line the whole product rests on), iris-opens on #flip
-              (the ground turns as the page turns to the fund's side) -->
+     moments: liquid-type on #statement (the six-word line the whole product rests on)
+     data: every company, fund, figure and source on this page is fictional (sample data) -->
 
 <header class="nav nav--centre">
   <div class="wrap nav__bar">
@@ -199,13 +183,14 @@
             </div>
             <div class="menu-col span-3">
               <p class="t-label">Around it</p>
-              <a href="#flip">Investor check<span>The same conflict, other side</span></a>
+              <a href="/start?mode=investor">Investor check<span>The same conflict, other side</span></a>
               <a href="#slush">Slush prep<span>One brief per meeting</span></a>
+              <a href="/agents">MCP server<span>Set it up in Claude or Cursor</span></a>
             </div>
           </div>
         </div>
       </div>
-      <div class="nav__item"><a class="nav__link" href="#flip">Flip</a></div>
+      <div class="nav__item"><a class="nav__link" href="/agents">MCP</a></div>
       <div class="nav__item"><a class="nav__link" href="#how">Method</a></div>
       <div class="nav__item"><a class="nav__link" href="#slush">Slush</a></div>
       <div class="nav__item"><a class="nav__link" href="#faq">Questions</a></div>
@@ -225,22 +210,22 @@
       <div class="hero__c">
         <a class="pill" href="#how"><span>Built on Cala's company graph</span><span class="muted">See the method</span></a>
         <h1 id="hero-h" aria-label="Who's a fit, and who has a conflict"><span class="mark" data-mark="arc" aria-hidden="true"></span> Who's a fit, and who has a conflict</h1>
-        <p class="hero__lead">From either side of the table. Founders see which funds backed their direct competitors. Funds see which startups compete with their portfolio. For Sensofusion that is 9 funds to skip and 26 to pitch.</p>
+        <p class="hero__lead">From either side of the table. Founders see which funds backed their direct competitors. Funds see which startups compete with their portfolio. In the sample below: 9 funds to skip, 26 to pitch.</p>
         <div class="btn-row"><a class="btn btn--primary" href="/start">Check your investors</a><a class="btn btn--primary" href="/start?mode=investor">Check a startup</a><a class="btn btn--secondary" href="/founder/202e9283-6455-486f-8868-03c7e0d0cf29">Open a sample report</a></div>
       </div>
-      <div class="hero__window" data-fx="aurora-curtains" data-fx-seed="7" data-fx-palette='{"bg":"#cfe0e2","surface":"#e4eef0","ink":"#1f3038","muted":"#5d6b72","accent":"#0d7480","accentInk":"#ffffff"}' role="img" aria-label="Sensofusion's founder report: 9 investors to skip, among them Skyfall Ventures, which backed the competitor Stendr, and Maki.vc at the top of the Pitch list with 70">
+      <div class="hero__window" data-fx="aurora-curtains" data-fx-seed="7" data-fx-palette='{"bg":"#cfe0e2","surface":"#e4eef0","ink":"#1f3038","muted":"#5d6b72","accent":"#0d7480","accentInk":"#ffffff"}' role="img" aria-label="Norvale's founder report: 9 investors to skip, among them Fjordline Ventures, which backed the competitor Hjelmvik, and Kaamos Ventures at the top of the Pitch list with 70">
         <div class="ly-piece pw pw--hero" aria-hidden="true">
-          <div class="pw__bar"><span class="pw__dots"><i></i><i></i><i></i></span><b>Sensofusion Oy</b><span>Founder report</span><span class="sp"></span><span>Finland</span></div>
+          <div class="pw__bar"><span class="pw__dots"><i></i><i></i><i></i></span><b>Norvale Sensing Oy</b><span>Founder report</span><span class="sp"></span><span>Finland</span></div>
           <div class="pw__body">
             <div class="pw__side">
               <span class="pw__label">Competitors · 4</span>
-              <div class="pw__chips"><span class="pw__chip">MyDefence <s>×</s></span><span class="pw__chip">Stendr <s>×</s></span><span class="pw__chip">Frankenburg Technologies <s>×</s></span><span class="pw__chip">Origin Robotics <s>×</s></span></div>
+              <div class="pw__chips"><span class="pw__chip">Brakka Defence <s>×</s></span><span class="pw__chip">Hjelmvik <s>×</s></span><span class="pw__chip">Talvio Technologies <s>×</s></span><span class="pw__chip">Ostravia Robotics <s>×</s></span></div>
             </div>
             <div class="pw__main" data-ly-steps="900">
               <p class="pw__verdict"><u>9 investors to skip</u>, because they backed one of your 4 direct competitors. 26 to pitch.</p>
-              <div class="pw__row" data-step><span class="pw__tag">Skip</span><b>Skyfall Ventures</b><span>Backed your competitor Stendr</span><span class="pw__src"><em>Aggregator</em> tracxn.com</span></div>
-              <div class="pw__row" data-step><span class="pw__tag">Skip</span><b>Change Ventures</b><span>Backed your competitor Origin Robotics</span><span class="pw__src"><em>Unrated</em> venturebets.io</span></div>
-              <div class="pw__row" data-step><span class="pw__tag pw__tag--pitch">Pitch</span><b>Maki.vc</b><span>Led 2 of 2 rounds in your space</span><span class="pw__score">70</span></div>
+              <div class="pw__row" data-step><span class="pw__tag">Skip</span><b>Fjordline Ventures</b><span>Backed your competitor Hjelmvik</span><span class="pw__src"><em>Aggregator</em> dealwire.example</span></div>
+              <div class="pw__row" data-step><span class="pw__tag">Skip</span><b>Bridgewell Ventures</b><span>Backed your competitor Ostravia Robotics</span><span class="pw__src"><em>Unrated</em> vcdigest.example</span></div>
+              <div class="pw__row" data-step><span class="pw__tag pw__tag--pitch">Pitch</span><b>Kaamos Ventures</b><span>Led 2 of 2 rounds in your space</span><span class="pw__score">70</span></div>
             </div>
           </div>
         </div>
@@ -252,39 +237,39 @@
     <div class="wrap">
       <div class="grid">
         <h2 class="span-5" id="report-h">Every fund in your space, ranked or ruled out</h2>
-        <p class="span-6 start-7 muted t-lead">Cala lists who backed your rivals. Funds with a conflict go to Skip with the page that proves it; the rest are ranked to Pitch. <a class="link" href="/founder/202e9283-6455-486f-8868-03c7e0d0cf29">Open Sensofusion's report</a></p>
+        <p class="span-6 start-7 muted t-lead">Cala lists who backed your rivals. Funds with a conflict go to Skip with their sources; the rest are ranked to Pitch. <a class="link" href="/founder/202e9283-6455-486f-8868-03c7e0d0cf29">Open a sample report</a></p>
       </div>
-      <div class="ui app fill" role="img" aria-label="The founder report as a window: the investor list with Skyfall Ventures open, its conflict with Stendr and the sources behind it" data-ui-pause-host>
+      <div class="ui app fill" role="img" aria-label="The founder report as a window: the investor list with Fjordline Ventures open, its conflict with Hjelmvik and the sources behind it" data-ui-pause-host>
         <div class="app__pane app__pane--list" aria-hidden="true">
           <div class="inv__head"><b>Investors · 35</b><span class="inv__tabs"><span>Pitch 26</span><span class="is-on">Skip 9</span></span></div>
           <ul class="inv__list">
-            <li class="is-on"><b>Skyfall Ventures</b><small>Backed Stendr</small><em class="k">Skip</em></li>
-            <li><b>Change Ventures</b><small>Backed Origin Robotics</small><em class="k">Skip</em></li>
-            <li><b>Startuplab Founders AS</b><small>Backed Stendr</small><em class="k">Skip</em></li>
-            <li><b>Nova Founders Capital</b><small>Backed Frankenburg Technologies</small><em class="k">Skip</em></li>
-            <li><b>Skaala Investments OÜ</b><small>Backed Frankenburg Technologies</small><em class="k">Skip</em></li>
-            <li><b>North Atlantic Treaty Organization</b><small>Backed Frankenburg Technologies</small><em class="k">Skip</em></li>
-            <li><b>Silicon Roundabout Ventures</b><small>Backed Origin Robotics</small><em class="k">Skip</em></li>
-            <li><b>Rainfall Ventures</b><small>Backed Stendr</small><em class="k">Skip</em></li>
-            <li><b>Smartcap</b><small>Backed Frankenburg Technologies</small><em class="k">Skip</em></li>
-            <li><b>Maki.vc</b><small>Led 2 of 2 rounds in your space</small><em class="p">70</em></li>
-            <li><b>Lifeline Ventures</b><small>In 1 round in your space</small><em class="p">36</em></li>
+            <li class="is-on"><b>Fjordline Ventures</b><small>Backed Hjelmvik</small><em class="k">Skip</em></li>
+            <li><b>Bridgewell Ventures</b><small>Backed Ostravia Robotics</small><em class="k">Skip</em></li>
+            <li><b>Startpoint Founders AS</b><small>Backed Hjelmvik</small><em class="k">Skip</em></li>
+            <li><b>Noventa Founders Capital</b><small>Backed Talvio Technologies</small><em class="k">Skip</em></li>
+            <li><b>Saaren Investments OÜ</b><small>Backed Talvio Technologies</small><em class="k">Skip</em></li>
+            <li><b>Allied Defence Fund</b><small>Backed Talvio Technologies</small><em class="k">Skip</em></li>
+            <li><b>Gráfell Capital</b><small>Backed Ostravia Robotics</small><em class="k">Skip</em></li>
+            <li><b>Rainmere Ventures</b><small>Backed Hjelmvik</small><em class="k">Skip</em></li>
+            <li><b>Smallcap North</b><small>Backed Talvio Technologies</small><em class="k">Skip</em></li>
+            <li><b>Kaamos Ventures</b><small>Led 2 of 2 rounds in your space</small><em class="p">70</em></li>
+            <li><b>Lumo Seed</b><small>In 1 round in your space</small><em class="p">36</em></li>
           </ul>
         </div>
         <div class="app__pane app__pane--open" aria-hidden="true">
           <div class="open">
-            <h3>Skyfall Ventures <small>Fund</small></h3>
+            <h3>Fjordline Ventures <small>Fund</small></h3>
             <div class="open__conflict">
-              <p><span class="pw__tag">Conflict</span>Backed your competitor Stendr</p>
-              <div class="open__srcs"><span class="pw__src"><em>Aggregator</em> tracxn.com · 24 Aug 2026</span><span class="pw__src"><em>Aggregator</em> pitchbook.com · 24 Aug 2026 ×2</span><span class="pw__src"><em>Unrated</em> finsmes.com</span></div>
+              <p><span class="pw__tag">Conflict</span>Backed your competitor Hjelmvik</p>
+              <div class="open__srcs"><span class="pw__src"><em>Aggregator</em> dealwire.example · 24 Aug 2026</span><span class="pw__src"><em>Aggregator</em> fundingdesk.example · 24 Aug 2026 ×2</span><span class="pw__src"><em>Unrated</em> startupnews.example</span></div>
             </div>
-            <div class="open__links"><span>Flip: see this from Skyfall Ventures' side</span><span>Read the brief</span></div>
+            <div class="open__links"><span>See it from Fjordline Ventures' side</span><span>Read the brief</span></div>
             <dl class="open__rows">
-              <div><dt>Stendr's round</dt><dd>Pre-seed, $5.4M, April 2026</dd></div>
-              <div><dt>Who backed Stendr</dt><dd>Rainfall Ventures, Skyfall Ventures, Startuplab Founders AS</dd></div>
+              <div><dt>Hjelmvik's round</dt><dd>Pre-seed, $5.4M, April 2026</dd></div>
+              <div><dt>Who backed Hjelmvik</dt><dd>Rainmere Ventures, Fjordline Ventures, Startpoint Founders AS</dd></div>
               <div><dt>Why a competitor</dt><dd>Both build multi-sensor counter-drone hardware and software for drone detection and tracking (AI judgement)</dd></div>
               <div><dt>Fit despite the conflict</dt><dd>17 of 100</dd></div>
-              <div><dt>Other Stendr backers</dt><dd>Also on Skip: Rainfall Ventures, Startuplab Founders AS</dd></div>
+              <div><dt>Other Hjelmvik backers</dt><dd>Also on Skip: Rainmere Ventures, Startpoint Founders AS</dd></div>
             </dl>
           </div>
         </div>
@@ -296,44 +281,13 @@
     <div class="wrap">
       <div class="section-head" data-moment="liquid-type" style="max-width:none">
         <h2 class="mo-lt__type" id="statement-h">Know about the conflict before the meeting.</h2>
-        <p class="t-lead measure">A fund that backed a direct competitor is a conflict: the founder's deck reaches a rival's backer, and the fund hears a pitch against its own portfolio. PitchSwitch shows it to both, each with the page that proves it.</p>
+        <p class="t-lead measure">A fund that backed a direct competitor is a conflict: the founder's deck reaches a rival's backer, and the fund hears a pitch against its own portfolio. PitchSwitch shows it to both sides, with its sources.</p>
       </div>
       <dl class="facts">
-        <div><dt>Sensofusion's report</dt><dd>35 funds checked</dd></div>
-        <div><dt>Direct competitors</dt><dd>MyDefence, Stendr, Frankenburg, Origin Robotics</dd></div>
+        <div><dt>Norvale's report</dt><dd>35 funds checked</dd></div>
+        <div><dt>Direct competitors</dt><dd>Brakka Defence, Hjelmvik, Talvio, Ostravia Robotics</dd></div>
         <div><dt>On the Skip list</dt><dd>9 funds</dd></div>
       </dl>
-    </div>
-  </section>
-
-  <section class="section ground-surface" id="flip" style="--hm: 2" aria-labelledby="flip-h" data-moment="iris-opens" data-moment-opts='{"from": "base"}'>
-    <div class="wrap">
-      <div class="grid">
-        <div class="span-5 stack-5">
-          <h2 id="flip-h">Or check it from the fund's side</h2>
-          <p class="t-lead">An investor enters their fund and the startup that pitched them. The check shows any conflict with their portfolio and who backed each rival.</p>
-          <p>Your fund is marked in every rival's list of backers.<br>Rounds show their size and lead where Cala has them.<br>One click goes back to the founder's view.</p>
-          <a class="link" href="/check/9b65ed62-a126-4255-8339-44c59fbf0ad8/202e9283-6455-486f-8868-03c7e0d0cf29">Open the sample check</a>
-        </div>
-        <div class="frame frame--split frame--lit span-6 start-7" role="img" aria-label="The investor check for Skyfall Ventures and Sensofusion: a conflict, because Stendr is in Skyfall's portfolio">
-          <div class="stage stage--fade-br">
-            <div class="at-corner to-edge">
-              <div class="pw pw--check" aria-hidden="true">
-                <div class="pw__bar"><span class="pw__dots"><i></i><i></i><i></i></span><b>Sensofusion Oy</b><span>Investor check</span></div>
-                <div class="chk">
-                  <p class="chk__as">Checking as <b>Skyfall Ventures</b></p>
-                  <div class="chk__verdict"><strong>Conflict.</strong><p>Stendr is in your portfolio and competes with Sensofusion Oy.</p></div>
-                  <div class="chk__co">
-                    <h4>Stendr</h4>
-                    <div class="pw__chips"><span class="pw__chip">Rainfall Ventures</span><span class="pw__chip pw__chip--you">Skyfall Ventures · You</span><span class="pw__chip">Startuplab Founders AS</span></div>
-                    <div class="chk__round"><b>Pre-seed</b><span>April 2026</span><span>$5.4M</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -347,9 +301,9 @@
           <span class="step-num">1</span>
           <h3>Finds the direct competitors</h3>
           <p>Gemini reads the candidates Cala returns and keeps the real rivals. You remove any that don't belong.</p>
-          <div class="panel" role="img" aria-label="Sensofusion's four competitors as removable chips">
+          <div class="panel" role="img" aria-label="Norvale's four competitors as removable chips">
             <div class="stage"><div class="at-rise fit" style="--fit-max:320px;--ay:40px">
-              <div class="mini" aria-hidden="true"><p class="mini__head">Competitors · 4</p><div class="pw__chips"><span class="pw__chip">MyDefence <s>×</s></span><span class="pw__chip">Stendr <s>×</s></span><span class="pw__chip">Frankenburg Technologies <s>×</s></span><span class="pw__chip">Origin Robotics <s>×</s></span></div></div>
+              <div class="mini" aria-hidden="true"><p class="mini__head">Competitors · 4</p><div class="pw__chips"><span class="pw__chip">Brakka Defence <s>×</s></span><span class="pw__chip">Hjelmvik <s>×</s></span><span class="pw__chip">Talvio Technologies <s>×</s></span><span class="pw__chip">Ostravia Robotics <s>×</s></span></div></div>
             </div></div>
           </div>
         </article>
@@ -357,9 +311,9 @@
           <span class="step-num">2</span>
           <h3>Pulls their rounds and backers</h3>
           <p>Every round and investor comes from Cala, with the page it was found on and a rank for that page.</p>
-          <div class="panel" role="img" aria-label="Stendr's pre-seed round with its backers and two sources">
+          <div class="panel" role="img" aria-label="Hjelmvik's pre-seed round with its backers and two sources">
             <div class="stage"><div class="at-rise fit" style="--fit-max:320px;--ay:40px">
-              <div class="mini" aria-hidden="true"><p class="mini__head">Stendr · Pre-seed · April 2026</p><p style="margin:0 0 10px">Rainfall Ventures, Skyfall Ventures, Startuplab Founders AS</p><div class="open__srcs"><span class="pw__src"><em>Aggregator</em> tracxn.com</span><span class="pw__src"><em>Unrated</em> finsmes.com</span></div></div>
+              <div class="mini" aria-hidden="true"><p class="mini__head">Hjelmvik · Pre-seed · April 2026</p><p style="margin:0 0 10px">Rainmere Ventures, Fjordline Ventures, Startpoint Founders AS</p><div class="open__srcs"><span class="pw__src"><em>Aggregator</em> dealwire.example</span><span class="pw__src"><em>Unrated</em> startupnews.example</span></div></div>
             </div></div>
           </div>
         </article>
@@ -367,9 +321,9 @@
           <span class="step-num">3</span>
           <h3>Scores each fund in plain code</h3>
           <p>Seven signals add up to 100. Any conflict sends a fund to Skip, whatever its score.</p>
-          <div class="panel" role="img" aria-label="Maki.vc's score of 70: leads 25 of 25, companies in your space 11.3 of 15, recency 15 of 15, activity 8.3 of 10, Nordic or Baltic 10 of 10">
+          <div class="panel" role="img" aria-label="Kaamos Ventures's score of 70: leads 25 of 25, companies in your space 11.3 of 15, recency 15 of 15, activity 8.3 of 10, Nordic or Baltic 10 of 10">
             <div class="stage"><div class="at-rise fit" style="--fit-max:320px;--ay:40px">
-              <div class="mini" aria-hidden="true"><p class="mini__head">Maki.vc · how the 70 adds up</p><div class="bars">
+              <div class="mini" aria-hidden="true"><p class="mini__head">Kaamos Ventures · how the 70 adds up</p><div class="bars">
                 <div>Leads<i style="--w:100%"></i><b>25/25</b></div>
                 <div>Your space<i style="--w:75%"></i><b>11.3/15</b></div>
                 <div>Recency<i style="--w:100%"></i><b>15/15</b></div>
@@ -391,21 +345,21 @@
       <div class="grid">
         <article class="card card--row card--open span-6">
           <h3>Writes a brief for each meeting</h3>
-          <p>Paste the funds from your calendar. Each one gets a page where every sentence cites its source.</p>
-          <div class="panel" role="img" aria-label="A finished brief for Lifeline Ventures with numbered citations">
+          <p>Paste the funds from your calendar. Each one gets a one-page brief.</p>
+          <div class="panel" role="img" aria-label="A finished brief for Lumo Seed with numbered citations">
             <div class="stage"><div class="at-center" style="--w:440px">
-              <div class="mini brief" aria-hidden="true"><span class="brief__ready">Brief ready</span><p class="mini__head">Lifeline Ventures</p><p>You can pitch Lifeline Ventures: no conflict was found with your competitors.<sup>1</sup><sup>2</sup></p><p>It took part in Kova Labs' pre-seed in November 2026.<sup>3</sup></p><p>Its last lead was a Series A in April 2026.<sup>4</sup></p></div>
+              <div class="mini brief" aria-hidden="true"><span class="brief__ready">Brief ready</span><p class="mini__head">Lumo Seed</p><p>You can pitch Lumo Seed: no conflict was found with your competitors.<sup>1</sup><sup>2</sup></p><p>It took part in Pellava Labs' pre-seed in November 2026.<sup>3</sup></p><p>Its last lead was a Series A in April 2026.<sup>4</sup></p></div>
             </div></div>
           </div>
         </article>
         <article class="card card--row card--open span-6">
           <h3>Answers inside Claude or Cursor</h3>
-          <p>The same seven tools run as an MCP server, so your agent can check a fund before the meeting.</p>
-          <div class="panel" role="img" aria-label="An agent asks whether Sensofusion should pitch Skyfall Ventures and PitchSwitch answers no, because Skyfall backed Stendr">
+          <p>The same seven tools run as an MCP server, so your agent can check a fund before the meeting. <a class="link" href="/agents">Set it up</a></p>
+          <div class="panel" role="img" aria-label="An agent asks whether Norvale should pitch Fjordline Ventures and PitchSwitch answers no, because Fjordline backed Hjelmvik">
             <div class="stage"><div class="at-center" style="--w:460px">
-              <div class="mono" aria-hidden="true"><span class="q">› Should Sensofusion pitch Skyfall Ventures?</span>
-<span class="t">  check_conflict  PORTFOLIO · Stendr</span>
-<span class="a">No. Skyfall Ventures backed Stendr, a direct competitor of Sensofusion.<sup>1</sup><sup>2</sup></span></div>
+              <div class="mono" aria-hidden="true"><span class="q">› Should Norvale pitch Fjordline Ventures?</span>
+<span class="t">  check_conflict  PORTFOLIO · Hjelmvik</span>
+<span class="a">No. Fjordline Ventures backed Hjelmvik, a direct competitor of Norvale.<sup>1</sup><sup>2</sup></span></div>
             </div></div>
           </div>
         </article>
@@ -448,7 +402,7 @@
           <p class="footer__lede">Conflict checks for founders and investors on Cala's company graph, built at Junction 2026.</p>
         </div>
         <div class="span-2 start-7 footer__col"><h3>Founders</h3><ul><li><a href="#report">Founder report</a></li><li><a href="/prep">Slush prep</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>Investors</h3><ul><li><a href="#flip">Investor check</a></li><li><a href="#slush">MCP server</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Investors</h3><ul><li><a href="/start?mode=investor">Investor check</a></li><li><a href="/agents">MCP server</a></li></ul></div>
         <div class="span-2 footer__col"><h3>Method</h3><ul><li><a href="#how">How it works</a></li><li><a href="#faq">Questions</a></li></ul></div>
       </div>
       <div class="footer__legal">
