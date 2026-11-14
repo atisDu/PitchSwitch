@@ -9,12 +9,12 @@ Skip lists change who they'd pitch, and get **one quote** for the pitch.
 
 ## Before you start
 
-- [ ] Open the live site: **<https://95-133-252-219.sslip.io>**, on the home page with "I'm raising"
+- [ ] Open the live site's search page: **<https://95-133-252-219.sslip.io/start>** (the root is the landing page), with "I'm raising"
       selected, window wide, nothing else open. Fallback without network: run it locally (README →
       "Run it").
 - [ ] **Cache-only mode must be off** during sessions (`deploy/cache-only.sh 95.133.252.219 off`):
       with it on, any company nobody looked up before fails at once. Check: search a random name on
-      the home page; you should get matches, not an error.
+      the search page; you should get matches, not an error.
 - [ ] **Two companies per session:**
   1. **Their own company**, typed in at the start of the warm-up. A company nobody has looked up
      before takes a few minutes the first time (the page shows a "still working" notice); let it

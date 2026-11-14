@@ -184,7 +184,7 @@ function AboutEntity({ entity }: { entity: EntityRef }) {
             : "Cala has no description of this entity"}
           , and several firms can share a name. If the brief below describes a different business, it
           is about another {name}.{" "}
-          <Link href="/" className="underline underline-offset-4 print:hidden">
+          <Link href="/start" className="underline underline-offset-4 print:hidden">
             Not this {name}? Search again
           </Link>
         </p>

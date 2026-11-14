@@ -176,9 +176,9 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
                   className="mt-1 h-4 w-4 shrink-0 accent-[var(--accent)]"
                 />
                 <span>
-                  <span className="font-medium">Add the Slush 2026 investors Cala knows of</span>
+                  <span className="font-medium">Add investors attending Slush 2026</span>
                   <span className="mt-0.5 block text-sm text-muted">
-                    The funds Cala&apos;s sources name as attending Slush, not everyone there. Up to{" "}
+                    Funds named as attending in sources found through Cala; not a complete list. Up to{" "}
                     {MAX_NAMES} briefs in all; the first run takes a few minutes.
                   </span>
                 </span>

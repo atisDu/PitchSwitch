@@ -127,7 +127,7 @@ export function FounderReportView({
               Try again
             </button>
           )}
-          <Link href="/" className="btn-ghost h-control-lg">
+          <Link href="/start" className="btn-ghost h-control-lg">
             Search again
           </Link>
         </div>

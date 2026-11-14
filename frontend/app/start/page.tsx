@@ -2,14 +2,14 @@ import { Suspense } from "react";
 
 import { HomeForm } from "@/components/HomeForm";
 
-export default function Home({ searchParams }: PageProps<"/">) {
+export default function Start({ searchParams }: PageProps<"/start">) {
   return (
     // The landing page's hero, made to work: the headline beside the form, set in a white window on
     // the same teal-lit ground the landing page draws the app on.
     <section className="grid grid-cols-[minmax(0,1fr)] items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-16">
       <div>
         <a
-          href="/about"
+          href="/"
           className="inline-flex h-8 items-center gap-2 rounded-full border border-line bg-white px-3 text-[13px] hover:border-control"
         >
           Built on Cala&apos;s company graph <span className="text-muted">See the method</span>
@@ -41,7 +41,7 @@ export default function Home({ searchParams }: PageProps<"/">) {
   );
 }
 
-async function Form({ searchParams }: Pick<PageProps<"/">, "searchParams">) {
+async function Form({ searchParams }: Pick<PageProps<"/start">, "searchParams">) {
   const { mode } = await searchParams;
   return <HomeForm initialMode={mode === "investor" ? "investor" : "founder"} />;
 }

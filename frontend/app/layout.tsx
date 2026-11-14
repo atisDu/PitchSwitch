@@ -7,7 +7,8 @@ import { Suspense } from "react";
 import { Links, NavLinks } from "@/components/NavLinks";
 import "./globals.css";
 
-// The landing page's faces (public/about.html): Instrument Sans for everything, DM Mono for sources.
+// The landing page (public/about.html, served at /) is outside the app router, so links to / are
+// plain <a>s, not <Link>s. Its faces: Instrument Sans for everything, DM Mono for sources.
 const sans = Instrument_Sans({ variable: "--font-ui", subsets: ["latin"], axes: ["wdth"] });
 const mono = DM_Mono({ variable: "--font-code", subsets: ["latin"], weight: ["400", "500"] });
 
@@ -31,15 +32,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col">
         <header className="sticky top-0 z-20 border-b border-line bg-background/90 backdrop-blur print:hidden">
           <div className="mx-auto flex h-16 w-full max-w-[1280px] items-center justify-between gap-4 px-5 md:px-10">
-            <Link href="/" className="inline-flex items-center gap-2 text-[22px] leading-none font-medium tracking-[-0.02em]">
+            <a href="/" className="inline-flex items-center gap-2 text-[22px] leading-none font-medium tracking-[-0.02em]">
               <Mark />
               PitchSwitch
-            </Link>
+            </a>
             <nav className="flex items-center gap-5 sm:gap-7" aria-label="Main">
               <Suspense fallback={<Links />}>
                 <NavLinks />
               </Suspense>
-              <Link href="/" className="btn-primary hidden md:inline-flex">
+              <Link href="/start" className="btn-primary hidden md:inline-flex">
                 Run a check
               </Link>
             </nav>
@@ -49,17 +50,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <footer className="bg-press text-background print:hidden">
           <div className="mx-auto grid w-full max-w-[1280px] gap-8 px-5 py-14 md:grid-cols-[1fr_auto] md:px-10">
             <div className="max-w-sm">
-              <Link href="/" className="inline-flex items-center gap-2 text-[22px] leading-none font-medium tracking-[-0.02em]">
+              <a href="/" className="inline-flex items-center gap-2 text-[22px] leading-none font-medium tracking-[-0.02em]">
                 <Mark className="fill-moss" />
                 PitchSwitch
-              </Link>
+              </a>
               <p className="mt-4 text-sage">
                 Conflict checks for founders and investors on Cala&apos;s company graph, built at Junction 2026.
               </p>
             </div>
             <ul className="flex flex-wrap gap-x-8 gap-y-3 self-end text-sm">
               <li>
-                <a href="/about" className="text-sage underline-offset-4 hover:text-background hover:underline">
+                <a href="/" className="text-sage underline-offset-4 hover:text-background hover:underline">
                   How it works
                 </a>
               </li>
@@ -69,7 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 </Link>
               </li>
               <li>
-                <Link href="/?mode=investor" className="text-sage underline-offset-4 hover:text-background hover:underline">
+                <Link href="/start?mode=investor" className="text-sage underline-offset-4 hover:text-background hover:underline">
                   Check a startup
                 </Link>
               </li>

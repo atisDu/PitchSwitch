@@ -106,7 +106,7 @@ export function InvestorCheckView({
               Try again
             </button>
           )}
-          <Link href="/" className="btn-ghost h-control-lg">
+          <Link href="/start" className="btn-ghost h-control-lg">
             Search again
           </Link>
         </div>
@@ -147,7 +147,7 @@ export function InvestorCheckView({
           <span className="text-muted">Checking as</span>
           <span className="border-b-2 border-accent font-medium">{fund}</span>
           <span className="label text-muted">{investorKind(investor.type)}</span>
-          <Link href="/" className="text-sm text-muted underline underline-offset-4 hover:text-foreground">
+          <Link href="/start" className="text-sm text-muted underline underline-offset-4 hover:text-foreground">
             Not your fund?
           </Link>
         </p>

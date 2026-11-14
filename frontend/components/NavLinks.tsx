@@ -5,10 +5,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// /about is a static page outside the app (public/about.html), so it gets a plain <a>:
+// The landing page at / is a static page outside the app (public/about.html), so it gets a plain <a>:
 // a client-side <Link> would ask the app router for a route that doesn't exist.
 const LINKS = [
-  { href: "/about", label: "How it works", external: true },
+  { href: "/", label: "How it works", external: true },
   { href: "/prep", label: "Slush prep", external: false },
 ];
 

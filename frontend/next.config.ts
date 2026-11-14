@@ -35,7 +35,9 @@ const nextConfig: NextConfig = {
     return [
       { source: "/api/:path*", destination: `${API_URL}/api/:path*` },
       // The landing page is a static page built with the taste skill's kit (public/about.html,
-      // public/assets/), outside the app's Tailwind layout so the two systems never mix.
+      // public/assets/), outside the app's Tailwind layout so the two systems never mix. It is the
+      // home page; the search form is at /start. /about stays for links already shared.
+      { source: "/", destination: "/about.html" },
       { source: "/about", destination: "/about.html" },
     ];
   },
