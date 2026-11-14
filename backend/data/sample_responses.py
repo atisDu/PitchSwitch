@@ -238,7 +238,7 @@ class Samples:
                 lines.append(f"- Also tied to {extra.competitor.name}{cites.mark(extra.sources)}.")
         else:
             lines.append(
-                "**Verdict: worth a pitch.** No tie to your direct competitors in Cala's data."
+                "**Verdict: worth a pitch.** No tie to your direct competitors found."
             )
         lines += ["", "## Activity in your space"]
         if score.reasons:
@@ -257,7 +257,8 @@ class Samples:
             lines += [
                 "",
                 "## Portfolio",
-                f"- {len(portfolio)} companies in Cala, including {names}{cites.mark(sources, 3)}.",
+                f"- {len(portfolio)} {'company' if len(portfolio) == 1 else 'companies'}, "
+                f"including {names}{cites.mark(sources, 3)}.",
             ]
         if score.warm_paths:
             lines += ["", "## Warm paths"]
