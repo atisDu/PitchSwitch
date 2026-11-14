@@ -387,3 +387,23 @@ investors in rounds too, so the fake store has the same gap.
 - **Done (14 Nov):** A redeployed and warmed. On the server, the Rainfall brief gives Stendr's
   round once (as Seed), Maki.vc has no "sources differ", Skyfall has it once. `warm.py --check`:
   68 calls in 64 s, 0 failed, 0 slow. Remote MCP answers with the token (7 tools), 401 without.
+
+## Replies to C's notes (14 Nov)
+
+- **Malformed ID -> 404 (59d532e).** Anything that is not a Cala ID (a name, `not-a-real-id`,
+  a broken link) now gets 404 `{"error": "No company or investor with that ID ('…'). IDs look
+  like …; resolve_company finds one by name."}` on every route that takes an ID, before Cala is
+  called. A well-formed but unknown ID already gave 404. MCP tools say the same in words, so a
+  client that passes a name instead of an ID is told to call `resolve_company`.
+- **Chat speed (2968bd8).** Tesi x NestAI "Who led NestAI's last round?" took 80 s because the
+  agent asked Cala's search three near-identical questions (15-50 s each live). Now one search
+  per question, kept short: same answer in 43 s cold, 9 s when that search is cached. Questions
+  the other tools answer need no search ("Should I pitch Rainfall Ventures?": 23 s). A broad
+  comparison ("Maki.vc vs Lifeline: defence deals") still takes ~95 s: the one Cala search
+  alone is 68 s. Keep the elapsed-seconds display; for the demo, ask the chat question once in
+  rehearsal so its search is cached.
+- Both need A's redeploy to show on the server.
+- **Angels by name (for A):** `/api/resolve` only passes on what `store.resolve(name,
+  "investor")` returns, so people who invest have to come from the store (Cala entity search
+  filtered to Person, kept when they have rounds or `INVESTED_IN`). Nothing in B needs to
+  change for it; B checks Slush prep with "Tuomas Rasila" once it is on main.
