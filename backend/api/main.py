@@ -1,13 +1,12 @@
 """Pitchlist REST API (contracts/api.md).
 
-resolve, founder/analyze, investor/check and brief run on core/; slush-prep runs the Gemini agent
-(agent/gemini_agent.py). chat still replays A's sample event stream until B14.
+resolve, founder/analyze, investor/check and brief run on core/; slush-prep and chat run the
+Gemini agent (agent/gemini_agent.py).
 """
 
 from __future__ import annotations
 
 import asyncio
-import json
 import uuid
 from collections.abc import AsyncIterator
 from typing import Literal
@@ -35,7 +34,6 @@ from core.competitors import Judgement, stored_judgement
 from core.conflict import check_conflict
 from core.scoring import rank_investors
 from data import NotFound, Upstream, get_store
-from data.config import MODELS_DIR
 
 MAX_SLUSH_INVESTORS = 25  # one Gemini loop and one brief each
 
@@ -71,16 +69,6 @@ async def _upstream(_: Request, exc: Upstream) -> JSONResponse:
 @app.exception_handler(LLMError)
 async def _llm(_: Request, exc: LLMError) -> JSONResponse:
     return JSONResponse({"error": f"competitor judging unavailable: {exc}"}, status_code=503)
-
-
-def _replay(name: str) -> AsyncIterator[AgentEvent]:
-    events = [AgentEvent.model_validate(e) for e in json.loads((MODELS_DIR / name).read_text())]
-
-    async def gen():
-        for event in events:
-            yield event
-
-    return gen()
 
 
 # --- request bodies -----------------------------------------------------------------------------
@@ -234,4 +222,7 @@ async def job_stream(job_id: str) -> StreamingResponse:
 
 @app.post("/api/chat")
 async def chat(body: ChatBody) -> StreamingResponse:
-    return _sse(_replay("agent_events_chat.json"))  # until B14
+    store = get_store()  # an unknown id in the scope: 404 now, before the stream starts
+    company = await store.company(body.company_id) if body.company_id else None
+    investor = await store.company(body.investor_id) if body.investor_id else None
+    return _sse(gemini_agent.chat(body.message, company, investor))

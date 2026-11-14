@@ -155,8 +155,16 @@ def test_slush_prep_job_streams_and_replays(client, monkeypatch):
         ]
 
 
-def test_chat_stream(client):
-    assert events(client.post("/api/chat", json={"message": "hi"}))[-1].type == "done"
+def test_chat_stream_is_scoped(client, monkeypatch):
+    async def fake_agent(message, company, investor):
+        yield AgentEvent(type="text", message=f"{message}|{company.name}|{investor.name} ")
+        yield AgentEvent(type="done")
+
+    monkeypatch.setattr(api.gemini_agent, "chat", fake_agent)
+    body = {"message": "pitch?", "company_id": STENDR, "investor_id": MAKI}
+    got = events(client.post("/api/chat", json=body))
+    assert [e.type for e in got] == ["text", "done"]
+    assert got[0].message == "pitch?|Stendr|Maki.vc "
 
 
 @pytest.mark.parametrize(
@@ -164,6 +172,7 @@ def test_chat_stream(client):
     [
         ("post", "/api/resolve", {"name": "x", "kind": "fund"}, 422),
         ("post", "/api/chat", {"message": ""}, 422),
+        ("post", "/api/chat", {"message": "hi", "company_id": "nope"}, 404),
         ("post", "/api/slush-prep", {"company_id": "nope", "investor_names": ["Maki.vc"]}, 404),
         ("post", "/api/slush-prep", {"company_id": "x", "investor_names": []}, 422),
         ("post", "/api/founder/analyze", {"company_id": "nope"}, 404),

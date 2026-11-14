@@ -116,3 +116,18 @@ Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
     React's double effect / reconnects). Max 25 names per job (422 above); blank and repeated
     names are dropped.
   - Briefs are not cached: the same investor costs ~20 s again on the next job.
+
+## B14 done: chat (14 Nov)
+
+- `/api/chat` runs the same agent loop, scoped to `company_id` / `investor_id` when given.
+  `step` events while tools run, then the whole answer as `text` events (one per sentence, sent
+  together at the end: the answer is checked before it is shown), then `done` with `citations`.
+- Every sentence must cite a fact a tool returned; a sentence that cites none, or states a number
+  its facts don't hold, is dropped. Sentences resting only on computed facts (fit score, rank,
+  "no conflict found") carry no `[n]` marker.
+- Live (Sensofusion): "Should I pitch Rainfall Ventures?" → no, backs Stendr [1][2][3], 17 s;
+  "top 3 investors to pitch and why?" → Maki.vc, NIF, ScaleWolf with 14 citations, 15 s;
+  "Who led Kelluu's Series A?" → NIF, €15M, 2026-04-14, 6 s. Off-topic → a fixed "no sourced
+  facts" line.
+- For C (C12): no chat history in the contract, so each message stands alone; send
+  `company_id` / `investor_id` of the page so "my company" / "this investor" resolve.
