@@ -1,7 +1,8 @@
 # Architecture
 
-Status: draft (task C15), updated 14 Nov. Live at <https://95-133-252-219.sslip.io>. Everything below runs on live data
-except where marked **planned** (vector search, A13) or **pending** (the serverless batch job, A16).
+Status: 14 Nov. Live at <https://95-133-252-219.sslip.io>. Everything below runs on live data
+except vector search (**planned**, A13) and the serverless form of the batch job (not created; the
+same job runs nightly by cron on the instance).
 
 ## Overview
 
@@ -105,11 +106,14 @@ in-flight requests and logs every call (endpoint, time, cache hit) for credit tr
   created through Verda's Cloud API by `deploy/verda.py` and updated with `deploy/ship.sh`.
 - **Batch job:** `batch/precompute_graph.py` crawls the investors around the demo space (portfolios,
   rounds) and derives co-investor counts and activity stats into Atlas; idempotent, resumable,
-  rate-limited. It runs nightly (03:00 UTC) on the instance; the serverless Verda batch-job version
-  (`batch/job_server.py`, one request, then exit) is ready but **pending** a registry for its image
-  (A16).
+  rate-limited. It runs nightly (03:00 UTC) by cron on the instance (A16; first full run: 110
+  investors, 96 with co-investors). A serverless Verda batch-job version (`batch/job_server.py`,
+  one request, then exit) is ready in code but not created: it needs the image in a registry.
+- **Demo safety:** `deploy/warm.py` calls every page the demo can reach to fill the cache, then
+  `deploy/cache-only.sh` makes the server answer only from it (whole demo path: 50 calls in 22 s,
+  0 to Cala). A name never looked up before then fails at once instead of waiting on Cala.
 - No GPUs, clusters or fine-tuning: the work is I/O (Cala, Gemini, Atlas), not compute.
-- Details, commands and costs: `deploy/verda.md`.
+- Cost: about EUR 1 a day for the instance; Atlas M0 is free. Details: `deploy/verda.md`.
 
 ## Frontend
 

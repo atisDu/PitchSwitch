@@ -62,13 +62,46 @@ and add `CALA_API_KEY` for live Cala data. Competitor judging needs `GEMINI_API_
 | `CALA_API_KEY`, `CALA_BASE_URL` | Cala REST API |
 | `GEMINI_API_KEY`, `GEMINI_MODEL_FAST`, `GEMINI_MODEL_SMART` | Competitor judging (and later briefs, agent) |
 | `MONGODB_URI`, `MONGODB_DB` | Shared cache and precomputed graph in Atlas; empty = local files in `.cache/` |
-| `VERDA_API_KEY`, `VERDA_EMBED_MODEL` | Verda (deployment and batch job; see `deploy/verda.md`) |
+| `VERDA_CLIENT_ID`, `VERDA_CLIENT_SECRET` | Verda Cloud API, for creating the instance (`deploy/verda.py`); never copied to the server |
+| `VERDA_API_KEY`, `VERDA_EMBED_MODEL` | Not used (Verda's Inference API has no embeddings endpoint) |
+| `CALA_PER_MINUTE` | Cala calls one process may make per minute (default 60; the key allows 100) |
+| `CALA_REQUIRE_CACHE` | `true` = refuse to call Cala when the cache is unreachable (set on the server) |
 | `USE_FAKE_STORE` | `true` = fixtures, `false` = live Cala |
 | `CACHE_ONLY` | `true` = serve only from the cache, no Cala calls (demo safety net) |
 | `API_URL` | Where the frontend sends `/api/*` |
 
 **Checks:** `pytest backend/tests` and `ruff check backend contracts` (venv active);
 `npm run build && npm run lint && npm test` in `frontend/`.
+
+## Deployment (Verda)
+
+One small **Verda CPU instance** hosts the whole product (frontend, API, MCP server) behind Caddy
+with automatic HTTPS, and the same image runs the nightly precompute job that keeps the investor
+graph and the cache fresh. The workload is I/O (Cala, Gemini, Atlas), not compute, so there are no
+GPUs or Verda Inference.
+
+```sh
+python deploy/verda.py create      # create the instance through Verda's Cloud API
+deploy/ship.sh <ip>                # ship the current commit, write the server .env, start, nightly cron
+python deploy/warm.py --check      # warm every page the demo can reach; fail if anything is slow
+deploy/cache-only.sh <ip> on       # demo day: answer only from the cache, no live Cala calls
+python deploy/verda.py delete      # after the hackathon
+```
+
+How we got there: Docker Compose checked locally → instance created via the API → shipped → Atlas
+network access fixed (blocked at first, the server called Cala uncached, so it now runs with
+`CALA_REQUIRE_CACHE=true`) → cache warmed → cache-only checked (the whole demo path: 50 calls in
+22 s, none to Cala).
+
+| Service | Use | Cost |
+| --- | --- | --- |
+| Verda CPU instance (4 vCPU, 16 GB, FIN-03, on demand) | Hosting + nightly batch (cron) | EUR 0.044/h, about EUR 1 a day |
+| MongoDB Atlas M0 | Cala response cache, investor graph, judgements, briefs | Free |
+| Cala | ~1,500 calls over the weekend | Hackathon credits |
+| Gemini | Competitor judging, briefs, agent | Hackathon key |
+| Caddy + Let's Encrypt (`sslip.io`) | HTTPS | Free |
+
+Full notes: [deploy/verda.md](deploy/verda.md).
 
 ## Repository
 
