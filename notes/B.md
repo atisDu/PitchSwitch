@@ -428,3 +428,16 @@ investors in rounds too, so the fake store has the same gap.
   "Add the Slush 2026 investors Cala knows of (12)". Cold it takes a few minutes (12 briefs, 3 at
   a time, 30-40 s each); once warmed, seconds.
 - **Not on the server until A redeploys.** Locally: run the backend from main.
+
+## For C: score breakdown on every card (B17, 14 Nov)
+
+- Each investor's **first reason** is now how its score adds up, e.g. Maki.vc on Sensofusion:
+  "Score 73.3/100 = leads in this space 35/35 (2 led) + rounds in this space 13.3/20 (2) +
+  recency 25/25 (last lead 2026-06-09) + warm paths 0/20 (0)", with the sources of the rounds
+  counted. No contract change; it shows in the card, chat and MCP as it is.
+- Investors only on the list as co-investors (no round in the space) get no breakdown: their
+  score is just their warm paths, which the card lists already.
+- It takes one of the 3 visible reason slots, so the last sourced fact moves behind "+ 1 more".
+  If you'd rather style it (a small bar per signal, or under the score), it always starts with
+  "Score " and the parts are split by " + ". Check the demo script if it reads out the reasons.
+- On the server after A's next redeploy.
