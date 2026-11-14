@@ -6,13 +6,19 @@ Skip lists change who they'd pitch, and get **one quote** for the pitch.
 
 ## Before you start
 
-- [ ] App running. Before C8 (until B's real API lands) it runs on the mock, from `frontend/`:
-      `npm run mock` and `API_URL=http://localhost:8001 npm run dev`, then <http://localhost:3000>.
-      After C8: point `API_URL` at B's server or use the deployed URL.
-- [ ] Laptop on the home page, "I'm raising" selected, window wide, nothing else open.
-- [ ] **On the mock only Kelluu, Sensofusion and Stendr have reports.** Ask the founder to play
-      Kelluu's founder (Finnish defence startup, raising after a €15M Series A). After C8, try their
-      own company first, then fall back to Kelluu if Cala doesn't know it.
+- [ ] Open the live site: **<https://95-133-252-219.sslip.io>**, on the home page with "I'm raising"
+      selected, window wide, nothing else open. Fallback without network: run it locally (README →
+      "Run it").
+- [ ] **Cache-only mode must be off** during sessions (`deploy/cache-only.sh 95.133.252.219 off`):
+      with it on, any company nobody looked up before fails at once. Check: search a random name on
+      the home page; you should get matches, not an error.
+- [ ] **Two companies per session:**
+  1. **Their own company**, typed in at the start of the warm-up. A company nobody has looked up
+     before takes a few minutes the first time (the page shows a "still working" notice); let it
+     load in a second tab while you talk. If Cala doesn't know it, say so and note it.
+  2. **Sensofusion** for the tasks if theirs isn't ready or is thin: it loads instantly and has
+     the clearest conflict (three funds on Skip because they backed the rival Stendr). Ask them to
+     play its founder: a Finnish counter-drone company raising its next round.
 - [ ] Ask before quoting: *"Can we quote you in our demo, with your first name and company?"*
 
 ## Script
@@ -27,8 +33,9 @@ tool, not you. There are no wrong answers; please think out loud."
 
 **3. Task (3 min). Don't help unless they're stuck for 30 s.**
 
-- "Find who you should pitch for Kelluu." *(Watch: do they find the search, pick the right
-  entity when there are several matches?)*
+- *(Start of warm-up)* "Type in your company." *(Watch: do they find the search, pick the right
+  entity when there are several matches? Leave it loading in a second tab.)*
+- "Find who you should pitch, for Sensofusion" (or their own company if it's ready).
 - "Who's the best fit, and why do you believe that?" *(Watch: do they read the reasons, open a
   source badge?)*
 - "Is there anyone you should *not* pitch?" *(Watch: do they find the Skip list, understand the
@@ -37,6 +44,8 @@ tool, not you. There are no wrong answers; please think out loud."
   re-rank?)*
 - Optional: "Now imagine you're that investor. What would they see?" *(The Flip link on a Skip
   card.)*
+- Optional: "Open the brief for your top investor." *(Watch: do they trust the cited sentences,
+  click a citation number? Angels have no brief yet: their cards say so.)*
 
 **4. Questions (2 min).**
 
@@ -60,7 +69,7 @@ Mark each observation: ✅ worked · ⚠️ hesitated / confused · ❌ failed o
 
 - **Founder / company / stage:**
 - **Date, who ran it:**
-- **Data:** mock / real API · company used:
+- **Company used:** their own (ready? / not in Cala?) · Sensofusion
 - **Found search and picked the right entity:**
 - **Understood Pitch ranking and reasons:**
 - **Opened a source badge:** yes / no
@@ -76,7 +85,7 @@ Mark each observation: ✅ worked · ⚠️ hesitated / confused · ❌ failed o
 
 - **Founder / company / stage:**
 - **Date, who ran it:**
-- **Data:** mock / real API · company used:
+- **Company used:** their own (ready? / not in Cala?) · Sensofusion
 - **Found search and picked the right entity:**
 - **Understood Pitch ranking and reasons:**
 - **Opened a source badge:** yes / no
@@ -92,7 +101,7 @@ Mark each observation: ✅ worked · ⚠️ hesitated / confused · ❌ failed o
 
 - **Founder / company / stage:**
 - **Date, who ran it:**
-- **Data:** mock / real API · company used:
+- **Company used:** their own (ready? / not in Cala?) · Sensofusion
 - **Found search and picked the right entity:**
 - **Understood Pitch ranking and reasons:**
 - **Opened a source badge:** yes / no
