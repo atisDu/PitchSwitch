@@ -224,13 +224,14 @@ const SKIP = SKIP_FUNDS.map(([n, c, s, rival], i) => {
 /** The sample founder report; with `competitorIds`, funds whose only conflicts were removed move to Pitch. */
 export function sampleReport(competitorIds?: string[]): FounderReport {
   const kept = competitorIds ? new Set(competitorIds) : null;
-  const keep = (s: InvestorScore) => ({ ...s, conflicts: s.conflicts.filter((c) => !kept || kept.has(c.competitor.id)) });
+  const keep = (s: InvestorScore) => ({ ...s, conflicts: s.conflicts.filter((c) => !kept || c.kind === "SANCTION" || kept.has(c.competitor.id)) });
   const skip = SKIP.map(keep);
   return {
     company: COMPANY,
     competitors: COMPETITORS.filter((c) => !kept || kept.has(c.company.id)),
     pitch: [...PITCH, ...skip.filter((s) => s.conflicts.length === 0)].sort(byScore),
     skip: skip.filter((s) => s.conflicts.length > 0),
+    notes: [],
   };
 }
 

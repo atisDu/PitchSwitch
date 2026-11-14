@@ -75,9 +75,9 @@ export function SkipCard({
             <li key={`${c.competitor.id}-${c.kind}-${i}`}>
               <p className="text-lg leading-snug font-medium">
                 <span className="label mr-2 inline-block rounded-md bg-foreground px-2 py-1 align-middle text-white">
-                  {c.kind === "BOARD" ? "Board conflict" : "Conflict"}
+                  {c.kind === "BOARD" ? "Board conflict" : c.kind === "SANCTION" ? "Sanctions" : "Conflict"}
                 </span>
-                {conflictText(c)}
+                {conflictText(c, item.investor.id)}
               </p>
               <div className="mt-1.5">
                 <SourceBadges sources={c.sources} max={2} />

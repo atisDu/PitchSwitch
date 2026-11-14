@@ -149,3 +149,10 @@ investor-like matches (searching "<name> Ventures" too) and writes the brief by 
   contradicts B25.
 - **The "screened: no sanctions record in Cala" line:** C will show it as a plain reason on the
   card (no badge needed when it has no source); please keep the wording exactly that, never "clean".
+
+**Answered (14 Nov):** B made it `Conflict.kind = "SANCTION"` in 1.2.0. C followed in the same
+evening: `types.ts` (1.2.0, `notes`), `conflictText`/`investorConflictText` name the fund or its
+LP, the Skip list and verdict say "sanctions record in Cala", the check's heading reads
+"Sanctions record." when that is the only hit, the screened line sorts last in reasons, notes
+show under the chips, and B22's hidden rivals are marked "(a rival found in its portfolio)" on
+the Skip list. Checked on the deployed API (Sensofusion: 11 Skip, 0 sanctions hits).

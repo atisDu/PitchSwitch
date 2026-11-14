@@ -188,12 +188,12 @@ export function InvestorCheckView({
       {conflicts.length > 0 ? (
         <section className="mt-12 rounded-[20px] bg-press px-6 py-10 text-background md:px-10 md:py-14" aria-labelledby="verdict">
           <h2 id="verdict" className="display text-5xl md:text-6xl">
-            Conflict.
+            {conflicts.every((c) => c.kind === "SANCTION") ? "Sanctions record." : "Conflict."}
           </h2>
           <ul className="mt-8 space-y-6">
             {conflicts.map((c, i) => (
               <li key={`${c.competitor.id}-${c.kind}-${i}`}>
-                <p className="max-w-3xl text-xl leading-snug">{investorConflictText(c, startup)}</p>
+                <p className="max-w-3xl text-xl leading-snug">{investorConflictText(c, startup, check.investor.id)}</p>
                 <div className="mt-2">
                   <SourceBadges sources={c.sources} max={3} />
                 </div>

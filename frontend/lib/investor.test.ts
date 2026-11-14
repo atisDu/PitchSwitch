@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { activitySummary, conflictText, leadSummary } from "./investor.ts";
+import { activitySummary, conflictText, leadSummary, skipCause } from "./investor.ts";
 import type { Conflict, EntityRef, InvestorScore } from "./types.ts";
 
 const ref = (name: string, type = "Organization"): EntityRef => ({
@@ -65,5 +65,24 @@ test("conflictText", () => {
   assert.equal(
     conflictText({ ...base, kind: "BOARD" }),
     "Has a seat on the board of your competitor Kova Labs",
+  );
+});
+
+const sref = (id: string, name: string): EntityRef => ({ id, name, type: "Organization", description: null });
+const sanction = (id: string, name: string): Conflict => ({ kind: "SANCTION", competitor: sref(id, name), via_person: null, sources: [] });
+
+test("a sanctions conflict names the fund itself or its LP, never a competitor", () => {
+  assert.equal(conflictText(sanction("f1", "Fund One"), "f1"), "Has a sanctions record in Cala");
+  assert.equal(conflictText(sanction("lp", "Big LP"), "f1"), "Its LP Big LP has a sanctions record in Cala");
+  assert.equal(conflictText(sanction("lp", "Big LP")), "Sanctions record in Cala on Big LP");
+});
+
+test("skipCause says what put the funds on Skip", () => {
+  const score = (conflicts: Conflict[]) => ({ conflicts }) as unknown as InvestorScore;
+  const rival: Conflict = { kind: "PORTFOLIO", competitor: sref("c", "Rival"), via_person: null, sources: [] };
+  assert.equal(skipCause([score([rival])]), "backed a direct competitor");
+  assert.equal(
+    skipCause([score([rival]), score([sanction("f", "F")])]),
+    "backed a direct competitor or have a sanctions record in Cala",
   );
 });

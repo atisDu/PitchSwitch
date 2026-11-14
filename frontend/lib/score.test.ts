@@ -34,3 +34,12 @@ test("splitReasons takes the breakdown off the reasons", () => {
   assert.equal(s.source?.sources.length, 1);
   assert.equal(splitReasons([{ text: "Led Aavuus", sources: [] }]).breakdown, null);
 });
+
+test("the sanctions screen line goes last among the reasons", () => {
+  const r = (text: string) => ({ text, sources: [] });
+  const { rest } = splitReasons([r("screened: no sanctions record in Cala"), r("Led 2 rounds"), r("Fresh fund: X")]);
+  assert.deepEqual(
+    rest.map((x) => x.text),
+    ["Led 2 rounds", "Fresh fund: X", "screened: no sanctions record in Cala"],
+  );
+});

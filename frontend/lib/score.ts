@@ -37,5 +37,9 @@ export function parseBreakdown(text: string): ScoreBreakdown | null {
 export function splitReasons(reasons: Reason[]): { breakdown: ScoreBreakdown | null; source: Reason | null; rest: Reason[] } {
   const first = reasons[0];
   const breakdown = first ? parseBreakdown(first.text) : null;
-  return breakdown ? { breakdown, source: first, rest: reasons.slice(1) } : { breakdown: null, source: null, rest: reasons };
+  const others = breakdown ? reasons.slice(1) : reasons;
+  // B25's "screened: no sanctions record in Cala" goes last, so it never takes a visible slot.
+  const screened = (r: Reason) => r.text.startsWith("screened: ");
+  const rest = [...others.filter((r) => !screened(r)), ...others.filter(screened)];
+  return breakdown ? { breakdown, source: first, rest } : { breakdown: null, source: null, rest };
 }

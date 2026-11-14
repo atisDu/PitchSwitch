@@ -16,11 +16,11 @@ import { SlowNotice } from "@/components/SlowNotice";
 import { SourceBadges } from "@/components/SourceBadge";
 import { analyzeFounder } from "@/lib/api";
 import { describeError } from "@/lib/errors";
-import { displayName, keptCompetitorIds, prettyEnum } from "@/lib/format";
-import { conflictText } from "@/lib/investor";
+import { displayName, keptCompetitorIds, prettyDates, prettyEnum } from "@/lib/format";
+import { conflictText, skipCause } from "@/lib/investor";
 import { dedupeSources } from "@/lib/sources";
 import { prepPath } from "@/lib/routes";
-import type { Company, Conflict, FounderReport } from "@/lib/types";
+import type { Company, Conflict, FounderReport, InvestorScore } from "@/lib/types";
 
 // Live reports rank 30-45 investors; the top ones matter. The Skip list is summarised above
 // the Pitch list, so showing more here no longer pushes it out of reach.
@@ -217,6 +217,7 @@ export function FounderReportView({
             />
           )}
         </div>
+        {report.notes.length > 0 && <CompetitorNotes notes={report.notes} />}
       </section>
 
       <div className={`transition-opacity ${reranking ? "opacity-40" : ""}`} aria-busy={reranking}>
@@ -317,7 +318,7 @@ function Verdict({ report }: { report: FounderReport }) {
       <a href="#skip-summary" className="font-medium underline decoration-accent decoration-4 underline-offset-4">
         {count(report.skip.length, "investor")} to skip
       </a>
-      , because they backed one of your {comps}.{" "}
+      , because they {skipCause(report.skip)}.{" "}
       <a href="#pitch-heading" className="underline decoration-line decoration-2 underline-offset-4 hover:decoration-foreground">
         {report.pitch.length} to pitch
       </a>
@@ -326,11 +327,29 @@ function Verdict({ report }: { report: FounderReport }) {
   );
 }
 
-const shortConflict = (c: Conflict) =>
-  c.kind === "BOARD" ? `board seat at ${displayName(c.competitor.name)}` : `backed ${displayName(c.competitor.name)}`;
+function shortConflict(c: Conflict, s: InvestorScore, chips: Set<string>): string {
+  if (c.kind === "SANCTION") {
+    return c.competitor.id === s.investor.id ? "sanctions record" : `LP ${displayName(c.competitor.name)}: sanctions record`;
+  }
+  if (c.kind === "BOARD") return `board seat at ${displayName(c.competitor.name)}`;
+  // B22: the X-ray finds direct rivals in a portfolio that are not among the chips above.
+  const hidden = !chips.has(c.competitor.id) ? " (a rival found in its portfolio)" : "";
+  return `backed ${displayName(c.competitor.name)}${hidden}`;
+}
+
+/** The line under "Don't pitch these N.": the rival's-backer warning, and a sanctions note when one occurs. */
+function skipCopy(skip: InvestorScore[]): string {
+  const sanctioned = skip.some((s) => s.conflicts.some((c) => c.kind === "SANCTION"));
+  const rivals = skip.some((s) => s.conflicts.some((c) => c.kind !== "SANCTION"));
+  const parts: string[] = [];
+  if (rivals) parts.push("Pitching a fund that backed a direct competitor means handing your deck to a rival's backer.");
+  if (sanctioned) parts.push("A sanctions record in Cala, on the fund or one of its LPs, rules a fund out on its own.");
+  return parts.join(" ");
+}
 
 /** The Skip list in one line per fund, above the Pitch list: the core value, within reach. */
 function SkipRollCall({ report }: { report: FounderReport }) {
+  const chips = new Set(report.competitors.map((c) => c.company.id));
   return (
     <section
       className="mt-12 rounded-[20px] bg-press px-6 py-10 text-background md:px-10 md:py-12"
@@ -340,8 +359,7 @@ function SkipRollCall({ report }: { report: FounderReport }) {
         Don&apos;t pitch these {report.skip.length}.
       </h2>
       <p className="mt-3 max-w-2xl text-sage">
-        Each backed one of your direct competitors. Pitching them means handing your deck to a
-        rival&apos;s backer.
+        {skipCopy(report.skip)}
       </p>
       <ul className="mt-8 divide-y divide-slate border-y border-slate">
         {report.skip.map((s) => (
@@ -349,7 +367,7 @@ function SkipRollCall({ report }: { report: FounderReport }) {
             <a href={`#skip-${s.investor.id}`} className="text-lg font-medium underline-offset-4 hover:underline pointer-coarse:inline-block pointer-coarse:py-2.5">
               {displayName(s.investor.name)}
             </a>
-            <span className="text-sage">{s.conflicts.map(shortConflict).join(" · ")}</span>
+            <span className="text-sage">{s.conflicts.map((c) => shortConflict(c, s, chips)).join(" · ")}</span>
           </li>
         ))}
       </ul>
@@ -366,7 +384,7 @@ function SkipRollCall({ report }: { report: FounderReport }) {
 /** Plain text for a CRM or meeting notes, with up to two source links per conflict. */
 function skipListText(report: FounderReport): string {
   const lines = report.skip.map((s) => {
-    const why = s.conflicts.map(conflictText).join("; ");
+    const why = s.conflicts.map((c) => conflictText(c, s.investor.id)).join("; ");
     const urls = dedupeSources(s.conflicts.flatMap((c) => c.sources))
       .map((e) => e.source.url)
       .filter(Boolean)
@@ -394,6 +412,23 @@ function CopySkipList({ report }: { report: FounderReport }) {
         {copied === "done" ? "Copied" : copied === "failed" ? "Couldn't copy" : "Copy the Skip list"}
       </span>
     </button>
+  );
+}
+
+/** B24's sourced lines on the competitors: grants they won, and which are at Slush 2026. */
+function CompetitorNotes({ notes }: { notes: FounderReport["notes"] }) {
+  return (
+    <div className="mt-6 border-t border-line pt-5">
+      <p className="label">Also about your competitors</p>
+      <ul className="mt-2 space-y-2">
+        {notes.map((n, i) => (
+          <li key={`${n.text}-${i}`} className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+            <span>{prettyDates(n.text)}</span>
+            <SourceBadges sources={n.sources} max={2} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

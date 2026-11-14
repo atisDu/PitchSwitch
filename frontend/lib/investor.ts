@@ -29,12 +29,33 @@ export function activitySummary(s: InvestorScore): string {
   return parts.join(" · ");
 }
 
-/** The reason an investor is on the Skip list, in one line. */
-export function conflictText(c: Conflict): string {
+/** The reason an investor is on the Skip list, in one line. `investorId` tells a sanctions
+ *  record on the fund itself from one on its LP. */
+export function conflictText(c: Conflict, investorId?: string): string {
+  if (c.kind === "SANCTION") {
+    if (c.competitor.id === investorId) return "Has a sanctions record in Cala";
+    if (investorId) return `Its LP ${displayName(c.competitor.name)} has a sanctions record in Cala`;
+    return `Sanctions record in Cala on ${displayName(c.competitor.name)}`;
+  }
   if (c.kind === "BOARD") {
     return c.via_person
       ? `${c.via_person.name} sits on the board of your competitor ${displayName(c.competitor.name)}`
       : `Has a seat on the board of your competitor ${displayName(c.competitor.name)}`;
   }
   return `Backed your competitor ${displayName(c.competitor.name)}`;
+}
+
+/** The B25 screen's line for an investor with no record. Shown plainly, last: absence in Cala is
+ *  not proof, so it never reads as "clean". */
+export const SCREENED_TEXT = "screened: no sanctions record in Cala";
+
+/** What puts the funds in `skip` on the Skip list, in a clause: "backed a direct competitor",
+ *  plus the other kinds that occur. */
+export function skipCause(skip: InvestorScore[]): string {
+  const kinds = new Set(skip.flatMap((s) => s.conflicts.map((c) => c.kind)));
+  const parts: string[] = [];
+  if (kinds.has("PORTFOLIO") || kinds.size === 0) parts.push("backed a direct competitor");
+  if (kinds.has("BOARD")) parts.push("sit on a competitor's board");
+  if (kinds.has("SANCTION")) parts.push("have a sanctions record in Cala");
+  return parts.length > 1 ? `${parts.slice(0, -1).join(", ")} or ${parts.at(-1)}` : parts[0];
 }

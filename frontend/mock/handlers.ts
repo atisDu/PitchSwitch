@@ -199,7 +199,7 @@ export function restrictToCompetitors(report: FounderReport, keep: Set<string>):
   const pitch: InvestorScore[] = [...report.pitch];
   const skip: InvestorScore[] = [];
   for (const s of report.skip) {
-    const conflicts = s.conflicts.filter((c) => keep.has(c.competitor.id));
+    const conflicts = s.conflicts.filter((c) => c.kind === "SANCTION" || keep.has(c.competitor.id)); // a sanction is no competitor
     (conflicts.length ? skip : pitch).push({ ...s, conflicts });
   }
   const byScore = (a: InvestorScore, b: InvestorScore) => b.score - a.score;

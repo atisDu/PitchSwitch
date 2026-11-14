@@ -74,7 +74,12 @@ export function roundTitle(r: Round): string {
 }
 
 /** The conflict from the investor's side of the table. */
-export function investorConflictText(c: Conflict, startupName: string): string {
+export function investorConflictText(c: Conflict, startupName: string, investorId?: string): string {
+  if (c.kind === "SANCTION") {
+    return c.competitor.id === investorId
+      ? `Cala has a sanctions record on ${c.competitor.name}`
+      : `Your LP ${c.competitor.name} has a sanctions record in Cala`;
+  }
   if (c.kind === "BOARD") {
     return c.via_person
       ? `${c.via_person.name} sits on the board of ${c.competitor.name}, which competes with ${startupName}`

@@ -1,10 +1,10 @@
-// Mirrors contracts/schemas.py (CONTRACT_VERSION 1.1.1) field for field.
+// Mirrors contracts/schemas.py (CONTRACT_VERSION 1.2.0) field for field.
 // Do not change shapes here without a contract change (CLAUDE.md rule 4).
 //
 // Pydantic always serialises every field, so fields with defaults are present
 // in the JSON: they are required here, and `X | None = None` becomes `X | null`.
 
-export const CONTRACT_VERSION = "1.1.1";
+export const CONTRACT_VERSION = "1.2.0";
 
 export type SourceRank = "PRIMARY" | "FILING" | "PRESS" | "AGGREGATOR" | "UNKNOWN";
 
@@ -67,7 +67,9 @@ export interface Competitor {
   similarity: number | null;
 }
 
-export type ConflictKind = "PORTFOLIO" | "BOARD";
+// PORTFOLIO / BOARD: about a direct competitor. SANCTION (1.2.0): Cala has a sanctions record on
+// the investor or one of its LPs; `competitor` is then that sanctioned entity, not a competitor.
+export type ConflictKind = "PORTFOLIO" | "BOARD" | "SANCTION";
 
 export interface Conflict {
   kind: ConflictKind;
@@ -113,6 +115,7 @@ export interface FounderReport {
   competitors: Competitor[];
   pitch: InvestorScore[]; // no conflicts; sorted by score, highest first
   skip: InvestorScore[]; // one or more conflicts; sorted by score, highest first
+  notes: Reason[]; // 1.2.0: sourced lines on the competitors (grants won, at Slush 2026); may be empty
 }
 
 export interface InvestorCheck {
