@@ -3,6 +3,7 @@ import json
 import pytest
 from fastapi.testclient import TestClient
 
+import api.main as api
 import core.briefs as briefs
 import core.competitors as competitors
 from agent.llm import LLMError
@@ -52,7 +53,8 @@ def judged(monkeypatch):
 def client(monkeypatch, judged):
     monkeypatch.setenv("USE_FAKE_STORE", "true")
     get_store.cache_clear()
-    yield TestClient(app)
+    with TestClient(app) as test_client:  # one event loop for all requests: jobs outlive a call
+        yield test_client
     get_store.cache_clear()
 
 
@@ -136,10 +138,21 @@ def test_gemini_unavailable_is_503(client, monkeypatch):
     assert r.status_code == 503 and "GEMINI_API_KEY" in r.json()["error"]
 
 
-def test_slush_prep_stream(client):
-    body = {"company_id": KELLUU, "investor_names": ["Maki.vc"]}
+def test_slush_prep_job_streams_and_replays(client, monkeypatch):
+    async def fake_agent(company, names):
+        assert company.id == KELLUU
+        for name in names:
+            yield AgentEvent(type="step", message="Looking up", investor_name=name)
+        yield AgentEvent(type="done")
+
+    monkeypatch.setattr(api.gemini_agent, "slush_prep", fake_agent)
+    body = {"company_id": KELLUU, "investor_names": ["Maki.vc", "Tesi"]}
     job_id = client.post("/api/slush-prep", json=body).json()["job_id"]
-    assert events(client.get(f"/api/jobs/{job_id}/stream"))[-1].type == "done"
+    for _ in range(2):  # a second stream replays the job; it does not run it again
+        got = events(client.get(f"/api/jobs/{job_id}/stream"))
+        assert [(e.type, e.investor_name) for e in got] == [
+            ("step", "Maki.vc"), ("step", "Tesi"), ("done", None)
+        ]
 
 
 def test_chat_stream(client):
@@ -151,6 +164,8 @@ def test_chat_stream(client):
     [
         ("post", "/api/resolve", {"name": "x", "kind": "fund"}, 422),
         ("post", "/api/chat", {"message": ""}, 422),
+        ("post", "/api/slush-prep", {"company_id": "nope", "investor_names": ["Maki.vc"]}, 404),
+        ("post", "/api/slush-prep", {"company_id": "x", "investor_names": []}, 422),
         ("post", "/api/founder/analyze", {"company_id": "nope"}, 404),
         ("post", "/api/investor/check", {"investor_id": "nope", "company_id": "x"}, 404),
         ("post", "/api/brief", {"investor_id": "../../x", "company_id": "y"}, 404),

@@ -95,3 +95,24 @@ Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
 - Live (Sensofusion): Maki.vc -> "Pitch, no conflict" (26 citations); Rainfall Ventures -> "Skip,
   backs Stendr" (16 citations). ~20 s per brief once Cala's answer is cached (first: ~60 s).
 - For C (C10): `Brief.markdown` uses `## ` headings and `[n]` markers after sentences.
+
+## B12–B13 done: agent tools, agent loop, slush prep (14 Nov)
+
+- `agent/tools.py`: the §5.4 tools (+ `sourced_answer`) as "IDs in, contract models out"
+  functions, shared by the agent and the MCP server. The stored judgement now lives in
+  `core/competitors.stored_judgement`, so routes, agent and MCP agree on direct competitors.
+- `agent/gemini_agent.py`: Gemini function-calling loop (forced tool calls, max 12 per run, then
+  only the closing tool). Tool results reach Gemini as numbered facts; IDs it did not get from a
+  tool are refused.
+- **Slush prep is live** (`/api/slush-prep` + `/api/jobs/{id}/stream`): one agent run per pasted
+  name (look up → pick the investor → brief, or give up with a reason), 3 names at a time.
+  Live on Sensofusion: Maki.vc → pitch (29 citations), Rainfall Ventures → skip (backs Stendr),
+  Inventure → pitch, "Nonexistent Capital" → error. 89 s for the four (briefs ~20-60 s each).
+- **For C (C11):**
+  - Events of different investors **interleave** (they run in parallel); group by `investor_name`.
+  - The first event is a `step` without `investor_name` ("Finding <company>'s direct competitors").
+  - Per investor: `step` (looking up) → `step` with `investor` (found) → `brief`; or `step` → `error`.
+  - The job starts at the POST; opening the stream again replays it from the start (safe with
+    React's double effect / reconnects). Max 25 names per job (422 above); blank and repeated
+    names are dropped.
+  - Briefs are not cached: the same investor costs ~20 s again on the next job.

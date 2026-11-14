@@ -1,7 +1,7 @@
 """Pitchlist REST API (contracts/api.md).
 
-resolve, founder/analyze, investor/check and brief run on core/. slush-prep and chat still replay
-A's sample event streams from contracts/fixtures/models/ until B13-B14.
+resolve, founder/analyze, investor/check and brief run on core/; slush-prep runs the Gemini agent
+(agent/gemini_agent.py). chat still replays A's sample event stream until B14.
 """
 
 from __future__ import annotations
@@ -9,6 +9,7 @@ from __future__ import annotations
 import asyncio
 import json
 import uuid
+from collections.abc import AsyncIterator
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException, Request
@@ -18,7 +19,7 @@ from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
-from agent import tools
+from agent import gemini_agent, tools
 from agent.llm import LLMError
 from contracts.schemas import (
     CONTRACT_VERSION,
@@ -35,6 +36,8 @@ from core.conflict import check_conflict
 from core.scoring import rank_investors
 from data import NotFound, Upstream, get_store
 from data.config import MODELS_DIR
+
+MAX_SLUSH_INVESTORS = 25  # one Gemini loop and one brief each
 
 app = FastAPI(title="Pitchlist API", version=CONTRACT_VERSION)
 # ponytail: any origin, no credentials; pin to the deployed frontend URL if that ever matters.
@@ -70,6 +73,16 @@ async def _llm(_: Request, exc: LLMError) -> JSONResponse:
     return JSONResponse({"error": f"competitor judging unavailable: {exc}"}, status_code=503)
 
 
+def _replay(name: str) -> AsyncIterator[AgentEvent]:
+    events = [AgentEvent.model_validate(e) for e in json.loads((MODELS_DIR / name).read_text())]
+
+    async def gen():
+        for event in events:
+            yield event
+
+    return gen()
+
+
 # --- request bodies -----------------------------------------------------------------------------
 
 
@@ -90,7 +103,7 @@ class PairBody(BaseModel):
 
 class SlushPrepBody(BaseModel):
     company_id: str = Field(min_length=1)
-    investor_names: list[str] = Field(min_length=1)
+    investor_names: list[str] = Field(min_length=1, max_length=MAX_SLUSH_INVESTORS)
 
 
 class ChatBody(BaseModel):
@@ -99,29 +112,23 @@ class ChatBody(BaseModel):
     message: str = Field(min_length=1)
 
 
-# --- fixture samples (replaced route by route as core lands) ------------------------------------
+# --- streams ------------------------------------------------------------------------------------
 
 
-def _sample(name: str):
-    path = MODELS_DIR / name
-    if "/" in name or "\\" in name or not path.exists():  # ids end up in the file name
-        raise HTTPException(404, f"no sample data for this request ({name})")
-    return json.loads(path.read_text())
-
-
-def _events(name: str) -> list[AgentEvent]:
-    return [AgentEvent.model_validate(e) for e in _sample(name)]
-
-
-def _sse(events: list[AgentEvent]) -> StreamingResponse:
+def _sse(events: AsyncIterator[AgentEvent]) -> StreamingResponse:
     async def gen():
-        for event in events:
+        async for event in events:
             yield f"data: {event.model_dump_json()}\n\n"
 
-    return StreamingResponse(gen(), media_type="text/event-stream")
+    # A proxy in front (the deployed HTTPS one) must pass events on as they come, unbuffered.
+    headers = {"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
+    return StreamingResponse(gen(), media_type="text/event-stream", headers=headers)
 
 
-_jobs: dict[str, list[AgentEvent]] = {}  # ponytail: in-memory, lost on restart; fine for a demo
+# Slush-prep jobs: the events so far, appended to by the job's task.
+# ponytail: in memory, never evicted, lost on restart; fine for a demo.
+_jobs: dict[str, list[AgentEvent]] = {}
+_tasks: set[asyncio.Task] = set()  # keeps running jobs from being garbage-collected
 
 
 # --- routes -------------------------------------------------------------------------------------
@@ -190,18 +197,41 @@ async def brief(body: PairBody) -> Brief:
 
 @app.post("/api/slush-prep")
 async def slush_prep(body: SlushPrepBody) -> dict:
+    company = await get_store().company(body.company_id)  # unknown company: 404 now, not later
     job_id = uuid.uuid4().hex
-    _jobs[job_id] = _events("agent_events_slush_prep.json")
+    events = _jobs[job_id] = []
+
+    async def work() -> None:
+        async for event in gemini_agent.slush_prep(company, body.investor_names):
+            events.append(event)
+
+    task = asyncio.create_task(work())
+    _tasks.add(task)
+    task.add_done_callback(_tasks.discard)
     return {"job_id": job_id}
 
 
 @app.get("/api/jobs/{job_id}/stream")
 async def job_stream(job_id: str) -> StreamingResponse:
+    """Every event of the job from its start, then the new ones as they come: opening the stream
+    twice (a reconnect, React's double effect) replays; it never runs the job again."""
     if job_id not in _jobs:
         raise HTTPException(404, f"no job {job_id}")
-    return _sse(_jobs[job_id])
+    events = _jobs[job_id]
+
+    async def follow():
+        sent = 0
+        while True:
+            for event in events[sent:]:
+                sent += 1
+                yield event
+                if event.type == "done":
+                    return
+            await asyncio.sleep(0.2)  # ponytail: polling; an asyncio.Condition if 0.2 s ever shows
+
+    return _sse(follow())
 
 
 @app.post("/api/chat")
 async def chat(body: ChatBody) -> StreamingResponse:
-    return _sse(_events("agent_events_chat.json"))
+    return _sse(_replay("agent_events_chat.json"))  # until B14
