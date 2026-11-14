@@ -1,9 +1,9 @@
 # Demo script (task C16)
 
-Draft, 14 Nov; path updated to the report's new layout (Skip first) and the server numbers B
-checked after A's redeploy. **Run it once on the live site before rehearsing.**
+Draft, 14 Nov; path updated to the report's layout (Skip first) and the deployed API's numbers
+at contract 1.2.0 (B22 X-ray, B23 fresh funds, B24 notes, B25 sanctions screen). **Run it once on the live site before rehearsing.**
 **About 3 minutes.** One presenter talks, one drives the laptop.
-Story: *nine funds you'd naturally pitch already backed one of your four direct rivals*, found from
+Story: *eleven funds you'd naturally pitch already backed a direct rival*, found from
 both sides of the table, with a source one click away.
 
 Reports grow as more companies get looked up (vector search; intended). **Recheck every line below
@@ -14,16 +14,17 @@ against the screen after the Sunday-morning freeze** (warm + cache-only, see Pre
 | Step | Screen | Click / type |
 | --- | --- | --- |
 | 1 | Home | "I'm raising" → type **Sensofusion** → Find → pick **Sensofusion Oy** → **Find who to pitch** |
-| 2 | Founder report | Four competitor chips: **MyDefence, Stendr, Frankenburg Technologies, Origin Robotics**; hover **Stendr** to show the reason |
-| 3 | Report top | The verdict line under the name: **9 investors to skip**, 26 to pitch. Then the dark **Don't pitch these 9.** list: **Skyfall Ventures** is first, "backed Stendr" |
-| 4 | Evidence, then Pitch | Click **Skyfall Ventures** in that list: it jumps to its card, "Backed your competitor Stendr"; click a source badge. Scroll up to **Who to pitch**: top card **Maki.vc** (fit 70), open breakdown |
+| 2 | Founder report | Four competitor chips: **MyDefence, Stendr, Frankenburg Technologies, Origin Robotics**; hover **Stendr** to show the reason. Below them, "Also about your competitors": Frankenburg's EDF grant, MyDefence's Innobooster (don't read out) |
+| 3 | Report top | The verdict line under the name: **11 investors to skip**, 30 to pitch. Then the dark **Don't pitch these 11.** list: **BSV Ventures** first, "backed Zvook (a rival found in its portfolio)"; **Skyfall Ventures** second, "backed Stendr" |
+| 4 | Evidence, then Pitch | Click **Skyfall Ventures** in that list: it jumps to its card, "Backed your competitor Stendr"; click a source badge. Scroll up to **Who to pitch**: top card **Maki.vc** (fit 70), open breakdown; its last line reads "screened: no sanctions record in Cala" |
 | 5 | Flip | On the **Skyfall Ventures** card: **Flip: see this from Skyfall Ventures' side** |
 | 6 | Investor check | Verdict **Conflict.**: "Stendr is in your portfolio and competes with Sensofusion Oy" |
 | 7 | Claude Desktop | Web search **off**; ask: *"Using only PitchSwitch, should Sensofusion pitch Skyfall Ventures?"* (asked once beforehand; setup: `docs/mcp-demo.md`) |
 
-**Live site: <https://95-133-252-219.sslip.io>.** Server numbers after A's redeploy (B, 14 Nov 17:40):
-Pitch Maki.vc 69.5 (shown as 70), NATO Innovation Fund 38.5, Tesi 36.2; Skip starts with Skyfall
-Ventures, then Change Ventures and Startuplab. Earlier checks: founder report 3.1 s,
+**Live site: <https://95-133-252-219.sslip.io>.** Deployed API at 1.2.0 (C, 14 Nov, evening):
+Pitch Maki.vc 69.9 (shown as 70), NATO Innovation Fund 39.2, Tesi 35.7, Lifeline 35.6; Skip (11)
+starts with BSV Ventures (Zvook, found by B22's portfolio X-ray, not a chip), then Skyfall
+Ventures, Change Ventures, Startuplab. 0 sanctions hits; every investor carries the screened line. Earlier checks: founder report 3.1 s,
 Skyfall flip 1.0 s (7 sources), Skyfall brief 0.3 s ("Skip Skyfall Ventures because it backs
 Stendr…", 13 citations). Skyfall is in the top 6 of Skip, so `deploy/warm.py` keeps its check and
 brief cached. Direct URLs, if typing fails:
@@ -35,7 +36,7 @@ brief cached. Direct URLs, if typing fails:
 (`9b65ed62`) describes "a Glasgow-based hospitality and tourism company", so its brief does too.
 The conflict itself (backs Stendr, 7 sources) is right (`notes/B.md`).
 
-Rainfall Ventures and Startuplab also backed Stendr and work the same way; Startuplab is #3 on Skip,
+Rainfall Ventures and Startuplab also backed Stendr and work the same way; Startuplab is #4 on Skip,
 Rainfall further down (below warm.py's top 6). The recorded sample data tells a different story altogether;
 don't demo from the mock unless everything else fails.
 
@@ -50,8 +51,9 @@ you who to pitch, and who to skip."
 "I'm Sensofusion, a Finnish counter-drone company. PitchSwitch finds my direct competitors in Cala's
 graph, four of them (here's why Stendr counts), then every round they raised and every investor
 behind them."
-"Before anything else, it tells me who to skip: nine funds that each backed one of my direct rivals.
-Skyfall Ventures, for one, backed Stendr. Pitch them and your deck lands with a competitor's
+"Before anything else, it tells me who to skip: eleven funds that each backed a direct rival. One,
+BSV, backs a rival I didn't even list: PitchSwitch found it in their portfolio. Skyfall Ventures
+backed Stendr. Pitch them and your deck lands with a competitor's
 investors. That's not a guess: here's the source." *(Click the badge.)*
 "And who should I pitch? Maki.vc fits best, 70 out of 100: it led defence pre-seeds this year, and
 here's how the score adds up."
