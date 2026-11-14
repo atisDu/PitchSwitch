@@ -1,30 +1,36 @@
 # Demo script (task C16)
 
-Draft, 14 Nov; **path checked on live data during C8** (B's API, `USE_FAKE_STORE=false`, Atlas
-cache). **About 3 minutes.** One presenter talks, one drives the laptop.
-Story: *three funds you'd naturally pitch already backed your direct rival*, found from both sides
-of the table, with a source one click away.
+Draft, 14 Nov; **path checked on the live site** after vector search was switched on (A13).
+**About 3 minutes.** One presenter talks, one drives the laptop.
+Story: *nine funds you'd naturally pitch already backed one of your four direct rivals*, found from
+both sides of the table, with a source one click away.
+
+Reports grow as more companies get looked up (vector search; intended). **Recheck every line below
+against the screen after the Sunday-morning freeze** (warm + cache-only, see Pre-flight).
 
 ## The path
 
 | Step | Screen | Click / type |
 | --- | --- | --- |
 | 1 | Home | "I'm raising" → type **Sensofusion** → Find → pick **Sensofusion Oy** → **Find who to pitch** |
-| 2 | Founder report | Competitor chips **MyDefence** and **Stendr**; hover **Stendr** to show the reason |
+| 2 | Founder report | Four competitor chips: **MyDefence, Stendr, Frankenburg Technologies, Origin Robotics**; hover **Stendr** to show the reason |
 | 3 | Pitch list | Top card **Maki.vc** (fit 73): led defence pre-seeds this year; show one source badge |
-| 4 | Skip list | **Startuplab, Rainfall Ventures, Skyfall Ventures**: "Backed your competitor Stendr"; click a source badge |
-| 5 | Flip | On the **Rainfall Ventures** card: **Flip: see this from Rainfall Ventures's side** |
+| 4 | Skip list | **9 funds**. Point at **Skyfall Ventures** (#3): "Backed your competitor Stendr"; click a source badge |
+| 5 | Flip | On the **Skyfall Ventures** card: **Flip: see this from Skyfall Ventures's side** |
 | 6 | Investor check | Verdict **Conflict.**: "Stendr is in your portfolio and competes with Sensofusion Oy" |
-| 7 | Claude Desktop | Web search **off**; ask: *"Using only PitchSwitch, should Sensofusion pitch Rainfall Ventures?"* (asked once beforehand) (setup: `docs/mcp-demo.md`) |
+| 7 | Claude Desktop | Web search **off**; ask: *"Using only PitchSwitch, should Sensofusion pitch Skyfall Ventures?"* (asked once beforehand; setup: `docs/mcp-demo.md`) |
 
-**Live site: <https://95-133-252-219.sslip.io>** (Verda, A17). Checked there on 14 Nov: founder report 1.9 s, flip 0.07 s,
-Rainfall brief 0.6 s, all cached. Direct URLs, if typing fails:
+**Live site: <https://95-133-252-219.sslip.io>.** Checked there on 14 Nov: founder report 3.1 s,
+Skyfall flip 1.0 s (7 sources), Skyfall brief 0.3 s ("Skip Skyfall Ventures because it backs
+Stendr…", 13 citations). Skyfall is in the top 6 of Skip, so `deploy/warm.py` keeps its check and
+brief cached. Direct URLs, if typing fails:
 
 - Founder report: `/founder/202e9283-6455-486f-8868-03c7e0d0cf29`
-- Investor check: `/check/0322aa66-c3c7-470c-a940-e6ec117d4051/202e9283-6455-486f-8868-03c7e0d0cf29`
+- Investor check: `/check/9b65ed62-a126-4255-8339-44c59fbf0ad8/202e9283-6455-486f-8868-03c7e0d0cf29`
 
-The recorded sample data tells a different story (Stendr, Maki.vc backing Aavuus); it does **not**
-hold live (`notes/B.md`, B9), so don't demo from the mock unless everything else fails.
+Rainfall Ventures and Startuplab also backed Stendr and work the same way, but Rainfall is now #8
+of 9 on Skip (below warm.py's top 6). The recorded sample data tells a different story altogether;
+don't demo from the mock unless everything else fails.
 
 ## What to say
 
@@ -35,20 +41,21 @@ you who to pitch, and who to skip."
 
 **0:20 · Founder mode (60 s).** *Steps 1–4.*
 "I'm Sensofusion, a Finnish counter-drone company. PitchSwitch finds my direct competitors in Cala's
-graph (here's why Stendr counts), then every round they raised and every investor behind them."
+graph, four of them (here's why Stendr counts), then every round they raised and every investor
+behind them."
 "Who should I pitch? Maki.vc fits best: it led defence pre-seeds this year, and here's the source."
-"And who should I skip? These three funds, Startuplab, Rainfall and Skyfall, all backed Stendr, my
-direct rival. Pitch them and your deck lands with a competitor's investors. That's not a guess:
-here's the source." *(Click the badge.)*
+"And who should I skip? Nine funds that each backed one of my direct rivals. Skyfall Ventures, for
+one, backed Stendr. Pitch them and your deck lands with a competitor's investors. That's not a
+guess: here's the source." *(Click the badge.)*
 
 **1:20 · The flip (45 s).** *Steps 5–6.*
-"Now flip the table. I'm the partner at Rainfall Ventures, and Sensofusion just pitched me between
+"Now flip the table. I'm the partner at Skyfall Ventures, and Sensofusion just pitched me between
 meetings. Same graph, other direction: **Conflict**. Stendr is in my portfolio and competes with
 Sensofusion. Below: every rival, who backed it, and their rounds. That's a 60-second check an
 associate would otherwise spend an afternoon on."
 
 **2:05 · The agent (35 s).** *Step 7.*
-"PitchSwitch is also an MCP server. Any agent can ask it: 'Should Sensofusion pitch Rainfall
+"PitchSwitch is also an MCP server. Any agent can ask it: 'Should Sensofusion pitch Skyfall
 Ventures?'" *(Read the answer and its sources.)* "Same functions, same sources, through Claude."
 
 **2:40 · The close (20 s).**

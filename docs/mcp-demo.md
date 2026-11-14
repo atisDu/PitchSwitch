@@ -1,7 +1,7 @@
 # MCP demo: PitchSwitch in Claude Desktop (task C13)
 
 Goal: in the demo (step 7 of `docs/demo-script.md`), ask Claude Desktop *"Should Sensofusion pitch
-Rainfall Ventures?"* and get a sourced answer through PitchSwitch's MCP server.
+Skyfall Ventures?"* and get a sourced answer through PitchSwitch's MCP server.
 
 Status, 14 Nov: PitchSwitch over stdio **works in Claude Desktop** (checked by a person at the app, `notes/B.md`): the
 server starts, lists its tools and answers the demo question with "skip, backs Stendr". Also checked
@@ -61,7 +61,9 @@ every answer, so an agent needs only `pitchswitch`.
 In the first test Claude mixed its own web search into the answer: it named a co-lead our data
 doesn't have and read the round size ("~$5M") as Rainfall's share.
 
-Ask exactly: **"Using only PitchSwitch, should Sensofusion pitch Rainfall Ventures?"**
+Ask exactly: **"Using only PitchSwitch, should Sensofusion pitch Skyfall Ventures?"**
+(Tested in Claude Desktop with Rainfall Ventures, which also backs Stendr; the demo now uses
+Skyfall because it sits higher on the live Skip list.)
 
 **Ask every demo question once before the demo.** A first question about a company nobody has asked
 about can take a minute or two. Slow tools answer "Still working … call again" within 50 s instead
@@ -70,8 +72,8 @@ of timing out, and Claude retries; the retry joins the same work, and once done 
 
 What should happen (allow each tool call when Claude asks):
 
-1. `resolve_company` for Sensofusion and for Rainfall Ventures (`kind: "investor"`).
-2. `check_conflict` with both IDs → `PORTFOLIO` conflict: Rainfall backs **Stendr**, a direct
+1. `resolve_company` for Sensofusion and for Skyfall Ventures (`kind: "investor"`).
+2. `check_conflict` with both IDs → `PORTFOLIO` conflict: Skyfall backs **Stendr**, a direct
    competitor, with sources.
 3. Claude answers "no, skip them" and cites the sources.
 
