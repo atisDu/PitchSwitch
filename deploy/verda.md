@@ -92,14 +92,14 @@ The same backend image, started with a different command:
 - **Environment:** the same variables as `.env` (`CALA_API_KEY`, `MONGODB_URI`, `MONGODB_DB`, ...).
 - **Type:** batch job deployment, max concurrent jobs 1, deadline 4 hours.
 - **Trigger** (once a night, or by hand):
-  `curl -X POST "https://tasks.verda.com/<deployment-name>/run?per_minute=6"`
+  `curl -X POST "https://tasks.verda.com/<deployment-name>/run?per_minute=30"`
 
 Each trigger starts one container. It crawls the investors around the demo companies and per
 Nordic and Baltic country, derives co-investor counts and activity stats into Atlas, answers with
 the counts, and exits (which ends the billing). It is safe to stop and rerun: investors crawled
 in the last 24 hours are skipped and every Cala response is cached.
 
-The same job runs anywhere without Verda: `python -m batch.precompute_graph all --per-minute 6`.
+The same job runs anywhere without Verda: `python -m batch.precompute_graph all --per-minute 30`.
 
 ### What actually runs today
 
@@ -109,7 +109,7 @@ co-investors. On the instance, `ship.sh` installs a **nightly cron job** (03:00 
 same job in the backend image:
 
 ```sh
-docker compose --env-file ../.env run --rm -T api python -m batch.precompute_graph all --per-minute 6
+docker compose --env-file ../.env run --rm -T api python -m batch.precompute_graph all --per-minute 30
 ```
 
 The serverless batch-job deployment described above is ready in code (`batch/job_server.py`) but

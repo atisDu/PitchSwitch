@@ -121,3 +121,11 @@ stages first). Cost: 8 queries per company the first time (7 of them shared with
 company of the same industry and stage group), then cached in Atlas.
 
 Not changed: the fixtures (fake store) still hold the 9 candidates recorded on Friday.
+
+## Cala rate limit is now 100 calls a minute (14 Nov)
+
+Cala raised our key from about 10 to 100 calls a minute (checked: 25 calls in 1.3 s, none
+refused). The client now lets one process make 60 a minute (`CALA_PER_MINUTE` in `.env` changes
+it), which leaves room for a second busy process on the same key; a refusal is still retried.
+Cold runs are about six times faster than the timings written earlier in these notes. Pull to
+get it: nothing to change in your code.

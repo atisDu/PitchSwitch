@@ -38,7 +38,7 @@ echo "4/4 build and start"
 run "cd $REMOTE/src/deploy && docker compose --env-file ../.env up -d --build 2>&1 | tail -8"
 
 # Nightly at 03:00 UTC: refresh the investor graph and the cache on this machine (task A16).
-CRON="0 3 * * * cd $REMOTE/src/deploy && docker compose --env-file ../.env run --rm -T api python -m batch.precompute_graph all --per-minute 6 >> /var/log/pitchlist-batch.log 2>&1"
+CRON="0 3 * * * cd $REMOTE/src/deploy && docker compose --env-file ../.env run --rm -T api python -m batch.precompute_graph all --per-minute 30 >> /var/log/pitchlist-batch.log 2>&1"
 run "(crontab -l 2>/dev/null | grep -v precompute_graph; echo '$CRON') | crontab -"
 
 echo "deployed: https://$SITE"
