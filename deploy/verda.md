@@ -1,8 +1,17 @@
 # Deploying Pitchlist on Verda
 
-Status (14 Nov): the images build and the whole stack runs locally with the commands below.
-**Not yet deployed to Verda**: that needs Verda Cloud API credentials or an instance (see "What
-is still needed").
+**Live since 14 Nov: https://95-133-252-219.sslip.io** (frontend, `/api/*`, MCP server at `/mcp`).
+
+- Verda CPU instance `pitchlist`: `CPU.4V.16G.CC` (4 vCPU, 16 GB), location FIN-03, Ubuntu 26.04,
+  about EUR 0.044 an hour (roughly EUR 1 a day). Created through the Cloud API by `deploy/verda.py`.
+- HTTPS certificate from Let's Encrypt, obtained by Caddy for the `sslip.io` name of the IP.
+- Checked on the server: health, home page, resolve, a real-data founder report in 3.9 s.
+
+Update the deployment after new commits on `main`:
+
+```sh
+deploy/ship.sh 95.133.252.219
+```
 
 ## What runs where
 
@@ -50,15 +59,29 @@ Checked locally on 14 Nov: health, the home page, `/api/resolve`, a real-data fo
 
 ## On a Verda CPU instance
 
-1. In the Verda console create a **CPU instance** (2–4 vCPU, 8 GB is plenty), Ubuntu image, with
-   your SSH key. Open ports 22, 80 and 443.
-2. `ssh root@<ip>`, install Docker (`curl -fsSL https://get.docker.com | sh`).
-3. Follow "Run it on any machine" above. Copy `.env` with `scp`, never through git.
-4. In MongoDB Atlas → Network Access, allow the instance's IP (or `0.0.0.0/0`).
-5. Share `https://<ip-with-dashes>.sslip.io` with the team; C sets it as the demo URL.
+How the live instance was made; repeat these to rebuild it from nothing.
 
-The instance can also be created through the API (`POST https://api.verda.com/v1/instances`
-after an OAuth token from `/v1/oauth2/token`); that needs a Cloud API client ID and secret.
+```sh
+# once: Cloud API credentials in .env (VERDA_CLIENT_ID, VERDA_CLIENT_SECRET) and a deploy key
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_pitchlist_verda -N ""
+python deploy/verda.py create      # registers the key, orders the instance, waits until it runs
+python deploy/verda.py status      # balance, IP, price
+deploy/ship.sh <ip>                # Docker, code, server .env, compose up, nightly cron
+python deploy/verda.py delete      # when the hackathon is over
+```
+
+- `deploy/verda.py` picks `CPU.4V.16G.CC` in FIN-03: on 14 Nov it was the only CPU type available
+  on demand (plain CPU types were spot-only, and a spot instance can be evicted mid-demo). It only
+  boots the `26.04.cuda13.2.cc` image.
+- `deploy/ship.sh` copies the code of the current commit with `git archive` (no `.git`, no local
+  files) and writes the server's `.env` from the local one with only what the server needs: the
+  Cala, Gemini and MongoDB settings, plus `USE_FAKE_STORE=false`, `CALA_REQUIRE_CACHE=true` and
+  `SITE_ADDRESS`. Verda credentials never leave the laptop.
+- **MongoDB Atlas must allow the instance's IP** (Network Access). When it did not, every cache
+  lookup timed out and the server called Cala uncached (about 150 calls) until we stopped it.
+  `CALA_REQUIRE_CACHE=true` now makes the server refuse to call Cala without its cache.
+- The instance is on the public internet and the API has no login: bots probed it within
+  minutes. Fine for a demo; do not leave it up afterwards.
 
 ## The batch job on Verda (task A16)
 
@@ -78,11 +101,22 @@ in the last 24 hours are skipped and every Cala response is cached.
 
 The same job runs anywhere without Verda: `python -m batch.precompute_graph all --per-minute 6`.
 
-## What is still needed
+### What actually runs today
 
-- **Verda access.** `VERDA_API_KEY` in `.env` is rejected by Verda's Inference API and is not a
-  Cloud API credential pair. To create the instance and the batch deployment we need either a
-  Cloud API **client ID + secret** (console → Keys → Cloud API Credentials), or a person creating
-  them in the console as above.
-- **A registry for the batch image** (Verda Container Registry or GHCR).
-- Costs and final URLs: filled in with task A19.
+The crawl first ran from a laptop on 14 Nov (112 investors found, 106 crawled, 229 live Cala
+calls, 45 minutes at 6 calls a minute), then derive wrote 110 investors to Atlas, 96 of them with
+co-investors. On the instance, `ship.sh` installs a **nightly cron job** (03:00 UTC) that runs the
+same job in the backend image:
+
+```sh
+docker compose --env-file ../.env run --rm -T api python -m batch.precompute_graph all --per-minute 6
+```
+
+The serverless batch-job deployment described above is ready in code (`batch/job_server.py`) but
+not created yet: it needs the image in a registry Verda can pull from.
+
+## Still open
+
+- Create the serverless batch-job deployment (push the image to a registry first).
+- `VERDA_API_KEY` in `.env` is rejected by Verda's Inference API; it is not used anywhere.
+- Costs and the final write-up for the README: task A19.
