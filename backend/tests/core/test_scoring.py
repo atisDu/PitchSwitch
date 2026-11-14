@@ -157,21 +157,21 @@ def rd(rid, company, others=0, lead=None, label="Seed", when="2026-06-01"):
                  sources=SRC)
 
 
-def score(rounds, history=()):
-    return scoring._score(ME, rounds, list(history), [], [], lambda r: r.id, TODAY)
+def score(rounds, history=(), **kw):
+    return scoring._score(ME, rounds, list(history), [], [], lambda r: r.id, TODAY, **kw)
 
 
 def test_unknown_lead_earns_a_share_of_a_lead():
     s = score([rd("r1", "c1", others=3)])  # 4 investors, nobody marked as lead: 1/4 of a lead
     assert s.leads_in_space == 0 and s.lead_data == "unknown"
-    assert "leads 3.8/30 (0 led, 0.2 likely)" in s.reasons[0].text  # 30 * 0.25 / 2
+    assert "leads 3.1/25 (0 led, 0.2 likely)" in s.reasons[0].text  # 25 * 0.25 / 2
 
 
 def test_companies_not_rounds_and_backers_count_half():
     three_in_one = score([rd(f"r{i}", "c1", lead=False) for i in range(3)])
     backers = score([rd("c2:backers", "c2", lead=False, label=None, when=None)])
-    assert "companies here 6.7/20 (1)" in three_in_one.reasons[0].text
-    assert "companies here 3.3/20 (0.5)" in backers.reasons[0].text
+    assert "companies here 5/15 (1)" in three_in_one.reasons[0].text
+    assert "companies here 2.5/15 (0.5)" in backers.reasons[0].text
 
 
 def test_recency_only_from_rounds_in_the_space():
@@ -184,11 +184,70 @@ def test_recency_only_from_rounds_in_the_space():
 def test_activity_counts_and_breaks_ties():
     busy = score([rd("r", "c1", lead=False)], history=[rd(f"h{i}", f"x{i}") for i in range(6)])
     idle = score([rd("r", "c1", lead=False)])
-    assert "activity 15/15 (7 in 12 mo)" in busy.reasons[0].text
+    assert "activity 10/10 (7 in 12 mo)" in busy.reasons[0].text
     assert busy.score > idle.score
 
 
 def test_activity_needs_a_company_in_the_space():
     busy_elsewhere = score([], history=[rd(f"h{i}", f"x{i}") for i in range(6)])
     assert busy_elsewhere.score == 0 and busy_elsewhere.deals_last_12m == 6
+
+
+# --- B19: closeness, stage fit, geography ---------------------------------------------------------
+
+
+def test_closer_companies_count_more():
+    near = score([rd("r", "c1", lead=False)], closeness={"c1": 1.25})
+    far = score([rd("r", "c1", lead=False)], closeness={"c1": 0.75})
+    assert "companies here 6.2/15 (1 company, 1.2 weighted by closeness)" in near.reasons[0].text
+    assert near.score > far.score
+
+
+def test_stage_fit_is_the_share_of_rounds_at_the_startups_stage_or_next():
+    history = [rd("a", "x", label="Seed"), rd("b", "y", label="Series A"),
+               rd("c", "z", label="Series C"), rd("d", "w", label="Funding round")]
+    s = score([rd("r", "c1", lead=False)], history=history, stage=1)  # startup at Seed
+    assert "stage fit 6.7/10 (2 of 3 rounds at Seed-Series A)" in s.reasons[0].text
+    assert "stage fit 0/10 (startup stage unknown)" in score([rd("r", "c1")]).reasons[0].text
+
+
+def test_nordic_and_baltic_funds_get_the_geography_points():
+    from contracts.schemas import Company
+
+    fund = Company(id="me", name="Me", type="Organization", country="Latvia", sources=SRC)
+    s = score([rd("r", "c1", lead=False)], profile=fund)
+    assert "Nordic/Baltic 10/10 (Latvia)" in s.reasons[0].text
+    french = fund.model_copy(update={"country": "France"})
+    abroad = score([rd("r", "c1", lead=False)], profile=french)
+    assert "Nordic/Baltic 0/10 (France)" in abroad.reasons[0].text
+
+
+async def test_startup_stage_falls_back_to_its_latest_round():
+    from contracts.schemas import Company
+
+    no_stage = Company(id="s", name="S", type="Company")
+    rounds = [rd("1", "s", label="Pre-Seed", when="2024-01-01"),
+              rd("2", "s", label="Seed", when="2025-06-01")]
+    assert scoring._startup_stage(no_stage, rounds) == 1
+    assert scoring._startup_stage(no_stage.model_copy(update={"stage": "Series A"}), []) == 2
+
+
+def test_stage_and_geography_need_a_company_in_the_space():
+    from contracts.schemas import Company
+
+    fund = Company(id="me", name="Me", type="Organization", country="Finland", sources=SRC)
+    only_co_investor = score([], history=[rd("h", "x", label="Seed")], stage=1, profile=fund)
+    assert only_co_investor.score == 0
+
+
+def test_country_missing_is_read_from_the_description():
+    from contracts.schemas import Company
+
+    maki = Company(id="me", name="Maki.vc", type="Organization", sources=SRC,
+                   description="A Helsinki-based venture capital firm.")
+    s = score([rd("r", "c1", lead=False)], profile=maki)
+    assert "Nordic/Baltic 10/10 (Helsinki, from its description)" in s.reasons[0].text
+    vague = maki.model_copy(update={"description": "A global fund."})
+    assert "Nordic/Baltic 0/10 (country unknown)" in score([rd("r", "c1")], profile=vague)\
+        .reasons[0].text
 

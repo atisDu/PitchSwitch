@@ -11,9 +11,12 @@ Split (notes/B.md, agreed 13 Nov):
 from __future__ import annotations
 
 import asyncio
+import re
 from collections import defaultdict
 from datetime import date
 
+from cache.vector import COLLECTION as VECTORS
+from cache.vector import cosine
 from contracts.schemas import (
     Company,
     Competitor,
@@ -24,17 +27,37 @@ from contracts.schemas import (
     Reason,
     Round,
 )
-from core.competitors import judge
+from core.competitors import judge, shared_graph
 from core.conflict import check_conflict, merge_sources
 from data import get_store
+from data.mappers import STAGES, stage_index
 
 # Points per signal; they add up to 100. A signal earns its full points at its cap.
 # Scoring v2 (B18): companies, not rounds; recency only inside the space; activity counts.
+# B19: closeness weights each company; stage fit and geography. Unknown data earns 0 and says so.
 WEIGHTS = {
-    "leads_in_space": 30, "companies_in_space": 20, "recency": 15, "activity": 15,
-    "warm_paths": 20,
+    "leads_in_space": 25, "companies_in_space": 15, "recency": 15, "activity": 10,
+    "warm_paths": 15, "stage_fit": 10, "geography": 10,
 }
 CAPS = {"leads_in_space": 2, "companies_in_space": 3, "activity": 6, "warm_paths": 2}
+# Closeness: a company in the space counts 0.75-1.25 by how similar it is to the startup (cosine
+# of the stored vectors, relative to the rest of the space; live they all sit in 0.79-0.89, so
+# this is a nudge), a direct competitor 1.25, a company without a vector 1.
+CLOSE_MIN, CLOSE_MAX, CLOSE_DIRECT = 0.75, 1.25, 1.25
+NORDIC_BALTIC = {
+    "finland", "sweden", "norway", "denmark", "iceland", "estonia", "latvia", "lithuania",
+}
+# Cala often has no country for a fund (live: Maki.vc) while its description says "Helsinki-based".
+_NORDIC_WORDS = re.compile(
+    r"\b(" + "|".join([
+        *NORDIC_BALTIC, "nordic", "nordics", "baltic", "baltics", "finnish", "swedish",
+        "norwegian", "danish", "icelandic", "estonian", "latvian", "lithuanian", "helsinki",
+        "espoo", "tampere", "turku", "oulu", "stockholm", "gothenburg", "malmö", "oslo",
+        "bergen", "trondheim", "copenhagen", "aarhus", "reykjavik", "tallinn", "tartu", "riga",
+        "vilnius", "kaunas",
+    ]) + r")\b",
+    re.IGNORECASE,
+)
 RECENT_MONTHS, STALE_MONTHS = 12, 36  # last lead within 12 mo = full recency, 36+ = none
 NO_LEAD_RECENCY = 0.5  # no known lead in the space: the last dated round there counts half
 # Cala rarely says who led. In a real round where it names no lead, each of its n investors gets
@@ -67,6 +90,36 @@ def _capped(signal: str, value: float) -> float:
     return WEIGHTS[signal] * min(value, CAPS[signal]) / CAPS[signal]
 
 
+async def _closeness(company: Company, direct: set[str], others: list[Company]) -> dict[str, float]:
+    """Company id -> weight (see CLOSE_*). {} when vectors are unavailable (fake store, vector
+    search off, graph trouble): every company then counts 1."""
+    try:
+        graph = shared_graph()
+        ids = [company.id, *(c.id for c in others)]
+        docs = await asyncio.gather(*(graph.get(VECTORS, i) for i in ids))
+    except Exception:  # a nudge, never a reason to fail the report
+        return dict.fromkeys(direct, CLOSE_DIRECT)
+    vec = {i: d["embedding"] for i, d in zip(ids, docs, strict=True) if d and d.get("embedding")}
+    me = vec.get(company.id)
+    sims = {i: cosine(me, v) for i, v in vec.items() if me and i != company.id}
+    out = dict.fromkeys(direct, CLOSE_DIRECT)
+    if len(sims) >= 2:
+        lo, hi = min(sims.values()), max(sims.values())
+        for i, sim in sims.items():
+            if i not in direct:
+                out[i] = CLOSE_MIN + (CLOSE_MAX - CLOSE_MIN) * (sim - lo) / ((hi - lo) or 1)
+    return out
+
+
+def _startup_stage(company: Company, own_rounds: list[Round]) -> int | None:
+    """The startup's stage on the STAGES ladder; Cala's funding_stage, else its latest round."""
+    if (at := stage_index(company.stage)) is not None:
+        return at
+    labelled = [rd for rd in own_rounds if stage_index(rd.label) is not None]
+    latest = max(labelled, key=lambda rd: rd.date or "", default=None)
+    return stage_index(latest.label) if latest else None
+
+
 def _is_backers(rd: Round) -> bool:
     """A7: Cala's undated list of a company's backers, not a real round."""
     return not rd.label and not rd.date
@@ -81,6 +134,8 @@ def _points(x: float) -> str:
 
 
 def _plural(n: int, word: str) -> str:
+    if word.endswith("compan"):  # company / companies
+        return f"{n} {word}{'y' if n == 1 else 'ies'}"
     return f"{n} {word}{'' if n == 1 else 's'}"
 
 
@@ -148,13 +203,19 @@ async def rank_investors(
     found = await asyncio.gather(
         asyncio.gather(*(check_conflict(i, competitors, space) for i in ids)),
         asyncio.gather(*(store.investor_rounds(i) for i in ids)),
+        asyncio.gather(*(store.company(i) for i in ids), return_exceptions=True),
     )
+    close = await _closeness(company, direct, others)
+    stage = _startup_stage(company, own_rounds)
 
     pitch: list[InvestorScore] = []
     skip: list[InvestorScore] = []
-    for inv_id, conflicts, history in zip(ids, *found, strict=True):
-        rounds = in_space[inv_id]
-        scored = _score(pool[inv_id], rounds, history, warm[inv_id], conflicts, label, today)
+    for inv_id, conflicts, history, profile in zip(ids, *found, strict=True):
+        scored = _score(
+            pool[inv_id], in_space[inv_id], history, warm[inv_id], conflicts, label, today,
+            closeness=close, stage=stage,
+            profile=profile if isinstance(profile, Company) else None,
+        )
         (skip if conflicts else pitch).append(scored)
 
     def order(s: InvestorScore):  # ties: the more active, then the wider in the space
@@ -174,6 +235,10 @@ def _score(
     conflicts: list[Conflict],
     label,
     today: date,
+    *,
+    closeness: dict[str, float] | None = None,
+    stage: int | None = None,
+    profile: Company | None = None,
 ) -> InvestorScore:
     inv_id = investor.id
     led = [rd for rd in rounds if _is_lead(rd, inv_id)]
@@ -184,17 +249,29 @@ def _score(
     # lead credit 1 if it led a round there, else 1/n for a real round that names no lead.
     company: dict[str, float] = {}
     lead: dict[str, float] = {}
+    weight = closeness or {}
     for rd in rounds:
         cid = rd.company_id
-        company[cid] = max(company.get(cid, 0.0), BACKERS_ONLY if _is_backers(rd) else 1.0)
+        w = weight.get(cid, 1.0)
+        company[cid] = max(company.get(cid, 0.0), (BACKERS_ONLY if _is_backers(rd) else 1.0) * w)
         if _is_lead(rd, inv_id):
             credit = 1.0
         elif _is_backers(rd) or any(ri.is_lead is not None for ri in rd.investors):
             credit = 0.0
         else:
             credit = 1 / max(1, len(rd.investors))
-        lead[cid] = max(lead.get(cid, 0.0), credit)
-    likely = sum(lead.values()) - len({rd.company_id for rd in led})
+        lead[cid] = max(lead.get(cid, 0.0), credit * w)
+    led_ids = {rd.company_id for rd in led}
+    likely = sum(v for cid, v in lead.items() if cid not in led_ids)
+
+    # Stage fit: share of the investor's labelled rounds at the startup's stage or the next one.
+    staged = [(rd, at) for rd in history if (at := stage_index(rd.label)) is not None]
+    at_stage = [rd for rd, at in staged if stage is not None and at in (stage, stage + 1)]
+    stage_share = len(at_stage) / len(staged) if staged and stage is not None else None
+    country = (profile.country or "").strip() if profile else ""
+    nordic = country.lower() in NORDIC_BALTIC
+    if profile and not country and (said := _NORDIC_WORDS.search(profile.description or "")):
+        country, nordic = f"{said.group()}, from its description", True
 
     every = {rd.id: rd for rd in [*history, *rounds]}.values()
     dated = sorted(
@@ -225,16 +302,30 @@ def _score(
         # no company here (live: Northzone, Y Combinator on Stendr) outrank those that have one.
         "activity": _capped("activity", deals_12m or 0) if rounds else 0.0,
         "warm_paths": _capped("warm_paths", len(warm_paths)),
+        # Like activity: only for an investor with a company in the space.
+        "stage_fit": WEIGHTS["stage_fit"] * (stage_share or 0.0) if rounds else 0.0,
+        "geography": WEIGHTS["geography"] if nordic and rounds else 0.0,
     }
     score = sum(parts.values())
     n_led = len({rd.company_id for rd in led})
     details = {
         "leads_in_space": ("leads", f"{n_led} led" + (f", {_points(likely)} likely" if likely
                                                         else "")),
-        "companies_in_space": ("companies here", _points(sum(company.values()))),
+        "companies_in_space": (
+            "companies here",
+            f"{_plural(len(company), 'compan')}, "
+            f"{_points(sum(company.values()))} weighted by closeness"
+            if weight and any(cid in weight for cid in company)
+            else _points(sum(company.values())),
+        ),
         "recency": ("recency", when),
         "activity": ("activity", "unknown" if deals_12m is None else f"{deals_12m} in 12 mo"),
         "warm_paths": ("warm paths", str(len(warm_paths))),
+        "stage_fit": ("stage fit", "startup stage unknown" if stage is None else
+                      "no labelled rounds" if not staged else
+                      f"{len(at_stage)} of {len(staged)} rounds at {STAGES[stage]}"
+                      + (f"-{STAGES[stage + 1]}" if stage + 1 < len(STAGES) else "")),
+        "geography": ("Nordic/Baltic", country or "country unknown"),
     }
     breakdown = " + ".join(
         f"{details[k][0]} {_points(parts[k])}/{WEIGHTS[k]} ({details[k][1]})" for k in WEIGHTS
@@ -242,7 +333,10 @@ def _score(
     # Only with rounds to cite: a co-investor-only score is just its warm paths (listed apart).
     reasons: list[Reason] = [Reason(
         text=f"Score {_points(score)}/100 = {breakdown}",
-        sources=merge_sources(*(rd.sources for rd in [*rounds, *recent])),
+        sources=merge_sources(
+            *(rd.sources for rd in [*rounds, *recent, *at_stage]),
+            profile.sources if profile and nordic else [],
+        ),
     )] if rounds else []
     if led:
         reasons.append(Reason(
