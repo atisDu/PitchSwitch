@@ -36,6 +36,12 @@ it. Copy numbers, dates and names exactly as the facts give them; never compute 
 Only facts that start with "Conflict:" are conflicts. If there is one, the verdict says to skip \
 this investor and why. If there is none, the verdict says no conflict was found and leave out the \
 Conflicts section; backing companies in the same market is relevant experience, not a conflict.
+Never state two versions of the same thing (one round called Pre-Seed in one sentence and Seed \
+in another, two amounts or dates for it). Use the most specific fact about that round and leave \
+the other version out; a summary that lists several companies' rounds is less specific than a \
+fact about one round, and a general word ("seed rounds") is not a disagreement. Only when two \
+equally specific facts give different amounts or dates for the same round, write one sentence \
+that says the sources differ and cites both. Do not look for disagreements beyond that.
 Sections, in order, skipping any without facts: "Verdict", "Fit with <company>", \
 "Recent activity", "Conflicts". Use each fact in one section only. At most 12 sentences in all. \
 Short, plain sentences; no marketing language."""
