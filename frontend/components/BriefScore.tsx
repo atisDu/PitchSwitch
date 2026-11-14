@@ -7,7 +7,7 @@
 
 import { useEffect, useState } from "react";
 
-import { BreakdownRows } from "@/components/InvestorCard";
+import { ScoreBox } from "@/components/InvestorCard";
 import { analyzeFounder } from "@/lib/api";
 import { splitReasons } from "@/lib/score";
 import type { FounderReport, InvestorScore } from "@/lib/types";
@@ -45,18 +45,13 @@ export function BriefScore({ investorId, companyId }: { investorId: string; comp
   const { breakdown, source } = item ? splitReasons(item.score.reasons) : { breakdown: null, source: null };
   if (!item || !breakdown) return null;
   return (
-    <section className="mt-10 border-t border-line pt-6" aria-labelledby={`score-${investorId}`}>
-      <h2 id={`score-${investorId}`} className="label text-muted">
-        How the score adds up
-      </h2>
-      <p className="mt-3 flex flex-wrap items-baseline gap-x-3 text-lg">
-        <span className="display text-4xl text-accent">{Math.round(breakdown.total)}</span>
-        <span className="text-muted">
-          of {breakdown.outOf}
-          {item.skip ? ", fit despite the conflict: on the Skip list" : ", on the Pitch list"}
-        </span>
-      </p>
-      <BreakdownRows breakdown={breakdown} sources={source?.sources ?? []} />
-    </section>
+    <div className="mt-10">
+      <ScoreBox
+        breakdown={breakdown}
+        sources={source?.sources ?? []}
+        title="How the score adds up"
+        note={item.skip ? "Fit despite the conflict; on the Skip list" : "On the Pitch list"}
+      />
+    </div>
   );
 }

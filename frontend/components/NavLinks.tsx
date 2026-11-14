@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 // The landing page at / is a static page outside the app (public/about.html), so it gets a plain <a>:
 // a client-side <Link> would ask the app router for a route that doesn't exist.
 const LINKS = [
-  { href: "/", label: "How it works", external: true },
+  { href: "/", label: "How it works", external: true, wide: true }, // phones: the logo links there too
   { href: "/prep", label: "Slush prep", external: false },
   { href: "/agents", label: "MCP", external: false },
 ];
@@ -23,7 +23,9 @@ export function Links({ path = null }: { path?: string | null }) {
     <>
       {LINKS.map((l) => {
         const here = path === l.href;
-        const className = `text-[15px] underline-offset-[6px] decoration-2 py-1 pointer-coarse:py-3 ${
+        const className = `whitespace-nowrap text-[15px] underline-offset-[6px] decoration-2 py-1 pointer-coarse:py-3 ${
+          "wide" in l ? "max-sm:hidden " : ""
+        }${
           here ? "underline decoration-accent" : "text-muted hover:text-foreground"
         }`;
         return l.external ? (

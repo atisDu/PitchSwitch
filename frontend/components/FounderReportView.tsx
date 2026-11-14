@@ -159,9 +159,9 @@ export function FounderReportView({
       <section id="competitors" className="window mt-12 scroll-mt-24 p-5 md:p-7" aria-labelledby="competitors-heading">
         <div className="flex flex-wrap items-baseline justify-between gap-4">
           <div>
-            <h2 id="competitors-heading" className="label">
+            <p id="competitors-heading" className="label">
               Competitors · {kept.length}
-            </h2>
+            </p>
             <p className="mt-2 max-w-xl text-sm text-muted">
               Investors who backed these go on the Skip list. Hover or tap a name to see why it
               counts; remove the ones that don&apos;t, then re-rank.
@@ -345,8 +345,8 @@ function SkipRollCall({ report }: { report: FounderReport }) {
       </p>
       <ul className="mt-8 divide-y divide-slate border-y border-slate">
         {report.skip.map((s) => (
-          <li key={s.investor.id} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-3">
-            <a href={`#skip-${s.investor.id}`} className="text-lg font-medium underline-offset-4 hover:underline">
+          <li key={s.investor.id} className="grid items-baseline gap-x-6 gap-y-1 py-3 sm:grid-cols-[minmax(0,20rem)_1fr]">
+            <a href={`#skip-${s.investor.id}`} className="text-lg font-medium underline-offset-4 hover:underline pointer-coarse:inline-block pointer-coarse:py-2.5">
               {displayName(s.investor.name)}
             </a>
             <span className="text-sage">{s.conflicts.map(shortConflict).join(" · ")}</span>

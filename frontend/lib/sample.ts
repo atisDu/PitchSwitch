@@ -100,7 +100,7 @@ function score(name: string, country: string, p: Parts, facts: Reason[], conflic
   const geo = NORDIC.has(country) ? 10 : 0;
   const total = p.leads[0] + p.companies[0] + p.recency[0] + p.activity[0] + p.warm[0] + p.stage[0] + geo;
   const line =
-    `Score ${fmt(total)}/100 = leads ${fmt(p.leads[0])}/25 (${p.leads[1]} led) + companies here ${fmt(p.companies[0])}/15 (${p.companies[1]})` +
+    `Score ${fmt(total)}/100 = leads ${fmt(p.leads[0])}/25 (${p.leads[1]} led) + companies here ${fmt(p.companies[0])}/15 (${p.companies[1]} ${p.companies[1] === 1 ? "company" : "companies"})` +
     ` + recency ${fmt(p.recency[0])}/15 (${p.recency[1]}) + activity ${fmt(p.activity[0])}/10 (${p.activity[1]} in 12 mo)` +
     ` + warm paths ${fmt(p.warm[0])}/15 (${p.warm[1]}) + stage fit ${fmt(p.stage[0])}/10 (${p.stage[1]}) + Nordic/Baltic ${geo}/10 (${country})`;
   const sources = facts.flatMap((f) => f.sources).slice(0, 3);

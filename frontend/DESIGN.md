@@ -10,7 +10,7 @@ The landing page is the reference; the app takes its tokens in `app/globals.css`
 | `--background` | `#f7f9fa` | Page ground |
 | `--foreground` / `--press` | `#1f3038` | Slate ink: text, dark panels (Skip roll call, Conflict verdict), footer |
 | `--slate` | `#2c3c44` | Hairlines on dark |
-| `--muted` | `#5d6b72` | Helper text (5.4:1 on the ground) |
+| `--muted` | `#4a575d` | Helper text (7:1 on the ground and on white) |
 | `--sage` | `#c3ccd0` | Text on dark |
 | `--line` / `--surface` | `#dde3e6` / `#ecf0f2` | Hairlines; tinted rows and tracks |
 | `--accent` | `#0d7480` | Teal: the primary button, active nav, score bars and numbers. White text on it |

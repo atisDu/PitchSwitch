@@ -58,7 +58,7 @@ export function BriefAsk({
         )}
         <button
           type="button"
-          className="btn-ghost h-control-lg bg-white"
+          className="btn-ghost h-control-lg bg-white text-[15px]"
           aria-expanded={asking}
           aria-controls={`${id}-form`}
           onClick={() => setAsking((v) => !v)}
