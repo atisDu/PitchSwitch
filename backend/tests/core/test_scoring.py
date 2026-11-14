@@ -1,5 +1,6 @@
 """rank_investors on the fake store, competitors given (no Gemini)."""
 
+import re
 from datetime import date
 
 import pytest
@@ -76,6 +77,17 @@ async def test_report_invariants(store):
         assert all(reason.sources for s in side for reason in s.reasons)
     ids = [s.investor.id for s in r.pitch + r.skip]
     assert len(ids) == len(set(ids)) and STENDR not in ids
+
+
+async def test_score_breakdown_adds_up_to_the_score(store):
+    r = await report(store, STENDR, KELLUU, SENSOFUSION)
+    for s in r.pitch + r.skip:
+        if not s.rounds_in_space:
+            continue
+        head = s.reasons[0].text
+        assert head.startswith(f"Score {round(s.score, 1):g}/100 = ")
+        parts = [float(re.search(r"([\d.]+)/\d+ \(", p)[1]) for p in head.split(" + ")]
+        assert len(parts) == 4 and abs(sum(parts) - s.score) < 0.2
 
 
 async def test_similar_but_not_direct_space_lands_in_pitch(store):

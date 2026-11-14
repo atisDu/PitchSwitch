@@ -66,6 +66,10 @@ def _is_lead(rd: Round, investor_id: str) -> bool | None:
     return next((ri.is_lead for ri in rd.investors if ri.investor.id == investor_id), None)
 
 
+def _points(x: float) -> str:
+    return f"{round(x, 1):g}"
+
+
 def _plural(n: int, word: str) -> str:
     return f"{n} {word}{'' if n == 1 else 's'}"
 
@@ -181,14 +185,33 @@ def _score(
         if last_lead
         else NO_LEAD_RECENCY * _recency(dated[0][0] if dated else None, today)
     )
-    score = (
-        _capped("leads_in_space", len(led))
-        + _capped("rounds_in_space", len(rounds))
-        + WEIGHTS["recency"] * recency
-        + _capped("warm_paths", len(warm_paths))
+    parts = {
+        "leads_in_space": _capped("leads_in_space", len(led)),
+        "rounds_in_space": _capped("rounds_in_space", len(rounds)),
+        "recency": WEIGHTS["recency"] * recency,
+        "warm_paths": _capped("warm_paths", len(warm_paths)),
+    }
+    score = sum(parts.values())
+    if last_lead:
+        when = f"last lead {last_lead[1].date}"
+    elif dated:
+        when = f"no known lead; last round {dated[0][1].date}, counted half"
+    else:
+        when = "no dated round"
+    details = {
+        "leads_in_space": ("leads in this space", f"{len(led)} led"),
+        "rounds_in_space": ("rounds in this space", str(len(rounds))),
+        "recency": ("recency", when),
+        "warm_paths": ("warm paths", str(len(warm_paths))),
+    }
+    breakdown = " + ".join(
+        f"{details[k][0]} {_points(parts[k])}/{WEIGHTS[k]} ({details[k][1]})" for k in WEIGHTS
     )
-
-    reasons: list[Reason] = []
+    # Only with rounds to cite: a co-investor-only score is just its warm paths (listed apart).
+    reasons: list[Reason] = [Reason(
+        text=f"Score {_points(score)}/100 = {breakdown}",
+        sources=merge_sources(*(rd.sources for rd in rounds)),
+    )] if rounds else []
     if led:
         reasons.append(Reason(
             text=f"Led {_plural(len(led), 'round')} in this space: {', '.join(map(label, led))}",
