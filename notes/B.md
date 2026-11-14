@@ -534,3 +534,15 @@ It brings B16 (stable competitors), B17, B18-B21 (scoring v2, new signals, fundi
 paths), the 404 for bad IDs, chat speed and the brief fix to the server. Competitor verdicts and
 briefs are in Atlas already, so the demo reports stay at 2-4 s. B checks the site right after.
 
+## Deployed site checked (2026-11-14 17:40, after A's redeploy): all OK
+
+29/29 API checks + MCP (7 tools; token in header or ?key=; 401 without). Numbers ON THE SERVER (use
+these in the demo script, not the local ones above):
+- Sensofusion (3.2 s): Pitch Maki.vc 69.5, NATO Innovation Fund 38.5, Tesi 36.2, Lifeline Ventures AB
+  35.4. Skip: Skyfall Ventures 16.9 (#1), Change Ventures 14.8, STARTUPLAB 14.8.
+- Stendr (7.1 s): Maki.vc 72.2, Lifeline Ventures AB 43.5, NATO Innovation Fund 32.6.
+- Kelluu (5.0 s): Maki.vc 57.3, Lifeline Ventures AB 40.5, BSV Ventures 25.6.
+- Investor check Tesi x Kelluu with a EUR 2M check: "...latest round (Series A) was €15M; your €2M
+  check fits". Briefs 0.5-1.2 s (stored). Slush prep with 2 names 6 s. Chat ~60 s cold: in the
+  demo ask a question that was asked before (cached, ~10 s), or show it last.
+
