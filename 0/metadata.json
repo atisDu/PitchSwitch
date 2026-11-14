@@ -1,0 +1,164 @@
+{
+  "cli_version": "0.13.4-nightly.202611121940.ce16562b9",
+  "checkpoint_id": "01M7DAZGGPY46HNR0KP54EP7HJ",
+  "session_id": "7240a6e3-9112-481d-82b0-439ad319e892",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-14T15:31:56.351046Z",
+  "branch": "main",
+  "checkpoints_count": 4,
+  "save_step_count": 1,
+  "files_touched": [
+    "frontend/AGENTS.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-5-5",
+  "turn_id": "3d5af727defb",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 112,
+    "cache_creation_tokens": 220171,
+    "cache_read_tokens": 19857294,
+    "output_tokens": 64983,
+    "api_call_count": 51,
+    "subagent_tokens": {
+      "input_tokens": 100,
+      "cache_creation_tokens": 321802,
+      "cache_read_tokens": 4180289,
+      "output_tokens": 25641,
+      "api_call_count": 48
+    },
+    "subagent_tokens_complete": true
+  },
+  "session_token_usage": {
+    "input_tokens": 1278,
+    "cache_creation_tokens": 1846817,
+    "cache_read_tokens": 262101020,
+    "output_tokens": 508138,
+    "api_call_count": 562,
+    "subagent_tokens": {
+      "input_tokens": 108,
+      "cache_creation_tokens": 335034,
+      "cache_read_tokens": 4195259,
+      "output_tokens": 31028,
+      "api_call_count": 51
+    },
+    "subagent_tokens_complete": true
+  },
+  "redaction": {
+    "replacements": 143,
+    "layers": {
+      "betterleaks": 4,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 6,
+      "credentialed_uri": 1,
+      "entropy": 139,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "claude-skill-toolu_015ooRFPMJ4jbG8KhM2TNp9C",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "claude-in-chrome"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "92d18f18522a",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 3050,
+        "end": 3051,
+        "entry_ids": [
+          "e1919431-4263-49c0-8962-c94151a94b2b"
+        ],
+        "tool_use_id": "toolu_015ooRFPMJ4jbG8KhM2TNp9C"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_015ooRFPMJ4jbG8KhM2TNp9C"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: claude-in-chrome",
+        "default_collapsed": true
+      }
+    },
+    {
+      "id": "prompt-skill-claude-code-design-taste-frontend-2026-11-14T12:51:14.660646Z",
+      "event_type": "prompt_invocation",
+      "skill": {
+        "name": "design-taste-frontend"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "prompt_slash_command",
+        "confidence": "explicit"
+      },
+      "turn_id": "a96351ef3f8e",
+      "timestamp": "2026-11-14T12:51:14.660646Z",
+      "native": {
+        "command": "/design-taste-frontend"
+      },
+      "collapse": {
+        "target": "user_message",
+        "label": "/design-taste-frontend",
+        "default_collapsed": true
+      }
+    },
+    {
+      "id": "prompt-skill-claude-code-impeccable-2026-11-14T15:07:51.315027Z",
+      "event_type": "prompt_invocation",
+      "skill": {
+        "name": "impeccable"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "prompt_slash_command",
+        "confidence": "explicit"
+      },
+      "turn_id": "f340049fd95e",
+      "timestamp": "2026-11-14T15:07:51.315027Z",
+      "native": {
+        "command": "/impeccable"
+      },
+      "collapse": {
+        "target": "user_message",
+        "label": "/impeccable",
+        "default_collapsed": true
+      }
+    },
+    {
+      "id": "prompt-skill-claude-code-impeccable-2026-11-14T15:12:29.807024Z",
+      "event_type": "prompt_invocation",
+      "skill": {
+        "name": "impeccable"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "prompt_slash_command",
+        "confidence": "explicit"
+      },
+      "turn_id": "6803d0410abc",
+      "timestamp": "2026-11-14T15:12:29.807024Z",
+      "native": {
+        "command": "/impeccable"
+      },
+      "collapse": {
+        "target": "user_message",
+        "label": "/impeccable",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "session_metrics": {
+    "turn_count": 72
+  }
+}
