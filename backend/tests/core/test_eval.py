@@ -11,6 +11,7 @@ from datetime import date
 import pytest
 
 from contracts.schemas import Competitor, FounderReport
+from core.briefs import collect_facts
 from core.competitors import find_competitors
 from core.conflict import check_conflict
 from core.scoring import rank_investors
@@ -31,6 +32,8 @@ STENDR_BACKERS = {
     "9b65ed62-a126-4255-8339-44c59fbf0ad8",  # Skyfall Ventures
     "3ef31033-9773-4fbd-91bf-1a971554e683",  # Startuplab Founders
 }
+ANGEL = "c75cbef9-0ab0-5552-84f8-fc59bc63ea93"  # Tuomas Rasila, a person: in Kova Labs's pre-seed
+KOVA = "b7226c97-3a44-5176-8544-cb91246b2249"  # Kova Labs
 TODAY = date(2026, 11, 13)
 
 
@@ -95,3 +98,26 @@ async def test_gemini_judges_counter_drone_rivals(store):
     found = await find_competitors(await store.company(SENSOFUSION))
     assert STENDR in {c.company.id for c in found}
     assert all(c.reason for c in found)
+
+
+async def test_angel_is_an_investor_like_any_other(store):
+    """Contract 1.1.1: a person who invests can be ranked, checked and briefed. Tuomas Rasila
+    took part in Kova Labs's pre-seed: a Pitch for Kelluu while Kova Labs is only in its market
+    space, a Skip with a sourced conflict once Kova Labs is the direct competitor."""
+    assert (await store.company(ANGEL)).type == "Person"
+
+    as_pitch = await founder(store, KELLUU, STENDR)
+    angel = by_id(as_pitch)[ANGEL]
+    assert angel in as_pitch.pitch and not angel.conflicts and angel.rounds_in_space >= 1
+
+    as_skip = await founder(store, KELLUU, KOVA)
+    hit = by_id(as_skip)[ANGEL]
+    assert hit in as_skip.skip
+    assert hit.conflicts[0].competitor.id == KOVA and hit.conflicts[0].sources
+
+    # the investor check and the brief take the same ID
+    assert [c.competitor.id for c in await check_conflict(ANGEL, as_skip.competitors)] == [KOVA]
+    kelluu = await store.company(KELLUU)
+    name, facts = await collect_facts(ANGEL, kelluu, as_skip.competitors, [])
+    assert name == "Tuomas Rasila" and all(f.sources for f in facts)
+    assert any(f.text.startswith("Conflict: Tuomas Rasila backs Kova Labs") for f in facts)
