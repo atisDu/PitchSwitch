@@ -29,7 +29,7 @@ def cala():
 
 @pytest.fixture
 def store(cala):
-    return CalaDataStore(cala)
+    return CalaDataStore(cala, graph=MemoryGraph())
 
 
 async def test_crawl_stores_each_investor_behind_the_seed_and_its_candidates(store):

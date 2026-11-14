@@ -2,13 +2,15 @@
 
 import pytest
 
+from cache.graph import MemoryGraph
 from data.errors import NotFound
 from data.store import CalaDataStore
+from tests.data.conftest import RecordedCala
 
 
 @pytest.fixture
 def store(cala):
-    return CalaDataStore(cala)
+    return CalaDataStore(cala, graph=MemoryGraph())
 
 
 # --- resolve ----------------------------------------------------------------------------------
@@ -425,3 +427,75 @@ def test_primary_industry_and_peers_query_text():
     assert peers_query(rich).endswith(
         "Return name, description, country, funding_stage, total_funding."
     )
+
+
+# --- one firm, one name, across processes -------------------------------------------------------
+
+
+async def test_a_second_process_knows_which_entries_are_one_firm(cala, cases):
+    sensofusion = cases["companies"]["sensofusion"]
+    shared = MemoryGraph()  # stands in for the shared Atlas database
+    first = CalaDataStore(cala, graph=shared)
+    main = (await first.resolve("Sensofusion", "company"))[0]
+    other = ({sensofusion["id"], *sensofusion["alt"]} - {main.id}).pop()
+    assert await shared.ids("entity_aliases") == [other]
+
+    second = CalaDataStore(RecordedCala(), graph=shared)  # a fresh process: nothing resolved
+    company = await second.company(other)
+    assert company.id == main.id and "defense technology" in company.description
+    assert second.canonical(other) == main.id
+
+
+async def test_a_competitor_is_shown_under_its_main_name(cala, cases):
+    sensofusion = cases["companies"]["sensofusion"]
+    shared = MemoryGraph()
+    main = (await CalaDataStore(cala, graph=shared).resolve("Sensofusion", "company"))[0]
+    other = ({sensofusion["id"], *sensofusion["alt"]} - {main.id}).pop()
+
+    fresh = RecordedCala()
+    store = CalaDataStore(fresh, graph=shared)
+    stendr = await store.company(cases["companies"]["stendr"]["id"])
+    with_peers(  # Cala names the rival by its other entry, as it does live
+        fresh,
+        peers_answer(
+            ("Sensofusion", "Finland", {"id": other, "name": "Sensofusion Other Entry",
+                                        "entity_type": "Company", "mentions": ["Sensofusion"]}),
+        ),
+    )  # fmt: skip
+    first = (await store.candidate_competitors(stendr))[0]
+    assert first.id == main.id and first.name == main.name
+
+
+async def test_investor_duplicates_found_in_rounds_are_shared_too(cala, cases):
+    kelluu = cases["companies"]["kelluu"]
+    shared = MemoryGraph()
+    first = CalaDataStore(cala, graph=shared)
+    await first.resolve("Kelluu", "company")
+    await first.rounds(kelluu["id"])  # finds Gungnir Capital and Redstone under two IDs each
+    saved = await shared.ids("entity_aliases")
+    assert kelluu["alt"][0] in saved and len(saved) >= 3
+
+    second = CalaDataStore(RecordedCala(), graph=shared)
+    rounds = await second.rounds(kelluu["alt"][0])  # no resolve in this process
+    names = [i.investor.name.lower() for r in rounds for i in r.investors]
+    assert names.count("gungnir capital") == 1 and names.count("redstone") == 1
+    assert all(r.company_id == kelluu["id"] for r in rounds)
+
+
+async def test_the_store_works_when_the_shared_graph_is_down(cala, cases):
+    class Down:
+        async def ids(self, collection):
+            raise ConnectionError("mongo down")
+
+        async def get(self, collection, doc_id):
+            raise ConnectionError("mongo down")
+
+        async def put(self, collection, doc_id, document):
+            raise ConnectionError("mongo down")
+
+    store = CalaDataStore(cala, graph=Down())
+    refs = await store.resolve("Kelluu", "company")
+    assert refs[0].id == cases["companies"]["kelluu"]["id"]
+    assert store.canonical(cases["companies"]["kelluu"]["alt"][0]) == refs[0].id  # in this process
+    assert (await store.company(refs[0].id)).name == "Kelluu Oy"
+    assert await store.co_investors(refs[0].id) == []

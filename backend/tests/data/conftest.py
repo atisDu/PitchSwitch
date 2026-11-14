@@ -62,6 +62,12 @@ class RecordedCala:
         pass
 
 
+@pytest.fixture(autouse=True)
+def no_real_services(monkeypatch):
+    """Tests never reach MongoDB Atlas, whatever .env says."""
+    monkeypatch.setenv("MONGODB_URI", "")
+
+
 @pytest.fixture
 def cala():
     return RecordedCala()

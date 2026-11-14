@@ -85,6 +85,7 @@ _ROUND_FIELDS = fields_for("FundingRound").only(
     incoming=["PARTICIPATES_IN_FUNDING_ROUND"],
 )
 _EDGE_LIMIT = 100
+_ALIASES = "entity_aliases"  # graph collection: other entry's ID -> {"main": EntityRef}
 _REGION = ["Finland", "Sweden", "Norway", "Denmark", "Estonia", "Latvia", "Lithuania"]
 _PLACE_WORDS = {"finnish", "swedish", "norwegian", "danish", "estonian", "vantaa", "helsinki"}
 _REGION_TEXT = "Finland, Sweden, Norway, Denmark, Estonia, Latvia and Lithuania"
@@ -227,6 +228,8 @@ class CalaDataStore:
         self._graph = graph  # precomputed investor graph (cache.graph); opened on first use
         self._aliases: dict[str, str] = {}  # other entry of a firm -> its main entry
         self._siblings: dict[str, list[str]] = {}  # main entry -> its other entries
+        self._main_refs: dict[str, EntityRef] = {}  # main entry -> how to show it
+        self._aliases_loaded = False
 
     async def aclose(self) -> None:
         await self.cala.aclose()
@@ -234,7 +237,57 @@ class CalaDataStore:
     # --- Entities ------------------------------------------------------------------------------
 
     def canonical(self, entity_id: str) -> str:
-        return self._aliases.get(entity_id, entity_id)
+        """The main ID of the firm this ID belongs to (the ID itself if we know of no other)."""
+        for _ in range(5):  # an alias may point at an entry that was folded later
+            if entity_id not in self._aliases:
+                break
+            entity_id = self._aliases[entity_id]
+        return entity_id
+
+    def _graph_db(self):
+        if self._graph is None:
+            from cache.graph import default_graph
+
+            self._graph = default_graph()
+        return self._graph
+
+    def _remember(self, other_id: str, main: EntityRef) -> None:
+        """Note that `other_id` is another Cala entry of the firm `main`."""
+        main_id = self.canonical(main.id)
+        if other_id == main_id:
+            return
+        self._aliases[other_id] = main_id
+        self._main_refs.setdefault(main_id, main.model_copy(update={"id": main_id}))
+        others = self._siblings.setdefault(main_id, [])
+        if other_id not in others:
+            others.append(other_id)
+
+    async def _load_aliases(self) -> None:
+        """Once per process: read which Cala IDs are the same firm, as found by any teammate's
+        process before. This is what makes names and IDs agree across restarts and machines."""
+        if self._aliases_loaded:
+            return
+        self._aliases_loaded = True
+        try:
+            graph = self._graph_db()
+            ids = await graph.ids(_ALIASES)
+            documents = await asyncio.gather(*[graph.get(_ALIASES, i) for i in ids])
+        except Exception as exc:  # the store works without it, just less consistently
+            log.warning("known aliases not readable: %r", exc)
+            return
+        for other_id, document in zip(ids, documents, strict=True):
+            if document and document.get("main"):
+                self._remember(other_id, EntityRef.model_validate(document["main"]))
+
+    async def _save_alias(self, other_id: str, main: EntityRef) -> None:
+        if self._aliases.get(other_id) == self.canonical(main.id):
+            return  # already known
+        self._remember(other_id, main)
+        try:
+            document = {"main": self._main_refs[self.canonical(main.id)].model_dump(mode="json")}
+            await self._graph_db().put(_ALIASES, other_id, document)
+        except Exception as exc:
+            log.warning("alias %s not saved: %r", other_id, exc)
 
     async def _org(self, entity_id: str) -> dict:
         """A company's or investor's retrieval. NotFound if the ID is something else."""
@@ -252,6 +305,7 @@ class CalaDataStore:
 
     async def _org_family(self, entity_id: str) -> tuple[str, list[dict]]:
         """The main ID and the retrievals of every entry of that firm, main one first."""
+        await self._load_aliases()
         main_id = self.canonical(entity_id)
         ids = [main_id, *self._siblings.get(main_id, [])]
         entities = await asyncio.gather(*[self._org(i) for i in ids])
@@ -267,6 +321,7 @@ class CalaDataStore:
         """
         if not name.strip():
             return []
+        await self._load_aliases()
         found = await self.cala.search_entities(name, entity_types=sorted(ORG_TYPES), limit=10)
         hits = map_resolve(found, kind, query=name)
         if not hits:
@@ -296,9 +351,8 @@ class CalaDataStore:
             if not main.description:
                 described = next((o.description for o in others if o.description), None)
                 main = main.model_copy(update={"description": described})
-            self._siblings[main.id] = [other.id for other in others]
             for other in others:
-                self._aliases[other.id] = main.id
+                await self._save_alias(other.id, main)
             hits = [main, *[hit for hit in hits if hit.id not in {f.id for f in family}]]
 
         # Further down the list, show one entry per firm without fetching anything.
@@ -344,8 +398,18 @@ class CalaDataStore:
             for edge in related(entity, "incoming", "INVESTED_IN"):
                 ref = self._ref(edge)
                 known_id = by_name.setdefault(name_key(ref.name), ref.id)
-                if known_id != ref.id:
-                    self._aliases[ref.id] = known_id  # the same investor under another ID
+                if known_id != ref.id:  # the same investor under another ID
+                    main = next(
+                        (
+                            i.investor
+                            for r in rounds
+                            for i in r.investors
+                            if i.investor.id == known_id
+                        ),
+                        loose.get(known_id),
+                    )
+                    if main is not None:
+                        await self._save_alias(ref.id, main)
                 elif ref.id not in in_rounds and ref.id not in loose:
                     loose[ref.id] = ref
                 if known_id in loose:
@@ -384,9 +448,19 @@ class CalaDataStore:
 
     def _ref(self, raw: dict) -> EntityRef:
         """An EntityRef for an edge or a search hit, under the firm's main ID."""
-        ref = map_entity_ref(raw)
+        return self._shown(map_entity_ref(raw))
+
+    def _shown(self, ref: EntityRef) -> EntityRef:
+        """`ref` under its firm's main ID and, when it is another entry, the main entry's name."""
         main_id = self.canonical(ref.id)
-        return ref if main_id == ref.id else ref.model_copy(update={"id": main_id})
+        if main_id == ref.id:
+            return ref
+        main = self._main_refs.get(main_id)
+        update = {"id": main_id}
+        if main is not None:
+            update["name"] = main.name
+            update["description"] = ref.description or main.description
+        return ref.model_copy(update=update)
 
     async def _rounds(self, round_ids: list[str]) -> list[Round]:
         """Fetch and map funding rounds, newest first. Rounds Cala can't find are skipped."""
@@ -413,9 +487,9 @@ class CalaDataStore:
             if mapped is None:
                 continue
             investors: dict[str, RoundInvestor] = {}
-            for item in mapped.investors:  # one entry per firm, under its main ID
-                main_id = self.canonical(item.investor.id)
-                ref = item.investor.model_copy(update={"id": main_id})
+            for item in mapped.investors:  # one entry per firm, under its main ID and name
+                ref = self._shown(item.investor)
+                main_id = ref.id
                 previous = investors.get(main_id)
                 lead = item.is_lead if previous is None else (previous.is_lead or item.is_lead)
                 investors[main_id] = RoundInvestor(investor=ref, is_lead=lead)
@@ -447,7 +521,7 @@ class CalaDataStore:
                 previous = links.get(company_id)
                 links[company_id] = PortfolioLink(
                     investor_id=main_id,
-                    company=link.company.model_copy(update={"id": company_id}),
+                    company=self._shown(link.company),
                     sources=merge_sources(previous.sources if previous else [], link.sources),
                 )
         return sorted(links.values(), key=lambda link: link.company.name.lower())
@@ -487,6 +561,7 @@ class CalaDataStore:
         is B's step. Candidates come from query rows, so they carry no sources; `company(id)`
         has them.
         """
+        await self._load_aliases()
         by_country = industry_queries(company)
         texts = [peers_query(company), *[text for _, text in by_country]]
         answers = await asyncio.gather(
@@ -514,9 +589,12 @@ class CalaDataStore:
             main_id = self.canonical(candidate.id)
             if main_id in own_ids or main_id in found or row_key(candidate.name) == own_name:
                 return
+            update: dict = {"id": main_id}
             if not candidate.country and country:
-                candidate = candidate.model_copy(update={"country": country})
-            found[main_id] = (rank, candidate.model_copy(update={"id": main_id}))
+                update["country"] = country
+            if main_id in self._main_refs:  # another entry of a known firm: show its main name
+                update["name"] = self._main_refs[main_id].name
+            found[main_id] = (rank, candidate.model_copy(update=update))
 
         lookups = 0
         for row_number, (row, entity) in enumerate(candidate_rows(peers)):
@@ -574,11 +652,8 @@ class CalaDataStore:
         [] when the investor has not been crawled yet, or the graph can't be read.
         """
         try:
-            if self._graph is None:
-                from cache.graph import default_graph
-
-                self._graph = default_graph()
-            document = await self._graph.get("investor_graph", self.canonical(investor_id))
+            await self._load_aliases()
+            document = await self._graph_db().get("investor_graph", self.canonical(investor_id))
         except Exception as exc:  # warm paths are a bonus: never fail a report over them
             log.warning("co_investors(%s): graph not readable: %r", investor_id, exc)
             return []
