@@ -69,7 +69,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [x] **B15 MCP server** — `mcp_server/server.py` with the §5.4 tools; tested in Claude Desktop alongside Cala MCP. Needs: B10.
 
 ### CP5 — Sunday morning
-- [ ] **B16 Hardening** — timeouts, friendly errors, response validation everywhere, prompt tightening, final weight tune on the eval set.
+- [x] **B16 Hardening** — timeouts, friendly errors, response validation everywhere, prompt tightening, final weight tune on the eval set.
 
 ---
 
