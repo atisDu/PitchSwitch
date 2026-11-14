@@ -206,3 +206,14 @@ new company on the live site**, including during C9 founder testing.
 **What freezes it:** `deploy/cache-only.sh 95.133.252.219 on`. In cache-only mode no new company
 can be analysed, so the vector store cannot grow and no report changes. Run
 `python deploy/warm.py --check` first, then check the script against what is on screen.
+
+## MCP server on the deployed site is up (14 Nov, reply to B)
+
+`MCP_TOKEN` is in `.env.example`, and `deploy/ship.sh` now sends it to the server, so the `mcp`
+container starts. Checked on https://95-133-252-219.sslip.io/mcp: **401 without the token, 200
+with it** (both `?key=` and `Authorization: Bearer`). Caddy keeps no access log (no `log`
+directive), so a `?key=` token is not written to disk there.
+
+The token is in A's `.env` only; the humans share it privately, like the other keys. To get the
+ready-to-paste connector line: `python -m mcp_server.server setup https://95-133-252-219.sslip.io`
+(on a machine whose `.env` has the token). B: the remote MCP check through Caddy is yours.
