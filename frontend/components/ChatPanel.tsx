@@ -7,9 +7,10 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { InlineContent } from "@/components/BriefView";
+import { InlineContent } from "@/components/CitedText";
 import { SourceBadge } from "@/components/SourceBadge";
-import { ApiError, chat } from "@/lib/api";
+import { describeError } from "@/lib/errors";
+import { chat } from "@/lib/api";
 import { applyChatEvent, emptyAnswer, type ChatAnswer } from "@/lib/chat";
 import { parseInline } from "@/lib/markdown";
 import { safeUrl } from "@/lib/sources";
@@ -41,7 +42,11 @@ export function ChatPanel({
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => () => abort.current?.abort(), []);
-  useEffect(() => endRef.current?.scrollIntoView({ block: "end" }), [turns]);
+  // Block body on purpose: newer Chrome's scrollIntoView returns a value, and an expression body
+  // would hand it to React as the effect's cleanup, which React then calls ("i is not a function").
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ block: "end" });
+  }, [turns]);
   useEffect(() => {
     if (!open) return;
     inputRef.current?.focus();
@@ -71,7 +76,7 @@ export function ChatPanel({
       update((a) => (a.done || a.error ? a : { ...a, done: true }));
     } catch (err) {
       if (!ctrl.signal.aborted) {
-        update((a) => ({ ...a, error: err instanceof ApiError ? err.message : "The connection dropped." }));
+        update((a) => ({ ...a, error: describeError(err).message }));
       } else {
         update((a) => ({ ...a, error: a.error ?? "Stopped." }));
       }
@@ -194,7 +199,7 @@ function TurnView({ turn }: { turn: Turn }) {
       {waiting && (
         <p className="mt-3 text-sm text-muted" aria-live="polite">
           {answer.steps.at(-1) ?? "Thinking"}
-          <span className="ml-1 inline-block animate-pulse">…</span>
+          <span className="ml-1 inline-block animate-pulse">…</span> <Elapsed />
         </p>
       )}
       {answer.text && (
@@ -227,5 +232,20 @@ function TurnView({ turn }: { turn: Turn }) {
         </ol>
       )}
     </article>
+  );
+}
+
+/** Seconds since this waiting line appeared: answers that need Cala's sourced search can take a minute or two. */
+function Elapsed() {
+  const [s, setS] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setS((n) => n + 1), 1000);
+    return () => clearInterval(t);
+  }, []);
+  if (s < 5) return null;
+  return (
+    <span className="whitespace-nowrap">
+      ({s} s{s >= 30 ? "; questions that need Cala's sourced search can take a minute or two" : ""})
+    </span>
   );
 }

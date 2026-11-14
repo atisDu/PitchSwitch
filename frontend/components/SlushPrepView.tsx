@@ -6,8 +6,9 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-import { BriefBody } from "@/components/BriefView";
+import { BriefBody } from "@/components/CitedText";
 import { EntityPicker } from "@/components/EntityPicker";
+import { describeError } from "@/lib/errors";
 import { ApiError, getBrief, jobEvents, resolve, startSlushPrep } from "@/lib/api";
 import { parseMarkdown, type Block } from "@/lib/markdown";
 import {
@@ -69,7 +70,7 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
       setRun({
         status: "failed",
         jobId,
-        message: err instanceof ApiError ? err.message : "The connection dropped.",
+        message: err instanceof ApiError && err.status === 0 ? "The connection dropped." : describeError(err).message,
       });
     }
   }
@@ -88,7 +89,7 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
       setRun({
         status: "failed",
         jobId: null,
-        message: err instanceof ApiError ? err.message : "Couldn't start the prep.",
+        message: describeError(err).message,
       });
     }
   }
@@ -379,7 +380,7 @@ function FindInstead({
           status: "failed",
           candidates,
           message: `Couldn't write a brief for ${c.name}: ${
-            err instanceof ApiError ? err.message : "something went wrong"
+            describeError(err).message
           }.`,
         }),
     );
