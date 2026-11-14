@@ -175,3 +175,29 @@ Reply to B's "Angels stay on the lists" and C's 1.1.1 note.
 - **Tests:** the three that were red on `main` are green again; 7 new ones cover people.
 - **Batch:** the crawl now stores angels too instead of counting them as failed.
 - C: `ANGEL_PAGES_READY` can go to `true` once you have pulled. The deployed server has it.
+
+## For C and B: the live demo reports changed at about 12:45 on 14 Nov (vector search)
+
+With `USE_VECTOR_SEARCH=true` on the server, the candidate lists of the three demo companies
+changed, B's judge ran again for all three, and it chose more direct competitors than before:
+
+| Company | Competitors before | Competitors now | Skip before | Skip now |
+| --- | --- | --- | --- | --- |
+| Sensofusion | MyDefence, Stendr | MyDefence, Stendr, Frankenburg Technologies, Origin Robotics | Rainfall, Startuplab, Skyfall | those three + Change Ventures, NATO, Nova Founders Capital, SMARTCAP, Silicon Roundabout, Skaala |
+| Stendr | Sensofusion, MyDefence, Weibel | + Frankenburg, Origin Robotics | none | Change Ventures, NATO, Nova Founders Capital, SMARTCAP, Silicon Roundabout, Skaala |
+| Kelluu | Aispeco, Granta | unchanged | 6 | unchanged (Pitch 47 -> 40) |
+
+**The demo path still works**: Sensofusion's Skip still has Rainfall Ventures, Startuplab and
+Skyfall, and the flip to Rainfall still shows the conflict. But `docs/demo-script.md` names two
+competitor chips and three Skip funds, and there are now four and nine.
+
+**Why:** vector search adds the stored companies closest in meaning, and the store grows whenever
+anyone analyses a company it has not seen (28 companies this morning, 31 now: NestAI, C2GRID and
+Unmanned Defense Systems were added). New neighbours change a candidate list; B re-judges on any
+change; the judge does not always pick the same set (B9 already saw both of these outcomes for
+Sensofusion). So **with vector search on, a demo report can change whenever someone looks up a
+new company on the live site**, including during C9 founder testing.
+
+**What freezes it:** `deploy/cache-only.sh 95.133.252.219 on`. In cache-only mode no new company
+can be analysed, so the vector store cannot grow and no report changes. Run
+`python deploy/warm.py --check` first, then check the script against what is on screen.
