@@ -59,7 +59,7 @@ competitors, plus who backed each rival and their round history (`InvestorCheck`
 
 ### Cala — the only source of facts
 
-| Cala feature | Job in Pitchlist |
+| Cala feature | Job in PitchSwitch |
 | --- | --- |
 | Entity search | Resolve names to IDs; the user confirms between same-name entities |
 | Entity introspection | Run once per entity type, cached in `backend/data/introspection.json`, so we only request fields that exist |

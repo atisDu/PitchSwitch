@@ -15,7 +15,7 @@ of the table, with a source one click away.
 | 4 | Skip list | **Startuplab, Rainfall Ventures, Skyfall Ventures**: "Backed your competitor Stendr"; click a source badge |
 | 5 | Flip | On the **Rainfall Ventures** card: **Flip: see this from Rainfall Ventures's side** |
 | 6 | Investor check | Verdict **Conflict.**: "Stendr is in your portfolio and competes with Sensofusion Oy" |
-| 7 | Claude Desktop | Web search **off**; ask: *"Using only Pitchlist, should Sensofusion pitch Rainfall Ventures?"* (setup: `docs/mcp-demo.md`) |
+| 7 | Claude Desktop | Web search **off**; ask: *"Using only the pitchlist tools, should Sensofusion pitch Rainfall Ventures?"* (setup: `docs/mcp-demo.md`) |
 
 Live on 14 Nov: founder report 3 s, flip 0.1 s (both cached). Direct URLs, if typing fails:
 
@@ -29,11 +29,11 @@ hold live (`notes/B.md`, B9), so don't demo from the mock unless everything else
 
 **0:00 · The hook (20 s).**
 "Founders at Slush will spend this week pitching investors who were never going to say yes. The
-worst ones already backed a competitor: you're handing your deck to a rival's board. Pitchlist tells
+worst ones already backed a competitor: you're handing your deck to a rival's board. PitchSwitch tells
 you who to pitch, and who to skip."
 
 **0:20 · Founder mode (60 s).** *Steps 1–4.*
-"I'm Sensofusion, a Finnish counter-drone company. Pitchlist finds my direct competitors in Cala's
+"I'm Sensofusion, a Finnish counter-drone company. PitchSwitch finds my direct competitors in Cala's
 graph (here's why Stendr counts), then every round they raised and every investor behind them."
 "Who should I pitch? Maki.vc fits best: it led defence pre-seeds this year, and here's the source."
 "And who should I skip? These three funds, Startuplab, Rainfall and Skyfall, all backed Stendr, my
@@ -47,11 +47,11 @@ Sensofusion. Below: every rival, who backed it, and their rounds. That's a 60-se
 associate would otherwise spend an afternoon on."
 
 **2:05 · The agent (35 s).** *Step 7.*
-"Pitchlist is also an MCP server. Any agent can ask it: 'Should Sensofusion pitch Rainfall
+"PitchSwitch is also an MCP server. Any agent can ask it: 'Should Sensofusion pitch Rainfall
 Ventures?'" *(Read the answer and its sources.)* "Same functions, same sources, through Claude."
 
 **2:40 · The close (20 s).**
-"Cala is the data layer for agents. Pitchlist is the fundraising layer on top. Every claim you saw
+"Cala is the data layer for agents. PitchSwitch is the fundraising layer on top. Every claim you saw
 links to its source, and founders can use it at Slush tomorrow."
 *(If C9 produced a quote, end with it: "One founder told us: '…'.")*
 
@@ -74,7 +74,7 @@ links to its source, and founders can use it at Slush tomorrow."
 - [ ] **Deployed URL works** (A17) and the laptop also runs it locally as a fallback.
 - [ ] **Browser:** one window, zoom 125%, bookmarks bar hidden, notifications off, the two direct
       URLs above in a note.
-- [ ] **Claude Desktop** configured with Pitchlist (and Cala) MCP, following `docs/mcp-demo.md`
+- [ ] **Claude Desktop** configured with PitchSwitch (and Cala) MCP, following `docs/mcp-demo.md`
       (C13); the question tested once on the demo laptop.
 - [ ] **Backup video** of the full path recorded and on the laptop desktop.
 - [ ] Rehearsed twice with the whole team, timed.
@@ -92,12 +92,12 @@ links to its source, and founders can use it at Slush tomorrow."
 
 Keep it to five; the product carries the demo.
 
-1. **Title:** Pitchlist. "Who's a fit, and who has a conflict, from either side of the table."
+1. **Title:** PitchSwitch. "Who's a fit, and who has a conflict, from either side of the table."
 2. **Problem:** founders pitch funds that were never going to say yes: funds that don't lead, funds
    gone quiet, funds that backed a competitor. Investors at Slush screen 30+ startups in two days.
 3. *(Live demo.)*
 4. **How it works:** the graph walk (company → competitors → rounds → investors → portfolio), facts
    only from Cala, Gemini only judges competitors and writes, scoring is plain code; Atlas cache,
    Verda batch and hosting.
-5. **Close:** "Cala is the data layer for agents; Pitchlist is the fundraising layer on top." Team,
+5. **Close:** "Cala is the data layer for agents; PitchSwitch is the fundraising layer on top." Team,
    the founder quote, the URL.

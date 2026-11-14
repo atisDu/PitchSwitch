@@ -1,7 +1,7 @@
-# MCP demo: Pitchlist in Claude Desktop (task C13)
+# MCP demo: PitchSwitch in Claude Desktop (task C13)
 
 Goal: in the demo (step 7 of `docs/demo-script.md`), ask Claude Desktop *"Should Sensofusion pitch
-Rainfall Ventures?"* and get a sourced answer through Pitchlist's MCP server.
+Rainfall Ventures?"* and get a sourced answer through PitchSwitch's MCP server.
 
 Status, 14 Nov: **works in Claude Desktop** (checked by a person at the app, `notes/B.md`): the
 server starts, lists its tools and answers the demo question with "skip, backs Stendr". Also checked
@@ -16,10 +16,10 @@ and a run on the demo laptop.
 - Claude Desktop is installed and signed in.
 - Find the repo's absolute path: run `pwd` in the repo root. Below it is written `<repo>`.
 
-## 2. Add Pitchlist to Claude Desktop (local, stdio)
+## 2. Add PitchSwitch to Claude Desktop (local, stdio)
 
 Open Claude Desktop → Settings → Developer → **Edit Config**. That opens
-`~/Library/Application Support/Claude/claude_desktop_config.json` (macOS). Add Pitchlist under
+`~/Library/Application Support/Claude/claude_desktop_config.json` (macOS). Add PitchSwitch under
 `mcpServers` (keep any servers already there):
 
 ```json
@@ -41,13 +41,16 @@ Open Claude Desktop → Settings → Developer → **Edit Config**. That opens
 - `USE_FAKE_STORE: "false"` means live Cala data through the shared Atlas cache (fast once warm).
   Use `"true"` to run on the recorded fixtures with no keys (different data from the demo script).
 
+The server keeps its code name **`pitchlist`** (PitchSwitch's earlier working name; code-level
+names were left as they are), so that is the key here and the name Claude shows in its tools menu.
+
 Quit Claude Desktop completely (⌘Q) and open it again. In a new chat, the tools menu should list
 **pitchlist** with seven tools: `resolve_company`, `find_competitors`, `get_rounds`,
 `investor_profile`, `check_conflict`, `rank_investors`, `investor_brief`.
 
 ## 3. Add Cala's own MCP server (optional)
 
-The plan (OVERVIEW.md) shows Pitchlist next to Cala's MCP server. Its connection details are not in
+The plan (OVERVIEW.md) shows PitchSwitch next to Cala's MCP server. Its connection details are not in
 this repo; get them from Cala's docs or the mentors, add it as a second entry under `mcpServers`
 (or under Settings → Connectors if it is a remote URL), and note it here:
 
@@ -55,11 +58,11 @@ this repo; get them from Cala's docs or the mentors, add it as a second entry un
 
 ## 4. Test the demo question
 
-**Turn web search off** in the chat first (or start the question with "Using only Pitchlist,").
+**Turn web search off** in the chat first (or start the question with "Using only the pitchlist tools,").
 In the first test Claude mixed its own web search into the answer: it named a co-lead our data
 doesn't have and read the round size ("~$5M") as Rainfall's share.
 
-Ask exactly: **"Using only Pitchlist, should Sensofusion pitch Rainfall Ventures?"**
+Ask exactly: **"Using only the pitchlist tools, should Sensofusion pitch Rainfall Ventures?"**
 
 What should happen (allow each tool call when Claude asks):
 

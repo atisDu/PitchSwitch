@@ -1,10 +1,10 @@
-# Pitchlist
+# PitchSwitch
 
 **Who's a fit, and who has a conflict, from either side of the table.**
 Built at Junction 2026 for Cala's "Make Unicorns Real" challenge.
 
 Founders build investor lists from logo walls and gut feeling, then spend weeks pitching funds that
-were never going to say yes, including funds that already backed a direct competitor. Pitchlist
+were never going to say yes, including funds that already backed a direct competitor. PitchSwitch
 walks Cala's graph of companies, rounds and investors to answer two questions, with a source on
 every claim:
 
