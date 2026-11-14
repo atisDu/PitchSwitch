@@ -1,0 +1,80 @@
+{
+  "cli_version": "0.13.3",
+  "checkpoint_id": "01M7D67JP5RDZ22YVFQYRDEYSC",
+  "session_id": "eea242ba-1b25-4f4a-809b-de3b4092b4b2",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-14T14:08:56.937598885Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "save_step_count": 2,
+  "files_touched": [],
+  "agent": "Claude Code",
+  "model": "claude-fable-5-2",
+  "turn_id": "8abd869f9ac9",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 12,
+    "cache_creation_tokens": 8037,
+    "cache_read_tokens": 1293292,
+    "output_tokens": 4874,
+    "api_call_count": 5
+  },
+  "session_token_usage": {
+    "input_tokens": 368,
+    "cache_creation_tokens": 235850,
+    "cache_read_tokens": 24509845,
+    "output_tokens": 107849,
+    "api_call_count": 163
+  },
+  "redaction": {
+    "replacements": 32,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 28,
+      "credentialed_uri": 0,
+      "entropy": 4,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "claude-skill-toolu_01K2sE22HgN9XpHtEqMRjLTC",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "gstack"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "1d768d1792f0",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 847,
+        "end": 848,
+        "entry_ids": [
+          "4660bb57-9e28-4a3b-8084-391415f5fe2e"
+        ],
+        "tool_use_id": "toolu_01K2sE22HgN9XpHtEqMRjLTC"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_01K2sE22HgN9XpHtEqMRjLTC"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: gstack",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "session_metrics": {
+    "turn_count": 19
+  }
+}
