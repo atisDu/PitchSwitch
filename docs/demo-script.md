@@ -70,8 +70,10 @@ links to its source, and founders can use it at Slush tomorrow."
 - [ ] **Data still matches this script.** Run the path on the deployed API. Competitor judgements
       are stored in Atlas (B10), so they should not change; if Sensofusion's competitors or Skip list
       differ, update steps 2–6 and the lines above.
-- [ ] **Cache warm.** Run the whole path once on the demo machine (A18), then set `CACHE_ONLY=true`
-      so nothing waits on Cala during the demo.
+- [ ] **Cache warm.** Run `python deploy/warm.py` (A18: every report, check and brief the demo can
+      reach, on the deployed site), then `python deploy/warm.py --check`: exit code 0 means nothing
+      on the demo path is slow or failing. Optionally set `CACHE_ONLY=true` on the server so nothing
+      waits on Cala during the demo.
 - [ ] **Deployed URL works** (<https://95-133-252-219.sslip.io>) and the laptop also runs it locally as a fallback.
 - [ ] **Browser:** one window, zoom 125%, bookmarks bar hidden, notifications off, the two direct
       URLs above in a note.
