@@ -800,3 +800,58 @@ async def test_a_person_cala_knows_nothing_about_gives_empty_lists_not_errors(st
 async def test_things_that_cannot_invest_are_still_not_found(store, cases):
     with pytest.raises(NotFound):
         await store.company(cases["round_ids"][0])  # a funding round
+
+
+# --- sanctions + limited partners (contract 1.2.0) ---------------------------------------------
+
+
+async def test_sanctions_read_the_record_with_authority_and_date(cala):
+    record = {
+        "id": "s1",
+        "name": "EU.7808.66",
+        "entity_type": "Sanction",
+        "properties": {
+            "valid_since": "2023-03-15",
+            "sources": [
+                {"name": "The European Data Portal", "document": "https://eur-lex.europa.eu/x"}
+            ],
+        },
+    }
+    entities = {
+        "rox": {
+            "id": "rox",
+            "entity_type": "Company",
+            "relationships": {"outgoing": {"IS_SUBJECT_OF_SANCTION": [record, record]}},
+        },
+        "clean": {"id": "clean", "entity_type": "Organization", "relationships": {}},
+    }
+
+    async def entity(entity_id, **projection):
+        cala.calls.append(("entity", entity_id, projection.get("outgoing")))
+        if entity_id not in entities:
+            raise NotFound(entity_id)
+        return entities[entity_id]
+
+    cala.entity = entity
+    store = CalaDataStore(cala, graph=MemoryGraph())
+    got = await store.sanctions("rox")
+    assert [r.text for r in got] == ["Sanctioned: EU.7808.66 (EU), since 2023-03-15"]
+    assert got[0].sources[0].url == "https://eur-lex.europa.eu/x"
+    assert ("entity", "rox", ["IS_SUBJECT_OF_SANCTION"]) in cala.calls  # its own small projection
+    assert await store.sanctions("clean") == []
+    assert await store.sanctions("no-such-id") == []
+
+
+async def test_limited_partners_are_the_funds_incoming_investors(store, cases):
+    kelluu = cases["companies"]["kelluu"]["id"]
+    backers = await store.limited_partners(kelluu)  # a company: its investors, the same edge
+    assert backers and kelluu not in {b.id for b in backers}
+    assert len({b.id for b in backers}) == len(backers)
+    assert await store.limited_partners("no-such-id") == []
+
+
+async def test_the_fake_store_has_no_sanctions_or_lps():
+    from data.fake_store import FakeDataStore
+
+    fake = FakeDataStore()
+    assert await fake.sanctions("anything") == [] and await fake.limited_partners("x") == []

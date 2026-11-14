@@ -98,6 +98,14 @@ class FakeDataStore:
         data = self._read(f"candidates_{self._canonical(company.id)}.json")
         return _COMPANIES.validate_python((data or [])[:k])
 
+    async def sanctions(self, id: str) -> list[Reason]:
+        """No sanctions records in the fixtures (contract 1.2.0)."""
+        return []
+
+    async def limited_partners(self, id: str) -> list[EntityRef]:
+        """No LPs in the fixtures (contract 1.2.0)."""
+        return []
+
     async def co_investors(self, investor_id: str) -> list[tuple[EntityRef, int]]:
         data = self._read(f"co_investors_{self._canonical(investor_id)}.json")
         return _CO_INVESTORS.validate_python(data or [])

@@ -91,6 +91,20 @@ _ALIASES = "entity_aliases"  # graph collection: other entry's ID -> {"main": En
 # graph collection: name key -> {"people": [EntityRef]}, people seen investing in a round.
 # Cala's name search can miss them (it finds a namesake with no deals instead).
 _PEOPLE = "known_people"
+_SANCTION = "IS_SUBJECT_OF_SANCTION"  # entity -> Sanction (record name, valid_since, sources)
+# Sanction record names start with the list they come from ("EU.7808.66").
+_AUTHORITIES = {
+    "EU": "EU",
+    "UN": "UN",
+    "OFAC": "US OFAC",
+    "US": "US",
+    "UK": "UK",
+    "GB": "UK",
+    "CH": "Switzerland",
+    "CA": "Canada",
+    "AU": "Australia",
+    "JP": "Japan",
+}
 _MAX_PERSON_CHECKS = 2  # same-named people fetched per resolve to see whether they invest
 _REGION = ["Finland", "Sweden", "Norway", "Denmark", "Estonia", "Latvia", "Lithuania"]
 _PLACE_WORDS = {"finnish", "swedish", "norwegian", "danish", "estonian", "vantaa", "helsinki"}
@@ -101,6 +115,12 @@ _VECTOR_NEIGHBOURS = 8  # companies added from vector search when USE_VECTOR_SEA
 _LATER_STAGES = "Series A OR Series B OR Series C"
 _MAX_INVESTOR_ROUNDS = 40
 _MAX_SIBLINGS = 3  # entries of one firm we are willing to fetch and compare
+
+
+def _authority(record: str) -> str:
+    """The sanctioning authority from the record's prefix ("EU.7808.66" -> "EU"); "" if none."""
+    head = re.split(r"[.\-_ ]", record.strip(), maxsplit=1)[0].upper()
+    return _AUTHORITIES.get(head, "")
 
 
 def _edge_count(entity: dict) -> int:
@@ -776,6 +796,52 @@ class CalaDataStore:
                 continue
             return hit
         return None
+
+    async def sanctions(self, id: str) -> list[Reason]:
+        """One Reason per sanctions record Cala links to this entity or another entry of the same
+        firm (IS_SUBJECT_OF_SANCTION), e.g. "Sanctioned: EU.7808.66 (EU), since 2023-03-15",
+        sourced from the record. [] when there is none or the ID is unknown."""
+        await self._load_aliases()
+        main_id = self.canonical(id)
+        found = await asyncio.gather(
+            *(
+                self.cala.entity(i, properties=["name"], outgoing=[_SANCTION], limit=_EDGE_LIMIT)
+                for i in [main_id, *self._siblings.get(main_id, [])]
+            ),
+            return_exceptions=True,
+        )
+        out: dict[str, Reason] = {}
+        for entity in found:
+            if isinstance(entity, NotFound):
+                continue
+            if isinstance(entity, BaseException):
+                raise entity
+            for edge in related(entity, "outgoing", _SANCTION):
+                record = edge.get("name") or edge.get("id") or "a sanctions record"
+                sources = edge_sources(edge)
+                since = (edge.get("properties") or {}).get("valid_since")
+                authority = _authority(record) or (sources[0].name if sources else "")
+                text = f"Sanctioned: {record}" + (f" ({authority})" if authority else "")
+                out.setdefault(
+                    record,
+                    Reason(text=text + (f", since {since}" if since else ""), sources=sources),
+                )
+        return list(out.values())
+
+    async def limited_partners(self, id: str) -> list[EntityRef]:
+        """Who invested in this fund (its LPs: incoming INVESTED_IN), one entry per firm.
+        [] when Cala lists none or the ID is unknown."""
+        try:
+            main_id, entities = await self._org_family(id)
+        except NotFound:
+            return []
+        out: dict[str, EntityRef] = {}
+        for entity in entities:
+            for edge in related(entity, "incoming", "INVESTED_IN"):
+                ref = self._shown(self._ref(edge))
+                if ref.id != main_id:
+                    out.setdefault(ref.id, ref)
+        return list(out.values())
 
     async def co_investors(self, investor_id: str) -> list[tuple[EntityRef, int]]:
         """Investors that share companies with this one, with how many, most first.
