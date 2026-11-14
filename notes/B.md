@@ -186,3 +186,23 @@ Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
   demo opens (or one slush-prep job with their names) stores them; after that they need neither
   Cala nor Gemini.
 - Not yet checked in Claude Desktop: the MCP server (C13; config in the B15 note above).
+
+## MCP server verified (14 Nov)
+
+- **Protocol, with the SDK's client, real store:** 14 checks each over stdio (started from another
+  folder, like a desktop client) and streamable HTTP: all pass. All seven tools, both error cases.
+- **As deployed:** bound to `0.0.0.0` it accepts requests under the site's hostname (Caddy's
+  `/mcp`). Bound to `127.0.0.1` it answers a foreign Host with 421, so keep the default behind
+  the proxy. **No auth:** anyone with the URL can call the tools (and spend Cala / Gemini credits).
+- **A real LLM client (Claude Code, headless, only this server):** "Should I pitch Rainfall
+  Ventures? Name two to pitch instead" -> resolve x2, investor_brief, rank_investors,
+  check_conflict; answer in 27 s: skip Rainfall (backs Stendr), pitch Maki.vc and NATO Innovation
+  Fund, with source URLs.
+- Found by that run: the brief says Rainfall *led* Stendr's round (from Cala's knowledge search),
+  while the round data has no lead for it (`lead_data: unknown`). Both are what Cala holds. The
+  server instructions now say that "unknown" is not "did not lead"; asked again, the client
+  reports it as unconfirmed instead of as a contradiction.
+- Cala's own sources also disagree on that round's label ("Seed" in an aggregator's claim,
+  "Pre-Seed" in Stendr's announcement); the brief repeats each with its source.
+- **Still open: the Claude Desktop app itself** (C13). It is installed on B's machine with no MCP
+  servers configured; the config block is in the B15 note. Needs a human to restart the app and ask.

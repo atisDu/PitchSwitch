@@ -7,6 +7,11 @@ calls. Each takes entity IDs and returns contract models as JSON, sources attach
     python -m mcp_server.server http      streamable HTTP on $MCP_HOST:$MCP_PORT/mcp (0.0.0.0:8001)
 
 Reads the repo's .env like the API does (USE_FAKE_STORE, CALA_API_KEY, GEMINI_API_KEY, ...).
+
+Behind a reverse proxy keep MCP_HOST=0.0.0.0: bound to 127.0.0.1 the SDK only accepts requests
+whose Host header is localhost and answers the site's own hostname with 421.
+ponytail: no auth; anyone who knows the URL can call the tools. Add a token check before this
+is public for longer than a demo.
 """
 
 from __future__ import annotations
@@ -31,7 +36,10 @@ Start with resolve_company (kind "company" or "investor") to turn names into IDs
 tool takes those IDs. For "should I pitch fund X?" call check_conflict, or investor_brief for a \
 cited one-page answer. For "who should I pitch?" call rank_investors.
 Every fact carries `sources` (name, url, date, rank): cite them, and state nothing about \
-funding, investors or dates that the tools did not return."""
+funding, investors or dates that the tools did not return.
+`lead_data: "unknown"` and `is_lead: null` mean Cala's round data does not say who led, not that \
+the investor did not lead. investor_brief also draws on Cala's knowledge search, so it can name \
+a lead or an amount that the round data lacks; that is more detail, not a contradiction."""
 
 
 
