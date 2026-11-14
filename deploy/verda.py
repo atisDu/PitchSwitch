@@ -7,6 +7,7 @@
     python deploy/verda.py batch-image       # push the backend image to Verda's registry
     python deploy/verda.py batch-create      # secrets + registry login + the batch-job deployment
     python deploy/verda.py batch-run         # trigger one run and wait for its result
+    python deploy/verda.py batch-run <id>    # follow a job that is already queued
     python deploy/verda.py batch-delete      # remove the batch-job deployment
 
 Needs in .env (or .env.verda), all from the Verda console -> Credentials:
@@ -62,11 +63,19 @@ def need(*names: str) -> list[str]:
 
 
 def call(
-    method: str, path: str, token: str | None = None, body: dict | None = None, ok=(), base=API
+    method: str,
+    path: str,
+    token: str | None = None,
+    body: dict | None = None,
+    ok=(),
+    base=API,
+    headers: dict | None = None,
 ):
     """One API call. Statuses listed in `ok` are returned as (status, text) instead of exiting."""
     request = urllib.request.Request(base + path, method=method)
     request.add_header("Content-Type", "application/json")
+    for name, value in (headers or {}).items():
+        request.add_header(name, value)
     if token:
         request.add_header("Authorization", f"Bearer {token}")
     data = json.dumps(body).encode() if body is not None else None
@@ -269,22 +278,27 @@ def batch_endpoint(token: str) -> str:
     return (job.get("endpoint_base_url") or f"https://tasks.verda.com/{JOB}").rstrip("/")
 
 
-def batch_run(token: str) -> None:
-    """Trigger one job, then poll its status until the replica has finished."""
+def batch_run(token: str, job_id: str | None = None) -> None:
+    """Trigger one job (or follow one already queued), polling until its replica has finished."""
     (key,) = need("VERDA_INFERENCE_KEY")
-    endpoint = batch_endpoint(token)
-    host = endpoint.rsplit("/", 1)[0]
-    print("triggering", endpoint + "/run")
-    started = call("POST", f"/{JOB}/run?per_minute=30", key, base=host)
-    print("queued:", started)
+    host = batch_endpoint(token).rsplit("/", 1)[0]
+    if job_id is None:
+        print("triggering", f"{host}/{JOB}/run")
+        started = call("POST", f"/{JOB}/run?per_minute=30", key, base=host)
+        print("queued:", started)
+        job_id = started["Id"]
+    job = {"X-Inference-Id": job_id}
+    last = None
     for _ in range(360):  # up to an hour
-        state = call("GET", f"/status/{JOB}", key, base=host, ok=(404,))
-        print("  status:", state)
-        text = json.dumps(state).lower()
-        if any(word in text for word in ("completed", "succeeded", "failed", "error", "idle")):
+        state = call("GET", f"/status/{JOB}", key, base=host, ok=(404,), headers=job)
+        status = state.get("Status") if isinstance(state, dict) else state
+        if status != last:
+            print(f"  {time.strftime('%H:%M:%S')} status: {status}")
+            last = status
+        if str(status).lower() not in ("queue", "queued", "pending", "running", "inference"):
             break
         time.sleep(10)
-    print("result:", call("GET", f"/result/{JOB}", key, base=host, ok=(404, 425)))
+    print("result:", call("GET", f"/result/{JOB}", key, base=host, ok=(404, 425), headers=job))
     print("logs: python deploy/verda.py batch-logs")
 
 
@@ -308,10 +322,13 @@ def main() -> int:
         "batch-logs": batch_logs,
         "batch-delete": batch_delete,
     }
-    if len(sys.argv) != 2 or sys.argv[1] not in commands:
+    if len(sys.argv) < 2 or sys.argv[1] not in commands:
         print(__doc__)
         return 2
-    commands[sys.argv[1]](login())
+    if sys.argv[1] == "batch-run" and len(sys.argv) == 3:
+        batch_run(login(), sys.argv[2])  # follow a job that is already queued
+    else:
+        commands[sys.argv[1]](login())
     return 0
 
 
