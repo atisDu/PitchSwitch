@@ -74,7 +74,8 @@ links to its source, and founders can use it at Slush tomorrow."
 - [ ] **Deployed URL works** (A17) and the laptop also runs it locally as a fallback.
 - [ ] **Browser:** one window, zoom 125%, bookmarks bar hidden, notifications off, the two direct
       URLs above in a note.
-- [ ] **Claude Desktop** configured with Cala + Pitchlist MCP (C13); the question tested once.
+- [ ] **Claude Desktop** configured with Pitchlist (and Cala) MCP, following `docs/mcp-demo.md`
+      (C13); the question tested once on the demo laptop.
 - [ ] **Backup video** of the full path recorded and on the laptop desktop.
 - [ ] Rehearsed twice with the whole team, timed.
 
