@@ -1,0 +1,30 @@
+yes, but also this is the output from claude with mcp: 
+
+<pasted_content id="837c">
+Using only Pitchlist: should iceye pitch ycombinator?
+
+Loaded tools
+Request
+
+Company id: 0247c487-08b6-4e07-8e92-0969cdfeaa2d, Investor id: 1e86655e-373d-4fe8-be13-af3713581f73
+
+Error
+Device 'domatajs' did not respond within 80s.
+ This call was sent to the user's computer and only the wait for its reply timed out: the tool may still be running there, may already have finished, or may never have started. Do not run it again unless you know that running it twice is harmless and you have not already retried it; otherwise tell the user it may still finish and ask before running it again.
+Considering retrying the timed-out brief call.
+
+No, ICEYE shouldn’t pitch Y Combinator. Pitchlist shows no conflict, but YC invests far too early for a company at ICEYE’s stage.
+
+Where ICEYE is: Its backers are late-stage investors: BlackRock, Temasek, Qatar Investment Authority, BAE Systems, Solidium, the European Investment Bank and others. Its most recent round was a €1B Series F in 2026, co-led by EQT’s Scaleup Europe Fund. One of the sources Pitchlist cites is a Bloomberg piece on a $10B valuation.
+Where YC invests: YC’s recent rounds in Pitchlist run from pre-seed to Series A. They range from €1.4M seeds up to a €26M Series A (Coval), and YC usually isn’t the lead. Even its one recent hardware/aerospace deal, Hylight (autonomous airships), was a €13M Series A. A €1B round is about 40 times bigger than anything YC has done recently.
+Conflict check: None. Pitchlist found no YC-backed competitor of ICEYE and no YC people on a competitor’s board. So the reason to skip is stage, not a conflict.
+
+Two caveats:
+
+Pitchlist’s full one-page brief for ICEYE and YC didn’t load because your computer didn’t respond in time. This answer is based on ICEYE’s funding history, YC’s investor profile and the conflict check.
+Pitchlist also lists YC’s growth fund, YC Continuity, as a separate investor. I didn’t check it. If ICEYE wants a “YC” name on the cap table, Continuity is the only one that makes sense. Want me to run the brief for Continuity, or have Pitchlist rank the best investors for ICEYE?
+</pasted_content id="837c">
+
+---
+
+but it retried and then worked

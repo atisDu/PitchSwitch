@@ -1,0 +1,53 @@
+{
+  "cli_version": "0.13.3",
+  "checkpoint_id": "01M7CNFCD8F0A8WWHFZPF0RH3B",
+  "session_id": "11508950-d8c9-4219-9738-d2bd1728ff22",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-14T09:16:07.894168157Z",
+  "branch": "b/B16-mcp-slow-calls",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "backend/agent/gemini_agent.py",
+    "backend/api/main.py",
+    "backend/mcp_server/server.py",
+    "backend/tests/mcp_server/test_server.py",
+    "notes/B.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-fable-5-2",
+  "turn_id": "6613b34f443d",
+  "checkpoint_transcript_start": 799,
+  "transcript_lines_at_start": 799,
+  "compact_transcript_start": 89,
+  "token_usage": {
+    "input_tokens": 18,
+    "cache_creation_tokens": 13728,
+    "cache_read_tokens": 2168301,
+    "output_tokens": 10938,
+    "api_call_count": 8
+  },
+  "session_token_usage": {
+    "input_tokens": 190,
+    "cache_creation_tokens": 259268,
+    "cache_read_tokens": 17424406,
+    "output_tokens": 137175,
+    "api_call_count": 90
+  },
+  "redaction": {
+    "replacements": 14,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 4,
+      "credentialed_uri": 0,
+      "entropy": 10,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 5
+  }
+}
