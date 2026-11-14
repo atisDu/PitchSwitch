@@ -13,8 +13,11 @@ every claim:
 - **Investor mode (the flip):** *Does this startup conflict with my portfolio, and who backed its
   rivals?* Enter your fund and a startup that pitched you.
 
-Coming next: a Slush prep agent (paste the investors you're meeting, get one sourced brief each) and
-an MCP server, so any agent can ask "should I pitch Fund X?".
+- **Briefs:** a one-page brief on any investor for your company, every sentence citing its source.
+- **Slush prep:** paste the investors you're meeting; an agent looks each one up and writes a brief.
+- **Ask:** follow-up questions on any report, answered from Cala facts with citations.
+- **MCP server:** the same tools for any agent, so Claude Desktop can answer "should I pitch Fund X?"
+  ([docs/mcp-demo.md](docs/mcp-demo.md)).
 
 ## How it works
 
@@ -57,7 +60,7 @@ and add `CALA_API_KEY` for live Cala data. Competitor judging needs `GEMINI_API_
 | `CALA_API_KEY`, `CALA_BASE_URL` | Cala REST API |
 | `GEMINI_API_KEY`, `GEMINI_MODEL_FAST`, `GEMINI_MODEL_SMART` | Competitor judging (and later briefs, agent) |
 | `MONGODB_URI`, `MONGODB_DB` | Shared cache and precomputed graph in Atlas; empty = local files in `.cache/` |
-| `VERDA_API_KEY`, `VERDA_EMBED_MODEL` | Embeddings for competitor search (planned) |
+| `VERDA_API_KEY`, `VERDA_EMBED_MODEL` | Verda (deployment and batch job; see `deploy/verda.md`) |
 | `USE_FAKE_STORE` | `true` = fixtures, `false` = live Cala |
 | `CACHE_ONLY` | `true` = serve only from the cache, no Cala calls (demo safety net) |
 | `API_URL` | Where the frontend sends `/api/*` |
@@ -74,11 +77,12 @@ backend/
   cache/     Atlas / file cache of Cala responses, precomputed investor graph
   batch/     investor-graph batch job
   core/      competitors, conflicts, scoring
-  agent/     Gemini wrapper (agent loop coming)
+  agent/     Gemini wrapper, tools, agent loop (Slush prep, chat)
   api/       FastAPI routes
+  mcp_server/  MCP server: the same tools for Claude Desktop, Cursor
 frontend/    Next.js app, mock API (mock/), design reference (DESIGN.md)
-docs/        architecture, user testing
-deploy/      deployment (coming)
+docs/        architecture, demo script, MCP demo, user testing
+deploy/      Docker images, compose with Caddy, Verda instance and batch job (verda.md)
 ```
 
 The team works as three agents with fixed areas (data & infra, intelligence, product); see
