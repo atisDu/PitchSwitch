@@ -2,6 +2,19 @@
 
 Requests for other areas and "not yet checked against live <service>" lines go here (CLAUDE.md rules 2 and 12).
 
+## Name: the company is PitchSwitch (human, 14 Nov)
+
+- **The company's name is PitchSwitch.** "Pitchlist" in the code, the docs, `CLAUDE.md`,
+  `OVERVIEW.md` and the notes below is the earlier working name for the same thing, not a second
+  product.
+- Nothing is renamed yet. In B's area the old name is in the API title, the MCP server's name
+  (`pitchlist`, which is also the key in the Claude Desktop config and in `docs/mcp-demo.md`),
+  its instructions, and `MONGODB_DB=pitchlist`.
+- **For C:** README, `docs/` (demo script, MCP demo, pitch notes) and the UI say "Pitchlist".
+- **For the humans:** `CLAUDE.md` and `OVERVIEW.md` say "Pitchlist"; say if the code-level names
+  (MCP server name, API title) should change too. Renaming the MCP server means updating every
+  client config that has it.
+
 ## Contract review
 
 - **B approves contracts 1.1.0** (commit 3559ed7, 13 Nov). All B review points are covered: competitor_ids, people()/company() for investor IDs, InvestorCheck.rounds scope, chat citations, [n] markers, score 0-100, co_investors() returning [].
