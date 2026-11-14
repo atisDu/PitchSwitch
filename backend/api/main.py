@@ -33,6 +33,7 @@ from contracts.schemas import (
 )
 from core.competitors import Judgement, stored_judgement
 from core.conflict import check_conflict
+from core.fresh import stored_partner_conflicts
 from core.funding import check_fit
 from core.scoring import rank_investors
 from core.xray import hidden_rivals
@@ -180,7 +181,8 @@ async def founder_analyze(body: FounderBody) -> FounderReport:
         competitors = await _chosen(company, body.competitor_ids, judged)
     space = [*(c.company for c in judged.direct), *judged.space]  # a removed rival stays in space
     return await rank_investors(
-        company, competitors, space, target_amount_eur=body.target_amount_eur, xray=True
+        company, competitors, space, target_amount_eur=body.target_amount_eur, xray=True,
+        this_week=True,
     )
 
 
@@ -200,6 +202,8 @@ async def investor_check(body: CheckBody) -> InvestorCheck:
     )
     rounds = [rd for rds in rounds for rd in rds]
     conflicts = await check_conflict(investor.id, competitors, rounds, hidden=hidden)
+    ref = EntityRef(**investor.model_dump(include={"id", "name", "type", "description"}))
+    conflicts += await stored_partner_conflicts(ref, company, competitors, judged.space)
     return InvestorCheck(
         investor=EntityRef(**investor.model_dump(include={"id", "name", "type", "description"})),
         company=company,
