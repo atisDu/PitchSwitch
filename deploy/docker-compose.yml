@@ -1,4 +1,4 @@
-# Pitchlist on one machine (a Verda CPU instance): Caddy -> frontend + backend API.
+# Pitchlist on one machine (a Verda CPU instance): Caddy -> frontend + backend API + MCP server.
 #
 #   cd deploy
 #   docker compose --env-file ../.env up -d --build          # start or update
@@ -21,16 +21,17 @@ services:
     expose:
       - "8000"
 
-  # The MCP server arrives with task B15. Start it with:  docker compose --profile mcp up -d
+  # MCP server (streamable HTTP on /mcp), same image as the API.
   mcp:
-    profiles: ["mcp"]
     build:
       context: ..
       dockerfile: deploy/Dockerfile
     env_file: ../.env
     environment:
       USE_FAKE_STORE: ${USE_FAKE_STORE:-false}
-    command: ["python", "-m", "mcp_server.server"]
+    command: ["python", "-m", "mcp_server.server", "http"]
+    healthcheck:
+      disable: true
     restart: unless-stopped
     expose:
       - "8001"
@@ -60,6 +61,7 @@ services:
       - "443:443"
     depends_on:
       - api
+      - mcp
       - frontend
     restart: unless-stopped
 

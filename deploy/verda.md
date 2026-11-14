@@ -21,7 +21,7 @@ endpoint (`POST /v1/embeddings` returns 404), so vector search (A13) would use G
 
 - `deploy/Dockerfile` — backend image (API and MCP server). No keys inside.
 - `deploy/frontend.Dockerfile` — frontend image.
-- `deploy/docker-compose.yml` — `api`, `frontend`, `caddy`, and `mcp` (off until task B15).
+- `deploy/docker-compose.yml` — `api`, `mcp`, `frontend` and `caddy`.
 - `deploy/Caddyfile` — `/api/*` goes to the backend (streams unbuffered, 30-minute timeout),
   `/mcp*` to the MCP server, everything else to the frontend.
 - `.dockerignore` (repo root) — keeps `.env`, `.git`, caches and `node_modules` out of images.
@@ -43,7 +43,7 @@ curl http://localhost/api/health        # {"ok":true,"contract_version":"1.1.0"}
   a Let's Encrypt certificate by itself. Ports 80 and 443 must be open on the instance.
 - Update after a `git pull`: the same `up -d --build` command.
 - Logs: `docker compose --env-file ../.env logs -f api`. Stop: `docker compose ... down`.
-- MCP server (once B15 lands): `docker compose --env-file ../.env --profile mcp up -d`.
+- MCP server for agents (Claude Desktop, Cursor): `https://<site>/mcp` (streamable HTTP).
 
 Checked locally on 14 Nov: health, the home page, `/api/resolve`, a real-data founder report
 (3–6 s on the warm Atlas cache) and the slush-prep event stream, all through Caddy.

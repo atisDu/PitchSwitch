@@ -16,7 +16,7 @@
 		}
 	}
 
-	# MCP server (task B15). Returns 502 until that service is started.
+	# MCP server: agents connect to <site>/mcp (streamable HTTP).
 	handle /mcp* {
 		reverse_proxy mcp:8001 {
 			flush_interval -1
