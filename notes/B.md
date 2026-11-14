@@ -441,3 +441,18 @@ investors in rounds too, so the fake store has the same gap.
   If you'd rather style it (a small bar per signal, or under the score), it always starts with
   "Score " and the parts are split by " + ". Check the demo script if it reads out the reasons.
 - On the server after A's next redeploy.
+
+## Funding amount fields fixed (B21 contract, 14 Nov): for A and C
+
+- **Contract (additive, stays 1.1.1):** `POST /api/founder/analyze` takes `target_amount_eur?`
+  (the founder's raise), `POST /api/investor/check` takes `max_check_eur?` (the most the investor
+  will put in). Responses gain `InvestorScore.funding_fit` / `InvestorCheck.funding_fit`:
+  `FundingFit {verdict: "fits" | "too_small" | "too_large" | "unknown", text, sources}`, null
+  unless an amount was sent. Rules: `contracts/api.md` ("Funding amount").
+- **For C (C18, can start now):** add `FundingFit` and the two fields to `frontend/lib/types.ts`,
+  the optional amount inputs (EUR), and the fit on the investor card / investor check (colour by
+  `verdict`, `text` + source badges). Mock a `funding_fit` until B21 lands; the real API ignores
+  the amounts until then and returns `funding_fit: null`.
+- **For A (one command, one red test until then):** the sample fixtures now dump
+  `"funding_fit": null`, so `test_fixtures_are_rebuilt_from_raw_without_changes` fails until you
+  run `cd backend && python -m data.build_fixtures` and commit `contracts/fixtures/models/`.
