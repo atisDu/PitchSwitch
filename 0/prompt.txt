@@ -1,0 +1,29 @@
+btw they increased the rate limits so it should be faster now and added more credits and gemini also has a shit ton of credits for us
+
+---
+
+<task-notification>
+<task-id>bumhruhix</task-id>
+<tool-use-id>toolu_016j8RKLetFkWWhGvGWWrX3p</tool-use-id>
+<output-file>/tmp/claude-1000/-home-atis-Projekti-Otium/11508950-d8c9-4219-9738-d2bd1728ff22/tasks/bumhruhix.output</output-file>
+<status>completed</status>
+<summary>Background command "Warm the demo in the background: founder reports for the three demo companies and the briefs their screens link to" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+A updated it to have the 10x higher limit.
+
+---
+
+why?
+
+---
+
+<task-notification>
+<task-id>bozcabaz4</task-id>
+<tool-use-id>toolu_0185oa5wd8pYPMcLsTgVFqib</tool-use-id>
+<output-file>/tmp/claude-1000/-home-atis-Projekti-Otium/11508950-d8c9-4219-9738-d2bd1728ff22/tasks/bozcabaz4.output</output-file>
+<status>completed</status>
+<summary>Background command "Fix lint, rerun the warm-up on real data after the change (stored briefs return at once), count Cala calls and rate-limit responses, run the eval set live" completed (exit code 0)</summary>
+</task-notification>
