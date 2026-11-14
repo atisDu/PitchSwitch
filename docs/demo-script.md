@@ -54,7 +54,6 @@ Ventures?'" *(Read the answer and its sources.)* "Same functions, same sources, 
 **2:40 · The close (20 s).**
 "Cala is the data layer for agents. PitchSwitch is the fundraising layer on top. Every claim you saw
 links to its source, and founders can use it at Slush tomorrow."
-*(If C9 produced a quote, end with it: "One founder told us: '…'.")*
 
 ## Why this path (for the judges' four criteria)
 
@@ -105,4 +104,4 @@ Keep it to five; the product carries the demo.
    only from Cala, Gemini only judges competitors and writes, scoring is plain code; Atlas cache,
    Verda batch and hosting.
 5. **Close:** "Cala is the data layer for agents; PitchSwitch is the fundraising layer on top." Team,
-   the founder quote, the URL.
+   the URL.

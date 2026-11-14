@@ -73,3 +73,9 @@ C's follow-up once it is on main: `CONTRACT_VERSION` in `frontend/lib/types.ts`,
 `ANGEL_PAGES_READY = true` in `frontend/components/InvestorCard.tsx` (angel cards get their brief
 and flip links back). The mock test now reads the version from `fixtures/models/index.json`, so
 A's rebuild of the index won't turn it red.
+
+## C9 (founder testing) dropped (14 Nov)
+
+C's human decided not to run sessions with real founders. `docs/user-testing.md` stays as an unused
+guide (marked "Not run"); the demo script no longer ends with a founder quote. C9 stays unticked in
+TODO.md because it wasn't done; the humans can strike or tick it.

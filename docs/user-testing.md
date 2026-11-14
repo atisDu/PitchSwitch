@@ -1,5 +1,8 @@
 # User testing: founder report (task C9)
 
+> **Not run.** The team decided on 14 Nov not to test with real founders. This guide is kept in
+> case that changes; nothing below has been filled in.
+
 **Goal:** show the founder report (C6) to 3–5 founders at Junction, learn whether the Pitch and
 Skip lists change who they'd pitch, and get **one quote** for the pitch.
 **Time:** about 7 minutes per founder. One person talks, one takes notes in this file.
