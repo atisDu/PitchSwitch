@@ -1,0 +1,103 @@
+{
+  "cli_version": "0.13.4-nightly.202611121940.ce16562b9",
+  "checkpoint_id": "01M7D9C6DGQ3FQ6NZQGENA44AQ",
+  "session_id": "7240a6e3-9112-481d-82b0-439ad319e892",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-14T15:03:54.402841Z",
+  "branch": "c/C17-score-slush",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [],
+  "agent": "Claude Code",
+  "model": "claude-opus-5-5",
+  "turn_id": "a0bd82ac7824",
+  "compact_transcript_start": 0,
+  "session_token_usage": {
+    "input_tokens": 1148,
+    "cache_creation_tokens": 1610227,
+    "cache_read_tokens": 235014751,
+    "output_tokens": 436364,
+    "api_call_count": 503,
+    "subagent_tokens": {
+      "input_tokens": 8,
+      "cache_creation_tokens": 13232,
+      "cache_read_tokens": 14970,
+      "output_tokens": 5387,
+      "api_call_count": 3
+    },
+    "subagent_tokens_complete": true
+  },
+  "redaction": {
+    "replacements": 132,
+    "layers": {
+      "betterleaks": 4,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 6,
+      "credentialed_uri": 1,
+      "entropy": 128,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "claude-skill-toolu_015ooRFPMJ4jbG8KhM2TNp9C",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "claude-in-chrome"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "92d18f18522a",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 3050,
+        "end": 3051,
+        "entry_ids": [
+          "e1919431-4263-49c0-8962-c94151a94b2b"
+        ],
+        "tool_use_id": "toolu_015ooRFPMJ4jbG8KhM2TNp9C"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_015ooRFPMJ4jbG8KhM2TNp9C"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: claude-in-chrome",
+        "default_collapsed": true
+      }
+    },
+    {
+      "id": "prompt-skill-claude-code-design-taste-frontend-2026-11-14T12:51:14.660646Z",
+      "event_type": "prompt_invocation",
+      "skill": {
+        "name": "design-taste-frontend"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "prompt_slash_command",
+        "confidence": "explicit"
+      },
+      "turn_id": "a96351ef3f8e",
+      "timestamp": "2026-11-14T12:51:14.660646Z",
+      "native": {
+        "command": "/design-taste-frontend"
+      },
+      "collapse": {
+        "target": "user_message",
+        "label": "/design-taste-frontend",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "session_metrics": {
+    "turn_count": 66
+  }
+}
