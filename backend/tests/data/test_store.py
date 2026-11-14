@@ -520,3 +520,74 @@ async def test_the_store_works_when_the_shared_graph_is_down(cala, cases):
     assert store.canonical(cases["companies"]["kelluu"]["alt"][0]) == refs[0].id  # in this process
     assert (await store.company(refs[0].id)).name == "Kelluu Oy"
     assert await store.co_investors(refs[0].id) == []
+
+
+# --- vector search (A13, behind USE_VECTOR_SEARCH) ------------------------------------------------
+
+
+class TopicEmbedder:
+    """Embeds by counting topic words, so tests need no Gemini."""
+
+    def __init__(self) -> None:
+        self.calls = 0
+
+    async def embed(self, texts):
+        self.calls += 1
+        topics = ("drone", "airship", "satellite", "dental")
+        return [[float(t.lower().count(topic)) + 0.01 for topic in topics] for t in texts]
+
+
+async def test_vector_search_is_off_by_default(store, cases, monkeypatch):
+    monkeypatch.delenv("USE_VECTOR_SEARCH", raising=False)
+    kelluu = await store.company(cases["companies"]["kelluu"]["id"])
+    await store.candidate_competitors(kelluu)
+    assert store._vectors is None  # never opened: no embeddings, no extra queries
+
+
+async def test_vector_search_adds_similar_companies_seen_elsewhere(cala, cases, monkeypatch):
+    from cache.vector import VectorStore
+    from contracts.schemas import Company
+
+    monkeypatch.setenv("USE_VECTOR_SEARCH", "true")
+    graph = MemoryGraph()
+    embedder = TopicEmbedder()
+    # A company met while analysing some other space; no Cala query for Kelluu returns it.
+    rival = Company(
+        id="rival-1", name="SkyWhale", type="Company", description="Cargo airship maker"
+    )
+    other = Company(id="other-1", name="Toothly", type="Company", description="Dental booking app")
+    await VectorStore(graph=graph, embedder=embedder).upsert([rival, other])
+
+    store = CalaDataStore(cala, graph=graph)
+    store._vectors = VectorStore(graph=graph, embedder=embedder)
+    kelluu = await store.company(cases["companies"]["kelluu"]["id"])
+    before = [c.id for c in await CalaDataStore(RecordedCala(), graph=MemoryGraph())
+              .candidate_competitors(kelluu)]  # fmt: skip
+    after = await store.candidate_competitors(kelluu)
+
+    names = [c.name for c in after]
+    assert "SkyWhale" in names and "rival-1" not in before
+    assert names.index("SkyWhale") < names.index("Aavuus")  # ahead of the industry lists
+    assert set(before) <= {c.id for c in after}  # nothing that was there is lost
+    assert kelluu.id not in {c.id for c in after}
+    assert len({c.id for c in after}) == len(after)
+    # every candidate is now stored, so the next search embeds nothing
+    calls = embedder.calls
+    await store.candidate_competitors(kelluu)
+    assert embedder.calls == calls
+
+
+async def test_a_failing_embedder_leaves_the_candidates_as_they_were(cala, cases, monkeypatch):
+    from cache.vector import VectorStore
+
+    class Broken:
+        async def embed(self, texts):
+            raise RuntimeError("Gemini is down")
+
+    monkeypatch.setenv("USE_VECTOR_SEARCH", "true")
+    store = CalaDataStore(cala, graph=MemoryGraph())
+    store._vectors = VectorStore(graph=MemoryGraph(), embedder=Broken())
+    kelluu = await store.company(cases["companies"]["kelluu"]["id"])
+    with_broken = [c.id for c in await store.candidate_competitors(kelluu)]
+    monkeypatch.setenv("USE_VECTOR_SEARCH", "false")
+    assert with_broken == [c.id for c in await store.candidate_competitors(kelluu)]

@@ -92,6 +92,7 @@ _PLACE_WORDS = {"finnish", "swedish", "norwegian", "danish", "estonian", "vantaa
 _REGION_TEXT = "Finland, Sweden, Norway, Denmark, Estonia, Latvia and Lithuania"
 _EARLY_STAGES = "Pre-Seed OR Seed OR Series A"
 _MAX_NAME_LOOKUPS = 6  # peer rows without an entity that we try to find by name
+_VECTOR_NEIGHBOURS = 8  # companies added from vector search when USE_VECTOR_SEARCH is on
 _LATER_STAGES = "Series A OR Series B OR Series C"
 _MAX_INVESTOR_ROUNDS = 40
 _MAX_SIBLINGS = 3  # entries of one firm we are willing to fetch and compare
@@ -231,6 +232,7 @@ class CalaDataStore:
     def __init__(self, client: CalaClient | None = None, graph=None) -> None:
         self.cala = client or default_client()
         self._graph = graph  # precomputed investor graph (cache.graph); opened on first use
+        self._vectors = None  # company vectors (cache.vector); opened on first use
         self._aliases: dict[str, str] = {}  # other entry of a firm -> its main entry
         self._siblings: dict[str, list[str]] = {}  # main entry -> its other entries
         self._main_refs: dict[str, EntityRef] = {}  # main entry -> how to show it
@@ -634,8 +636,36 @@ class CalaDataStore:
                 rank = (1, country != company.country, far_stage, position, row_number)
                 add(row, entity, rank, country)
 
+        if env_flag("USE_VECTOR_SEARCH"):
+            try:
+                await self._add_vector_neighbours(company, found, own_ids, own_name)
+            except Exception as exc:  # embeddings or the index failing must not lose a report
+                log.warning("vector search skipped for %s: %r", company.name, exc)
+
         ranked = sorted(found.values(), key=lambda pair: pair[0])
         return [candidate for _, candidate in ranked[: max(k, 0)]]
+
+    async def _add_vector_neighbours(
+        self, company: Company, found: dict, own_ids: set[str], own_name: str
+    ) -> None:
+        """Add the companies closest in meaning to this one (task A13), after the peers and
+        before the industry lists. Every candidate found so far is stored with its vector, so
+        the pool of known companies grows with each search and one space can feed another."""
+        if self._vectors is None:
+            from cache.vector import VectorStore
+
+            self._vectors = VectorStore(graph=self._graph_db())
+        await self._vectors.upsert([company, *[candidate for _, candidate in found.values()]])
+        neighbours = await self._vectors.neighbours(company, k=_VECTOR_NEIGHBOURS + len(own_ids))
+        added = 0
+        for neighbour, _similarity in neighbours:
+            main_id = self.canonical(neighbour.id)
+            if main_id in own_ids or main_id in found or row_key(neighbour.name) == own_name:
+                continue
+            if added >= _VECTOR_NEIGHBOURS:
+                break
+            found[main_id] = ((0, 1000 + added), neighbour.model_copy(update={"id": main_id}))
+            added += 1
 
     async def _find_by_name(self, name: str, country: object = None) -> dict | None:
         """The Cala entity for a company an answer names without an ID, or None.
