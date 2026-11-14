@@ -546,3 +546,14 @@ these in the demo script, not the local ones above):
   check fits". Briefs 0.5-1.2 s (stored). Slush prep with 2 names 6 s. Chat ~60 s cold: in the
   demo ask a question that was asked before (cached, ~10 s), or show it last.
 
+
+## REQUEST for A + all humans (2026-11-14): `sanctions()` for B25 (contract 1.2.0)
+
+Cala has an ID-based sanctions edge: `IS_SUBJECT_OF_SANCTION` (outgoing, to `Sanction` entities,
+with sources + `valid_since`; e.g. Rosoboronexport `249a3a78…` → `EU.7808.66`, EUR-Lex). Funds with
+no record simply lack the edge (Rainfall Ventures: absent). Ask: an additive
+`DataStore.sanctions(id: str) -> list[Reason]` (one Reason per sanction, text = sanction name +
+authority + since, sources from the edge; `[]` when the edge is absent; never raises for a person),
+plus the fake store returning `[]`. Also expose a fund's LPs (incoming `INVESTED_IN` on the fund;
+e.g. NIF ← Czech MoD, PFR) or let `sanctions()` take them. Additive method = contract 1.2.0:
+needs all three humans' OK, then CONTRACT_VERSION + CHANGELOG + CLAUDE.md §5.2 in one commit.
