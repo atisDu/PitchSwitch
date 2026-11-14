@@ -7,9 +7,13 @@ Requests for other areas and "not yet checked against live <service>" lines go h
 - **The company's name is PitchSwitch.** "Pitchlist" in the code, the docs, `CLAUDE.md`,
   `OVERVIEW.md` and the notes below is the earlier working name for the same thing, not a second
   product.
-- Renamed in B's area (14 Nov): the API title, the MCP server's title and instructions, the chat
-  prompt. **Not renamed:** the MCP server's name `pitchlist` (it is the key in every client config
-  and in `docs/mcp-demo.md`) and `MONGODB_DB=pitchlist` (A's; the shared cache lives there).
+- Renamed in B's area (14 Nov): the API title, the chat prompt, and the MCP server: it now
+  reports itself as `pitchswitch` (title "PitchSwitch"). **Not renamed:** `MONGODB_DB=pitchlist`
+  (A's; the shared cache lives there) and the package name in `backend/pyproject.toml`.
+- **For C (`docs/mcp-demo.md`):** use `"pitchswitch"` as the key in the client config (line 28)
+  and in the troubleshooting row (line 91), and "Using only PitchSwitch" in the demo question.
+  The key is what Claude Desktop shows as the server's name. An old config with the key
+  `"pitchlist"` still works; it only shows the old name.
 - **For C:** README, `docs/` (demo script, MCP demo, pitch notes) and the UI say "Pitchlist".
 - **For the humans:** `CLAUDE.md` and `OVERVIEW.md` say "Pitchlist"; say if the code-level names
   (MCP server name, API title) should change too. Renaming the MCP server means updating every
@@ -160,7 +164,7 @@ Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
   from the repo root):
 
   ```json
-  {"mcpServers": {"pitchlist": {
+  {"mcpServers": {"pitchswitch": {
     "command": "<repo>/.venv/bin/python",
     "args": ["-m", "mcp_server.server"],
     "env": {"USE_FAKE_STORE": "false"}

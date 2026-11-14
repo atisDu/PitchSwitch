@@ -85,8 +85,7 @@ def _told(fn: Callable) -> Callable:
     return tool
 
 
-# The name stays "pitchlist": it is the key in every client config (docs/mcp-demo.md).
-server = MCPServer("pitchlist", title="PitchSwitch", instructions=INSTRUCTIONS)
+server = MCPServer("pitchswitch", title="PitchSwitch", instructions=INSTRUCTIONS)
 for _tool in tools.MCP_TOOLS:
     server.add_tool(_told(_tool))  # name, description and schema come from the function itself
 
