@@ -1,0 +1,38 @@
+#!/bin/sh
+# Ship the committed code to the Verda instance and (re)start the stack.
+#
+#   deploy/ship.sh <instance-ip>
+#
+# What it does, in order:
+#   1. installs Docker on the instance if it is missing;
+#   2. copies the code of the current git commit (git archive: no .git, no local files);
+#   3. writes the server's .env from the local one: only the keys the server needs
+#      (Cala, Gemini, MongoDB), plus USE_FAKE_STORE=false and SITE_ADDRESS for HTTPS;
+#   4. builds and starts everything with Docker Compose.
+# Rerun it after new commits to update the deployment.
+set -eu
+
+IP="${1:?usage: deploy/ship.sh <instance-ip>}"
+KEY="${SSH_KEY:-$HOME/.ssh/id_ed25519_pitchlist_verda}"
+ROOT="$(git rev-parse --show-toplevel)"
+SITE="$(echo "$IP" | tr . -).sslip.io"   # HTTPS without owning a domain
+REMOTE=/opt/pitchlist
+
+run() { ssh -i "$KEY" -o StrictHostKeyChecking=accept-new -o BatchMode=yes "root@$IP" "$@"; }
+
+echo "1/4 Docker"
+run 'command -v docker >/dev/null 2>&1 || (curl -fsSL https://get.docker.com | sh >/dev/null 2>&1)'
+run 'docker --version'
+
+echo "2/4 code ($(git -C "$ROOT" rev-parse --short HEAD))"
+run "rm -rf $REMOTE/src && mkdir -p $REMOTE/src"
+git -C "$ROOT" archive --format=tar HEAD | run "tar -x -C $REMOTE/src"
+
+echo "3/4 server .env"
+grep -E '^(CALA_|GEMINI_|MONGODB_|CACHE_ONLY=)' "$ROOT/.env" | run "umask 077; cat > $REMOTE/src/.env"
+run "printf 'USE_FAKE_STORE=false\nSITE_ADDRESS=%s\n' '$SITE' >> $REMOTE/src/.env"
+
+echo "4/4 build and start"
+run "cd $REMOTE/src/deploy && docker compose --env-file ../.env up -d --build 2>&1 | tail -8"
+
+echo "deployed: https://$SITE"
