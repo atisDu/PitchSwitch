@@ -1,0 +1,42 @@
+{
+  "cli_version": "0.13.3",
+  "checkpoint_id": "01M7CVE571WNNJGZSM5FHYZX88",
+  "session_id": "11508950-d8c9-4219-9738-d2bd1728ff22",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-14T11:00:19.185006998Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "notes/B.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-fable-5-2",
+  "turn_id": "0d2999d56141",
+  "checkpoint_transcript_start": 1530,
+  "transcript_lines_at_start": 1530,
+  "compact_transcript_start": 178,
+  "session_token_usage": {
+    "input_tokens": 346,
+    "cache_creation_tokens": 423787,
+    "cache_read_tokens": 36228144,
+    "output_tokens": 203104,
+    "api_call_count": 155
+  },
+  "redaction": {
+    "replacements": 22,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 12,
+      "credentialed_uri": 0,
+      "entropy": 10,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  },
+  "session_metrics": {
+    "turn_count": 18
+  }
+}
