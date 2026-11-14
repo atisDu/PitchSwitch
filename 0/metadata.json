@@ -1,0 +1,73 @@
+{
+  "cli_version": "0.13.3",
+  "checkpoint_id": "01M7D93S0Z5TCA0YS1BQBJ3W79",
+  "session_id": "eea242ba-1b25-4f4a-809b-de3b4092b4b2",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-14T14:59:18.195946481Z",
+  "branch": "b/B20-warm-paths",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [],
+  "agent": "Claude Code",
+  "model": "claude-opus-5-5",
+  "turn_id": "cb196dc41f13",
+  "compact_transcript_start": 0,
+  "session_token_usage": {
+    "input_tokens": 564,
+    "cache_creation_tokens": 478212,
+    "cache_read_tokens": 47291503,
+    "output_tokens": 198809,
+    "api_call_count": 254
+  },
+  "redaction": {
+    "replacements": 180,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 28,
+      "credentialed_uri": 0,
+      "entropy": 152,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "claude-skill-toolu_01K2sE22HgN9XpHtEqMRjLTC",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "gstack"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "1d768d1792f0",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 847,
+        "end": 848,
+        "entry_ids": [
+          "4660bb57-9e28-4a3b-8084-391415f5fe2e"
+        ],
+        "tool_use_id": "toolu_01K2sE22HgN9XpHtEqMRjLTC"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_01K2sE22HgN9XpHtEqMRjLTC"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: gstack",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "session_metrics": {
+    "turn_count": 26
+  }
+}
