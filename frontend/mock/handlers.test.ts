@@ -35,7 +35,8 @@ test("slug matches the backend rule", () => {
 });
 
 test("health reports the contract version", () => {
-  assert.deepEqual(ok("GET", "/api/health"), { ok: true, contract_version: "1.1.0" });
+  // Read from the fixtures, so a contract bump (A rebuilds index.json) doesn't break this test.
+  assert.deepEqual(ok("GET", "/api/health"), { ok: true, contract_version: index.contract_version });
 });
 
 test("resolve: recorded searches, fuzzy fallback, validation", () => {
