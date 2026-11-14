@@ -63,6 +63,8 @@ and add `CALA_API_KEY` for live Cala data. Competitor judging needs `GEMINI_API_
 | `GEMINI_API_KEY`, `GEMINI_MODEL_FAST`, `GEMINI_MODEL_SMART` | Competitor judging (and later briefs, agent) |
 | `MONGODB_URI`, `MONGODB_DB` | Shared cache and precomputed graph in Atlas; empty = local files in `.cache/` |
 | `VERDA_CLIENT_ID`, `VERDA_CLIENT_SECRET` | Verda Cloud API, for creating the instance (`deploy/verda.py`); never copied to the server |
+| `VERDA_REGISTRY_USER`, `VERDA_REGISTRY_SECRET` | Verda Container Registry, for pushing the batch image |
+| `VERDA_INFERENCE_KEY` | Triggers the serverless batch job |
 | `VERDA_API_KEY`, `VERDA_EMBED_MODEL` | Not used (Verda's Inference API has no embeddings endpoint) |
 | `CALA_PER_MINUTE` | Cala calls one process may make per minute (default 60; the key allows 100) |
 | `CALA_REQUIRE_CACHE` | `true` = refuse to call Cala when the cache is unreachable (set on the server) |
@@ -76,13 +78,15 @@ and add `CALA_API_KEY` for live Cala data. Competitor judging needs `GEMINI_API_
 ## Deployment (Verda)
 
 One small **Verda CPU instance** hosts the whole product (frontend, API, MCP server) behind Caddy
-with automatic HTTPS, and the same image runs the nightly precompute job that keeps the investor
+with automatic HTTPS. The same image, pushed to Verda's Container Registry, runs as a **serverless
+Verda batch job** every night (triggered by cron, billed only while it runs) to keep the investor
 graph and the cache fresh. The workload is I/O (Cala, Gemini, Atlas), not compute, so there are no
 GPUs or Verda Inference.
 
 ```sh
 python deploy/verda.py create      # create the instance through Verda's Cloud API
 deploy/ship.sh <ip>                # ship the current commit, write the server .env, start, nightly cron
+python deploy/verda.py batch-run   # trigger the serverless batch job by hand (also: batch-logs)
 python deploy/warm.py --check      # warm every page the demo can reach; fail if anything is slow
 deploy/cache-only.sh <ip> on       # demo day: answer only from the cache, no live Cala calls
 python deploy/verda.py delete      # after the hackathon
@@ -95,7 +99,9 @@ network access fixed (blocked at first, the server called Cala uncached, so it n
 
 | Service | Use | Cost |
 | --- | --- | --- |
-| Verda CPU instance (4 vCPU, 16 GB, FIN-03, on demand) | Hosting + nightly batch (cron) | EUR 0.044/h, about EUR 1 a day |
+| Verda CPU instance (4 vCPU, 16 GB, FIN-03, on demand) | Hosting (frontend, API, MCP) | EUR 0.044/h, about EUR 1 a day |
+| Verda serverless batch job (CPU node) | Nightly investor crawl; under a minute when fresh, ~10 min full | Cents a night |
+| Verda Container Registry | The backend image (~130 MB) | USD 0.20 per GB a month |
 | MongoDB Atlas M0 | Cala response cache, investor graph, judgements, briefs | Free |
 | Cala | ~1,500 calls over the weekend | Hackathon credits |
 | Gemini | Competitor judging, briefs, agent | Hackathon key |

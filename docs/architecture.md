@@ -1,8 +1,7 @@
 # Architecture
 
 Status: 14 Nov. Live at <https://95-133-252-219.sslip.io>. Everything below runs on live data
-except vector search (**planned**, A13) and the serverless form of the batch job (not created; the
-same job runs nightly by cron on the instance).
+except vector search (**planned**, A13).
 
 ## Overview
 
@@ -106,9 +105,11 @@ in-flight requests and logs every call (endpoint, time, cache hit) for credit tr
   created through Verda's Cloud API by `deploy/verda.py` and updated with `deploy/ship.sh`.
 - **Batch job:** `batch/precompute_graph.py` crawls the investors around the demo space (portfolios,
   rounds) and derives co-investor counts and activity stats into Atlas; idempotent, resumable,
-  rate-limited. It runs nightly (03:00 UTC) by cron on the instance (A16; first full run: 110
-  investors, 96 with co-investors). A serverless Verda batch-job version (`batch/job_server.py`,
-  one request, then exit) is ready in code but not created: it needs the image in a registry.
+  rate-limited. It runs as a **Verda serverless batch job** (`pitchlist-batch`, CPU node): the
+  backend image in Verda's Container Registry, started with `batch/job_server.py`; each trigger runs
+  one container that crawls, derives, answers with the counts and exits, so billing stops. A cron
+  job on the instance triggers it nightly (`deploy/run-batch.sh`). First run: completed in under a
+  minute, 110 investors derived, 96 with co-investors.
 - **Demo safety:** `deploy/warm.py` calls every page the demo can reach to fill the cache, then
   `deploy/cache-only.sh` makes the server answer only from it (whole demo path: 50 calls in 22 s,
   0 to Cala). A name never looked up before then fails at once instead of waiting on Cala.
