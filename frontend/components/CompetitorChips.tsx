@@ -78,7 +78,7 @@ function Chip({
       <span className="inline-flex items-center rounded-[5px] border border-foreground bg-background">
         <button
           type="button"
-          aria-describedby={tipId}
+          aria-controls={tipId}
           aria-expanded={open}
           onClick={() => setOpen((o) => !o)}
           className="py-1.5 pr-1 pl-3 text-sm font-medium underline decoration-line decoration-dotted underline-offset-4 hover:decoration-foreground"
@@ -98,7 +98,6 @@ function Chip({
       </span>
       <div
         id={tipId}
-        role="tooltip"
         className={`absolute top-full right-0 left-0 z-20 mt-2 border md:right-auto md:w-72 border-foreground bg-background p-4 text-left ${
           open ? "block" : "hidden group-focus-within:block group-hover:block"
         }`}

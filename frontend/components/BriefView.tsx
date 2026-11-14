@@ -102,7 +102,7 @@ export function BriefView({
               Try again
             </button>
           )}
-          <Link href={founderPath(companyId)} className="btn-ghost h-[47px]">
+          <Link href={founderPath(companyId)} className="btn-ghost h-control-lg">
             Back to the report
           </Link>
         </div>

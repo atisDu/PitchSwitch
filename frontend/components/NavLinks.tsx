@@ -25,7 +25,7 @@ export function Links({ path = null }: { path?: string | null }) {
             key={l.href}
             href={l.href}
             aria-current={here ? "page" : undefined}
-            className={`label border-b-2 py-1 ${
+            className={`label border-b-2 py-1 pointer-coarse:py-3 ${
               here ? "border-accent" : "border-transparent hover:border-foreground"
             }`}
           >

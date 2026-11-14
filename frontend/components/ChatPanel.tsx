@@ -202,7 +202,7 @@ export function ChatPanel({
                   }
                 }}
                 placeholder="e.g. Who led their last round?"
-                className="min-w-0 flex-1 resize-none rounded-[5px] border border-line bg-background p-2.5 outline-none placeholder:text-muted focus:border-foreground"
+                className="min-w-0 flex-1 resize-none rounded-[5px] border border-control bg-background p-2.5 outline-none placeholder:text-muted focus:border-foreground"
               />
               {busy ? (
                 <button type="button" className="btn-ghost h-11" onClick={() => abort.current?.abort()}>

@@ -146,7 +146,7 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
             rows={6}
             placeholder={"One per line, or separated by commas\ne.g. Maki.vc\nRainfall Ventures"}
             disabled={busy}
-            className="mt-3 w-full rounded-[5px] border border-line bg-background p-3 text-base outline-none placeholder:text-muted focus:border-foreground disabled:opacity-50"
+            className="mt-3 w-full rounded-[5px] border border-control bg-background p-3 text-base outline-none placeholder:text-muted focus:border-foreground disabled:opacity-50"
           />
           <p className={`mt-1 text-sm ${tooMany ? "font-medium" : "text-muted"}`}>
             {parsed.length === 0 ? (
@@ -192,7 +192,7 @@ export function SlushPrepView({ initialCompany }: { initialCompany: EntityRef | 
               : `Prepare ${parsed.length || ""} ${parsed.length === 1 ? "brief" : "briefs"}`.replace("  ", " ")}
         </button>
         {run.status === "running" && (
-          <button type="button" className="btn-ghost h-[47px]" onClick={stop}>
+          <button type="button" className="btn-ghost h-control-lg" onClick={stop}>
             Stop
           </button>
         )}
@@ -472,7 +472,7 @@ function FindInstead({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Try another spelling"
-          className="h-9 min-w-0 flex-1 rounded-[5px] border border-line bg-background px-2.5 text-sm outline-none focus:border-foreground"
+          className="h-9 min-w-0 flex-1 rounded-[5px] border border-control bg-background px-2.5 text-sm outline-none focus:border-foreground"
         />
         <button type="submit" className="btn-ghost h-9" disabled={!query.trim() || query.trim() === searched}>
           Search

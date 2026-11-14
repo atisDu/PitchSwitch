@@ -39,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </nav>
           </div>
         </header>
-        <main className="mx-auto w-full max-w-[1400px] flex-1 px-5 py-12 md:px-10 md:py-20">
+        <main className="mx-auto w-full max-w-[1400px] flex-1 px-5 pt-12 pb-28 md:px-10 md:py-20">
           {children}
         </main>
         <footer className="bg-press text-background print:hidden">

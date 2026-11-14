@@ -87,7 +87,7 @@ export function AmountField({
           aria-invalid={invalid}
           aria-describedby={`${id}-hint`}
           disabled={disabled}
-          className="block h-10 w-44 rounded-[5px] border border-line bg-background px-3 outline-none placeholder:text-muted focus:border-foreground aria-[invalid=true]:border-foreground disabled:opacity-50"
+          className="block h-10 w-44 rounded-[5px] border border-control bg-background px-3 outline-none placeholder:text-muted focus:border-foreground aria-[invalid=true]:border-foreground disabled:opacity-50"
         />
         <button type="submit" className="btn-ghost h-10" disabled={disabled || invalid || !changed}>
           {parsed === null && value !== null ? "Clear" : "Apply"}

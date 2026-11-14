@@ -182,10 +182,12 @@ function BreakdownRows({ breakdown, sources }: { breakdown: ScoreBreakdown; sour
         <tbody>
           {breakdown.parts.map((p) => (
             <tr key={p.name} className="align-top">
-              <th scope="row" className="w-48 py-1 pr-3 text-left font-normal first-letter:uppercase">
-                {partName(p.name)}
+              <th scope="row" className="py-1 pr-3 text-left font-normal sm:w-48">
+                <span className="block first-letter:uppercase">{partName(p.name)}</span>
+                {/* Phones: the detail sits under the signal's name instead of in a squeezed column. */}
+                {p.detail && <span className="block text-xs text-muted sm:hidden">{partDetail(p.detail)}</span>}
               </th>
-              <td className="w-40 py-1 pr-3">
+              <td className="w-16 py-1 pr-3 sm:w-40">
                 <div
                   className="mt-1.5 h-1.5 bg-surface"
                   style={{ width: `${(p.max / widest) * 100}%` }}
@@ -198,7 +200,7 @@ function BreakdownRows({ breakdown, sources }: { breakdown: ScoreBreakdown; sour
               <td className="w-14 py-1 pr-3 text-right tabular-nums">
                 {fmt(p.got)}/{fmt(p.max)}
               </td>
-              <td className="py-1 text-muted">{p.detail && partDetail(p.detail)}</td>
+              <td className="hidden py-1 text-muted sm:table-cell">{p.detail && partDetail(p.detail)}</td>
             </tr>
           ))}
         </tbody>

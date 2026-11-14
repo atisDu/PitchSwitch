@@ -97,7 +97,7 @@ export function EntityPicker({ kind, label, placeholder, value, onChange, exampl
             onChange={(e) => setName(e.target.value)}
             placeholder={placeholder}
             autoComplete="off"
-            className="h-11 min-w-0 flex-1 rounded-[5px] border border-line bg-background px-3 text-base outline-none placeholder:text-muted focus:border-foreground"
+            className="h-11 min-w-0 flex-1 rounded-[5px] border border-control bg-background px-3 text-base outline-none placeholder:text-muted focus:border-foreground"
           />
           <button
             type="submit"
@@ -117,7 +117,7 @@ export function EntityPicker({ kind, label, placeholder, value, onChange, exampl
               {i > 0 && ", "}
               <button
                 type="button"
-                className="text-foreground underline underline-offset-4"
+                className="text-foreground underline underline-offset-4 pointer-coarse:py-2"
                 onClick={() => {
                   setName(ex);
                   void search(ex);

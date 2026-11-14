@@ -308,7 +308,7 @@ export function Landing() {
           <Link href="/" className="btn-primary press">
             Check your investors
           </Link>
-          <Link href={founderPath(SENSOFUSION)} className="btn-ghost press h-[47px]">
+          <Link href={founderPath(SENSOFUSION)} className="btn-ghost press h-control-lg">
             Open the sample report
           </Link>
         </div>
@@ -321,8 +321,7 @@ function Hero() {
   return (
     <section className="screen hero-screen grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
       <div className="enter">
-        <p className="label text-muted">PitchSwitch · for founders and VCs</p>
-        <h1 className="display mt-6 text-6xl md:text-8xl">
+        <h1 className="display text-6xl md:text-8xl">
           Investor screening for founders raising at <em>Slush</em>.
         </h1>
         <p className="mt-8 max-w-xl text-lg leading-snug text-muted">
@@ -334,7 +333,7 @@ function Hero() {
           <Link href="/" className="btn-primary press">
             Check your investors
           </Link>
-          <Link href={founderPath(SENSOFUSION)} className="btn-ghost press h-[47px]">
+          <Link href={founderPath(SENSOFUSION)} className="btn-ghost press h-control-lg">
             Open the sample report
           </Link>
         </div>
@@ -403,8 +402,7 @@ function Screen({
       aria-label={label}
       className={`screen ${dark ? "dark-band bg-press text-background" : "border-t border-line"}`}
     >
-      <p className={`label ${dark ? "text-sage" : "text-muted"}`}>{label}</p>
-      <div className="mt-6">{children}</div>
+      {children}
     </section>
   );
 }
@@ -412,12 +410,7 @@ function Screen({
 function Frame({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div className="lift overflow-hidden rounded-[5px] border border-foreground bg-background text-foreground">
-      <div className="flex items-center gap-2 border-b border-foreground px-4 py-2.5">
-        <span className="h-2 w-2 rounded-full bg-line" />
-        <span className="h-2 w-2 rounded-full bg-line" />
-        <span className="h-2 w-2 rounded-full bg-accent" />
-        <span className="label ml-3 truncate text-muted">{title}</span>
-      </div>
+      <p className="label truncate border-b border-foreground px-4 py-2.5 text-muted md:px-6">{title}</p>
       {children}
     </div>
   );

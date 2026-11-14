@@ -41,7 +41,8 @@ function BlockView({ block, citations, anchor }: { block: Block; citations: Sour
   if (block.kind === "heading") {
     const cls = "label pt-6 text-muted";
     const inner = <InlineContent nodes={block.content} citations={citations} anchor={anchor} />;
-    return block.level === 3 ? <h4 className={cls}>{inner}</h4> : <h3 className={cls}>{inner}</h3>;
+    // Under the page's h1: markdown ## is a section (h2), ### a subsection (h3); no level is skipped.
+    return block.level >= 3 ? <h3 className={cls}>{inner}</h3> : <h2 className={cls}>{inner}</h2>;
   }
   if (block.kind === "list") {
     const Tag = block.ordered ? "ol" : "ul";

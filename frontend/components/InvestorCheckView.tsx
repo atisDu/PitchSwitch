@@ -106,7 +106,7 @@ export function InvestorCheckView({
               Try again
             </button>
           )}
-          <Link href="/" className="btn-ghost h-[47px]">
+          <Link href="/" className="btn-ghost h-control-lg">
             Search again
           </Link>
         </div>

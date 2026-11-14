@@ -123,7 +123,7 @@ export function HomeForm() {
             autoComplete="off"
             aria-invalid={amountInvalid}
             aria-describedby="home-amount-hint"
-            className="mt-3 block h-11 w-48 rounded-[5px] border border-line bg-background px-3 text-base outline-none placeholder:text-muted focus:border-foreground aria-[invalid=true]:border-foreground"
+            className="mt-3 block h-11 w-48 rounded-[5px] border border-control bg-background px-3 text-base outline-none placeholder:text-muted focus:border-foreground aria-[invalid=true]:border-foreground"
           />
           <p id="home-amount-hint" className="mt-2 text-sm text-muted" aria-live="polite">
             {amountInvalid
