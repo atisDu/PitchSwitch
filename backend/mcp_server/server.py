@@ -39,7 +39,9 @@ Every fact carries `sources` (name, url, date, rank): cite them, and state nothi
 funding, investors or dates that the tools did not return.
 `lead_data: "unknown"` and `is_lead: null` mean Cala's round data does not say who led, not that \
 the investor did not lead. investor_brief also draws on Cala's knowledge search, so it can name \
-a lead or an amount that the round data lacks; that is more detail, not a contradiction."""
+a lead or an amount that the round data lacks; that is more detail, not a contradiction.
+Amounts are always the size of the whole round, never one investor's share. If you add anything \
+from outside these tools (a web search, your own knowledge), say that it is not from Pitchlist."""
 
 
 

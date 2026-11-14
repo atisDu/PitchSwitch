@@ -206,3 +206,15 @@ Eval set (`test_eval.py`) passes on the real store, 5/5 incl. the live judge.
   "Pre-Seed" in Stendr's announcement); the brief repeats each with its source.
 - **Still open: the Claude Desktop app itself** (C13). It is installed on B's machine with no MCP
   servers configured; the config block is in the B15 note. Needs a human to restart the app and ask.
+
+## MCP server checked in Claude Desktop (14 Nov, human at the app)
+
+- Works: the server starts, lists its tools and answers "should Sensofusion pitch Rainfall
+  Ventures?" with "skip, backs Stendr". The B15 "not yet checked in Claude Desktop" line is closed.
+- **Config trap:** `mcpServers` must be a top-level key of `claude_desktop_config.json`. Pasted at
+  the end of the file it lands inside `preferences`, the app ignores it without an error and
+  Claude answers from web search instead. Then quit the app fully and start it again.
+- **For C (C13 demo):** Claude Desktop mixed its own web search into the answer (it named a
+  co-lead our data does not have) and read the round's "~$5M" as Rainfall's share. The server
+  instructions now say amounts are round sizes and outside facts must be labelled; for the demo,
+  also turn web search off in the chat or start the question with "Using only Pitchlist".
