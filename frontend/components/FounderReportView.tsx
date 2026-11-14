@@ -180,7 +180,7 @@ export function FounderReportView({ companyId }: { companyId: string }) {
               <ol className="mt-6">
                 {(showAllPitch ? report.pitch : report.pitch.slice(0, PITCH_SHOWN)).map((s, i) => (
                   <li key={s.investor.id}>
-                    <PitchCard item={s} rank={i + 1} />
+                    <PitchCard item={s} rank={i + 1} companyId={report.company.id} companyName={report.company.name} />
                   </li>
                 ))}
               </ol>
@@ -213,7 +213,7 @@ export function FounderReportView({ companyId }: { companyId: string }) {
             <ul className="mt-6">
               {report.skip.map((s) => (
                 <li key={s.investor.id}>
-                  <SkipCard item={s} companyId={report.company.id} />
+                  <SkipCard item={s} companyId={report.company.id} companyName={report.company.name} />
                 </li>
               ))}
             </ul>

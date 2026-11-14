@@ -5,12 +5,22 @@ import Link from "next/link";
 
 import { SourceBadges } from "@/components/SourceBadge";
 import { activitySummary, conflictText, leadSummary } from "@/lib/investor";
-import { checkPath } from "@/lib/routes";
+import { briefPath, checkPath } from "@/lib/routes";
 import type { InvestorScore, Reason } from "@/lib/types";
 
 const VISIBLE_REASONS = 3;
 
-export function PitchCard({ item, rank }: { item: InvestorScore; rank: number }) {
+export function PitchCard({
+  item,
+  rank,
+  companyId,
+  companyName,
+}: {
+  item: InvestorScore;
+  rank: number;
+  companyId: string;
+  companyName: string;
+}) {
   return (
     <article className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-t border-line py-6 md:grid-cols-[4rem_1fr_7rem]">
       <p className="display text-3xl text-muted md:text-4xl" aria-label={`Rank ${rank}`}>
@@ -21,13 +31,27 @@ export function PitchCard({ item, rank }: { item: InvestorScore; rank: number })
         <Signals item={item} />
         <Reasons reasons={item.reasons} />
         <WarmPaths paths={item.warm_paths} />
+        <Link
+          href={briefPath(item.investor.id, companyId, { investor: item.investor.name, company: companyName })}
+          className="mt-4 inline-block text-sm underline underline-offset-4"
+        >
+          Read the brief
+        </Link>
       </div>
       <Score value={item.score} />
     </article>
   );
 }
 
-export function SkipCard({ item, companyId }: { item: InvestorScore; companyId: string }) {
+export function SkipCard({
+  item,
+  companyId,
+  companyName,
+}: {
+  item: InvestorScore;
+  companyId: string;
+  companyName: string;
+}) {
   return (
     <article className="border-t border-line py-6">
       <div className="border-l-4 border-press pl-4 md:pl-6">
@@ -47,12 +71,17 @@ export function SkipCard({ item, companyId }: { item: InvestorScore; companyId: 
             </li>
           ))}
         </ul>
-        <Link
-          href={checkPath(item.investor.id, companyId)}
-          className="mt-3 inline-block text-sm underline underline-offset-4"
-        >
-          Flip: see this from {item.investor.name}&apos;s side
-        </Link>
+        <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+          <Link href={checkPath(item.investor.id, companyId)} className="underline underline-offset-4">
+            Flip: see this from {item.investor.name}&apos;s side
+          </Link>
+          <Link
+            href={briefPath(item.investor.id, companyId, { investor: item.investor.name, company: companyName })}
+            className="underline underline-offset-4"
+          >
+            Read the brief
+          </Link>
+        </p>
         <details className="group mt-4">
           <summary className="label cursor-pointer list-none text-muted hover:text-foreground [&::-webkit-details-marker]:hidden">
             <span className="group-open:hidden">+ Other signals · fit {Math.round(item.score)}/100</span>
