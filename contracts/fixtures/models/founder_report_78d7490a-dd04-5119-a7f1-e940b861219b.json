@@ -345,7 +345,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   },
   {
    "investor": {
@@ -433,7 +434,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   },
   {
    "investor": {
@@ -462,7 +464,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   },
   {
    "investor": {
@@ -491,7 +494,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   },
   {
    "investor": {
@@ -520,7 +524,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   },
   {
    "investor": {
@@ -549,7 +554,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   },
   {
    "investor": {
@@ -578,7 +584,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   },
   {
    "investor": {
@@ -607,7 +614,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   }
  ],
  "skip": [
@@ -669,7 +677,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   },
   {
    "investor": {
@@ -729,7 +738,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   },
   {
    "investor": {
@@ -801,7 +811,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   },
   {
    "investor": {
@@ -897,7 +908,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   },
   {
    "investor": {
@@ -993,7 +1005,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   },
   {
    "investor": {
@@ -1065,7 +1078,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   },
   {
    "investor": {
@@ -1125,7 +1139,8 @@
       }
      ]
     }
-   ]
+   ],
+   "funding_fit": null
   }
  ]
 }
