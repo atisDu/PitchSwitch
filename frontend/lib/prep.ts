@@ -4,6 +4,9 @@
 // carries `investor_name` exactly as pasted. The stream replays from the start
 // when reopened, so state is always rebuilt from `initialPrep(names)`.
 
+import { INVESTOR_WORDS, looksLikeInvestor, resemblesName } from "./match.ts";
+
+export { looksLikeInvestor };
 import type { AgentEvent, Brief, EntityRef } from "./types";
 
 export const MAX_NAMES = 25; // the API answers 422 above this
@@ -102,29 +105,11 @@ export function finish(state: PrepState): PrepState {
 // briefing one of those as an investor would be worse than "not found". So a suggestion must
 // look like an investor AND resemble the typed name.
 
-const INVESTOR_WORDS = /\b(ventur\w*|capital|funds?|invest\w*|partners|angels?|equity|vc)\b/i;
-const GENERIC = new Set(["ventures", "venture", "capital", "fund", "funds", "partners", "invest", "investments", "vc", "the", "and", "oy", "ab", "ltd", "llc", "gmbh"]);
-
-const words = (s: string) =>
-  s.toLowerCase().normalize("NFKD").replace(/[^a-z0-9 ]+/g, " ").split(/\s+/).filter(Boolean);
-const squash = (s: string) => words(s).join("");
-
 /** True when the name has no investor word, so "<name> Ventures" is worth searching too. */
 export function needsInvestorSuffix(name: string): boolean {
   return !INVESTOR_WORDS.test(name);
 }
 
-export function looksLikeInvestor(e: EntityRef): boolean {
-  return e.type === "Person" || INVESTOR_WORDS.test(e.name) || INVESTOR_WORDS.test(e.description ?? "");
-}
-
-export function resemblesName(query: string, candidate: string): boolean {
-  const distinctive = words(query).filter((w) => w.length >= 4 && !GENERIC.has(w));
-  const cand = new Set(words(candidate));
-  if (distinctive.some((w) => cand.has(w))) return true;
-  const q = squash(query);
-  return q.length >= 4 && squash(candidate).startsWith(q.slice(0, 4));
-}
 
 /** Candidates worth offering, deduped by ID, investment firms first, at most `max`. */
 export function investorSuggestions(query: string, hits: EntityRef[], max = 4): EntityRef[] {

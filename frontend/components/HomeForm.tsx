@@ -62,7 +62,7 @@ export function HomeForm() {
             key="company"
             kind="company"
             label="Your company"
-            placeholder="e.g. Kelluu"
+            placeholder="e.g. Sensofusion"
             value={company}
             onChange={setCompany}
             examples={["Sensofusion", "Kelluu", "Stendr"]}

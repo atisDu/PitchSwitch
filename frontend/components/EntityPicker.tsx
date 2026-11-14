@@ -6,7 +6,9 @@
 import { useEffect, useId, useRef, useState } from "react";
 
 import { SlowNotice } from "@/components/SlowNotice";
-import { ApiError, resolve } from "@/lib/api";
+import { describeError } from "@/lib/errors";
+import { resolve } from "@/lib/api";
+import { splitMatches } from "@/lib/match";
 import type { EntityKind, EntityRef } from "@/lib/types";
 
 type State =
@@ -28,6 +30,7 @@ export function EntityPicker({ kind, label, placeholder, value, onChange, exampl
   const id = useId();
   const [name, setName] = useState("");
   const [state, setState] = useState<State>({ status: "idle" });
+  const [showLoose, setShowLoose] = useState(false);
   const abort = useRef<AbortController | null>(null);
 
   useEffect(() => () => abort.current?.abort(), []);
@@ -39,18 +42,20 @@ export function EntityPicker({ kind, label, placeholder, value, onChange, exampl
     const ctrl = new AbortController();
     abort.current = ctrl;
     onChange(null);
+    setShowLoose(false);
     setState({ status: "loading" });
     try {
       const items = await resolve(q, kind, ctrl.signal);
       if (ctrl.signal.aborted) return;
       setState({ status: "results", query: q, items });
-      // One match: pre-select it, still shown so the user can see what was picked.
-      if (items.length === 1) onChange(items[0]);
+      // One close match: pre-select it, still shown so the user can see what was picked.
+      const { close } = splitMatches(q, items, kind === "investor");
+      if (close.length === 1) onChange(close[0]);
     } catch (err) {
       if (ctrl.signal.aborted) return;
       setState({
         status: "error",
-        message: err instanceof ApiError ? err.message : "Something went wrong.",
+        message: describeError(err).message,
       });
     }
   }
@@ -139,33 +144,73 @@ export function EntityPicker({ kind, label, placeholder, value, onChange, exampl
             </button>
           </p>
         )}
-        {state.status === "results" && state.items.length === 0 && (
-          <p className="mt-3 text-sm text-muted">
-            No {kind === "investor" ? "investor" : "company"} named “{state.query}” in Cala. Check the
-            spelling or try the full legal name.
-          </p>
-        )}
-        {state.status === "results" && state.items.length > 1 && (
-          <div className="mt-3">
-            <p className="text-sm text-muted">
-              {state.items.length} matches for “{state.query}”. Which one do you mean?
-            </p>
-            <ul className="mt-3 divide-y divide-line border-y border-line">
-              {state.items.map((e) => (
-                <li key={e.id}>
-                  <button
-                    type="button"
-                    onClick={() => onChange(e)}
-                    className="w-full px-1 py-3 text-left hover:bg-surface focus-visible:bg-surface"
-                  >
-                    <EntityLine entity={e} />
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {state.status === "results" && (
+          <Results
+            query={state.query}
+            items={state.items}
+            kind={kind}
+            showLoose={showLoose}
+            onShowLoose={() => setShowLoose(true)}
+            onPick={onChange}
+          />
         )}
       </div>
+    </div>
+  );
+}
+
+function Results({
+  query,
+  items,
+  kind,
+  showLoose,
+  onShowLoose,
+  onPick,
+}: {
+  query: string;
+  items: EntityRef[];
+  kind: EntityKind;
+  showLoose: boolean;
+  onShowLoose: () => void;
+  onPick: (e: EntityRef) => void;
+}) {
+  const noun = kind === "investor" ? "investor" : "company";
+  const { close, loose } = splitMatches(query, items, kind === "investor");
+  const shown = showLoose ? [...close, ...loose] : close;
+  return (
+    <div className="mt-3">
+      {close.length === 0 ? (
+        <p className="text-sm text-muted">
+          No {noun} named “{query}” in Cala. Check the spelling or try the full name
+          {kind === "company" ? " (e.g. with “Oy” or “AB”)" : ""}.
+        </p>
+      ) : (
+        <p className="text-sm text-muted">
+          {close.length === 1 ? "1 match" : `${close.length} matches`} for “{query}”. Which one do you
+          mean?
+        </p>
+      )}
+      {shown.length > 0 && (
+        <ul className="mt-3 divide-y divide-line border-y border-line">
+          {shown.map((e) => (
+            <li key={e.id}>
+              <button
+                type="button"
+                onClick={() => onPick(e)}
+                className="w-full px-1 py-3 text-left hover:bg-surface focus-visible:bg-surface"
+              >
+                <EntityLine entity={e} />
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      {!showLoose && loose.length > 0 && (
+        <button type="button" onClick={onShowLoose} className="mt-2 text-sm text-muted underline underline-offset-4">
+          Show {loose.length} looser {loose.length === 1 ? "match" : "matches"}
+          {kind === "investor" ? " (similar names, or not an investor)" : " (names that only share a common word)"}
+        </button>
+      )}
     </div>
   );
 }

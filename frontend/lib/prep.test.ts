@@ -102,7 +102,7 @@ test("suggestions: only investor-like entities that resemble the typed name", ()
   ];
   assert.deepEqual(investorSuggestions("Nonexistent Capital", nonexistent), [], "sharing only 'Capital' isn't a match");
   const maki = [e("Maki.vc", "Company", "Helsinki-based venture capital firm"), e("MAKILA INVEST", "Company", "French company")];
-  assert.deepEqual(investorSuggestions("Makivc", maki).map((x) => x.name), ["Maki.vc", "MAKILA INVEST"]);
+  assert.deepEqual(investorSuggestions("Makivc", maki).map((x) => x.name), ["Maki.vc"]);
   assert.deepEqual(investorSuggestions("Jane Angel", [e("Jane Angel", "Person", null)]).map((x) => x.type), ["Person"]);
 });
 
