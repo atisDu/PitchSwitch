@@ -3,10 +3,11 @@
 Goal: in the demo (step 7 of `docs/demo-script.md`), ask Claude Desktop *"Should Sensofusion pitch
 Rainfall Ventures?"* and get a sourced answer through Pitchlist's MCP server.
 
-Status, 14 Nov: the server (B15) is checked over stdio with the official MCP client on this repo:
-all seven tools load, and `check_conflict` for Rainfall Ventures × Sensofusion returns the
-PORTFOLIO conflict via Stendr in about 2 s. **Not yet tried inside Claude Desktop**: that is the
-steps below, done by a person at the laptop.
+Status, 14 Nov: **works in Claude Desktop** (checked by a person at the app, `notes/B.md`): the
+server starts, lists its tools and answers the demo question with "skip, backs Stendr". Also checked
+over stdio with the official MCP client: `check_conflict` for Rainfall Ventures × Sensofusion
+returns the PORTFOLIO conflict via Stendr in about 2 s. Still open: Cala's own MCP server (step 3)
+and a run on the demo laptop.
 
 ## 1. Before you start
 
@@ -33,6 +34,9 @@ Open Claude Desktop → Settings → Developer → **Edit Config**. That opens
 }
 ```
 
+- **`mcpServers` must be a top-level key** of the file, next to (not inside) `preferences`. Pasted
+  at the end of the file it can land inside `preferences`: the app then ignores it **without an
+  error** and Claude answers from web search instead.
 - `<repo>` must be the full path (no `~`). The server reads `.env` from the repo root by itself.
 - `USE_FAKE_STORE: "false"` means live Cala data through the shared Atlas cache (fast once warm).
   Use `"true"` to run on the recorded fixtures with no keys (different data from the demo script).
@@ -51,7 +55,11 @@ this repo; get them from Cala's docs or the mentors, add it as a second entry un
 
 ## 4. Test the demo question
 
-Ask exactly: **"Should Sensofusion pitch Rainfall Ventures?"**
+**Turn web search off** in the chat first (or start the question with "Using only Pitchlist,").
+In the first test Claude mixed its own web search into the answer: it named a co-lead our data
+doesn't have and read the round size ("~$5M") as Rainfall's share.
+
+Ask exactly: **"Using only Pitchlist, should Sensofusion pitch Rainfall Ventures?"**
 
 What should happen (allow each tool call when Claude asks):
 
@@ -76,6 +84,7 @@ Record the result here:
 
 | Symptom | Fix |
 | --- | --- |
+| Claude answers from the web, no tool calls | `mcpServers` ended up inside `preferences`: move it to the top level, then ⌘Q and reopen |
 | No "pitchlist" in the tools menu | Check the JSON is valid and the path is absolute; quit Claude Desktop with ⌘Q (closing the window isn't enough). Logs: `~/Library/Logs/Claude/mcp*.log` |
 | `No module named mcp_server` | The venv lacks the editable install: `<repo>/.venv/bin/pip install -e "<repo>/backend[dev]"` |
 | Tools load but calls fail | `.env` missing or keys empty; run `cd <repo>/backend && ../.venv/bin/python -m data.smoke Sensofusion --real` to see which step fails |

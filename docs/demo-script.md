@@ -15,7 +15,7 @@ of the table, with a source one click away.
 | 4 | Skip list | **Startuplab, Rainfall Ventures, Skyfall Ventures**: "Backed your competitor Stendr"; click a source badge |
 | 5 | Flip | On the **Rainfall Ventures** card: **Flip: see this from Rainfall Ventures's side** |
 | 6 | Investor check | Verdict **Conflict.**: "Stendr is in your portfolio and competes with Sensofusion Oy" |
-| 7 | Claude Desktop | Ask: *"Should Sensofusion pitch Rainfall Ventures?"* (needs B15 + C13) |
+| 7 | Claude Desktop | Web search **off**; ask: *"Using only Pitchlist, should Sensofusion pitch Rainfall Ventures?"* (setup: `docs/mcp-demo.md`) |
 
 Live on 14 Nov: founder report 3 s, flip 0.1 s (both cached). Direct URLs, if typing fails:
 
