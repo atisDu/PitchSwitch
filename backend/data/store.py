@@ -37,6 +37,7 @@ from data.mappers import (
     country_of,
     edge_sources,
     fill_gaps,
+    looks_like_investor,
     map_company,
     map_entity_ref,
     map_people,
@@ -326,6 +327,16 @@ class CalaDataStore:
         hits = map_resolve(found, kind, query=name)
         if not hits:
             return []
+        # Among equally good matches, a Nordic or Baltic firm first: that is who our users
+        # mean (there is a Belgian VC called Inventure as well as the Finnish one).
+        wanted = name_key(name)
+        hits.sort(
+            key=lambda hit: (
+                kind == "investor" and not looks_like_investor(hit),
+                name_key(hit.name) != wanted,
+                name_key(hit.name) == wanted and country_of(None, hit.description) not in _REGION,
+            )
+        )
 
         # Entries that are the same firm as the best match: fetch them and keep the richest.
         family = [hit for hit in hits if _same_firm(hits[0], hit)][:_MAX_SIBLINGS]

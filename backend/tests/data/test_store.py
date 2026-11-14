@@ -44,6 +44,27 @@ async def test_resolve_investor_prefers_the_fund_over_same_named_companies(store
     assert inventure[0].id == cases["investors"]["inventure"]["id"]
 
 
+async def test_resolve_prefers_a_nordic_firm_among_equal_matches(store, cala, cases):
+    finnish = cases["investors"]["inventure"]["id"]
+
+    async def search(name, entity_types=None, limit=10):
+        return {
+            "entities": [
+                {"id": "be-1", "name": "INVENTURE", "entity_type": "Company",
+                 "description": "Belgian venture capital firm founded in 1980."},
+                {"id": finnish, "name": "Inventure", "entity_type": "Organization",
+                 "description": "a Finnish investment firm headquartered in Helsinki"},
+                {"id": "se-1", "name": "Inventure Aktiebolag", "entity_type": "Company",
+                 "description": "Swedish company headquartered in Stockholm."},
+            ]
+        }  # fmt: skip
+
+    cala.search_entities = search
+    refs = await store.resolve("Inventure", "investor")
+    assert [ref.id for ref in refs] == [finnish, "be-1", "se-1"]
+    assert store.canonical("be-1") == "be-1"  # a different firm: not folded into the Finnish one
+
+
 async def test_resolve_lists_one_entry_per_firm(store):
     refs = await store.resolve("Sensofusion", "company")
     names = [ref.name for ref in refs]

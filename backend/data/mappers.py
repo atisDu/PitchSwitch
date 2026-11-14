@@ -44,6 +44,14 @@ COUNTRY_CODES = {
     "LU": "Luxembourg",
     "CH": "Switzerland",
     "PL": "Poland",
+    "BE": "Belgium",
+    "IT": "Italy",
+    "ES": "Spain",
+    "AT": "Austria",
+    "IE": "Ireland",
+    "CZ": "Czechia",
+    "PT": "Portugal",
+    "CA": "Canada",
 }
 COUNTRY_ADJECTIVES = {
     "finnish": "Finland",
