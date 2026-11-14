@@ -1,7 +1,7 @@
 """Walk one company through every DataStore method and print what comes back.
 
     python -m data.smoke Kelluu            # whatever USE_FAKE_STORE says (fixtures by default)
-    python -m data.smoke Kelluu --real     # live Cala (cached; about 10 calls a minute uncached)
+    python -m data.smoke Kelluu --real     # live Cala (cached; up to 60 calls a minute uncached)
 
 It is the check for gate G2 (real data works end to end) and a way to warm the cache for a
 company before a demo. Exit code 0 means every step returned valid contract models.

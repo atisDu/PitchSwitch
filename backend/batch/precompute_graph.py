@@ -10,8 +10,8 @@ shared cache, so the app answers instantly for these investors afterwards, and o
 document per investor is written to the `crawl_investors` collection for part 2.
 
 The job is safe to stop and rerun: an investor crawled in the last 24 hours is skipped, and
-Cala calls already made come from the cache. Cala allows about 10 calls a minute on our key, so
-expect roughly 5-10 investors a minute at best.
+Cala calls already made come from the cache. Cala allows 100 calls a minute on our key; at the
+nightly job's 30 a minute a full crawl of ~110 investors takes about ten minutes.
 """
 
 from __future__ import annotations
@@ -287,7 +287,7 @@ def main() -> int:
     parser.add_argument("--max-investors", type=int, default=150)
     parser.add_argument("--force", action="store_true", help="re-crawl fresh investors too")
     parser.add_argument(
-        "--per-minute", type=int, default=0, help="Cala calls a minute (default: the client's 10)"
+        "--per-minute", type=int, default=0, help="Cala calls a minute (default: the client's 60)"
     )
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s", datefmt="%H:%M:%S")

@@ -10,7 +10,7 @@ triggered the job, and expects the process to exit when the work is done. So thi
     python -m batch.job_server        # listens on PORT (default 8000)
 
 Trigger a run:  curl -X POST https://tasks.verda.com/<deployment-name>/run
-Optional query: ?max_investors=150&per_minute=6&seeds=Kelluu,Stendr&step=all|crawl|derive
+Optional query: ?max_investors=150&per_minute=30&seeds=Kelluu,Stendr&step=all|crawl|derive
 """
 
 from __future__ import annotations

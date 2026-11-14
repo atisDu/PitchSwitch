@@ -313,3 +313,15 @@ async def test_require_cache_refuses_to_call_cala_when_the_cache_is_down():
 
     relaxed, _ = make_client(handler, cache=Down())  # the default: carry on without the cache
     assert await relaxed.query("q1") == {"ok": True}
+
+
+def test_the_default_rate_leaves_room_under_calas_limit_and_env_can_change_it(monkeypatch):
+    from data.cala_client import DEFAULT_PER_MINUTE
+
+    assert 0 < DEFAULT_PER_MINUTE < 100  # Cala allows 100 a minute on the shared key
+    monkeypatch.setenv("CALA_API_KEY", "k")
+    monkeypatch.setenv("CALA_PER_MINUTE", "")
+    assert CalaClient.from_env().per_minute == DEFAULT_PER_MINUTE
+    monkeypatch.setenv("CALA_PER_MINUTE", "25")
+    assert CalaClient.from_env().per_minute == 25
+    assert CalaClient.from_env(per_minute=5).per_minute == 5  # an explicit argument wins

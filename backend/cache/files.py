@@ -2,7 +2,7 @@
 
 Same behaviour as `cache.atlas.AtlasCache` (fresh for 24 hours, expired entries kept as a
 fallback), one JSON file per request under .cache/cala/ in the repo (gitignored). Used when
-MONGODB_URI is empty, so local runs don't spend Cala's 10 calls a minute twice.
+MONGODB_URI is empty, so local runs don't pay for the same Cala call twice.
 """
 
 from __future__ import annotations

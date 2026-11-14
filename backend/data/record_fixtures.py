@@ -11,7 +11,8 @@ Every response is saved unedited under contracts/fixtures/raw/<kind>/<key>.json 
 not fetched again, so a run that stops (rate limit, network) continues where it left off.
 raw/manifest.json lists which Cala ID belongs to which demo case.
 
-Cala allows about 10 calls a minute on our key, so a full run takes 15-20 minutes.
+Cala allows 100 calls a minute on our key (it was 10 when the fixtures were first recorded);
+the recorder makes at most one call a second, so a full run takes a few minutes.
 """
 
 from __future__ import annotations
@@ -165,7 +166,7 @@ class Recorder:
         client: httpx.Client,
         raw_dir: Path,
         *,
-        min_interval: float = 6.5,
+        min_interval: float = 1.0,
         force: bool = False,
         dry_run: bool = False,
         max_calls: int = 400,
@@ -419,7 +420,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--force", action="store_true", help="re-record files that exist")
     parser.add_argument("--dry-run", action="store_true", help="list what is missing, call nothing")
     parser.add_argument("--max-calls", type=int, default=400)
-    parser.add_argument("--min-interval", type=float, default=6.5, help="seconds between calls")
+    parser.add_argument("--min-interval", type=float, default=1.0, help="seconds between calls")
     args = parser.parse_args(argv)
 
     load_env()

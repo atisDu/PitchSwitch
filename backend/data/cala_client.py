@@ -6,7 +6,9 @@
 
 What it takes care of:
 - `X-API-KEY` auth, timeouts, and retries with backoff on 429, 5xx and network errors;
-- Cala's rate limit (about 10 calls a minute on our key): calls wait their turn instead of failing;
+- Cala's rate limit (100 calls a minute on our key since 14 Nov; it was 10): calls wait their
+  turn instead of failing. Each process keeps to 60 a minute by default (CALA_PER_MINUTE),
+  because laptops, the server and the batch job share the one key;
 - a concurrency cap, and sharing one request between callers that ask for the same thing at once;
 - an optional response cache (task A10 plugs MongoDB Atlas in here);
 - a log line and a `CallRecord` per call (endpoint, ms, cache hit) to track credit use.
@@ -36,6 +38,9 @@ log = logging.getLogger("data.cala")
 
 DEFAULT_BASE_URL = "https://api.cala.ai/v1"
 _CACHE_PAUSE = 60  # seconds without the cache after it failed
+# Cala allows 100 calls a minute per key. One process takes at most 60 of them, so two busy
+# processes (say the server and a laptop) still fit; override with CALA_PER_MINUTE.
+DEFAULT_PER_MINUTE = 60
 _UUID = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}")
 
 
@@ -108,7 +113,7 @@ class CalaClient:
         cache_only: bool = False,
         require_cache: bool = False,
         concurrency: int = 8,
-        per_minute: int = 10,
+        per_minute: int = DEFAULT_PER_MINUTE,
         timeout: float = 180.0,
         max_retries: int = 4,
         backoff: float = 2.0,
@@ -144,6 +149,9 @@ class CalaClient:
         key = env("CALA_API_KEY")
         if not key and not kwargs.get("cache_only"):
             raise CalaError("CALA_API_KEY is empty: put it in .env (see .env.example).")
+        configured = env("CALA_PER_MINUTE")
+        if configured.isdigit() and "per_minute" not in kwargs:
+            kwargs["per_minute"] = int(configured)
         return cls(key, env("CALA_BASE_URL", DEFAULT_BASE_URL) or DEFAULT_BASE_URL, **kwargs)
 
     async def __aenter__(self) -> CalaClient:
