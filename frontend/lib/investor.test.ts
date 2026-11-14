@@ -22,6 +22,7 @@ const score = (over: Partial<InvestorScore>): InvestorScore => ({
   deals_last_12m: null,
   warm_paths: [],
   reasons: [],
+  funding_fit: null,
   ...over,
 });
 

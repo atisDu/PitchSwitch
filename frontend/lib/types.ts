@@ -83,6 +83,15 @@ export interface Reason {
 
 export type LeadData = "known" | "partial" | "unknown";
 
+export type FundingVerdict = "fits" | "too_small" | "too_large" | "unknown";
+
+/** Optional (B21): only when the request gave an amount. Amounts compared are whole-round sizes. */
+export interface FundingFit {
+  verdict: FundingVerdict; // unknown = no amounts in Cala
+  text: string; // one line, e.g. "Joins rounds of €1M-€5M; your €3M raise fits"
+  sources: Source[];
+}
+
 export interface InvestorScore {
   investor: EntityRef;
   score: number; // 0-100, higher = better fit
@@ -96,6 +105,7 @@ export interface InvestorScore {
   deals_last_12m: number | null; // null = unknown
   warm_paths: Reason[];
   reasons: Reason[];
+  funding_fit: FundingFit | null; // only with target_amount_eur in the request
 }
 
 export interface FounderReport {
@@ -111,6 +121,7 @@ export interface InvestorCheck {
   conflicts: Conflict[];
   competitors: Competitor[];
   rounds: Round[]; // rounds of `company` AND of every competitor; group by Round.company_id
+  funding_fit: FundingFit | null; // only with max_check_eur in the request
 }
 
 export interface Brief {
@@ -145,11 +156,13 @@ export interface ResolveRequest {
 export interface FounderAnalyzeRequest {
   company_id: string;
   competitor_ids?: string[];
+  target_amount_eur?: number; // the founder's raise, EUR, > 0
 }
 
 export interface InvestorCheckRequest {
   investor_id: string;
   company_id: string;
+  max_check_eur?: number; // the most the investor will put in, EUR, > 0
 }
 
 export interface BriefRequest {
@@ -159,7 +172,8 @@ export interface BriefRequest {
 
 export interface SlushPrepRequest {
   company_id: string;
-  investor_names: string[];
+  investor_names?: string[];
+  all_slush_investors?: boolean; // B17: add every Slush 2026 investor Cala names
 }
 
 export interface SlushPrepResponse {
