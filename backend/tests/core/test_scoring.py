@@ -251,3 +251,53 @@ def test_country_missing_is_read_from_the_description():
     assert "Nordic/Baltic 0/10 (country unknown)" in score([rd("r", "c1")], profile=vague)\
         .reasons[0].text
 
+
+
+# --- B20: sourced warm paths, fallback to funds that lead in the space ---
+
+
+def _ref(i):
+    return EntityRef(id=i, name=i.upper(), type="Organization")
+
+
+class _Store:
+    def __init__(self, rounds, portfolios):
+        self.r, self.p = rounds, portfolios
+
+    async def investor_rounds(self, i):
+        return self.r.get(i, [])
+
+    async def portfolio(self, i):
+        from contracts.schemas import PortfolioLink
+
+        return [PortfolioLink(investor_id=i, company=_ref(c), sources=[Source(name=f"{i}-{c}")])
+                for c in self.p.get(i, [])]
+
+
+async def test_warm_paths_need_a_shared_round_or_company_and_carry_its_sources(monkeypatch):
+    both = Round(id="r1", company_id="x", investors=[RoundInvestor(investor=_ref(i))
+                                                     for i in ("anchor", "fund")], sources=SRC)
+    store = _Store({"anchor": [both]}, {"anchor": ["y"], "fund": ["y"], "other": ["z"]})
+    monkeypatch.setattr(scoring, "get_store", lambda: store)
+    warm = await scoring._warm_paths(
+        {"anchor": _ref("anchor")}, {"fund": [], "other": []}, mine=True
+    )
+    (path,) = warm["fund"]
+    assert path.text == "Co-invested in 2 companies with your investor ANCHOR (e.g. Y)"
+    assert path.sources == [*SRC, Source(name="anchor-y"), Source(name="fund-y")]
+    assert warm["other"] == []  # nothing shared: no path, nothing uncited
+
+    lead = await scoring._warm_paths({"anchor": _ref("anchor")}, {"fund": []}, mine=False)
+    assert "with ANCHOR, which led a round in your space" in lead["fund"][0].text
+
+
+def test_warm_paths_through_space_leads_count_half():
+    from contracts.schemas import Reason
+
+    paths = [Reason(text="w", sources=SRC)]
+    full = scoring._score(ME, [rd("r", "c1")], [], paths, [], lambda r: r.id, TODAY)
+    half = scoring._score(ME, [rd("r", "c1")], [], paths, [], lambda r: r.id, TODAY,
+                          warm_weight=scoring.WARM_FALLBACK)
+    assert "warm paths 7.5/15 (1)" in full.reasons[0].text
+    text = half.reasons[0].text
+    assert "warm paths 3.8/15 (1, through funds that lead here, counted half)" in text

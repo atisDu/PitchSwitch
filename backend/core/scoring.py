@@ -66,6 +66,10 @@ NO_LEAD_RECENCY = 0.5  # no known lead in the space: the last dated round there 
 BACKERS_ONLY = 0.5  # a company known only from an undated "backers" entry counts half
 # ponytail: caps the pool so the real store stays within Cala's rate limit; raise with the cache.
 MAX_CO_INVESTORS = 20
+# B20: no known investor of the startup (live: Sensofusion) -> the funds that led a round in the
+# space stand in for them; a path through one counts half.
+WARM_FALLBACK = 0.5
+MAX_WARM_SOURCES = 6
 
 
 def parse_date(text: str | None) -> date | None:
@@ -119,6 +123,54 @@ def _startup_stage(company: Company, own_rounds: list[Round]) -> int | None:
     labelled = [rd for rd in own_rounds if stage_index(rd.label) is not None]
     latest = max(labelled, key=lambda rd: rd.date or "", default=None)
     return stage_index(latest.label) if latest else None
+
+
+async def _warm_paths(
+    anchors: dict[str, EntityRef], histories: dict[str, list[Round]], *, mine: bool
+) -> dict[str, list[Reason]]:
+    """Investor id -> one Reason per anchor it has backed a company with, most companies first.
+    Evidence: a round both took part in, or a company in both portfolios; the sources are those
+    rounds' and links'. A pair with no such evidence gets no path (it could not be cited).
+    `mine`: the anchors are the startup's own investors, else funds that lead in its space."""
+    store = get_store()
+    a_ids = list(anchors)
+    missing = [a for a in a_ids if a not in histories]
+    got = await asyncio.gather(
+        asyncio.gather(*(store.investor_rounds(a) for a in missing)),
+        asyncio.gather(*(store.portfolio(i) for i in [*a_ids, *histories])),
+    )
+    rounds_of = histories | dict(zip(missing, got[0], strict=True))
+    links = dict(zip([*a_ids, *histories], got[1], strict=True))
+    by_company = {i: {lk.company.id: lk for lk in ls} for i, ls in links.items()}
+    out: dict[str, list[Reason]] = defaultdict(list)
+    for inv in histories:
+        found: list[tuple[int, Reason]] = []
+        for a in a_ids:
+            if a == inv:
+                continue
+            both = {
+                rd.id: rd
+                for rd in [*rounds_of.get(a, []), *rounds_of.get(inv, [])]
+                if {a, inv} <= {ri.investor.id for ri in rd.investors}
+            }
+            mine_c, theirs = by_company.get(a, {}), by_company.get(inv, {})
+            common = mine_c.keys() & theirs.keys()
+            companies = {rd.company_id for rd in both.values()} | common
+            if not companies:
+                continue
+            names = sorted({mine_c[c].company.name for c in common})[:2]
+            who = f"your investor {anchors[a].name}" if mine else (
+                f"{anchors[a].name}, which led a round in your space")
+            n = len(companies)
+            text = f"Co-invested in {_plural(n, 'compan')} with {who}" + (
+                f" (e.g. {', '.join(names)})" if names else "")
+            sources = merge_sources(
+                *(rd.sources for rd in both.values()),
+                *(mine_c[c].sources + theirs[c].sources for c in sorted(common)),
+            )[:MAX_WARM_SOURCES]
+            found.append((n, Reason(text=text, sources=sources)))
+        out[inv] = [r for _, r in sorted(found, key=lambda x: -x[0])]
+    return out
 
 
 def _is_backers(rd: Round) -> bool:
@@ -180,18 +232,16 @@ async def rank_investors(
             in_space[ri.investor.id].append(rd)
 
     current = {ri.investor.id: ri.investor for rd in own_rounds for ri in rd.investors}
-    warm: dict[str, list[Reason]] = defaultdict(list)
+    # co_investors() (A's precomputed graph) only picks who else to rank: it has no sources.
+    # The warm paths themselves are rebuilt from sourced rounds and portfolios (_warm_paths).
     shared: dict[str, int] = defaultdict(int)
     co_refs: dict[str, EntityRef] = {}
     co_lists = await asyncio.gather(*(store.co_investors(i) for i in current))
     for cur, co in zip(current.values(), co_lists, strict=True):
         for ref, n in co:
-            if ref.id == cur.id:
-                continue
-            # ponytail: co_investors() has no sources (contract), so warm paths carry none yet.
-            warm[ref.id].append(Reason(text=f"Co-invested with your investor {cur.name} ({n}x)"))
-            shared[ref.id] += n
-            co_refs.setdefault(ref.id, ref)
+            if ref.id != cur.id:
+                shared[ref.id] += n
+                co_refs.setdefault(ref.id, ref)
     # Current investors are already on board: neither a pitch nor a skip.
     for i in [*current, company.id]:
         pool.pop(i, None)
@@ -209,13 +259,17 @@ async def rank_investors(
     )
     close = await _closeness(company, direct, others)
     stage = _startup_stage(company, own_rounds)
+    leaders = {ri.investor.id: ri.investor for rd in space for ri in rd.investors if ri.is_lead}
+    anchors = current or {i: ref for i, ref in leaders.items() if i != company.id}
+    warm = await _warm_paths(anchors, dict(zip(ids, found[1], strict=True)), mine=bool(current))
+    warm_weight = 1.0 if current else WARM_FALLBACK
 
     pitch: list[InvestorScore] = []
     skip: list[InvestorScore] = []
     for inv_id, conflicts, history, profile in zip(ids, *found, strict=True):
         scored = _score(
             pool[inv_id], in_space[inv_id], history, warm[inv_id], conflicts, label, today,
-            closeness=close, stage=stage,
+            closeness=close, stage=stage, warm_weight=warm_weight,
             profile=profile if isinstance(profile, Company) else None,
         )
         if target_amount_eur:
@@ -243,6 +297,7 @@ def _score(
     closeness: dict[str, float] | None = None,
     stage: int | None = None,
     profile: Company | None = None,
+    warm_weight: float = 1.0,
 ) -> InvestorScore:
     inv_id = investor.id
     led = [rd for rd in rounds if _is_lead(rd, inv_id)]
@@ -305,7 +360,7 @@ def _score(
         # Like recency: activity only counts for a fund in the space, else busy co-investors with
         # no company here (live: Northzone, Y Combinator on Stendr) outrank those that have one.
         "activity": _capped("activity", deals_12m or 0) if rounds else 0.0,
-        "warm_paths": _capped("warm_paths", len(warm_paths)),
+        "warm_paths": _capped("warm_paths", len(warm_paths) * warm_weight),
         # Like activity: only for an investor with a company in the space.
         "stage_fit": WEIGHTS["stage_fit"] * (stage_share or 0.0) if rounds else 0.0,
         "geography": WEIGHTS["geography"] if nordic and rounds else 0.0,
@@ -324,7 +379,9 @@ def _score(
         ),
         "recency": ("recency", when),
         "activity": ("activity", "unknown" if deals_12m is None else f"{deals_12m} in 12 mo"),
-        "warm_paths": ("warm paths", str(len(warm_paths))),
+        "warm_paths": ("warm paths", str(len(warm_paths)) + (
+            ", through funds that lead here, counted half" if warm_paths and warm_weight < 1
+            else "")),
         "stage_fit": ("stage fit", "startup stage unknown" if stage is None else
                       "no labelled rounds" if not staged else
                       f"{len(at_stage)} of {len(staged)} rounds at {STAGES[stage]}"
