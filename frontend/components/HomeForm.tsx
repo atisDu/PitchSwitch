@@ -65,7 +65,7 @@ export function HomeForm() {
             placeholder="e.g. Kelluu"
             value={company}
             onChange={setCompany}
-            examples={["Kelluu", "Sensofusion", "Stendr"]}
+            examples={["Sensofusion", "Kelluu", "Stendr"]}
           />
         ) : (
           <>

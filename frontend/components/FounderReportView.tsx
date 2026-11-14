@@ -18,8 +18,8 @@ import { prepPath } from "@/lib/routes";
 import type { Company, FounderReport } from "@/lib/types";
 
 // Live reports rank 30-45 investors; the top ones matter, and the Skip list below
-// (the conflict) must stay within reach.
-const PITCH_SHOWN = 10;
+// (the conflict) must stay within reach: each card is ~235 px tall.
+const PITCH_SHOWN = 5;
 
 type Load =
   | { status: "loading" }
@@ -182,6 +182,11 @@ export function FounderReportView({ companyId }: { companyId: string }) {
             title="Who to pitch"
             hint="Ranked by fit: how often they lead in your space, how recently, and warm paths to them. None of them backed your competitors."
           />
+          {report.skip.length > 0 && (
+            <a href="#skip-heading" className="mt-3 inline-block text-sm underline underline-offset-4">
+              Jump to the {report.skip.length} to skip ↓
+            </a>
+          )}
           {report.pitch.length === 0 ? (
             <p className="mt-6 border-t border-line pt-6 text-muted">
               No investors without a conflict found in your space yet.
@@ -253,7 +258,7 @@ function ListHeading({
       <p className="label text-muted">
         {label} · {count}
       </p>
-      <h2 id={id} className="display mt-3 text-5xl md:text-6xl">
+      <h2 id={id} className="display mt-3 scroll-mt-6 text-5xl md:text-6xl">
         {title}
       </h2>
       <p className="mt-4 max-w-2xl text-muted">{hint}</p>
