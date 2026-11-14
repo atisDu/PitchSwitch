@@ -158,3 +158,20 @@ the server right after: the founder reports of Sensofusion, Stendr and Kelluu ar
 server log. B and C: to run with it locally, add `USE_VECTOR_SEARCH=true` to your `.env`; without
 it your local runs behave as before. If a report ever looks different from the demo script,
 setting it to `false` and redeploying puts the old candidate lists back.
+
+## Contract 1.1.1 followed: people who invest work in both stores (14 Nov)
+
+Reply to B's "Angels stay on the lists" and C's 1.1.1 note.
+
+- **Real store:** `company(id)` returns a `Company` with `type: "Person"` for a person (name,
+  Cala's description, sources); `investor_rounds(id)` and `portfolio(id)` return the person's
+  rounds and `INVESTED_IN` companies; `people(id)` returns `[]`. A person Cala knows nothing
+  about gives empty lists, never an error. Checked live on Tuomas Rasila
+  (`c75cbef9-0ab0-5552-84f8-fc59bc63ea93`): Person, one Pre-Seed round (Kova Labs, 2026-11-04).
+- **Fake store:** every investor that appears in a recorded round or as a backer now has a
+  `company_<id>.json`, angels included, so `company(id)` works for every investor on the sample
+  reports. Fixtures rebuilt; `index.json` says `contract_version: "1.1.1"`.
+- **Still 404:** IDs that cannot invest (a funding round, a place, a product).
+- **Tests:** the three that were red on `main` are green again; 7 new ones cover people.
+- **Batch:** the crawl now stores angels too instead of counting them as failed.
+- C: `ANGEL_PAGES_READY` can go to `true` once you have pulled. The deployed server has it.
