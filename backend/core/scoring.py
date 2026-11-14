@@ -29,12 +29,17 @@ from core.conflict import check_conflict, merge_sources
 from data import get_store
 
 # Points per signal; they add up to 100. A signal earns its full points at its cap.
-WEIGHTS = {"leads_in_space": 35, "rounds_in_space": 20, "recency": 25, "warm_paths": 20}
-CAPS = {"leads_in_space": 2, "rounds_in_space": 3, "warm_paths": 2}
+# Scoring v2 (B18): companies, not rounds; recency only inside the space; activity counts.
+WEIGHTS = {
+    "leads_in_space": 30, "companies_in_space": 20, "recency": 15, "activity": 15,
+    "warm_paths": 20,
+}
+CAPS = {"leads_in_space": 2, "companies_in_space": 3, "activity": 6, "warm_paths": 2}
 RECENT_MONTHS, STALE_MONTHS = 12, 36  # last lead within 12 mo = full recency, 36+ = none
-# Recency only counts with >= 1 round in the space, else a busy unrelated co-investor (live:
-# a Czech real-estate fund for Kelluu) outranks funds that actually invested in the space.
-NO_LEAD_RECENCY = 0.5  # no known lead: last round of any kind counts half
+NO_LEAD_RECENCY = 0.5  # no known lead in the space: the last dated round there counts half
+# Cala rarely says who led. In a real round where it names no lead, each of its n investors gets
+# 1/n of a lead (the chance it was them) instead of nothing.
+BACKERS_ONLY = 0.5  # a company known only from an undated "backers" entry counts half
 # ponytail: caps the pool so the real store stays within Cala's rate limit; raise with the cache.
 MAX_CO_INVESTORS = 20
 
@@ -58,8 +63,13 @@ def _recency(when: date | None, today: date) -> float:
     return max(0.0, 1 - (months - RECENT_MONTHS) / (STALE_MONTHS - RECENT_MONTHS))
 
 
-def _capped(signal: str, value: int) -> float:
+def _capped(signal: str, value: float) -> float:
     return WEIGHTS[signal] * min(value, CAPS[signal]) / CAPS[signal]
+
+
+def _is_backers(rd: Round) -> bool:
+    """A7: Cala's undated list of a company's backers, not a real round."""
+    return not rd.label and not rd.date
 
 
 def _is_lead(rd: Round, investor_id: str) -> bool | None:
@@ -147,8 +157,8 @@ async def rank_investors(
         scored = _score(pool[inv_id], rounds, history, warm[inv_id], conflicts, label, today)
         (skip if conflicts else pitch).append(scored)
 
-    def order(s: InvestorScore):
-        return (-s.score, s.investor.name)
+    def order(s: InvestorScore):  # ties: the more active, then the wider in the space
+        return (-s.score, -(s.deals_last_12m or 0), -s.rounds_in_space, s.investor.name)
 
     return FounderReport(
         company=company, competitors=competitors, pitch=sorted(pitch, key=order),
@@ -170,6 +180,22 @@ def _score(
     told = sum(1 for rd in rounds if any(ri.is_lead is not None for ri in rd.investors))
     lead_data = "known" if rounds and told == len(rounds) else "partial" if told else "unknown"
 
+    # Per company in the space: 1 if in a real round, BACKERS_ONLY if only in its backers list;
+    # lead credit 1 if it led a round there, else 1/n for a real round that names no lead.
+    company: dict[str, float] = {}
+    lead: dict[str, float] = {}
+    for rd in rounds:
+        cid = rd.company_id
+        company[cid] = max(company.get(cid, 0.0), BACKERS_ONLY if _is_backers(rd) else 1.0)
+        if _is_lead(rd, inv_id):
+            credit = 1.0
+        elif _is_backers(rd) or any(ri.is_lead is not None for ri in rd.investors):
+            credit = 0.0
+        else:
+            credit = 1 / max(1, len(rd.investors))
+        lead[cid] = max(lead.get(cid, 0.0), credit)
+    likely = sum(lead.values()) - len({rd.company_id for rd in led})
+
     every = {rd.id: rd for rd in [*history, *rounds]}.values()
     dated = sorted(
         ((d, rd) for rd in every if (d := parse_date(rd.date))), key=lambda x: x[0], reverse=True
@@ -178,30 +204,36 @@ def _score(
     recent = [rd for d, rd in dated if (today - d).days <= 365]
     deals_12m = len(recent) if history else None
 
-    recency = (
-        0.0  # recency means "active in your space": a co-investor-only fund gets no points for it
-        if not rounds
-        else _recency(last_lead[0], today)
-        if last_lead
-        else NO_LEAD_RECENCY * _recency(dated[0][0] if dated else None, today)
+    # Recency means "active in your space": only rounds there count.
+    space_dated = sorted(
+        ((d, rd) for rd in rounds if (d := parse_date(rd.date))), key=lambda x: x[0], reverse=True
     )
+    space_lead = next(((d, rd) for d, rd in space_dated if _is_lead(rd, inv_id)), None)
+    if space_lead:
+        recency, when = _recency(space_lead[0], today), f"last lead here {space_lead[1].date}"
+    elif space_dated:
+        recency = NO_LEAD_RECENCY * _recency(space_dated[0][0], today)
+        when = f"no known lead here; last round here {space_dated[0][1].date}, counted half"
+    else:
+        recency, when = 0.0, "no dated round here"
+
     parts = {
-        "leads_in_space": _capped("leads_in_space", len(led)),
-        "rounds_in_space": _capped("rounds_in_space", len(rounds)),
+        "leads_in_space": _capped("leads_in_space", sum(lead.values())),
+        "companies_in_space": _capped("companies_in_space", sum(company.values())),
         "recency": WEIGHTS["recency"] * recency,
+        # Like recency: activity only counts for a fund in the space, else busy co-investors with
+        # no company here (live: Northzone, Y Combinator on Stendr) outrank those that have one.
+        "activity": _capped("activity", deals_12m or 0) if rounds else 0.0,
         "warm_paths": _capped("warm_paths", len(warm_paths)),
     }
     score = sum(parts.values())
-    if last_lead:
-        when = f"last lead {last_lead[1].date}"
-    elif dated:
-        when = f"no known lead; last round {dated[0][1].date}, counted half"
-    else:
-        when = "no dated round"
+    n_led = len({rd.company_id for rd in led})
     details = {
-        "leads_in_space": ("leads in this space", f"{len(led)} led"),
-        "rounds_in_space": ("rounds in this space", str(len(rounds))),
+        "leads_in_space": ("leads", f"{n_led} led" + (f", {_points(likely)} likely" if likely
+                                                        else "")),
+        "companies_in_space": ("companies here", _points(sum(company.values()))),
         "recency": ("recency", when),
+        "activity": ("activity", "unknown" if deals_12m is None else f"{deals_12m} in 12 mo"),
         "warm_paths": ("warm paths", str(len(warm_paths))),
     }
     breakdown = " + ".join(
@@ -210,7 +242,7 @@ def _score(
     # Only with rounds to cite: a co-investor-only score is just its warm paths (listed apart).
     reasons: list[Reason] = [Reason(
         text=f"Score {_points(score)}/100 = {breakdown}",
-        sources=merge_sources(*(rd.sources for rd in rounds)),
+        sources=merge_sources(*(rd.sources for rd in [*rounds, *recent])),
     )] if rounds else []
     if led:
         reasons.append(Reason(
