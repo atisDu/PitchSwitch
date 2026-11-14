@@ -86,6 +86,15 @@ class Reason(BaseModel):
     sources: list[Source] = []
 
 
+class FundingFit(BaseModel):
+    """Optional (B21): sent only when the request gave an amount. Amounts compared are whole-round
+    sizes from Cala, never one investor's share."""
+
+    verdict: Literal["fits", "too_small", "too_large", "unknown"]  # unknown = no amounts in Cala
+    text: str  # one line, e.g. "Joins rounds of €1M-€5M; your €3M raise fits"
+    sources: list[Source] = []
+
+
 class InvestorScore(BaseModel):
     investor: EntityRef
     score: float  # 0-100, higher = better fit
@@ -99,6 +108,7 @@ class InvestorScore(BaseModel):
     deals_last_12m: int | None = None  # None = unknown
     warm_paths: list[Reason] = []
     reasons: list[Reason] = []
+    funding_fit: FundingFit | None = None  # only with target_amount_eur in the request
 
 
 class FounderReport(BaseModel):
@@ -114,6 +124,7 @@ class InvestorCheck(BaseModel):
     conflicts: list[Conflict]
     competitors: list[Competitor]
     rounds: list[Round]  # rounds of `company` AND of every competitor; group by Round.company_id
+    funding_fit: FundingFit | None = None  # only with max_check_eur in the request
 
 
 class Brief(BaseModel):

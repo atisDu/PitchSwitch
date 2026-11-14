@@ -3,6 +3,19 @@
 Every change to `contracts/` (schemas, API, fixtures format) is listed here, with the new
 `CONTRACT_VERSION`. Fixture *data* written by Agent A (tasks A1, A2) is not a contract change.
 
+## 1.1.1 + optional funding amount — 2026-11-14 (no version bump: additive, human decision)
+
+Fixed now so C can build the inputs (C18) while B builds the logic (B21). Existing requests and
+responses are unchanged; `CONTRACT_VERSION` stays 1.1.1.
+
+- Requests: `POST /api/founder/analyze` gains `target_amount_eur?: number`;
+  `POST /api/investor/check` gains `max_check_eur?: number`.
+- Models: new `FundingFit {verdict: "fits" | "too_small" | "too_large" | "unknown", text,
+  sources}`; `InvestorScore.funding_fit` and `InvestorCheck.funding_fit`, both `FundingFit | None
+  = None` (null unless the request gave an amount). Rules in `contracts/api.md`.
+- To follow: C: `frontend/lib/types.ts` (`FundingFit`, the two fields), the inputs and the fit on
+  cards (C18; mock a `funding_fit` until B21). A: nothing. B: B21.
+
 ## 1.1.1 + optional Slush flag — 2026-11-14 (no version bump: additive, human decision)
 
 Slush prep can take every Slush 2026 investor Cala knows of. Existing requests work unchanged;

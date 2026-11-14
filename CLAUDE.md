@@ -283,6 +283,11 @@ class Reason(BaseModel):
     text: str
     sources: list[Source] = []
 
+class FundingFit(BaseModel):        # optional (B21); amounts compared are whole-round sizes
+    verdict: Literal["fits", "too_small", "too_large", "unknown"]   # unknown = no amounts in Cala
+    text: str                        # one line, e.g. "Joins rounds of €1M-€5M; your €3M raise fits"
+    sources: list[Source] = []
+
 class InvestorScore(BaseModel):
     investor: EntityRef
     score: float                     # 0-100, higher = better fit
@@ -294,6 +299,7 @@ class InvestorScore(BaseModel):
     deals_last_12m: int | None = None    # None = unknown
     warm_paths: list[Reason] = []
     reasons: list[Reason] = []
+    funding_fit: FundingFit | None = None   # only with target_amount_eur in the request
 
 class FounderReport(BaseModel):
     company: Company
@@ -307,6 +313,7 @@ class InvestorCheck(BaseModel):
     conflicts: list[Conflict]
     competitors: list[Competitor]
     rounds: list[Round]              # rounds of `company` AND of every competitor; group by Round.company_id
+    funding_fit: FundingFit | None = None   # only with max_check_eur in the request
 
 class Brief(BaseModel):
     investor_id: str
@@ -350,8 +357,8 @@ class DataStore(Protocol):
 | Method | Path | Body | Returns |
 | --- | --- | --- | --- |
 | POST | `/api/resolve` | `{name, kind}` | `EntityRef[]` |
-| POST | `/api/founder/analyze` | `{company_id, competitor_ids?: string[]}` | `FounderReport` |
-| POST | `/api/investor/check` | `{investor_id, company_id}` | `InvestorCheck` |
+| POST | `/api/founder/analyze` | `{company_id, competitor_ids?: string[], target_amount_eur?: number}` | `FounderReport` |
+| POST | `/api/investor/check` | `{investor_id, company_id, max_check_eur?: number}` | `InvestorCheck` |
 | POST | `/api/brief` | `{investor_id, company_id}` | `Brief` |
 | POST | `/api/slush-prep` | `{company_id, investor_names?: string[], all_slush_investors?: boolean}` | `{job_id}` |
 | GET | `/api/jobs/{id}/stream` | — | SSE stream of `AgentEvent` |
@@ -360,6 +367,7 @@ class DataStore(Protocol):
 
 Errors: HTTP 4xx/5xx with `{error: string}`. CORS open for the frontend origin.
 
+- `target_amount_eur` / `max_check_eur` (optional, B21): the founder's raise / the most the investor will fund; B then fills `funding_fit` (else it stays null). See `contracts/api.md`.
 - `competitor_ids` (optional): if given, B skips competitor discovery and ranks against exactly those company IDs. The frontend sends the IDs still shown after the user removed some.
 - Streams: one `data: <AgentEvent JSON>\n\n` per event, no named events; the stream closes after `done`. `/api/chat` is read with a streaming `fetch`.
 - Slush prep: events about one pasted investor carry `investor_name` (as pasted) and, once resolved, `investor`. An unresolved or ambiguous name gets an `error` event with that `investor_name`. `all_slush_investors: true` adds every Slush 2026 investor Cala names (at most 25 in all; `investor_names` may then be empty).

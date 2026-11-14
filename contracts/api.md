@@ -12,8 +12,8 @@ All model names below (`EntityRef`, `FounderReport`, ...) are the Pydantic model
 | Method | Path | Body | Returns |
 | --- | --- | --- | --- |
 | POST | `/api/resolve` | `{name, kind}` | `EntityRef[]` |
-| POST | `/api/founder/analyze` | `{company_id, competitor_ids?: string[]}` | `FounderReport` |
-| POST | `/api/investor/check` | `{investor_id, company_id}` | `InvestorCheck` |
+| POST | `/api/founder/analyze` | `{company_id, competitor_ids?: string[], target_amount_eur?: number}` | `FounderReport` |
+| POST | `/api/investor/check` | `{investor_id, company_id, max_check_eur?: number}` | `InvestorCheck` |
 | POST | `/api/brief` | `{investor_id, company_id}` | `Brief` |
 | POST | `/api/slush-prep` | `{company_id, investor_names?: string[], all_slush_investors?: boolean}` | `{job_id}` |
 | GET | `/api/jobs/{id}/stream` | — | SSE stream of `AgentEvent` |
@@ -29,6 +29,19 @@ All model names below (`EntityRef`, `FounderReport`, ...) are the Pydantic model
 - **Removing competitors (`competitor_ids`).** Without it, B finds the competitors itself. With it,
   B skips that step and ranks against exactly those company IDs. The frontend sends the IDs still
   shown after the user removed some (taken from the previous `FounderReport.competitors`).
+- **Funding amount (optional, B21).** Euros, a positive number; leave the field out when the user
+  gave none (then every `funding_fit` is `null`, as today).
+  - `target_amount_eur` (founder mode): how much the founder wants to raise. Each `InvestorScore`
+    gets a `funding_fit` comparing it with the sizes of the rounds that investor has joined:
+    `fits`, `too_small` (smaller than the rounds they join), `too_large` (bigger), or `unknown`
+    (Cala has no amounts for their rounds). Whether it also moves the score shows in the score
+    breakdown (first reason).
+  - `max_check_eur` (investor mode): the most the investor will put in. `InvestorCheck.funding_fit`
+    compares it with the company's round sizes: `fits`, `too_small` (the company raises far less
+    than this), `too_large` (its rounds are far bigger, so this would be a small share), or
+    `unknown`.
+  - Amounts in Cala are whole-round sizes, never one investor's share; `text` says what was
+    compared, and `sources` are the rounds used. Out-of-range input (0, negative): 422.
 - **Score.** `InvestorScore.score` is 0–100, higher = better fit. `pitch` and `skip` are each sorted
   by score, highest first. An investor with one or more `conflicts` is in `skip`, never in `pitch`.
 - **Lead data.** `InvestorScore.lead_data` says how far `leads_in_space` can be trusted: `known`
