@@ -18,8 +18,8 @@ from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
+from agent import tools
 from agent.llm import LLMError
-from cache.graph import GraphDB, default_graph
 from contracts.schemas import (
     CONTRACT_VERSION,
     AgentEvent,
@@ -30,8 +30,7 @@ from contracts.schemas import (
     FounderReport,
     InvestorCheck,
 )
-from core.briefs import investor_brief
-from core.competitors import Judgement, cached_judge
+from core.competitors import Judgement, stored_judgement
 from core.conflict import check_conflict
 from core.scoring import rank_investors
 from data import NotFound, Upstream, get_store
@@ -138,21 +137,6 @@ async def resolve(body: ResolveBody) -> list[EntityRef]:
     return await get_store().resolve(body.name, body.kind)
 
 
-# Judgements persist in the graph store (Atlas when MONGODB_URI is set): the same competitors after
-# a restart and on every machine, and no 20-25 s Gemini call per report. The dict is a per-process
-# shortcut in front of it. ponytail: unbounded; fine for a demo-sized set.
-_judgements: dict[str, Judgement] = {}
-_graph: GraphDB | None = None
-
-
-async def _judged(company: Company) -> Judgement:
-    global _graph
-    if company.id not in _judgements:
-        _graph = _graph or default_graph()
-        _judgements[company.id] = await cached_judge(company, _graph)
-    return _judgements[company.id]
-
-
 async def _chosen(company: Company, ids: list[str], judged: Judgement) -> list[Competitor]:
     """Exactly the competitors the user kept, with the judge's reason where it gave one."""
     known = {c.company.id: c for c in judged.direct}
@@ -170,7 +154,7 @@ async def _chosen(company: Company, ids: list[str], judged: Judgement) -> list[C
 @app.post("/api/founder/analyze")
 async def founder_analyze(body: FounderBody) -> FounderReport:
     company = await get_store().company(body.company_id)
-    judged = await _judged(company)
+    judged = await stored_judgement(company)
     if body.competitor_ids is None:
         competitors = judged.direct
     else:
@@ -185,7 +169,7 @@ async def investor_check(body: PairBody) -> InvestorCheck:
     investor, company = await asyncio.gather(
         store.company(body.investor_id), store.company(body.company_id)
     )
-    competitors = (await _judged(company)).direct
+    competitors = (await stored_judgement(company)).direct
     conflicts, *round_lists = await asyncio.gather(
         check_conflict(investor.id, competitors),
         *(store.rounds(i) for i in [company.id, *(c.company.id for c in competitors)]),
@@ -201,9 +185,7 @@ async def investor_check(body: PairBody) -> InvestorCheck:
 
 @app.post("/api/brief")
 async def brief(body: PairBody) -> Brief:
-    company = await get_store().company(body.company_id)
-    judged = await _judged(company)
-    return await investor_brief(body.investor_id, company.id, judged.direct, judged.space)
+    return await tools.investor_brief(body.investor_id, body.company_id)
 
 
 @app.post("/api/slush-prep")

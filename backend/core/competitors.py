@@ -12,6 +12,7 @@ from typing import Any
 from pydantic import BaseModel
 
 from agent.llm import structured
+from cache.graph import default_graph
 from contracts.schemas import Company, Competitor
 from data import get_store
 
@@ -116,3 +117,18 @@ async def cached_judge(company: Company, graph: Any, k: int = 30) -> Judgement:
     except Exception as exc:
         log.warning("judgement cache write failed: %r", exc)
     return judged
+
+
+# One judgement per company for the whole process: the API routes, the agent tools and the MCP
+# tools all read it here, so "direct competitor" means the same everywhere. The dict is a shortcut
+# in front of the graph store. ponytail: unbounded; fine for a demo-sized set.
+_memo: dict[str, Judgement] = {}
+_graph: Any = None
+
+
+async def stored_judgement(company: Company) -> Judgement:
+    global _graph
+    if company.id not in _memo:
+        _graph = _graph or default_graph()
+        _memo[company.id] = await cached_judge(company, _graph)
+    return _memo[company.id]

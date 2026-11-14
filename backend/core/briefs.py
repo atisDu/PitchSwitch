@@ -13,14 +13,14 @@ import re
 from pydantic import BaseModel
 
 from agent.llm import structured
-from contracts.schemas import Brief, Company, Competitor, Reason, Round, Source
+from contracts.schemas import Brief, Company, Competitor, Conflict, Reason, Round, Source
 from core.competitors import judge
 from core.conflict import check_conflict
 from data import NotFound, get_store
 
 MAX_ROUNDS = 8  # most recent rounds of the investor shown as facts
 MAX_ANSWER_CLAIMS = 8
-MAX_SOURCES_PER_FACT = 3  # best-ranked first; Cala claims can carry 15+ documents
+MAX_SOURCES_PER_FACT = 3  # best-ranked first
 MAX_FACTS_PER_SENTENCE = 2
 _RANK = {"PRIMARY": 0, "FILING": 1, "PRESS": 2, "AGGREGATOR": 3, "UNKNOWN": 4}
 
@@ -38,14 +38,14 @@ Short, plain sentences; no marketing language."""
 _NUMBER = re.compile(r"\d+(?:[.,]\d+)?")
 
 
-class _Sentence(BaseModel):
+class Sentence(BaseModel):
     text: str
     facts: list[int]  # 1-based fact numbers
 
 
 class _Section(BaseModel):
     heading: str
-    sentences: list[_Sentence]
+    sentences: list[Sentence]
 
 
 class _Draft(BaseModel):
@@ -58,7 +58,7 @@ def _sector(company: Company) -> str:
     return tag.replace("_AND_", " and ").replace("_", " ").lower() or "startup"
 
 
-def _round_fact(rd: Round, investor_id: str, names: dict[str, str]) -> str:
+def round_fact(rd: Round, investor_id: str, names: dict[str, str]) -> str:
     who = names.get(rd.company_id, "a company")
     led = next((ri.is_lead for ri in rd.investors if ri.investor.id == investor_id), None)
     role = "Led" if led else "Took part in"
@@ -68,6 +68,30 @@ def _round_fact(rd: Round, investor_id: str, names: dict[str, str]) -> str:
     if rd.date:
         parts.append(f"on {rd.date}")
     return " ".join(parts)
+
+
+async def company_names(ids: list[str], known: dict[str, str]) -> dict[str, str]:
+    """`known` plus the names of the `ids` it lacks (looked up; unknown ids stay out)."""
+    store = get_store()
+    missing = list({i for i in ids if i not in known})
+    found = await asyncio.gather(*(store.company(i) for i in missing), return_exceptions=True)
+    pairs = zip(missing, found, strict=True)
+    return known | {i: c.name for i, c in pairs if isinstance(c, Company)}
+
+
+def conflict_fact(c: Conflict, investor: str, company: str) -> Reason:
+    via = f" through {c.via_person.name}, who sits on its board" if c.via_person else ""
+    return Reason(
+        text=f"Conflict: {investor} backs {c.competitor.name}{via}, a direct competitor of "
+        f"{company}.",
+        sources=c.sources,
+    )
+
+
+def best_sources(fact: Reason) -> Reason:
+    """The fact with its best-ranked sources only (Cala claims can carry 15+ documents)."""
+    top = sorted(fact.sources, key=lambda x: _RANK[x.rank])[:MAX_SOURCES_PER_FACT]
+    return fact.model_copy(update={"sources": top})
 
 
 async def collect_facts(
@@ -94,9 +118,7 @@ async def collect_facts(
     names = {link.company.id: link.company.name for link in portfolio}
     names |= {c.id: c.name for c in space} | {c.company.id: c.company.name for c in competitors}
     recent = sorted(rounds, key=lambda r: r.date or "", reverse=True)[:MAX_ROUNDS]
-    missing = list({rd.company_id for rd in recent if rd.company_id not in names})
-    found = await asyncio.gather(*(store.company(i) for i in missing), return_exceptions=True)
-    names |= {i: c.name for i, c in zip(missing, found, strict=True) if isinstance(c, Company)}
+    names = await company_names([rd.company_id for rd in recent], names)
 
     facts: list[Reason] = [
         Reason(
@@ -109,15 +131,7 @@ async def collect_facts(
             sources=investor.sources,
         ),
     ]
-    for c in conflicts:
-        via = f" through {c.via_person.name}, who sits on its board" if c.via_person else ""
-        facts.append(
-            Reason(
-                text=f"Conflict: {investor.name} backs {c.competitor.name}{via}, a direct "
-                f"competitor of {company.name}.",
-                sources=c.sources,
-            )
-        )
+    facts += [conflict_fact(c, investor.name, company.name) for c in conflicts]
     in_space = {c.id for c in space} | {c.company.id for c in competitors}
     for link in portfolio:
         if link.company.id in in_space and link.company.id not in {
@@ -130,41 +144,40 @@ async def collect_facts(
                     sources=link.sources,
                 )
             )
-    facts += [Reason(text=_round_fact(rd, investor.id, names), sources=rd.sources) for rd in recent]
+    facts += [Reason(text=round_fact(rd, investor.id, names), sources=rd.sources) for rd in recent]
     facts += [Reason(text=f"Cala: {r.text}", sources=r.sources) for r in claims[:MAX_ANSWER_CLAIMS]]
-    best = [
-        f.model_copy(
-            update={
-                "sources": sorted(f.sources, key=lambda x: _RANK[x.rank])[:MAX_SOURCES_PER_FACT]
-            }
-        )
-        for f in facts
-        if f.sources
-    ]
-    return investor.name, best
+    return investor.name, [best_sources(f) for f in facts if f.sources]
 
 
-def render(draft: _Draft, facts: list[Reason]) -> tuple[str, list[Source]]:
-    """Markdown with [n] markers into the returned citations; uncitable sentences dropped."""
-    citations: list[Source] = []
+def cited(
+    sentences: list[Sentence], facts: list[Reason], citations: list[Source]
+) -> list[str]:
+    """Each sentence followed by its [n] markers (1-based into `citations`, which grows here).
+    A sentence that cites no real fact, or states a number its facts don't hold, is dropped."""
 
     def cite(source: Source) -> int:
         if source not in citations:
             citations.append(source)
         return citations.index(source) + 1
 
+    lines = []
+    for sentence in sentences:
+        valid = [n for n in dict.fromkeys(sentence.facts) if 1 <= n <= len(facts)]
+        used = [facts[n - 1] for n in valid[:MAX_FACTS_PER_SENTENCE]]
+        backing = " ".join(f.text for f in used)
+        if not used or not set(_NUMBER.findall(sentence.text)) <= set(_NUMBER.findall(backing)):
+            continue
+        marks = dict.fromkeys(cite(s) for f in used for s in f.sources)
+        lines.append((sentence.text.strip() + " " + "".join(f"[{n}]" for n in marks)).strip())
+    return lines
+
+
+def render(draft: _Draft, facts: list[Reason]) -> tuple[str, list[Source]]:
+    """Markdown with [n] markers into the returned citations; uncitable sentences dropped."""
+    citations: list[Source] = []
     blocks = []
     for section in draft.sections:
-        lines = []
-        for sentence in section.sentences:
-            valid = [n for n in dict.fromkeys(sentence.facts) if 1 <= n <= len(facts)]
-            used = [facts[n - 1] for n in valid[:MAX_FACTS_PER_SENTENCE]]
-            backing = " ".join(f.text for f in used)
-            numbers = set(_NUMBER.findall(sentence.text))
-            if not used or not numbers <= set(_NUMBER.findall(backing)):
-                continue  # cites nothing real, or states a number its facts don't hold
-            marks = dict.fromkeys(cite(s) for f in used for s in f.sources)
-            lines.append(sentence.text.strip() + " " + "".join(f"[{n}]" for n in marks))
+        lines = cited(section.sentences, facts, citations)
         if lines:
             blocks.append(f"## {section.heading.strip()}\n\n" + " ".join(lines))
     return "\n\n".join(blocks), citations
