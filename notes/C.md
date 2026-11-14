@@ -135,3 +135,17 @@ investor-like matches (searching "<name> Ventures" too) and writes the brief by 
 - **B: stage fit 0/10 when the startup's own stage is unknown.** This takes up to 10 points from
   every investor for Sensofusion. Consider scoring that signal as neutral, or leaving it out and
   rescaling, when the startup's stage is missing.
+
+## Review of B's contract 1.2.0 request (B25 sanctions, 14 Nov)
+
+- **OK from C for the additive `DataStore.sanctions(id) -> list[Reason]`:** it is A's and B's
+  interface; nothing in the frontend reads `DataStore`.
+- **Question before it's frozen: how does a sanctions hit reach the frontend?** B25 says a hit
+  puts the fund on Skip. Today Skip means `conflicts` is non-empty, and `Conflict.kind` is
+  `"PORTFOLIO" | "BOARD"` with a `competitor`. If B adds `kind: "SANCTION"` (with no competitor),
+  that changes the REST contract too: C must update `lib/types.ts`, `conflictText`, the Skip roll
+  call ("backed X") and the check's verdict, so please put that in the same 1.2.0 commit and tell C.
+  If the sanction stays a `Reason` only, the fund would land on Pitch with no conflict, which
+  contradicts B25.
+- **The "screened: no sanctions record in Cala" line:** C will show it as a plain reason on the
+  card (no badge needed when it has no source); please keep the wording exactly that, never "clean".
