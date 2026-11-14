@@ -5,6 +5,9 @@ export const founderPath = (companyId: string) => `/founder/${encodeURIComponent
 export const checkPath = (investorId: string, companyId: string) =>
   `/check/${encodeURIComponent(investorId)}/${encodeURIComponent(companyId)}`;
 
+export const prepPath = (company?: { id: string; name: string }) =>
+  "/prep" + (company ? `?${new URLSearchParams({ company: company.id, companyName: company.name })}` : "");
+
 /** Names are display hints only (a Brief carries IDs, and live briefs have no title line). */
 export const briefPath = (investorId: string, companyId: string, names?: { investor: string; company: string }) =>
   `/brief/${encodeURIComponent(investorId)}/${encodeURIComponent(companyId)}` +

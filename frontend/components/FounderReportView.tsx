@@ -13,6 +13,7 @@ import { SlowNotice } from "@/components/SlowNotice";
 import { SourceBadges } from "@/components/SourceBadge";
 import { analyzeFounder, ApiError } from "@/lib/api";
 import { keptCompetitorIds, prettyEnum } from "@/lib/format";
+import { prepPath } from "@/lib/routes";
 import type { Company, FounderReport } from "@/lib/types";
 
 // Live reports rank 30-45 investors; the top ones matter, and the Skip list below
@@ -271,8 +272,11 @@ function CompanyHeader({ company }: { company: Company }) {
       {company.description && (
         <p className="mt-4 max-w-2xl text-lg leading-snug">{company.description}</p>
       )}
-      <div className="mt-4">
+      <div className="mt-4 flex flex-wrap items-center gap-4">
         <SourceBadges sources={company.sources} />
+        <Link href={prepPath(company)} className="text-sm underline underline-offset-4">
+          Meeting investors at Slush? Prep briefs
+        </Link>
       </div>
     </header>
   );

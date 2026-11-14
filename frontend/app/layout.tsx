@@ -27,7 +27,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Link href="/" className="text-lg font-semibold tracking-tight">
               <span className="border-b-2 border-accent">Pitch</span>list
             </Link>
-            <span className="label hidden text-muted sm:inline">Every claim sourced from Cala</span>
+            <nav className="flex items-center gap-6">
+              <Link href="/prep" className="label hover:underline hover:underline-offset-4">
+                Slush prep
+              </Link>
+              <span className="label hidden text-muted md:inline">Every claim sourced from Cala</span>
+            </nav>
           </div>
         </header>
         <main className="mx-auto w-full max-w-[1400px] flex-1 px-5 py-12 md:px-10 md:py-20">
