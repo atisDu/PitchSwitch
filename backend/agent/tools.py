@@ -30,6 +30,7 @@ from contracts.schemas import (
 )
 from core import briefs, conflict, scoring
 from core.competitors import shared_graph, stored_judgement
+from core.xray import hidden_rivals
 from data import NotFound, get_store
 
 MAX_PROFILE_ROUNDS = 10  # most recent rounds in an investor profile
@@ -104,7 +105,9 @@ async def check_conflict(investor_id: str, company_id: str) -> list[Conflict]:
     store = get_store()
     # Looking the investor up too: a made-up ID must fail, not read as "no conflict".
     company, _ = await asyncio.gather(store.company(company_id), store.company(investor_id))
-    return await conflict.check_conflict(investor_id, (await stored_judgement(company)).direct)
+    judged = await stored_judgement(company)
+    hidden = await hidden_rivals(company, investor_id, judged.direct, judged.space)
+    return await conflict.check_conflict(investor_id, judged.direct, hidden=hidden)
 
 
 async def rank_investors(company_id: str, limit: int = 10) -> FounderReport:
@@ -114,7 +117,7 @@ async def rank_investors(company_id: str, limit: int = 10) -> FounderReport:
     company = await get_store().company(company_id)
     judged = await stored_judgement(company)
     space = [*(c.company for c in judged.direct), *judged.space]
-    report = await scoring.rank_investors(company, judged.direct, space)
+    report = await scoring.rank_investors(company, judged.direct, space, xray=True)
     return report.model_copy(update={"pitch": report.pitch[: max(limit, 0)]})
 
 

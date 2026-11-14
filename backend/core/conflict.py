@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import asyncio
 
-from contracts.schemas import Competitor, Conflict, EntityRef, Round, Source
+from contracts.schemas import Competitor, Conflict, EntityRef, PortfolioLink, Round, Source
 from data import get_store
 
 
@@ -25,21 +25,34 @@ def merge_sources(*lists: list[Source]) -> list[Source]:
 
 
 async def check_conflict(
-    investor_id: str, competitors: list[Competitor], rounds: list[Round] | None = None
+    investor_id: str,
+    competitors: list[Competitor],
+    rounds: list[Round] | None = None,
+    *,
+    hidden: list[Competitor] = (),
+    portfolio: list[PortfolioLink] | None = None,
 ) -> list[Conflict]:
     """PORTFOLIO: the investor's portfolio holds a competitor, or the investor took part in one
     of its rounds (Cala sometimes lacks the portfolio edge). One Conflict per competitor.
     BOARD: a competitor's BOARD member is one of the investor's people (one per competitor+person).
     `rounds`: the competitors' rounds, when the caller already has them; otherwise fetched here.
+    `hidden` (B22, core.xray): direct rivals found in the investor's portfolio that are not on
+    the competitor list; they conflict through the portfolio link (its sources), listed last.
+    `portfolio`: the investor's portfolio, when the caller already has it.
     """
     store = get_store()
     if rounds is None:
         fetched = await asyncio.gather(*(store.rounds(c.company.id) for c in competitors))
         rounds = [rd for rds in fetched for rd in rds]
-    portfolio, investor_people = await asyncio.gather(
-        store.portfolio(investor_id), store.people(investor_id)
-    )
+
+    given = portfolio
+
+    async def own_portfolio() -> list[PortfolioLink]:
+        return given if given is not None else await store.portfolio(investor_id)
+
+    portfolio, investor_people = await asyncio.gather(own_portfolio(), store.people(investor_id))
     by_id = {c.company.id: c for c in competitors}
+    by_id |= {c.company.id: c for c in hidden if c.company.id not in by_id}
 
     portfolio_hits: dict[str, Conflict] = {}
 

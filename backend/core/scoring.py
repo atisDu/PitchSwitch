@@ -24,12 +24,15 @@ from contracts.schemas import (
     EntityRef,
     FounderReport,
     InvestorScore,
+    PortfolioLink,
     Reason,
     Round,
 )
 from core.competitors import judge, shared_graph
 from core.conflict import check_conflict, merge_sources
 from core.funding import raise_fit
+from core.xray import XRay, hidden_reasons, portfolios_of, thesis_reason
+from core.xray import xray as portfolio_xray
 from data import get_store
 from data.mappers import STAGES, stage_index
 
@@ -64,6 +67,9 @@ NO_LEAD_RECENCY = 0.5  # no known lead in the space: the last dated round there 
 # Cala rarely says who led. In a real round where it names no lead, each of its n investors gets
 # 1/n of a lead (the chance it was them) instead of nothing.
 BACKERS_ONLY = 0.5  # a company known only from an undated "backers" entry counts half
+# B22: a same-space company found only in the investor's portfolio (no round of it in the space
+# lists the investor) counts half, like a backers entry: Cala names the link, not the deal.
+PORTFOLIO_ONLY = 0.5
 # ponytail: caps the pool so the real store stays within Cala's rate limit; raise with the cache.
 MAX_CO_INVESTORS = 20
 # B20: no known investor of the startup (live: Sensofusion) -> the funds that led a round in the
@@ -199,9 +205,12 @@ async def rank_investors(
     *,
     today: date | None = None,
     target_amount_eur: float | None = None,
+    xray: bool = False,
 ) -> FounderReport:
     """Rank investors for `company` against direct `competitors` within the market `space`.
-    Either one missing = ask the judge (the API passes both, from its memo / competitor_ids)."""
+    Either one missing = ask the judge (the API passes both, from its memo / competitor_ids).
+    `xray` (B22): also judge every ranked investor's whole portfolio (Gemini, stored once per
+    startup): hidden rivals there move it to Skip, same-space companies count as its thesis."""
     store = get_store()
     today = today or date.today()
     if competitors is None or space is None:
@@ -252,8 +261,23 @@ async def rank_investors(
         pool[i] = co_refs[i]
 
     ids = list(pool)
+    portfolios: dict[str, list[PortfolioLink]] = await portfolios_of(ids) if xray else {}
+    # Never "hidden": the judge's direct competitors (also ones the user removed) and the space.
+    listed = {company.id, *names, *(c.company.id for c in competitors)}
+    xrays = await portfolio_xray(company, portfolios, listed) if xray else {}
     found = await asyncio.gather(
-        asyncio.gather(*(check_conflict(i, competitors, space) for i in ids)),
+        asyncio.gather(
+            *(
+                check_conflict(
+                    i,
+                    competitors,
+                    space,
+                    hidden=xrays[i].hidden if i in xrays else [],
+                    portfolio=portfolios.get(i),
+                )
+                for i in ids
+            )
+        ),
         asyncio.gather(*(store.investor_rounds(i) for i in ids)),
         asyncio.gather(*(store.company(i) for i in ids), return_exceptions=True),
     )
@@ -271,6 +295,7 @@ async def rank_investors(
             pool[inv_id], in_space[inv_id], history, warm[inv_id], conflicts, label, today,
             closeness=close, stage=stage, warm_weight=warm_weight,
             profile=profile if isinstance(profile, Company) else None,
+            xray=xrays.get(inv_id),
         )
         if target_amount_eur:
             scored.funding_fit = raise_fit(target_amount_eur, history, pool[inv_id].name)
@@ -298,6 +323,7 @@ def _score(
     stage: int | None = None,
     profile: Company | None = None,
     warm_weight: float = 1.0,
+    xray: XRay | None = None,
 ) -> InvestorScore:
     inv_id = investor.id
     led = [rd for rd in rounds if _is_lead(rd, inv_id)]
@@ -320,6 +346,12 @@ def _score(
         else:
             credit = 1 / max(1, len(rd.investors))
         lead[cid] = max(lead.get(cid, 0.0), credit * w)
+    # B22: same-space companies only in its portfolio count half (PORTFOLIO_ONLY).
+    thesis = xray.thesis if xray else []
+    portfolio_only = [lk for lk in thesis if lk.company.id not in company]
+    for lk in portfolio_only:
+        company[lk.company.id] = PORTFOLIO_ONLY * weight.get(lk.company.id, 1.0)
+    here = bool(rounds or portfolio_only)  # has a company in the space, by deal or portfolio
     led_ids = {rd.company_id for rd in led}
     likely = sum(v for cid, v in lead.items() if cid not in led_ids)
 
@@ -359,11 +391,11 @@ def _score(
         "recency": WEIGHTS["recency"] * recency,
         # Like recency: activity only counts for a fund in the space, else busy co-investors with
         # no company here (live: Northzone, Y Combinator on Stendr) outrank those that have one.
-        "activity": _capped("activity", deals_12m or 0) if rounds else 0.0,
+        "activity": _capped("activity", deals_12m or 0) if here else 0.0,
         "warm_paths": _capped("warm_paths", len(warm_paths) * warm_weight),
         # Like activity: only for an investor with a company in the space.
-        "stage_fit": WEIGHTS["stage_fit"] * (stage_share or 0.0) if rounds else 0.0,
-        "geography": WEIGHTS["geography"] if nordic and rounds else 0.0,
+        "stage_fit": WEIGHTS["stage_fit"] * (stage_share or 0.0) if here else 0.0,
+        "geography": WEIGHTS["geography"] if nordic and here else 0.0,
     }
     score = sum(parts.values())
     n_led = len({rd.company_id for rd in led})
@@ -376,6 +408,10 @@ def _score(
             f"{_points(sum(company.values()))} weighted by closeness"
             if weight and any(cid in weight for cid in company)
             else _points(sum(company.values())),
+        ) if not portfolio_only else (
+            "companies here",
+            f"{_plural(len(company), 'compan')}, {len(portfolio_only)} of them only in its "
+            f"portfolio, counted half; {_points(sum(company.values()))} in all",
         ),
         "recency": ("recency", when),
         "activity": ("activity", "unknown" if deals_12m is None else f"{deals_12m} in 12 mo"),
@@ -396,9 +432,12 @@ def _score(
         text=f"Score {_points(score)}/100 = {breakdown}",
         sources=merge_sources(
             *(rd.sources for rd in [*rounds, *recent, *at_stage]),
+            *(lk.sources for lk in portfolio_only),
             profile.sources if profile and nordic else [],
         ),
-    )] if rounds else []
+    )] if here else []
+    if xray:
+        reasons += hidden_reasons(xray, {c.competitor.id for c in conflicts})
     if led:
         reasons.append(Reason(
             text=f"Led {_plural(len(led), 'round')} in this space: {', '.join(map(label, led))}",
@@ -411,6 +450,8 @@ def _score(
             f"{', '.join(map(label, joined))}",
             sources=merge_sources(*(rd.sources for rd in joined)),
         ))
+    if xray and (held := thesis_reason(xray)):
+        reasons.append(held)
     if last_lead:
         d, rd = last_lead
         reasons.append(Reason(

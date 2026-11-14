@@ -6,6 +6,7 @@ Gemini only picks among candidate IDs and writes a one-line reason; any ID it in
 
 from __future__ import annotations
 
+import asyncio
 import logging
 from typing import Any
 
@@ -13,7 +14,7 @@ from pydantic import BaseModel
 
 from agent.llm import structured
 from cache.graph import default_graph
-from contracts.schemas import Company, Competitor
+from contracts.schemas import Company, Competitor, EntityRef
 from data import get_store
 
 MAX_COMPETITORS = 15
@@ -139,7 +140,8 @@ async def cached_judge(company: Company, graph: Any, k: int = 30) -> Judgement:
     except Exception as exc:  # a cache, not a source of truth
         log.warning("verdicts read failed, judging again: %r", exc)
         known, doc = {}, None
-    new = [c for c in candidates if c.id not in known]
+    # A portfolio screen's name-only "unrelated" (B22) is not a verdict on a candidate: judge it.
+    new = [c for c in candidates if c.id not in known or known[c.id].get("by") == "name"]
     if new or doc is None:
         if new:
             judged = await judge(company, k, new)
@@ -149,10 +151,7 @@ async def cached_judge(company: Company, graph: Any, k: int = 30) -> Judgement:
                 fresh[c.company.id] = {"tier": "direct", "reason": c.reason, "order": start + n}
             fresh |= {c.id: {"tier": "space"} for c in judged.space}
             known = known | fresh
-        try:
-            await graph.put(VERDICTS, doc_id, {"verdicts": known})
-        except Exception as exc:
-            log.warning("verdicts write failed: %r", exc)
+        known = await _save_verdicts(graph, doc_id, known)
     tier = {c.id: known.get(c.id, {}) for c in candidates}
     direct = sorted(
         (c for c in candidates if tier[c.id].get("tier") == "direct"),
@@ -164,6 +163,130 @@ async def cached_judge(company: Company, graph: Any, k: int = 30) -> Judgement:
         ],
         space=[c for c in candidates if tier[c.id].get("tier") == "space"],
     )
+
+
+# --- Portfolio X-ray (B22) ------------------------------------------------------------------
+# The judge sees ~30 candidates; an investor's whole portfolio can hide a rival it never saw
+# (live: Kelluu's STARTUPLAB backs Hive Autonomy). Portfolio links carry names only, so:
+# 1. screen: Gemini reads the names (in batches) and flags likely rivals / same-space companies;
+# 2. confirm: only the flagged ones are fetched whole (with descriptions) and go through the
+#    regular judge. The verdicts join the same per-startup VERDICTS doc: judged once, ever.
+
+SCREEN = """You screen an investor's portfolio for a startup's founder. Below are company NAMES \
+only. Flag in `direct` the IDs of companies that you reliably know sell an overlapping product to \
+the same customers as the startup, and in `same_space` those you reliably know work in the same \
+market space (adjacent products for the same customers). Leave out companies you do not \
+recognise, unrelated companies, investors and funds: when unsure, leave it out (the flagged ones \
+are checked again with their descriptions). Use only IDs from the list, copied exactly."""
+SCREEN_BATCH = 120  # names per screening call
+MAX_CONFIRM = 60  # flagged companies fetched and judged per startup and call; the rest wait
+
+
+class _Screen(BaseModel):
+    direct: list[str]
+    same_space: list[str]
+
+
+_verdict_memo: dict[str, dict[str, dict]] = {}  # VERDICTS doc id -> verdicts, this process
+
+
+def _doc_id(company: Company) -> str:
+    return f"{type(get_store()).__name__}:{company.id}"
+
+
+async def _load_verdicts(graph: Any, doc_id: str) -> dict[str, dict]:
+    if doc_id not in _verdict_memo:
+        doc = await graph.get(VERDICTS, doc_id)
+        _verdict_memo[doc_id] = dict(doc["verdicts"]) if doc else {}
+    return _verdict_memo[doc_id]
+
+
+async def _save_verdicts(graph: Any, doc_id: str, verdicts: dict[str, dict]) -> dict[str, dict]:
+    """Merge into the stored doc; a verdict already stored wins (verdicts are sticky, and another
+    process may have written since we read). Returns the merged verdicts. Never raises."""
+    merged = dict(verdicts)
+    try:
+        doc = await graph.get(VERDICTS, doc_id)
+        for i, stored in ((doc or {}).get("verdicts") or {}).items():
+            if not (stored.get("by") == "name" and merged.get(i, {}).get("by", "") != "name"):
+                merged[i] = stored  # except a name-only screen, which a full verdict replaces
+        await graph.put(VERDICTS, doc_id, {"verdicts": merged})
+    except Exception as exc:  # a cache, not a source of truth
+        log.warning("verdicts write failed: %r", exc)
+    _verdict_memo[doc_id] = merged
+    return merged
+
+
+def _name_line(ref: EntityRef) -> str:
+    return f"- id={ref.id} | {ref.name}"
+
+
+async def portfolio_verdicts(
+    company: Company, refs: list[EntityRef], graph: Any = None
+) -> dict[str, dict]:
+    """Company id -> verdict ({"tier": "direct" | "space" | "unrelated", "reason"?}) for these
+    portfolio companies, judged against `company`. Never-judged ones are screened and confirmed
+    (see above) and stored. A company that could not be judged this time (Gemini or Cala
+    trouble) is missing from the result and tried again next time. Never raises."""
+    graph = graph or shared_graph()
+    doc_id = _doc_id(company)
+    try:
+        known = await _load_verdicts(graph, doc_id)
+    except Exception as exc:
+        log.warning("verdicts read failed, X-ray skipped: %r", exc)
+        return {}
+    todo = {r.id: r for r in refs if r.id not in known and r.id != company.id}
+    if todo:
+        fresh = await _xray_judge(company, list(todo.values()), known)
+        if fresh:
+            known = await _save_verdicts(graph, doc_id, known | fresh)
+    return {r.id: known[r.id] for r in refs if r.id in known}
+
+
+async def _xray_judge(
+    company: Company, refs: list[EntityRef], known: dict[str, dict]
+) -> dict[str, dict]:
+    batches = [refs[i : i + SCREEN_BATCH] for i in range(0, len(refs), SCREEN_BATCH)]
+    head = f"Startup:\n{_line(company)}\n\nPortfolio companies:\n"
+    screened = await asyncio.gather(
+        *(
+            structured(head + "\n".join(map(_name_line, b)), _Screen, system=SCREEN, tier="fast")
+            for b in batches
+        ),
+        return_exceptions=True,
+    )
+    fresh: dict[str, dict] = {}
+    flagged: list[str] = []
+    for batch, got in zip(batches, screened, strict=True):
+        if isinstance(got, BaseException):
+            log.warning("portfolio screen failed for %d companies: %r", len(batch), got)
+            continue  # not stored: screened again next time
+        ids = {r.id for r in batch}
+        hits = [i.strip() for i in [*got.direct, *got.same_space] if i.strip() in ids]
+        flagged += [i for i in dict.fromkeys(hits) if i not in flagged]
+        fresh |= {i: {"tier": "unrelated", "by": "name"} for i in ids if i not in hits}
+    suspects = flagged[:MAX_CONFIRM]
+    if not suspects:
+        return fresh
+    found = await asyncio.gather(
+        *(get_store().company(i) for i in suspects), return_exceptions=True
+    )
+    whole = [c for c in found if isinstance(c, Company)]
+    if not whole:
+        return fresh
+    try:
+        judged = await judge(company, candidates=whole)
+    except Exception as exc:
+        log.warning("portfolio confirm failed for %d companies: %r", len(whole), exc)
+        return fresh
+    start = 1 + max((v.get("order", -1) for v in known.values()), default=-1)
+    fresh |= {c.id: {"tier": "unrelated", "by": "portfolio"} for c in whole}
+    for n, c in enumerate(judged.direct):
+        fresh[c.company.id] = {
+            "tier": "direct", "reason": c.reason, "order": start + n, "by": "portfolio"
+        }
+    fresh |= {c.id: {"tier": "space", "by": "portfolio"} for c in judged.space}
+    return fresh
 
 
 # One judgement per company for the whole process: the API routes, the agent tools and the MCP

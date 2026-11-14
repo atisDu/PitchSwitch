@@ -35,6 +35,7 @@ from core.competitors import Judgement, stored_judgement
 from core.conflict import check_conflict
 from core.funding import check_fit
 from core.scoring import rank_investors
+from core.xray import hidden_rivals
 from data import NotFound, Upstream, get_store
 
 log = logging.getLogger("api")
@@ -179,7 +180,7 @@ async def founder_analyze(body: FounderBody) -> FounderReport:
         competitors = await _chosen(company, body.competitor_ids, judged)
     space = [*(c.company for c in judged.direct), *judged.space]  # a removed rival stays in space
     return await rank_investors(
-        company, competitors, space, target_amount_eur=body.target_amount_eur
+        company, competitors, space, target_amount_eur=body.target_amount_eur, xray=True
     )
 
 
@@ -190,10 +191,15 @@ async def investor_check(body: CheckBody) -> InvestorCheck:
     investor, company = await asyncio.gather(
         store.company(body.investor_id), store.company(body.company_id)
     )
-    competitors = (await stored_judgement(company)).direct
+    judged = await stored_judgement(company)
+    competitors = judged.direct
     ids = [company.id, *(c.company.id for c in competitors)]
-    rounds = [rd for rds in await asyncio.gather(*(store.rounds(i) for i in ids)) for rd in rds]
-    conflicts = await check_conflict(investor.id, competitors, rounds)
+    rounds, hidden = await asyncio.gather(
+        asyncio.gather(*(store.rounds(i) for i in ids)),
+        hidden_rivals(company, investor.id, competitors, judged.space),
+    )
+    rounds = [rd for rds in rounds for rd in rds]
+    conflicts = await check_conflict(investor.id, competitors, rounds, hidden=hidden)
     return InvestorCheck(
         investor=EntityRef(**investor.model_dump(include={"id", "name", "type", "description"})),
         company=company,

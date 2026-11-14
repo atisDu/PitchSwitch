@@ -20,6 +20,7 @@ from agent.llm import LLMError, structured
 from contracts.schemas import Brief, Company, Competitor, Conflict, Reason, Round, Source
 from core.competitors import judge
 from core.conflict import check_conflict
+from core.xray import hidden_rivals
 from data import NotFound, get_store
 
 BRIEFS = "briefs"  # graph collection: one brief per (store, investor, company, facts)
@@ -121,8 +122,12 @@ async def collect_facts(
         f"and which rounds did it lead?"
     )
     # Cala's search (the slow part, up to a minute uncached) runs alongside the rest.
+    async def conflicts_with_hidden() -> list[Conflict]:
+        hidden = await hidden_rivals(company, investor.id, competitors, space)
+        return await check_conflict(investor.id, competitors, hidden=hidden)
+
     conflicts, rounds, portfolio, (_, claims) = await asyncio.gather(
-        check_conflict(investor.id, competitors),
+        conflicts_with_hidden(),
         store.investor_rounds(investor.id),
         store.portfolio(investor.id),
         store.sourced_answer(question),
