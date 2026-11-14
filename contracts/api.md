@@ -1,6 +1,6 @@
 # Pitchlist contracts — API, MCP tools, fixtures
 
-Contract version: **1.1.0** (`CONTRACT_VERSION` in `contracts/schemas.py`).
+Contract version: **1.1.1** (`CONTRACT_VERSION` in `contracts/schemas.py`).
 **Frozen after task T2.** Changes need all three humans to agree; then bump `CONTRACT_VERSION`,
 note it in `contracts/CHANGELOG.md` and update `CLAUDE.md` §5 in the same commit.
 
@@ -76,7 +76,12 @@ class DataStore(Protocol):
 `backend/data/__init__.py` exposes `get_store() -> DataStore`, returning `FakeDataStore` when
 `USE_FAKE_STORE=true`, else the real store. B only ever calls `get_store()`.
 
-- `company(id)` works for any organisation ID, including an investor.
+- `company(id)` works for any organisation ID, including an investor, and for a **person who
+  invests** (an angel): it then returns a `Company` with `type: "Person"`.
+- `investor_rounds(id)`, `portfolio(id)` and `people(id)` accept such a person's ID as well and
+  return that person's rounds and companies, or `[]` when nothing is known. They never raise
+  for a person. Angels appear on Pitch and Skip like any other investor, so the brief and the
+  investor check must work for them.
 - `people(id)` also accepts an investor ID and returns that investor's own people (then
   `PersonLink.company_id` is the investor ID). BOARD conflicts need this: a competitor's `BOARD`
   person who is also one of the investor's people.

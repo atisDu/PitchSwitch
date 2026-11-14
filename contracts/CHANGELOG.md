@@ -3,6 +3,19 @@
 Every change to `contracts/` (schemas, API, fixtures format) is listed here, with the new
 `CONTRACT_VERSION`. Fixture *data* written by Agent A (tasks A1, A2) is not a contract change.
 
+## 1.1.1 — 2026-11-14
+
+People who invest (angels) are investors too. No model, field or signature changes.
+
+- Data layer: `company(id)` also works for a person who invests (returns a `Company` with
+  `type: "Person"`); `investor_rounds(id)`, `portfolio(id)` and `people(id)` accept such an ID
+  and return `[]` when nothing is known instead of raising.
+- Why: angels are in competitors' rounds, so they are on Pitch and Skip; their card opened a
+  brief / investor check that answered 404 (live: Tuomas Rasila on Kelluu's Pitch list).
+- To follow in each area: A: both stores, `backend/tests/data/test_contracts.py` (asserts the
+  version), `fixtures/models/index.json` (`contract_version`). C: `frontend/lib/types.ts`
+  (`CONTRACT_VERSION`), angel cards. B: an angel case in the eval set.
+
 ## 1.1.0 — 2026-11-13
 
 Review by B and C before the freeze (T2 not yet ticked). Changes to `schemas.py`:

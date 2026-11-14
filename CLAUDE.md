@@ -220,7 +220,7 @@ Demo data: Kelluu (Series A, led by NATO Innovation Fund; also Keen Venture Part
 from typing import Literal, Protocol
 from pydantic import BaseModel
 
-CONTRACT_VERSION = "1.1.0"
+CONTRACT_VERSION = "1.1.1"
 
 SourceRank = Literal["PRIMARY", "FILING", "PRESS", "AGGREGATOR", "UNKNOWN"]
 
@@ -340,7 +340,8 @@ class DataStore(Protocol):
 
 `backend/data/__init__.py` exposes `get_store() -> DataStore`, returning `FakeDataStore` when `USE_FAKE_STORE=true`, else the real store. B only ever calls `get_store()`.
 
-- `company(id)` works for any organisation ID, including an investor.
+- `company(id)` works for any organisation ID, including an investor, and for a person who invests (an angel; `type: "Person"`).
+- `investor_rounds(id)`, `portfolio(id)` and `people(id)` accept such a person's ID too and return `[]` when nothing is known; they never raise for a person.
 - `people(id)` also accepts an investor ID and returns that investor's own people (BOARD conflicts need this).
 - `co_investors(id)` returns `[]` when nothing is known yet (the precomputed graph arrives after the real store); it never raises for that.
 

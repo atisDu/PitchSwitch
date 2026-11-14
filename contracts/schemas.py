@@ -9,7 +9,7 @@ from typing import Literal, Protocol
 
 from pydantic import BaseModel
 
-CONTRACT_VERSION = "1.1.0"
+CONTRACT_VERSION = "1.1.1"
 
 SourceRank = Literal["PRIMARY", "FILING", "PRESS", "AGGREGATOR", "UNKNOWN"]
 
@@ -142,7 +142,9 @@ class AgentEvent(BaseModel):  # streamed by /api/jobs/{id}/stream and /api/chat
 
 class DataStore(Protocol):
     async def resolve(self, name: str, kind: Literal["company", "investor"]) -> list[EntityRef]: ...
-    # company(): `id` may be any organisation, including an investor
+    # company(): `id` may be any organisation, including an investor, or a person who invests
+    # (an angel; then Company.type is "Person"). investor_rounds(), portfolio() and people()
+    # accept such a person's ID too and return [] when nothing is known; they never raise for it
     async def company(self, id: str) -> Company: ...
     async def rounds(self, company_id: str) -> list[Round]: ...
     async def investor_rounds(self, investor_id: str) -> list[Round]: ...
