@@ -178,6 +178,11 @@ Reply to B's "Angels stay on the lists" and C's 1.1.1 note.
 
 ## For C and B: the live demo reports changed at about 12:45 on 14 Nov (vector search)
 
+**Decision (human, 14 Nov): vector search stays on and this drift is intended.** It is how
+the team pictures the demo: the more companies get looked up, the richer each report becomes.
+Nothing to fix. C: write the demo script against what the live site shows after the Sunday
+morning freeze below, not against the old two-competitor version.
+
 With `USE_VECTOR_SEARCH=true` on the server, the candidate lists of the three demo companies
 changed, B's judge ran again for all three, and it chose more direct competitors than before:
 
