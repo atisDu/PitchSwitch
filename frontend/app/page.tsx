@@ -1,6 +1,8 @@
+import { Suspense } from "react";
+
 import { HomeForm } from "@/components/HomeForm";
 
-export default function Home() {
+export default function Home({ searchParams }: PageProps<"/">) {
   return (
     // One framed unit (chosen in live mode): the pitch on Press Black, the form beside it, no gutter.
     <section className="grid items-stretch overflow-hidden rounded-[5px] border border-foreground lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
@@ -15,8 +17,15 @@ export default function Home() {
         </p>
       </div>
       <div className="px-6 py-8 sm:px-10 sm:py-12">
-        <HomeForm />
+        <Suspense fallback={<HomeForm />}>
+          <Form searchParams={searchParams} />
+        </Suspense>
       </div>
     </section>
   );
+}
+
+async function Form({ searchParams }: Pick<PageProps<"/">, "searchParams">) {
+  const { mode } = await searchParams;
+  return <HomeForm initialMode={mode === "investor" ? "investor" : "founder"} />;
 }

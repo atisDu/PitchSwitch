@@ -21,9 +21,10 @@ const MODES: { value: Mode; label: string; hint: string }[] = [
   },
 ];
 
-export function HomeForm() {
+// initialMode: "investor" when the URL has ?mode=investor (the landing page's "Check a startup").
+export function HomeForm({ initialMode = "founder" }: { initialMode?: Mode }) {
   const router = useRouter();
-  const [mode, setMode] = useState<Mode>("founder");
+  const [mode, setMode] = useState<Mode>(initialMode);
   const [company, setCompany] = useState<EntityRef | null>(null);
   const [fund, setFund] = useState<EntityRef | null>(null);
   const [startup, setStartup] = useState<EntityRef | null>(null);
