@@ -22,6 +22,8 @@ from data.parsers import to_eur
 
 RANKS = {"PRIMARY", "FILING", "PRESS", "AGGREGATOR"}
 ORG_TYPES = {"Company", "Organization"}
+# Who can be an investor: firms, and people who invest (angels). Contract 1.1.1.
+INVESTOR_TYPES = ORG_TYPES | {"Person"}
 INVESTOR_WORDS = ("venture", "capital", "fund", "invest", "equity", "angel", "accelerator")
 
 CURRENCY_SIGNS = {"EUR": "€", "USD": "$", "GBP": "£"}

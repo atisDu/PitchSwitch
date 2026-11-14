@@ -591,3 +591,109 @@ async def test_a_failing_embedder_leaves_the_candidates_as_they_were(cala, cases
     with_broken = [c.id for c in await store.candidate_competitors(kelluu)]
     monkeypatch.setenv("USE_VECTOR_SEARCH", "false")
     assert with_broken == [c.id for c in await store.candidate_competitors(kelluu)]
+
+
+# --- people who invest (contract 1.1.1) ----------------------------------------------------------
+
+ANGEL = "c75cbef9-0ab0-5552-84f8-fc59bc63ea93"  # Tuomas Rasila, an investor in Kova Labs' round
+
+
+def angel_entity(round_id):
+    """A person as Cala returns one who invests: own description, a round, a company."""
+    source = {
+        "name": "kovalabs.com",
+        "document": "https://kovalabs.com/news",
+        "source_rank": "PRIMARY",
+    }
+    about = "Finnish entrepreneur and angel investor."
+    return {
+        "id": ANGEL,
+        "name": "Tuomas Rasila",
+        "entity_type": "Person",
+        "description": about,
+        "properties": {"description": {"value": about, "sources": [source]}},
+        "relationships": {
+            "outgoing": {
+                "PARTICIPATES_IN_FUNDING_ROUND": [
+                    {"id": round_id, "name": "Pre-Seed", "entity_type": "FundingRound",
+                     "properties": {"role": "INVESTOR", "sources": [source]}}
+                ],
+                "INVESTED_IN": [
+                    {"id": "kova-1", "name": "Kova Labs", "entity_type": "Company",
+                     "properties": {"sources": [source]}}
+                ],
+            },
+            "incoming": {},
+        },
+    }  # fmt: skip
+
+
+def with_angel(cala, round_id):
+    recorded = cala.entity
+
+    async def entity(entity_id, **projection):
+        if entity_id == ANGEL:
+            cala.calls.append(("entity", entity_id))
+            return angel_entity(round_id)
+        return await recorded(entity_id, **projection)
+
+    cala.entity = entity
+
+
+def angel_round(cases):
+    """A recorded round that lists the angel as an investor."""
+    import json as _json
+
+    from data.config import RAW_DIR
+
+    for round_id in cases["round_ids"]:
+        entity = _json.loads((RAW_DIR / "entity" / f"{round_id}.json").read_text())["response"]
+        edges = entity["relationships"]["incoming"].get("PARTICIPATES_IN_FUNDING_ROUND", [])
+        if any(edge["id"] == ANGEL for edge in edges):
+            return round_id
+    raise AssertionError("no recorded round with the angel")
+
+
+async def test_a_person_who_invests_is_a_company_of_type_person(store, cala, cases):
+    with_angel(cala, angel_round(cases))
+    angel = await store.company(ANGEL)
+    assert angel.id == ANGEL and angel.name == "Tuomas Rasila" and angel.type == "Person"
+    assert angel.description == "Finnish entrepreneur and angel investor."
+    assert angel.sources and angel.sources[0].rank == "PRIMARY"
+    assert angel.country == "Finland" and angel.industries == [] and angel.stage is None
+
+
+async def test_a_persons_rounds_portfolio_and_people(store, cala, cases):
+    round_id = angel_round(cases)
+    with_angel(cala, round_id)
+    rounds = await store.investor_rounds(ANGEL)
+    assert [r.id for r in rounds] == [round_id]
+    assert any(i.investor.id == ANGEL and i.investor.type == "Person" for i in rounds[0].investors)
+
+    portfolio = await store.portfolio(ANGEL)
+    assert [(link.investor_id, link.company.name) for link in portfolio] == [(ANGEL, "Kova Labs")]
+    assert portfolio[0].sources
+
+    assert await store.people(ANGEL) == []
+    assert await store.rounds(ANGEL) == []  # a person issues no rounds
+
+
+async def test_a_person_cala_knows_nothing_about_gives_empty_lists_not_errors(store, cala):
+    recorded = cala.entity
+
+    async def entity(entity_id, **projection):
+        if entity_id == "bare-person":
+            return {"id": "bare-person", "name": "Jane Angel", "entity_type": "Person"}
+        return await recorded(entity_id, **projection)
+
+    cala.entity = entity
+    bare = await store.company("bare-person")
+    assert bare.type == "Person" and bare.name == "Jane Angel" and bare.sources == []
+    assert await store.investor_rounds("bare-person") == []
+    assert await store.portfolio("bare-person") == []
+    assert await store.people("bare-person") == []
+
+
+async def test_things_that_cannot_invest_are_still_not_found(store, cases):
+    with pytest.raises(NotFound):
+        await store.company(cases["round_ids"][0])  # a funding round

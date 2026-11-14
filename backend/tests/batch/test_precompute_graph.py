@@ -251,3 +251,30 @@ async def test_derive_handles_an_investor_with_no_companies_and_no_rounds():
     assert counts["investors"] == 4
     assert (await graph.get(GRAPH, "E"))["co_investors"] == []
     assert (await graph.get(ACTIVITY, "E"))["companies_total"] == 0
+
+
+async def test_a_person_who_invests_is_crawled_like_any_investor(store, cala):
+    person = {
+        "id": "angel-1",
+        "name": "Jane Angel",
+        "entity_type": "Person",
+        "description": "Angel investor.",
+        "relationships": {
+            "outgoing": {
+                "INVESTED_IN": [
+                    {"id": "c1", "name": "Acme", "entity_type": "Company", "properties": {}}
+                ]
+            }
+        },
+    }
+    recorded = cala.entity
+
+    async def entity(entity_id, **projection):
+        return person if entity_id == "angel-1" else await recorded(entity_id, **projection)
+
+    cala.entity = entity
+    graph = MemoryGraph()
+    ref = EntityRef(id="angel-1", name="Jane Angel", type="Person")
+    assert await crawl_investor(store, graph, ref, now=1.0) == "crawled"
+    stored = await graph.get(CRAWLED, "angel-1")
+    assert stored["investor"]["type"] == "Person" and len(stored["portfolio"]) == 1

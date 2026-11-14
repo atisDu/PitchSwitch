@@ -31,6 +31,7 @@ from data.config import env, env_flag, load_env
 from data.errors import NotFound
 from data.introspection import fields_for
 from data.mappers import (
+    INVESTOR_TYPES,
     ORG_TYPES,
     candidate_rows,
     company_from_row,
@@ -297,7 +298,8 @@ class CalaDataStore:
             log.warning("alias %s not saved: %r", other_id, exc)
 
     async def _org(self, entity_id: str) -> dict:
-        """A company's or investor's retrieval. NotFound if the ID is something else."""
+        """The retrieval of a company, an investor firm, or a person who invests (an angel).
+        NotFound if the ID is something else (a round, a place, a product)."""
         entity = await self.cala.entity(
             entity_id,
             properties=list(_ORG_FIELDS.properties),
@@ -305,9 +307,9 @@ class CalaDataStore:
             incoming=list(_ORG_FIELDS.incoming),
             limit=_EDGE_LIMIT,
         )
-        if entity.get("entity_type") not in ORG_TYPES:
+        if entity.get("entity_type") not in INVESTOR_TYPES:
             kind = entity.get("entity_type") or "unknown type"
-            raise NotFound(f"{entity_id} is not a company or an investor ({kind})")
+            raise NotFound(f"{entity_id} is not a company, an investor or a person ({kind})")
         return entity
 
     async def _org_family(self, entity_id: str) -> tuple[str, list[dict]]:
@@ -380,7 +382,8 @@ class CalaDataStore:
         return seen
 
     async def company(self, id: str) -> Company:
-        """A company or an investor. Raises NotFound for an unknown ID."""
+        """A company, an investor firm, or a person who invests (then `type` is "Person").
+        Raises NotFound for an unknown ID."""
         main_id, entities = await self._org_family(id)
         mapped = [map_company(entity) for entity in entities]
         company = mapped[0]
