@@ -7,7 +7,8 @@
 #   1. installs Docker on the instance if it is missing;
 #   2. copies the code of the current git commit (git archive: no .git, no local files);
 #   3. writes the server's .env from the local one: only the keys the server needs
-#      (Cala, Gemini, MongoDB), plus USE_FAKE_STORE=false and SITE_ADDRESS for HTTPS;
+#      (Cala, Gemini, MongoDB), plus USE_FAKE_STORE=false, CALA_REQUIRE_CACHE=true (never call
+#      Cala when Atlas is unreachable) and SITE_ADDRESS for HTTPS;
 #   4. builds and starts everything with Docker Compose.
 # Rerun it after new commits to update the deployment.
 set -eu
@@ -30,7 +31,7 @@ git -C "$ROOT" archive --format=tar HEAD | run "tar -x -C $REMOTE/src"
 
 echo "3/4 server .env"
 grep -E '^(CALA_|GEMINI_|MONGODB_|CACHE_ONLY=)' "$ROOT/.env" | run "umask 077; cat > $REMOTE/src/.env"
-run "printf 'USE_FAKE_STORE=false\nSITE_ADDRESS=%s\n' '$SITE' >> $REMOTE/src/.env"
+run "printf 'USE_FAKE_STORE=false\nCALA_REQUIRE_CACHE=true\nSITE_ADDRESS=%s\n' '$SITE' >> $REMOTE/src/.env"
 
 echo "4/4 build and start"
 run "cd $REMOTE/src/deploy && docker compose --env-file ../.env up -d --build 2>&1 | tail -8"
