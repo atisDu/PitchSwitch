@@ -44,7 +44,7 @@ from core.sanctions import screen_all
 from core.xray import XRay, hidden_reasons, portfolios_of, thesis_reason
 from core.xray import xray as portfolio_xray
 from data import get_store
-from data.mappers import STAGES, stage_index
+from data.mappers import STAGES, country_of, name_key, stage_index
 
 # Points per signal; they add up to 100. A signal earns its full points at its cap.
 # Scoring v2 (B18): companies, not rounds; recency only inside the space; activity counts.
@@ -53,6 +53,7 @@ WEIGHTS = {
     "leads_in_space": 25, "companies_in_space": 15, "recency": 15, "activity": 10,
     "warm_paths": 15, "stage_fit": 10, "geography": 10,
 }
+FRESH_COMPANIES = 0.5  # B26: share of the companies-here points a fresh sector fund earns
 CAPS = {"leads_in_space": 2, "companies_in_space": 3, "activity": 6, "warm_paths": 2}
 # Closeness: a company in the space counts 0.75-1.25 by how similar it is to the startup (cosine
 # of the stored vectors, relative to the rest of the space; live they all sit in 0.79-0.89, so
@@ -333,13 +334,23 @@ async def rank_investors(
         if target_amount_eur:
             scored.funding_fit = raise_fit(target_amount_eur, history, pool[inv_id].name)
         (skip if conflicts else pitch).append(scored)
+    everyone = _one_per_firm([*pitch, *skip])
+    pitch = [s for s in everyone if not s.conflicts]
+    skip = [s for s in everyone if s.conflicts]
 
     def order(s: InvestorScore):  # ties: the more active, then the wider in the space
         return (-s.score, -(s.deals_last_12m or 0), -s.rounds_in_space, s.investor.name)
 
     if this_week:  # B23 (b): the partner of each top Pitch investor
         top = [s for s in sorted(pitch, key=order) if s.investor.type != "Person"][:TOP_PARTNERS]
-        partners = await asyncio.gather(*(lead_partner(s.investor, sector) for s in top))
+        def deals(inv_id: str) -> list[str]:  # its companies in the space, rounds first
+            held = [names.get(rd.company_id) for rd in in_space[inv_id]]
+            held += [lk.company.name for lk in (xrays[inv_id].thesis if inv_id in xrays else [])]
+            return list(dict.fromkeys(n for n in held if n))
+
+        partners = await asyncio.gather(
+            *(lead_partner(s.investor, sector, deals=deals(s.investor.id)) for s in top)
+        )
         for s, partner in zip(top, partners, strict=True):
             if not partner:
                 continue
@@ -362,6 +373,31 @@ async def rank_investors(
         company=company, competitors=competitors, pitch=sorted(pitch, key=order),
         skip=sorted(skip, key=order), notes=await notes_task if notes_task else [],
     )
+
+
+def _same_firm(a: EntityRef, b: EntityRef) -> bool:
+    """Two Cala entries of one fund (live: Maki.vc 415bc278 and 8f0ff46d): same name without the
+    legal form, no sign of different countries; never people (two angels can share a name)."""
+    if "Person" in (a.type, b.type) or not name_key(a.name) or name_key(a.name) != name_key(b.name):
+        return False
+    here, there = country_of(None, a.description), country_of(None, b.description)
+    return here is None or there is None or here == there
+
+
+def _one_per_firm(scores: list[InvestorScore]) -> list[InvestorScore]:
+    """One card per firm: the best-scored entry stays; the conflicts of every entry are kept on
+    it (a conflict on either entry still means Skip), with their 'Conflict: ...' reasons."""
+    kept: list[InvestorScore] = []
+    for s in sorted(scores, key=lambda s: -s.score):
+        main = next((k for k in kept if _same_firm(k.investor, s.investor)), None)
+        if main is None:
+            kept.append(s)
+            continue
+        main.conflicts += [c for c in s.conflicts if c not in main.conflicts]
+        main.reasons += [
+            r for r in s.reasons if r.text.startswith("Conflict") and r not in main.reasons
+        ]
+    return kept
 
 
 def _score(
@@ -443,7 +479,11 @@ def _score(
 
     parts = {
         "leads_in_space": _capped("leads_in_space", sum(lead.values())),
-        "companies_in_space": _capped("companies_in_space", sum(company.values())),
+        # B26: a fund just closed for the sector is a thesis on it: at least half the points.
+        "companies_in_space": max(
+            _capped("companies_in_space", sum(company.values())),
+            WEIGHTS["companies_in_space"] * FRESH_COMPANIES if fresh else 0.0,
+        ),
         "recency": WEIGHTS["recency"] * recency,
         # Like recency: activity only counts for a fund in the space, else busy co-investors with
         # no company here (live: Northzone, Y Combinator on Stendr) outrank those that have one.
@@ -484,6 +524,10 @@ def _score(
                       + (f"-{STAGES[stage + 1]}" if stage + 1 < len(STAGES) else "")),
         "geography": ("Nordic/Baltic", country or "country unknown"),
     }
+    if fresh and parts["companies_in_space"] > _capped("companies_in_space", sum(company.values())):
+        details["companies_in_space"] = (
+            "companies here", "fresh fund for your sector, counted half"
+        )
     breakdown = " + ".join(
         f"{details[k][0]} {_points(parts[k])}/{WEIGHTS[k]} ({details[k][1]})" for k in WEIGHTS
     )

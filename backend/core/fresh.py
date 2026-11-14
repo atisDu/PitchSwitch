@@ -17,6 +17,7 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import logging
+import re
 from collections import Counter
 from datetime import date
 
@@ -34,7 +35,8 @@ log = logging.getLogger("core.fresh")
 FRESH = "fresh_funds"  # graph: sector key -> {"funds": [{"investor": EntityRef, "reason": Reason}]}
 PARTNERS = "partners"  # graph: investor id + sector key -> {"partner": {...}} or {"partner": None}
 TOP_PARTNERS = 5  # top Pitch investors whose partner is looked up
-MAX_FRESH = 8
+MAX_FRESH = 10
+MAX_PARTNER_CLAIMS = 2
 
 EXTRACT = """You read numbered claims and copy names out of them; you add nothing. Return only \
 names that appear word for word in a claim you cite, with that claim's number."""
@@ -105,7 +107,7 @@ async def fresh_funds(sector: str, today: date | None = None) -> list[tuple[Enti
     """(investor, "Fresh fund: ..." reason) for each firm that just closed a fund for the
     sector (`sector_of`), resolved to a Cala investor. [] on any trouble."""
     year = (today or date.today()).year
-    doc_id = _key(sector, str(year))
+    doc_id = _key(sector, str(year), "v2")  # v2 (B26): asked with both phrasings
     doc = await _stored(FRESH, doc_id)
     if doc is None:
         try:
@@ -122,12 +124,15 @@ async def fresh_funds(sector: str, today: date | None = None) -> list[tuple[Enti
 
 async def _look_up_funds(sector: str, year: int) -> list[dict]:
     store = get_store()
-    question = (
+    # B26: two phrasings; live, "closed a new fund" alone found 3 funds and missed Keen's €150M.
+    questions = [
         f"Which venture capital firms closed a new fund dedicated to {sector} technology in "
-        f"Europe in {year - 1} or {year}? Name each firm, the fund size and when it closed."
-    )
-    _, claims = await store.sourced_answer(question)
-    claims = [c for c in claims if c.sources]
+        f"Europe in {year - 1} or {year}? Name each firm, the fund size and when it closed.",
+        f"Which venture capital firms announced a first or final close of a new fund for "
+        f"{sector} startups in Europe in {year - 1} or {year}?",
+    ]
+    answers = await asyncio.gather(*(store.sourced_answer(q) for q in questions))
+    claims = list({c.text: c for _, cs in answers for c in cs if c.sources}.values())
     named = await _names(
         claims,
         "Copy the name of each venture capital FIRM (the fund manager, not the fund) that "
@@ -159,16 +164,20 @@ def _same_name(asked: str, found: str) -> bool:
 # --- (b) the partner ------------------------------------------------------------------------
 
 
-async def lead_partner(investor: EntityRef, sector: str, look_up: bool = True) -> dict | None:
+async def lead_partner(
+    investor: EntityRef, sector: str, look_up: bool = True, deals: list[str] = ()
+) -> dict | None:
     """{"name", "reason": Reason} for the partner who leads the investor's deals in the sector,
-    or None. `look_up=False`: only a stored answer (no Cala search, no Gemini)."""
-    doc_id = _key(investor.id, sector)
+    or None. `deals`: names of its companies in the space, asked about by name (B26) so the
+    claim says what the partner did. `look_up=False`: only a stored answer (no Cala search,
+    no Gemini)."""
+    doc_id = _key(investor.id, sector, "v3")  # v3 (B26): asked about its top deal too
     doc = await _stored(PARTNERS, doc_id)
     if doc is None:
         if not look_up:
             return None
         try:
-            doc = {"partner": await _look_up_partner(investor, sector)}
+            doc = {"partner": await _look_up_partner(investor, sector, deals)}
         except Exception as exc:
             log.warning("partner of %s skipped: %r", investor.name, exc)
             return None
@@ -176,25 +185,52 @@ async def lead_partner(investor: EntityRef, sector: str, look_up: bool = True) -
     return doc.get("partner")
 
 
-async def _look_up_partner(investor: EntityRef, sector: str) -> dict | None:
-    question = f"Which partner at {investor.name} leads its investments in {sector} companies?"
-    _, claims = await get_store().sourced_answer(question)
-    claims = [c for c in claims if c.sources]
+async def _look_up_partner(
+    investor: EntityRef, sector: str, deals: list[str] = ()
+) -> dict | None:
+    # B26: the plain question, plus one about its top deal in the space; their claims merged.
+    # (One combined question made Cala explain at length that a deal names no partner, and the
+    # extractor then named nobody: live, Maki.vc lost Paavo Räisänen.)
+    questions = [f"Which partner at {investor.name} leads its investments in {sector} companies?"]
+    if deals:
+        questions.append(f"Which partner at {investor.name} led its investment in {deals[0]}?")
+    store = get_store()
+    answers = await asyncio.gather(*(store.sourced_answer(q) for q in questions))
+    claims = [
+        c.model_copy(update={"text": _tidy(c.text)})
+        for c in {c.text: c for _, cs in answers for c in cs if c.sources}.values()
+    ]
     named = await _names(
         claims,
         f"Copy the full name of the person who is a partner at {investor.name} and leads its "
-        f"{sector} investments. At most one person; none if no claim names one.",
+        f"{sector} investments or led one of its deals. At most one person; none if no claim "
+        f"names one.",
     )
     if not named:
         return None
     name, cited = named[0]
     if len(name.split()) < 2:  # a first name alone could match anyone's board
         return None
+
+    def telling(c: Reason) -> tuple[bool, bool]:  # a deal named first, a denial last
+        text = c.text.lower()
+        return (not any(d.lower() in text for d in deals), bool(_DENIAL.search(text)))
+
+    cited = sorted(cited, key=telling)[:MAX_PARTNER_CLAIMS]
     reason = Reason(
         text=f"Partner for your space: {name}. " + " ".join(c.text for c in cited),
         sources=merge_sources(*(c.sources for c in cited)),
     )
     return {"name": name, "reason": reason.model_dump(mode="json")}
+
+
+_DENIAL = re.compile(r"\b(not|no|without|neither|none)\b")
+# Cala's claims cite its own records ("The source with ID 32ba7620-d7b2-...") : noise on a card.
+_RECORD_ID = re.compile(r"\s*\(?\b(?:with )?IDs?\s+[0-9a-f][0-9a-f\-\u2011]{7,}\)?", re.I)
+
+
+def _tidy(text: str) -> str:
+    return _RECORD_ID.sub("", text).replace(" ,", ",").strip()
 
 
 async def board_conflicts(partner: dict, competitors: list[Competitor]) -> list[Conflict]:

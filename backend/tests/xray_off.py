@@ -32,7 +32,7 @@ def xray_off(monkeypatch):
     async def no_funds(sector, today=None):
         return []
 
-    async def no_partner(investor, sector, look_up=True):
+    async def no_partner(investor, sector, look_up=True, deals=()):
         return None
 
     async def no_notes(company, competitors):

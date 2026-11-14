@@ -93,7 +93,8 @@ async def test_fresh_funds_resolve_and_are_stored_once(store, monkeypatch):
         SRC
     ]
     assert calls[0] == [claims[0].text, claims[1].text]  # unsourced claims are never offered
-    assert await REAL_FUNDS(fresh.sector_of(company), TODAY) == got and len(asked) == 1  # stored
+    assert await REAL_FUNDS(fresh.sector_of(company), TODAY) == got and len(asked) == 2  # stored
+    assert "first or final close" in asked[1]  # B26: the second phrasing
 
 
 async def test_lead_partner_is_stored_and_needs_a_full_name(store, monkeypatch):
@@ -119,6 +120,43 @@ async def test_lead_partner_is_stored_and_needs_a_full_name(store, monkeypatch):
     searched(monkeypatch, store, first_only)
     monkeypatch.setattr(fresh, "structured", extractor(lambda c: [("Giuseppe", [1])])[0])
     assert await REAL_PARTNER(keen, "defence") is None
+
+
+async def test_partner_is_asked_about_its_deals_and_cites_them_first(store, monkeypatch):
+    """B26: the question names the investor's deals in the space; the claim about a deal comes
+    before a claim that only says the person is a partner."""
+    maki = EntityRef(id="maki", name="Maki.vc", type="Organization")
+    claims = [
+        Reason(text="Paavo Räisänen is a partner at Maki.vc.", sources=[SRC]),
+        Reason(text="Paavo Räisänen of Maki.vc backed Metaktik's €1M pre-seed.", sources=[SRC]),
+    ]
+    asked = searched(monkeypatch, store, claims)
+    fake, _ = extractor(lambda c: [("Paavo Räisänen", [1, 2])])
+    monkeypatch.setattr(fresh, "structured", fake)
+    partner = await REAL_PARTNER(maki, "defence", deals=["Metaktik", "Aavuus"])
+    assert len(asked) == 2 and asked[1].endswith("led its investment in Metaktik?")
+    assert partner["reason"]["text"] == (
+        "Partner for your space: Paavo Räisänen. Paavo Räisänen of Maki.vc backed Metaktik's €1M "
+        "pre-seed. Paavo Räisänen is a partner at Maki.vc."
+    )
+
+
+async def test_partner_claims_lose_record_ids_and_denials_go_last(store, monkeypatch):
+    gungnir = EntityRef(id="g", name="Gungnir Capital", type="Organization")
+    claims = [
+        Reason(text="The profile lists Max Villman but does not tie him to Kelluu.", sources=[SRC]),
+        Reason(
+            text="The source with ID 32ba7620‑d7b2‑4caa quotes Max Villman on Kelluu.",
+            sources=[SRC],
+        ),
+    ]
+    searched(monkeypatch, store, claims)
+    monkeypatch.setattr(fresh, "structured", extractor(lambda c: [("Max Villman", [1, 2])])[0])
+    partner = await REAL_PARTNER(gungnir, "defence", deals=["Kelluu"])
+    assert partner["reason"]["text"] == (
+        "Partner for your space: Max Villman. The source quotes Max Villman on Kelluu. "
+        "The profile lists Max Villman but does not tie him to Kelluu."
+    )
 
 
 async def test_board_conflict_by_the_partners_name(store, monkeypatch):
@@ -156,7 +194,7 @@ async def test_report_adds_fresh_funds_and_skips_a_partner_on_a_rivals_board(sto
     async def funds(sector, today=None):
         return [(newcomer, fund)]
 
-    async def partner(investor, sector, look_up=True):
+    async def partner(investor, sector, look_up=True, deals=()):
         if investor.id != top.investor.id:
             return None
         return {
@@ -182,6 +220,8 @@ async def test_report_adds_fresh_funds_and_skips_a_partner_on_a_rivals_board(sto
     new = next(s for s in after.pitch if s.investor.id == "fresh-1")
     assert any(r.text.startswith("Fresh fund:") for r in new.reasons)
     assert "activity 10/10 (fresh fund for your sector" in new.reasons[0].text
+    # B26: a fund just closed for the sector earns half the companies-here points
+    assert "companies here 7.5/15 (fresh fund for your sector, counted half)" in new.reasons[0].text
     skipped = next(s for s in after.skip if s.investor.id == top.investor.id)
     board = [c for c in skipped.conflicts if c.kind == "BOARD"]
     assert board and board[0].via_person.id == "jane" and board[0].competitor.id == rival.company.id

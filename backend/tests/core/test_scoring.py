@@ -301,3 +301,35 @@ def test_warm_paths_through_space_leads_count_half():
     assert "warm paths 7.5/15 (1)" in full.reasons[0].text
     text = half.reasons[0].text
     assert "warm paths 3.8/15 (1, through funds that lead here, counted half)" in text
+
+
+def test_one_card_per_firm_keeps_every_conflict():
+    """B26: two Cala entries of one fund (live: Maki.vc #1 and #5 on Kelluu) become one card;
+    a conflict on the weaker entry still sends the firm to Skip. People and other countries
+    are never merged."""
+    from contracts.schemas import Conflict, InvestorScore, Reason
+
+    rival = EntityRef(id="r", name="Rival", type="Company")
+    conflict = Conflict(kind="PORTFOLIO", competitor=rival)
+
+    def card(i, name, score, kind="Organization", desc=None, conflicts=()):
+        return InvestorScore(
+            investor=EntityRef(id=i, name=name, type=kind, description=desc),
+            score=score,
+            conflicts=list(conflicts),
+            reasons=[Reason(text=f"Score {score}")]
+            + ([Reason(text="Conflict: backs Rival")] if conflicts else []),
+        )
+
+    got = scoring._one_per_firm([
+        card("m1", "Maki.vc", 64.0),
+        card("m2", "Maki.vc", 30.2, conflicts=[conflict]),
+        card("p1", "Jane Doe", 20.0, kind="Person"),
+        card("p2", "Jane Doe", 10.0, kind="Person"),
+        card("i1", "Inventure Oy", 15.0, desc="A Finnish venture capital firm"),
+        card("i2", "Inventure", 12.0, desc="An American venture capital firm"),
+    ])
+    assert [s.investor.id for s in got] == ["m1", "p1", "i1", "i2", "p2"]
+    maki = got[0]
+    assert maki.score == 64.0 and maki.conflicts == [conflict]
+    assert [r.text for r in maki.reasons] == ["Score 64.0", "Conflict: backs Rival"]
