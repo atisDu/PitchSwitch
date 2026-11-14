@@ -1,0 +1,48 @@
+{
+  "cli_version": "0.13.3",
+  "checkpoint_id": "01M7CKA25TPW0KQ92JV4DWXK4V",
+  "session_id": "11508950-d8c9-4219-9738-d2bd1728ff22",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-14T08:38:16.583936292Z",
+  "branch": "b/B14-chat",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "backend/api/main.py",
+    "backend/tests/api/test_main.py",
+    "notes/B.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-fable-5-2",
+  "turn_id": "266a0fdc5525",
+  "checkpoint_transcript_start": 313,
+  "transcript_lines_at_start": 313,
+  "compact_transcript_start": 28,
+  "token_usage": {
+    "input_tokens": 6,
+    "cache_creation_tokens": 3743,
+    "cache_read_tokens": 511232,
+    "output_tokens": 2849,
+    "api_call_count": 3
+  },
+  "session_token_usage": {
+    "input_tokens": 60,
+    "cache_creation_tokens": 153554,
+    "cache_read_tokens": 3745567,
+    "output_tokens": 70322,
+    "api_call_count": 30
+  },
+  "redaction": {
+    "replacements": 6,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 2,
+      "credentialed_uri": 0,
+      "entropy": 4,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  }
+}
