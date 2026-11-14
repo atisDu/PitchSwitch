@@ -6,6 +6,7 @@
 import Link from "next/link";
 import { Fragment, useEffect, useState, type ReactNode } from "react";
 
+import { ChatPanel } from "@/components/ChatPanel";
 import { SlowNotice } from "@/components/SlowNotice";
 import { SourceBadge } from "@/components/SourceBadge";
 import { ApiError, getBrief } from "@/lib/api";
@@ -101,6 +102,16 @@ export function BriefView({
   return (
     <article className="max-w-3xl">
       <title>{`${title} · Brief · Pitchlist`}</title>
+      <ChatPanel
+        companyId={companyId}
+        investorId={investorId}
+        scope={title}
+        suggestions={[
+          "What else has this investor led in my space?",
+          "Did they back any of my competitors?",
+          "Should I pitch them, and why?",
+        ]}
+      />
       <div className="flex flex-wrap items-center justify-between gap-4 print:hidden">
         <p className="label text-muted">Investor brief · every sentence cites its source</p>
         <div className="flex flex-wrap items-center gap-4 text-sm">
@@ -176,7 +187,8 @@ function BlockView({ block, citations, anchor }: { block: Block; citations: Sour
   );
 }
 
-function InlineContent({
+/** Inline brief/chat text: bold, italic and [n] citation links into `#${anchor}-n`. */
+export function InlineContent({
   nodes,
   citations,
   anchor = "cite",

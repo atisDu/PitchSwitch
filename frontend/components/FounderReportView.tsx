@@ -7,6 +7,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { ChatPanel } from "@/components/ChatPanel";
 import { CompetitorChips } from "@/components/CompetitorChips";
 import { PitchCard, SkipCard } from "@/components/InvestorCard";
 import { SlowNotice } from "@/components/SlowNotice";
@@ -100,6 +101,15 @@ export function FounderReportView({ companyId }: { companyId: string }) {
   return (
     <div>
       <title>{`${report.company.name} · Founder report · Pitchlist`}</title>
+      <ChatPanel
+        companyId={report.company.id}
+        scope={report.company.name}
+        suggestions={[
+          "Who are my top 3 investors to pitch, and why?",
+          ...(report.skip[0] ? [`Why should I skip ${report.skip[0].investor.name}?`] : []),
+          ...(report.pitch[0] ? [`What has ${report.pitch[0].investor.name} led recently?`] : []),
+        ]}
+      />
       <CompanyHeader company={report.company} />
 
       <section className="mt-16 border-t border-line pt-8">

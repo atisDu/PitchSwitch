@@ -6,6 +6,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+import { ChatPanel } from "@/components/ChatPanel";
 import { SlowNotice } from "@/components/SlowNotice";
 import { SourceBadges } from "@/components/SourceBadge";
 import { ApiError, checkInvestor } from "@/lib/api";
@@ -97,6 +98,16 @@ export function InvestorCheckView({ investorId, companyId }: { investorId: strin
   return (
     <div>
       <title>{`${company.name} × ${investor.name} · Investor check · Pitchlist`}</title>
+      <ChatPanel
+        companyId={company.id}
+        investorId={investor.id}
+        scope={`${investor.name} × ${company.name}`}
+        suggestions={[
+          `Does ${company.name} compete with anything ${investor.name} backs?`,
+          `Who backed ${company.name}'s competitors?`,
+          `Who led ${company.name}'s last round?`,
+        ]}
+      />
       <header>
         <p className="label text-muted">Investor check · as {investor.name}</p>
         <h1 className="display mt-4 text-5xl break-words sm:text-6xl md:text-8xl">{company.name}</h1>
