@@ -112,8 +112,14 @@ same job in the backend image:
 docker compose --env-file ../.env run --rm -T api python -m batch.precompute_graph all --per-minute 30
 ```
 
+Run by hand on the instance on 14 Nov (09:46 UTC): 111 investors found, 110 skipped as fresh,
+derive rewrote 110 investors (96 with co-investors), 11 seconds, no Cala calls because everything
+was cached. The cron job is installed (`crontab -l` on the instance); its log is
+`/var/log/pitchlist-batch.log`.
+
 The serverless batch-job deployment described above is ready in code (`batch/job_server.py`) but
-not created yet: it needs the image in a registry Verda can pull from.
+not created: it needs the image in a registry Verda can pull from. The cron job on the instance
+does the same work.
 
 ## Demo day: warm the cache, then go cache-only (task A18)
 
