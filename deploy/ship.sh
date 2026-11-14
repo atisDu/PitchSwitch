@@ -31,7 +31,7 @@ run "rm -rf $REMOTE/src && mkdir -p $REMOTE/src"
 git -C "$ROOT" archive --format=tar HEAD | run "tar -x -C $REMOTE/src"
 
 echo "3/4 server .env"
-grep -E '^(CALA_|GEMINI_|MONGODB_|CACHE_ONLY=|VERDA_INFERENCE_KEY=)' "$ROOT/.env" | run "umask 077; cat > $REMOTE/src/.env"
+grep -E '^(CALA_|GEMINI_|MONGODB_|CACHE_ONLY=|USE_VECTOR_SEARCH=|VERDA_INFERENCE_KEY=)' "$ROOT/.env" | run "umask 077; cat > $REMOTE/src/.env"
 run "printf 'USE_FAKE_STORE=false\nCALA_REQUIRE_CACHE=true\nSITE_ADDRESS=%s\n' '$SITE' >> $REMOTE/src/.env"
 
 echo "4/4 build and start"
