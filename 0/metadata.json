@@ -1,0 +1,109 @@
+{
+  "cli_version": "0.13.3",
+  "checkpoint_id": "01M7DEKH8QKVAD61EVQ2KS8V4T",
+  "session_id": "a03ded15-e291-43f3-ad9e-779839d67182",
+  "strategy": "manual-commit",
+  "created_at": "2026-11-14T16:35:18.212714415Z",
+  "branch": "c/C16-og-image",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "frontend/public/about.html"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-opus-5-5",
+  "turn_id": "e73283de49ad",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 60,
+    "cache_creation_tokens": 156479,
+    "cache_read_tokens": 2247315,
+    "output_tokens": 8644,
+    "api_call_count": 27
+  },
+  "session_token_usage": {
+    "input_tokens": 60,
+    "cache_creation_tokens": 156479,
+    "cache_read_tokens": 2247315,
+    "output_tokens": 8644,
+    "api_call_count": 27
+  },
+  "redaction": {
+    "replacements": 0,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 0,
+      "credentialed_uri": 0,
+      "entropy": 0,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "claude-skill-toolu_01T62Vz9XAd6frsU7LTCE3Wg",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "gstack"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "e73283de49ad",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 107,
+        "end": 108,
+        "entry_ids": [
+          "a25aabe1-5dfb-4888-a659-a99ebfd8bf3d"
+        ],
+        "tool_use_id": "toolu_01T62Vz9XAd6frsU7LTCE3Wg"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_01T62Vz9XAd6frsU7LTCE3Wg"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: gstack",
+        "default_collapsed": true
+      }
+    },
+    {
+      "id": "claude-skill-toolu_0115cXd4LEbdnuLgasJ38gBG",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "anthropic-skills:chrome-browser"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "e73283de49ad",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 155,
+        "end": 156,
+        "entry_ids": [
+          "11f762c4-34ee-4bfc-bdd5-dab21c69c49a"
+        ],
+        "tool_use_id": "toolu_0115cXd4LEbdnuLgasJ38gBG"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "toolu_0115cXd4LEbdnuLgasJ38gBG"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: anthropic-skills:chrome-browser",
+        "default_collapsed": true
+      }
+    }
+  ]
+}
