@@ -25,6 +25,7 @@ MAX_CALLS = 12  # tool calls per agent run; after that only the closing tool is 
 CLOSING_TRIES = 2  # extra turns to get a usable closing call before the run gives up
 SLUSH_MAX_CALLS = 5  # per pasted investor: look up, maybe retry a spelling, brief
 SLUSH_PARALLEL = 3  # pasted investors worked on at once
+CHAT_SEARCHES = 1  # Cala searches (sourced_answer, 15-50 s each live) per chat question
 
 log = logging.getLogger("agent")
 
@@ -229,7 +230,10 @@ Finish by calling `answer`, alone, after you have read the facts you need. Every
 answer cites the one or two facts that most directly support it and says only what those facts \
 say. Copy names, numbers and dates exactly; never compute, round or add knowledge of your own. \
 Lead with the direct answer; at most 6 short, plain sentences. If the facts do not answer the \
-question, say what is missing in a sentence that cites the closest fact."""
+question, say what is missing in a sentence that cites the closest fact.
+sourced_answer is slow (up to a minute) and you get it once per question: try the other tools \
+first, then ask it one short question about the main thing still missing (a long question is \
+slower), then answer."""
 
 NOTHING = (
     "I couldn't find sourced facts in Cala to answer that. Try asking about a company's "
@@ -253,6 +257,7 @@ async def _chat(
     names = {e.id: e.name for e in (company, investor) if e}  # every entity seen: id -> name
     facts: list[Reason] = []
     tries = 0
+    searches = 0
 
     def data(fn: Callable) -> Handler:
         async def handle(args: dict):
@@ -260,6 +265,13 @@ async def _chat(
             if any(i not in names for i in ids):
                 yield {"error": "unknown id: use an id from the context or from a tool result"}
                 return
+            if fn is tools.sourced_answer:
+                nonlocal searches
+                searches += 1
+                if searches > CHAT_SEARCHES:
+                    yield {"error": "Cala's search was already used for this question. Answer "
+                           "from the facts you have, and say what they leave open."}
+                    return
             label = STEPS[fn.__name__].format(
                 name=args.get("name"),
                 question=args.get("question"),

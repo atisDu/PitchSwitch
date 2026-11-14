@@ -155,6 +155,17 @@ async def test_chat_refuses_unknown_ids_and_says_so_when_nothing_is_sourced():
     assert "unknown id" in client.results()[0]["error"]
 
 
+async def test_chat_asks_cala_search_once_per_question():
+    ask = ("sourced_answer", {"question": "Who led Kelluu's Series A?"})
+    nothing = [("answer", {"sentences": [{"text": "No idea.", "facts": []}]})]
+    client = Script([ask], [ask], nothing, nothing)
+    events = await collect(gemini_agent.chat("Who led it?", client=client))
+    assert [e.message for e in events if e.type == "step"] == [
+        "Asking Cala: Who led Kelluu's Series A?"
+    ]  # the second search never ran
+    assert "already used" in client.results()[1]["error"]
+
+
 async def test_budget_spent_only_the_closing_tool_is_allowed():
     async def ask(args):
         yield {"facts": []}
