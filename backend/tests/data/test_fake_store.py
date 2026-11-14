@@ -227,3 +227,27 @@ async def test_fake_rounds_include_backers_without_round_details(store):
     stendr = COMPANIES["stendr"]["id"]
     rounds = await store.rounds(stendr)
     assert rounds[-1].id == f"{stendr}:backers" and len(rounds[-1].investors) == 3
+
+
+# --- people who invest (contract 1.1.1) -----------------------------------------------------------
+
+ANGEL = "c75cbef9-0ab0-5552-84f8-fc59bc63ea93"  # Tuomas Rasila, in Kova Labs' recorded round
+
+
+async def test_fake_store_serves_a_person_who_invests(store):
+    angel = await store.company(ANGEL)
+    assert angel.id == ANGEL and angel.type == "Person" and angel.name == "Tuomas Rasila"
+
+    rounds = await store.investor_rounds(ANGEL)
+    assert rounds and all(any(i.investor.id == ANGEL for i in r.investors) for r in rounds)
+    portfolio = await store.portfolio(ANGEL)
+    assert portfolio and all(link.investor_id == ANGEL for link in portfolio)
+    assert await store.people(ANGEL) == []
+
+
+async def test_fake_company_works_for_every_investor_on_a_sample_report(store):
+    for entry in INDEX["founder_mode"]:
+        report = FounderReport.model_validate(load(entry["file"]))
+        for score in [*report.pitch, *report.skip]:
+            company = await store.company(score.investor.id)
+            assert company.id == score.investor.id and company.name

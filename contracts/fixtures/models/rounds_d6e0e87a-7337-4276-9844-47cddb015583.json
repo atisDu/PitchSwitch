@@ -1,0 +1,29 @@
+[
+ {
+  "id": "5249b78c-fad1-5fbf-ab9c-ceee82852624",
+  "company_id": "d6e0e87a-7337-4276-9844-47cddb015583",
+  "label": "Seed",
+  "date": "2026-09-07",
+  "amount_text": "€6M",
+  "amount_eur": 6000000.0,
+  "investors": [
+   {
+    "investor": {
+     "id": "26cc4923-734a-4185-9ad2-4bdaa0efa20b",
+     "name": "Keen Venture Partners",
+     "type": "Company",
+     "description": "Amsterdam-based VC investing in early-stage tech companies in Data and Intelligence, Software Services, and Digital Models."
+    },
+    "is_lead": true
+   }
+  ],
+  "sources": [
+   {
+    "name": "eu-startups.com",
+    "url": "https://www.eu-startups.com/2026/09/milan-based-cato-raises-e6-million-to-help-companies-find-and-win-public-tenders-with-ai/",
+    "date": "2026-09-07",
+    "rank": "PRESS"
+   }
+  ]
+ }
+]

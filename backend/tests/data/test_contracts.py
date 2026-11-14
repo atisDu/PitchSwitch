@@ -51,7 +51,7 @@ STORE_METHODS = [
 
 
 def test_version():
-    assert CONTRACT_VERSION == "1.1.0"
+    assert CONTRACT_VERSION == "1.1.1"
 
 
 def test_all_models_exist():

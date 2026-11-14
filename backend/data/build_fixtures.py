@@ -327,6 +327,14 @@ def build(raw_dir: Path = RAW_DIR, models_dir: Path = MODELS_DIR) -> dict:
     out = Writer(models_dir)
     pool = graph.candidate_pool()  # first: it also fills gaps in the companies
 
+    # Investors we only met in a round or as a backer (angels among them) have no retrieval of
+    # their own: they get a minimal Company so that company(id) works for every investor.
+    for investor_id in graph.investor_ids():
+        ref = graph.refs.get(investor_id)
+        if ref is not None and investor_id not in graph.companies:
+            graph.companies[investor_id] = Company(
+                id=ref.id, name=ref.name, type=ref.type, description=ref.description
+            )
     for entity_id, company in sorted(graph.companies.items()):
         out.write(f"company_{entity_id}.json", company)
         if rounds := graph.rounds_of(entity_id):
