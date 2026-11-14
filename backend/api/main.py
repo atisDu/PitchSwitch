@@ -156,6 +156,7 @@ async def _chosen(company: Company, ids: list[str], judged: Judgement) -> list[C
 
 @app.post("/api/founder/analyze")
 async def founder_analyze(body: FounderBody) -> FounderReport:
+    tools.check_ids(body.company_id, *(body.competitor_ids or []))
     company = await get_store().company(body.company_id)
     judged = await stored_judgement(company)
     if body.competitor_ids is None:
@@ -168,6 +169,7 @@ async def founder_analyze(body: FounderBody) -> FounderReport:
 
 @app.post("/api/investor/check")
 async def investor_check(body: PairBody) -> InvestorCheck:
+    tools.check_ids(body.investor_id, body.company_id)
     store = get_store()
     investor, company = await asyncio.gather(
         store.company(body.investor_id), store.company(body.company_id)
@@ -187,11 +189,13 @@ async def investor_check(body: PairBody) -> InvestorCheck:
 
 @app.post("/api/brief")
 async def brief(body: PairBody) -> Brief:
+    tools.check_ids(body.investor_id, body.company_id)
     return await tools.investor_brief(body.investor_id, body.company_id)
 
 
 @app.post("/api/slush-prep")
 async def slush_prep(body: SlushPrepBody) -> dict:
+    tools.check_ids(body.company_id)
     company = await get_store().company(body.company_id)  # unknown company: 404 now, not later
     job_id = uuid.uuid4().hex
     events = _jobs[job_id] = []
@@ -229,6 +233,7 @@ async def job_stream(job_id: str) -> StreamingResponse:
 
 @app.post("/api/chat")
 async def chat(body: ChatBody) -> StreamingResponse:
+    tools.check_ids(body.company_id, body.investor_id)
     store = get_store()  # an unknown id in the scope: 404 now, before the stream starts
     company = await store.company(body.company_id) if body.company_id else None
     investor = await store.company(body.investor_id) if body.investor_id else None

@@ -55,8 +55,11 @@ async def test_should_i_pitch_this_fund():
 
 
 async def test_unknown_id_is_told_in_words():
-    with pytest.raises(ToolError, match="no fixture for company or investor nope"):
-        await server.call_tool("check_conflict", {"investor_id": "nope", "company_id": STENDR})
+    unknown = "00000000-0000-4000-8000-000000000000"
+    with pytest.raises(ToolError, match=f"no fixture for company or investor {unknown}"):
+        await server.call_tool("check_conflict", {"investor_id": unknown, "company_id": STENDR})
+    with pytest.raises(ToolError, match="No company or investor with that ID.*resolve_company"):
+        await server.call_tool("check_conflict", {"investor_id": "Maki.vc", "company_id": STENDR})
 
 
 async def test_slow_call_says_call_again_and_the_retry_gets_the_same_work(monkeypatch):
@@ -70,11 +73,11 @@ async def test_slow_call_says_call_again_and_the_retry_gets_the_same_work(monkey
     monkeypatch.setattr(mcp, "REPLY_WITHIN", 0.01)
     tool = mcp._told(slow_brief)
     with pytest.raises(ToolError, match="Still working.*Call slow_brief again"):
-        await tool(investor_id="yc")
+        await tool(investor_id=STENDR)
     ready.set()
-    assert await tool(investor_id="yc") == "brief on yc"  # joins the work already under way
+    assert await tool(investor_id=STENDR) == f"brief on {STENDR}"  # joins the work under way
     await asyncio.sleep(0)
-    assert runs == ["yc"] and not mcp._running  # ran once; forgotten when done
+    assert runs == [STENDR] and not mcp._running  # ran once; forgotten when done
 
 
 async def test_failure_after_the_deadline_is_told_on_the_retry(monkeypatch):
@@ -87,10 +90,10 @@ async def test_failure_after_the_deadline_is_told_on_the_retry(monkeypatch):
     monkeypatch.setattr(mcp, "REPLY_WITHIN", 0.01)
     tool = mcp._told(slow_failure)
     with pytest.raises(ToolError, match="Still working"):
-        await tool(company_id="x")
+        await tool(company_id=STENDR)
     ready.set()
     with pytest.raises(ToolError, match="no entity with this ID"):
-        await tool(company_id="x")
+        await tool(company_id=STENDR)
 
 
 def test_http_needs_the_token_in_a_header_or_in_the_url():

@@ -68,6 +68,10 @@ def _told(fn: Callable) -> Callable:
 
     @functools.wraps(fn)
     async def tool(*args, **kwargs):
+        try:
+            tools.check_ids(*(v for k, v in kwargs.items() if k.endswith("_id")))
+        except DataError as exc:
+            raise ToolError(str(exc)) from exc
         key = repr((fn.__name__, args, sorted(kwargs.items())))
         work = _running.get(key)
         if work is None:

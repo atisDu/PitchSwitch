@@ -24,6 +24,7 @@ KELLUU = "78d7490a-dd04-5119-a7f1-e940b861219b"
 SENSOFUSION_ALIAS = "5c699806-0fea-4e62-a594-717d4d85516c"
 MAKI = "415bc278-6ed1-4973-a684-07a8b8c5d855"
 STENDR = "3afdc63c-b992-4b25-b69d-807ab346352d"
+UNKNOWN = "00000000-0000-4000-8000-000000000000"  # a well-formed ID nobody has
 SENSOFUSION = "202e9283-6455-486f-8868-03c7e0d0cf29"
 NESTAI = "14359613-a45f-4804-892d-3b9dd9e927a9"
 NIF = "2ca07622-990d-40bf-a4fe-36434d43d6db"
@@ -188,6 +189,8 @@ def test_chat_stream_is_scoped(client, monkeypatch):
         ("post", "/api/slush-prep", {"company_id": "nope", "investor_names": ["Maki.vc"]}, 404),
         ("post", "/api/slush-prep", {"company_id": "x", "investor_names": []}, 422),
         ("post", "/api/founder/analyze", {"company_id": "nope"}, 404),
+        ("post", "/api/founder/analyze", {"company_id": UNKNOWN}, 404),
+        ("post", "/api/founder/analyze", {"company_id": STENDR, "competitor_ids": ["Kelluu"]}, 404),
         ("post", "/api/investor/check", {"investor_id": "nope", "company_id": "x"}, 404),
         ("post", "/api/brief", {"investor_id": "../../x", "company_id": "y"}, 404),
         ("get", "/api/jobs/nope/stream", None, 404),

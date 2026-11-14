@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import asyncio
 import inspect
+import re
 from collections.abc import Callable
 from typing import Any, Literal
 
@@ -29,7 +30,7 @@ from contracts.schemas import (
 )
 from core import briefs, conflict, scoring
 from core.competitors import shared_graph, stored_judgement
-from data import get_store
+from data import NotFound, get_store
 
 MAX_PROFILE_ROUNDS = 10  # most recent rounds in an investor profile
 MAX_PORTFOLIO_FACTS = 40  # ponytail: a big fund's portfolio (Tesi: hundreds) is cut for the agent
@@ -42,6 +43,20 @@ class InvestorProfile(BaseModel):
     rounds: list[Round]  # most recent first
     portfolio: list[PortfolioLink]
     companies: dict[str, str]  # id -> name for every Round.company_id above
+
+
+_UUID = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", re.I)
+
+
+def check_ids(*ids: str | None) -> None:
+    """NotFound for anything that is not a Cala ID (a name, a typo, a broken link). Cala answers
+    those with a format error, which would reach the caller as "data source unavailable"."""
+    for i in ids:
+        if i is not None and not _UUID.fullmatch(i):
+            raise NotFound(
+                f"No company or investor with that ID ({i!r}). IDs look like "
+                f"202e9283-6455-486f-8868-03c7e0d0cf29; resolve_company finds one by name."
+            )
 
 
 # --- the tools ----------------------------------------------------------------------------------
