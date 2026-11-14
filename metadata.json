@@ -1,0 +1,46 @@
+{
+  "cli_version": "0.13.3",
+  "checkpoint_id": "01M7D5AZ81K9G9M5WZR7H1QFH2",
+  "strategy": "manual-commit",
+  "branch": "b/B17-slush-all-investors",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "CLAUDE.md",
+    "backend/agent/gemini_agent.py",
+    "backend/api/main.py",
+    "backend/tests/agent/test_gemini_agent.py",
+    "backend/tests/api/test_main.py",
+    "contracts/CHANGELOG.md",
+    "contracts/api.md"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 60,
+    "cache_creation_tokens": 36116,
+    "cache_read_tokens": 6039672,
+    "output_tokens": 23389,
+    "api_call_count": 28
+  },
+  "redaction": {
+    "replacements": 32,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 28,
+      "credentialed_uri": 0,
+      "entropy": 4,
+      "key_context": 0,
+      "provider_token": 0,
+      "shell_stdin": 0
+    }
+  }
+}
