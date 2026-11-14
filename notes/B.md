@@ -501,3 +501,14 @@ investors in rounds too, so the fake store has the same gap.
   Kelluu Maki 57.3, Lifeline 48.0, BSV 25.6. Sensofusion Skip: Skyfall is now #5 (13.1). Demo script:
   name investors, not positions. Eval 6/6 live. Needs A's redeploy + warm.
 
+## B21 funding fit (for C, C18 already sends the fields)
+
+- `target_amount_eur`: every InvestorScore gets `funding_fit`, comparing the raise with the middle half
+  of the round sizes that investor joined (2x slack each way; grants left out). Live, Sensofusion
+  at €3M: Maki "Joins rounds of €1.5M-€10M (17 rounds with amounts); your €3M raise fits"; NIF
+  `too_small` ("€15M (1 round with amounts)"); about half the investors are `unknown` (no amounts in
+  Cala). Sources = the rounds compared (at most 6).
+- `max_check_eur`: InvestorCheck.funding_fit against the company's latest round with an amount, e.g.
+  "Kelluu Oy's latest round (Series A) was €15M; your €2M check fits"; `too_large` under 10% of it.
+- It is a flag only: it does not move the score (so nothing in the score breakdown). 0 or negative: 422.
+
