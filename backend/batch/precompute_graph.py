@@ -256,6 +256,8 @@ async def _run(args: argparse.Namespace) -> int:
             from data import get_store
 
             store = get_store()
+            if args.per_minute:
+                store.cala.per_minute = args.per_minute  # leave room for teammates on the key
             counts = await crawl(
                 store,
                 graph,
@@ -283,6 +285,9 @@ def main() -> int:
     parser.add_argument("--no-countries", action="store_true", help="skip the per-country lists")
     parser.add_argument("--max-investors", type=int, default=150)
     parser.add_argument("--force", action="store_true", help="re-crawl fresh investors too")
+    parser.add_argument(
+        "--per-minute", type=int, default=0, help="Cala calls a minute (default: the client's 10)"
+    )
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s", datefmt="%H:%M:%S")
     logging.getLogger("httpx").setLevel(logging.WARNING)
