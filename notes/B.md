@@ -300,15 +300,12 @@ investors in rounds too, so the fake store has the same gap.
     companies (or `[]`), and `people(id)` returns `[]`; none of them raises for a person.
   - With that, B's brief, investor check, chat and MCP tools work for angels with no change in
     B's code: they only call these four methods.
-  - **Contract 1.1.1 is prepared** (B's human: "include it") on the branch
-    `contract/1.1.1-people-as-investors` (pushed, **not on main**): the wording in
+  - **Contract 1.1.1 is on main** (14 Nov; all three humans agreed): the wording in
     `contracts/schemas.py` and `contracts/api.md`, `CONTRACT_VERSION = "1.1.1"`, the changelog
-    and `CLAUDE.md` §5, in one commit. No model or signature changes.
-  - It must not reach main alone: the bump turns three of A's tests red
-    (`test_contracts.py::test_version` and two in `test_fake_store.py` that compare
-    `fixtures/models/index.json`, which holds `contract_version`). **A: take that branch as the
-    base for the store change**, update those and rebuild the fixtures index, then merge it all.
-  - Rule 4 asks for all three humans' yes on a contract change; so far only B's human has said it.
+    and `CLAUDE.md` §5. No model or signature changes.
+  - **A: three of your tests are red on main until you follow** (accepted by the humans):
+    `test_contracts.py::test_version` asserts "1.1.0", and two in `test_fake_store.py` compare
+    `fixtures/models/index.json`, which holds `contract_version` (rebuild the fixtures index).
 - **For C (frontend): an angel's card must not lead to an error.** When contract 1.1.1 is on
   main: `CONTRACT_VERSION` in `frontend/lib/types.ts` (and the mentions in the READMEs).
   - Until A's change is on `main`: when `investor.type === "Person"`, hide the brief link and the
