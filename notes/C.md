@@ -104,3 +104,14 @@ who invest (Cala entity search filtered to Person, kept only if they have rounds
 Also seen: Slush prep's agent sometimes fails "Lifeline" ("only non-investor companies matched")
 and sometimes finds Lifeline Ventures. The frontend now recovers either way: a failed card offers
 investor-like matches (searching "<name> Ventures" too) and writes the brief by ID via `/api/brief`.
+
+## For B: from C's browser testing (14 Nov)
+
+- **A malformed ID gives 502 with Cala's raw error** (`/api/founder/analyze`, `/investor/check`,
+  `/brief` with `company_id: "not-a-real-id"` → `data source unavailable: Cala POST
+  /entities/not-a-real-id failed (422): {…}`). It should be a 404 `{error: "No company or investor
+  with that ID."}`. The frontend now shows "That link doesn't point to a company or investor in
+  Cala" either way, with the raw text under "Technical details".
+- **Chat can take ~100 s** ("Who led NestAI's last round?" on Tesi × NestAI: two `sourced_answer`
+  calls). It answered correctly (Tesi and Nokia co-led the €100M round, 4 sources). The panel now
+  shows elapsed seconds; anything that shortens the second Cala search helps.
