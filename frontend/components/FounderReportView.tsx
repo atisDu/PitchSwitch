@@ -163,8 +163,9 @@ export function FounderReportView({
               Competitors · {kept.length}
             </p>
             <p className="mt-2 max-w-xl text-sm text-muted">
-              Investors who backed these go on the Skip list. Hover or tap a name to see why it
-              counts; remove the ones that don&apos;t, then re-rank.
+              Investors who backed these go on the Skip list, and so do those whose portfolio holds
+              a rival missing here. Hover or tap a name to see why it counts; remove the ones that
+              don&apos;t, then re-rank.
             </p>
           </div>
           <div className="flex items-center gap-4">
@@ -228,7 +229,7 @@ export function FounderReportView({
             <ListHeading
               id="pitch-heading"
               title="Who to pitch"
-              hint={`${count(report.pitch.length, "investor")} with no conflict, ranked by fit: how often they lead and invest in your space, how recently and actively, warm paths, stage fit and a Nordic or Baltic focus. Open a card to see how its score adds up.`}
+              hint={`${count(report.pitch.length, "investor")} with no conflict, ranked by fit: how often they lead and invest in your space, how recently and actively, warm paths, stage fit and a Nordic or Baltic focus. Funds that just closed a fund for your sector are tagged; the top ones name the partner to ask for. Open a card to see how its score adds up.`}
             />
             <div className="w-full max-w-xs">
               <AmountField side="founder" value={target} onApply={applyRaise} disabled={reranking} />
@@ -271,7 +272,7 @@ export function FounderReportView({
             <ListHeading
               id="skip-heading"
               title="Why to skip each one"
-              hint="They backed a direct competitor, or one of their people sits on its board. Each conflict links to the sources it rests on; flip to see it from the fund's side."
+              hint="They backed a direct competitor (some found only in their portfolio), one of their people sits on its board, or Cala has a sanctions record on them. Each conflict links to the sources it rests on; flip to see it from the fund's side."
             />
             <ul className="mt-8">
               {report.skip.map((s) => (

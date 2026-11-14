@@ -8,6 +8,7 @@ import { SourceBadges } from "@/components/SourceBadge";
 import { displayName, investorKind, possessive, prettyDates } from "@/lib/format";
 import { activitySummary, conflictText, leadSummary } from "@/lib/investor";
 import { briefPath, checkPath } from "@/lib/routes";
+import { cardReasons, hiddenFor, type Partner } from "@/lib/reasons";
 import { splitReasons, type ScoreBreakdown } from "@/lib/score";
 import type { InvestorScore, Reason, Source } from "@/lib/types";
 
@@ -24,6 +25,7 @@ export function PitchCard({
   companyId: string;
   companyName: string;
 }) {
+  const extra = cardReasons(splitReasons(item.reasons).rest);
   return (
     <article
       id={`pitch-${item.investor.id}`}
@@ -33,15 +35,17 @@ export function PitchCard({
         {String(rank).padStart(2, "0")}
       </p>
       <div className="min-w-0">
-        <Name item={item} />
+        <Name item={item} tag={extra.freshFund ? "Fresh fund" : null} />
         <Signals item={item} />
+        {extra.freshFund && <FreshFund reason={extra.freshFund} />}
         {item.funding_fit && (
           <div className="mt-3">
             <FundingFitLine fit={item.funding_fit} side="founder" />
           </div>
         )}
         <Breakdown item={item} open={rank === 1} />
-        <Reasons reasons={splitReasons(item.reasons).rest} />
+        <Reasons reasons={extra.rest} />
+        {extra.partner && <PartnerLine partner={extra.partner} />}
         <WarmPaths paths={item.warm_paths} />
         <p className="mt-4 text-sm">
           <Link
@@ -66,24 +70,31 @@ export function SkipCard({
   companyId: string;
   companyName: string;
 }) {
+  const extra = cardReasons(splitReasons(item.reasons).rest);
   return (
     <article id={`skip-${item.investor.id}`} className="window mb-3 scroll-mt-24 p-5 target:outline-2 target:outline-accent md:p-7">
       <div className="border-l-4 border-foreground pl-4 md:pl-6">
         <Name item={item} />
         <ul className="mt-3 space-y-2">
-          {item.conflicts.map((c, i) => (
-            <li key={`${c.competitor.id}-${c.kind}-${i}`}>
-              <p className="text-lg leading-snug font-medium">
-                <span className="label mr-2 inline-block rounded-md bg-foreground px-2 py-1 align-middle text-white">
-                  {c.kind === "BOARD" ? "Board conflict" : c.kind === "SANCTION" ? "Sanctions" : "Conflict"}
-                </span>
-                {conflictText(c, item.investor.id)}
-              </p>
-              <div className="mt-1.5">
-                <SourceBadges sources={c.sources} max={2} />
-              </div>
-            </li>
-          ))}
+          {item.conflicts.map((c, i) => {
+            const hidden = c.kind === "PORTFOLIO" ? hiddenFor(extra.hidden, c.competitor.name) : null;
+            return (
+              <li key={`${c.competitor.id}-${c.kind}-${i}`}>
+                <p className="text-lg leading-snug font-medium">
+                  <span className="label mr-2 inline-block rounded-md bg-foreground px-2 py-1 align-middle text-white">
+                    {c.kind === "BOARD" ? "Board conflict" : c.kind === "SANCTION" ? "Sanctions" : hidden ? "Hidden conflict" : "Conflict"}
+                  </span>
+                  {hidden
+                    ? `Backs ${displayName(c.competitor.name)}, a direct rival not on your competitor list`
+                    : conflictText(c, item.investor.id)}
+                </p>
+                {hidden?.why && <p className="mt-1 max-w-2xl text-sm text-muted">{hidden.why}</p>}
+                <div className="mt-1.5">
+                  <SourceBadges sources={c.sources} max={2} />
+                </div>
+              </li>
+            );
+          })}
         </ul>
         {item.funding_fit && (
           <div className="mt-3">
@@ -110,7 +121,8 @@ export function SkipCard({
           </summary>
           <Signals item={item} />
           <Breakdown item={item} open skip />
-          <Reasons reasons={splitReasons(item.reasons).rest} all />
+          <Reasons reasons={extra.rest} all />
+          {extra.partner && <PartnerLine partner={extra.partner} />}
           <WarmPaths paths={item.warm_paths} />
         </details>
       </div>
@@ -118,11 +130,12 @@ export function SkipCard({
   );
 }
 
-function Name({ item }: { item: InvestorScore }) {
+function Name({ item, tag = null }: { item: InvestorScore; tag?: string | null }) {
   return (
     <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
       <h3 className="text-xl font-medium tracking-tight">{displayName(item.investor.name)}</h3>
       <span className="label text-muted">{investorKind(item.investor.type)}</span>
+      {tag && <span className="label self-center rounded-md bg-accent px-2 py-0.5 text-white">{tag}</span>}
     </div>
   );
 }
@@ -292,10 +305,37 @@ function ReasonList({ reasons }: { reasons: Reason[] }) {
       {reasons.map((r, i) => (
         <li key={`${r.text}-${i}`} className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
           <span>{prettyDates(r.text)}</span>
-          <SourceBadges sources={r.sources} />
+          {/* The sanctions screen's "nothing found" line has no record to cite. */}
+          {!(r.text.startsWith("screened: ") && r.sources.length === 0) && <SourceBadges sources={r.sources} />}
         </li>
       ))}
     </ul>
+  );
+}
+
+/** B23: a fund that just closed a vehicle for the startup's sector, with its sourced claim. */
+function FreshFund({ reason }: { reason: Reason }) {
+  return (
+    <p className="mt-3 flex max-w-3xl flex-wrap items-center gap-x-2 gap-y-1 border-l-2 border-accent pl-3 text-sm">
+      <span>{prettyDates(reason.text)}</span>
+      <SourceBadges sources={reason.sources} max={1} />
+    </p>
+  );
+}
+
+/** B23: the partner to ask for, named from sourced claims (checked against rivals' boards by B). */
+function PartnerLine({ partner }: { partner: Partner }) {
+  return (
+    <div className="mt-4">
+      <p className="label">Ask for</p>
+      <p className="mt-1.5 text-sm">
+        <span className="font-medium">{partner.name}</span>
+        <span className="text-muted"> · {partner.claim}</span>
+      </p>
+      <div className="mt-1">
+        <SourceBadges sources={partner.sources} max={2} />
+      </div>
+    </div>
   );
 }
 
