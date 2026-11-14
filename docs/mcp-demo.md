@@ -25,7 +25,7 @@ Open Claude Desktop → Settings → Developer → **Edit Config**. That opens
 ```json
 {
   "mcpServers": {
-    "pitchlist": {
+    "pitchswitch": {
       "command": "<repo>/.venv/bin/python",
       "args": ["-m", "mcp_server.server"],
       "env": { "USE_FAKE_STORE": "false" }
@@ -41,11 +41,11 @@ Open Claude Desktop → Settings → Developer → **Edit Config**. That opens
 - `USE_FAKE_STORE: "false"` means live Cala data through the shared Atlas cache (fast once warm).
   Use `"true"` to run on the recorded fixtures with no keys (different data from the demo script).
 
-The server keeps its code name **`pitchlist`** (PitchSwitch's earlier working name; code-level
-names were left as they are), so that is the key here and the name Claude shows in its tools menu.
+The key (`pitchswitch`) is the name Claude Desktop shows for the server. An older config with the
+key `pitchlist` (the earlier working name) still works; it only shows the old name.
 
 Quit Claude Desktop completely (⌘Q) and open it again. In a new chat, the tools menu should list
-**pitchlist** with seven tools: `resolve_company`, `find_competitors`, `get_rounds`,
+**pitchswitch** with seven tools: `resolve_company`, `find_competitors`, `get_rounds`,
 `investor_profile`, `check_conflict`, `rank_investors`, `investor_brief`.
 
 ## 3. Add Cala's own MCP server (optional)
@@ -58,11 +58,16 @@ this repo; get them from Cala's docs or the mentors, add it as a second entry un
 
 ## 4. Test the demo question
 
-**Turn web search off** in the chat first (or start the question with "Using only the pitchlist tools,").
+**Turn web search off** in the chat first (or start the question with "Using only PitchSwitch,").
 In the first test Claude mixed its own web search into the answer: it named a co-lead our data
 doesn't have and read the round size ("~$5M") as Rainfall's share.
 
-Ask exactly: **"Using only the pitchlist tools, should Sensofusion pitch Rainfall Ventures?"**
+Ask exactly: **"Using only PitchSwitch, should Sensofusion pitch Rainfall Ventures?"**
+
+**Ask every demo question once before the demo.** A first question about a company nobody has asked
+about can take a minute or two. Slow tools answer "Still working … call again" within 50 s instead
+of timing out, and Claude retries; the retry joins the same work, and once done it's cached
+(an 80 s brief came back in 0.2 s the second time).
 
 What should happen (allow each tool call when Claude asks):
 
@@ -88,19 +93,30 @@ Record the result here:
 | Symptom | Fix |
 | --- | --- |
 | Claude answers from the web, no tool calls | `mcpServers` ended up inside `preferences`: move it to the top level, then ⌘Q and reopen |
-| No "pitchlist" in the tools menu | Check the JSON is valid and the path is absolute; quit Claude Desktop with ⌘Q (closing the window isn't enough). Logs: `~/Library/Logs/Claude/mcp*.log` |
+| No "pitchswitch" in the tools menu | Check the JSON is valid and the path is absolute; quit Claude Desktop with ⌘Q (closing the window isn't enough). Logs: `~/Library/Logs/Claude/mcp*.log` |
 | `No module named mcp_server` | The venv lacks the editable install: `<repo>/.venv/bin/pip install -e "<repo>/backend[dev]"` |
 | Tools load but calls fail | `.env` missing or keys empty; run `cd <repo>/backend && ../.venv/bin/python -m data.smoke Sensofusion --real` to see which step fails |
-| Very slow first answer | Nothing cached yet for that company; run the question once before the demo |
+| Very slow first answer, or "Still working, call again" | Nothing cached yet for that company; let Claude retry, and run each demo question once before the demo |
 | Demo laptop has no repo | Use the deployed server instead (below) |
 
 ## Alternative: the deployed server (remote)
 
-Once A17 deploys the stack, the same tools are served over streamable HTTP at
-`https://<site>/mcp` (see `deploy/verda.md`). Add it in Claude Desktop under Settings → Connectors →
-Add custom connector, with that URL. Note (from B15): the endpoint has **no authentication** yet,
-so share the URL only for the demo.
+Once A17 deploys the stack, the same tools are served over streamable HTTP at `https://<site>/mcp`
+(see `deploy/verda.md`). Over HTTP the server **needs a token** (`MCP_TOKEN` in the server's
+`.env`, 16+ characters): without it every request gets 401.
 
-Running the HTTP server locally: `cd backend && ../.venv/bin/python -m mcp_server.server http`
-serves `http://localhost:8001/mcp`. That is the same port as the frontend mock (`npm run mock`), so
-don't run both, or start the mock with `MOCK_PORT=8002`.
+Get the ready-to-paste client setup from the repo (it reads `MCP_TOKEN` from `.env`):
+
+```sh
+cd <repo>/backend && ../.venv/bin/python -m mcp_server.server setup https://<site>
+```
+
+It prints the lines for Claude (custom connector URL, Settings → Connectors → Add custom connector),
+Claude Code and Cursor. The token goes in an `Authorization: Bearer` header, or as `?key=<token>` in
+the URL for clients that only take a URL (then it can show up in server logs; share that URL only
+with the team). Checked with Claude Code over HTTP (header and URL key both connect, no token is
+refused); Claude's custom-connector screen and Cursor are not tried yet.
+
+Running the HTTP server locally: `MCP_TOKEN=<token> ../.venv/bin/python -m mcp_server.server http`
+(from `backend/`) serves `http://localhost:8001/mcp`. That is the same port as the frontend mock
+(`npm run mock`), so don't run both, or start the mock with `MOCK_PORT=8002`.
