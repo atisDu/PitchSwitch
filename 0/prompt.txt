@@ -1,0 +1,75 @@
+How can we cutdown the time it takes for new searches? Check cala docs, since we have rate limit of 100 per minute, which should be good no?
+
+---
+
+Okay, do just 2, but also make it so that slush prep has an option to compare against all investors at slush 2026.
+
+---
+
+Okay, just make it so that slush prep has an option to compare against all investors at slush 2026.
+
+---
+
+No, but dont do 1.2.0, can we stay on the old one or no
+
+---
+
+merge it and tell C to add the button
+
+---
+
+how does the ranking work? Is it subjective to the ai or is it some algorithm?
+
+---
+
+<task-notification>
+<task-id>bw4hhukem</task-id>
+<tool-use-id>toolu_01YP55jvUeftM278LxyCEhmo</tool-use-id>
+<output-file>/tmp/claude-1000/-home-atis-Projekti-Otium/eea242ba-1b25-4f4a-809b-de3b4092b4b2/tasks/bw4hhukem.output</output-file>
+<status>completed</status>
+<summary>Background command "Run Slush prep with all Slush 2026 investors end to end" completed (exit code 0)</summary>
+</task-notification>
+
+---
+
+so also add the score breakdown so its transparent.
+
+---
+
+Add to TODO : 1) C has to implement the score transparency and the button for slush 2) Optional founder looking to get funding ammount and investor willing to fund up to limit. 3) add those elements to the ui for C 4) 
+
+<pasted_content id="b804">
+[16:07]thetruekelo:
+Stop penalising missing lead data. Cala rarely marks the lead, so 23 of 28 Pitch investors can't earn the 35 lead points. Give them partial credit, or rescale the score over the signals that have data.
+Count recency only inside the space. Right now a lead in an unrelated company gives full recency (Gungnir, ScaleWolf).
+Weight by closeness. A round in a direct competitor or a close peer (vector similarity) should count more than one in an adjacent company.
+Count companies, not rounds. Three rounds in one company shouldn't count as three. The undated "backers" entry shouldn't count as a full round.
+Add stage fit. Compare the investor's usual stages (investor_activity.rounds_by_stage) with the startup's stage.
+Add geography. Give a bonus to Nordic and Baltic funds.
+Score activity. deals_last_12m is shown on the card but adds nothing to the score.
+Make warm paths work. They never fire when the company has no known investors in Cala, as with Sensofusion. Fall back to co-investors of the funds that lead in the space. Attach sources.
+Break ties meaningfully. 15 investors tie at 6.7 and 5 at 31.7, all sorted by name. Break ties on activity or similarity instead.
+Explain the Skip list's score. It shows "fit despite the conflict"; label it so, or sort Skip by how strong the conflict is.
+
+Points 5–8 can use data that A already stores in Atlas (investor_activity, company_vectors, investor_graph). The scoring code itself is B's (core/scoring.py).
+</pasted_content id="b804">
+
+---
+
+can c start too?
+
+---
+
+yes, fix the fields so C can start
+
+---
+
+start B18
+
+---
+
+fix the Kelluu conflict issue first
+
+---
+
+start B19
