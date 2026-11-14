@@ -407,3 +407,24 @@ investors in rounds too, so the fake store has the same gap.
   "investor")` returns, so people who invest have to come from the store (Cala entity search
   filtered to Person, kept when they have rounds or `INVESTED_IN`). Nothing in B needs to
   change for it; B checks Slush prep with "Tuomas Rasila" once it is on main.
+
+## For C: "Prep every Slush 2026 investor" button (B17, b937720, 14 Nov)
+
+- **API:** `POST /api/slush-prep` takes `all_slush_investors: true` (optional, default false).
+  `investor_names` may then be empty; pasted names still run alongside. Without the flag and
+  without names: 422. Contract stays **1.1.1** (additive, human decision): no version change in
+  `frontend/lib/types.ts`; just add the optional field to the request in `frontend/lib/api.ts`.
+- **What happens:** B asks Cala who attends Slush 2026 and adds those investors (live: 12 —
+  Planet A Ventures, Revaia, Spintop Ventures, SSE Ventures, Tesi, Transition, Index Ventures,
+  General Catalyst, Nefco, imec.Venture, Stephen Industries, EIC), duplicates of pasted names
+  dropped, 25 at most. Each gets the same card as a pasted name: events carry `investor_name`
+  as Cala writes it, then a `brief` or an `error` (e.g. "Transition" doesn't resolve to an
+  investor in Cala: normal error card with your "Did you mean").
+- **Stream:** two new `step` events without `investor_name` come first: "Finding the Slush 2026
+  investors Cala knows of", then "Found 12 Slush 2026 investors in Cala; preparing 12". If
+  Cala's list is unavailable, one `error` event without `investor_name` says so; pasted names
+  still run.
+- **UI wording:** it is the investors Cala's sources name, not everyone at Slush. Something like
+  "Add the Slush 2026 investors Cala knows of (12)". Cold it takes a few minutes (12 briefs, 3 at
+  a time, 30-40 s each); once warmed, seconds.
+- **Not on the server until A redeploys.** Locally: run the backend from main.
