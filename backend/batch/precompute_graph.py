@@ -35,6 +35,7 @@ log = logging.getLogger("batch.graph")
 CRAWLED = "crawl_investors"
 GRAPH = "investor_graph"
 ACTIVITY = "investor_activity"
+PEOPLE = "known_people"  # name key -> {"people": [EntityRef]}; read by the store's resolve
 MAX_CO_INVESTORS = 50
 FRESH_FOR = 24 * 60 * 60
 
@@ -171,8 +172,10 @@ async def derive(graph: GraphDB, *, clock: Callable[[], float] = time.time) -> d
     investor_graph     {investor, co_investors: [{investor, count}]}  count = companies shared
     investor_activity  {investor, last_lead_date, last_deal_date, deals_last_12m, leads_total,
                         rounds_total, companies_total, rounds_by_stage}
+    known_people       people seen investing in those rounds, by name (angels: Cala's name
+                       search often misses them, so investor resolve looks here too)
 
-    Returns counts: {"investors", "with_co_investors"}.
+    Returns counts: {"investors", "with_co_investors", "people"}.
     """
     now = clock()
     year_ago = (datetime.fromtimestamp(now, UTC) - timedelta(days=365)).date().isoformat()
@@ -205,7 +208,21 @@ async def derive(graph: GraphDB, *, clock: Callable[[], float] = time.time) -> d
                 held[other].add(item["company_id"])
                 rounds_of[other][item["id"]] = {**item, "_lead": participant.get("is_lead")}
 
-    counts = {"investors": len(documents), "with_co_investors": 0}
+    people: dict[str, dict[str, dict]] = defaultdict(dict)  # name key -> person id -> ref
+    for document in documents.values():
+        for item in document["rounds"]:
+            for participant in item["investors"]:
+                person = participant["investor"]
+                if person.get("type") == "Person" and name_key(person["name"]):
+                    people[name_key(person["name"])].setdefault(person["id"], person)
+    for key, found in people.items():
+        stored = {
+            raw.get("id"): raw for raw in ((await graph.get(PEOPLE, key)) or {}).get("people") or []
+        }
+        if set(found) - set(stored):
+            await graph.put(PEOPLE, key, {"people": list({**found, **stored}.values())})
+
+    counts = {"investors": len(documents), "with_co_investors": 0, "people": len(people)}
     for investor_id in documents:
         mine = held.get(investor_id, set())  # .get: an investor with nothing must not add a key
         partners = [

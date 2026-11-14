@@ -3,6 +3,7 @@
     crawl_investors     what Cala says about one investor (profile, portfolio, rounds)
     investor_graph      who co-invests with whom, with counts
     investor_activity   last lead, deals in the last 12 months, rounds per stage
+    known_people        people seen investing in a round, by name (investor resolve reads it)
 
 Two interchangeable backends: MongoDB Atlas (shared by the team and the deployed server) when
 MONGODB_URI is set, else files under .cache/graph/ on this machine.

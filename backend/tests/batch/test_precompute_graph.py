@@ -184,7 +184,7 @@ async def test_derive_counts_shared_companies_and_folds_same_named_investors():
     graph = await crawled_graph()
     july_2026 = 1_782_000_000.0
     counts = await derive(graph, clock=lambda: july_2026)
-    assert counts == {"investors": 3, "with_co_investors": 2}
+    assert counts == {"investors": 3, "with_co_investors": 2, "people": 0}
     assert await graph.ids(GRAPH) == ["A", "B", "C"]  # the failed crawl is left out
 
     alpha = (await graph.get(GRAPH, "A"))["co_investors"]
@@ -278,3 +278,25 @@ async def test_a_person_who_invests_is_crawled_like_any_investor(store, cala):
     assert await crawl_investor(store, graph, ref, now=1.0) == "crawled"
     stored = await graph.get(CRAWLED, "angel-1")
     assert stored["investor"]["type"] == "Person" and len(stored["portfolio"]) == 1
+
+
+async def test_derive_remembers_the_people_who_invested_by_name():
+    from batch.precompute_graph import CRAWLED, PEOPLE, derive
+
+    graph = MemoryGraph()
+    angel = {"id": "p1", "name": "Tuomas Rasila", "type": "Person", "description": None}
+    item = deal("r1", "kova", "2026-11-04", "Pre-Seed", ("L", "Lifeline", True))
+    item["investors"].append({"investor": angel, "is_lead": False})
+    await graph.put(
+        CRAWLED,
+        "L",
+        {"name": "Lifeline", "investor": ref("L", "Lifeline"), "portfolio": [], "rounds": [item]},
+    )
+    earlier = {"id": "p0", "name": "Tuomas Rasila", "type": "Person", "description": "seen"}
+    await graph.put(PEOPLE, "tuomas-rasila", {"people": [earlier]})
+
+    counts = await derive(graph, clock=lambda: 1_782_000_000.0)
+    assert counts["people"] == 1
+    stored = (await graph.get(PEOPLE, "tuomas-rasila"))["people"]
+    assert sorted(raw["id"] for raw in stored) == ["p0", "p1"]  # added, nothing overwritten
+    assert await graph.ids(PEOPLE) == ["tuomas-rasila"]  # the fund is not a person
