@@ -1,0 +1,37 @@
+Nice, but can you make the about page the root home page? Also from the Slush 2026 investors Cala knows about texts remove the cala knows about part and others, make it known that cala is used but dont exaggerate
+
+---
+
+Also remove the flip page, add a MCP page about it and how to hook up the mcp server in easy steps. Remove also in the briefs 12 comapnies in cala to just 12 companies for example. Also make the ask about this more visible in the briefs, like inside the boxes. Remove Unnecesarry Ai editions like "every sentence cites its source". For the landing page remove the real company data with mock company names and data.
+
+---
+
+Add mock data to the samples. Also add the detailed breakdowns of scores in the brief sections.
+
+---
+
+How about a button for a deeper analysis in the brief page so to get more info and some hard/soft points, with a predetermined prompt to give more insight, but add the answer in the card. Also for the button to ask an ai dont open chat in the sidebar but rather in the in the card too.
+
+---
+
+use the taste skill to check how the brief and report pages look and fix the score add up to be more readable and inside its own box inside the card
+
+---
+
+Also a small bug the top bar changes on the mcp page and the report page, make it consistent in layout with the landing page's bar (omitting some elements is fine though in specific pages
+
+---
+
+Also make the landing page subheading a play off the hook: Flip the switch; founders see which investors to pitch and which backed their competitor; investors see which pitches clash with their portfolio. // Maybe just keep flip the switch and find a fit.
+
+---
+
+Just make it: Flip the switch and find a fit. Founders see which investors to pitch and which backed a competitor, investors see which pitches clash with their portfolio.
+
+---
+
+I dont like the main title, it doesnt flow, suggest a better one
+
+---
+
+make the title: Flip the switch and find a fit. and keep the subtitle the same but omit the first part
