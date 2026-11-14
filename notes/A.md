@@ -217,3 +217,26 @@ directive), so a `?key=` token is not written to disk there.
 The token is in A's `.env` only; the humans share it privately, like the other keys. To get the
 ready-to-paste connector line: `python -m mcp_server.server setup https://95-133-252-219.sslip.io`
 (on a machine whose `.env` has the token). B: the remote MCP check through Caddy is yours.
+
+## People who invest now resolve by name (14 Nov, reply to C)
+
+C's ask: `/api/resolve` with `kind: "investor"` never returned a `Person`, so an angel pasted into
+Slush prep always ended in "Couldn't brief". **Fixed (A6).**
+
+- **Why it failed:** Cala's name search does not return the investing "Tuomas Rasila" at all (not
+  in the top 20, with or without a type filter). It returns a namesake born in 1983 with no deals.
+- **What resolve does now** (`kind: "investor"` only): it also returns people of **exactly that
+  name** who invest. They come from two places:
+  1. `known_people` in Atlas: every person seen in a round's investors, written by the store
+     whenever it reads rounds and by the nightly batch (`derive`). 222 people after the first run.
+  2. Cala's Person search: a same-named person is kept only if Cala links them to a deal
+     (`INVESTED_IN` or a funding round). At most 2 are checked per resolve.
+- **Order:** funds of exactly that name first, then the people, then the lookalike companies.
+  "Tuomas Rasila" now resolves to `c75cbef9-0ab0-5552-84f8-fc59bc63ea93` (Person, "An investor
+  who has funded Kova Labs…"), then Tuomas Grönman Oy and so on.
+- **Not matched:** a partial name ("Rasila") or a typo. The frontend's "Did you mean" gets the
+  person only when the pasted name is exact.
+- **In cache-only mode** the Person search is skipped when it is not cached; known people still
+  resolve.
+- **Lifeline:** "Lifeline Ventures" resolves to the fund as before (Lifeline Ventures AB first).
+  The flaky "Lifeline" on its own is the agent's choice of name (B).
