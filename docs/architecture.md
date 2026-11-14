@@ -1,7 +1,7 @@
 # Architecture
 
 Status: 14 Nov. Live at <https://95-133-252-219.sslip.io>. Everything below runs on live data
-except vector search (**planned**, A13).
+(including vector search, A13).
 
 ## Overview
 
@@ -36,7 +36,8 @@ one client and one cache; everything above the data layer works on the shared co
    reads both.
 2. **Candidates.** `candidate_competitors()` runs Cala `knowledge_query` by industry, Nordic and
    Baltic country and nearby stages, plus a "similar products" query and name lookups for rivals the
-   industry tags miss (vector search over company descriptions is **planned**, A13).
+   industry tags miss, plus vector search: the stored companies closest in meaning (A13, on in
+   production).
 3. **Judge.** `core/competitors.py` asks Gemini to sort the candidates into *direct competitors*,
    *same space* and *unrelated*, with a one-line reason each. It may only return candidate IDs; any
    other ID is dropped.
@@ -81,8 +82,11 @@ in-flight requests and logs every call (endpoint, time, cache hit) for credit tr
   `investor_activity` (last lead, deals in 12 months) written by the batch job.
 - **Judgements** (which candidates are direct competitors) are stored too, so a company gets the same
   competitors after a restart and on every machine, and reports load in 2–4 s once judged.
-- **Vector search** over company descriptions for competitor candidates: **planned** (A13), with
-  Gemini embeddings (Verda's Inference API has no embeddings endpoint).
+- **Vector search** (A13, `USE_VECTOR_SEARCH=true` in production): every company the app sees is
+  embedded (Gemini `gemini-embedding-001`; Verda's Inference API has no embeddings endpoint) and
+  stored; candidates include its nearest neighbours. The store grows as more companies are looked
+  up, so reports get richer over time. That is intended (team decision, 14 Nov); cache-only mode
+  freezes it for the demo.
 
 ### Gemini — judgement and wording only
 

@@ -65,6 +65,7 @@ and add `CALA_API_KEY` for live Cala data. Competitor judging needs `GEMINI_API_
 | `VERDA_CLIENT_ID`, `VERDA_CLIENT_SECRET` | Verda Cloud API, for creating the instance (`deploy/verda.py`); never copied to the server |
 | `VERDA_REGISTRY_USER`, `VERDA_REGISTRY_SECRET` | Verda Container Registry, for pushing the batch image |
 | `VERDA_INFERENCE_KEY` | Triggers the serverless batch job |
+| `USE_VECTOR_SEARCH`, `GEMINI_EMBED_MODEL` | `true` = competitor candidates also come from vector search over stored companies (on in production; embeddings from Gemini) |
 | `VERDA_API_KEY`, `VERDA_EMBED_MODEL` | Not used (Verda's Inference API has no embeddings endpoint) |
 | `CALA_PER_MINUTE` | Cala calls one process may make per minute (default 60; the key allows 100) |
 | `CALA_REQUIRE_CACHE` | `true` = refuse to call Cala when the cache is unreachable (set on the server) |
