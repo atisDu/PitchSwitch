@@ -1,7 +1,7 @@
 # Architecture
 
-Status: draft (task C15), updated 14 Nov. Everything below runs on live data except where marked
-**planned** (vector search, A13) or **pending** (the Verda deployment itself, A16–A19).
+Status: draft (task C15), updated 14 Nov. Live at <https://95-133-252-219.sslip.io>. Everything below runs on live data
+except where marked **planned** (vector search, A13) or **pending** (the serverless batch job, A16).
 
 ## Overview
 
@@ -101,12 +101,13 @@ in-flight requests and logs every call (endpoint, time, cache hit) for credit tr
 
 - **Hosting:** the frontend, API and MCP server run on one Verda CPU instance with Docker Compose,
   Caddy in front (HTTPS via sslip.io; `/api` and event streams go straight to the backend, `/mcp` to
-  the MCP server). The images and compose file are built and checked locally; the instance itself
-  is **pending** Verda credentials (A17).
+  the MCP server). **Live** on a Verda CPU instance (4 vCPU, 16 GB, FIN-03, about EUR 1 a day),
+  created through Verda's Cloud API by `deploy/verda.py` and updated with `deploy/ship.sh`.
 - **Batch job:** `batch/precompute_graph.py` crawls the investors around the demo space (portfolios,
   rounds) and derives co-investor counts and activity stats into Atlas; idempotent, resumable,
-  rate-limited. Packaged as a Verda batch job (`batch/job_server.py`, one request, then exit);
-  running it on Verda is **pending** (A16).
+  rate-limited. It runs nightly (03:00 UTC) on the instance; the serverless Verda batch-job version
+  (`batch/job_server.py`, one request, then exit) is ready but **pending** a registry for its image
+  (A16).
 - No GPUs, clusters or fine-tuning: the work is I/O (Cala, Gemini, Atlas), not compute.
 - Details, commands and costs: `deploy/verda.md`.
 

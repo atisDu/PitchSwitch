@@ -17,7 +17,8 @@ of the table, with a source one click away.
 | 6 | Investor check | Verdict **Conflict.**: "Stendr is in your portfolio and competes with Sensofusion Oy" |
 | 7 | Claude Desktop | Web search **off**; ask: *"Using only PitchSwitch, should Sensofusion pitch Rainfall Ventures?"* (asked once beforehand) (setup: `docs/mcp-demo.md`) |
 
-Live on 14 Nov: founder report 3 s, flip 0.1 s (both cached). Direct URLs, if typing fails:
+**Live site: <https://95-133-252-219.sslip.io>** (Verda, A17). Checked there on 14 Nov: founder report 1.9 s, flip 0.07 s,
+Rainfall brief 0.6 s, all cached. Direct URLs, if typing fails:
 
 - Founder report: `/founder/202e9283-6455-486f-8868-03c7e0d0cf29`
 - Investor check: `/check/0322aa66-c3c7-470c-a940-e6ec117d4051/202e9283-6455-486f-8868-03c7e0d0cf29`
@@ -71,7 +72,7 @@ links to its source, and founders can use it at Slush tomorrow."
       differ, update steps 2–6 and the lines above.
 - [ ] **Cache warm.** Run the whole path once on the demo machine (A18), then set `CACHE_ONLY=true`
       so nothing waits on Cala during the demo.
-- [ ] **Deployed URL works** (A17) and the laptop also runs it locally as a fallback.
+- [ ] **Deployed URL works** (<https://95-133-252-219.sslip.io>) and the laptop also runs it locally as a fallback.
 - [ ] **Browser:** one window, zoom 125%, bookmarks bar hidden, notifications off, the two direct
       URLs above in a note.
 - [ ] **Claude Desktop** configured with PitchSwitch (and Cala) MCP, following `docs/mcp-demo.md`

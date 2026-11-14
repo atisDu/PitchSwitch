@@ -19,6 +19,8 @@ every claim:
 - **MCP server:** the same tools for any agent, so Claude Desktop can answer "should I pitch Fund X?"
   ([docs/mcp-demo.md](docs/mcp-demo.md)).
 
+**Live demo:** <https://95-133-252-219.sslip.io> (a Verda CPU instance; see `deploy/verda.md`).
+
 ## How it works
 
 Company → competitors (Cala candidates, judged by Gemini) → their funding rounds → the investors
