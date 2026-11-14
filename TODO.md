@@ -40,7 +40,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [x] **A17 Docker + deploy** — Dockerfile (API + MCP server), deploy to a Verda CPU instance with HTTPS; share URL. Needs: B10.
 
 ### CP5 — Sunday morning
-- [ ] **A18 Pre-cache demo** — warm the cache for all T3 cases; verify `CACHE_ONLY=true` runs the full demo offline. Needs: A10, A17.
+- [x] **A18 Pre-cache demo** — warm the cache for all T3 cases; verify `CACHE_ONLY=true` runs the full demo offline. Needs: A10, A17.
 - [ ] **A19 Deploy notes** — finish `deploy/verda.md` (services used, why, costs, how to run). Hand to C for the README.
 
 ---
