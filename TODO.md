@@ -71,6 +71,13 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 ### CP5 — Sunday morning
 - [x] **B16 Hardening** — timeouts, friendly errors, response validation everywhere, prompt tightening, final weight tune on the eval set.
 
+### After CP5 — added 14 Nov
+- [x] **B17 Slush option + score breakdown** — `/api/slush-prep` takes `all_slush_investors` (every Slush 2026 investor Cala names, optional field, contract stays 1.1.1); each investor's first reason is its score breakdown (points per signal). Details for C in `notes/B.md`.
+- [ ] **B18 Scoring v2: fair signals** — `core/scoring.py`, from the team's scoring review (14 Nov): (a) stop penalising missing lead data: Cala rarely marks the lead (23 of 28 Pitch investors can't earn the 35 lead points), so give partial credit or rescale over the signals that have data; (b) recency only from leads/rounds inside the space (now a lead in an unrelated company gives full recency: Gungnir, ScaleWolf); (c) count companies, not rounds (three rounds in one company ≠ three), and an undated "backers" entry counts less than a full round; (d) score activity: `deals_last_12m` is on the card but adds nothing; (e) break ties on activity or similarity, not by name (15 tie at 6.7, 5 at 31.7); (f) Skip: label its score "fit despite the conflict" or sort Skip by conflict strength. Keep the breakdown line in step. Rerun the eval set and check the demo script's numbers with C. Needs: B17.
+- [ ] **B19 Scoring v2: new signals** — (a) weight by closeness: a round in a direct competitor or a close peer (vector similarity, `company_vectors`) counts more than one in an adjacent company; (b) stage fit: the investor's usual stages (`investor_activity.rounds_by_stage`) against the startup's stage; (c) geography: a bonus for Nordic and Baltic funds. Uses data A already stores in Atlas; if the store doesn't expose it, ask A via `notes/B.md`. Needs: B18.
+- [ ] **B20 Warm paths that fire** — they never fire when the company has no known investors in Cala (Sensofusion). Fall back to co-investors of the funds that lead in the space (`investor_graph`), and attach sources (`co_investors()` has none today: ask A). Needs: B18.
+- [ ] **B21 Funding amount fit (optional)** — founder mode: an optional target amount the founder wants to raise; investor mode: an optional limit the investor will fund up to. Compare with the round sizes each investor has joined (`Round.amount_eur`; amounts are whole-round sizes, never one investor's share): a fit signal or flag on the card, with sources, nothing when unknown. Optional request fields on `/api/founder/analyze` and `/api/investor/check` (additive, like the Slush flag). Needs: B18.
+
 ---
 
 ## C — Product
@@ -98,3 +105,7 @@ Checkpoints: **CP1** Fri night · **CP2** Sat ~15:00 (real data) · **CP3** Sat 
 - [x] **C14 Polish** — loading / empty / error states, responsive check, copy pass.
 - [x] **C15 README + docs** — `README.md` + `docs/`: setup, architecture, how Cala / Gemini / Atlas / Verda are used (from A19). Needs: A19.
 - [ ] **C16 Demo + pitch** — demo script (founder conflict → flip to investor mode → MCP in Claude Desktop), slides, rehearse twice with the team, record a backup video.
+
+### After CP5 — added 14 Nov
+- [ ] **C17 Score transparency + Slush button** — show each investor's score breakdown (first reason, starts with "Score "; parts split by " + ") clearly on the card, e.g. a small bar per signal; Slush prep: a "Prep every Slush 2026 investor Cala knows of" option that sends `all_slush_investors: true` (names optional then). Wording and stream details in `notes/B.md`. Needs: B17.
+- [ ] **C18 Funding amount inputs** — optional "amount you want to raise" on the founder side and "most you will fund" on the investor side, sent to B's new optional fields; show the fit signal / flag on the cards. Needs: B21.
